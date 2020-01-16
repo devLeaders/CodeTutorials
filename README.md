@@ -3,7 +3,10 @@ Projekt szkoleniowy w ramach inicjatywy devLeaders. Zespół stworzy klona Netfl
 
 # Instrukcja uruchomienia projektu
 1. w katalogu myNetflix podaj komendy:
+    - instalacja lerny globalnie: npm install --g lerna
     - lerna bootstrap
     - lerna run start
 
  Z powoduje to uruchomienie Reacta na porcie 3000 i Nest.js na porcie 3300 
+ 
+ 
