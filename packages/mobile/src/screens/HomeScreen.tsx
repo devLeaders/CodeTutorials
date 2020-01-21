@@ -29,6 +29,7 @@ import {
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import DetailsScreen from './DetailsScreenDetailsScreen';
+import ContextAPIHome from './ContextAPIHome';
 
 declare var global: {HermesInternal: null | {}};
 
@@ -51,10 +52,33 @@ const HomeScreen = ({navigation}) => {
                 <Text>Details Screen</Text>
                 <Button
                     color="#e63900"
-                    title="Go to details"
+                    title="Go to Detail screen"
                     onPress={() => navigation.navigate('Details')}
                 />
+                <Button
+                    color="#e63900"
+                    title="Go to Context API Example"
+                    onPress={() => navigation.navigate('Context')}
+                />
+                 <Button
+                    color="#e63900"
+                    title="Go to Axios Example 4"
+                    onPress={() => navigation.navigate('AxiosExample')}
+                />
+                <Button
+                    color="#e63900"
+                    title="Button 4"
+                    onPress={() => navigation.navigate('AxiosExample')}
+                />
+                <Button
+                    color="#e63900"
+                    title="Button 5"
+                    onPress={() => navigation.navigate('AxiosExample3')}
+                />
               </View>
+              
+              
+              
               
               <View style={styles.sectionContainer}>
                 <Text style={styles.sectionTitle}>Step One</Text>
