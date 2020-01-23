@@ -21,6 +21,10 @@ const DetailsScreen = ({navigation}) => {
             title="Stay in Details"
             onPress={() => navigation.navigate('Details')}
         />
+        <Button
+            title="Go to Netflix News"
+            onPress={() => navigation.navigate('AxiosExample')}
+        />
       </View>
     );
 }

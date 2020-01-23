@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import News from './News';
+import News from '../components/News';
 import axios from 'axios';
 
 class AxiosExample extends Component{

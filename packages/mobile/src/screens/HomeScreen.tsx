@@ -49,7 +49,7 @@ const HomeScreen = ({navigation}) => {
             )}
             <View style={styles.body}>
             <View style={styles.sectionContainer}>
-                <Text>Details Screen</Text>
+                <Text>Buttons to Exaples</Text>
                 <Button
                     color="#e63900"
                     title="Go to Detail screen"
@@ -57,22 +57,22 @@ const HomeScreen = ({navigation}) => {
                 />
                 <Button
                     color="#e63900"
-                    title="Go to Context API Example"
-                    onPress={() => navigation.navigate('Context')}
+                    title="Go to Context API Example2"
+                    onPress={() => navigation.navigate('ExampleContextAPI2')}
                 />
                  <Button
                     color="#e63900"
-                    title="Go to Axios Example 4"
+                    title="Go to Axios Example"
                     onPress={() => navigation.navigate('AxiosExample')}
                 />
                 <Button
                     color="#e63900"
-                    title="Button 4"
-                    onPress={() => navigation.navigate('AxiosExample')}
+                    title="Go to Example Context API"
+                    onPress={() => navigation.navigate('ExampleContextAPI')}
                 />
                 <Button
                     color="#e63900"
-                    title="Button 5"
+                    title="EMPTY BUTTON"
                     onPress={() => navigation.navigate('AxiosExample3')}
                 />
               </View>
