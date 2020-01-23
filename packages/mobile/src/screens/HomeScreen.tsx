@@ -70,11 +70,7 @@ const HomeScreen = ({navigation}) => {
                     title="Go to Example Context API"
                     onPress={() => navigation.navigate('ExampleContextAPI')}
                 />
-                <Button
-                    color="#e63900"
-                    title="EMPTY BUTTON"
-                    onPress={() => navigation.navigate('AxiosExample3')}
-                />
+                
               </View>
               
               
