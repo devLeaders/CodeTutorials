@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "preinstall": "./npmpreinstall.sh"
+    "preinstall": "npmpreinstall.sh"
   },
   "dependencies": {
     "appcenter": "2.6.1",
