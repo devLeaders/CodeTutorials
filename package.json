@@ -14,8 +14,12 @@
     "packages/*"
   ],
   "devDependencies": {
+<<<<<<< HEAD
     "lerna": "^3.20.2",
     "styled-components": "^5.0.0"
+=======
+    "lerna": "^3.20.2"
+>>>>>>> c4f754b8b4b942410ea67131c603a20a43312d69
   },
   "dependencies": {
     "redux-devtools-extension": "^2.13.8"

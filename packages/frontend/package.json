@@ -42,7 +42,11 @@
   },
   "devDependencies": {
     "@types/react-redux": "^7.1.7",
+<<<<<<< HEAD
     "@types/react-router-dom": "^5.1.3",
     "@types/styled-components": "^4.4.2"
+=======
+    "@types/react-router-dom": "^5.1.3"
+>>>>>>> c4f754b8b4b942410ea67131c603a20a43312d69
   }
 }
