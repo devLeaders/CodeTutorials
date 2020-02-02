@@ -10,39 +10,13 @@
 
 import React, { Component } from 'react';
 
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-
 // Here we can import new screens
-import HomeScreen from './src/screens/HomeScreen';
-import DetailsScreen from './src/screens/DetailsScreen';
-import ExampleContextAPI from './src/screens/ExampleContextAPI';
-import ExampleContextAPI2 from './src/screens/ExampleContextAPI2';
-import AxiosExample from './src/screens/AxiosExample';
-
-//Can we move the navigation to separate component...??
-const navigation = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Details: DetailsScreen,
-    ExampleContextAPI: ExampleContextAPI,
-    ExampleContextAPI2: ExampleContextAPI2,
-    AxiosExample: AxiosExample,
-
-    
-    //here we can add new screen name
-  },
-  {
-    initialRouteName: 'Home',
-  }
-);
-
-const AppContainer = createAppContainer(navigation);
+import AppNavigation from './src/components/AppNavigation';
 
 export default class App extends Component {
   render() {
     return (
-    <AppContainer />
+    <AppNavigation />
     )
   }
 }
