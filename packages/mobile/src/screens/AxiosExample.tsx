@@ -9,7 +9,12 @@ class AxiosExample extends Component{
 		this.state = {
 			news: []
 		}
-	}
+  }
+   /*
+    informacyjnie: komponent nie powinien samodzielnie wykonywać requestów -> 
+    powinien to robić przez akcje a akcja powinna wywoływać connector/serwis 
+    i w serwis powinien sie znaleść dopiero axios.get()
+    */
 	componentDidMount() {
     axios.get('https://newsapi.org/v2/everything?q=netflix&sortBy=publishedAt&apiKey=c04fd04b98d841d9ac3f0826f2497094')
 			.then(res => {
