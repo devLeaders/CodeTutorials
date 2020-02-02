@@ -11,7 +11,7 @@ import {
 
 const DetailsScreen = ({navigation}) => {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={styles.view1}>
         <Text>Details Screen</Text>
         <Button
           title="Back to Home"
@@ -28,5 +28,12 @@ const DetailsScreen = ({navigation}) => {
       </View>
     );
 }
+const styles = StyleSheet.create({
+  view1: {
+    flex: 1,
+    alignItems: 'center', 
+    justifyContent: 'center',
+  },
+});
 
 export default DetailsScreen;

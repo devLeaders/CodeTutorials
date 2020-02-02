@@ -48,7 +48,7 @@ class Person extends Component {
             <React.Fragment>
               <Text>Name {context.state.name}</Text>
               <Text>Age {context.state.age}</Text>
-              <Text>Cool {context.state.name}</Text>
+              <Text>Cool {context.state.cool}</Text>
               <Button onPress={context.growYearOlder} title="grow a year" />
             </React.Fragment>
           )}
