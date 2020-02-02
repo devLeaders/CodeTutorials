@@ -2,10 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { VideosEntity } from './videos.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-
-class TestDTO {
-    title:string
-}
+import {ShortVersionDTO} from './videos.dto'
 
 @Injectable()
 export class VideosService {
@@ -13,6 +10,6 @@ export class VideosService {
     ){}
 
     async showAll(){
-        return await this.videosRepository.find({select:["title"]});
+        return await this.videosRepository.find({select:Object.keys(new ShortVersionDTO()) as any});
     }
 }
