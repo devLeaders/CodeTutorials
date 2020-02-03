@@ -1,5 +1,6 @@
 import React from 'react'
 import axiosConfig from '../axios/configAxios'
+import { getActors } from '../axios/conectors'
 import MoviesTypes from '../pages/MoviesTypes.d'
 
 
@@ -12,7 +13,7 @@ export default class Movies extends React.Component<any, MoviesTypes> {
     componentDidMount() {
 
         const persons1: any[] = []
-        axiosConfig.get(axiosConfig.defaults.baseURL + `/users`)
+        getActors()
             .then(res => {
 
                 res.data.forEach((el: any) => {
