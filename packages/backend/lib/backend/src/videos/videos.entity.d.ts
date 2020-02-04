@@ -1,5 +1,5 @@
 export declare class VideosEntity {
-    id: string;
+    id: number;
     created: Date;
     title: string;
     description: string;

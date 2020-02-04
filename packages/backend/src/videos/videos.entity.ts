@@ -2,7 +2,7 @@ import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm
 
     @Entity('videos')
     export class VideosEntity {
-        @PrimaryGeneratedColumn('uuid') id: string;
+        @PrimaryGeneratedColumn('uuid') id: number;
 
         @CreateDateColumn() created: Date;
 
