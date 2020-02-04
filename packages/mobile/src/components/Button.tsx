@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
-export default class Btn extends Component {
+interface Props {
+  color:string,
+  title:string,
+  onPress:()=>void
+}
+
+export default class Btn extends Component<Props> {
   render() {
     return (
       <TouchableOpacity style={[s.button, {backgroundColor: this.props.color || '#FFF'}]} onPress={this.props.onPress}>

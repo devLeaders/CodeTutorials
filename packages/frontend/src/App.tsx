@@ -1,25 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom'
+import Navigation from './layouts/Navigation';
+import MainView from './layouts/MainView';
+import styled from 'styled-components';
+
+const StyledApp = styled.div`
+  height: 100vw;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledNav = styled.nav`
+  height: 300px;
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledMain = styled.nav`
+  flex-grow: 1;
+  text-align: center;
+`
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn dziala
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <StyledApp className="app">
+        <StyledNav>
+          {<Navigation />}
+        </StyledNav>
+        <StyledMain>
+          {<MainView />}
+        </StyledMain>
+
+      </StyledApp>
+    </BrowserRouter>
   );
 }
 
