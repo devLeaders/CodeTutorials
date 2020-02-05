@@ -5,38 +5,28 @@ import styled from "styled-components";
 import FiltrationBtns from "../components/FiltrationBtns";
 
 export default class Movies extends React.Component<any, MoviesTypes> {
-
-    state = {
-        persons: []
-    }
-
-    componentDidMount() {
-
-        const persons1: any[] = []
-        getActors()
-            .then(res => {
-
-                res.data.forEach((el: any) => {
-                    persons1.push(el.name)
-                });
-
-                this.setState({ persons: persons1 })
-            })
-
-            .catch(err => {
-                console.log('error')
-            })
-    }
-
-    render() {
-        return (
-            <div>
-                <h1>Filmy</h1>
-                <br />
-                <h2>Aktorzy:</h2>
-                <br />
-                {this.state.persons.map(person => <li key={person}>{person}</li>)}
-            </div>
-        )
-    }
+  render() {
+    return (
+      <Wrapper>
+        <MovieNavBar></MovieNavBar>
+        <NewContent />
+        <FiltrationBtns></FiltrationBtns>
+      </Wrapper>
+    );
+  }
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+`;
+
+const NewContent = styled.div`
+  margin-top: 30px;
+  height: 150px;
+  width: 90%;
+  background-color: red;
+`;
