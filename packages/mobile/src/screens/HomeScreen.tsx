@@ -28,12 +28,10 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import DetailsScreen from './DetailsScreenDetailsScreen';
-import ContextAPIHome from './ContextAPIHome';
 
 declare var global: {HermesInternal: null | {}};
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({navigation}:any) => {
     return (
       <>
         <StatusBar barStyle="dark-content" />

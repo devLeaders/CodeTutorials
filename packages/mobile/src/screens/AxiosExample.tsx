@@ -4,7 +4,7 @@ import News from '../components/News';
 import axios from 'axios';
 
 class AxiosExample extends Component{
-  constructor(props){
+  constructor(props:any){
 		super(props);
 		this.state = {
 			news: []
