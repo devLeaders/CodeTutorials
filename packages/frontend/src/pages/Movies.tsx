@@ -1,8 +1,8 @@
-import React from 'react'
-import axiosConfig from '../axios/configAxios'
-import { getActors } from '../axios/conectors'
-import MoviesTypes from '../pages/MoviesTypes.d'
-
+import React from "react";
+import MoviesTypes from "../pages/MoviesTypes.d";
+import MovieNavBar from "../components/MovieNavBar";
+import styled from "styled-components";
+import FiltrationBtns from "../components/FiltrationBtns";
 
 export default class Movies extends React.Component<any, MoviesTypes> {
 
