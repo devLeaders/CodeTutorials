@@ -10,6 +10,7 @@ Projekt szkoleniowy w ramach inicjatywy devLeaders. Zespół stworzy klona Netfl
     -zanim chcemy uruchomić backend, musimy w katalogu backend utworzyć plik .env
     - w pliku tworzymy zmienną PORT=3300 
     - jeżeli chcemy przetestować sam backend, uruchamiamy komende:
+    - yarn run build
     - yarn run start1 
 
  Z powoduje to uruchomienie Reacta na porcie 3000 i Nest.js na porcie 3300 
