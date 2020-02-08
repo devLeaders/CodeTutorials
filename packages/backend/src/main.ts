@@ -1,14 +1,15 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import 'dotenv/config';
+require('dotenv').config();
 import { Logger } from '@nestjs/common';
 declare const module: any;
 
-const port = process.env.PORT;
+const port = process.env.APP_PORT;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   
   const options = new DocumentBuilder()
   .setTitle('MyNetflix Api')

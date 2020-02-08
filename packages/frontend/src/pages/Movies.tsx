@@ -1,5 +1,4 @@
 import React from 'react'
-import axiosConfig from '../axios/configAxios'
 import { getActors } from '../axios/conectors'
 import MoviesTypes from '../pages/MoviesTypes.d'
 
@@ -11,8 +10,16 @@ export default class Movies extends React.Component<any, MoviesTypes> {
     }
 
     componentDidMount() {
-
-        const persons1: any[] = []
+        
+        fetch('http://localhost:3300/videos')
+        .then((response) => {
+            return response.json();
+        })
+        .then((myJson) => {
+            console.log(myJson);
+        });
+        const
+         persons1: any[] = []
         getActors()
             .then(res => {
 
