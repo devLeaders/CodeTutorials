@@ -17,6 +17,7 @@ import DetailsScreen from '../screens/DetailsScreen';
 import ExampleContextAPI from '../screens/ExampleContextAPI';
 import ExampleContextAPI2 from '../screens/ExampleContextAPI2';
 import AxiosExample from '../screens/AxiosExample';
+import SingleMovie from '../screens/SingleMovie';
 
 //Can we move the navigation to separate component...??
 const navigation = createStackNavigator(
@@ -26,6 +27,7 @@ const navigation = createStackNavigator(
     ExampleContextAPI: ExampleContextAPI,
     ExampleContextAPI2: ExampleContextAPI2,
     AxiosExample: AxiosExample,
+    SingleMovie: SingleMovie,
 
     //here we can add new screen name
   },
