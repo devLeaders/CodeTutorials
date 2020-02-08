@@ -3,5 +3,5 @@ import { VideosEntity } from './videos.entity';
 export declare class VideosService {
     private videosRepository;
     constructor(videosRepository: Repository<VideosEntity>);
-    showAll(): Promise<VideosEntity[]>;
+    showAll(): Promise<any>;
 }

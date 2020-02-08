@@ -11,7 +11,6 @@ const StyledApp = styled.div`
 `;
 
 const StyledNav = styled.nav`
-  height: 300px;
   display: flex;
   justify-content: center;
 `;
