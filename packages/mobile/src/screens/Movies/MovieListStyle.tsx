@@ -14,13 +14,16 @@ export const FilterList = styled.Text({
     fontFamily: "Arial",
     fontSize: 14,
     fontWeight: "bold",
-    color: "#363535"
+    color: "#363535",
+ 
 })
 
 export const Arrow = styled.Image({
-    width: 9,
-    height: 7,
-    marginLeft: 10
+    width: 7,
+    height: 9,
+    padding: 5,
+    left: 10
+
 })
 
 export const Search = styled.Image({
