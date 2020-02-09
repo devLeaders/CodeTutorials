@@ -9,7 +9,7 @@ import {
   StatusBar,
 } from 'react-native';
 
-const DetailsScreen = ({navigation}) => {
+const DetailsScreen = ({navigation}:any) => {
     return (
       <View style={styles.view1}>
         <Text>Details Screen</Text>
@@ -24,6 +24,10 @@ const DetailsScreen = ({navigation}) => {
         <Button
             title="Go to Netflix News"
             onPress={() => navigation.navigate('AxiosExample')}
+        />
+         <Button
+            title="List of videos"
+            onPress={() => navigation.navigate('Heder')}
         />
       </View>
     );
