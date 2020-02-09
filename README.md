@@ -2,10 +2,25 @@
 Projekt szkoleniowy w ramach inicjatywy devLeaders. Zespół stworzy klona Netflix z użyciem React, Ract Native, NestJS
 
 # Instrukcja uruchomienia projektu
-1. w katalogu myNetflix podaj komendy:
-    - instalacja lerny globalnie: npm install --g lerna
-    - lerna bootstrap
-    - lerna run start
+## Wymagania  
+    - plugin vsc:  
+        - ms-azuretools.vscode-docker
+        - ms-vscode-remote.remote-containers
+        - q.typescript-mono-repo-import-helper
+        - msjsdiag.debugger-for-chrome
+    - globalnie zainstalowane node, lerna, docker
+
+## Backend  
+    1. Uruchomienie
+        ![remote-containers](https://microsoft.github.io/vscode-remote-release/images/remote-containers-readme.gif)
+        - uruchomić remote-containers (zielony kwadrecik lewy dolny róg); Remote-Containers: Reopen Folder in Container
+        - lerna bootstrap
+        ![start debuger](https://code.visualstudio.com/assets/docs/editor/debugging/debugging_hero.png)
+        - uruchomić maszyne możesz wybierając Debug Nest Framework i klikając zieloną strzałke lub uruchamiając komende 
+        ```shell
+        npm run start:devts
+        ```
+    
 2. 
     -zanim chcemy uruchomić backend, musimy w katalogu backend utworzyć plik .env
     - w pliku tworzymy zmienną PORT=3300 
