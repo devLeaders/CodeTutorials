@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn,ManyToMany,JoinTable } from 'typeorm';
+import CategoryEntity from './category.entity';
 
     @Entity('videos')
     class VideosEntity {
@@ -23,6 +24,10 @@ import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm
         @Column('text') urlVideo: string;
 
         @Column('text') urlPhoto: string;
+
+        @ManyToMany(type => CategoryEntity)
+        @JoinTable()
+        categories: CategoryEntity[];
     }
 
     export default VideosEntity;

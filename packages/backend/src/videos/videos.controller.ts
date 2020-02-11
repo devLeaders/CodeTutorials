@@ -6,6 +6,11 @@ export class VideosController{
 
     @Get()
     showAllVideos(){
-        return this.videosService.showAll();
+        return this.videosService.getAll();
+    }
+
+    @Get("categories")
+    showAllCategories(){
+        return this.videosService.getCategoryWithVideos(10);
     }
 }
