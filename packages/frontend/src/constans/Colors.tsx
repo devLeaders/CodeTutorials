@@ -1,4 +1,6 @@
 export default {
   nRed: "#e50914",
-  nBlack: "black"
+  nBlack: "black",
+  nGrey: "#444",
+  nWhite: "#ddd"
 };
