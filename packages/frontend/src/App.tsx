@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
 
   body{
     font-family: 'Bebas Neue', cursive; 
+    margin: 0;
   }
 `;
 

@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   background-color: ${Colors.nBlack};
   transform: translateY(-100%);
   transition: transform 0.6s ease;
-  border: 1px solid #aaa;
+  border: 1px solid #666;
   border-top: 3px solid white;
   color: #ccc;
   opacity: 0.9;
