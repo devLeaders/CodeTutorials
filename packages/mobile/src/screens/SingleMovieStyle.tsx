@@ -41,7 +41,15 @@ export const BackArrowImage = styled.Image({
 export const RowContainer = styled.View({
     backgroundColor: BackgroundColor.BACKGROUNDCOLOR,
     flexDirection: 'row',
+    justifyContent: 'space-between',
     margin: 10,
+})
+
+export const RowContainerCenter = styled.View({
+    backgroundColor: BackgroundColor.BACKGROUNDCOLOR,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    margin: 40,
 })
 
 export const ColumContainerLeft = styled.View({
@@ -56,7 +64,7 @@ export const ColumContainerRight = styled.View({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf: 'center',
+
 })
 
 export const MovieName = styled.Text({
@@ -103,8 +111,7 @@ export const Heart = styled.Image({
 
 export const HeartRatio = styled.Text({
     fontFamily: FontFamily.ARIAL,
-    fontSize: FontSize.MOVIENAME,
-    fontWeight: FontWeight.BOLD,
+    fontSize: FontSize.RATIO,
     color: FontColors.HEADERS,
 })
 

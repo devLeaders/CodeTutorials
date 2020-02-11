@@ -15,7 +15,7 @@ import {
 import player from '../../assets/img/player.jpg';
 import play from '../../assets/img/play.png';
 import back_arrow from '../../assets/img/back_arrow.png';
-
+import h from '../../assets/img/h.png';
 //Icons
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { 
@@ -34,15 +34,8 @@ import {
   Owerview,
   Description,
   Heart,
-  Hamburger, 
-  FilterList, 
-  Search, 
-  Arrow, 
-  ButtonFilter, 
-  TextButtonActive,
-  TextButtonNOAct,
-  ViewButtons,
-  ButtonNOFilter,
+  HeartRatio,
+  RowContainerCenter,
 } from './SingleMovieStyle'; 
 
 const DATA = [
@@ -50,6 +43,7 @@ const DATA = [
     name: 'Joker',
     kind: 'Drama-comedy',
     runTime: '2h 2min',
+    ratio: '95%',
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
     uri: 'movie1',
   },
@@ -108,12 +102,11 @@ render(){
           </Owerview>
         </ColumContainerLeft>
 
-        <ColumContainerRight>
-          <Heart source={player}/>
-          <Heart source={player}/>
-          <Heart source={player}/>
-        
-        </ColumContainerRight>
+        <RowContainerCenter>
+          <Heart source={h}/>
+          <HeartRatio>{DATA[0].ratio}</HeartRatio>
+        </RowContainerCenter>
+
       </RowContainer>
 
       <ColumContainerLeft>
