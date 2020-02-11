@@ -87,7 +87,13 @@ const MovieNavBar: React.SFC<MovieNavBarProps> = () => {
       <NavWrapper>
         <BurgerBtn onClick={handleBurgerMenu}></BurgerBtn>
         <MovieSearch placeholder="Wyszukaj film"></MovieSearch>
-        <BurgerBtn onClick={handleBurgerMenu}></BurgerBtn>
+        <BurgerBtn onClick={handleBurgerMenu}>
+          <HamburgerBox>
+            <HamburgerInner
+              className={burgerIsActive ? "isActive" : ""}
+            ></HamburgerInner>
+          </HamburgerBox>
+        </BurgerBtn>
       </NavWrapper>
       <BurgerNavigation isActive={burgerIsActive}></BurgerNavigation>
     </>
