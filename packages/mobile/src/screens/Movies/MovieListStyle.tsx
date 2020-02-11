@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import { FontSize } from '../../variables/FontSize';
 import { FontWeight } from '../../variables/FontWeight';
 import { FontFamily } from '../../variables/FontFamily'
+import { Color } from '../../variables/Color'
 
 export const Hamburger = styled.Image({
     width: 16,
@@ -17,7 +18,7 @@ export const FilterList = styled.Text({
     fontFamily: FontFamily.ARIAL,
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
-    color: "#363535",
+    color: Color.DARKGREY,
  
 })
 
@@ -50,7 +51,7 @@ export const ButtonFilter = styled.TouchableOpacity({
     width: 108,
     height: 28,
     borderRadius: 9,
-    backgroundColor: "#ffffff",
+    backgroundColor: Color.WHITE,
     justifyContent: "center",
     shadowColor: "#4f1035ec",
     shadowOffset: {
@@ -68,7 +69,7 @@ export const TextButtonActive = styled.Text ({
     fontWeight: FontWeight.BOLD,
     lineHeight: 16,
     textAlign: "center",
-    color: "#363535"
+    color: Color.DARKGREY
 })
 
 export const TextButtonNOAct = styled.Text ({
@@ -78,15 +79,15 @@ export const TextButtonNOAct = styled.Text ({
     lineHeight: 19,
     textAlign: "center",
     opacity: 0.5,
-    color: "#363535",
-    backgroundColor: "#f0f2fa"
+    color: Color.DARKGREY,
+    backgroundColor: Color.LIGHTGREY
 })
 
 export const ButtonNOFilter = styled.TouchableOpacity({
     width: 108,
     height: 28,
     borderRadius: 9,
-    backgroundColor: "#f0f2fa",
+    backgroundColor: Color.LIGHTGREY,
     justifyContent: "center",
 })
 
@@ -124,7 +125,7 @@ export const SubTitleLeft = styled.Text({
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
     lineHeight: 19,
-    color: "#363535", 
+    color: Color.DARKGREY, 
     marginLeft: 15
 })
 
@@ -133,7 +134,7 @@ export const SubTitleRight = styled.Text({
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
     lineHeight: 19,
-    color: "#363535"
+    color: Color.DARKGREY
 })
 
 export const ImageSecondSlaider = styled.Image({
@@ -163,7 +164,7 @@ export const SubTitleLeftSecond = styled.Text({
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
     lineHeight: 19,
-    color: "#363535", 
+    color: Color.DARKGREY, 
     marginLeft: 15,
     marginBottom: 0,
     top: 20
@@ -178,7 +179,7 @@ export const SubTitleRightSecond = styled.Text({
     lineHeight: 19,
     top: 20,
     marginBottom: 0,
-    color: "#363535"
+    color: Color.DARKGREY
 })
 
 export const GroupForDescription = styled.View({
@@ -195,11 +196,11 @@ export const IcHeart = styled.Image({
 
 export const ItemLike = styled.Text({
     fontFamily: FontFamily.ARIAL,
-    fontSize: 8,
-    fontWeight: "normal",
+    fontSize: FontSize.SMALL,
+    fontWeight: FontWeight.REGULAR,
     lineHeight: 10,
     justifyContent: "center",
-    color: "#363535"
+    color: Color.DARKGREY
 })
 
 export const GroupCenter = styled.View({
@@ -209,10 +210,10 @@ export const GroupCenter = styled.View({
 
 export const ViewTitle = styled.Text({
     fontFamily: FontFamily.ARIAL,
-    fontSize: 8,
-    fontWeight: "normal",
+    fontSize: FontSize.SMALL,
+    fontWeight: FontWeight.REGULAR,
     lineHeight: 8,
-    color: "#363535"
+    color: Color.DARKGREY
 })
 
 export const ViewMarginSmall = styled.View({
