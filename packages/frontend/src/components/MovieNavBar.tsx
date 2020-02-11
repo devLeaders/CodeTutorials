@@ -22,8 +22,59 @@ const MovieSearch = styled.input`
 `;
 
 const BurgerBtn = styled.button`
-  width: 12vw;
-  height: 6vh;
+  cursor: pointer;
+  display: flex;
+  background-color: black;
+  border: 0;
+  margin: 0;
+  padding: 3px;
+  outline: none;
+  &:active {
+  }
+`;
+const HamburgerBox = styled.span`
+  padding: 4px;
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  background-color: black;
+`;
+const HamburgerInner = styled.span`
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.4s ease;
+
+  &:before,
+  &:after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    transition: 0.3s ease;
+  }
+  &:before {
+    top: -10px;
+  }
+  &:after {
+    top: 10px;
+  }
+  &.isActive {
+    background-color: transparent;
+    &:before {
+      transform: translateY(10px) rotate(45deg);
+    }
+    &:after {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+  }
 `;
 
 const MovieNavBar: React.SFC<MovieNavBarProps> = () => {

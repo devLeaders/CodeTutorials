@@ -34,6 +34,7 @@ const Li = styled.li`
   list-style-type: none;
   &:hover {
     color: #fff;
+    background-color: black;
   }
 `;
 const Footer = styled.footer`
