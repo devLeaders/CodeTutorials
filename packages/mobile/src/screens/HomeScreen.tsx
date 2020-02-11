@@ -28,9 +28,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import DetailsScreen from './DetailsScreenDetailsScreen';
-import ContextAPIHome from './ContextAPIHome';
-import SingleMovie from './SingleMovie';
+
+
 
 
 declare var global: {HermesInternal: null | {}};
@@ -77,6 +76,12 @@ const HomeScreen = ({navigation}) => {
                     title="Go to Example SingleMovie"
                     onPress={() => navigation.navigate('SingleMovie')}
                 />
+                <Button
+                    color="#e63900"
+                    title="Go to Example  SingleMovie2"
+                    onPress={() => navigation.navigate('SingleMovie2')}
+                />
+                
                 
               </View>
               

@@ -15,14 +15,25 @@ import {
 import player from '../../assets/img/player.jpg';
 import play from '../../assets/img/play.png';
 import back_arrow from '../../assets/img/back_arrow.png';
+
 //Icons
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { 
   Container,
   Player,
   PlayerImage,
-  PlayButton,
   BackButton,
+  BackArrowImage,
+  ColumContainerLeft,
+  ColumContainerRight,
+  MovieName,
+  MovieKind,
+  RowContainer,
+  Background,
+  MovieTime,
+  Owerview,
+  Description,
+  Heart,
   Hamburger, 
   FilterList, 
   Search, 
@@ -34,26 +45,44 @@ import {
   ButtonNOFilter,
 } from './SingleMovieStyle'; 
 
+const DATA = [
+  {
+    name: 'Joker',
+    kind: 'Drama-comedy',
+    runTime: '2h 2min',
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    uri: 'movie1',
+  },
+  {
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    uri: 'movie2',
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    uri: 'movie3',
+  }
+];
+
 export default class SingleMOvie2 extends React.Component{
   static navigationOptions = {
     headerShown: false,
 };
 
+
 render(){
   return (
-    <ScrollView>
+    <Background>
       <Container>
         <Player>
           <PlayerImage source={player}>
-            
-            <PlayButton
+
+            <BackButton
               onPress={() => navigation.navigate('HomeScreen')}>
-              <Image style={styles.triangle} source={back_arrow}></Image>
-            </PlayButton>
+              <BackArrowImage source={back_arrow}></BackArrowImage>
+            </BackButton>
 
           </PlayerImage>
         </Player>
-
 
         <View style={styles.imageList}>
           <Image style={styles.imageListItem} source={player} />
@@ -61,32 +90,40 @@ render(){
           <Image style={styles.imageListItem} source={player} />
           <Image style={styles.imageListItem} source={player} />
         </View>
-        <View style={styles.description}>
-          <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            euismod bibendum laoreet. Proin gravida dolor sit amet lacus
-            accumsan et viverra justo commodo. Proin sodales pulvinar sic
-            tempor. Sociis natoque penatibus et magnis dis parturient montes,
-            nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra
-            vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc
-            accuan eget.
-          </Text>
-        </View>
-        <View style={styles.footer}>
-          <Text>Footer1</Text>
-          <Text>Footer1</Text>
-          <Text>Footer1</Text>
-          <Text>Footer1</Text>
-          <Text>Footer1</Text>
-        </View>
-
-        <BackButton
-          onPress={() => navigation.navigate('HomeScreen')}>
-            <Image style={styles.triangle} source={play}></Image>
-        </BackButton>
-
       </Container>
-    </ScrollView>
+
+      <RowContainer>
+        <ColumContainerLeft>
+          <MovieName>
+            {DATA[0].name}
+          </MovieName>
+          <MovieKind>
+            {DATA[0].kind}
+          </MovieKind>
+          <MovieTime>
+            Run Time: {DATA[0].runTime}
+          </MovieTime>
+          <Owerview>
+            Overview
+          </Owerview>
+        </ColumContainerLeft>
+
+        <ColumContainerRight>
+          <Heart source={player}/>
+          <Heart source={player}/>
+          <Heart source={player}/>
+        
+        </ColumContainerRight>
+      </RowContainer>
+
+      <ColumContainerLeft>
+          <Description>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quidem ea, vel aspernatur molestias velit repellendus maxime suscipit laboriosam ab aliquid deserunt fugit ratione aperiam, quas, soluta magnam voluptatum possimus!
+          </Description>
+      </ColumContainerLeft>
+        
+
+    </Background>
   );
 };
 }
@@ -112,15 +149,13 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
  
-  triangle: {
+  back_arrow: {
     padding: 5,
-    height: 45,
-    width: 45, //The Width must be the same as the height
-    borderRadius: 90, //Then Make the Border Radius twice the size of width or Height
-    backgroundColor: 'white',
+    height: 25,
+    width: 25,
+    marginTop: 20,
+    marginLeft: 15,
     justifyContent: 'flex-start',
-    alignContent: 'space-around',
-    alignSelf: 'center',
   },
 });
 

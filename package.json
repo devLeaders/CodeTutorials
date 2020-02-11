@@ -15,8 +15,8 @@
   ],
   "devDependencies": {
     "lerna": "^3.20.2",
-    "ts-node": "^8.6.2",
-    "styled-components": "^5.0.0"
+    "styled-components": "^5.0.1",
+    "ts-node": "^8.6.2"
   },
   "dependencies": {
     "redux-devtools-extension": "^2.13.8",
