@@ -13,6 +13,10 @@ export const Hamburger = styled.Image({
     
 })
 
+export const ScrollViewStyle = styled.ScrollView({
+    marginHorizontal: 20
+})
+
 export const FilterList = styled.Text({
     textAlign: "center",
     fontFamily: FontFamily.ARIAL,

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { View, Text, Image} from 'react-native';
+import { View, ScrollView, Image} from 'react-native';
 import { TouchableOpacity, FlatList } from 'react-native-gesture-handler';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { 
   Hamburger, 
   FilterList, 
@@ -106,79 +107,46 @@ export class  MoviesList extends React.Component{
   render(){
     return (
       <View>
-        <ViewButtons>
-          <ButtonFilter>
-            <TextButtonActive>Nowości</TextButtonActive>  
-          </ButtonFilter>
-          <ButtonNOFilter>
-            <TextButtonNOAct>Moja kolekcja</TextButtonNOAct>  
-          </ButtonNOFilter>
-          <ButtonNOFilter>
-            <TextButtonNOAct>Popularne</TextButtonNOAct>  
-          </ButtonNOFilter>
-        </ViewButtons>
-        <ViewMargin>
-            <FlatList 
-              snapToAlignment={"start"}
-              snapToInterval={359 + 10}
-              decelerationRate={"fast"}
-              style={{marginTop: 27}}
-              ItemSeparatorComponent={()=><ViewSeparator/>} 
-              showsHorizontalScrollIndicator={false}
-              horizontal={true}
-              data={DATA} 
-              renderItem={({item}) =>(
-                 <ViewGroupSlaider >
-                    <ImageSlaider source={{uri: item.uri}}/>
-                 </ViewGroupSlaider>
-            )} 
-              keyExtractor={ item => item.id }
-            /> 
-        </ViewMargin>
-        <View>
-            <GroupForSubtitle>
-              <TouchableOpacity>
-                <SubTitleLeft>Movies</SubTitleLeft>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <SubTitleRight>View All</SubTitleRight>
-              </TouchableOpacity>
-            </GroupForSubtitle>
-            <View>
+        <ScrollView>
+          <ViewButtons>
+            <ButtonFilter>
+              <TextButtonActive>Nowości</TextButtonActive>  
+            </ButtonFilter>
+            <ButtonNOFilter>
+              <TextButtonNOAct>Moja kolekcja</TextButtonNOAct>  
+            </ButtonNOFilter>
+            <ButtonNOFilter>
+              <TextButtonNOAct>Popularne</TextButtonNOAct>  
+            </ButtonNOFilter>
+          </ViewButtons>
+          <ViewMargin>
               <FlatList 
                 snapToAlignment={"start"}
-                snapToInterval={96 + 10}
+                snapToInterval={359 + 10}
                 decelerationRate={"fast"}
+                style={{marginTop: 27}}
                 ItemSeparatorComponent={()=><ViewSeparator/>} 
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
-                data={IMAGES} 
+                data={DATA} 
                 renderItem={({item}) =>(
-                  <View>
-                      <ImageSecondSlaider source={{uri: item.uri}}/>
-                        <GroupForDescription>
-                            <IcHeart source={{uri:'ic_heart'}}/>
-                            <ItemLike>{item.like}</ItemLike>
-                          </GroupForDescription>
-                          <GroupCenter>
-                            <ViewTitle>{item.title}</ViewTitle>
-                          </GroupCenter>
-                  </View>
-                )} 
+                  <ViewGroupSlaider >
+                      <ImageSlaider source={{uri: item.uri}}/>
+                  </ViewGroupSlaider>
+              )} 
                 keyExtractor={ item => item.id }
               /> 
-            </View>
-        </View>
-        <ViewMarginSmall>
-            <ViewGroupUnderCategory>
+          </ViewMargin>
+          <View>
+              <GroupForSubtitle>
                 <TouchableOpacity>
-                    <SubTitleLeft>Recommends</SubTitleLeft>
+                  <SubTitleLeft>Movies</SubTitleLeft>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <SubTitleRight>View All</SubTitleRight>
+                  <SubTitleRight>View All</SubTitleRight>
                 </TouchableOpacity>
-            </ViewGroupUnderCategory>
-            <View>
+              </GroupForSubtitle>
+              <View>
                 <FlatList 
                   snapToAlignment={"start"}
                   snapToInterval={96 + 10}
@@ -188,21 +156,56 @@ export class  MoviesList extends React.Component{
                   horizontal={true}
                   data={IMAGES} 
                   renderItem={({item}) =>(
-                    <ViewTherdSlaider >
-                        <ImageTherdSlaider source={{uri: item.uri}}/>
-                        <GroupCenter>
-                            <Image source={{uri:'ic_heart'}} style={{ width: 6.1, height: 5.8, marginRight: 3}}/>
-                            <ItemLike>{item.like}</ItemLike>
-                          </GroupCenter>
-                          <GroupCenter>
-                            <ViewTitle>{item.title}</ViewTitle>
-                          </GroupCenter>
-                    </ViewTherdSlaider>
-                )} 
+                    <View>
+                        <ImageSecondSlaider source={{uri: item.uri}}/>
+                          <GroupForDescription>
+                              <IcHeart source={{uri:'ic_heart'}}/>
+                              <ItemLike>{item.like}</ItemLike>
+                            </GroupForDescription>
+                            <GroupCenter>
+                              <ViewTitle>{item.title}</ViewTitle>
+                            </GroupCenter>
+                    </View>
+                  )} 
                   keyExtractor={ item => item.id }
                 /> 
-             </View>
-        </ViewMarginSmall>
+              </View>
+          </View>
+          <ViewMarginSmall>
+              <ViewGroupUnderCategory>
+                  <TouchableOpacity>
+                      <SubTitleLeft>Recommends</SubTitleLeft>
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                      <SubTitleRight>View All</SubTitleRight>
+                  </TouchableOpacity>
+              </ViewGroupUnderCategory>
+              <View>
+                  <FlatList 
+                    snapToAlignment={"start"}
+                    snapToInterval={96 + 10}
+                    decelerationRate={"fast"}
+                    ItemSeparatorComponent={()=><ViewSeparator/>} 
+                    showsHorizontalScrollIndicator={false}
+                    horizontal={true}
+                    data={IMAGES} 
+                    renderItem={({item}) =>(
+                      <ViewTherdSlaider >
+                          <ImageTherdSlaider source={{uri: item.uri}}/>
+                          <GroupCenter>
+                              <Image source={{uri:'ic_heart'}} style={{ width: 6.1, height: 5.8, marginRight: 3}}/>
+                              <ItemLike>{item.like}</ItemLike>
+                            </GroupCenter>
+                            <GroupCenter>
+                              <ViewTitle>{item.title}</ViewTitle>
+                            </GroupCenter>
+                      </ViewTherdSlaider>
+                  )} 
+                    keyExtractor={ item => item.id }
+                  /> 
+              </View>
+          </ViewMarginSmall>
+        </ScrollView>
       </View>
     );
   }
