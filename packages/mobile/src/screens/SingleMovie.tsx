@@ -1,98 +1,70 @@
-import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  Button,
-  StatusBar,
-  FlatList,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import {StyleSheet, ScrollView, View, Text, Image} from 'react-native';
 //Images
 import player from '../../assets/img/player.jpg';
 import play from '../../assets/img/play.png';
 import back_arrow from '../../assets/img/back_arrow.png';
-//Icons
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import { 
+import {
   Container,
   Player,
   PlayerImage,
   PlayButton,
   BackButton,
-  Hamburger, 
-  FilterList, 
-  Search, 
-  Arrow, 
-  ButtonFilter, 
-  TextButtonActive,
-  TextButtonNOAct,
-  ViewButtons,
-  ButtonNOFilter,
-} from './SingleMovieStyle'; 
+} from './SingleMovieStyle';
 
-export default class SingleMOvie2 extends React.Component{
+export default class SingleMOvie2 extends React.Component {
   static navigationOptions = {
     headerShown: false,
-};
+  };
 
-render(){
-  return (
-    <ScrollView>
-      <Container>
-        <Player>
-          <PlayerImage source={player}>
-            
-            <PlayButton
-              onPress={() => navigation.navigate('HomeScreen')}>
-              <Image style={styles.triangle} source={back_arrow}></Image>
-            </PlayButton>
+  render() {
+    return (
+      <ScrollView>
+        <Container>
+          <Player>
+            <PlayerImage source={player}>
+              <PlayButton onPress={() => navigation.navigate('HomeScreen')}>
+                <Image style={styles.triangle} source={back_arrow} />
+              </PlayButton>
+            </PlayerImage>
+          </Player>
 
-          </PlayerImage>
-        </Player>
+          <BackButton onPress={() => navigation.navigate('HomeScreen')}>
+            <Image style={styles.triangle} source={play} />
+          </BackButton>
 
+          <View style={styles.imageList}>
+            <Image style={styles.imageListItem} source={player} />
+            <Image style={styles.imageListItem} source={player} />
+            <Image style={styles.imageListItem} source={player} />
+            <Image style={styles.imageListItem} source={player} />
+          </View>
+          <View style={styles.description}>
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              euismod bibendum laoreet. Proin gravida dolor sit amet lacus
+              accumsan et viverra justo commodo. Proin sodales pulvinar sic
+              tempor. Sociis natoque penatibus et magnis dis parturient montes,
+              nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra
+              vulputate, felis tellus mollis orci, sed rhoncus pronin sapien
+              nunc accuan eget.
+            </Text>
+          </View>
 
-        <View style={styles.imageList}>
-          <Image style={styles.imageListItem} source={player} />
-          <Image style={styles.imageListItem} source={player} />
-          <Image style={styles.imageListItem} source={player} />
-          <Image style={styles.imageListItem} source={player} />
-        </View>
-        <View style={styles.description}>
-          <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            euismod bibendum laoreet. Proin gravida dolor sit amet lacus
-            accumsan et viverra justo commodo. Proin sodales pulvinar sic
-            tempor. Sociis natoque penatibus et magnis dis parturient montes,
-            nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra
-            vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc
-            accuan eget.
-          </Text>
-        </View>
-        <View style={styles.footer}>
-          <Text>Footer1</Text>
-          <Text>Footer1</Text>
-          <Text>Footer1</Text>
-          <Text>Footer1</Text>
-          <Text>Footer1</Text>
-        </View>
-
-        <BackButton
-          onPress={() => navigation.navigate('HomeScreen')}>
-            <Image style={styles.triangle} source={play}></Image>
-        </BackButton>
-
-      </Container>
-    </ScrollView>
-  );
-};
+          <View style={styles.footer}>
+            <Text>Footer1</Text>
+            <Text>Footer1</Text>
+            <Text>Footer1</Text>
+            <Text>Footer1</Text>
+            <Text>Footer1</Text>
+          </View>
+        </Container>
+      </ScrollView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-
   description: {},
   footer: {},
 
@@ -111,7 +83,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 4,
   },
- 
+
   triangle: {
     padding: 5,
     height: 45,
@@ -123,4 +95,3 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
 });
-
