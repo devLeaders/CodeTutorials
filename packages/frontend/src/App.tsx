@@ -5,7 +5,6 @@ import MainView from './layouts/MainView';
 import styled from 'styled-components';
 
 const StyledApp = styled.div`
-  height: 100vw;
   display: flex;
   flex-direction: column;
 `;

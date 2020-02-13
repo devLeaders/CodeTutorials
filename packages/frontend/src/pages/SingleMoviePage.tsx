@@ -4,6 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { colors } from '../utils/colors';
 import { font } from '../utils/font';
 import { breakPoint } from '../utils/breakPoint';
+import FooterComponent from '../components/FooterComponents/FooterComponent';
 
 const GlobalStyle = createGlobalStyle`
 body{
@@ -20,7 +21,7 @@ const StyledVideoComponent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column-reverse;
-  background-color: ${colors.backgroundBlack};
+  background-color: ${colors.backgroundMain};
 
   @media only ${breakPoint.desktop} {
       flex-direction: row;
@@ -35,6 +36,7 @@ const SingleMoviePage: React.FC = (props: any) => {
             < StyledVideoComponent >
                 <VideoComponent></VideoComponent>
             </StyledVideoComponent >
+            <FooterComponent></FooterComponent>
         </>
     )
 }

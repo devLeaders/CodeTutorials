@@ -9,10 +9,6 @@ const StyledRate = styled.section`
     text-align: left;
     font-family: 'Roboto';
 
-    @media only screen and (min-width: 1024px) {
-      width:40%;
-  }
-
   .videoRating__rate {
         display:flex;
         align-items: center;
@@ -28,14 +24,32 @@ const Subtitle = styled.h4`
 
   .videoRating__rate {
         display:flex;
-        align-items: center;
+        align-items: center; 
     }
 `;
 
-const Star = styled.img`
-    background: url("star.svg") no-repeat center;
-    width: 18px;
-    height: 18px;
+const Star = styled.div`
+    background: url("star_white.svg") no-repeat center;
+    width: 24px;
+    height: 24px;
+    transition: background-image 0.3s ease; 
+    &:hover {
+        background: url("star.svg") no-repeat center;
+        transition: background-image 0.3s ease; 
+    }
+`;
+
+const StyledImage = styled.div`
+    display: flex;
+     flex-direction: row-reverse;
+     justify-content:flex-end;
+     cursor: pointer;
+
+    .videoRating__icon:hover ~ .videoRating__icon, .videoRating__icon:hover {
+        background: url("star.svg") no-repeat center;
+
+    transition: background-image 0.3s ease; 
+    }
 `;
 
 class VideoRateComponent extends React.Component<any>{
@@ -47,22 +61,17 @@ class VideoRateComponent extends React.Component<any>{
             const classNameIcon = 'videoRating__icon';
 
             stars.push(
-                <Star
-                    className={classNameIcon}
-                // src="star.svg"
-                >
+                <Star className={classNameIcon}>
                 </Star>
             )
         }
 
         return (
-
             <StyledRate className="videoDescribe__myRate">
                 <Subtitle>Moja ocena</Subtitle>
-
-
-                {stars}
-
+                <StyledImage>
+                    {stars}
+                </StyledImage>
             </StyledRate>
         )
     }
