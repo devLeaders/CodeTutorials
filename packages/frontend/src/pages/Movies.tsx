@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  min-height: 100%;
   background-color: #222;
   width: 100%;
 `;
@@ -22,11 +22,16 @@ const NewContent = styled.div`
 `;
 
 const Section = styled.section`
-  margin-top: 15px;
-  height: 35%;
+  margin-top: 20%;
+  height: 250px;
   display: flex;
   flex-direction: column;
   width: 90%;
+`;
+const SliderSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 
 export default class Movies extends React.Component<any, MoviesTypes> {
@@ -38,7 +43,11 @@ export default class Movies extends React.Component<any, MoviesTypes> {
           <NewContent />
           <FiltrationBtns></FiltrationBtns>
         </Section>
-        <MovieSection title="Polecane dla ciebie"></MovieSection>
+        <SliderSection>
+          <MovieSection title="Polecane dla ciebie" id={1}></MovieSection>
+          <MovieSection title="Akcja" id={2}></MovieSection>
+          <MovieSection title="Dramaty" id={3}></MovieSection>
+        </SliderSection>
       </Wrapper>
     );
   }

@@ -3,18 +3,20 @@ import styled from "styled-components";
 import { useState, useEffect, useRef } from "react";
 import Colors from "../constans/Colors";
 import { TweenLite, Power3 } from "gsap";
-import gsap from "gsap";
+import Movie from "../components/Movie";
 
 const Wrapper = styled.div`
+  justify-content: flex-end;
   height: 100%;
 `;
 
 const Button = styled.button`
   position: absolute;
+  background-color: transparent;
+  outline: none;
+  border: none;
   top: 45%;
   right: 2%;
-  height: 20px;
-  width: 20px;
   z-index: 2;
   &.left {
     left: 2%;
@@ -26,18 +28,8 @@ const MovieWrapper = styled.div`
   justify-content: space-between;
   height: 90%;
   width: 100%;
-  padding: 2px 0;
   margin: 3px 0 0 0;
   overflow: hidden;
-`;
-const Movie = styled.div`
-  cursor: pointer;
-  min-width: 46%;
-  height: 100%;
-  margin-right: 2%;
-  margin-left: 2%;
-  background-color: black;
-  color: white;
 `;
 
 const movies = [
@@ -105,43 +97,37 @@ const movies = [
 
 const GsapMovies: Array<any> = [];
 
-export interface SliderProps {}
+export interface SliderProps {
+  id: number;
+}
 
-const Slider: React.SFC<SliderProps> = () => {
+const Slider: React.SFC<SliderProps> = props => {
   let wrapper: any;
   const WrapperRef = useRef(null);
-  const [MovieId, setMovieId] = useState(0);
   const [ScreenWidth, setScreenWidth] = useState(0);
   const [MoviePosition, setMoviePosition] = useState(0);
-  const handleTrailerChange = (id: number) => {
-    console.log(id);
-    setMovieId(id);
-  };
 
   const handleMoveSlider = (direction: string) => {
+    let move;
     if (direction === "right" && MoviePosition < 0) {
-      setMoviePosition(MoviePosition + ScreenWidth);
-      TweenLite.to(GsapMovies, 0.4, {
-        x: MoviePosition + ScreenWidth,
-        ease: Power3.easeOut
-      });
+      move = ScreenWidth;
+      changePosition(move);
     } else if (direction === "left" && MoviePosition > -1280) {
-      setMoviePosition(MoviePosition - ScreenWidth);
-      TweenLite.to(GsapMovies, 0.4, {
-        x: MoviePosition - ScreenWidth,
-        ease: Power3.easeIn
-      });
+      move = -ScreenWidth;
+      changePosition(move);
     }
   };
 
-  // const getMoviePosition = () => {
-  //   GsapMovies.forEach(movie => {
-  //     console.log(movie.position());
-  //   });
-  // };
+  const changePosition = (move: number) => {
+    setMoviePosition(MoviePosition + move);
+    TweenLite.to(GsapMovies, 0.4, {
+      x: MoviePosition + move,
+      ease: Power3.easeOut
+    });
+  };
+
   useEffect(() => {
     setScreenWidth(wrapper.offsetWidth);
-    // console.log(ScreenWidth);
     console.log(MoviePosition);
   });
 
@@ -149,22 +135,38 @@ const Slider: React.SFC<SliderProps> = () => {
     return (
       <Movie
         key={movie.id}
-        onClick={() => handleTrailerChange(movie.id)}
-        ref={Movie => (GsapMovies[index] = Movie)}
-      >
-        <div>{movie.id === MovieId ? movie.title : movie.id}</div>
-        <div>{movie.id}</div>
-      </Movie>
+        id={movie.id}
+        index={index}
+        movies={GsapMovies}
+      ></Movie>
     );
   });
 
   return (
     <Wrapper ref={Wrapper => (wrapper = Wrapper)}>
-      <Button onClick={() => handleMoveSlider("right")}></Button>
-      <Button
-        className="left"
-        onClick={() => handleMoveSlider("left")}
-      ></Button>
+      <Button onClick={() => handleMoveSlider("right")}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="white"
+          viewBox="0 0 24 24"
+        >
+          <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+        </svg>
+      </Button>
+
+      <Button className="left" onClick={() => handleMoveSlider("left")}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="white"
+          viewBox="0 0 24 24"
+        >
+          <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
+        </svg>
+      </Button>
       <MovieWrapper>{movieList}</MovieWrapper>
     </Wrapper>
   );

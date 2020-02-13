@@ -8,7 +8,8 @@ export interface MovieNavBarProps {}
 
 const NavWrapper = styled.div`
   display: flex;
-  height: 8vh;
+  position: fixed;
+  min-height: 8vh;
   width: 100%;
   background-color: ${Colors.nBlack};
   justify-content: space-around;
