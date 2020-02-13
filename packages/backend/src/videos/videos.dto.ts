@@ -11,3 +11,9 @@ export class ShortVersionDTO {
     urlTrailer: string = null;
     urlPhoto: string = null;
 }
+
+export class CategoryDTO {
+    category: {
+        
+    }
+}
