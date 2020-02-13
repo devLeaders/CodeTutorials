@@ -71,11 +71,6 @@ const HomeScreen = ({navigation}) => {
                     title="Go to Example Context API"
                     onPress={() => navigation.navigate('ExampleContextAPI')}
                 />
-                 <Button
-                    color="#e63900"
-                    title="Go to Example SingleMovie"
-                    onPress={() => navigation.navigate('SingleMovie')}
-                />
                 <Button
                     color="#e63900"
                     title="Go to Example  SingleMovie2"

@@ -5,6 +5,11 @@ import {FontFamily} from '../variables/FontFamily';
 import {FontColors} from '../variables/FontColors';
 import {BackgroundColor} from '../variables/BackgroudnColor';
 
+export enum SIZE {
+  WIDTH = 420,
+  HEIGHT = 280,
+};
+
 export const Background = styled.ScrollView({
   backgroundColor: BackgroundColor.BACKGROUNDCOLOR,
   flexDirection: 'column',
@@ -18,11 +23,12 @@ export const Container = styled.View({
 
 export const Player = styled.View({
   justifyContent: 'center',
+  marginBottom: 35,
 });
 
 export const PlayerImage = styled.ImageBackground({
-  height: 280,
-  width: 420,
+  height: SIZE.HEIGHT,
+  width: SIZE.WIDTH,
 });
 
 export const BackButton = styled.TouchableOpacity({
@@ -78,6 +84,14 @@ export const Star = styled.Image({
   height: 25,
   width: 25,
   marginRight: 2,
+  shadowColor: "red",
+  shadowOffset: {
+	width: 0,
+	height: 6,
+},
+shadowOpacity: 0.39,
+shadowRadius: 8.30,
+elevation: 13,
 });
 
 export const Heart = styled.Image({
@@ -148,34 +162,42 @@ export const PlayButton = styled.TouchableOpacity({
   alignContent: 'space-around',
   alignSelf: 'center',
   position: 'absolute',
-  top: 225,
-  left: 190,
+  top: SIZE.HEIGHT-25,
+  justifyContent: 'center',
+  //left: SIZE.WIDTH2,
+  //shadowColor: '#4f1035ec',
+  //shadowOpacity: 0.5,
+  //shadowRadius: 15,
 });
 
 export const Triangle = styled.Image({
     padding: 5,
     height: 50,
     width: 50, //The Width must be the same as the height
-    borderRadius: 90, //Then Make the Border Radius twice the size of width or Height
-    backgroundColor: 'transparent',
+    borderRadius: 100, //Then Make the Border Radius twice the size of width or Height
+    backgroundColor: 'white',
     justifyContent: 'center',
-    alignContent: 'space-around',
-    alignSelf: 'center',
+    //alignContent: 'space-around',
+    //alignSelf: 'center',
+    
 });
 
 export const ImageList = styled.View({
   backgroundColor: BackgroundColor.BACKGROUNDCOLOR,
   justifyContent: 'flex-start',
   flexDirection: 'row',
+  marginLeft: 10,
 });
 
 export const ImageItem = styled.Image({
   height: 90,
   width: 90,
-  marginLeft: 10,
   borderRadius: 0,
   borderColor: BackgroundColor.GREY,
   borderWidth: 1,
+  //shadowColor: '#4f1035ec',
+  //shadowOpacity: 0.5,
+  //shadowRadius: 15,
 });
 
 export const Separator = styled.View({

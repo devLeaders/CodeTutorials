@@ -2,9 +2,9 @@ import React from 'react';
 import {FlatList} from 'react-native';
 //Images
 import player from '../../assets/img/player.jpg';
-import back_arrow from '../../assets/img/back_arrow.png';
+import back_arrow from '../../assets/img/back_arrow2.png';
 import h from '../../assets/img/h.png';
-import play from '../../assets/img/play.png';
+import play from '../../assets/img/play_brown.png';
 import {
   Container,
   Player,
@@ -33,6 +33,7 @@ import {
   PlayButton,
   Triangle,
 } from './SingleMovieStyle';
+import AppNavigation from './../components/AppNavigation';
 
 const DATA = [
   {
@@ -41,7 +42,7 @@ const DATA = [
     runTime: '2h 2min',
     ratio: '95%',
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    uri: 'movie1',
+    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQsAIA_fyXZtUCCy2_ZtuKQKSYNf4mJhnxn5tXojNVvELTCpGr-',
   },
   {
     name: 'Joker',
@@ -49,7 +50,7 @@ const DATA = [
     runTime: '2h 2min',
     ratio: '95%',
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    uri: 'movie2',
+    uri: 'https://i.pinimg.com/originals/df/67/7f/df677fed943171dc7c75276544753586.jpg',
   },
   {
     name: 'Joker',
@@ -57,7 +58,7 @@ const DATA = [
     runTime: '2h 2min',
     ratio: '95%',
     id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    uri: 'movie3',
+    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGAwxu1pY8sMoyT95ZsXBQS1hx4vTT59jf_t2oFPK14_oir47R',
   },
   {
     name: 'Joker',
@@ -65,7 +66,7 @@ const DATA = [
     runTime: '2h 2min',
     ratio: '95%',
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28b2',
-    uri: 'movie1',
+    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQsiLoYimfu2253MofOAYbbeFnJkcDOR4047PIld3tc5e3Q_ppL',
   },
   {
     name: 'Joker',
@@ -73,7 +74,7 @@ const DATA = [
     runTime: '2h 2min',
     ratio: '95%',
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f61',
-    uri: 'movie2',
+    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGAwxu1pY8sMoyT95ZsXBQS1hx4vTT59jf_t2oFPK14_oir47R',
   },
   {
     name: 'Joker',
@@ -81,13 +82,15 @@ const DATA = [
     runTime: '2h 2min',
     ratio: '95%',
     id: '58694a0f-3da1-471f-bd96-145571e29d71',
-    uri: 'movie3',
+    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGAwxu1pY8sMoyT95ZsXBQS1hx4vTT59jf_t2oFPK14_oir47R',
   },
 ];
 
 export default class SingleMOvie2 extends React.Component {
-  static navigationOptions = {
+  static navigationOptions = ({navigation}) => {
+   return {
     headerShown: false,
+  };
   };
 
   render() {
@@ -96,25 +99,13 @@ export default class SingleMOvie2 extends React.Component {
         <Container>
           <Player>
             <PlayerImage source={player} />
-
-            <PlayButton onPress={() => navigation.navigate('HomeScreen')}>
-              <Triangle source={play} />
-            </PlayButton>
-
           </Player>
-
-          <BackButton onPress={() => navigation.navigate('HomeScreen')}>
-            <BackArrowImage source={back_arrow} />
-          </BackButton>
-
-          
 
           <ImageList>
             <FlatList
               snapToAlignment={'start'}
               snapToInterval={359 + 10}
               decelerationRate={'fast'}
-              style={{marginTop: 10}}
               ItemSeparatorComponent={() => <Separator />}
               showsHorizontalScrollIndicator={false}
               horizontal={true}
@@ -128,6 +119,14 @@ export default class SingleMOvie2 extends React.Component {
             />
           </ImageList>
         </Container>
+
+        <BackButton onPress={() => navigation.navigate('HomeScreen')}>
+            <BackArrowImage source={back_arrow} />
+        </BackButton>
+
+        <PlayButton onPress={() => navigation.navigate('HomeScreen')}>
+              <Triangle source={play} />
+        </PlayButton>
 
         <RowContainer>
           <ColumContainerLeft>
