@@ -27,7 +27,7 @@ const DetailsScreen = ({navigation}:any) => {
         />
          <Button
             title="List of videos"
-            onPress={() => navigation.navigate('Heder')}
+            onPress={() => navigation.navigate('MovieList')}
         />
       </View>
     );

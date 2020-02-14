@@ -26,7 +26,7 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, NavigationAction } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 declare var global: {HermesInternal: null | {}};

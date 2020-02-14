@@ -27,7 +27,7 @@ const navigation = createStackNavigator(
     ExampleContextAPI: ExampleContextAPI,
     ExampleContextAPI2: ExampleContextAPI2,
     AxiosExample: AxiosExample,
-    Heder: MoviesList
+    MovieList: MoviesList
 
     //here we can add new screen name
   },

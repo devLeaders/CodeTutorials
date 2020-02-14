@@ -13,7 +13,7 @@
     "@project/common": "^1.0.0",
     "@react-native-community/masked-view": "^0.1.6",
     "@types/react-native-vector-icons": "^6.4.5",
-    "@types/styled-components": "^4.4.2",
+    "@types/styled-components": "^4.4.3",
     "axios": "^0.19.1",
     "react": "16.9.0",
     "react-native": "0.61.5",

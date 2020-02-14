@@ -1,8 +1,9 @@
-import styled from 'styled-components/native';
+import styled from 'styled-components/native'
 import { FontSize } from '../../variables/FontSize';
 import { FontWeight } from '../../variables/FontWeight';
 import { FontFamily } from '../../variables/FontFamily'
 import { Color } from '../../variables/Color'
+import { DifrentSlaider } from '../../variables/DifrentEnum';
 
 export const Hamburger = styled.Image({
     width: 16,
@@ -30,8 +31,6 @@ export const Arrow = styled.Image({
     width: 7,
     height: 9,
     padding: 5,
-    left: 10
-
 })
 
 export const Search = styled.Image({
@@ -103,14 +102,10 @@ export const ViewSeparator = styled.View({
     width:20
 })
 
-export const ViewGroupSlaider = styled.View({
-    height:136, 
-    width:359
-})
 
 export const ImageSlaider = styled.Image({
-    width:359,
-    height:136, 
+    width: DifrentSlaider.WIDTHLARGE,
+    height: 136, 
     resizeMode: 'cover', 
     borderRadius: 10
 })
@@ -142,20 +137,14 @@ export const SubTitleRight = styled.Text({
 })
 
 export const ImageSecondSlaider = styled.Image({
-    width: 172,
+    width: DifrentSlaider.WIDTHNORMAL,
     height: 216,
     borderRadius: 12,
     resizeMode: 'cover', 
 })
 
-export const ViewTherdSlaider = styled.View({
-    width: 81,
-    height: 150,
-
-})
-
 export const ImageTherdSlaider = styled.Image({
-    width: 81,
+    width: DifrentSlaider.WIDTHSMALL,
     height: 107,
     borderRadius: 7,
     resizeMode: 'cover',
@@ -171,17 +160,14 @@ export const SubTitleLeftSecond = styled.Text({
     color: Color.DARKGREY, 
     marginLeft: 15,
     marginBottom: 0,
-    top: 20
 })
 
 export const SubTitleRightSecond = styled.Text({
-    position: 'absolute', 
     right: 14,
     fontFamily: FontFamily.ARIAL,
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
     lineHeight: 19,
-    top: 20,
     marginBottom: 0,
     color: Color.DARKGREY
 })
