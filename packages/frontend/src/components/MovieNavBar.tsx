@@ -3,31 +3,31 @@ import styled from "styled-components";
 import { useState } from "react";
 import Colors from "../constans/Colors";
 import BurgerNavigation from "../components/BurgerNavigation";
-
-export interface MovieNavBarProps {}
+import { device } from "../constans/device";
 
 const NavWrapper = styled.div`
   display: flex;
   position: fixed;
-  min-height: 8vh;
+  min-height: 7vh;
   width: 100%;
-  background-color: ${Colors.nBlack};
-  justify-content: space-around;
+  background-color: ${Colors.nGrey};
+  justify-content: space-between;
   align-items: center;
   z-index: 2;
 `;
 
 const MovieSearch = styled.input`
-  height: 4vh;
-  width: 50vw;
+  margin-left: 20px;
+  height: 25px;
+  width: 100px;
 `;
-
+const Section = styled.div``;
 const BurgerBtn = styled.button`
   cursor: pointer;
   display: flex;
-  background-color: black;
+  background-color: ${Colors.nGrey};
   border: 0;
-  margin: 0;
+  margin-right: 20px;
   padding: 3px;
   outline: none;
   &:active {
@@ -39,12 +39,13 @@ const HamburgerBox = styled.span`
   width: 30px;
   height: 20px;
   position: relative;
-  background-color: black;
+  border: none;
 `;
 const HamburgerInner = styled.span`
   width: 100%;
   height: 3px;
-  background-color: #fff;
+  background-color: ${(props: { active: boolean }) =>
+    props.active ? "transparent" : "#fff"};
   position: absolute;
   left: 0;
   top: 50%;
@@ -63,20 +64,16 @@ const HamburgerInner = styled.span`
   }
   &:before {
     top: -10px;
+    transform: ${(props: { active: boolean }) =>
+      props.active ? "translateY(10px) rotate(45deg)" : ""};
   }
   &:after {
     top: 10px;
-  }
-  &.isActive {
-    background-color: transparent;
-    &:before {
-      transform: translateY(10px) rotate(45deg);
-    }
-    &:after {
-      transform: translateY(-10px) rotate(-45deg);
-    }
+    transform: ${(props: { active: boolean }) =>
+      props.active ? "translateY(-10px) rotate(-45deg)" : ""};
   }
 `;
+export interface MovieNavBarProps {}
 
 const MovieNavBar: React.SFC<MovieNavBarProps> = () => {
   const [burgerIsActive, setBurgerIsActive] = useState(false);
@@ -86,15 +83,14 @@ const MovieNavBar: React.SFC<MovieNavBarProps> = () => {
   return (
     <>
       <NavWrapper>
-        <BurgerBtn onClick={handleBurgerMenu}></BurgerBtn>
         <MovieSearch placeholder="Wyszukaj film"></MovieSearch>
-        <BurgerBtn onClick={handleBurgerMenu}>
-          <HamburgerBox>
-            <HamburgerInner
-              className={burgerIsActive ? "isActive" : ""}
-            ></HamburgerInner>
-          </HamburgerBox>
-        </BurgerBtn>
+        <Section>
+          <BurgerBtn onClick={handleBurgerMenu}>
+            <HamburgerBox>
+              <HamburgerInner active={burgerIsActive}></HamburgerInner>
+            </HamburgerBox>
+          </BurgerBtn>
+        </Section>
       </NavWrapper>
       <BurgerNavigation isActive={burgerIsActive}></BurgerNavigation>
     </>

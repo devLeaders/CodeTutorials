@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Colors from "../constans/Colors";
 import Fonts from "../constans/Fonts";
 import Slider from "../components/Slider";
+import { device } from "../constans/device";
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,6 +14,12 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 5px 0 0 0;
   position: relative;
+  @media ${device.mobileM} {
+    height: 9rem;
+  }
+  @media ${device.tablet} {
+    height: 11rem;
+  }
 `;
 
 const Title = styled.h2`
@@ -20,6 +27,9 @@ const Title = styled.h2`
   margin-left: 15px;
   align-self: flex-start;
   color: ${Colors.nLightGrey};
+  @media ${device.tablet} {
+    font-size: ${Fonts.desktopMedium};
+  }
 `;
 
 export interface MovieSectionProps {

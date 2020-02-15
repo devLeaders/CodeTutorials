@@ -2,7 +2,9 @@ import * as React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import Colors from "../constans/Colors";
+import Fonts from "../constans/Fonts";
 import FilterMenu from "./FilterMenu";
+import { device } from "../constans/device";
 export interface FiltrationBtnsProps {}
 
 const Wrapper = styled.div`
@@ -17,31 +19,47 @@ const PositionWrapper = styled.div`
   position: relative;
 `;
 const Div = styled.div`
-  width: 50%;
+  width: 60%;
 `;
 
 const Button = styled.button`
   width: 7rem;
   height: 2rem;
-  background-color: ${Colors.nGrey};
+  background-color: ${Colors.nRed};
+  border-radius: 6px;
   border: none;
-  border-radius: 7%;
   color: white;
-  opacity: 0.3;
   outline: none;
   transition: 0.3s ease;
+  &.left {
+    background-color: ${Colors.nWhite};
+  }
   &.isActive {
     width: 7.5rem;
     height: 2.3rem;
-    opacity: 1;
-    background-color: ${Colors.nWhite};
+    background-color: ${Colors.nLightRed};
   }
   &.isActive span {
     color: ${Colors.nBlack};
   }
+  @media ${device.tablet} {
+    width: 10rem;
+    height: 3rem;
+    &.isActive {
+      width: 11rem;
+      height: 3.5rem;
+      background-color: ${Colors.nLightRed};
+    }
+  }
 `;
 const Span = styled.span`
   color: white;
+  &.left {
+    color: black;
+  }
+  @media ${device.tablet} {
+    font-size: ${Fonts.desktopMedium};
+  }
 `;
 
 const FiltrationBtns: React.SFC<FiltrationBtnsProps> = () => {
@@ -54,11 +72,8 @@ const FiltrationBtns: React.SFC<FiltrationBtnsProps> = () => {
     <PositionWrapper>
       <Wrapper>
         <Div>
-          <Button
-          // onClick={handleFilterOptions}
-          // className={filterIsActive ? "isActive" : ""}
-          >
-            <Span>KOLEKCJA</Span>
+          <Button className="left">
+            <Span className="left">KOLEKCJA</Span>
           </Button>
         </Div>
         <Div>

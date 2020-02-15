@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Colors from "../constans/Colors";
 import { TweenLite, Power3 } from "gsap";
 import Movie from "../components/Movie";
+import getMovieList from "../axios/getMoviesList";
 
 const Wrapper = styled.div`
   justify-content: flex-end;
@@ -12,6 +13,7 @@ const Wrapper = styled.div`
 
 const Button = styled.button`
   position: absolute;
+  cursor: pointer;
   background-color: transparent;
   outline: none;
   border: none;
@@ -95,56 +97,84 @@ const movies = [
   }
 ];
 
-const GsapMovies: Array<any> = [];
-
 export interface SliderProps {
   id: number;
 }
 
 const Slider: React.SFC<SliderProps> = props => {
-  let wrapper: any;
-  const WrapperRef = useRef(null);
-  const [ScreenWidth, setScreenWidth] = useState(0);
-  const [MoviePosition, setMoviePosition] = useState(0);
+  const [screenWidth, setScreenWidth] = useState(0);
+  const [moviePosition, setMoviePosition] = useState(0);
+  const [moviesOnScreen, setMoviesOnScreen] = useState(0);
+
+  const handleResize = () => {
+    setScreenWidth(window.innerWidth);
+  };
 
   const handleMoveSlider = (direction: string) => {
+    const end =
+      (Math.ceil(GsapMovies.length / moviesOnScreen) - 1) * screenWidth;
     let move;
-    if (direction === "right" && MoviePosition < 0) {
-      move = ScreenWidth;
+    if (direction === "right" && moviePosition < 0) {
+      move = screenWidth;
       changePosition(move);
-    } else if (direction === "left" && MoviePosition > -1280) {
-      move = -ScreenWidth;
+    } else if (direction === "left" && moviePosition > -end) {
+      move = -screenWidth;
       changePosition(move);
     }
   };
 
+  const handleMoviesOnScreen = (width: number) => {
+    if (width > 0 && width <= 550) {
+      setMoviesOnScreen(2);
+    } else if (width >= 550 && width < 800) {
+      setMoviesOnScreen(3);
+    } else if (width >= 800 && width < 1210) {
+      setMoviesOnScreen(4);
+    } else if (width >= 1210 && width < 1540) {
+      setMoviesOnScreen(5);
+    } else if (width >= 1540) {
+      setMoviesOnScreen(6);
+    }
+  };
+
   const changePosition = (move: number) => {
-    setMoviePosition(MoviePosition + move);
+    setMoviePosition(moviePosition + move);
     TweenLite.to(GsapMovies, 0.4, {
-      x: MoviePosition + move,
+      x: moviePosition + move,
       ease: Power3.easeOut
     });
   };
 
+  const GsapMovies: Array<any> = [];
+
   useEffect(() => {
-    setScreenWidth(wrapper.offsetWidth);
-    console.log(MoviePosition);
+    console.log(moviePosition);
+    setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    handleMoviesOnScreen(screenWidth);
+    console.log(screenWidth);
+    getMovieList();
+
+    return () => window.removeEventListener("resize", handleResize);
   });
 
   const movieList = movies.map((movie, index) => {
+    let width = 100 / moviesOnScreen;
     return (
       <Movie
         key={movie.id}
         id={movie.id}
         index={index}
         movies={GsapMovies}
+        width={width}
       ></Movie>
     );
   });
-
+  const right = () => handleMoveSlider("right");
+  const left = () => handleMoveSlider("left");
   return (
-    <Wrapper ref={Wrapper => (wrapper = Wrapper)}>
-      <Button onClick={() => handleMoveSlider("right")}>
+    <Wrapper>
+      <Button onClick={right}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -156,7 +186,7 @@ const Slider: React.SFC<SliderProps> = props => {
         </svg>
       </Button>
 
-      <Button className="left" onClick={() => handleMoveSlider("left")}>
+      <Button className="left" onClick={left}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"

@@ -1,11 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
 import Colors from "../constans/Colors";
+import { device } from "../constans/device";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 40vh;
+  height: 200px;
   width: 60%;
   position: fixed;
   top: 0;
@@ -18,9 +19,15 @@ const Wrapper = styled.div`
   border-top: 3px solid white;
   color: #ccc;
   opacity: 0.9;
-
-  &.isActive {
-    transform: translateY(25%);
+  transform: ${(props: { active: boolean }) =>
+    props.active ? "translateY(25%)" : ""};
+  @media ${device.mobileM} {
+    transform: ${(props: { active: boolean }) =>
+      props.active ? "translateY(40%)" : ""};
+  }
+  @media ${device.tablet} {
+    height: 300px;
+    width: 40%;
   }
 `;
 
@@ -30,15 +37,22 @@ const Nav = styled.nav`
   align-items: flex-start;
 `;
 const Li = styled.li`
-  padding: 2vh 1vw;
+  padding: 10px 7px;
   list-style-type: none;
   &:hover {
     color: #fff;
     background-color: black;
   }
+  @media ${device.tablet} {
+    font-size: 20px;
+    padding: 20px 12px;
+  }
 `;
 const Footer = styled.footer`
   align-self: center;
+  @media ${device.tablet} {
+    font-size: 20px;
+  }
 `;
 export interface BurgerNavigationProps {
   isActive: boolean;
@@ -46,7 +60,7 @@ export interface BurgerNavigationProps {
 
 const BurgerNavigation: React.SFC<BurgerNavigationProps> = props => {
   return (
-    <Wrapper className={props.isActive ? "isActive" : ""}>
+    <Wrapper active={props.isActive}>
       <Nav>
         <Li>MOJE PAKIETY</Li>
         <Li>MOJE URZĄDZENIA</Li>
