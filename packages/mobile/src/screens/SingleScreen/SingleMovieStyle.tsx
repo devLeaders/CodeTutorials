@@ -1,21 +1,20 @@
 import styled from 'styled-components/native';
-import {FontSize} from '../variables/FontSize';
-import {FontWeight} from '../variables/FontWeight';
-import {FontFamily} from '../variables/FontFamily';
-import {FontColors} from '../variables/FontColors';
-import {BackgroundColor} from '../variables/BackgroudnColor';
+import {FontSize} from '../../variables/FontSize';
+import {FontWeight} from '../../variables/FontWeight';
+import {FontFamily} from '../../variables/FontFamily';
+import {Color} from '../../variables/Color';
 
 export enum SIZE {
   WIDTH = 420,
   HEIGHT = 280,
-};
+}
 
 export const Background = styled.ScrollView({
-  backgroundColor: BackgroundColor.BACKGROUNDCOLOR,
+  backgroundColor: Color.PALE_GREY,
   flexDirection: 'column',
 });
 export const Container = styled.View({
-  backgroundColor: BackgroundColor.BACKGROUNDCOLOR,
+  backgroundColor: Color.PALE_GREY,
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
@@ -49,31 +48,31 @@ export const BackArrowImage = styled.Image({
 });
 
 export const RowContainer = styled.View({
-  backgroundColor: BackgroundColor.BACKGROUNDCOLOR,
+  backgroundColor: Color.PALE_GREY,
   flexDirection: 'row',
   justifyContent: 'space-between',
   margin: 10,
 });
 
 export const ColumContainerLeft = styled.View({
-  backgroundColor: BackgroundColor.BACKGROUNDCOLOR,
+  backgroundColor: Color.PALE_GREY,
   flexDirection: 'column',
 });
 
 export const ColumContainerRight = styled.View({
-  backgroundColor: BackgroundColor.BACKGROUNDCOLOR,
+  backgroundColor: Color.PALE_GREY,
   flex: 2,
 });
 
 export const RatioContainer = styled.View({
-  backgroundColor: BackgroundColor.BACKGROUNDCOLOR,
+  backgroundColor: Color.PALE_GREY,
   flexDirection: 'row',
   marginLeft: 70,
   marginTop: 18,
 });
 
 export const StarsContainer = styled.View({
-  backgroundColor: BackgroundColor.BACKGROUNDCOLOR,
+  backgroundColor: Color.PALE_GREY,
   flexDirection: 'row',
   alignSelf: 'flex-start',
   marginLeft: 70,
@@ -84,14 +83,15 @@ export const Star = styled.Image({
   height: 25,
   width: 25,
   marginRight: 2,
-  shadowColor: "red",
+  shadowColor: '#000',
   shadowOffset: {
-	width: 0,
-	height: 6,
-},
-shadowOpacity: 0.39,
-shadowRadius: 8.30,
-elevation: 13,
+    width: 0,
+    height: 6,
+  },
+  shadowOpacity: 0.39,
+  shadowRadius: 8.3,
+
+  elevation: 13,
 });
 
 export const Heart = styled.Image({
@@ -103,7 +103,7 @@ export const Heart = styled.Image({
 export const HeartRatio = styled.Text({
   fontFamily: FontFamily.ARIAL,
   fontSize: FontSize.RATIO,
-  color: FontColors.HEADERS,
+  color: Color.DARK_BROWN,
   alignSelf: 'stretch',
 });
 
@@ -111,30 +111,30 @@ export const VoteText = styled.Text({
   fontFamily: FontFamily.ARIAL,
   fontSize: FontSize.MIDIUM,
   fontWeight: FontWeight.BOLD,
-  color: FontColors.HEADERS,
+  color: Color.DARK_BROWN,
   marginTop: 5,
   marginRight: 3,
 });
 
 export const MovieName = styled.Text({
   fontFamily: FontFamily.ARIAL,
-  fontSize: FontSize.MOVIENAME,
+  fontSize: FontSize.VERY_BIG,
   fontWeight: FontWeight.BOLD,
-  color: FontColors.HEADERS,
+  color: Color.DARK_BROWN,
 });
 
 export const MovieKind = styled.Text({
   fontFamily: FontFamily.ARIAL,
   fontSize: FontSize.MIDIUM,
   fontWeight: FontWeight.BOLD,
-  color: FontColors.DESCRIPTION,
+  color: Color.DARK_GREY,
 });
 
 export const MovieTime = styled.Text({
   fontFamily: FontFamily.ARIAL,
   fontSize: FontSize.VERYSMALL,
   fontWeight: FontWeight.BOLD,
-  color: FontColors.DESCRIPTION,
+  color: Color.DARK_GREY,
 });
 
 export const Owerview = styled.Text({
@@ -142,14 +142,14 @@ export const Owerview = styled.Text({
   fontFamily: FontFamily.ARIAL,
   fontSize: FontSize.VERYSMALL,
   fontWeight: FontWeight.BOLD,
-  color: FontColors.HEADERS,
+  color: Color.DARK_BROWN,
 });
 
 export const Description = styled.Text({
   marginLeft: 10,
   fontFamily: FontFamily.ARIAL,
   fontSize: FontSize.DESCRIPTION,
-  color: FontColors.DESCRIPTION,
+  color: Color.DARK_GREY,
 });
 
 export const PlayButton = styled.TouchableOpacity({
@@ -162,7 +162,7 @@ export const PlayButton = styled.TouchableOpacity({
   alignContent: 'space-around',
   alignSelf: 'center',
   position: 'absolute',
-  top: SIZE.HEIGHT-25,
+  top: SIZE.HEIGHT - 25,
   justifyContent: 'center',
   //left: SIZE.WIDTH2,
   //shadowColor: '#4f1035ec',
@@ -171,19 +171,18 @@ export const PlayButton = styled.TouchableOpacity({
 });
 
 export const Triangle = styled.Image({
-    padding: 5,
-    height: 50,
-    width: 50, //The Width must be the same as the height
-    borderRadius: 100, //Then Make the Border Radius twice the size of width or Height
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    //alignContent: 'space-around',
-    //alignSelf: 'center',
-    
+  padding: 5,
+  height: 50,
+  width: 50, //The Width must be the same as the height
+  borderRadius: 100, //Then Make the Border Radius twice the size of width or Height
+  backgroundColor: 'white',
+  justifyContent: 'center',
+  //alignContent: 'space-around',
+  //alignSelf: 'center',
 });
 
 export const ImageList = styled.View({
-  backgroundColor: BackgroundColor.BACKGROUNDCOLOR,
+  backgroundColor: Color.PALE_GREY,
   justifyContent: 'flex-start',
   flexDirection: 'row',
   marginLeft: 10,
@@ -193,7 +192,7 @@ export const ImageItem = styled.Image({
   height: 90,
   width: 90,
   borderRadius: 0,
-  borderColor: BackgroundColor.GREY,
+  borderColor: Color.DARK_GREY,
   borderWidth: 1,
   //shadowColor: '#4f1035ec',
   //shadowOpacity: 0.5,

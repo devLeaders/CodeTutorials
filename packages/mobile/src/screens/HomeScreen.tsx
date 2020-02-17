@@ -73,8 +73,8 @@ const HomeScreen = ({navigation}) => {
                 />
                 <Button
                     color="#e63900"
-                    title="Go to Example  SingleMovie2"
-                    onPress={() => navigation.navigate('SingleMovie2')}
+                    title="Go to Example  SingleMovie"
+                    onPress={() => navigation.navigate('SingleMovie')}
                 />
                 
                 

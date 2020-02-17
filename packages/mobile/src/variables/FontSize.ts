@@ -4,5 +4,5 @@ export enum FontSize {
     MIDIUM = 16,
     RATIO = 25,
     DESCRIPTION = 26,
-    MOVIENAME = 42,
+    VERY_BIG = 42,
 }

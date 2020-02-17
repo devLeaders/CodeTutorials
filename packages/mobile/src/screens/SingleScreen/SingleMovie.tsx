@@ -1,10 +1,10 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 //Images
-import player from '../../assets/img/player.jpg';
-import back_arrow from '../../assets/img/back_arrow2.png';
-import h from '../../assets/img/h.png';
-import play from '../../assets/img/play_brown.png';
+import player from '../../../assets/img/player.jpg';
+import back_arrow from '../../../assets/img/back_arrow2.png';
+import h from '../../../assets/img/h.png';
+import play from '../../../assets/img/play_brown.png';
 import {
   Container,
   Player,
@@ -33,7 +33,6 @@ import {
   PlayButton,
   Triangle,
 } from './SingleMovieStyle';
-import AppNavigation from './../components/AppNavigation';
 
 const DATA = [
   {
@@ -94,18 +93,19 @@ export default class SingleMOvie2 extends React.Component {
   };
 
   render() {
+    const {navigation} = this.props;
     return (
       <Background>
         <Container>
           <Player>
             <PlayerImage source={player} />
+            <PlayButton onPress={() => this.props.navigation.navigate('Home')}>
+              <Triangle source={play} />
+            </PlayButton>
           </Player>
 
           <ImageList>
             <FlatList
-              snapToAlignment={'start'}
-              snapToInterval={359 + 10}
-              decelerationRate={'fast'}
               ItemSeparatorComponent={() => <Separator />}
               showsHorizontalScrollIndicator={false}
               horizontal={true}
@@ -120,13 +120,11 @@ export default class SingleMOvie2 extends React.Component {
           </ImageList>
         </Container>
 
-        <BackButton onPress={() => navigation.navigate('HomeScreen')}>
-            <BackArrowImage source={back_arrow} />
+        <BackButton onPress={() => this.props.navigation.navigate('Home')}>
+          <BackArrowImage source={back_arrow} />
         </BackButton>
 
-        <PlayButton onPress={() => navigation.navigate('HomeScreen')}>
-              <Triangle source={play} />
-        </PlayButton>
+        
 
         <RowContainer>
           <ColumContainerLeft>

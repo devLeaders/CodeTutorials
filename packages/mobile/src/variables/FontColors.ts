@@ -1,4 +1,4 @@
 export enum FontColors { 
-    HEADERS = '#34241a',
-    DESCRIPTION = '#707070',
+    DARK_BROWN = '#34241a',
+    DARK_GREY = '#707070',
 }
