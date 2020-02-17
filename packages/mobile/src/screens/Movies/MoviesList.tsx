@@ -49,9 +49,9 @@ export class  MoviesList extends React.Component{
               <TextButtonNOAct>Popularne</TextButtonNOAct>  
             </ButtonNOFilter>
           </ViewButtons>
-          <ViewMargin>
+          <View>
             <SlaiderLarge/>
-          </ViewMargin>
+          </View>
           <View>
               <GroupForSubtitle>
                 <TouchableOpacity>

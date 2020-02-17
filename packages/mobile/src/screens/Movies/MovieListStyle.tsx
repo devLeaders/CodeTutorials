@@ -61,16 +61,16 @@ export const ButtonFilter = styled.TouchableOpacity({
         width: 0,
         height: 2,
     },
-    shadowOpacity: 0.25,
+    shadowOpacity: "0.25",
     shadowRadius: 3.84,
-    elevation: 5,
+    elevation: "5",
 })
 
 export const TextButtonActive = styled.Text ({
     fontFamily: FontFamily.ARIAL,
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
-    lineHeight: 16,
+    lineHeight: "16px",
     textAlign: "center",
     color: Color.DARKGREY
 })
@@ -79,7 +79,7 @@ export const TextButtonNOAct = styled.Text ({
     fontFamily: FontFamily.ARIAL,
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
-    lineHeight: 19,
+    lineHeight: "19px",
     textAlign: "center",
     opacity: 0.5,
     color: Color.DARKGREY,
@@ -92,10 +92,6 @@ export const ButtonNOFilter = styled.TouchableOpacity({
     borderRadius: 9,
     backgroundColor: Color.LIGHTGREY,
     justifyContent: "center",
-})
-
-export const ViewMargin = styled.View({
-    marginTop: 27
 })
 
 export const ViewSeparator = styled.View({
@@ -123,7 +119,7 @@ export const SubTitleLeft = styled.Text({
     fontFamily: FontFamily.ARIAL,
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
-    lineHeight: 19,
+    lineHeight: "19px",
     color: Color.DARKGREY, 
     marginLeft: 15
 })
@@ -132,7 +128,7 @@ export const SubTitleRight = styled.Text({
     fontFamily: FontFamily.ARIAL,
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
-    lineHeight: 19,
+    lineHeight: "19px",
     color: Color.DARKGREY
 })
 
@@ -156,7 +152,7 @@ export const SubTitleLeftSecond = styled.Text({
     fontFamily: FontFamily.ARIAL,
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
-    lineHeight: 19,
+    lineHeight: "19px",
     color: Color.DARKGREY, 
     marginLeft: 15,
     marginBottom: 0,
@@ -167,7 +163,7 @@ export const SubTitleRightSecond = styled.Text({
     fontFamily: FontFamily.ARIAL,
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
-    lineHeight: 19,
+    lineHeight: "19px",
     marginBottom: 0,
     color: Color.DARKGREY
 })
@@ -188,7 +184,7 @@ export const ItemLike = styled.Text({
     fontFamily: FontFamily.ARIAL,
     fontSize: FontSize.SMALL,
     fontWeight: FontWeight.REGULAR,
-    lineHeight: 10,
+    lineHeight: "10px",
     justifyContent: "center",
     color: Color.DARKGREY
 })
@@ -202,7 +198,7 @@ export const ViewTitle = styled.Text({
     fontFamily: FontFamily.ARIAL,
     fontSize: FontSize.SMALL,
     fontWeight: FontWeight.REGULAR,
-    lineHeight: 8,
+    lineHeight: "8px",
     color: Color.DARKGREY
 })
 
