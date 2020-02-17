@@ -16,15 +16,16 @@ export interface MovieProps {
   index: number;
   movies: Array<any>;
   width: number;
+  ref?:any
 }
 
-const Movie: React.SFC<MovieProps> = props => {
+const Movie: React.ForwardRefExoticComponent<MovieProps> = React.forwardRef((props, ref:any) => {
   const { movies, index, width, id } = props;
   return (
-    <Wrapper width={width} ref={movie => (movies[index] = movie)}>
+    <Wrapper width={width} ref={ref}>
       {id}
     </Wrapper>
   );
-};
+});
 
 export default Movie;

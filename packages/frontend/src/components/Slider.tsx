@@ -118,6 +118,7 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
 
   handleResize = () => {
     this.setState({ screenWidth: window.innerWidth });
+    this.handleMoviesOnScreen(window.innerWidth);
   };
 
   handleMoveSlider = (direction: string) => {
@@ -135,17 +136,25 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
   };
 
   handleMoviesOnScreen = (width: number) => {
+    let moviesOnScreen = 0;
+
     if (width > 0 && width <= 550) {
-      this.setState({ moviesOnScreen: 2 });
+      moviesOnScreen=2;
     } else if (width >= 550 && width < 800) {
-      this.setState({ moviesOnScreen: 3 });
+      moviesOnScreen=3;
     } else if (width >= 800 && width < 1210) {
-      this.setState({ moviesOnScreen: 4 });
+      moviesOnScreen=4;
     } else if (width >= 1210 && width < 1540) {
-      this.setState({ moviesOnScreen: 5 });
+      moviesOnScreen=5;
     } else if (width >= 1540) {
-      this.setState({ moviesOnScreen: 6 });
+      moviesOnScreen=6;
     }
+
+    this.setState({
+      screenWidth: window.innerWidth,
+      moviesOnScreen,
+      width: 100 / moviesOnScreen
+    });
   };
 
   changePosition = (move: number) => {
@@ -159,36 +168,12 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
   GsapMovies: Array<any> = [];
   componentDidMount() {
     this.handleMoviesOnScreen(window.innerWidth);
-    this.setState({
-      screenWidth: window.innerWidth,
-      width: 100 / this.state.moviesOnScreen
-    });
     window.addEventListener("resize", this.handleResize);
-  }
-  componentDidUpdate() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleMoviesOnScreen(this.state.screenWidth);
-    this.setState({
-      screenWidth: window.innerWidth,
-      width: 100 / this.state.moviesOnScreen
-    });
   }
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize);
   }
-
-  movieList = movies.map((movie, index) => {
-    return (
-      <Movie
-        key={movie.id}
-        id={movie.id}
-        index={index}
-        movies={this.GsapMovies}
-        width={this.state.width}
-      ></Movie>
-    );
-  });
 
   right = () => this.handleMoveSlider("right");
   left = () => this.handleMoveSlider("left");
@@ -218,7 +203,20 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
             <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
           </svg>
         </Button>
-        <MovieWrapper>{this.movieList}</MovieWrapper>
+        <MovieWrapper>
+          {movies.map((movie, index) => {
+            return (
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                index={index}
+                movies={this.GsapMovies}
+                width={this.state.width}
+                ref={(movie:any) => (this.GsapMovies[index] = movie)}
+              ></Movie>
+            );
+          })}
+        </MovieWrapper>
       </Wrapper>
     );
   }
