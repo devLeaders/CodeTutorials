@@ -101,105 +101,127 @@ export interface SliderProps {
   id: number;
 }
 
-const Slider: React.SFC<SliderProps> = props => {
-  const [screenWidth, setScreenWidth] = useState(0);
-  const [moviePosition, setMoviePosition] = useState(0);
-  const [moviesOnScreen, setMoviesOnScreen] = useState(0);
+export interface SliderState {
+  screenWidth: number;
+  moviePosition: number;
+  moviesOnScreen: number;
+  width: number;
+}
 
-  const handleResize = () => {
-    setScreenWidth(window.innerWidth);
+class Slider extends React.PureComponent<SliderProps, SliderState> {
+  state = {
+    screenWidth: 0,
+    moviePosition: 0,
+    moviesOnScreen: 2,
+    width: 0
   };
 
-  const handleMoveSlider = (direction: string) => {
+  handleResize = () => {
+    this.setState({ screenWidth: window.innerWidth });
+  };
+
+  handleMoveSlider = (direction: string) => {
+    const { screenWidth, moviePosition, moviesOnScreen } = this.state;
     const end =
-      (Math.ceil(GsapMovies.length / moviesOnScreen) - 1) * screenWidth;
+      (Math.ceil(this.GsapMovies.length / moviesOnScreen) - 1) * screenWidth;
     let move;
     if (direction === "right" && moviePosition < 0) {
       move = screenWidth;
-      changePosition(move);
+      this.changePosition(move);
     } else if (direction === "left" && moviePosition > -end) {
       move = -screenWidth;
-      changePosition(move);
+      this.changePosition(move);
     }
   };
 
-  const handleMoviesOnScreen = (width: number) => {
+  handleMoviesOnScreen = (width: number) => {
     if (width > 0 && width <= 550) {
-      setMoviesOnScreen(2);
+      this.setState({ moviesOnScreen: 2 });
     } else if (width >= 550 && width < 800) {
-      setMoviesOnScreen(3);
+      this.setState({ moviesOnScreen: 3 });
     } else if (width >= 800 && width < 1210) {
-      setMoviesOnScreen(4);
+      this.setState({ moviesOnScreen: 4 });
     } else if (width >= 1210 && width < 1540) {
-      setMoviesOnScreen(5);
+      this.setState({ moviesOnScreen: 5 });
     } else if (width >= 1540) {
-      setMoviesOnScreen(6);
+      this.setState({ moviesOnScreen: 6 });
     }
   };
 
-  const changePosition = (move: number) => {
-    setMoviePosition(moviePosition + move);
-    TweenLite.to(GsapMovies, 0.4, {
-      x: moviePosition + move,
+  changePosition = (move: number) => {
+    this.setState({ moviePosition: this.state.moviePosition + move });
+    TweenLite.to(this.GsapMovies, 0.4, {
+      x: this.state.moviePosition + move,
       ease: Power3.easeOut
     });
   };
 
-  const GsapMovies: Array<any> = [];
+  GsapMovies: Array<any> = [];
+  componentDidMount() {
+    this.handleMoviesOnScreen(window.innerWidth);
+    this.setState({
+      screenWidth: window.innerWidth,
+      width: 100 / this.state.moviesOnScreen
+    });
+    window.addEventListener("resize", this.handleResize);
+  }
+  componentDidUpdate() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleMoviesOnScreen(this.state.screenWidth);
+    this.setState({
+      screenWidth: window.innerWidth,
+      width: 100 / this.state.moviesOnScreen
+    });
+  }
 
-  useEffect(() => {
-    console.log(moviePosition);
-    setScreenWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    handleMoviesOnScreen(screenWidth);
-    console.log(screenWidth);
-    getMovieList();
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+  }
 
-    return () => window.removeEventListener("resize", handleResize);
-  });
-
-  const movieList = movies.map((movie, index) => {
-    let width = 100 / moviesOnScreen;
+  movieList = movies.map((movie, index) => {
     return (
       <Movie
         key={movie.id}
         id={movie.id}
         index={index}
-        movies={GsapMovies}
-        width={width}
+        movies={this.GsapMovies}
+        width={this.state.width}
       ></Movie>
     );
   });
-  const right = () => handleMoveSlider("right");
-  const left = () => handleMoveSlider("left");
-  return (
-    <Wrapper>
-      <Button onClick={right}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          fill="white"
-          viewBox="0 0 24 24"
-        >
-          <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-        </svg>
-      </Button>
 
-      <Button className="left" onClick={left}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          fill="white"
-          viewBox="0 0 24 24"
-        >
-          <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
-        </svg>
-      </Button>
-      <MovieWrapper>{movieList}</MovieWrapper>
-    </Wrapper>
-  );
-};
+  right = () => this.handleMoveSlider("right");
+  left = () => this.handleMoveSlider("left");
+  render() {
+    return (
+      <Wrapper>
+        <Button onClick={this.right}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="white"
+            viewBox="0 0 24 24"
+          >
+            <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+          </svg>
+        </Button>
+
+        <Button className="left" onClick={this.left}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="white"
+            viewBox="0 0 24 24"
+          >
+            <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
+          </svg>
+        </Button>
+        <MovieWrapper>{this.movieList}</MovieWrapper>
+      </Wrapper>
+    );
+  }
+}
 
 export default Slider;
