@@ -22,12 +22,12 @@ async function bootstrap() {
 
   await app.listen(port);
   Logger.log(`Server running on http://localhost:${port}`,'Bootstrap');
+  console.log(`Server running on http://localhost:${port}`);
 
   if (module.hot) {
     module.hot.accept();
     module.hot.dispose(() => app.close());
   }
 }
-  
 
 bootstrap();

@@ -15,10 +15,6 @@ export class VideosService {
     ){}
 
     async getAll(){
-        return await this.videosRepository.find({select:shortVersion});
-    }
-
-    async getCategoryWithVideos(count:number){
-        return await this.CategoriesRepository.find({select:["name","videos","id",]});
+        return await this.videosRepository.find({select:shortVersion, relations:["category"]});
     }
 }

@@ -25,9 +25,11 @@ import CategoryEntity from './category.entity';
 
         @Column('text') urlPhoto: string;
 
-        @ManyToMany(type => CategoryEntity)
+        @ManyToMany(type => CategoryEntity,{
+            cascade: ["insert"]
+        })
         @JoinTable()
-        categories: CategoryEntity[];
+        category: CategoryEntity[];
     }
 
     export default VideosEntity;

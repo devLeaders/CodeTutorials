@@ -11,9 +11,7 @@ class CategoryEntity {
     name: string;
 
     @ManyToMany(type => VideosEntity)
-    @JoinTable()
     videos: VideosEntity[];
-
 }
 
 export default CategoryEntity
