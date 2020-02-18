@@ -21,13 +21,8 @@ import {
 
 import {
   Header,
-  LearnMoreLinks,
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import { createAppContainer, NavigationAction } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
 
 declare var global: {HermesInternal: null | {}};
 
@@ -53,22 +48,6 @@ const HomeScreen = ({navigation}:any) => {
                     title="Go to Movies List"
                     onPress={() => navigation.navigate('MovieList')}
                 />
-                <Button
-                    color="#e63900"
-                    title="Go to Context API Example2"
-                    onPress={() => navigation.navigate('ExampleContextAPI2')}
-                />
-                 <Button
-                    color="#e63900"
-                    title="Go to Axios Example"
-                    onPress={() => navigation.navigate('AxiosExample')}
-                />
-                <Button
-                    color="#e63900"
-                    title="Go to Example Context API"
-                    onPress={() => navigation.navigate('ExampleContextAPI')}
-                />
-                
               </View>
             </View>
           </ScrollView>
