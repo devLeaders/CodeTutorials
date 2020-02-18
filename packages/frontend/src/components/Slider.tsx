@@ -136,17 +136,25 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
   };
 
   handleMoviesOnScreen = (width: number) => {
+    let moviesOnScreen = 0;
+
     if (width > 0 && width <= 550) {
-      this.setState({ moviesOnScreen: 2 });
+      moviesOnScreen = 2;
     } else if (width >= 550 && width < 800) {
-      this.setState({ moviesOnScreen: 3 });
+      moviesOnScreen = 3;
     } else if (width >= 800 && width < 1210) {
-      this.setState({ moviesOnScreen: 4 });
+      moviesOnScreen = 4;
     } else if (width >= 1210 && width < 1540) {
-      this.setState({ moviesOnScreen: 5 });
+      moviesOnScreen = 5;
     } else if (width >= 1540) {
-      this.setState({ moviesOnScreen: 6 });
+      moviesOnScreen = 6;
     }
+
+    this.setState({
+      screenWidth: window.innerWidth,
+      moviesOnScreen,
+      width: 100 / moviesOnScreen
+    });
   };
 
   changePosition = (move: number) => {
@@ -204,10 +212,10 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
                 index={index}
                 movies={this.GsapMovies}
                 width={this.state.width}
+                ref={(movie: any) => (this.GsapMovies[index] = movie)}
               ></Movie>
             );
           })}
-          ;
         </MovieWrapper>
       </Wrapper>
     );

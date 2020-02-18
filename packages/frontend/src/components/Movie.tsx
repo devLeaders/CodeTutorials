@@ -22,18 +22,18 @@ export interface MovieProps {
   index: number;
   movies: Array<any>;
   width: number;
+  ref?: any;
 }
 
-const Movie: React.SFC<MovieProps> = props => {
-  const { movies, index, width, id } = props;
-  return (
-    <Wrapper width={width} ref={movie => (movies[index] = movie)}>
-      <Img
-        src="https://cdn.pixabay.com/photo/2020/02/12/16/13/landscape-4843193_960_720.jpg"
-        alt=""
-      />
-    </Wrapper>
-  );
-};
+const Movie: React.ForwardRefExoticComponent<MovieProps> = React.forwardRef(
+  (props, ref: any) => {
+    const { movies, index, width, id } = props;
+    return (
+      <Wrapper width={width} ref={ref}>
+        {id}
+      </Wrapper>
+    );
+  }
+);
 
 export default Movie;
