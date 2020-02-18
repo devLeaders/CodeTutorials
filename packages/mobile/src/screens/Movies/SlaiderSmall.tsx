@@ -14,7 +14,7 @@ import {
   } from './MovieListStyle';
 
 export class SlaiderSmall extends React.Component{
-  constructor(props){
+  constructor(props:any){
     super(props);
     this.Separator = this.Separator.bind(this);
     this.ImgeSlaider = this.ImgeSlaider.bind(this);
