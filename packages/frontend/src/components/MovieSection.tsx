@@ -9,7 +9,7 @@ import { device } from "../constans/device";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin-top: 10px;
   height: 8rem;
   width: 100%;
   padding: 5px 0 0 0;

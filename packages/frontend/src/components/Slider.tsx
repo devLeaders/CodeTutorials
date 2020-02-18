@@ -118,6 +118,7 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
 
   handleResize = () => {
     this.setState({ screenWidth: window.innerWidth });
+    this.handleMoviesOnScreen(window.innerWidth);
   };
 
   handleMoveSlider = (direction: string) => {
@@ -159,36 +160,12 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
   GsapMovies: Array<any> = [];
   componentDidMount() {
     this.handleMoviesOnScreen(window.innerWidth);
-    this.setState({
-      screenWidth: window.innerWidth,
-      width: 100 / this.state.moviesOnScreen
-    });
     window.addEventListener("resize", this.handleResize);
-  }
-  componentDidUpdate() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleMoviesOnScreen(this.state.screenWidth);
-    this.setState({
-      screenWidth: window.innerWidth,
-      width: 100 / this.state.moviesOnScreen
-    });
   }
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize);
   }
-
-  movieList = movies.map((movie, index) => {
-    return (
-      <Movie
-        key={movie.id}
-        id={movie.id}
-        index={index}
-        movies={this.GsapMovies}
-        width={this.state.width}
-      ></Movie>
-    );
-  });
 
   right = () => this.handleMoveSlider("right");
   left = () => this.handleMoveSlider("left");
@@ -218,7 +195,20 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
             <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
           </svg>
         </Button>
-        <MovieWrapper>{this.movieList}</MovieWrapper>
+        <MovieWrapper>
+          {movies.map((movie, index) => {
+            return (
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                index={index}
+                movies={this.GsapMovies}
+                width={this.state.width}
+              ></Movie>
+            );
+          })}
+          ;
+        </MovieWrapper>
       </Wrapper>
     );
   }

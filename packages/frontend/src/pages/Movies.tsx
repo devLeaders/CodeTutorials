@@ -3,6 +3,7 @@ import MovieNavBar from "../components/MovieNavBar";
 import styled from "styled-components";
 import FiltrationBtns from "../components/FiltrationBtns";
 import MovieSection from "../components/MovieSection";
+import NewContent from "../components/NewContent";
 import Colors from "../constans/Colors";
 import { device } from "../constans/device";
 
@@ -13,12 +14,6 @@ const Wrapper = styled.div`
   min-height: 100vh;
   background-color: #222;
   width: 100%;
-`;
-
-const NewContent = styled.div`
-  height: 75%;
-  width: 100%;
-  background-color: black;
 `;
 
 const Section = styled.section`

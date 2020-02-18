@@ -77,9 +77,10 @@ export interface MovieNavBarProps {}
 
 const MovieNavBar: React.SFC<MovieNavBarProps> = () => {
   const [burgerIsActive, setBurgerIsActive] = useState(false);
-  const handleBurgerMenu = () => {
+
+  const handleBurgerMenu = React.useCallback(() => {
     setBurgerIsActive(!burgerIsActive);
-  };
+  }, [burgerIsActive]);
   return (
     <>
       <NavWrapper>

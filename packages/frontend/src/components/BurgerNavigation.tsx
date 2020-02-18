@@ -13,17 +13,16 @@ const Wrapper = styled.div`
   right: 0;
   z-index: 1;
   background-color: ${Colors.nBlack};
-  transform: translateY(-100%);
   transition: transform 0.6s ease;
   border: 1px solid #666;
   border-top: 3px solid white;
   color: #ccc;
   opacity: 0.9;
   transform: ${(props: { active: boolean }) =>
-    props.active ? "translateY(25%)" : ""};
+    props.active ? "translateY(25%)" : "translateY(-100%)"};
   @media ${device.mobileM} {
     transform: ${(props: { active: boolean }) =>
-      props.active ? "translateY(40%)" : ""};
+      props.active ? "translateY(40%)" : "translateY(-100%)"};
   }
   @media ${device.tablet} {
     height: 300px;
@@ -34,22 +33,27 @@ const Wrapper = styled.div`
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  height: 80%;
 `;
-const Li = styled.li`
+const BurgerNavItem = styled.li`
   padding: 10px 7px;
+  height: 25%;
+  width: 100%;
   list-style-type: none;
   &:hover {
-    color: #fff;
-    background-color: black;
+    background-color: ${Colors.nGrey};
   }
   @media ${device.tablet} {
     font-size: 20px;
-    padding: 20px 12px;
   }
 `;
 const Footer = styled.footer`
-  align-self: center;
+  height: 20%;
+  width: 100%;
+  padding: 10px 7px;
+  &:hover {
+    background-color: ${Colors.nGrey};
+  }
   @media ${device.tablet} {
     font-size: 20px;
   }
@@ -62,10 +66,10 @@ const BurgerNavigation: React.SFC<BurgerNavigationProps> = props => {
   return (
     <Wrapper active={props.isActive}>
       <Nav>
-        <Li>MOJE PAKIETY</Li>
-        <Li>MOJE URZĄDZENIA</Li>
-        <Li>MOJE DANE</Li>
-        <Li>POMOC</Li>
+        <BurgerNavItem>MOJE PAKIETY</BurgerNavItem>
+        <BurgerNavItem>MOJE URZĄDZENIA</BurgerNavItem>
+        <BurgerNavItem>MOJE DANE</BurgerNavItem>
+        <BurgerNavItem>POMOC</BurgerNavItem>
       </Nav>
       <Footer>WYLOGUJ</Footer>
     </Wrapper>

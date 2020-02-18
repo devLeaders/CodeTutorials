@@ -64,9 +64,10 @@ const Span = styled.span`
 
 const FiltrationBtns: React.SFC<FiltrationBtnsProps> = () => {
   const [filterIsActive, setFilterIsActive] = useState(false);
-  const handleFilterOptions = () => {
+
+  const handleFilterOptions = React.useCallback(() => {
     setFilterIsActive(!filterIsActive);
-  };
+  }, [filterIsActive]);
 
   return (
     <PositionWrapper>
