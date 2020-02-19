@@ -1,3 +1,4 @@
+import { CategoryEntity } from '../category/category.entity';
 export declare class VideosEntity {
     id: number;
     created: Date;
@@ -10,4 +11,5 @@ export declare class VideosEntity {
     urlTrailer: string;
     urlVideo: string;
     urlPhoto: string;
+    category: Promise<CategoryEntity[]>;
 }

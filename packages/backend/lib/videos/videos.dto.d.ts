@@ -10,3 +10,6 @@ export declare class ShortVersionDTO {
     urlTrailer: string;
     urlPhoto: string;
 }
+export declare class CategoryDTO {
+    category: {};
+}

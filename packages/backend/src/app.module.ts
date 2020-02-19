@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import {VideosEntity} from './videos/videos.entity'
 import { VideosModule } from './videos/videos.module';
+import { CategoryModule } from './category/category.module';
 import 'dotenv/config';
 
 @Module({
@@ -17,7 +18,7 @@ import 'dotenv/config';
       database: process.env.DATABASE,
       entities: [VideosEntity],
       synchronize: true,
-    }),VideosModule],
+    }),VideosModule, CategoryModule],
   controllers: [AppController],
   providers: [AppService],
 })

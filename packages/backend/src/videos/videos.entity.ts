@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from 'typeorm';
+import { CategoryEntity } from '../category/category.entity'
 
     @Entity('videos')
     export class VideosEntity {
@@ -23,4 +24,8 @@ import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm
         @Column('text') urlVideo: string;
 
         @Column('text') urlPhoto: string;
+
+        @OneToMany(() => CategoryEntity, 
+            category => category.videos) 
+            category: Promise<CategoryEntity[]>
     }
