@@ -158,16 +158,11 @@ export const PlayButton = styled.TouchableOpacity({
   width: 45, //The Width must be the same as the height
   borderRadius: 90, //Then Make the Border Radius twice the size of width or Height
   backgroundColor: 'transparent',
-  justifyContent: 'flex-start',
   alignContent: 'space-around',
   alignSelf: 'center',
   position: 'absolute',
   top: SIZE.HEIGHT - 25,
   justifyContent: 'center',
-  //left: SIZE.WIDTH2,
-  //shadowColor: '#4f1035ec',
-  //shadowOpacity: 0.5,
-  //shadowRadius: 15,
 });
 
 export const Triangle = styled.Image({
