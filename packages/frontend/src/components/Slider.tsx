@@ -1,13 +1,13 @@
 import * as React from "react";
 import styled from "styled-components";
 import { useState, useEffect, useRef } from "react";
-import Colors from "../constans/Colors";
+import { Colors } from "../constans/Colors";
 import { TweenLite, Power3 } from "gsap";
 import Movie from "../components/Movie";
 import getMovieList from "../axios/getMoviesList";
 
 const Wrapper = styled.div`
-  justify-content: flex-end;
+  display: flex;
   height: 100%;
 `;
 
@@ -17,12 +17,10 @@ const Button = styled.button`
   background-color: transparent;
   outline: none;
   border: none;
-  top: 45%;
+  top: 50%;
   right: 2%;
   z-index: 2;
-  &.left {
-    left: 2%;
-  }
+  left: ${(props: { left?: any }) => (props.left ? "2%" : "")};
 `;
 
 const MovieWrapper = styled.div`
@@ -97,6 +95,17 @@ const movies = [
   }
 ];
 
+const screenWidths = {
+  PHONE: 550,
+  TABLET: 800,
+  LAPTOP: 1210,
+  DESKTOP: 1540
+};
+const directions = {
+  RIGHT: "right",
+  LEFT: "left"
+};
+
 export interface SliderProps {
   id: number;
 }
@@ -112,62 +121,106 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
   state = {
     screenWidth: 0,
     moviePosition: 0,
-    moviesOnScreen: 2,
+    moviesOnScreen: 0,
     width: 0
   };
 
   handleResize = () => {
-    this.setState({ screenWidth: window.innerWidth });
-    this.handleMoviesOnScreen(window.innerWidth);
+    this.setState({
+      screenWidth: document.body.clientWidth,
+      moviePosition: 0
+    });
+    TweenLite.to(this.GsapMovies, 0, {
+      x: this.state.moviePosition,
+      ease: Power3.easeOut
+    });
+    this.handleMoviesOnScreen(document.body.clientWidth);
   };
 
   handleMoveSlider = (direction: string) => {
     const { screenWidth, moviePosition, moviesOnScreen } = this.state;
+    // total lenght of slider
     const end =
       (Math.ceil(this.GsapMovies.length / moviesOnScreen) - 1) * screenWidth;
     let move;
-    if (direction === "right" && moviePosition < 0) {
-      move = screenWidth;
-      this.changePosition(move);
-    } else if (direction === "left" && moviePosition > -end) {
+    if (direction === directions.RIGHT) {
       move = -screenWidth;
-      this.changePosition(move);
+      this.changePosition(move, end, direction);
+    } else if (direction === directions.LEFT) {
+      move = +screenWidth;
+      this.changePosition(move, end, direction);
+    }
+  };
+
+  changePosition = (move: number, end: number, direction: string) => {
+    const { moviePosition, moviesOnScreen } = this.state;
+    const { GsapMovies } = this;
+    const position = moviePosition + move;
+    // Amount of movies
+    const additionalMoviesNumber: number = GsapMovies.length % moviesOnScreen;
+    const aditionalMoveLeft: number =
+      (move * (moviesOnScreen - additionalMoviesNumber)) / moviesOnScreen;
+    const firstMovies = GsapMovies.slice(0, additionalMoviesNumber);
+    this.setState({
+      moviePosition: position
+    });
+    console.log(move);
+    if (moviePosition === -end && direction === directions.RIGHT) {
+      this.setState({ moviePosition: 0 });
+      TweenLite.fromTo(GsapMovies, 0.4, { x: -move }, { x: 0 });
+    } else if (moviePosition === 0 && direction === directions.LEFT) {
+      this.setState({ moviePosition: -end });
+      TweenLite.fromTo(
+        GsapMovies,
+        0.4,
+        { x: -end - move },
+        { x: -end + aditionalMoveLeft }
+      );
+    } else if (
+      moviePosition === -end - move &&
+      direction === directions.RIGHT
+    ) {
+      TweenLite.to(GsapMovies, 0.4, {
+        x: "+=" + move / moviesOnScreen,
+        ease: Power3.easeOut
+      });
+    } else if (moviePosition === -move && direction === directions.LEFT) {
+      console.log("ok");
+      TweenLite.to(GsapMovies, 0.4, {
+        x: "+=" + (move * additionalMoviesNumber) / moviesOnScreen,
+        ease: Power3.easeOut
+      });
+    } else {
+      TweenLite.to(GsapMovies, 0.4, {
+        x: "+=" + move,
+        ease: Power3.easeOut
+      });
     }
   };
 
   handleMoviesOnScreen = (width: number) => {
     let moviesOnScreen = 0;
-
-    if (width > 0 && width <= 550) {
+    if (width > 0 && width <= screenWidths.PHONE) {
       moviesOnScreen = 2;
-    } else if (width >= 550 && width < 800) {
+    } else if (width >= screenWidths.PHONE && width < screenWidths.TABLET) {
       moviesOnScreen = 3;
-    } else if (width >= 800 && width < 1210) {
+    } else if (width >= screenWidths.TABLET && width < screenWidths.LAPTOP) {
       moviesOnScreen = 4;
-    } else if (width >= 1210 && width < 1540) {
+    } else if (width >= screenWidths.LAPTOP && width < screenWidths.DESKTOP) {
       moviesOnScreen = 5;
-    } else if (width >= 1540) {
+    } else if (width >= screenWidths.DESKTOP) {
       moviesOnScreen = 6;
     }
-
     this.setState({
-      screenWidth: window.innerWidth,
+      screenWidth: document.body.clientWidth,
       moviesOnScreen,
       width: 100 / moviesOnScreen
     });
   };
 
-  changePosition = (move: number) => {
-    this.setState({ moviePosition: this.state.moviePosition + move });
-    TweenLite.to(this.GsapMovies, 0.4, {
-      x: this.state.moviePosition + move,
-      ease: Power3.easeOut
-    });
-  };
-
   GsapMovies: Array<any> = [];
   componentDidMount() {
-    this.handleMoviesOnScreen(window.innerWidth);
+    this.handleMoviesOnScreen(document.body.clientWidth);
     window.addEventListener("resize", this.handleResize);
   }
 
@@ -178,8 +231,20 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
   right = () => this.handleMoveSlider("right");
   left = () => this.handleMoveSlider("left");
   render() {
+    console.log(this.state.moviePosition);
     return (
       <Wrapper>
+        <Button left onClick={this.left}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="white"
+            viewBox="0 0 24 24"
+          >
+            <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
+          </svg>
+        </Button>
         <Button onClick={this.right}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -191,18 +256,6 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
             <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
           </svg>
         </Button>
-
-        <Button className="left" onClick={this.left}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="white"
-            viewBox="0 0 24 24"
-          >
-            <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
-          </svg>
-        </Button>
         <MovieWrapper>
           {movies.map((movie, index) => {
             return (
@@ -210,7 +263,6 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
                 key={movie.id}
                 id={movie.id}
                 index={index}
-                movies={this.GsapMovies}
                 width={this.state.width}
                 ref={(movie: any) => (this.GsapMovies[index] = movie)}
               ></Movie>
