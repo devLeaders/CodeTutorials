@@ -1,10 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useState, useEffect, useRef } from "react";
-import { Colors } from "../constans/Colors";
-import { TweenLite, Power3 } from "gsap";
+import { gsap, TweenLite, Power3 } from "gsap";
 import Movie from "../components/Movie";
-import getMovieList from "../axios/getMoviesList";
 
 const Wrapper = styled.div`
   display: flex;
@@ -94,17 +91,18 @@ const movies = [
     urlphoto: "p2"
   }
 ];
+enum screenWidths {
+  PHONE = 550,
+  TABLET = 800,
+  LAPTOP = 1210,
+  DESKTOP = 1540
+}
+enum directions {
+  RIGHT = "right",
+  LEFT = "left"
+}
 
-const screenWidths = {
-  PHONE: 550,
-  TABLET: 800,
-  LAPTOP: 1210,
-  DESKTOP: 1540
-};
-const directions = {
-  RIGHT: "right",
-  LEFT: "left"
-};
+enum moves {}
 
 export interface SliderProps {
   id: number;
@@ -156,47 +154,71 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
     const { moviePosition, moviesOnScreen } = this.state;
     const { GsapMovies } = this;
     const position = moviePosition + move;
-    // Amount of movies
     const additionalMoviesNumber: number = GsapMovies.length % moviesOnScreen;
     const aditionalMoveLeft: number =
       (move * (moviesOnScreen - additionalMoviesNumber)) / moviesOnScreen;
-    const firstMovies = GsapMovies.slice(0, additionalMoviesNumber);
+    const firstMovies = [...GsapMovies].slice(0, moviesOnScreen);
     this.setState({
       moviePosition: position
     });
-    console.log(move);
+    if (moviePosition >= -end) {
+      if (
+        moviePosition === -end - move ||
+        (moviePosition === -move &&
+          direction === directions.RIGHT &&
+          additionalMoviesNumber !== 0)
+      ) {
+        this.handleAnimation(
+          (move * additionalMoviesNumber) / moviesOnScreen,
+          GsapMovies
+        );
+      } else if (
+        moviePosition === -move &&
+        direction === directions.LEFT &&
+        additionalMoviesNumber !== 0
+      ) {
+        this.handleAnimation(
+          (move * additionalMoviesNumber) / moviesOnScreen,
+          GsapMovies
+        );
+      } else {
+        this.handleAnimation(move, GsapMovies);
+      }
+    }
+    if (moviePosition === 0 && direction === directions.LEFT) {
+      this.setState({ moviePosition: -end });
+      // TweenLite.fromTo(
+      //   GsapMovies,
+      //   0.4,
+      //   { x: -end - move },
+      //   { x: additionalMoviesNumber !== 0 ? -end + aditionalMoveLeft : -end }
+      // );
+      gsap
+        .timeline()
+        .fromTo(firstMovies, 0.4, { x: 0 }, { x: move })
+        .fromTo(
+          GsapMovies,
+          0.4,
+          { x: -end - move },
+          { x: -end + aditionalMoveLeft },
+          0
+        );
+    }
     if (moviePosition === -end && direction === directions.RIGHT) {
       this.setState({ moviePosition: 0 });
-      TweenLite.fromTo(GsapMovies, 0.4, { x: -move }, { x: 0 });
-    } else if (moviePosition === 0 && direction === directions.LEFT) {
-      this.setState({ moviePosition: -end });
-      TweenLite.fromTo(
-        GsapMovies,
-        0.4,
-        { x: -end - move },
-        { x: -end + aditionalMoveLeft }
-      );
-    } else if (
-      moviePosition === -end - move &&
-      direction === directions.RIGHT
-    ) {
-      TweenLite.to(GsapMovies, 0.4, {
-        x: "+=" + move / moviesOnScreen,
-        ease: Power3.easeOut
-      });
-    } else if (moviePosition === -move && direction === directions.LEFT) {
-      console.log("ok");
-      TweenLite.to(GsapMovies, 0.4, {
-        x: "+=" + (move * additionalMoviesNumber) / moviesOnScreen,
-        ease: Power3.easeOut
-      });
-    } else {
-      TweenLite.to(GsapMovies, 0.4, {
-        x: "+=" + move,
-        ease: Power3.easeOut
-      });
+      gsap
+        .timeline()
+        .fromTo(firstMovies, 0.4, { x: 0 }, { x: move })
+        .fromTo(GsapMovies, 0.4, { x: -move }, { x: 0 });
     }
   };
+
+  handleAnimation(position: number, elements: Array<any>) {
+    TweenLite.to(elements, 0.4, {
+      x: "+=" + position,
+      ease: Power3.easeOut
+    });
+  }
 
   handleMoviesOnScreen = (width: number) => {
     let moviesOnScreen = 0;
@@ -231,7 +253,6 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
   right = () => this.handleMoveSlider("right");
   left = () => this.handleMoveSlider("left");
   render() {
-    console.log(this.state.moviePosition);
     return (
       <Wrapper>
         <Button left onClick={this.left}>
