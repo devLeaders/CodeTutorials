@@ -20,17 +20,20 @@ const Img = styled.img`
 export interface MovieProps {
   id: number;
   index: number;
-  movies: Array<any>;
   width: number;
   ref?: any;
 }
 
 const Movie: React.ForwardRefExoticComponent<MovieProps> = React.forwardRef(
-  (props, ref: any) => {
-    const { movies, index, width, id } = props;
+  (props: any, ref: any) => {
+    const { index, width, id } = props;
     return (
       <Wrapper width={width} ref={ref}>
         {id}
+        <Img
+          src="https://cdn.pixabay.com/photo/2020/02/12/16/13/landscape-4843193_960_720.jpg"
+          alt=""
+        />
       </Wrapper>
     );
   }
