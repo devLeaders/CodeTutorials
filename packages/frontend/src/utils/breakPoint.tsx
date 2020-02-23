@@ -1,4 +1,4 @@
-export const breakPoint = {
-    tablet: 'screen and (min-width: 640px)',
-    desktop: 'screen and (min-width: 1024px)'
+export enum breakPoint {
+    tablet = '640px',
+    desktop = '1024px',
 }

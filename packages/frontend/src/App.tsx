@@ -14,7 +14,7 @@ const StyledNav = styled.nav`
   justify-content: center;
 `;
 
-const StyledMain = styled.nav`
+const StyledMain = styled.div`
   flex-grow: 1;
   text-align: center;
 `

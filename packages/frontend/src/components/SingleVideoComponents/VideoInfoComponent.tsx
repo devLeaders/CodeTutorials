@@ -1,22 +1,29 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
-import { font } from '../../utils/font';
-import { colors } from '../../utils/colors';
+import { fontFamily } from '../../utils/fontFamily';
+import { fontSize } from '../../utils/fontSize';
+import { fontWeight } from '../../utils/fontWeight';
+import { Colors } from '../../utils/colors';
+import { breakPoint } from '../../utils/breakPoint'
 
 const Describe = styled.p`
-    font: ${font.ParagraphFontMobile};
-    color: ${colors.colorMainFont};
-    @media only screen and (min-width: 1024px) {
-            font: ${font.ParagraphFontDesktop};
+    font-family: ${fontFamily.openSansFont};
+    font-size: ${fontSize.paragraphMobile};
+    font-weight: ${fontWeight.medium};
+    color: ${Colors.colorMainFont};
+    @media screen and (min-width: ${breakPoint.desktop}) {
+        font-size: ${fontSize.paragraphDesktop};
     }
 `;
 
 const Subtitle = styled.h4`
-font: ${font.SubtitleFontMobile};
-color: ${colors.colorMainFont};
+    font-family: ${fontFamily.openSansFont};
+    font-size: ${fontSize.subtitleMobile};
+    font-weight: ${fontWeight.medium};
+color: ${Colors.colorMainFont};
 padding: 15px 0;
-@media only screen and (min-width: 1024px) {
-            font: ${font.SubtitleFontDesktop};
+@media screen and (min-width: ${breakPoint.desktop}) {
+    font-size: ${fontSize.subtitleDesktop};
 }
 `;
 

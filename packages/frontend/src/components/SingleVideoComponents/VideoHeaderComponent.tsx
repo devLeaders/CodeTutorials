@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
-import { font } from '../../utils/font'
+import { fontFamily } from '../../utils/fontFamily';
+import { fontSize } from '../../utils/fontSize';
+import { fontWeight } from '../../utils/fontWeight';
 import { image } from '../../utils/image'
-import { colors } from '../../utils/colors';
+import { Colors } from '../../utils/colors';
+import { breakPoint } from '../../utils/breakPoint'
+import { getMovie } from "../../utils/movieArray";
+import { useEffect, useState } from "react";
 
 const Header = styled.header`
         display: flex;
@@ -11,51 +16,59 @@ const Header = styled.header`
 `;
 
 const Title = styled.h1`
-        font: ${font.HeaderFontMobile};
-        color: ${colors.colorMainFont};
-        @media only screen and (min-width: 1024px) {
-            font: ${font.HeaderFontDesktop};
+        font-family: ${fontFamily.openSansFont};
+        font-size: ${fontSize.headerMobile};
+        font-weight: ${fontWeight.black};
+        color: ${Colors.colorMainFont};
+        @media screen and (min-width: ${breakPoint.desktop}) {
+            font-size: ${fontSize.headerDesktop};
         }
 `;
 
 const VideoRating = styled.div`
-        font: ${font.SubtitleFontMobile};
         line-height:40px;
         padding-right: 15px;
         display: flex;
         align-content: center;
-        @media only screen and (min-width: 1024px) {
-            font: ${font.SubtitleFontDesktop};
-        }
 `;
 
 const VideoRatingValue = styled.div`
-        font: ${font.SubtitleFontMobile};
+        font-family: ${fontFamily.openSansFont};
+        font-size: ${fontSize.subtitleMobile};
+        font-weight: ${fontWeight.black};
         line-height:40px;
         padding-left: 10px;
         display: flex;
         align-content: center;
-        color: ${colors.colorMainFont};
-        @media only screen and (min-width: 1024px) {
-            font: ${font.SubtitleFontDesktop};
+        color: ${Colors.colorMainFont};
+        @media screen and (min-width: ${breakPoint.desktop}) {
+            font-size: ${fontSize.subtitleDesktop};
         }
 `;
 
-class VideoHeaderComponent extends React.Component<any>{
+export interface VideoHeaderProps {
+    name: string,
+    rate: number,
+    hashtag: Array<string>,
+    level: string,
+    date: string,
+    describe: string,
+}
 
-    render() {
-        return (
-            <Header>
-                <Title>Tytuł filmu</Title>
-                <VideoRating>
 
-                    <img src='star.svg' className="videoRating__icon"></img>
+function VideoHeaderComponent(props: VideoHeaderProps) {
+    const { name, rate } = props;
 
-                    <VideoRatingValue className="videoRating__value">8,7</VideoRatingValue>
-                </VideoRating>
-            </Header>
-        )
-    }
+    return (
+        <Header>
+            <Title>{name}</Title>
+            <VideoRating>
+
+                <img src='star.svg' className="videoRating__icon"></img>
+                <VideoRatingValue className="videoRating__value">{rate}</VideoRatingValue>
+            </VideoRating>
+        </Header>
+    )
 }
 
 export default VideoHeaderComponent;

@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
+import { breakPoint } from '../../utils/breakPoint'
 
-const StyledVideo = styled.div`
+const StyledVideo = styled.video`
   width: 100%;
-  video {
-    width:100%;
-  }
 
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: ${breakPoint.desktop}) {
       flex-direction: row;
       width:60%;
   }
@@ -17,13 +15,9 @@ class VideoPlayerComponent extends React.Component<any>{
 
     render() {
         return (
-            <StyledVideo>
-                <video width="400" controls>
-                    <source src="video.mp4" type="video/mp4"></source>
-                </video>
+            <StyledVideo controls>
+                <source src="video.mp4" type="video/mp4"></source>
             </StyledVideo>
-
-
         )
     }
 }

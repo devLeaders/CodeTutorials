@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import VideoRateComponent from '../SingleVideoComponents/VideoRateComponent'
 import VideoHeaderComponent from '../SingleVideoComponents/VideoHeaderComponent'
 import VideoInfoComponent from '../SingleVideoComponents/VideoInfoComponent'
+import { breakPoint } from '../../utils/breakPoint'
 
 const DescribeContainer = styled.div`
     width:100%;
@@ -10,7 +11,7 @@ const DescribeContainer = styled.div`
     padding: 15px;
     display: flex;
     flex-direction: column;
-    @media only screen and (min-width: 1024px) {
+    @media screen and (min-width: ${breakPoint.desktop}) {
       width:40%;
   }
 `;
