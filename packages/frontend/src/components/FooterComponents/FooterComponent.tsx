@@ -19,7 +19,7 @@ box-sizing: border-box;
     
     @media screen and (min-width: ${breakPoint.desktop}) {
         flex-direction: row;
-        width: 1200px;
+        width: 100%;
         margin: 50px auto 0 auto;
     }
   `;

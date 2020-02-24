@@ -1,5 +1,4 @@
 import React from 'react';
-import VideoComponent from '../components/SingleVideoComponents/VideoComponent'
 import styled, { createGlobalStyle } from 'styled-components';
 import { Colors } from '../utils/colors';
 import { fontFamily } from '../utils/fontFamily';
@@ -7,6 +6,10 @@ import { breakPoint } from '../utils/breakPoint';
 import FooterComponent from '../components/FooterComponents/FooterComponent';
 import { getMovie } from "../utils/movieArray";
 import { useEffect, useState } from "react";
+import VideoDescribeComponent from '../components/SingleVideoComponents/VideoDescribeComponent';
+import VideoPlayerComponent from '../components/SingleVideoComponents/VideoPlayerComponent';
+import { RouteComponentProps } from 'react-router-dom';
+
 
 const GlobalStyle = createGlobalStyle`
 body{
@@ -30,29 +33,30 @@ const StyledVideoComponent = styled.div`
   }
 `;
 
-const SingleMoviePage: React.FC = (props: any) => {
-    const [movieArray, setMovieArray] = useState(new Array());
+interface SingleMovieProps {
+    id: string,
+}
 
+const SingleMoviePage: React.FC<RouteComponentProps<SingleMovieProps>> = (props) => {
+    const [movie, setMovieArray] = useState({
+        id: 0,
+        name: "",
+        rate: 0,
+        hashtag: [""],
+        level: "",
+        date: "",
+        describe: ""
+    });
     useEffect(() => {
-        setMovieArray(getMovie());
+        setMovieArray(getMovie(props.match.params.id));
     }, []);
 
     return (
         <>
             <GlobalStyle />
-            < StyledVideoComponent >
-
-                {movieArray.map(el => {
-                    return (
-                        <VideoComponent
-                            key={el.name}
-                            name={el.name}
-                            rate={el.rate}
-                        />
-                    );
-                })}
-
-
+            <StyledVideoComponent >
+                <VideoDescribeComponent name={movie.name} rate={movie.rate}></VideoDescribeComponent>
+                <VideoPlayerComponent></VideoPlayerComponent>
             </StyledVideoComponent >
             <FooterComponent></FooterComponent>
         </>

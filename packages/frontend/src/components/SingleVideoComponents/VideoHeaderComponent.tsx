@@ -46,15 +46,10 @@ const VideoRatingValue = styled.div`
         }
 `;
 
-export interface VideoHeaderProps {
+interface VideoHeaderProps {
     name: string,
     rate: number,
-    hashtag: Array<string>,
-    level: string,
-    date: string,
-    describe: string,
 }
-
 
 function VideoHeaderComponent(props: VideoHeaderProps) {
     const { name, rate } = props;
@@ -64,7 +59,7 @@ function VideoHeaderComponent(props: VideoHeaderProps) {
             <Title>{name}</Title>
             <VideoRating>
 
-                <img src='star.svg' className="videoRating__icon"></img>
+                <img src='/star.svg' className="videoRating__icon"></img>
                 <VideoRatingValue className="videoRating__value">{rate}</VideoRatingValue>
             </VideoRating>
         </Header>

@@ -16,13 +16,19 @@ const DescribeContainer = styled.div`
   }
 `;
 
-class VideoDescribeComponent extends React.Component<any>{
+interface VideoDescribeProps {
+    name: string,
+    rate: number,
+}
+
+class VideoDescribeComponent extends React.Component<VideoDescribeProps>{
 
     render() {
+        const { name, rate } = this.props;
         return (
 
             <DescribeContainer>
-                <VideoHeaderComponent></VideoHeaderComponent>
+                <VideoHeaderComponent name={name} rate={rate}></VideoHeaderComponent>
                 <VideoRateComponent></VideoRateComponent>
                 <VideoInfoComponent></VideoInfoComponent>
             </DescribeContainer>

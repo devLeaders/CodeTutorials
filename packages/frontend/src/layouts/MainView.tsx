@@ -11,7 +11,7 @@ const MainView: React.FC = () => {
     return (
         <Switch>
             <Route path={NAVIGATION.HOMEPAGE} exact component={HomePage} />
-            <Route path={NAVIGATION.MOVIES} component={SingleMoviePage} />
+            <Route path={`${NAVIGATION.MOVIES}/:id`} component={SingleMoviePage} />
             <Route path={NAVIGATION.SERIES} component={Series} />
         </Switch>
     );
