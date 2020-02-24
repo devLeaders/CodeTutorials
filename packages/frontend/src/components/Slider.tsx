@@ -162,7 +162,11 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
     const aditionalMoveLeft: number =
       (move * (moviesOnScreen - additionalMoviesNumber)) / moviesOnScreen;
     const firstMovies = [...GsapMovies].slice(0, moviesOnScreen);
-    const lastMovies = [...GsapMovies].slice(8, 10);
+    const lastMovies = [...GsapMovies].slice(
+      GsapMovies.length - moviesOnScreen,
+      GsapMovies.length
+    );
+    console.log(lastMovies);
     this.setState({
       moviePosition: position
     });
@@ -187,15 +191,25 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
       );
     } else if (moviePosition === 0 && direction === Directions.LEFT) {
       this.setState({ moviePosition: -end });
-      TweenLite.fromTo(
-        GsapMovies,
-        0.4,
-        { x: -end - move },
-        { x: additionalMoviesNumber !== 0 ? -end + aditionalMoveLeft : -end }
-      );
+      gsap
+        .timeline()
+        .fromTo(
+          GsapMovies,
+          0.4,
+          { x: -end - move },
+          { x: additionalMoviesNumber !== 0 ? -end + aditionalMoveLeft : -end }
+        )
+        .fromTo(firstMovies, 0.4, { x: 0 }, { x: move }, "<")
+        .to(firstMovies, 0, {
+          x: additionalMoviesNumber !== 0 ? -end + aditionalMoveLeft : -end
+        });
     } else if (moviePosition === -end && direction === Directions.RIGHT) {
       this.setState({ moviePosition: 0 });
-      TweenLite.fromTo(GsapMovies, 0.4, { x: -move }, { x: 0 });
+      gsap
+        .timeline()
+        .fromTo(lastMovies, 0.4, { x: -end }, { x: -end + move })
+        .fromTo(GsapMovies, 0.4, { x: -move }, { x: 0 }, "<");
+      // .to(lastMovies, 0, { x: 0, ease: Power3.easeOut });
     } else {
       this.handleAnimation(move, GsapMovies);
     }
