@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import {View, useEffect, useState } from 'react-native';
 //Images
 import player from '../../../assets/img/player.jpg';
 import back_arrow from '../../../assets/img/back_arrow2.png';
@@ -9,12 +9,8 @@ import {
   Container,
   Player,
   PlayerImage,
-  BackButton,
-  BackArrowImage,
   ColumContainerLeft,
   ColumContainerRight,
-  ImageList,
-  ImageItem,
   MovieName,
   MovieKind,
   RowContainer,
@@ -25,62 +21,44 @@ import {
   Heart,
   HeartRatio,
   RatioContainer,
-  Separator,
-  ViewImage,
   StarsContainer,
   Star,
   VoteText,
   PlayButton,
   Triangle,
 } from './SingleMovieStyle2';
-import { DATA, IMAGES } from './ExampleData';
-import SliderOfImage from './SliderOfImage';
-import HeaderLeft from './HeaderLeft';
+import {DATA} from './ExampleData';
+import {SliderOfImage} from './SliderOfImage';
+import {HeaderLeft} from './HeaderLeft';
+
 
 export default class SingleMovie2 extends React.Component {
-  static navigationOptions = ({navigation}) => {
-   return {
-    headerShown: true,
-  };
+  static navigationOptions = ({navigation}: any) => {
+    return {
+      headerStyle: {
+        backgroundColor: '#00000000',
+        paddingTop: 50,
+      },
+      headerTransparent: true,
+
+      headerTitle: () => <View />,
+      headerLeft: () => <HeaderLeft navigation={navigation} />,
+
+    };
   };
 
   render() {
-    
     return (
       <Background>
         <Container>
           <Player>
             <PlayerImage source={player} />
             <PlayButton onPress={() => this.props.navigation.navigate('Home')}>
-            <Triangle source={play} />
-          </PlayButton>
-          
+              <Triangle source={play} />
+            </PlayButton>
           </Player>
-          
-          <ImageList>
-            <FlatList
-              ItemSeparatorComponent={() => <Separator />}
-              showsHorizontalScrollIndicator={false}
-              horizontal={true}
-              data={DATA}
-              renderItem={({item}) => (
-                <ViewImage>
-                  <ImageItem source={{uri: item.uri}} />
-                </ViewImage>
-              )}
-              keyExtractor={item => item.id}
-            />
-          </ImageList>
-
-         
-
+          <SliderOfImage />
         </Container>
-
-        <BackButton onPress={() => this.props.navigation.navigate('Home')}>
-          <BackArrowImage source={back_arrow} />
-        </BackButton>
-
-        
 
         <RowContainer>
           <ColumContainerLeft>

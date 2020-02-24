@@ -34,17 +34,11 @@ export const BackButton = styled.TouchableOpacity({
   padding: 5,
   height: 27,
   width: 27,
-  position: 'absolute',
-  top: 10,
-  left: 15,
 }); 
 
 export const BackArrowImage = styled.Image({
   height: 25,
   width: 25,
-  position: 'absolute',
-  top: 10,
-  left: 15,
 });
 
 export const RowContainer = styled.View({

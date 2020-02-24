@@ -1,42 +1,24 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import {View, useEffect, useState, FlatList } from 'react-native';
 //Images
-import player from '../../../assets/img/player.jpg';
-import back_arrow from '../../../assets/img/back_arrow2.png';
-import h from '../../../assets/img/h.png';
-import play from '../../../assets/img/play_brown.png';
 import {
-  Container,
-  Player,
-  PlayerImage,
-  BackButton,
-  BackArrowImage,
-  ColumContainerLeft,
-  ColumContainerRight,
   ImageList,
   ImageItem,
-  MovieName,
-  MovieKind,
-  RowContainer,
-  Background,
-  MovieTime,
-  Owerview,
-  Description,
-  Heart,
-  HeartRatio,
-  RatioContainer,
   Separator,
   ViewImage,
-  StarsContainer,
-  Star,
-  VoteText,
-  PlayButton,
-  Triangle,
 } from './SingleMovieStyle2';
-import { DATA, IMAGES } from './ExampleData';
+import { DATA } from './ExampleData';
+import { getData } from './ExampleData';
+
 
 export class SliderOfImage extends React.Component {
+
     render(){
+          const [getData, setData] = useState(new Array());
+            useEffect(() => {
+              setData(getData());
+          }, []);
+
         return (
             <View>
             <ImageList>

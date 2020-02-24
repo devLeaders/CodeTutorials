@@ -1,18 +1,19 @@
-import * as React from 'react'
-import { TouchableOpacity} from 'react-native-gesture-handler';
-import { PlayButton, Triangle } from './SingleMovieStyle2';
+import * as React from 'react';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {BackButton, BackArrowImage} from './SingleMovieStyle2';
 import player from '../../../assets/img/player.jpg';
-import play from '../../../assets/img/back_arrow2.png';
+import back_arrow from '../../../assets/img/back_arrow2.png';
 
-export class HeaderLeft extends React.Component{
+interface Navi {
+  navigation: any;
+}
 
-    render(){
-        return( 
-        <TouchableOpacity>
-            <PlayButton>
-            <Triangle source={play} />
-          </PlayButton>
-          </TouchableOpacity>
-        )
-    };
+export class HeaderLeft extends React.Component<Navi> {
+  render() {
+    return (
+      <BackButton onPress={() => this.props.navigation.navigate('Home')}>
+        <BackArrowImage source={{uri: 'back_arrow2'}} />
+      </BackButton>
+    );
+  }
 }

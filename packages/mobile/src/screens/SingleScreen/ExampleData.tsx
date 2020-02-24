@@ -40,6 +40,11 @@ export const DATA = [
     }
   ];
   
+  export const getData = () => {
+    return DATA;
+  };
+
+
  export const IMAGES = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53ab',
