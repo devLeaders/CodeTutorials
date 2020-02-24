@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -47,6 +47,12 @@ const HomeScreen = ({navigation}:any) => {
                     color="#e63900"
                     title="Go to SingleMovie"
                     onPress={() => navigation.navigate('SingleMovie')}
+                />
+                <Text>Buttons to Exaples</Text>
+                <Button
+                    color="#e63900"
+                    title="Go to SingleMovie after CR"
+                    onPress={() => navigation.navigate('SingleMovie2')}
                 />
               </View>
             </View>

@@ -32,78 +32,31 @@ import {
   VoteText,
   PlayButton,
   Triangle,
-} from './SingleMovieStyle';
+} from './SingleMovieStyle2';
+import { DATA, IMAGES } from './ExampleData';
+import SliderOfImage from './SliderOfImage';
+import HeaderLeft from './HeaderLeft';
 
-const DATA = [
-  {
-    name: 'Joker',
-    kind: 'Drama-comedy',
-    runTime: '2h 2min',
-    ratio: '95%',
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQsAIA_fyXZtUCCy2_ZtuKQKSYNf4mJhnxn5tXojNVvELTCpGr-',
-  },
-  {
-    name: 'Joker',
-    kind: 'Drama-comedy',
-    runTime: '2h 2min',
-    ratio: '95%',
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    uri: 'https://i.pinimg.com/originals/df/67/7f/df677fed943171dc7c75276544753586.jpg',
-  },
-  {
-    name: 'Joker',
-    kind: 'Drama-comedy',
-    runTime: '2h 2min',
-    ratio: '95%',
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGAwxu1pY8sMoyT95ZsXBQS1hx4vTT59jf_t2oFPK14_oir47R',
-  },
-  {
-    name: 'Joker',
-    kind: 'Drama-comedy',
-    runTime: '2h 2min',
-    ratio: '95%',
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28b2',
-    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQsiLoYimfu2253MofOAYbbeFnJkcDOR4047PIld3tc5e3Q_ppL',
-  },
-  {
-    name: 'Joker',
-    kind: 'Drama-comedy',
-    runTime: '2h 2min',
-    ratio: '95%',
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f61',
-    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGAwxu1pY8sMoyT95ZsXBQS1hx4vTT59jf_t2oFPK14_oir47R',
-  },
-  {
-    name: 'Joker',
-    kind: 'Drama-comedy',
-    runTime: '2h 2min',
-    ratio: '95%',
-    id: '58694a0f-3da1-471f-bd96-145571e29d71',
-    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGAwxu1pY8sMoyT95ZsXBQS1hx4vTT59jf_t2oFPK14_oir47R',
-  },
-];
-
-export default class SingleMovie extends React.Component {
+export default class SingleMovie2 extends React.Component {
   static navigationOptions = ({navigation}) => {
    return {
-    headerShown: false,
+    headerShown: true,
   };
   };
 
   render() {
-    const {navigation} = this.props;
+    
     return (
       <Background>
         <Container>
           <Player>
             <PlayerImage source={player} />
             <PlayButton onPress={() => this.props.navigation.navigate('Home')}>
-              <Triangle source={play} />
-            </PlayButton>
+            <Triangle source={play} />
+          </PlayButton>
+          
           </Player>
-
+          
           <ImageList>
             <FlatList
               ItemSeparatorComponent={() => <Separator />}
@@ -118,6 +71,9 @@ export default class SingleMovie extends React.Component {
               keyExtractor={item => item.id}
             />
           </ImageList>
+
+         
+
         </Container>
 
         <BackButton onPress={() => this.props.navigation.navigate('Home')}>
