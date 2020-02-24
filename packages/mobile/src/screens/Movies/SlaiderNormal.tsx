@@ -2,7 +2,6 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { DifrentSlaider } from '../../variables/DifrentEnum';
-import { IMAGES } from './ExampleData';
 import { MoviesListExpandedType } from './MoviesType';
 import {  
     ViewSeparator,
@@ -13,10 +12,17 @@ import {
     GroupCenter,
     ViewTitle,
   } from './MovieListStyle';
+import { GetVideosListExpandedV } from 'src/api/conector';
 
-export class SlaiderNormal extends React.Component{
-  constructor(props){
+type SlaiderNormalS = {
+    listVideos: Array<MoviesListExpandedType>
+  }
+export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
+  constructor(props:any){
     super(props);
+    this.state = {
+      listVideos : []
+    }
     this.Separator = this.Separator.bind(this);
     this.ImgeSlaider = this.ImgeSlaider.bind(this);
   }
@@ -35,7 +41,14 @@ export class SlaiderNormal extends React.Component{
     </View>
   )
 
-    render(){
+  componentDidMount(){
+    const listVideos =  GetVideosListExpandedV();
+    this.setState ({
+      listVideos
+    })
+  }
+
+  render(){
         return(
             <FlatList 
             snapToAlignment={"start"}
@@ -44,7 +57,7 @@ export class SlaiderNormal extends React.Component{
             ItemSeparatorComponent={this.Separator} 
             showsHorizontalScrollIndicator={false}
             horizontal={true}
-            data={IMAGES} 
+            data={this.state.listVideos} 
             renderItem={({item}) => this.ImgeSlaider(item)} 
             keyExtractor={ item => item.id }
           /> 
