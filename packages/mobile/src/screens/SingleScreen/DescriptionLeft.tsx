@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { DifrentSlaider } from '../../variables/DifrentEnum';
-import { MoviesListExpandedType } from './MoviesType';
+import { MovieDescript } from './MoviesType';
 import {
   ImageList,
   ImageItem,
@@ -11,31 +11,31 @@ import {
 } from './SingleMovieStyle2';
 import { GetVideosListExpandedV } from '../../api/conector'
 
-type Slider = {
-  listImages: Array<MoviesListExpandedType>
+type DesLeft = {
+  listVideos: Array<MovieDescript>
 }
 
-export class SliderOfImage extends React.Component<any,Slider> {
+export class DescriptionLeft extends React.Component<any,DesLeft> {
   constructor(props:any){
     super(props);
     this.state = {
-      listImages : []
+      listVideos : []
     }
     this.Separator = this.Separator.bind(this);
     this.ImgeSlaider = this.ImgeSlaider.bind(this);
   }
 
   public Separator = () => (<ViewSeparator/>)
-  public ImgeSlaider = (item:MoviesListExpandedType) => (
+  public ImgeSlaider = (item:MovieDescript) => (
     <View>
         <ImageItem source={{uri: item.uri}}/>
     </View>
   )
 
   componentDidMount(){
-    const listImages =  GetVideosListExpandedV();
+    const listVideos =  GetVideosListExpandedV();
     this.setState ({
-      listImages
+      listVideos
     })
   }
 
@@ -50,8 +50,8 @@ export class SliderOfImage extends React.Component<any,Slider> {
               ItemSeparatorComponent={this.Separator}
               showsHorizontalScrollIndicator={false}
               horizontal={true}
-              data={this.state.listImages}
-              renderItem={({item}) => this.ImgeSlaider(item)}
+              data={this.state.listVideos}
+              renderItem={({item}) => this.DesLeft(item)}
               keyExtractor={ item => item.id}
             />
           </ImageList>

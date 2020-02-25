@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, useEffect, useState } from 'react-native';
+import {View } from 'react-native';
 //Images
 import player from '../../../assets/img/player.jpg';
 import back_arrow from '../../../assets/img/back_arrow2.png';

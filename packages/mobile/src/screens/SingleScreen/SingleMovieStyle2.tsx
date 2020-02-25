@@ -3,11 +3,31 @@ import {FontSize} from '../../variables/FontSize';
 import {FontWeight} from '../../variables/FontWeight';
 import {FontFamily} from '../../variables/FontFamily';
 import {Color} from '../../variables/Color';
+import { DifrentSlaider } from '../../variables/DifrentEnum';
 
 export enum SIZE {
   WIDTH = 420,
   HEIGHT = 280,
 }
+
+export const ViewSeparator = styled.View({
+  width:20
+});
+
+export const ImageSlaider = styled.Image({
+  width: DifrentSlaider.WIDTHLARGE,
+  height: 136, 
+  resizeMode: 'cover', 
+  borderRadius: 10
+});
+
+export const ImageSecondSlaider = styled.Image({
+  width: DifrentSlaider.WIDTHNORMAL,
+  height: 216,
+  borderRadius: 12,
+  resizeMode: 'cover', 
+})
+
 
 export const Background = styled.ScrollView({
   backgroundColor: Color.PALE_GREY,
