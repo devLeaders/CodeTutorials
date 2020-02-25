@@ -3,6 +3,16 @@ import { BrowserRouter } from 'react-router-dom'
 import Navigation from './layouts/Navigation';
 import MainView from './layouts/MainView';
 import styled from 'styled-components';
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  @import url('"https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap"');
+
+  body{
+    font-family: 'Bebas Neue', cursive; 
+    margin: 0;
+  }
+`;
 
 const StyledApp = styled.div`
   display: flex;

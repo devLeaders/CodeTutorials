@@ -11,26 +11,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
 const videos_entity_1 = require("./videos.entity");
 const typeorm_2 = require("@nestjs/typeorm");
 const videos_dto_1 = require("./videos.dto");
+const category_entity_1 = require("./category.entity");
 const shortVersion = Object.keys(new videos_dto_1.ShortVersionDTO());
 let VideosService = class VideosService {
-    constructor(videosRepository) {
+    constructor(videosRepository, CategoriesRepository) {
         this.videosRepository = videosRepository;
+        this.CategoriesRepository = CategoriesRepository;
     }
-    async showAll() {
-        return await this.videosRepository.find({ select: shortVersion });
+    async getAll() {
+        return await this.videosRepository.find({ select: shortVersion, relations: ["category"] });
     }
 };
 VideosService = __decorate([
     common_1.Injectable(),
-    __param(0, typeorm_2.InjectRepository(videos_entity_1.VideosEntity)),
-    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_1.Repository !== "undefined" && typeorm_1.Repository) === "function" ? _a : Object])
+    __param(0, typeorm_2.InjectRepository(videos_entity_1.default)),
+    __param(1, typeorm_2.InjectRepository(category_entity_1.default)),
+    __metadata("design:paramtypes", [typeorm_1.Repository,
+        typeorm_1.Repository])
 ], VideosService);
 exports.VideosService = VideosService;
 //# sourceMappingURL=videos.service.js.map

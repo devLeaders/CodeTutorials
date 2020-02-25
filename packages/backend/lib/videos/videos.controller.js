@@ -16,7 +16,7 @@ let VideosController = class VideosController {
         this.videosService = videosService;
     }
     showAllVideos() {
-        return this.videosService.showAll();
+        return this.videosService.getAll();
     }
 };
 __decorate([

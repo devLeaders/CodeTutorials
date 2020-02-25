@@ -1,7 +1,6 @@
 import React from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
-import Movies from '../pages/Movies';
 import Series from '../pages/Series';
 import NAVIGATION from '../layouts/NavigationPath'
 import SingleMoviePage from '../pages/SingleMoviePage';
