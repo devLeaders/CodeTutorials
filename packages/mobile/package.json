@@ -12,6 +12,8 @@
   "dependencies": {
     "@project/common": "^1.0.0",
     "@react-native-community/masked-view": "^0.1.6",
+    "@types/react-native-vector-icons": "^6.4.5",
+    "@types/styled-components": "^4.4.3",
     "axios": "^0.19.1",
     "react": "16.9.0",
     "react-native": "0.61.5",
@@ -21,7 +23,9 @@
     "react-native-screens": "^2.0.0-alpha.25",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^4.0.10",
+    "react-native-vector-icons": "^6.6.0",
     "react-navigation-stack": "^2.0.15",
+    "react-navigation-tabs": "^2.7.0",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {

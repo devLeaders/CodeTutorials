@@ -23,6 +23,7 @@ import {
   Header,
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
+import { NavigationName } from '../variables/NavigationName';
 
 declare var global: {HermesInternal: null | {}};
 
@@ -45,14 +46,13 @@ const HomeScreen = ({navigation}:any) => {
                 <Text>Buttons to Exaples</Text>
                 <Button
                     color="#e63900"
-                    title="Go to SingleMovie"
-                    onPress={() => navigation.navigate('SingleMovie')}
-                />
-                <Text>Buttons to Exaples</Text>
-                <Button
-                    color="#e63900"
                     title="Go to SingleMovie after CR"
-                    onPress={() => navigation.navigate('SingleMovie2')}
+                    onPress={() => navigation.navigate(NavigationName.SINGLEMOVIE)}
+                />
+                 <Button
+                    color="#e63900"
+                    title="Go to MovieList"
+                    onPress={() => navigation.navigate(NavigationName.MOVIELIST)}
                 />
               </View>
             </View>
