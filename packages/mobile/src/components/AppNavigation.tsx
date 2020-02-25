@@ -11,7 +11,7 @@ import React, { Component } from 'react';
 //navigation import
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { NavigationName } from 'src/variables/NavigationName';
+import { NavigationName } from '../variables/NavigationName';
 
 // Here we can import new screens
 import HomeScreen from '../screens/HomeScreen';

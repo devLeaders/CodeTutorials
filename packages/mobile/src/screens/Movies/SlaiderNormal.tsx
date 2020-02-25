@@ -12,7 +12,7 @@ import {
     GroupCenter,
     ViewTitle,
   } from './MovieListStyle';
-import { GetVideosListExpandedV } from 'src/api/conector';
+import { GetVideosListExpandedV } from '../../api/conector';
 
 type SlaiderNormalS = {
     listVideos: Array<MoviesListExpandedType>

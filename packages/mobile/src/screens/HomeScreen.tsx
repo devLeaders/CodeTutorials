@@ -1,13 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React, { Component } from 'react';
 import {
   SafeAreaView,
@@ -23,6 +13,7 @@ import {
   Header,
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
+import { NavigationName } from '../variables/NavigationName';
 
 declare var global: {HermesInternal: null | {}};
 
@@ -46,7 +37,7 @@ const HomeScreen = ({navigation}:any) => {
                 <Button
                     color="#e63900"
                     title="Go to Movies List"
-                    onPress={() => navigation.navigate('MovieList')}
+                    onPress={() => navigation.navigate(NavigationName.MOVIELIST)}
                 />
               </View>
             </View>

@@ -1,4 +1,4 @@
 export enum NavigationName {
-    HOME = 'HomeScreen',
-    MOVIELIST = 'MoviesList'
+    HOME = 'Home',
+    MOVIELIST = 'MovieList'
 }
