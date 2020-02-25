@@ -16,13 +16,14 @@ import { NavigationName } from '../variables/NavigationName';
 // Here we can import new screens
 import HomeScreen from '../screens/HomeScreen';
 import { MoviesList } from '../screens/Movies/MoviesList';
+import SingleMovie2 from '../screens/SingleScreen/SingleMovie2';
 
 
 const navigation = createStackNavigator(
   {
     [NavigationName.HOME]: HomeScreen,
-    [NavigationName.MOVIELIST]: MoviesList
-
+    [NavigationName.MOVIELIST]: MoviesList,
+    [NavigationName.SINGLEMOVIE]: SingleMovie2,
     //here we can add new screen name
   },
   {

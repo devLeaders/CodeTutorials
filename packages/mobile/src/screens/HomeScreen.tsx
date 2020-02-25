@@ -1,4 +1,14 @@
-import React, { Component } from 'react';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * Generated with the TypeScript template
+ * https://github.com/react-native-community/react-native-template-typescript
+ *
+ * @format
+ */
+
+import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -36,7 +46,12 @@ const HomeScreen = ({navigation}:any) => {
                 <Text>Buttons to Exaples</Text>
                 <Button
                     color="#e63900"
-                    title="Go to Movies List"
+                    title="Go to SingleMovie after CR"
+                    onPress={() => navigation.navigate(NavigationName.SINGLEMOVIE)}
+                />
+                 <Button
+                    color="#e63900"
+                    title="Go to MovieList"
                     onPress={() => navigation.navigate(NavigationName.MOVIELIST)}
                 />
               </View>
