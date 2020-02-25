@@ -11,15 +11,17 @@ import React, { Component } from 'react';
 //navigation import
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { NavigationName } from 'src/variables/NavigationName';
+
 // Here we can import new screens
 import HomeScreen from '../screens/HomeScreen';
 import { MoviesList } from '../screens/Movies/MoviesList';
 
-//Can we move the navigation to separate component...??
+
 const navigation = createStackNavigator(
   {
-    Home: HomeScreen,
-    MovieList: MoviesList
+    [NavigationName.HOME]: HomeScreen,
+    [NavigationName.MOVIELIST]: MoviesList
 
     //here we can add new screen name
   },
