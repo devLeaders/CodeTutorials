@@ -8,7 +8,11 @@
  * @format
  */
 
+<<<<<<< HEAD
 import React, {Component} from 'react';
+=======
+import React from 'react';
+>>>>>>> origin/master
 import {
   SafeAreaView,
   StyleSheet,
@@ -21,11 +25,9 @@ import {
 
 import {
   Header,
-  LearnMoreLinks,
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+<<<<<<< HEAD
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import DetailsScreen from './DetailsScreenDetailsScreen';
@@ -89,6 +91,40 @@ const HomeScreen = ({navigation}) => {
               <Text style={styles.sectionDescription}>
                 <ReloadInstructions />
               </Text>
+=======
+import { NavigationName } from '../variables/NavigationName';
+
+declare var global: {HermesInternal: null | {}};
+
+const HomeScreen = ({navigation}:any) => {
+    return (
+      <>
+        <StatusBar barStyle="dark-content" />
+        <SafeAreaView>
+          <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+            style={styles.scrollView}>
+            <Header />
+             {global.HermesInternal == null ? null : (
+              <View style={styles.engine}>
+                <Text style={styles.footer}>Engine: Hermes</Text>
+              </View>
+            )}
+            <View style={styles.body}>
+            <View style={styles.sectionContainer}>
+                <Text>Buttons to Exaples</Text>
+                <Button
+                    color="#e63900"
+                    title="Go to SingleMovie after CR"
+                    onPress={() => navigation.navigate(NavigationName.SINGLEMOVIE)}
+                />
+                 <Button
+                    color="#e63900"
+                    title="Go to MovieList"
+                    onPress={() => navigation.navigate(NavigationName.MOVIELIST)}
+                />
+              </View>
+>>>>>>> origin/master
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Debug</Text>
