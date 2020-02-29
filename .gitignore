@@ -14,3 +14,5 @@ web-report/
 .DS_Store
 lerna-debug.log
 package-lock.json
+
+packages/backend/lib/*
