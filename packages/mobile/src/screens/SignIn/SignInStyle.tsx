@@ -12,3 +12,13 @@ export const Wrapper = styled.View({
   justifyContent: 'center',
 });
 
+export const EmailView = styled.View({
+  marginHorizontal: 20, 
+  marginVertical: 5,
+});
+
+export const EmailText = styled.Text({
+  marginBottom: 3, 
+});
+
+

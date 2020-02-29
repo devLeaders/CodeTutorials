@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { 
     FormInput, 
     FormValidationMessage, 
-    FormLabel,
+    FormLabel
 } from 'react-native-elements';
 import { Formik } from 'formik';
 
@@ -14,11 +14,9 @@ class Input extends PureComponent {
     render() {
         return (
             <View>
-                <FormLabel>Im a label</FormLabel>
-                <FormInput />
-                <FormValidationMessage>Error</FormValidationMessage>
+                <Text>I am label</Text>
             </View>
-        );
+        )
     }
 }
 
