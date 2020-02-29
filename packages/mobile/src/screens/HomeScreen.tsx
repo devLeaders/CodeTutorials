@@ -54,6 +54,16 @@ const HomeScreen = ({navigation}:any) => {
                     title="Go to MovieList"
                     onPress={() => navigation.navigate(NavigationName.MOVIELIST)}
                 />
+                <Button
+                    color="#e63900"
+                    title="Go to SignIn"
+                    onPress={() => navigation.navigate(NavigationName.SIGNIN)}
+                />
+                <Button
+                    color="#e63900"
+                    title="Go to SignIn"
+                    onPress={() => navigation.navigate(NavigationName.LOGIN)}
+                />
               </View>
             </View>
           </ScrollView>

@@ -6,7 +6,7 @@ import {Color} from '../../variables/Color';
 import { DifrentSlaider } from '../../variables/DifrentEnum';
 
 export enum SIZE {
-  WIDTH = 420,
+  WIDTH = 100,
   HEIGHT = 280,
 }
 
