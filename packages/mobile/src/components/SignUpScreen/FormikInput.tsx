@@ -31,10 +31,11 @@ export interface FormikInputProps {
   change: any;
   value: any;
   holder: string;
+  inputError: any;
 }
 
 const FormikInput: React.SFC<FormikInputProps> = props => {
-  const {type, src, change, holder, errors} = props;
+  const {type, src, change, holder, value, inputError} = props;
   return (
     <Wrapper>
       <InputWrapper>
@@ -43,8 +44,10 @@ const FormikInput: React.SFC<FormikInputProps> = props => {
           placeholder={holder}
           onChangeText={change}
           secureTextEntry={type === 'password'}
+          value={value}
         />
       </InputWrapper>
+      {inputError && <Error inputError={inputError} />}
     </Wrapper>
   );
 };

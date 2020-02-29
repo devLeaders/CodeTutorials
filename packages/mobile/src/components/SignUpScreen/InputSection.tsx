@@ -1,18 +1,18 @@
 import * as React from 'react';
 import {useState} from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import {View, Alert, ActivityIndicator} from 'react-native';
 import {Formik} from 'formik';
-import * as yup from 'yup';
 
 import FormikInput from './FormikInput';
 import SignUpBtn from './SignUpBtn';
+import validationSchema from '../../functions/validationSchema';
+import handleFormSubmit from '../../functions/handleFormSubmit';
 
 const Wrapper = styled.View`
-  margin-top: 15%;
+  margin-top: 40px;
   height: 200px;
   width: 100%;
-  /* background-color: black; */
   align-items: center;
 `;
 const FormWrapper = styled.View`
@@ -22,59 +22,37 @@ const FormWrapper = styled.View`
 export interface InputSectionProps {}
 
 const InputSection: React.SFC<InputSectionProps> = () => {
-  const handleFormSubmit = (values: any, actions: any) => {
-    actions.resetForm();
-    Alert.alert(JSON.stringify(values));
-    setTimeout(() => {
-      actions.setSubmitting(false);
-    }, 1000);
-  };
-
-  const validationSchema = yup.object().shape({
-    email: yup
-      .string()
-      .email()
-      .required('Żeby się zarejestrować musisz podać email')
-      .max(255),
-    name: yup
-      .string()
-      .required('Żeby się zarejestrować musisz podać nazwe użytkownika')
-      .min(6, 'za krótka nazwa użytkownika'),
-    password: yup
-      .string()
-      .required('Żeby się zarejestrować musisz podać hasło')
-      .min(8, 'za krótkie hasło')
-      .max(255),
-  });
-
   return (
     <Wrapper>
       <Formik
-        initialValues={{email: '', name: '', password: ''}}
+        initialValues={{email: '', password: '', passwordConfirmation: ''}}
         onSubmit={(values, actions) => handleFormSubmit(values, actions)}
         validationSchema={validationSchema}>
         {({handleChange, handleSubmit, values, isSubmitting, errors}) => (
           <FormWrapper>
-            <FormikInput
-              type="userName"
-              src="user"
-              change={handleChange('name')}
-              value={values.name}
-              holder="name"
-            />
             <FormikInput
               type="email"
               src="email"
               change={handleChange('email')}
               value={values.email}
               holder="email"
+              inputError={errors.email}
             />
             <FormikInput
               type="password"
               src="password"
               change={handleChange('password')}
               value={values.password}
-              holder="password"
+              holder="wprowadź hasło"
+              inputError={errors.password}
+            />
+            <FormikInput
+              type="password"
+              src="password"
+              change={handleChange('passwordConfirmation')}
+              value={values.passwordConfirmation}
+              holder="powtórz hasło"
+              inputError={errors.passwordConfirmation}
             />
             {isSubmitting ? (
               <ActivityIndicator />

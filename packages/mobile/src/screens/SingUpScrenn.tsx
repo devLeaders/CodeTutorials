@@ -1,6 +1,6 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import {View, Text} from 'react-native';
+import styled from 'styled-components/native';
+import {View, Text, ScrollView} from 'react-native';
 
 import Header from '../components/SignUpScreen/Header';
 import InputSection from '../components/SignUpScreen/InputSection';
@@ -12,21 +12,23 @@ const Wrapper = styled.View`
   align-items: center;
 `;
 const Section = styled.View`
-  margin-top: 30%;
-  width: 90%;
+  margin-top: 120px;
+  width: 80%;
 `;
 
 export interface SignUpScreenProps {}
 
 const SignUpScreen: React.SFC<SignUpScreenProps> = () => {
   return (
-    <Wrapper>
-      <Section>
-        <Header title="Zarejestruj się"></Header>
-        <InputSection />
+    <ScrollView>
+      <Wrapper>
+        <Section>
+          <Header title="Zarejestruj się"></Header>
+          <InputSection />
+        </Section>
         <Footer />
-      </Section>
-    </Wrapper>
+      </Wrapper>
+    </ScrollView>
   );
 };
 

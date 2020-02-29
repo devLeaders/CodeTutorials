@@ -8,13 +8,13 @@ const ErrorTxt = styled.Text`
 `;
 
 export interface ErrorProps {
-  error: any;
+  inputError: any;
 }
 
-const Error: React.SFC<ErrorProps> = ({error}) => {
+const Error: React.SFC<ErrorProps> = ({inputError}) => {
   return (
     <Wrapper>
-      <ErrorTxt>{error}</ErrorTxt>
+      <ErrorTxt>{inputError}</ErrorTxt>
     </Wrapper>
   );
 };
