@@ -4,6 +4,33 @@ import { Formik } from 'formik';
 import * as yup from "yup";
 import {EmailView, EmailText} from './SignInStyle';
 
+const StyledInput = ({ label, formikProps, formikKey, ...rest }) => {
+
+    const inputStyles = {
+            borderWidth: 1,
+            borderColor: "black",
+            padding: 10,
+            marginBottom: 3,
+    };
+
+    if (formikProps.touched[formikKey] && formikProps.errors[formikKey]) {
+        inputStyles.borderColor = "red";
+    }
+return (
+    <EmailView>
+        <EmailText>{ label }</EmailText>
+        <TextInput
+            style={inputStyles}
+            onChangeText={formikProps.handleChange(formikKey)}
+            onBlur={formikProps.handleBlur(formikKey)}
+            {...rest}
+        />
+        <Text style={{ color: 'red' }}>
+            {formikProps.touched[formikKey] && formikProps.errors[formikKey]}
+        </Text>
+    </EmailView>
+);
+}
 
 const validationSchema = yup.object().shape({
     email: yup
@@ -34,43 +61,21 @@ class LogIn extends React.Component {
                 >
                     {formikProps => (
                         <React.Fragment>
-                            <EmailView>
-                                <EmailText>Email</EmailText>
-                                <TextInput
+                            <StyledInput
+                                label="Email"
+                                formikProps={formikProps}
+                                formikKey="email"
                                 placeholder="E-mail"
-                                    style={{
-                                        borderWidth: 1,
-                                        borderColor: "black",
-                                        padding: 10,
-                                        marginBottom: 3,
-                                    }}
-                                    onChangeText={formikProps.handleChange("email")}
-                                    onBlur={formikProps.handleBlur("email")}
-                                    autoFocus
-                                />
-                                <Text style={{ color: 'red' }}>{formikProps.touched.email && formikProps.errors.email}</Text>
+                                autofocus
+                            />
 
-                            </EmailView>
-                            
-                            <View style={{ marginHorizontal: 20, marginVertical: 5 }}>
-                            <Text style={{marginBottom: 3}}>Password</Text>
-                            <TextInput
-                            placeholder="Password"
-                                style={{
-                                    borderWidth: 1,
-                                    borderColor: "black",
-                                    padding: 10,
-                                    marginBottom: 3,
-                                }}
-                                onChangeText={formikProps.handleChange("password")}
-                                onBlur={formikProps.handleBlur("password")}
+                            <StyledInput
+                                label="Password"
+                                formikProps={formikProps}
+                                formikKey="password"
+                                placeholder="Password"
                                 secureTextEntry
                             />
-                            <Text style={{ color: 'red' }}>{formikProps.touched.password && formikProps.errors.password}</Text>
-
-                        </View>
-
-
                             {formikProps.isSubmitting ? (
                             <ActivityIndicator />
                             ) : (
