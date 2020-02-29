@@ -1,4 +1,5 @@
 node_modules/**/*
+lib/**/*
 .expo/*
 npm-debug.*
 *.jks
@@ -14,5 +15,3 @@ web-report/
 .DS_Store
 lerna-debug.log
 package-lock.json
-
-packages/backend/lib/*
