@@ -1,7 +1,8 @@
 enum NAVIGATION {
     HOMEPAGE = '/',
     MOVIES = '/filmy',
-    SERIES = '/seriale'
+    SERIES = '/seriale',
+    LOGIN = '/login',
 }
 
 export default NAVIGATION
