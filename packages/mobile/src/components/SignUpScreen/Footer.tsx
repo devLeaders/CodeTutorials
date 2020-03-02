@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import {View, Text, TouchableOpacity} from 'react-native';
 
 const Wrapper = styled.View`
-  margin-top: 140px;
+  margin-top: 20px;
   align-self: center;
   flex-direction: row;
 `;

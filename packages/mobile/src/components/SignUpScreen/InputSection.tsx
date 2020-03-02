@@ -11,7 +11,6 @@ import handleFormSubmit from '../../functions/handleFormSubmit';
 
 const Wrapper = styled.View`
   margin-top: 40px;
-  height: 200px;
   width: 100%;
   align-items: center;
 `;
@@ -27,6 +26,7 @@ const InputSection: React.SFC<InputSectionProps> = () => {
       <Formik
         initialValues={{email: '', password: '', passwordConfirmation: ''}}
         onSubmit={(values, actions) => handleFormSubmit(values, actions)}
+        validateOnChange={false}
         validationSchema={validationSchema}>
         {({handleChange, handleSubmit, values, isSubmitting, errors}) => (
           <FormWrapper>

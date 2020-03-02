@@ -4,10 +4,9 @@ import * as yup from 'yup';
 const validationSchema = yup.object().shape({
   email: yup
     .string()
-    .email()
+    .email('Podaj poprawny email')
     .required('Żeby się zarejestrować musisz podać email')
     .max(255),
-
   password: yup
     .string()
     .required('Żeby się zarejestrować musisz podać hasło')

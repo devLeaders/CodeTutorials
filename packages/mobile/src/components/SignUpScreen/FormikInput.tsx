@@ -1,6 +1,7 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import {View, TextInput, Image} from 'react-native';
+
 import Error from './Error';
 import {ErrorMessage} from 'formik';
 

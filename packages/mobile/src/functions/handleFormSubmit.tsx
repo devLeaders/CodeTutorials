@@ -1,15 +1,31 @@
 import * as React from 'react';
-import {Alert} from 'react-native';
+import {ToastAndroid} from 'react-native';
 import postUser from '../api/PostUser';
 
-const handleFormSubmit = (values: any, actions: any) => {
+const handleFormSubmit = async (values: any, actions: any) => {
   const user = {
     email: values.email,
     password: values.password,
   };
-  postUser(user);
   actions.resetForm();
-  //   Alert.alert(user);
+  try {
+    const res = await postUser(user);
+    console.log(res);
+    ToastAndroid.showWithGravity(
+      'Rejestracja pomyśla',
+      ToastAndroid.LONG,
+      ToastAndroid.CENTER,
+    );
+  } catch (err) {
+    console.log(err.response.data.statusCode);
+    if (err.response.data.statusCode === 409) {
+      ToastAndroid.showWithGravity(
+        'Podany email jest już używany',
+        ToastAndroid.LONG,
+        ToastAndroid.CENTER,
+      );
+    }
+  }
 };
 
 export default handleFormSubmit;
