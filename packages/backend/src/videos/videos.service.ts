@@ -17,6 +17,7 @@ export class VideosService {
         return await this.videosRepository.find({select:shortVersion, relations:["category"]});
     }
 
+    
     async getAllCategoryList(){
         return await getRepository(CategoryEntity)
         .createQueryBuilder("category")
