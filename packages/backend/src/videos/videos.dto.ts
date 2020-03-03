@@ -1,3 +1,5 @@
+import CategoryEntity from "./category.entity";
+
 export interface VideoDTO {
     id: string,
     title: string,
@@ -6,14 +8,7 @@ export interface VideoDTO {
 }
 
 export class ShortVersionDTO {
-    id: string = null;  
     title: string = null;
     urlTrailer: string = null;
     urlPhoto: string = null;
-}
-
-export class CategoryDTO {
-    category: {
-        
-    }
 }

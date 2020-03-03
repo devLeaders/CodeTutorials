@@ -9,7 +9,6 @@
     "build": "nest build --watch --webpack",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest build & node dist/main",
-    "start1": "node dist/main",
     "start:watch": "node dist/main",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
@@ -19,7 +18,10 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm:cli": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli",
+    "start:devts": "nodemon --config nodemon.json",
+    "pretypeorm:cli": "(rm ormconfig.json || :) && ts-node -r tsconfig-paths/register src/config/scripts/write-type-orm-config.ts"
   },
   "dependencies": {
     "@nestjs/common": "^6.7.2",

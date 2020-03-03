@@ -6,6 +6,6 @@ export class VideosController{
 
     @Get()
     showAllVideos(){
-        return this.videosService.showAll();
+        return this.videosService.getAll();
     }
 }

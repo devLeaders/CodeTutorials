@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-const category_entity_1 = require("../category/category.entity");
 let VideosEntity = class VideosEntity {
 };
 __decorate([
@@ -57,10 +56,6 @@ __decorate([
     typeorm_1.Column('text'),
     __metadata("design:type", String)
 ], VideosEntity.prototype, "urlPhoto", void 0);
-__decorate([
-    typeorm_1.OneToMany(() => category_entity_1.CategoryEntity, category => category.videos),
-    __metadata("design:type", Promise)
-], VideosEntity.prototype, "category", void 0);
 VideosEntity = __decorate([
     typeorm_1.Entity('videos')
 ], VideosEntity);

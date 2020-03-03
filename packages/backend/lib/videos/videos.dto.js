@@ -9,7 +9,4 @@ class ShortVersionDTO {
     }
 }
 exports.ShortVersionDTO = ShortVersionDTO;
-class CategoryDTO {
-}
-exports.CategoryDTO = CategoryDTO;
 //# sourceMappingURL=videos.dto.js.map

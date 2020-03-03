@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, useDispatch } from "react-redux";
+import { connect} from "react-redux";
 
 class CountShow extends React.Component<any>{
 

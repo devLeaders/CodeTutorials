@@ -1,8 +1,8 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from 'typeorm';
-import { CategoryEntity } from '../category/category.entity'
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn,ManyToMany,JoinTable } from 'typeorm';
+import CategoryEntity from './category.entity';
 
     @Entity('videos')
-    export class VideosEntity {
+    class VideosEntity {
         @PrimaryGeneratedColumn('uuid') id: number;
 
         @CreateDateColumn() created: Date;
@@ -25,7 +25,11 @@ import { CategoryEntity } from '../category/category.entity'
 
         @Column('text') urlPhoto: string;
 
-        @OneToMany(() => CategoryEntity, 
-            category => category.videos) 
-            category: Promise<CategoryEntity[]>
+        @ManyToMany(type => CategoryEntity,{
+            cascade: ["insert"]
+        })
+        @JoinTable()
+        category: CategoryEntity[];
     }
+
+    export default VideosEntity;

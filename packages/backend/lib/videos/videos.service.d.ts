@@ -1,7 +1,9 @@
 import { Repository } from 'typeorm';
-import { VideosEntity } from './videos.entity';
+import VideosEntity from './videos.entity';
+import CategoryEntity from './category.entity';
 export declare class VideosService {
     private videosRepository;
-    constructor(videosRepository: Repository<VideosEntity>);
-    showAll(): Promise<VideosEntity[]>;
+    private CategoriesRepository;
+    constructor(videosRepository: Repository<VideosEntity>, CategoriesRepository: Repository<CategoryEntity>);
+    getAll(): Promise<VideosEntity[]>;
 }

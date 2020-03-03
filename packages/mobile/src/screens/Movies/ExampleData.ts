@@ -1,0 +1,48 @@
+
+export const DATA = [
+    {
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      uri: 'movie1',
+    },
+    {
+      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+      uri: 'movie2',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      uri: 'movie3',
+    }
+  ];
+  
+ export const IMAGES = [
+    {
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53ab',
+      uri: 'movie1',
+      title: 'Ford v Ferrari',
+      like: '97%'
+    },
+    {
+      id: '3ac68afc-c605-48d3-fbd91aa97f632',
+      uri: 'movie2',
+      title: 'Sherlock Holms',
+      like: '99%'
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d722',
+      uri: 'movie3',
+      title: 'The Witcher',
+      like: '90%'
+    },
+    {
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba2',
+      uri: 'movie4',
+      title: 'Bad boys',
+      like: '75%'
+    },
+    {
+      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f632',
+      uri: 'movie5',
+      title: 'Frozen II',
+      like: '80%'
+    },
+  ];

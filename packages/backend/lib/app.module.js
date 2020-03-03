@@ -12,7 +12,6 @@ const app_service_1 = require("./app.service");
 const typeorm_1 = require("@nestjs/typeorm");
 const videos_entity_1 = require("./videos/videos.entity");
 const videos_module_1 = require("./videos/videos.module");
-const category_module_1 = require("./category/category.module");
 require("dotenv/config");
 let AppModule = class AppModule {
 };
@@ -28,7 +27,7 @@ AppModule = __decorate([
                 database: process.env.DATABASE,
                 entities: [videos_entity_1.VideosEntity],
                 synchronize: true,
-            }), videos_module_1.VideosModule, category_module_1.CategoryModule
+            }), videos_module_1.VideosModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

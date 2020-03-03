@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -21,19 +21,13 @@ import {
 
 import {
   Header,
-  LearnMoreLinks,
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import DetailsScreen from './DetailsScreenDetailsScreen';
-import ContextAPIHome from './ContextAPIHome';
+import { NavigationName } from '../variables/NavigationName';
 
 declare var global: {HermesInternal: null | {}};
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({navigation}:any) => {
     return (
       <>
         <StatusBar barStyle="dark-content" />
@@ -52,57 +46,15 @@ const HomeScreen = ({navigation}) => {
                 <Text>Buttons to Exaples</Text>
                 <Button
                     color="#e63900"
-                    title="Go to Detail screen"
-                    onPress={() => navigation.navigate('Details')}
-                />
-                <Button
-                    color="#e63900"
-                    title="Go to Context API Example2"
-                    onPress={() => navigation.navigate('ExampleContextAPI2')}
+                    title="Go to SingleMovie after CR"
+                    onPress={() => navigation.navigate(NavigationName.SINGLEMOVIE)}
                 />
                  <Button
                     color="#e63900"
-                    title="Go to Axios Example"
-                    onPress={() => navigation.navigate('AxiosExample')}
+                    title="Go to MovieList"
+                    onPress={() => navigation.navigate(NavigationName.MOVIELIST)}
                 />
-                <Button
-                    color="#e63900"
-                    title="Go to Example Context API"
-                    onPress={() => navigation.navigate('ExampleContextAPI')}
-                />
-                
               </View>
-              
-              
-              
-              
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>Step One</Text>
-                <Text style={styles.sectionDescription}>
-                  Edit <Text style={styles.highlight}>App.tsx</Text> to change
-                  this screen and then come back to see your edits.
-                </Text>
-              </View>
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>See Your Changes</Text>
-                <Text style={styles.sectionDescription}>
-                  <ReloadInstructions />
-                </Text>
-              </View>
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>Debug</Text>
-                <Text style={styles.sectionDescription}>
-                  <DebugInstructions />
-                </Text>
-              </View>
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>Learn More</Text>
-                <Text style={styles.sectionDescription}>
-                  Read the docs to discover what to do next:
-                </Text>
-              </View>
-             
-              <LearnMoreLinks />
             </View>
           </ScrollView>
         </SafeAreaView>

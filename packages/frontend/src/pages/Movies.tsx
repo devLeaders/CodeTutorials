@@ -1,42 +1,56 @@
-import React from 'react'
-import axiosConfig from '../axios/configAxios'
-import { getActors } from '../axios/conectors'
-import MoviesTypes from '../pages/MoviesTypes.d'
+import React, { useEffect } from "react";
+import MovieNavBar from "../components/MovieNavBar";
+import styled from "styled-components";
+import FiltrationBtns from "../components/FiltrationBtns";
+import MovieSection from "../components/MovieSection";
+import NewContent from "../components/NewContent";
+import Colors from "../constans/Colors";
+import { device } from "../constans/device";
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #222;
+  width: 100%;
+`;
 
-export default class Movies extends React.Component<any, MoviesTypes> {
+const Section = styled.section`
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media ${device.mobileM} {
+    height: 300px;
+  }
+  @media ${device.tablet} {
+    height: 450px;
+  }
+`;
+const SliderSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
 
-    state = {
-        persons: []
-    }
+export interface MoviesProps {}
 
-    componentDidMount() {
+const Movies: React.SFC<MoviesProps> = () => {
+  return (
+    <Wrapper>
+      <MovieNavBar></MovieNavBar>
+      <Section>
+        <NewContent />
+        <FiltrationBtns></FiltrationBtns>
+      </Section>
+      <SliderSection>
+        <MovieSection title="Polecane dla ciebie" id={1}></MovieSection>
+        <MovieSection title="Akcja" id={2}></MovieSection>
+        <MovieSection title="Dramaty" id={3}></MovieSection>
+      </SliderSection>
+    </Wrapper>
+  );
+};
 
-        const persons1: any[] = []
-        getActors()
-            .then(res => {
-
-                res.data.forEach((el: any) => {
-                    persons1.push(el.name)
-                });
-
-                this.setState({ persons: persons1 })
-            })
-
-            .catch(err => {
-                console.log('error')
-            })
-    }
-
-    render() {
-        return (
-            <div>
-                <h1>Filmy</h1>
-                <br />
-                <h2>Aktorzy:</h2>
-                <br />
-                {this.state.persons.map(person => <li key={person}>{person}</li>)}
-            </div>
-        )
-    }
-}
+export default Movies;
