@@ -32,12 +32,13 @@ const StyledMain = styled.div`
 const App: React.FC = () => {
   return (
     <BrowserRouter>
+      <GlobalStyle />
       <StyledApp className="app">
         <StyledNav>
-          {<Navigation />}
+          <Navigation />
         </StyledNav>
         <StyledMain>
-          {<MainView />}
+          <MainView />
         </StyledMain>
 
       </StyledApp>
