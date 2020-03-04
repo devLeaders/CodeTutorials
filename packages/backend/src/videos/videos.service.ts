@@ -13,15 +13,21 @@ export class VideosService {
     @InjectRepository(CategoryEntity) private categoriesRepository: Repository<CategoryEntity>
     ){}
 
-    async getAll(){
-        return await this.videosRepository.find({select:shortVersion, relations:["category"]});
+    async getAll(page:number=1){
+        return await this.videosRepository.find({
+            select:shortVersion,
+            relations:["category"],
+            take:20,
+            skip:(20 * (page-1))
+        });
     }
 
-    
-    async getAllCategoryList(){
+    async getAllCategoryList(page:number=1){
         return await getRepository(CategoryEntity)
         .createQueryBuilder("category")
         .leftJoinAndSelect("category.videos", "videos")
+        .take(20)
+        .skip(20 * (page-1))
         .getMany();
     }
 }
