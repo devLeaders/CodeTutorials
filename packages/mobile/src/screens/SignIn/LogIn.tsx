@@ -1,57 +1,32 @@
 import React from 'react';
-import { View, Text, SafeAreaView, TextInput, Button, ActivityIndicator } from 'react-native';
+import {
+    View, 
+    TouchableOpacity, 
+    Text,
+    SafeAreaView,
+    TextInput,
+    Button,
+    ActivityIndicator 
+} from 'react-native';
 import { Formik } from 'formik';
-import * as yup from "yup";
-import {EmailView, EmailText} from './SignInStyle';
+import {ForgotText, ForgotOpacity} from './SignInStyle';
+import SignInBtn from './SignInBtn';
+import validationSchema from './validationSchema';
+import StyledInput from './StyledInput';
 
-const StyledInput = ({ label, formikProps, formikKey, ...rest }) => {
+export interface LogInProps {
+    label: string;
+    formikProps: any;
+    formikKey: string;
+  }
 
-    const inputStyles = {
-            borderWidth: 1,
-            borderColor: "black",
-            padding: 10,
-            marginBottom: 3,
-    };
-
-    if (formikProps.touched[formikKey] && formikProps.errors[formikKey]) {
-        inputStyles.borderColor = "red";
-    }
-return (
-    <EmailView>
-        <EmailText>{ label }</EmailText>
-        <TextInput
-            style={inputStyles}
-            onChangeText={formikProps.handleChange(formikKey)}
-            onBlur={formikProps.handleBlur(formikKey)}
-            {...rest}
-        />
-        <Text style={{ color: 'red' }}>
-            {formikProps.touched[formikKey] && formikProps.errors[formikKey]}
-        </Text>
-    </EmailView>
-);
-}
-
-const validationSchema = yup.object().shape({
-    email: yup
-    .string()
-    .label('Email')
-    .email()
-    .required(),
-    password: yup
-    .string()
-    .label("Password")
-    .required().min(8, 'Password is to short min 8 characters')
-    .max(20, 'Password should have max 20 characters')
-});
-
-class LogIn extends React.Component {
+class LogIn extends React.Component<LogInProps> {
     render() {
         return (
             <SafeAreaView style={{ marginTop: 90}}>
                 <Formik
                     initialValues={{ email: "", password: ''}}
-                    onSubmit={(values, actions) => {
+                    onSubmit={(values, actions) => { //add handleSubmit(values, actions)
                         alert(JSON.stringify(values));
                         setTimeout(() => {
                             actions.setSubmitting(false);
@@ -76,11 +51,19 @@ class LogIn extends React.Component {
                                 placeholder="Password"
                                 secureTextEntry
                             />
+
+                            <ForgotOpacity>
+                                 <ForgotText>Forgot Password?</ForgotText>
+                            </ForgotOpacity>
+
                             {formikProps.isSubmitting ? (
                             <ActivityIndicator />
                             ) : (
-                            <Button title="Subimit" onPress={formikProps.handleSubmit} />
+                            ///<Button 
+                            ///    title="Subimit" onPress={formikProps.handleSubmit} />
+                            <SignInBtn onPress={formikProps.handleSubmit} />
                             )}
+                            
                         </React.Fragment>
                     )}
                 </Formik>
