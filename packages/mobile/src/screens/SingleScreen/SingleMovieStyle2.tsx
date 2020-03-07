@@ -47,7 +47,7 @@ export const Player = styled.View({
 
 export const PlayerImage = styled.ImageBackground({
   height: SIZE.HEIGHT,
-  width: SIZE.WIDTH,
+  width: 400,
 });
 
 export const BackButton = styled.TouchableOpacity({
