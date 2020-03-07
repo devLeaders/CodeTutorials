@@ -2,13 +2,21 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 require('dotenv').config();
-import { Logger } from '@nestjs/common';
+import { Logger,ValidationPipe } from '@nestjs/common';
+import * as helmet from 'helmet';
+import * as csurf from 'csurf';
+
+
 declare const module: any;
 
 const port = process.env.APP_PORT;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ValidationPipe());
+  app.use(helmet());
+  //app.use(csurf());
+
   app.enableCors();
   
   const options = new DocumentBuilder()
