@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { fontFamily } from '../../utils/fontFamily';
 import { fontSize } from '../../utils/fontSize';
 import { fontWeight } from '../../utils/fontWeight';
-import { Colors } from '../../utils/colors';
+import { colors } from '../../utils/colors';
 import { breakPoint } from '../../utils/breakPoint'
 
 const StyledRate = styled.section`
     width:100%;
-    color: ${Colors.colorMainFont};
+    color: ${colors.colorMainFont};
     text-align: left;
     font-family: ${fontFamily.openSansFont};
 `;
@@ -25,7 +25,7 @@ const Star = styled.svg`
     height: 24px;
     transition: background-image 0.3s ease; 
     &:hover ~ & path, &:hover path {
-        fill: ${Colors.colorStar};
+        fill: ${colors.colorStar};
         transition: background-image 0.3s ease; 
     }
 `;

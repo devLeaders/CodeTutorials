@@ -1,16 +1,16 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { Colors } from '../../utils/colors';
+import { colors } from '../../utils/colors';
 import { fontFamily } from '../../utils/fontFamily';
 import { fontSize } from '../../utils/fontSize';
 
 const Btn = styled.button`
   width: 100%;
   height: 60px;
-  color: ${Colors.colorBorder};
+  color: ${colors.colorBorder};
   width: 100%;
-  background-color: ${Colors.colorStar};
+  background-color: ${colors.colorStar};
   font-family:${fontFamily.openSansFont};
   font-size: ${fontSize.subtitleMobile};
   text-decoration: none;
@@ -33,7 +33,7 @@ const Btn = styled.button`
     border-radius: 50%;
     top: 0%;
     left: 50%;
-    background-color: ${Colors.colorBorder};
+    background-color: ${colors.colorBorder};
     opacity: .1;
     transform: translate(-50%, -50%) scale(0, 0);
     transition: transform .3s ease 0s;
@@ -41,7 +41,7 @@ const Btn = styled.button`
 }
   &:hover{
     cursor: pointer;
-    color: ${Colors.backgroundMain};
+    color: ${colors.backgroundMain};
     &:before{
       opacity: 0.15;
       transform: translate(-50%, -50%) scale(1, 1);

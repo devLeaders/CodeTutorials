@@ -6,28 +6,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const auth_module_1 = require("./auth/auth.module");
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const typeorm_1 = require("@nestjs/typeorm");
-const videos_entity_1 = require("./videos/videos.entity");
 const videos_module_1 = require("./videos/videos.module");
-require("dotenv/config");
+const config_service_1 = require("./config/config.service");
+const files_module_1 = require("./files/files.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
         imports: [
-            typeorm_1.TypeOrmModule.forRoot({
-                type: 'postgres',
-                host: process.env.HOST,
-                port: parseInt(process.env.PORTDB),
-                username: process.env.USERNAME,
-                password: process.env.PASSWORD,
-                database: process.env.DATABASE,
-                entities: [videos_entity_1.VideosEntity],
-                synchronize: true,
-            }), videos_module_1.VideosModule
+            typeorm_1.TypeOrmModule.forRoot(config_service_1.configService.getTypeOrmConfig()),
+            videos_module_1.VideosModule,
+            files_module_1.FilesModule,
+            auth_module_1.AuthModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

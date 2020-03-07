@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
-import { Colors } from '../../utils/colors';
+import { colors } from '../../utils/colors';
 import { fontFamily } from '../../utils/fontFamily';
 import { fontSize } from '../../utils/fontSize';
 import { fontWeight } from '../../utils/fontWeight';
@@ -12,7 +12,7 @@ box-sizing: border-box;
     display: flex;
     list-style: none;
     justify-content: space-evenly;
-    border-top: 2px solid ${Colors.colorBorder};
+    border-top: 2px solid ${colors.colorBorder};
     margin: 50px 15px 0px 15px;
     padding-top: 20px;
     flex-wrap: wrap;

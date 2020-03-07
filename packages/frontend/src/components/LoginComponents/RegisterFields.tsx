@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Colors } from '../../utils/colors';
+import { colors } from '../../utils/colors';
 import { fontFamily } from '../../utils/fontFamily';
 import { fontSize } from '../../utils/fontSize';
 import SocialMedia from '../LoginComponents/SocialMedia';
 
 const Link = styled.a`
   width: 100%;
-  color: ${Colors.colorStar};
+  color: ${colors.colorStar};
   font-family:${fontFamily.openSansFont};
   font-size: ${fontSize.paragraphMobile};
   text-decoration: none;
@@ -17,7 +17,7 @@ const Link = styled.a`
 
 const Paragraph = styled.p`
   width: min-content;
-  color: ${Colors.colorInput};
+  color: ${colors.colorInput};
   font-family:${fontFamily.openSansFont};
   font-size: ${fontSize.paragraphMobile};
   text-decoration: none;
@@ -29,7 +29,7 @@ const Paragraph = styled.p`
       position: absolute;
       width: 30px;
       height: 1px;
-      background-color: ${Colors.colorInput};
+      background-color: ${colors.colorInput};
       content: "";
       top:10px;
       left: -40px;
@@ -39,7 +39,7 @@ const Paragraph = styled.p`
       position: absolute;
       width: 30px;
       height: 1px;
-      background-color: ${Colors.colorInput};
+      background-color: ${colors.colorInput};
       content: "";
       top:10px;
       right: -40px;

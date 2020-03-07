@@ -4,7 +4,7 @@ import { fontFamily } from '../../utils/fontFamily';
 import { fontSize } from '../../utils/fontSize';
 import { fontWeight } from '../../utils/fontWeight';
 import { image } from '../../utils/image'
-import { Colors } from '../../utils/colors';
+import { colors } from '../../utils/colors';
 import { breakPoint } from '../../utils/breakPoint'
 import { getMovie } from "../../utils/movieArray";
 import { useEffect, useState } from "react";
@@ -19,7 +19,7 @@ const Title = styled.h1`
         font-family: ${fontFamily.openSansFont};
         font-size: ${fontSize.headerMobile};
         font-weight: ${fontWeight.black};
-        color: ${Colors.colorMainFont};
+        color: ${colors.colorMainFont};
         @media screen and (min-width: ${breakPoint.desktop}) {
             font-size: ${fontSize.headerDesktop};
         }
@@ -40,7 +40,7 @@ const VideoRatingValue = styled.div`
         padding-left: 10px;
         display: flex;
         align-content: center;
-        color: ${Colors.colorMainFont};
+        color: ${colors.colorMainFont};
         @media screen and (min-width: ${breakPoint.desktop}) {
             font-size: ${fontSize.subtitleDesktop};
         }

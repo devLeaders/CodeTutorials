@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Colors } from '../../utils/colors';
+import { colors } from '../../utils/colors';
 import { fontFamily } from '../../utils/fontFamily';
 import { fontSize } from '../../utils/fontSize';
 
@@ -8,7 +8,7 @@ const Input = styled.input`
   width: 100%;
   outline: 0;
   border: 0;
-  border-bottom: 2px solid ${Colors.colorInput};
+  border-bottom: 2px solid ${colors.colorInput};
   padding-bottom: 8px;
   margin-bottom: 30px;
   font-family: ${fontFamily.openSansFont};
@@ -21,7 +21,7 @@ const Input = styled.input`
 
   cursor: pointer;
   &::placeholder {
-    color: ${Colors.colorInput};
+    color: ${colors.colorInput};
   }
 `;
 
