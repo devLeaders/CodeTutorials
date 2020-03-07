@@ -8,7 +8,7 @@ const Btn = styled.View`
   justify-content: center;
   align-items: center;
   height: 60px;
-  background-color: purple;
+  background-color: #9F8DF0;;
   border-radius: 40px;
   width: 80%;
   margin-top: 15px;

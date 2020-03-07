@@ -18,9 +18,7 @@ export default class SignIn extends React.Component {
                 <LogIn />
                 <SignUpOpacity>
                     <SignUpText>Don't have an account?</SignUpText>
-                </SignUpOpacity>
-              
-                
+                </SignUpOpacity>           
             </Wrapper>
         )
     }

@@ -40,6 +40,7 @@ class LogIn extends React.Component<LogInProps> {
                                 label="Email"
                                 formikProps={formikProps}
                                 formikKey="email"
+                                src='email'
                                 placeholder="E-mail"
                                 autofocus
                             />
@@ -50,6 +51,7 @@ class LogIn extends React.Component<LogInProps> {
                                 formikKey="password"
                                 placeholder="Password"
                                 secureTextEntry
+                                src='password'
                             />
 
                             <ForgotOpacity>
