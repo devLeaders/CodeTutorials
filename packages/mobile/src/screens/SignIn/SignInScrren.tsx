@@ -1,13 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import LogIn from './LogIn';
-import {
-    SignUpOpacity,
-    SignUpText,
-} from './SignInStyle';
-import {Color} from '../../variables/Color';
 import SignInHeader from './SignInHeader';
 import AnotherSingInMethods from './AnotherSingInMethods';
+import {Color} from '../../variables/Color';
+import {FontSize} from '../../variables/FontSize';
 
 const Wrapper = styled.ScrollView({
     flexDirection: 'column',
@@ -21,6 +18,18 @@ const OrText = styled.Text`
     color: grey;
     `;
 
+const SignUpText = styled.Text({
+    marginTop: 10,
+    marginBottom: 10, 
+    color: Color.LIGHT_PURPLE,
+    fontSize: FontSize.MIDPLUS,
+    
+    });
+
+const SignUpOpacity = styled.TouchableOpacity({
+    alignItems: 'center',
+    });
+      
 export default class SignInScreen extends React.Component {
     static navigationOptions = {
         headerShown: false,

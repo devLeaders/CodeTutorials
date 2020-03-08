@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
-import {Text} from 'react-native';
 
 const Wrapper = styled.View`
 `;
@@ -17,10 +16,20 @@ const Img = styled.Image`
     border-color: red;
 `;
 
-const ButtonOpacity = styled.TouchableOpacity`
-box-shadow: 0px 3px 17px rgba(0, 0, 0, 0.2);
-`;
+const T3 = styled.TouchableOpacity({
+  width: 50,
+  height: 50,
+  borderRadius: 50,
+  backgroundColor: 'grey',
+  overflow: 'hidden',
+  shadowColor: 'green',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: '1px',
+  shadowRadius: 50,
+});
 
+const ButtonOpacity = styled.TouchableOpacity`
+`;
 
 export interface AnotherSingInMethodsProps {
   src1: string;

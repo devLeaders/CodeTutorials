@@ -1,21 +1,18 @@
 import React from 'react';
 import {
     SafeAreaView,
-    ActivityIndicator 
+    ActivityIndicator,
+    TouchableOpacity,
+    Text,
 } from 'react-native';
 import { Formik } from 'formik';
-import {ForgotText, ForgotOpacity} from './SignInStyle';
 import validationSchema from './validationSchema';
-import StyledInput from './StyledInput';
+import SignInInput from './SignInInput';
 import styled from 'styled-components';
+import {FontSize} from '../../variables/FontSize';
+import {Color} from '../../variables/Color';
 
-export interface LogInProps {
-    label: string;
-    formikProps: any;
-    formikKey: string;
-  }
-
-  const Btn = styled.TouchableOpacity`
+const Btn = styled.TouchableOpacity`
   align-self: center;
   flex-direction: row;
   justify-content: center;
@@ -39,13 +36,31 @@ const Img = styled.Image`
   width: 34px;
 `;
 
+const ForgotText = styled.Text({
+    marginBottom: 10, 
+    marginTop: 10,
+    color: Color.LIGHT_PURPLE,
+    fontSize: FontSize.MIDPLUS,
+    marginRight: 30,
+  });
+  
+const ForgotOpacity = styled.TouchableOpacity({
+    alignItems: 'flex-end',
+  });
+  
+export interface LogInProps {
+    label: string;
+    formikProps: any;
+    formikKey: string;
+  }
+
 class LogIn extends React.Component<LogInProps> {
     render() {
         return (
             <SafeAreaView style={{ marginTop: 20}}>
                 <Formik
                     initialValues={{ email: "", password: ''}}
-                    onSubmit={(values, actions) => { //add handleSubmit(values, actions)
+                    onSubmit={(values, actions) => { //todo promise,add handleFormikSubmit(values, actions)
                         alert(JSON.stringify(values));
                         setTimeout(() => {
                             actions.setSubmitting(false);
@@ -55,7 +70,7 @@ class LogIn extends React.Component<LogInProps> {
                 >
                     {formikProps => (
                         <React.Fragment>
-                            <StyledInput
+                            <SignInInput
                                 label="Email"
                                 formikProps={formikProps}
                                 formikKey="email"
@@ -64,7 +79,7 @@ class LogIn extends React.Component<LogInProps> {
                                 autofocus
                             />
 
-                            <StyledInput
+                            <SignInInput
                                 label="Password"
                                 formikProps={formikProps}
                                 formikKey="password"
@@ -85,7 +100,7 @@ class LogIn extends React.Component<LogInProps> {
                                 <SignInTxt>Zaloguj się</SignInTxt>
                                 <Img source={{uri: 'arrow'}} />
                             </Btn>
-                            //<SignInBtn onPress={formikProps.handleSubmit} />
+                            //??//<SignInBtn onPress={formikProps.handleSubmit} />
                             )}
                             
                         </React.Fragment>

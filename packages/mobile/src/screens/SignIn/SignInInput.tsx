@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 //import {EmailView, EmailText} from './SignInStyle';
 import styled from 'styled-components/native';
-import Color from './../../variables/Color';
+import Color from '../../variables/Color';
 
 const Wrapper = styled.View``;
 
@@ -38,7 +38,7 @@ const TxtInput = styled.TextInput`
 
 // dodac interfejs 
 
-const StyledInput = ({ label, formikProps, formikKey, src, ...rest }) => {
+const SignInInput = ({ label, formikProps, formikKey, src, ...rest }) => {
 
     const inputStyles = {
         borderWidth: 1,
@@ -73,4 +73,4 @@ return (
 );
 }
 
-export default StyledInput;
+export default SignInInput;
