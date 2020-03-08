@@ -57,12 +57,7 @@ const HomeScreen = ({navigation}:any) => {
                 <Button
                     color="#e63900"
                     title="Go to SignIn"
-                    onPress={() => navigation.navigate(NavigationName.SIGNIN)}
-                />
-                <Button
-                    color="#e63900"
-                    title="Go to SignIn"
-                    onPress={() => navigation.navigate(NavigationName.LOGIN)}
+                    onPress={() => navigation.navigate(NavigationName.SIGNINSCREEN)}
                 />
               </View>
             </View>

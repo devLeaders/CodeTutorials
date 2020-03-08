@@ -28,9 +28,10 @@ export const Header = styled.Text({
 
 export const ForgotText = styled.Text({
   marginBottom: 10, 
+  marginTop: 10,
   color: Color.LIGHT_PURPLE,
   fontSize: FontSize.MIDPLUS,
-  marginRight: 10,
+  marginRight: 30,
 });
 
 export const SignUpText = styled.Text({

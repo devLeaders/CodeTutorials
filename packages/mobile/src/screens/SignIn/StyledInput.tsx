@@ -5,34 +5,38 @@ import {
 } from 'react-native';
 //import {EmailView, EmailText} from './SignInStyle';
 import styled from 'styled-components/native';
+import Color from './../../variables/Color';
 
 const Wrapper = styled.View``;
 
 const InputView = styled.View`
     border-bottom-color: #CFCFCF;
-    border-bottom-width: 1;
+    border-bottom-width: 1px;
     margin-bottom: 10px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    marginHorizontal: 30px;
    
   `;
-    //marginHorizontal: 20, 
-    //marginVertical: 5,
  
-const EmailText = styled.Text({
-    marginBottom: 3, 
-  });
+const EmailText = styled.Text`
+    margin-bottom: 3px;
+    marginHorizontal: 10px;
+  `;
 
 const Img = styled.Image`
-  width: 25px;
-  height: 25px;
+    width: 25px;
+    height: 25px;
 `;
 
 const TxtInput = styled.TextInput`
   padding: 15px 0;
   width: 90%;
 `;
+
+// dodac interfejs 
 
 const StyledInput = ({ label, formikProps, formikKey, src, ...rest }) => {
 
@@ -48,24 +52,20 @@ const StyledInput = ({ label, formikProps, formikKey, src, ...rest }) => {
     };
 
     if (formikProps.touched[formikKey] && formikProps.errors[formikKey]) {
-        inputStyles.borderBottomColor = "red";
+        inputStyles.borderBottomColor = "transparent";
     }
 
 return (
     <Wrapper>
-    <EmailText>{ label }</EmailText>
     <InputView>
         <Img source={{uri: src}} />
-        
         <TxtInput
-            
             style={inputStyles}
             onChangeText={formikProps.handleChange(formikKey)}
             onBlur={formikProps.handleBlur(formikKey)}
             {...rest}
         />
-
-        <Text style={{ color: 'red' }}>
+        <Text style={{ color: 'orange' }}>
             {formikProps.touched[formikKey] && formikProps.errors[formikKey]}
         </Text>
         </InputView>
