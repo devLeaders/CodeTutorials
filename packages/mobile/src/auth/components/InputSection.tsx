@@ -6,8 +6,8 @@ import {Formik} from 'formik';
 
 import FormikInput from './FormikInput';
 import SignUpBtn from './SignUpBtn';
-import validationSchema from '../../functions/validationSchema';
-import handleFormSubmit from '../../functions/handleFormSubmit';
+import validationSchema from '../actions/validationSchema';
+import handleFormSubmit from '../actions/handleFormSubmit';
 
 const Wrapper = styled.View`
   margin-top: 40px;
@@ -17,6 +17,11 @@ const Wrapper = styled.View`
 const FormWrapper = styled.View`
   width: 100%;
 `;
+
+enum InputTypes {
+  EMAIL = 'email',
+  PASSWORD = 'password',
+}
 
 export interface InputSectionProps {}
 
@@ -28,10 +33,17 @@ const InputSection: React.SFC<InputSectionProps> = () => {
         onSubmit={(values, actions) => handleFormSubmit(values, actions)}
         validateOnChange={false}
         validationSchema={validationSchema}>
-        {({handleChange, handleSubmit, values, isSubmitting, errors}) => (
+        {({
+          handleChange,
+          handleSubmit,
+          values,
+          isSubmitting,
+          errors,
+          resetForm,
+        }) => (
           <FormWrapper>
             <FormikInput
-              type="email"
+              type={InputTypes}
               src="email"
               change={handleChange('email')}
               value={values.email}
@@ -39,7 +51,7 @@ const InputSection: React.SFC<InputSectionProps> = () => {
               inputError={errors.email}
             />
             <FormikInput
-              type="password"
+              type={InputTypes}
               src="password"
               change={handleChange('password')}
               value={values.password}
@@ -47,12 +59,14 @@ const InputSection: React.SFC<InputSectionProps> = () => {
               inputError={errors.password}
             />
             <FormikInput
-              type="password"
+              type={InputTypes}
               src="password"
               change={handleChange('passwordConfirmation')}
               value={values.passwordConfirmation}
               holder="powtórz hasło"
               inputError={errors.passwordConfirmation}
+              onSubmitEditing={() => handleFormSubmit(values, resetForm)}
+              returnKeyType="send"
             />
             {isSubmitting ? (
               <ActivityIndicator />

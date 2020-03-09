@@ -5,7 +5,6 @@ import {View, TextInput, Image} from 'react-native';
 import Error from './Error';
 import {ErrorMessage} from 'formik';
 
-const Wrapper = styled.View``;
 const InputWrapper = styled.View`
   border-bottom-color: grey;
   border-bottom-width: 2;
@@ -27,29 +26,32 @@ const ErrorTxt = styled.Text`
 `;
 
 export interface FormikInputProps {
-  type: string;
+  type: {EMAIL: string; PASSWORD: string};
   src: string;
-  change: any;
-  value: any;
+  change(text: string): void;
+  value: string;
   holder: string;
-  inputError: any;
+  inputError: string | undefined;
+  onSubmitEditing?: any;
+  returnKeyType?: any;
 }
 
 const FormikInput: React.SFC<FormikInputProps> = props => {
-  const {type, src, change, holder, value, inputError} = props;
+  const {type, src, change, holder, value, inputError, returnKeyType} = props;
   return (
-    <Wrapper>
+    <View>
       <InputWrapper>
         <Img source={{uri: src}} />
         <TxtInput
           placeholder={holder}
           onChangeText={change}
-          secureTextEntry={type === 'password'}
+          secureTextEntry={type.PASSWORD === 'password'}
           value={value}
+          returnKeyType={returnKeyType}
         />
       </InputWrapper>
       {inputError && <Error inputError={inputError} />}
-    </Wrapper>
+    </View>
   );
 };
 

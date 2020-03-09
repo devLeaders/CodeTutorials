@@ -2,13 +2,16 @@ import * as React from 'react';
 import styled from 'styled-components/native';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 
+import {FontSize} from '../../variables/FontSize';
+import {Color} from '../../variables/Color';
+
 const Btn = styled.View`
   align-self: center;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 60px;
-  background-color: purple;
+  background-color: ${Color.PURPLE};
   border-radius: 40px;
   width: 80%;
   margin-top: 15px;
@@ -22,12 +25,12 @@ const Img = styled.Image`
 `;
 
 const SignUpTxt = styled.Text`
-  font-size: 18px;
+  font-size: ${FontSize.BIG};
   color: white;
 `;
 
 export interface SignUpBtnProps {
-  handleSubmit: any;
+  handleSubmit(): void;
 }
 
 const SignUpBtn: React.SFC<SignUpBtnProps> = props => {

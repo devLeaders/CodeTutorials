@@ -13,7 +13,7 @@ import React, {Component} from 'react';
 // Here we can import new screens
 import AppNavigation from './src/components/AppNavigation';
 import {View} from 'react-native';
-import SignUpScreen from './src/screens/SingUpScrenn';
+import SignUpScreen from './src/auth/screens/SingUpScrenn';
 
 export default class App extends Component {
   render() {

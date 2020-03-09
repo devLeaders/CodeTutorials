@@ -2,20 +2,19 @@ import * as React from 'react';
 import styled from 'styled-components/native';
 import {View, Text} from 'react-native';
 
-const Wrapper = styled.View``;
 const ErrorTxt = styled.Text`
   color: red;
 `;
 
 export interface ErrorProps {
-  inputError: any;
+  inputError: string | undefined;
 }
 
 const Error: React.SFC<ErrorProps> = ({inputError}) => {
   return (
-    <Wrapper>
+    <View>
       <ErrorTxt>{inputError}</ErrorTxt>
-    </Wrapper>
+    </View>
   );
 };
 
