@@ -13,21 +13,20 @@ export class VideosService {
     @InjectRepository(CategoryEntity) private categoriesRepository: Repository<CategoryEntity>
     ){}
 
-    async getAll(page:number=1){
-        return await this.videosRepository.find({
-            select:shortVersion,
-            relations:["category"],
-            take:20,
-            skip:(20 * (page-1))
-        });
-    }
+    async getAll(page:number=1, title: string){
+        return await getRepository(VideosEntity)
+        .createQueryBuilder("videos")
+        .leftJoinAndSelect("videos.category", "category")
+        // .where("videos.title = :title", { title: "Docker od podstaw"})
+        .take(20)
+        .skip(20 * (page-1))
+        .getMany();
+    }ś
 
-    async getAllCategoryList(page:number=1){
+    async getAllCategoryList(){
         return await getRepository(CategoryEntity)
         .createQueryBuilder("category")
         .leftJoinAndSelect("category.videos", "videos")
-        .take(20)
-        .skip(20 * (page-1))
         .getMany();
     }
 }

@@ -5,12 +5,12 @@ export class VideosController{
     constructor(private videosService: VideosService) {}
 
     @Get()
-    showAllVideos(@Query('page') page:number){
-        return this.videosService.getAll(page);
+    showAllVideos(@Query('page') page:number, @Query('title') title:string){
+        return this.videosService.getAll(page, title);
     }
 
     @Get('category')
-    getAllCategoryList(@Query('page') page:number){
-        return this.videosService.getAllCategoryList(page);
+    getAllCategoryList(){
+        return this.videosService.getAllCategoryList();
     }
 }
