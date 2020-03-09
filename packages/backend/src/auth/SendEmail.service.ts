@@ -5,7 +5,6 @@ import { nodemailer, createTransport } from 'nodemailer';
 @Injectable()
 export class SendEmail {
   send(userDTO: UserDTO) {
-    console.log(userDTO);
     let transporter = createTransport({
       host: 'smtp.gmail.com',
       port: 587,

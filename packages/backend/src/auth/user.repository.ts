@@ -10,7 +10,7 @@ import { SqlErrorCode } from './sql.error.code';
 
 @EntityRepository(UserEntity)
 export class UsersRepository extends Repository<UserEntity> {
-  async signUp(userDTO: UserDTO): Promise<void> {
+  async signUp(userDTO: UserDTO): Promise<string> {
     const user = new UserEntity();
     user.email = userDTO.email;
     user.salt = await bcrypt.genSalt();
@@ -18,6 +18,7 @@ export class UsersRepository extends Repository<UserEntity> {
 
     try {
       await user.save();
+      return 'ok';
     } catch (error) {
       if (error.code === SqlErrorCode.DUPLICATEEMAIL) {
         throw new ConflictException('Given email already exists in database');
