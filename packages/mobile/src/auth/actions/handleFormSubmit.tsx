@@ -1,7 +1,8 @@
 import * as React from 'react';
-import {ToastAndroid, Platform, Alert} from 'react-native';
+
 import postUser from './PostUser';
 import handleRegistrationAlert from './handleRegistrationAlert';
+import { user } from '../types/types';
 
 enum Systems {
   IOS = 'ios',
@@ -11,9 +12,13 @@ enum RegistrationInformations {
   DUPLICATE_EMAIL = 'Podany email jest już używany',
   SERVER_CRUSHED = 'błąd servera',
 }
+enum ErrorMessages {
+  DUPLICATE_EMAIL = 'Given email already exists in database',
+}
+
 
 const handleFormSubmit = async (
-  values: {email: string; password: string},
+  values: user,
   actions: any,
 ) => {
   const user = {
@@ -25,18 +30,11 @@ const handleFormSubmit = async (
     const res = await postUser(user);
     handleRegistrationAlert(Systems.IOS, RegistrationInformations.POSITIVE);
   } catch (err) {
-    if (
-      err.response.data.message === 'Given email already exists in database'
-    ) {
-      handleRegistrationAlert(
-        Systems.IOS,
-        RegistrationInformations.DUPLICATE_EMAIL,
-      );
-    } else if (err.response.data.statusCode === 500) {
-      handleRegistrationAlert(
-        Systems.IOS,
-        RegistrationInformations.SERVER_CRUSHED,
-      );
+    const error = err.response.data;
+    if (error.message === ErrorMessages.DUPLICATE_EMAIL) {
+      handleRegistrationAlert(Systems.IOS, RegistrationInformations.DUPLICATE_EMAIL);
+    } else if (error.statusCode === 500) {
+      handleRegistrationAlert(Systems.IOS, RegistrationInformations.SERVER_CRUSHED);
     }
   }
 };

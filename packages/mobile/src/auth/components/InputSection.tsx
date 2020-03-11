@@ -8,6 +8,8 @@ import FormikInput from './FormikInput';
 import SignUpBtn from './SignUpBtn';
 import validationSchema from '../actions/validationSchema';
 import handleFormSubmit from '../actions/handleFormSubmit';
+import {user} from '../types/types';
+import {InputTypes} from '../InputTypes';
 
 const Wrapper = styled.View`
   margin-top: 40px;
@@ -18,32 +20,22 @@ const FormWrapper = styled.View`
   width: 100%;
 `;
 
-enum InputTypes {
-  EMAIL = 'email',
-  PASSWORD = 'password',
-}
-
 export interface InputSectionProps {}
 
 const InputSection: React.SFC<InputSectionProps> = () => {
+  const handleSubmit = (values: user, actions: any) =>
+    handleFormSubmit(values, actions);
   return (
     <Wrapper>
       <Formik
         initialValues={{email: '', password: '', passwordConfirmation: ''}}
-        onSubmit={(values, actions) => handleFormSubmit(values, actions)}
+        onSubmit={handleSubmit}
         validateOnChange={false}
         validationSchema={validationSchema}>
-        {({
-          handleChange,
-          handleSubmit,
-          values,
-          isSubmitting,
-          errors,
-          resetForm,
-        }) => (
+        {({handleChange, handleSubmit, values, isSubmitting, errors}) => (
           <FormWrapper>
             <FormikInput
-              type={InputTypes}
+              type={InputTypes.EMAIL}
               src="email"
               change={handleChange('email')}
               value={values.email}
@@ -51,7 +43,7 @@ const InputSection: React.SFC<InputSectionProps> = () => {
               inputError={errors.email}
             />
             <FormikInput
-              type={InputTypes}
+              type={InputTypes.PASSWORD}
               src="password"
               change={handleChange('password')}
               value={values.password}
@@ -59,13 +51,13 @@ const InputSection: React.SFC<InputSectionProps> = () => {
               inputError={errors.password}
             />
             <FormikInput
-              type={InputTypes}
+              type={InputTypes.PASSWORD}
               src="password"
               change={handleChange('passwordConfirmation')}
               value={values.passwordConfirmation}
               holder="powtórz hasło"
               inputError={errors.passwordConfirmation}
-              onSubmitEditing={() => handleFormSubmit(values, resetForm)}
+              onSubmitEditing={handleSubmit}
               returnKeyType="send"
             />
             {isSubmitting ? (

@@ -4,6 +4,8 @@ import {View, TextInput, Image} from 'react-native';
 
 import Error from './Error';
 import {ErrorMessage} from 'formik';
+import {InputTypes} from '../InputTypes';
+import {returnKyeType} from '../types/types';
 
 const InputWrapper = styled.View`
   border-bottom-color: grey;
@@ -26,14 +28,14 @@ const ErrorTxt = styled.Text`
 `;
 
 export interface FormikInputProps {
-  type: {EMAIL: string; PASSWORD: string};
+  type: string;
   src: string;
   change(text: string): void;
   value: string;
   holder: string;
   inputError: string | undefined;
-  onSubmitEditing?: any;
-  returnKeyType?: any;
+  onSubmitEditing?(): void;
+  returnKeyType?: returnKyeType;
 }
 
 const FormikInput: React.SFC<FormikInputProps> = props => {
@@ -45,7 +47,7 @@ const FormikInput: React.SFC<FormikInputProps> = props => {
         <TxtInput
           placeholder={holder}
           onChangeText={change}
-          secureTextEntry={type.PASSWORD === 'password'}
+          secureTextEntry={type === InputTypes.PASSWORD}
           value={value}
           returnKeyType={returnKeyType}
         />
