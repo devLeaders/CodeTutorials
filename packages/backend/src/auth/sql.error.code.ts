@@ -1,3 +1,3 @@
 export enum SqlErrorCode {
-    DUPLICATEEMAIL='23505'
+    DUPLICATE_EMAIL='23505'
 }
