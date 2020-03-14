@@ -1,25 +1,40 @@
-import React, { Component } from 'react'
-import styled from 'styled-components';
-import { breakPoint } from '../../utils/breakPoint'
+import React, { Component } from "react";
+import styled from "styled-components";
+import { breakPoint } from "../../utils/breakPoint";
 
-const StyledVideo = styled.video`
+const VideoPlayerContainer = styled.div``;
+
+const VideoPlayer = styled.video`
   width: 100%;
 
   @media screen and (min-width: ${breakPoint.desktop}) {
-      flex-direction: row;
-      width:60%;
+    flex-direction: row;
+    width: 60%;
   }
 `;
 
-class VideoPlayerComponent extends React.Component<any>{
+const ControlsWrapper = styled.div``;
 
-    render() {
-        return (
-            <StyledVideo controls>
-                <source src="video.mp4" type="video/mp4"></source>
-            </StyledVideo>
-        )
-    }
-}
+const TimeBar = styled.div``;
+const StartStopBtn = styled.button``;
+
+export interface VideoPlayerComponentProps {}
+
+const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = () => {
+  return (
+    <VideoPlayerContainer>
+      <VideoPlayer>
+        <source
+          src="http://localhost:3300/videos/video"
+          type="video/mp4"
+        ></source>
+      </VideoPlayer>
+      <ControlsWrapper>
+        <TimeBar></TimeBar>
+        <StartStopBtn></StartStopBtn>
+      </ControlsWrapper>
+    </VideoPlayerContainer>
+  );
+};
 
 export default VideoPlayerComponent;

@@ -17,19 +17,29 @@ const typeorm_1 = require("typeorm");
 const videos_entity_1 = require("./videos.entity");
 const typeorm_2 = require("@nestjs/typeorm");
 const videos_dto_1 = require("./videos.dto");
+const category_entity_1 = require("./category.entity");
 const shortVersion = Object.keys(new videos_dto_1.ShortVersionDTO());
 let VideosService = class VideosService {
-    constructor(videosRepository) {
+    constructor(videosRepository, categoriesRepository) {
         this.videosRepository = videosRepository;
+        this.categoriesRepository = categoriesRepository;
     }
-    async showAll() {
-        return await this.videosRepository.find({ select: shortVersion });
+    async getAll() {
+        return await this.videosRepository.find({ select: shortVersion, relations: ["category"] });
+    }
+    async getAllCategoryList() {
+        return await typeorm_1.getRepository(category_entity_1.default)
+            .createQueryBuilder("category")
+            .leftJoinAndSelect("category.videos", "videos")
+            .getMany();
     }
 };
 VideosService = __decorate([
     common_1.Injectable(),
-    __param(0, typeorm_2.InjectRepository(videos_entity_1.VideosEntity)),
-    __metadata("design:paramtypes", [typeorm_1.Repository])
+    __param(0, typeorm_2.InjectRepository(videos_entity_1.default)),
+    __param(1, typeorm_2.InjectRepository(category_entity_1.default)),
+    __metadata("design:paramtypes", [typeorm_1.Repository,
+        typeorm_1.Repository])
 ], VideosService);
 exports.VideosService = VideosService;
 //# sourceMappingURL=videos.service.js.map

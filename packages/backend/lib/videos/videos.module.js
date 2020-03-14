@@ -11,11 +11,12 @@ const videos_controller_1 = require("./videos.controller");
 const videos_service_1 = require("./videos.service");
 const typeorm_1 = require("@nestjs/typeorm");
 const videos_entity_1 = require("./videos.entity");
+const category_entity_1 = require("./category.entity");
 let VideosModule = class VideosModule {
 };
 VideosModule = __decorate([
     common_1.Module({
-        imports: [typeorm_1.TypeOrmModule.forFeature([videos_entity_1.VideosEntity])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([videos_entity_1.default, category_entity_1.default])],
         controllers: [videos_controller_1.VideosController],
         providers: [videos_service_1.VideosService]
     })

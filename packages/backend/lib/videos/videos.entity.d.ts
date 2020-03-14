@@ -1,5 +1,5 @@
-import { CategoryEntity } from '../category/category.entity';
-export declare class VideosEntity {
+import CategoryEntity from './category.entity';
+declare class VideosEntity {
     id: number;
     created: Date;
     title: string;
@@ -11,5 +11,6 @@ export declare class VideosEntity {
     urlTrailer: string;
     urlVideo: string;
     urlPhoto: string;
-    category: Promise<CategoryEntity[]>;
+    category: CategoryEntity[];
 }
+export default VideosEntity;

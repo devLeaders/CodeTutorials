@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
+const category_entity_1 = require("./category.entity");
 let VideosEntity = class VideosEntity {
 };
 __decorate([
@@ -56,8 +57,15 @@ __decorate([
     typeorm_1.Column('text'),
     __metadata("design:type", String)
 ], VideosEntity.prototype, "urlPhoto", void 0);
+__decorate([
+    typeorm_1.ManyToMany(type => category_entity_1.default, category => category.videos, {
+        cascade: ["insert"]
+    }),
+    typeorm_1.JoinTable(),
+    __metadata("design:type", Array)
+], VideosEntity.prototype, "category", void 0);
 VideosEntity = __decorate([
     typeorm_1.Entity('videos')
 ], VideosEntity);
-exports.VideosEntity = VideosEntity;
+exports.default = VideosEntity;
 //# sourceMappingURL=videos.entity.js.map

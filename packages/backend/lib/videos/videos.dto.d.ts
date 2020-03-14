@@ -5,11 +5,7 @@ export interface VideoDTO {
     urlPhoto: string;
 }
 export declare class ShortVersionDTO {
-    id: string;
     title: string;
     urlTrailer: string;
     urlPhoto: string;
-}
-export declare class CategoryDTO {
-    category: {};
 }

@@ -16,7 +16,10 @@ let VideosController = class VideosController {
         this.videosService = videosService;
     }
     showAllVideos() {
-        return this.videosService.showAll();
+        return this.videosService.getAll();
+    }
+    getAllCategoryList() {
+        return this.videosService.getAllCategoryList();
     }
 };
 __decorate([
@@ -25,6 +28,12 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], VideosController.prototype, "showAllVideos", null);
+__decorate([
+    common_1.Get('category'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], VideosController.prototype, "getAllCategoryList", null);
 VideosController = __decorate([
     common_1.Controller('videos'),
     __metadata("design:paramtypes", [videos_service_1.VideosService])

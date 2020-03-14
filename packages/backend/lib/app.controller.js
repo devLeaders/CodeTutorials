@@ -23,7 +23,7 @@ let AppController = class AppController {
     }
 };
 __decorate([
-    common_1.Get("test/:id"),
+    common_1.Get("test23/:id"),
     __param(0, common_1.Param('id')), __param(1, common_1.Query("test1")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Number]),
