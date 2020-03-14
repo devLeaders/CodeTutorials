@@ -4,6 +4,7 @@ import {
     ActivityIndicator,
     TouchableOpacity,
     Text,
+    AsyncStorage,
 } from 'react-native';
 import { Formik } from 'formik';
 import validationSchema from './validationSchema';
@@ -11,6 +12,11 @@ import SignInInput from './SignInInput';
 import styled from 'styled-components';
 import {FontSize} from '../../variables/FontSize';
 import {Color} from '../../variables/Color';
+import Axios from './../../api/AxiosConfig';
+//import {AsyncStorage} from 'react-native';
+
+import { NavigationName } from './../../variables/NavigationName';
+
 
 const Btn = styled.TouchableOpacity`
   align-self: center;
@@ -49,23 +55,40 @@ const ForgotOpacity = styled.TouchableOpacity({
   });
   
 export interface LogInProps {
-    label: string;
-    formikProps: any;
-    formikKey: string;
+    // label: string;
+    // formikProps: any;
+    // formikKey: string;
+    navigation: any;
   }
 
+  
+ 
+
 class LogIn extends React.Component<LogInProps> {
+    loginSubmit = async (value: any, action: any) => {
+        console.log(value);
+
+        const dataResponse = await Axios.post('/auth/signin', {
+            "email": `${value.email}`,
+            "password": `${value.password}`
+             })
+             console.log(dataResponse);
+
+            const token = dataResponse.data.token;
+            console.log(token);
+            AsyncStorage.setItem('token', token);
+
+            //Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+            this.props.navigation.navigate(NavigationName.MOVIELIST);
+    }
+
     render() {
         return (
             <SafeAreaView style={{ marginTop: 20}}>
                 <Formik
                     initialValues={{ email: "", password: ''}}
-                    onSubmit={(values, actions) => { //todo promise,add handleFormikSubmit(values, actions)
-                        alert(JSON.stringify(values));
-                        setTimeout(() => {
-                            actions.setSubmitting(false);
-                        }, 1000);
-                    }}
+                    onSubmit={this.loginSubmit}
                     validationSchema={validationSchema}
                 >
                     {formikProps => (
@@ -100,7 +123,7 @@ class LogIn extends React.Component<LogInProps> {
                                 <SignInTxt>Zaloguj się</SignInTxt>
                                 <Img source={{uri: 'arrow'}} />
                             </Btn>
-                            //??//<SignInBtn onPress={formikProps.handleSubmit} />
+                            
                             )}
                             
                         </React.Fragment>

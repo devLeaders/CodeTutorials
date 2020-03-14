@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, ScrollView} from 'react-native';
+import { View, ScrollView, AsyncStorage} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { HeaderTitle } from './HeaderTitle';
 import { HeaderLeft } from './HeaderLeft';
@@ -21,6 +21,7 @@ import {
 } from './MovieListStyle';
 import { SlaiderNormal } from './SlaiderNormal';
 import { SlaiderSmall } from './SlaiderSmall';
+import Axios from './../../api/AxiosConfig';
 
 export class  MoviesList extends React.Component{
   static navigationOptions = ({ navigation }:any) => {
@@ -33,7 +34,20 @@ export class  MoviesList extends React.Component{
       headerRight: () => <HeaderRight/>,
     };
   };
-   
+
+  async componentDidMount() {
+    const token = await AsyncStorage.getItem("token");
+    const headers = {
+      ...Axios.defaults.headers,
+      'Authorization': `Bearer ${token}`
+    };
+    console.log("header: ", headers)
+    console.log("token: ", token);
+
+    const test = await Axios.get('/videos', {headers} )
+    console.log("test: ", test);
+  }
+  
   render(){
     return (
       <View>

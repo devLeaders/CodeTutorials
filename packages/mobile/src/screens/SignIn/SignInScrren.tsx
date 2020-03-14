@@ -30,7 +30,7 @@ const SignUpOpacity = styled.TouchableOpacity({
     alignItems: 'center',
     });
       
-export default class SignInScreen extends React.Component {
+export default class SignInScreen extends React.Component<any> {
     static navigationOptions = {
         headerShown: false,
     };
@@ -38,7 +38,7 @@ export default class SignInScreen extends React.Component {
         return(
             <Wrapper>
                 <SignInHeader title={"Sign In"} />
-                <LogIn />
+                <LogIn navigation={this.props.navigation} />
                 <SignUpOpacity>
                     <SignUpText>Don't have an account?</SignUpText>
                     
