@@ -1,15 +1,14 @@
-import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import { Colors } from '../utils/colors';
-import { fontFamily } from '../utils/fontFamily';
-import { breakPoint } from '../utils/breakPoint';
-import FooterComponent from '../components/FooterComponents/FooterComponent';
-import { getMovie } from "../utils/movieArray";
+import React from "react";
+import styled, { createGlobalStyle } from "styled-components";
+import { Colors } from "../utils/colors";
+import { fontFamily } from "../utils/fontFamily";
+import { breakPoint } from "../utils/breakPoint";
+import FooterComponent from "../components/footerComponent/FooterComponent";
+import { getMovie } from "../singleMovie/actions/movieArray";
 import { useEffect, useState } from "react";
-import VideoDescribeComponent from '../components/SingleVideoComponents/VideoDescribeComponent';
-import VideoPlayerComponent from '../components/SingleVideoComponents/VideoPlayerComponent';
-import { RouteComponentProps } from 'react-router-dom';
-
+import VideoDescribeComponent from "../singleMovie/components/VideoDescribeComponent";
+import VideoPlayerComponent from "../singleMovie/components/VideoPlayerComponent";
+import { RouteComponentProps } from "react-router-dom";
 
 const GlobalStyle = createGlobalStyle`
 body{
@@ -29,38 +28,43 @@ const StyledVideoComponent = styled.div`
   background-color: ${Colors.backgroundMain};
 
   @media screen and (min-width: ${breakPoint.desktop}) {
-      flex-direction: row;
+    flex-direction: row;
   }
 `;
 
 interface SingleMovieProps {
-    id: string,
+  id: string;
 }
 
-const SingleMoviePage: React.FC<RouteComponentProps<SingleMovieProps>> = (props) => {
-    const [movie, setMovieArray] = useState({
-        id: 0,
-        name: "",
-        rate: 0,
-        hashtag: [""],
-        level: "",
-        date: "",
-        describe: ""
-    });
-    useEffect(() => {
-        setMovieArray(getMovie(props.match.params.id));
-    }, []);
+const SingleMoviePage: React.FC<RouteComponentProps<
+  SingleMovieProps
+>> = props => {
+  const [movie, setMovieArray] = useState({
+    id: 0,
+    name: "",
+    rate: 0,
+    hashtag: [""],
+    level: "",
+    date: "",
+    describe: ""
+  });
+  useEffect(() => {
+    setMovieArray(getMovie(props.match.params.id));
+  }, []);
 
-    return (
-        <>
-            <GlobalStyle />
-            <StyledVideoComponent >
-                <VideoDescribeComponent name={movie.name} rate={movie.rate}></VideoDescribeComponent>
-                <VideoPlayerComponent></VideoPlayerComponent>
-            </StyledVideoComponent >
-            <FooterComponent></FooterComponent>
-        </>
-    )
-}
+  return (
+    <>
+      <GlobalStyle />
+      <StyledVideoComponent>
+        <VideoDescribeComponent
+          name={movie.name}
+          rate={movie.rate}
+        ></VideoDescribeComponent>
+        <VideoPlayerComponent></VideoPlayerComponent>
+      </StyledVideoComponent>
+      <FooterComponent></FooterComponent>
+    </>
+  );
+};
 
 export default SingleMoviePage;

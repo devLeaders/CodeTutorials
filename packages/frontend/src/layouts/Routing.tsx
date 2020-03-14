@@ -4,7 +4,7 @@ import HomePage from "../pages/HomePage";
 import Series from "../pages/Series";
 import NAVIGATION from "./NavigationPath";
 import SingleMoviePage from "../pages/SingleMoviePage";
-import Movies from "../pages/Movies";
+import Movies from "../movies/screens/Movies";
 
 const Routing: React.FC = () => {
   return (

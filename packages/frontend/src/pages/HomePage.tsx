@@ -1,18 +1,11 @@
-import React from 'react';
-import CountShow from '../components/CountShow'
-import CountClickComponent from '../components/CountClickComponent'
+import React from "react";
 
 const HomePage: React.FC = (props: any) => {
-
-    return (
-        <div>
-            <h1>Home</h1>
-            <br></br>
-            <CountShow></CountShow>
-            <br></br>
-            <CountClickComponent />
-        </div>
-    )
-}
+  return (
+    <div>
+      <h1>Home</h1>
+    </div>
+  );
+};
 
 export default HomePage;
