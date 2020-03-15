@@ -1,13 +1,14 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query, UsePipes } from '@nestjs/common';
 import { VideosService } from './videos.service';
 import { FilterVideoDTO } from './videos.dto';
+import { VideosValidationPipe } from './videos.validation.pipe'
 @Controller('videos')
 export class VideosController{
     constructor(private videosService: VideosService) {}
 
     @Get()
+    @UsePipes(new VideosValidationPipe())
     showAllVideos(@Query() param:FilterVideoDTO){
-        console.log(param)
         return this.videosService.getAll(param);
     }
 

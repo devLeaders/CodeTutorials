@@ -25,8 +25,7 @@ export class VideosService {
            query = query.andWhere(`videos.title LIKE :title`, {title: param.title})
         }
         if(param.category){
-            const categoryArray = param.category.split(',')
-            query = query.andWhere(`category.id IN (:...ids)`, {ids: categoryArray})
+            query = query.andWhere(`category.id IN (:...ids)`, {ids: param.category})
          }
 
         const videos = query.getMany();
