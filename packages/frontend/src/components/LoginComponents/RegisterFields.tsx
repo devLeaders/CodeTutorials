@@ -50,7 +50,7 @@ const RegisterFields: React.FC = (props: any) => {
 
     return (
         <>
-            <Link href="www.google.pl">Nie posiadasz konta?</Link>
+            <Link href="#">Nie posiadasz konta?</Link>
             <Paragraph >lub</Paragraph>
             <SocialMedia></SocialMedia>
         </>

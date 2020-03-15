@@ -8,7 +8,7 @@ const Navigation: React.FC = () => {
         <ul>
 
             <li>
-                <NavLink to={NAVIGATION.HOMEPAGE}>home</NavLink>
+                <NavLink to={NAVIGATION.LOGIN}>log</NavLink>
             </li>
             <li>
                 <NavLink to={NAVIGATION.MOVIES}>filmy</NavLink>

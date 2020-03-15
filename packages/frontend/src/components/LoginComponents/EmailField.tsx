@@ -24,11 +24,9 @@ const Input = styled.input`
   }
 `;
 
-const EmailField: React.FC = (props: any) => {
+const EmailField = ({field, form, ...props}:any) => {
 
-  return (
-    <Input type="text" placeholder="Email"></Input>
-  )
+  return ( <Input type="text" placeholder="Email" {...field}/>)
 }
 
 export default EmailField;

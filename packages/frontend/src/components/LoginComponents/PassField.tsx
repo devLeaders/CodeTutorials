@@ -25,10 +25,9 @@ const Input = styled.input`
   }
 `;
 
-const PassField: React.FC = (props: any) => {
-
+const PassField = ({field, form, ...props}:any) =>{
     return (
-        <Input type="text" placeholder="Hasło"></Input>
+        <Input type="text" placeholder="Hasło" {...field}/>
     )
 }
 

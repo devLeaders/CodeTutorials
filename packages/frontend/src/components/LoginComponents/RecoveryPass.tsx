@@ -11,13 +11,13 @@ const Link = styled.a`
   font-size: ${fontSize.paragraphMobile};
   text-decoration: none;
   text-align: right;
-  padding-bottom: 50px;
+  padding: 50px 0;
 `;
 
 const RecoveryPass: React.FC = (props: any) => {
 
   return (
-    <Link href="www.google.pl">Zapomniałeś hasła?</Link>
+    <Link href="#">Zapomniałeś hasła?</Link>
   )
 }
 

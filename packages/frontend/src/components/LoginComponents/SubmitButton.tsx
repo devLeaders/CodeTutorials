@@ -57,7 +57,7 @@ right: 30px;
 const SubmitButton: React.FC = (props: any) => {
 
   return (
-    <Btn>Zaloguj<Arrow>></Arrow></Btn>
+    <Btn type="submit">Zaloguj<Arrow>></Arrow></Btn>
   )
 }
 

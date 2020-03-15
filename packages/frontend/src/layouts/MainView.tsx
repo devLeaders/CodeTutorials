@@ -5,14 +5,16 @@ import Series from '../pages/Series';
 import NAVIGATION from '../layouts/NavigationPath'
 import SingleMoviePage from '../pages/SingleMoviePage';
 import Login from '../pages/Login';
-
+import Movies from '../pages/Movies';
+import {ProtectedRoute} from '../components/LoginComponents/ProtectedRoute';
 const MainView: React.FC = () => {
 
     return (
         <Switch>
             <Route path={NAVIGATION.HOMEPAGE} exact component={HomePage} />
+            <ProtectedRoute path={`${NAVIGATION.MOVIES}`} component={Movies} />
             <Route path={`${NAVIGATION.MOVIES}/:id`} component={SingleMoviePage} />
-            <Route path={NAVIGATION.SERIES} component={Series} />
+            <ProtectedRoute path={NAVIGATION.SERIES} component={Series} />
             <Route path={NAVIGATION.LOGIN} component={Login} />
         </Switch>
     );

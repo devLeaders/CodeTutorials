@@ -7,6 +7,10 @@ import RecoveryPass from '../components/LoginComponents/RecoveryPass';
 import SubmitButton from '../components/LoginComponents/SubmitButton';
 import RegisterFields from '../components/LoginComponents/RegisterFields';
 import { breakPoint } from '../utils/breakPoint'
+import {Field, Form, Formik, FormikProps} from 'formik';
+import {useHistory} from "react-router-dom"
+import NAVIGATION from "../layouts/NavigationPath"
+import Axios from "../axios/configAxios"
 
 const LoginForm = styled.div`
     width: 100%;
@@ -21,18 +25,47 @@ const LoginForm = styled.div`
         margin: 100px auto 0 auto;
     }
 `;
-
+  
 const Login: React.FC = (props: any) => {
 
+const history = useHistory();
+
+    const loginSubmit = async (value: any, action: any) => {
+
+        try{
+        const dataResponse = await Axios.post('/auth/signin', {
+            "email": `${value.lastName}`,
+            "password": `${value.pass}`
+            })
+
+
+            const token = dataResponse.data.token
+            localStorage.setItem('token', token)
+            Axios.defaults.headers.common['Authorization'] = `Bearer ${token}` 
+            history.push(NAVIGATION.MOVIES)
+        }
+            catch(err) {
+                history.push(NAVIGATION.LOGIN)
+            }
+    }
+
     return (
-        <LoginForm>
-            <TitleForm></TitleForm>
-            <EmailField></EmailField>
-            <PassField></PassField>
-            <RecoveryPass></RecoveryPass>
-            <SubmitButton></SubmitButton>
-            <RegisterFields></RegisterFields>
-        </LoginForm>
+        <Formik
+            initialValues={{}}
+            onSubmit={loginSubmit}
+            >{(props: FormikProps<any>) => (
+            <Form>
+                <LoginForm>  
+                    <TitleForm/>
+                    <Field name="lastName" placeholder="Doe" component={EmailField}/>
+                    <Field name="pass"  component={PassField}/>
+                    <SubmitButton></SubmitButton>      
+                    <RecoveryPass></RecoveryPass>
+                    <RegisterFields></RegisterFields>
+                </LoginForm>
+            </Form>
+        )}
+        </Formik>
     )
 }
 
