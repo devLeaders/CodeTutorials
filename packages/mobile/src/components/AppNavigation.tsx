@@ -7,7 +7,7 @@
  *
  * @format
  */
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 //navigation import
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -28,15 +28,13 @@ const navigation = createStackNavigator(
   },
   {
     initialRouteName: 'Home',
-  }
+  },
 );
 
 const AppContainer = createAppContainer(navigation);
 
 export default class AppNavigation extends Component {
   render() {
-    return (
-    <AppContainer />
-    )
+    return <AppContainer />;
   }
 }

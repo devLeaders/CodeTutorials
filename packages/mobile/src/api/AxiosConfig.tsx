@@ -1,7 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
+
+enum Ips {
+  MYIP = 'http://192.168.0.105:3300',
+}
 
 const response = axios.create({
-  baseURL: "https://newsapi.org/v2/everything?q=netflix&sortBy=publishedAt&apiKey=c04fd04b98d841d9ac3f0826f2497094"
+  baseURL: Ips.MYIP,
 });
 
 export default response;
