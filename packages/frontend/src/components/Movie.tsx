@@ -1,7 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import NavigationPath from "../layouts/NavigationPath";
 
-const Wrapper = styled.div`
+const Wrapper = styled(NavLink)`
   cursor: pointer;
   min-width: ${(props: { width: number }) => `${props.width - 1}%`};
   height: 100%;
@@ -28,8 +30,7 @@ const Movie: React.ForwardRefExoticComponent<MovieProps> = React.forwardRef(
   (props: any, ref: any) => {
     const { index, width, id } = props;
     return (
-      <Wrapper width={width} ref={ref}>
-        {id}
+      <Wrapper width={width} ref={ref} to={`${NavigationPath.MOVIES}/${id}`}>
         <Img
           src="https://cdn.pixabay.com/photo/2020/02/12/16/13/landscape-4843193_960_720.jpg"
           alt=""

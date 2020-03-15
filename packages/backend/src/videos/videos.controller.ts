@@ -8,4 +8,9 @@ export class VideosController{
     showAllVideos(){
         return this.videosService.getAll();
     }
+
+    @Get('category')
+    getAllCategoryList(){
+        return this.videosService.getAllCategoryList();
+    }
 }

@@ -1,8 +1,8 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom'
-import Navigation from './layouts/Navigation';
-import MainView from './layouts/MainView';
-import styled from 'styled-components';
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import Navigation from "./layouts/Navigation";
+import Routing from "./layouts/Routing";
+import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -27,22 +27,19 @@ const StyledNav = styled.nav`
 const StyledMain = styled.div`
   flex-grow: 1;
   text-align: center;
-`
+`;
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
+      <GlobalStyle />
       <StyledApp className="app">
-        <StyledNav>
-          {<Navigation />}
-        </StyledNav>
         <StyledMain>
-          {<MainView />}
+          <Routing />
         </StyledMain>
-
       </StyledApp>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column,ManyToMany,JoinTable} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column,ManyToMany,JoinTable, JoinColumn} from "typeorm";
 import VideosEntity from "./videos.entity";
 
 @Entity('category')
@@ -10,7 +10,7 @@ class CategoryEntity {
     @Column()
     name: string;
 
-    @ManyToMany(type => VideosEntity)
+    @ManyToMany(type => VideosEntity, videos => videos.category)
     videos: VideosEntity[];
 }
 
