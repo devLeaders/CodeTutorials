@@ -1,12 +1,14 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { VideosService } from './videos.service';
+import { FilterVideoDTO } from './videos.dto';
 @Controller('videos')
 export class VideosController{
     constructor(private videosService: VideosService) {}
 
     @Get()
-    showAllVideos(@Query('page') page:number, @Query('title') title:string){
-        return this.videosService.getAll(page, title);
+    showAllVideos(@Query() param:FilterVideoDTO){
+        console.log(param)
+        return this.videosService.getAll(param);
     }
 
     @Get('category')

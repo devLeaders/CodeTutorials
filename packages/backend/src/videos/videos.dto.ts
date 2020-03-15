@@ -10,3 +10,9 @@ export class ShortVersionDTO {
     urlTrailer: string = null;
     urlPhoto: string = null;
 }
+
+export class FilterVideoDTO {
+    page: number;
+    title: string;
+    category: string; 
+}
