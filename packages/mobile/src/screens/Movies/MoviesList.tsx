@@ -34,6 +34,7 @@ export class  MoviesList extends React.Component{
       headerRight: () => <HeaderRight/>,
     };
   };
+//do odzdzielnego componentu linie 39-43
 
   async componentDidMount() {
     const token = await AsyncStorage.getItem("token");

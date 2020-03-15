@@ -79,7 +79,8 @@ class LogIn extends React.Component<LogInProps> {
             AsyncStorage.setItem('token', token);
 
             //Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
+            
+            //zabezpieczyc wywolanie po nieodpowiednim statusie, 
             this.props.navigation.navigate(NavigationName.MOVIELIST);
     }
 
