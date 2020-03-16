@@ -2,8 +2,8 @@ import React, { Component, useState, useRef } from "react";
 import styled from "styled-components";
 
 import { breakPoint } from "../../utils/breakPoint";
-import StartStopBtn from "./videoPlayerControls/StartStopBtn";
 import TimeBar from "./videoPlayerControls/TimeBar";
+import VideoPlayerControls from "./VideoPlayerControls";
 
 const VideoPlayerContainer = styled.div`
   position: relative;
@@ -24,8 +24,6 @@ const VideoPlayer = styled.video`
 const InterfaceWrapper = styled.div`
   display: flex;
   position: absolute;
-  align-items: center;
-  justify-content: flex-start;
   bottom: 0;
   width: 100%;
   flex-wrap: wrap;
@@ -35,9 +33,6 @@ const InterfaceWrapper = styled.div`
   ${VideoPlayerContainer}:hover & {
     transform: translateY(0);
   }
-`;
-const ControlsWrapper = styled.div`
-  padding: 3px;
 `;
 
 export interface VideoPlayerComponentProps {}
@@ -53,9 +48,7 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = () => {
         ></source>
       </VideoPlayer>
       <InterfaceWrapper>
-        <ControlsWrapper>
-          <StartStopBtn videoRef={videoRef} />
-        </ControlsWrapper>
+        <VideoPlayerControls videoRef={videoRef} />
         <TimeBar />
       </InterfaceWrapper>
     </VideoPlayerContainer>
