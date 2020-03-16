@@ -8,28 +8,27 @@ import VideoPlayerControls from "./VideoPlayerControls";
 const VideoPlayerContainer = styled.div`
   position: relative;
   overflow: hidden;
-`;
-
-const VideoPlayer = styled.video`
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-
   @media screen and (min-width: ${breakPoint.desktop}) {
     flex-direction: row;
     width: 60%;
   }
 `;
 
-const InterfaceWrapper = styled.div`
+const VideoPlayer = styled.video`
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+`;
+
+const InterfaceWrapper = styled.div<{ paused: boolean }>`
   display: flex;
   position: absolute;
   bottom: 0;
   width: 100%;
   flex-wrap: wrap;
   background-color: rgba(0, 0, 0, 0.7);
-  transform: translateY(100%);
   transition: all 0.2s;
+  transform: ${props => (props.paused ? "translateY(0)" : "translateY(100%)")};
   ${VideoPlayerContainer}:hover & {
     transform: translateY(0);
   }
@@ -38,18 +37,31 @@ const InterfaceWrapper = styled.div`
 export interface VideoPlayerComponentProps {}
 
 const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = () => {
+  const [isPaused, setIsPaused] = useState(true);
+  const [videoTime, setVideoTime] = useState("");
   const videoRef: any = useRef();
+  const video = videoRef.current;
+
+  const handleTimePlayed = () => {
+    setVideoTime((video.currentTime / video.duration) * 100 + "%");
+    console.log(videoTime);
+  };
+
   return (
     <VideoPlayerContainer>
-      <VideoPlayer ref={videoRef}>
+      <VideoPlayer ref={videoRef} onTimeUpdate={handleTimePlayed}>
         <source
           src="http://localhost:3300/videos/video"
           type="video/mp4"
         ></source>
       </VideoPlayer>
-      <InterfaceWrapper>
-        <VideoPlayerControls videoRef={videoRef} />
-        <TimeBar />
+      <InterfaceWrapper paused={isPaused}>
+        <VideoPlayerControls
+          videoRef={videoRef}
+          setIsPaused={setIsPaused}
+          isPaused={isPaused}
+        />
+        <TimeBar videoTime={videoTime} />
       </InterfaceWrapper>
     </VideoPlayerContainer>
   );

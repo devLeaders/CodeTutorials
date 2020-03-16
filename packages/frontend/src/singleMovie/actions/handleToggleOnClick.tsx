@@ -6,27 +6,27 @@ const toggleonClick = (
   isClicked: boolean,
   setIsClicked: any,
   videoRef: any,
-  type: string
+  type: string,
+  isPaused?: any,
+  setIsPaused?: any
 ) => {
   const video = videoRef.current;
   if (type === ButtonTypes.PLAY) {
-    startStopVideo(video, isClicked);
+    startStopVideo(video, isPaused, setIsPaused);
   } else if (type === ButtonTypes.MUTE) {
-    muteUnmuteVideo(video, isClicked);
+    video.muted = isClicked;
+  } else if (type === ButtonTypes.FULLSCREEN) {
   }
   setIsClicked(!isClicked);
 };
 
-const startStopVideo = (video: any, isClicked: boolean) => {
-  if (isClicked) {
+const startStopVideo = (video: any, isPaused: boolean, setIsPaused: any) => {
+  if (isPaused) {
     video.play();
   } else {
     video.pause();
   }
-};
-
-const muteUnmuteVideo = (video: any, isClicked: boolean) => {
-  video.muted = isClicked;
+  setIsPaused(!isPaused);
 };
 
 export default toggleonClick;

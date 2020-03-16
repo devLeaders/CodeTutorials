@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -6,18 +7,22 @@ const Wrapper = styled.div`
   width: 100%;
   background-color: black;
 `;
-const TimePlayed = styled.div`
+const TimePlayedBar = styled.div<{ videoTime: string }>`
   height: 3px;
-  width: 40px;
+  width: ${props => (props.videoTime ? props.videoTime : 0)};
   background-color: orange;
 `;
 
-export interface TimeBarProps {}
+export interface TimeBarProps {
+  videoTime: string;
+}
 
-const TimeBar: React.SFC<TimeBarProps> = () => {
+const TimeBar: React.SFC<TimeBarProps> = props => {
+  const { videoTime } = props;
+
   return (
     <Wrapper>
-      <TimePlayed />
+      <TimePlayedBar videoTime={videoTime} />
     </Wrapper>
   );
 };

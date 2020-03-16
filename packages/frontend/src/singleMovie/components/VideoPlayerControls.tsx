@@ -20,6 +20,8 @@ const RightPanel = styled.div`
 
 export interface VideoPlayerControlsProps {
   videoRef: any;
+  setIsPaused: any;
+  isPaused: boolean;
 }
 
 const VideoPlayerControls: React.SFC<VideoPlayerControlsProps> = props => {
@@ -31,6 +33,8 @@ const VideoPlayerControls: React.SFC<VideoPlayerControlsProps> = props => {
           mainImg="/play.svg"
           afterClickImg="/pause.svg"
           type={ButtonTypes.PLAY}
+          setIsPaused={props.setIsPaused}
+          isPaused={props.isPaused}
         />
       </LeftPanel>
       <RightPanel>
