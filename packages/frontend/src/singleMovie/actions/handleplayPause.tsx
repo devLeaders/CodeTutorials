@@ -1,7 +1,17 @@
 import * as React from "react";
 
-const togglePlayPause = () => {
-  console.log("ok");
+const togglePlayPause = (
+  isPaused: boolean,
+  setIsPaused: any,
+  videoRef: any
+) => {
+  const video = videoRef.current;
+  if (isPaused) {
+    video.play();
+  } else {
+    video.pause();
+  }
+  setIsPaused(!isPaused);
 };
 
 export default togglePlayPause;

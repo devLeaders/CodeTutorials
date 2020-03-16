@@ -1,11 +1,9 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useRef } from "react";
 import styled from "styled-components";
 
 import { breakPoint } from "../../utils/breakPoint";
 import StartStopBtn from "./videoPlayerControls/StartStopBtn";
 import TimeBar from "./videoPlayerControls/TimeBar";
-import handleplayPause from "../actions/handleplayPause";
-import togglePlayPause from "../actions/handleplayPause";
 
 const VideoPlayerContainer = styled.div`
   position: relative;
@@ -14,6 +12,8 @@ const VideoPlayerContainer = styled.div`
 
 const VideoPlayer = styled.video`
   width: 100%;
+  position: relative;
+  overflow: hidden;
 
   @media screen and (min-width: ${breakPoint.desktop}) {
     flex-direction: row;
@@ -21,15 +21,13 @@ const VideoPlayer = styled.video`
   }
 `;
 
-const ControlsWrapper = styled.div`
+const InterfaceWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   position: absolute;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   bottom: 0;
   width: 100%;
-  height: 70px;
   flex-wrap: wrap;
   background-color: rgba(0, 0, 0, 0.7);
   transform: translateY(100%);
@@ -38,43 +36,30 @@ const ControlsWrapper = styled.div`
     transform: translateY(0);
   }
 `;
+const ControlsWrapper = styled.div`
+  padding: 3px;
+`;
 
 export interface VideoPlayerComponentProps {}
 
-export interface VideoPlayerComponentState {
-  paused: boolean;
-}
-
-class VideoPlayerComponent extends React.Component<
-  VideoPlayerComponentProps,
-  VideoPlayerComponentState
-> {
-  state = { paused: true };
-  private togglePlayPause = () => {
-    const { paused } = this.state;
-    this.setState({
-      paused: !paused
-    });
-
-    // video.play();
-  };
-  render() {
-    return (
-      <VideoPlayerContainer>
-        <video>
-          <source
-            ref="video"
-            src="http://localhost:3300/videos/video"
-            type="video/mp4"
-          ></source>
-        </video>
+const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = () => {
+  const videoRef: any = useRef();
+  return (
+    <VideoPlayerContainer>
+      <VideoPlayer ref={videoRef}>
+        <source
+          src="http://localhost:3300/videos/video"
+          type="video/mp4"
+        ></source>
+      </VideoPlayer>
+      <InterfaceWrapper>
         <ControlsWrapper>
-          <TimeBar />
-          <StartStopBtn playStop={this.togglePlayPause} />
+          <StartStopBtn videoRef={videoRef} />
         </ControlsWrapper>
-      </VideoPlayerContainer>
-    );
-  }
-}
+        <TimeBar />
+      </InterfaceWrapper>
+    </VideoPlayerContainer>
+  );
+};
 
 export default VideoPlayerComponent;

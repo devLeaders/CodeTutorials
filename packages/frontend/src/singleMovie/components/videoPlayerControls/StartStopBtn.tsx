@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { useState } from "react";
+
+import togglePlayPause from "../../actions/handleplayPause";
 
 const ToogleButton = styled.button`
-  margin-top: 5px;
+  margin-left: 10px;
   background: none;
   border: 0;
   outline: 0;
@@ -14,14 +17,20 @@ const Img = styled.img`
 `;
 
 export interface StartStopBtn {
-  playStop(): void;
+  videoRef: any;
 }
 
 const StartStopBtn: React.SFC<StartStopBtn> = props => {
+  const [isPaused, setIsPaused] = useState(true);
+  const handleTooglePlayPause = () =>
+    togglePlayPause(isPaused, setIsPaused, props.videoRef);
+  const startStopImg = isPaused ? (
+    <Img src="/play.svg" alt="play Stop" />
+  ) : (
+    <Img src="/pause.svg" alt="play Stop" />
+  );
   return (
-    <ToogleButton onClick={props.playStop}>
-      <Img src="/play.svg" alt="play Stop" />
-    </ToogleButton>
+    <ToogleButton onClick={handleTooglePlayPause}>{startStopImg}</ToogleButton>
   );
 };
 
