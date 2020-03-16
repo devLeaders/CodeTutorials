@@ -29,9 +29,3 @@ export class UsersRepository extends Repository<UserEntity> {
         return bcrypt.hash(password, salt);
     }
 }
-
-export const UsersRepositoryProvider = {
-    provide: 'UsersRepository',
-    useFactory: (connection: Connection) => connection.getCustomRepository(UsersRepository),
-    inject: [Connection],
-};
