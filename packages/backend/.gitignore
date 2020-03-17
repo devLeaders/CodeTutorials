@@ -116,7 +116,6 @@ temp/
 .history
 
 package-lock.json
-lib/*
 lib
 ormconfig.json
 

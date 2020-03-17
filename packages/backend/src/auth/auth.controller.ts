@@ -1,13 +1,22 @@
-import { UserDTO } from './user.dto';
-import { Controller, Post, Body, ValidationPipe} from '@nestjs/common';
-import { AuthService } from './auth.service';
+import { UserDTO } from './users/user.dto';
+import { Controller, Post, Body, UseGuards} from '@nestjs/common';
+import { UsersService } from './users/users.service';
+import {AuthService} from './auth.service';
+import { SingInDTO } from './singIn.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController{
-    constructor(private authService: AuthService) {}
+    constructor(private userService: UsersService, private authService: AuthService) {}
 
     @Post('/signup')
-    signUp(@Body(ValidationPipe) userDTO: UserDTO){
-      return this.authService.signUp(userDTO);
+    signUp(@Body() userDTO: UserDTO){
+      return this.userService.signUp(userDTO);
+    }
+
+
+    @Post('/signin')
+    signIn(@Body() sigInDTO: SingInDTO){
+      return this.authService.signIn(sigInDTO);
     }
 }
