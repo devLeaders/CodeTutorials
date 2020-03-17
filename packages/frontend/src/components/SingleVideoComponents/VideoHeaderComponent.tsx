@@ -1,13 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import { fontFamily } from '../../utils/fontFamily';
 import { fontSize } from '../../utils/fontSize';
 import { fontWeight } from '../../utils/fontWeight';
-import { image } from '../../utils/image'
 import { Colors } from '../../utils/colors';
 import { breakPoint } from '../../utils/breakPoint'
-import { getMovie } from "../../utils/movieArray";
-import { useEffect, useState } from "react";
 
 const Header = styled.header`
         display: flex;
@@ -58,8 +55,7 @@ function VideoHeaderComponent(props: VideoHeaderProps) {
         <Header>
             <Title>{name}</Title>
             <VideoRating>
-
-                <img src='/star.svg' className="videoRating__icon"></img>
+                <img src='/star.svg' className="videoRating__icon" alt=""></img>
                 <VideoRatingValue className="videoRating__value">{rate}</VideoRatingValue>
             </VideoRating>
         </Header>

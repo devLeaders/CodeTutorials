@@ -15,13 +15,9 @@
   ],
   "devDependencies": {
     "lerna": "^3.20.2",
-    "styled-components": "^5.0.1",
     "ts-node": "^8.6.2"
   },
-  "dependencies": {
-    "gsap": "^3.1.1",
-    "redux-devtools-extension": "^2.13.8"
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devLeaders/myNetflix.git"
