@@ -4,7 +4,6 @@ import { AppModule } from './app.module';
 require('dotenv').config();
 import { Logger,ValidationPipe } from '@nestjs/common';
 import * as helmet from 'helmet';
-import * as csurf from 'csurf';
 
 
 declare const module: any;
@@ -15,8 +14,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
   app.use(helmet());
-  //app.use(csurf());
-
   app.enableCors();
   
   const options = new DocumentBuilder()

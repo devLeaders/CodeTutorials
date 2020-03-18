@@ -8,4 +8,6 @@ export enum FontSize {
     RATIO = 25,
     DESCRIPTION = 26,
     VERY_BIG = 42,
+    MEDIUM = 16,
+    BIG = 18
 }

@@ -1,9 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import { Colors } from '../../utils/colors';
-import { fontFamily } from '../../utils/fontFamily';
-import { fontSize } from '../../utils/fontSize';
-import { fontWeight } from '../../utils/fontWeight';
 import { breakPoint } from '../../utils/breakPoint';
 
 const StyledFooter = styled.ul`
