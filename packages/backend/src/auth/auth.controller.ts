@@ -1,9 +1,8 @@
 import { UserDTO } from './users/user.dto';
-import { Controller, Post, Body, UseGuards} from '@nestjs/common';
+import { Controller, Post, Body} from '@nestjs/common';
 import { UsersService } from './users/users.service';
 import {AuthService} from './auth.service';
 import { SingInDTO } from './singIn.dto';
-import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController{

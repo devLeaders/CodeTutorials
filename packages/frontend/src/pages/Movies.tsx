@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import MovieNavBar from "../components/MovieNavBar";
 import styled from "styled-components";
 import FiltrationBtns from "../components/FiltrationBtns";
@@ -6,6 +6,7 @@ import MovieSection from "../components/MovieSection";
 import NewContent from "../components/NewContent";
 import Colors from "../constans/Colors";
 import { device } from "../constans/device";
+import Axios from "../axios/configAxios";
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,6 +38,13 @@ const SliderSection = styled.section`
 export interface MoviesProps {}
 
 const Movies: React.SFC<MoviesProps> = () => {
+  
+  const test2 = useEffect(() => {
+    const token =  localStorage.getItem('token')
+    const test =  Axios.get('/videos')
+  
+  }, [])
+
   return (
     <Wrapper>
       <MovieNavBar></MovieNavBar>

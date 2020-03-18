@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import { fontFamily } from '../../utils/fontFamily';
 import { fontSize } from '../../utils/fontSize';
 import { fontWeight } from '../../utils/fontWeight';
-import { Colors } from '../../utils/colors';
+import { colors } from '../../utils/colors';
 import { breakPoint } from '../../utils/breakPoint'
 
 const Describe = styled.p`
     font-family: ${fontFamily.openSansFont};
     font-size: ${fontSize.paragraphMobile};
     font-weight: ${fontWeight.medium};
-    color: ${Colors.colorMainFont};
+    color: ${colors.colorMainFont};
     @media screen and (min-width: ${breakPoint.desktop}) {
         font-size: ${fontSize.paragraphDesktop};
     }
@@ -20,7 +20,7 @@ const Subtitle = styled.h4`
     font-family: ${fontFamily.openSansFont};
     font-size: ${fontSize.subtitleMobile};
     font-weight: ${fontWeight.medium};
-color: ${Colors.colorMainFont};
+color: ${colors.colorMainFont};
 padding: 15px 0;
 @media screen and (min-width: ${breakPoint.desktop}) {
     font-size: ${fontSize.subtitleDesktop};

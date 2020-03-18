@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Colors } from '../utils/colors';
+import { colors } from '../utils/colors';
 import { fontFamily } from '../utils/fontFamily';
 import { breakPoint } from '../utils/breakPoint';
 import FooterComponent from '../components/FooterComponents/FooterComponent';
@@ -26,7 +26,7 @@ const StyledVideoComponent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column-reverse;
-  background-color: ${Colors.backgroundMain};
+  background-color: ${colors.backgroundMain};
 
   @media screen and (min-width: ${breakPoint.desktop}) {
       flex-direction: row;

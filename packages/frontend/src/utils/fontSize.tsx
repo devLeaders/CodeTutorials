@@ -3,6 +3,6 @@ export enum fontSize {
     paragraphMobile = '16px',
     headerDesktop = '32px',
     headerMobile = '30px',
-    subtitleDesktop = '20px',
-    subtitleMobile = '18px',
+    subtitleDesktop = '22px',
+    subtitleMobile = '20px',
 }
