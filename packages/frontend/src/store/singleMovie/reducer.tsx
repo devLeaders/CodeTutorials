@@ -6,14 +6,20 @@ const initialState: movieState = {
   isMinimized: false
 };
 
-export const movieReducer = (
-  state = initialState,
-  action: MovieActionsTypes
-) => {
+export const movieReducer = (state = initialState, action: any) => {
+  console.log(action);
   switch (action.type) {
     case Actions.PLAY: {
       console.log(action, state);
-      return { isPaused: !state.isPaused };
+      return { ...state, isPaused: !state.isPaused };
+    }
+    case Actions.TOGGLE_FULLSCREEN: {
+      console.log(action, state);
+      return { ...state, isFullscren: !state.isFullscren };
+    }
+    case Actions.TOGGLE_SMALLMODE: {
+      console.log(action, state);
+      return { ...state, isMinimized: !state.isMinimized };
     }
     default: {
       return state;

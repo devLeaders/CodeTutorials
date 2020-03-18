@@ -28,26 +28,13 @@ const RightPanel = styled.div`
 
 export interface VideoPlayerControlsProps {
   videoRef: any;
-  setIsPaused: any;
-  isPaused: boolean;
   videoContainerRef: any;
   videoTime: number;
   videoDuration: number;
-  isMinimized: any;
-  setIsMinimized: any;
 }
 
 const VideoPlayerControls: React.SFC<VideoPlayerControlsProps> = props => {
-  const {
-    videoRef,
-    videoContainerRef,
-    isPaused,
-    setIsPaused,
-    videoTime,
-    videoDuration,
-    isMinimized,
-    setIsMinimized
-  } = props;
+  const { videoRef, videoContainerRef, videoTime, videoDuration } = props;
   return (
     <ControlsWrapper>
       <LeftPanel>
@@ -57,8 +44,6 @@ const VideoPlayerControls: React.SFC<VideoPlayerControlsProps> = props => {
           mainImg="/play.svg"
           afterClickImg="/pause.svg"
           type={ButtonTypes.PLAY}
-          setIsPaused={setIsPaused}
-          isPaused={isPaused}
         />
         <Timer videoTime={videoTime} />
       </LeftPanel>
@@ -76,8 +61,6 @@ const VideoPlayerControls: React.SFC<VideoPlayerControlsProps> = props => {
           mainImg="/smallmode.svg"
           afterClickImg="/normalscreen.svg"
           type={ButtonTypes.SMALL_MODE}
-          isMinimized={isMinimized}
-          setIsMinimized={setIsMinimized}
         />
         <VideoPlayerBtn
           videoRef={videoRef}

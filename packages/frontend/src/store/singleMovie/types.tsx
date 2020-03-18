@@ -5,7 +5,9 @@ export interface movieState {
 }
 
 export enum Actions {
-  PLAY = "play"
+  PLAY = "play",
+  TOGGLE_FULLSCREEN = "fullscreen",
+  TOGGLE_SMALLMODE = "smallMode"
 }
 
 interface MovieActions {

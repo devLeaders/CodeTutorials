@@ -5,12 +5,28 @@ import { connect } from "react-redux";
 import { breakPoint } from "../../utils/breakPoint";
 import TimeBar from "./videoPlayerControls/TimeBar";
 import VideoPlayerControls from "./VideoPlayerControls";
-import { relative } from "path";
+import SmallModeInterface from "./SmallModeInterface"
+import { playPauseVideo } from "../actions/playPauseVideo";
 
-const VideoPlayerContainer = styled.div<{ minimized: boolean }>`
-  position: ${props => (props.minimized ? "absolute" : "relative")};
-  right: ${props => (props.minimized ? "30px" : "")};
-  bottom: ${props => (props.minimized ? "0px" : "")};
+// const VideoPlayerContainer = styled.div<{ minimized: boolean }>`
+//   position: ${props => (props.minimized ? "absolute" : "relative")};
+//   right: ${props => (props.minimized ? "30px" : "")};
+//   bottom: ${props => (props.minimized ? "0px" : "")};
+
+
+
+const VideoPlayerContainer = styled.div.attrs((props: { minimized: boolean }): any => ({
+  position: props.minimized ? "absolute" : "relative",
+  right: props.minimized ? "30px" : "",
+  bottom: props.minimized ? "10px" : "",
+  height: props.minimized ? "200px" : "",
+  width: props.minimized ? "300px" : ""
+}))`
+  position: ${props => props.position};
+  right: ${props => props.right};
+  bottom: ${props => props.bottom};
+  max-height: ${props => props.height};
+  max-width: ${props => props.width};
   overflow: hidden;
   @media screen and (min-width: ${breakPoint.desktop}) {
     flex-direction: row;
@@ -25,28 +41,38 @@ const VideoPlayer = styled.video`
   overflow: hidden;
 `;
 
-const InterfaceWrapper = styled.div<{ paused: boolean; fullscren: boolean }>`
+const InterfaceWrapper = styled.div<{ paused: boolean; fullscren: boolean; isMin: boolean }>`
   display: flex;
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: ${props => (props.isMin ? "100%" : "")};
   flex-wrap: wrap;
   background-color: rgba(0, 0, 0, 0.7);
   transition: all 0.2s;
-  transform: ${props => (props.paused ? "translateY(0)" : "translateY(100%)")};
+  z-index: ${props => (props.isMin ? "-1" : "")};
+  transform: ${props => props.isMin ? "translateY(0)" : (props.paused ? "translateY(0)" : "translateY(100%)")};
   ${VideoPlayerContainer}:hover & {
-    transform: translateY(0);
+    transform: ${props => (!props.isMin ? "translateY(0)" : "")};
+    z-index: ${props => (props.isMin ? "1" : "")};
   }
 `;
 
-export interface VideoPlayerComponentProps {}
+export interface VideoPlayerComponentProps {
+  movie: {
+    isPaused: boolean;
+    isMinimized: boolean;
+    isFullscreen: boolean;
+  };
+  play: any;
+}
 
-const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = () => {
-  const [isPaused, setIsPaused] = useState(true);
-  const [isMinimized, setIsMinimized] = useState(false);
+const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (
+  props
+): any => {
+  const { isPaused, isMinimized, isFullscreen } = props.movie;
   const [videoTime, setVideoTime] = useState(0);
   const [videoDuration, setVideoDuration] = useState(0);
-  const [isFullscren, setIsFullscren] = useState(false);
   const videoRef: any = useRef();
   const videoContainerRef: any = useRef();
   const TimeBarRef: any = useRef();
@@ -57,23 +83,15 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = () => {
     setVideoTime((video.currentTime / video.duration) * 100);
   };
 
-  const chceckSize = () => {
-    if (document.fullscreenElement) {
-      setIsFullscren(true);
-    } else {
-      setIsFullscren(false);
-    }
-  };
-
   const handleVideoClick = () => {
-    setIsPaused(!isPaused);
-    if (isPaused) {
-      video.play();
-    } else {
-      video.pause();
+    props.play();
+    playPauseVideo(videoRef.current, isPaused);
+  };
+  const handleInterfaceClick = () => {
+    if (isMinimized === true) {
+      props.play();
+      playPauseVideo(videoRef.current, isPaused)
     }
-    chceckSize();
-    setVideoDuration(video.duration);
   };
 
   const changeVideoTimeOnClick = (e: any) => {
@@ -83,9 +101,6 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = () => {
     video.currentTime = newTime;
     setVideoTime((video.currentTime / video.duration) * 100);
   };
-  useEffect(() => {
-    chceckSize();
-  }, [isPaused]);
 
   return (
     <VideoPlayerContainer ref={videoContainerRef} minimized={isMinimized}>
@@ -99,18 +114,23 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = () => {
           type="video/mp4"
         ></source>
       </VideoPlayer>
-      <InterfaceWrapper paused={isPaused} fullscren={isFullscren}>
-        <VideoPlayerControls
-          videoTime={videoTime}
-          videoRef={videoRef}
-          videoContainerRef={videoContainerRef}
-          setIsPaused={setIsPaused}
-          isPaused={isPaused}
-          videoDuration={videoDuration}
-          isMinimized={isMinimized}
-          setIsMinimized={setIsMinimized}
-        />
+
+      <InterfaceWrapper paused={isPaused} fullscren={isFullscreen} isMin={isMinimized} onClick={handleInterfaceClick}>
+        {isMinimized ?
+          <SmallModeInterface videoTime={videoTime}
+            videoRef={videoRef}
+            videoContainerRef={videoContainerRef}
+            videoDuration={videoDuration}
+          />
+          : <VideoPlayerControls
+            videoTime={videoTime}
+            videoRef={videoRef}
+            videoContainerRef={videoContainerRef}
+            videoDuration={videoDuration}
+
+          />}
         <TimeBar
+          isMin={isMinimized}
           ref={TimeBarRef}
           videoTime={timePlayed}
           click={e => changeVideoTimeOnClick(e)}
@@ -120,4 +140,11 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = () => {
   );
 };
 
-export default VideoPlayerComponent;
+const mapStateToProps = (state: any) => {
+  return { movie: state.movie };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return { play: () => { dispatch({ type: "play" }) } };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(VideoPlayerComponent);

@@ -5,9 +5,20 @@ import { connect } from "react-redux";
 
 import { ButtonTypes } from "../../enums";
 import toggleOnClick from "../../actions/handleToggleOnClick";
-import handlePlay from "../../actions/handlePlay";
+import { type } from "os";
+import { playPauseVideo } from "../../actions/playPauseVideo";
+import { videoResize } from "../../actions/videoResize";
+import toggleonClick from "../../actions/handleToggleOnClick";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs((props: { small: string, type: "string" }): any => ({
+  position: props.small ? "absolute" : "",
+  left: props.small ? "0" : "",
+  top: props.small ? "0" : "",
+}))`
+  position: ${props => props.position};
+  left: ${props => props.type === ButtonTypes.SMALL_MODE ? props.left : "50%"};
+  top: ${props => props.type === ButtonTypes.SMALL_MODE ? props.left : "50%"};
+  transform: ${props => props.type === ButtonTypes.PLAY && props.small ? "translate(-50%, -50%)" : ""};
   padding: 3px;
   background: none;
   display: flex;
@@ -32,64 +43,68 @@ export interface VideoPlayerButton {
   mainImg: string;
   afterClickImg: string;
   type: any;
-  setIsPaused?: any;
-  isPaused?: boolean;
-  isMinimized?: any;
-  setIsMinimized?: any;
+  movie: {
+    isPaused: boolean;
+    isMinimized: boolean;
+    isFullscreen: boolean;
+  };
+  play: any;
+  small?: any
+  toogleFullscreen?: any;
+  toogleSmallMode?: any;
 }
 
 const VideoPlayerButton: React.SFC<VideoPlayerButton> = props => {
-  const {
-    videoRef,
-    videoContainerRef,
-    mainImg,
-    afterClickImg,
-    type,
-    isPaused,
-    setIsPaused,
-    isMinimized,
-    setIsMinimized
-  } = props;
+  const { videoRef, videoContainerRef, mainImg, afterClickImg, type, small } = props;
+  const { isFullscreen, isPaused, isMinimized } = props.movie;
   const [isClicked, setIsClicked] = useState(true);
+  const video = videoRef.current;
 
-  const handleToogleButton = () =>
-    toggleOnClick(
-      isClicked,
-      setIsClicked,
-      videoRef,
-      videoContainerRef,
-      type,
-      isPaused,
-      setIsPaused,
-      isMinimized,
-      setIsMinimized
-    );
+  const handleToogleButton = () => {
+    const video = videoRef.current;
+    const videoContainer = videoContainerRef.current;
+    if (type === ButtonTypes.PLAY) {
+      props.play();
+      //function that plays and pause video
+      playPauseVideo(video, isPaused);
+    } else if (type === ButtonTypes.MUTE) {
+      video.muted = isClicked;
+    } else if (type === ButtonTypes.FULLSCREEN) {
+      props.toogleFullscreen();
+      //function that toggles fullscreen
+      videoResize(videoContainerRef, isClicked);
+    } else if (ButtonTypes.SMALL_MODE) {
+      props.toogleSmallMode();
+    }
 
-  const startStopImg = isClicked ? (
-    <Img src={mainImg} alt={type} />
-  ) : (
-    <Img src={afterClickImg} alt={type} />
-  );
+    toggleOnClick(isClicked, setIsClicked, type);
+  };
 
-  const startStopImgPlay = isPaused ? (
-    <Img src={mainImg} alt={type} />
-  ) : (
-    <Img src={afterClickImg} alt={type} />
-  );
-  console.log(props);
+  const startStopImg = isClicked ?
+    (<Img src={mainImg} alt={type} />) :
+    (<Img src={afterClickImg} alt={type} />);
+
+  const startStopImgPlay = isPaused ?
+    (<Img src={mainImg} alt={type} />) :
+    (<Img src={afterClickImg} alt={type} />);
+
   return (
-    <Wrapper>
+    <Wrapper small={small} type={type}>
       <ToogleButton onClick={handleToogleButton}>
-        {isPaused === undefined ? startStopImg : startStopImgPlay}
+        {type === "play" ? startStopImgPlay : startStopImg}
       </ToogleButton>
     </Wrapper>
   );
 };
 
-const mapStateToProps = (state: any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
-    movie: state.movie
+    play: () => { dispatch({ type: "play" }); },
+    toogleFullscreen: () => { dispatch({ type: "fullscreen" }); },
+    toogleSmallMode: () => { dispatch({ type: "smallMode" }); }
   };
 };
-
-export default connect(mapStateToProps)(VideoPlayerButton);
+const mapStateToProps = (state: any) => {
+  return { movie: state.movie };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(VideoPlayerButton);
