@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import { fontFamily } from '../../utils/fontFamily';
 import { fontSize } from '../../utils/fontSize';
-import { fontWeight } from '../../utils/fontWeight';
 import { colors } from '../../utils/colors';
 import { breakPoint } from '../../utils/breakPoint'
 

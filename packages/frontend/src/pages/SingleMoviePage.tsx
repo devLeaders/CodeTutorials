@@ -49,7 +49,7 @@ const SingleMoviePage: React.FC<RouteComponentProps<SingleMovieProps>> = (props)
     });
     useEffect(() => {
         setMovieArray(getMovie(props.match.params.id));
-    }, []);
+    }, [props.match.params.id]);
 
     return (
         <>

@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UsersRepository } from '../users/user.repository';
 import { UserDTO } from './user.dto';
 import { UserEntity } from './user.entity';
-import { Repository,getCustomRepository } from 'typeorm';
+import { SignInPayload } from './models/SignInPayload';
 
 @Injectable()
 export class UsersService {
@@ -23,10 +23,9 @@ export class UsersService {
         delete sanitized['password'];
         delete sanitized['salt'];
         return sanitized;
-        // return user.depopulate('password');
     }
 
-    async findByPayload(payload: any) {
+    async findByPayload(payload: SignInPayload) {
         const {id,email} = payload;
         return await this.usersRepository.findOne({where:{ email,id}})
     }
