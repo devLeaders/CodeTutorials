@@ -1,5 +1,6 @@
 import React, { Component, useState, useRef, useEffect } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
 
 import { breakPoint } from "../../utils/breakPoint";
 import TimeBar from "./videoPlayerControls/TimeBar";
@@ -59,10 +60,8 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = () => {
   const chceckSize = () => {
     if (document.fullscreenElement) {
       setIsFullscren(true);
-      console.log(isFullscren);
     } else {
       setIsFullscren(false);
-      console.log(isFullscren);
     }
   };
 
@@ -75,7 +74,6 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = () => {
     }
     chceckSize();
     setVideoDuration(video.duration);
-    console.log(video.duration);
   };
 
   const changeVideoTimeOnClick = (e: any) => {

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import { connect } from "react-redux";
 
 import { ButtonTypes } from "../../enums";
 import toggleOnClick from "../../actions/handleToggleOnClick";
@@ -75,6 +76,7 @@ const VideoPlayerButton: React.SFC<VideoPlayerButton> = props => {
   ) : (
     <Img src={afterClickImg} alt={type} />
   );
+  console.log(props);
   return (
     <Wrapper>
       <ToogleButton onClick={handleToogleButton}>
@@ -84,4 +86,10 @@ const VideoPlayerButton: React.SFC<VideoPlayerButton> = props => {
   );
 };
 
-export default VideoPlayerButton;
+const mapStateToProps = (state: any) => {
+  return {
+    movie: state.movie
+  };
+};
+
+export default connect(mapStateToProps)(VideoPlayerButton);
