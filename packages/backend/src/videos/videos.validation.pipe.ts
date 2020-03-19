@@ -1,7 +1,7 @@
 import { Injectable, PipeTransform, BadRequestException } from '@nestjs/common';
 
 @Injectable()
-export class VideosValidationPipe implements PipeTransform<any> {
+export class FilterVideosDtoMaping implements PipeTransform<any> {
     async transform(value:any) {
         if(!value.category){
             return value
