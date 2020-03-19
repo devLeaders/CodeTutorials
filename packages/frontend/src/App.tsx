@@ -6,7 +6,7 @@ import styled, {createGlobalStyle} from "styled-components";
 const GlobalStyle = createGlobalStyle`
   body{
     font-family: 'Montserrat', sans-serif;
-    margin: 0;
+    margin: 20px;
   }
   *, *::before, *::after {
       box-sizing: border-box;
@@ -18,19 +18,12 @@ const StyledApp = styled.div`
   flex-direction: column;
 `;
 
-const StyledMain = styled.div`
-  flex-grow: 1;
-  text-align: center;
-`;
-
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <GlobalStyle />
       <StyledApp className="app">
-        <StyledMain>
           <Routing />
-        </StyledMain>
       </StyledApp>
     </BrowserRouter>
   );

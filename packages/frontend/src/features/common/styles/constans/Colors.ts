@@ -4,7 +4,9 @@ enum Colors {
   nBlack= "black",
   nGrey= "#222",
   nLightGrey= "#999",
-  nWhite= "#ddd"
+  nWhite= "#fff",
+  nMediumGrey= "#00000029",
+  
 };
 
 

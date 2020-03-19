@@ -5,4 +5,7 @@ export enum FontSize {
     headerMobile = '30px',
     subtitleDesktop = '22px',
     subtitleMobile = '20px',
+
+    VERYLARGE = '23px',
+    MEDIUM = '18px',
 }
