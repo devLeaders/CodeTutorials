@@ -5,13 +5,13 @@ import FiltrationBtns from "../../filters/FiltrationBtns";
 import MovieSection from "../components/movieList/MovieSection";
 import NewContent from "../components/movieList/NewContent";
 import { Device } from "../../common/styles/constans/Device";
+import NewMovie from "../components/movieList/NewMovie";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-color: #222;
   width: 100%;
 `;
 
@@ -43,11 +43,13 @@ const Movies: React.SFC<MoviesProps> = () => {
         <NewContent />
         <FiltrationBtns></FiltrationBtns>
       </Section>
+      <NewMovie></NewMovie>
       <SliderSection>
         <MovieSection title="Polecane dla ciebie" id={1}></MovieSection>
         <MovieSection title="Akcja" id={2}></MovieSection>
         <MovieSection title="Dramaty" id={3}></MovieSection>
       </SliderSection>
+      
     </Wrapper>
   );
 };

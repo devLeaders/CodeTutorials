@@ -257,7 +257,6 @@ class Slider extends React.PureComponent<SliderProps, SliderState> {
   right = () => this.handleMoveSlider("right");
   left = () => this.handleMoveSlider("left");
   render() {
-    console.log(this.state.moviePosition);
     return (
       <Wrapper>
         <Button left onClick={this.left}>
