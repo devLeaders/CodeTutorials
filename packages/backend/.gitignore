@@ -115,6 +115,5 @@ temp/
 # Ignore all local history of files
 .history
 
-package-lock.json
 lib
 ormconfig.json
