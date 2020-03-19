@@ -17,7 +17,7 @@ const Wrapper = styled.div.attrs((props: { small: string, type: "string" }): any
 }))`
   position: ${props => props.position};
   left: ${props => props.type === ButtonTypes.SMALL_MODE ? props.left : "50%"};
-  top: ${props => props.type === ButtonTypes.SMALL_MODE ? props.left : "50%"};
+  top: ${props => props.type === ButtonTypes.SMALL_MODE ? props.top : "50%"};
   transform: ${props => props.type === ButtonTypes.PLAY && props.small ? "translate(-50%, -50%)" : ""};
   padding: 3px;
   background: none;
