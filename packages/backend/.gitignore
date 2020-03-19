@@ -118,5 +118,3 @@ temp/
 package-lock.json
 lib
 ormconfig.json
-
-package-lock.json
