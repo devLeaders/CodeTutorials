@@ -1,27 +1,21 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import Navigation from "./layouts/Navigation";
-import Routing from "./layouts/Routing";
-import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
+import Routing from "./config/routing/Routing";
+import styled, {createGlobalStyle} from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  @import url('"https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap"');
-
   body{
-    font-family: 'Bebas Neue', cursive; 
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
+  }
+  *, *::before, *::after {
+      box-sizing: border-box;
   }
 `;
 
 const StyledApp = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const StyledNav = styled.nav`
-  display: flex;
-  justify-content: center;
 `;
 
 const StyledMain = styled.div`
