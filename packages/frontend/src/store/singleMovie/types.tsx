@@ -1,6 +1,6 @@
 export interface movieState {
   isPaused: boolean;
-  isFullscren: boolean;
+  isFullscreen: boolean;
   isMinimized: boolean;
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { useRef } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { Colors } from "../utils/colors";
 import { fontFamily } from "../utils/fontFamily";
@@ -7,19 +8,12 @@ import FooterComponent from "../components/footerComponent/FooterComponent";
 import { getMovie } from "../singleMovie/actions/movieArray";
 import { useEffect, useState } from "react";
 import VideoDescribeComponent from "../singleMovie/components/VideoDescribeComponent";
-import VideoPlayerComponent from "../singleMovie/components/VideoPlayerComponent";
+import VideoPlayerComponent from "../singleMovie/components/videoPlayer/VideoPlayerComponent";
 import { RouteComponentProps } from "react-router-dom";
 
-const GlobalStyle = createGlobalStyle`
-body{
-    font-family: ${fontFamily.openSansFont};
-    padding: 0;
-    margin:0;
-}
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-`;
+const Wrapper = styled.div`
+  overflow: hidden;
+`
 
 const StyledVideoComponent = styled.div`
   width: 100%;
@@ -53,17 +47,16 @@ const SingleMoviePage: React.FC<RouteComponentProps<
   }, []);
 
   return (
-    <>
-      <GlobalStyle />
+    <Wrapper>
       <StyledVideoComponent>
         <VideoDescribeComponent
           name={movie.name}
           rate={movie.rate}
         ></VideoDescribeComponent>
-        <VideoPlayerComponent></VideoPlayerComponent>
+        <VideoPlayerComponent single={"true"}></VideoPlayerComponent>
       </StyledVideoComponent>
       <FooterComponent></FooterComponent>
-    </>
+    </Wrapper>
   );
 };
 

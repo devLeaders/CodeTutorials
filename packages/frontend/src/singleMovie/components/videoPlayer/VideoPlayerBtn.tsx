@@ -10,19 +10,16 @@ import { playPauseVideo } from "../../actions/playPauseVideo";
 import { videoResize } from "../../actions/videoResize";
 import toggleonClick from "../../actions/handleToggleOnClick";
 
-const Wrapper = styled.div.attrs((props: { small: string, type: "string" }): any => ({
-  position: props.small ? "absolute" : "",
-  left: props.small ? "0" : "",
-  top: props.small ? "0" : "",
+const Wrapper = styled.div.attrs((props: { small: string, type: string }): any => ({
+  position: props.small === "small" ? "absolute" : "",
+  left: props.small && props.type === ButtonTypes.PLAY ? "50%" : "0",
+  top: props.type === ButtonTypes.PLAY && props.small ? "50%" : "0"
 }))`
   position: ${props => props.position};
-  left: ${props => props.type === ButtonTypes.SMALL_MODE ? props.left : "50%"};
-  top: ${props => props.type === ButtonTypes.SMALL_MODE ? props.top : "50%"};
+  left: ${props => props.left};
+  top:${props => props.top};
   transform: ${props => props.type === ButtonTypes.PLAY && props.small ? "translate(-50%, -50%)" : ""};
   padding: 3px;
-  background: none;
-  display: flex;
-  align-content: center;
 `;
 
 const ToogleButton = styled.button`
@@ -58,11 +55,9 @@ const VideoPlayerButton: React.SFC<VideoPlayerButton> = props => {
   const { videoRef, videoContainerRef, mainImg, afterClickImg, type, small } = props;
   const { isFullscreen, isPaused, isMinimized } = props.movie;
   const [isClicked, setIsClicked] = useState(true);
-  const video = videoRef.current;
 
   const handleToogleButton = () => {
     const video = videoRef.current;
-    const videoContainer = videoContainerRef.current;
     if (type === ButtonTypes.PLAY) {
       props.play();
       //function that plays and pause video
@@ -72,26 +67,39 @@ const VideoPlayerButton: React.SFC<VideoPlayerButton> = props => {
     } else if (type === ButtonTypes.FULLSCREEN) {
       props.toogleFullscreen();
       //function that toggles fullscreen
-      videoResize(videoContainerRef, isClicked);
+      videoResize(videoContainerRef, isFullscreen);
+      console.log(isFullscreen)
     } else if (ButtonTypes.SMALL_MODE) {
+      if (isFullscreen) {
+        props.toogleFullscreen();
+        videoResize(videoContainerRef, isFullscreen);
+      }
       props.toogleSmallMode();
     }
 
     toggleOnClick(isClicked, setIsClicked, type);
   };
 
-  const startStopImg = isClicked ?
-    (<Img src={mainImg} alt={type} />) :
-    (<Img src={afterClickImg} alt={type} />);
+  const TypeCheck = () => {
+    if (type === ButtonTypes.PLAY) {
+      return isPaused
+    } else if (type === ButtonTypes.SMALL_MODE) {
+      return !isMinimized
+    } else if (type === ButtonTypes.FULLSCREEN) {
+      return !isFullscreen
+    } else {
+      return isClicked
+    }
+  }
 
-  const startStopImgPlay = isPaused ?
+  const startStopImg = TypeCheck() ?
     (<Img src={mainImg} alt={type} />) :
     (<Img src={afterClickImg} alt={type} />);
 
   return (
     <Wrapper small={small} type={type}>
       <ToogleButton onClick={handleToogleButton}>
-        {type === "play" ? startStopImgPlay : startStopImg}
+        {startStopImg}
       </ToogleButton>
     </Wrapper>
   );

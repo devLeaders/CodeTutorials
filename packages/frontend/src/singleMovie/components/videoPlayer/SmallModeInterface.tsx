@@ -1,28 +1,25 @@
 import * as React from 'react';
 import styled from "styled-components";
 
-import VideoPlayerBtn from "./videoPlayerControls/VideoPlayerBtn";
+import VideoPlayerBtn from "./VideoPlayerBtn";
 import Timer from "./Timer";
-import { ButtonTypes } from "../enums";
+import { ButtonTypes } from "../../enums";
 
 const Wrapper = styled.div`
-display: flex;
-width:100%;
-height:100%;
-
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
 `;
 
 export interface SmallModeInterfaceProps {
     videoRef: any;
     videoContainerRef: any;
-    videoTime: number;
-    videoDuration: number;
 }
 
 const SmallModeInterface: React.SFC<SmallModeInterfaceProps> = (props) => {
-    const { videoRef, videoContainerRef, videoTime, videoDuration } = props;
+    const { videoRef, videoContainerRef } = props;
     return (
-        <Wrapper>
+        <Wrapper className="small">
             <VideoPlayerBtn
                 videoRef={videoRef}
                 videoContainerRef={videoContainerRef}

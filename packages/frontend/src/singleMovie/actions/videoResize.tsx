@@ -1,5 +1,5 @@
-export const videoResize = (videoContainerRef: any, isClicked: any) => {
-  if (isClicked) {
+export const videoResize = (videoContainerRef: any, isFullscreen: any) => {
+  if (!isFullscreen) {
     videoContainerRef.current.requestFullscreen();
   } else {
     document.exitFullscreen();

@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useRef } from "react";
 import styled from "styled-components";
-import { ButtonTypes } from "../enums";
+import { ButtonTypes } from "../../enums";
 
-import VideoPlayerBtn from "./videoPlayerControls/VideoPlayerBtn";
+import VideoPlayerBtn from "./VideoPlayerBtn";
 import Timer from "./Timer";
 
 const ControlsWrapper = styled.div`
