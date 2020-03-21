@@ -64,6 +64,11 @@ const HomeScreen = ({navigation}:any) => {
                     title="Go to SignUp"
                     onPress={() => navigation.navigate(NavigationName.SINGUP)}
                 />
+                <Button
+                    color="#e63900"
+                    title="Go to Temp"
+                    onPress={() => navigation.navigate(NavigationName.TEMP)}
+                />
               </View>
             </View>
           </ScrollView>
