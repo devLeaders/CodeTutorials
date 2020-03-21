@@ -4,9 +4,8 @@ import { connect } from "react-redux";
 
 import { breakPoint } from "../../../utils/breakPoint";
 import TimeBar from "./TimeBar";
-import VideoPlayerControls from "./VideoPlayerControls";
-import SmallModeInterface from "./SmallModeInterface"
 import { playPauseVideo } from "../../actions/playPauseVideo";
+import Interface from "./interface"
 
 const VideoPlayer = styled.video`
   width: 100%;
@@ -37,23 +36,14 @@ const VideoPlayerContainer = styled.div.attrs((props: { minimized: boolean }): a
       opacity: 1;
     }
   }
+  &:hover {
+    .interfaceWrapper {
+      transform: translateY(0)
+    }
+  }
 
   &:hover ${VideoPlayer} {
     filter: ${props => props.minimized ? "brightness(50%)" : ""};
-  }
-`;
-
-const InterfaceWrapper = styled.div<{ paused: boolean; isMin: boolean }>`
-  display: ${props => !props.isMin ? "flex" : "block"};
-  position: ${props => props.isMin ? "" : "absolute"};
-  bottom: 0;
-  width: 100%;
-  flex-wrap: wrap;
-  background-color: rgba(0, 0, 0, 0.7);
-  transition: all 0.2s;
-  transform: ${props => props.isMin ? "translateY(0)" : (props.paused ? "translateY(0)" : "translateY(100%)")};
-  ${VideoPlayerContainer}:hover & {
-    transform: ${props => (!props.isMin ? "translateY(0)" : "")};
   }
 `;
 
@@ -72,18 +62,16 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (
   props
 ): any => {
   const { isPaused, isMinimized, isFullscreen } = props.movie;
-  const [videoTime, setVideoTime] = useState(0);
-  const [videoDuration, setVideoDuration] = useState(0);
   const videoRef: any = useRef();
   const videoContainerRef: any = useRef();
   const TimeBarRef: any = useRef();
+  const [videoTime, setVideoTime] = useState(0);
   const video = videoRef.current;
-  const timePlayed = videoTime + "%";
   const timeskip = 5;
+
 
   const handleTimeProgress = () => {
     setVideoTime((video.currentTime / video.duration) * 100);
-    setVideoDuration(video.duration)
   };
 
   const handleVideoClick = () => {
@@ -111,19 +99,6 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (
       setTime(timeskip)
     }
   }
-  const handleProgressBarClick = (e: any) => {
-    changeVideoTimeOnClick(e)
-  }
-
-  const changeVideoTimeOnClick = (e: any) => {
-    const video = videoRef.current;
-    const progressBarPosition = e.nativeEvent.offsetX;
-    const TimeBarWidth = TimeBarRef.current.offsetWidth;
-    const newTime = (progressBarPosition / TimeBarWidth) * video.duration;
-    video.currentTime = newTime;
-    setVideoTime((video.currentTime / video.duration) * 100);
-  };
-
   const setTime = (time: any) => {
     const video = videoRef.current
     video.currentTime += time;
@@ -150,38 +125,15 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (
           type="video/mp4">
         </source>
       </VideoPlayer>
-
-      {isMinimized ?
-        <SmallModeInterface
-          videoRef={videoRef}
-          videoContainerRef={videoContainerRef}
-        />
-        : <InterfaceWrapper
-          paused={isPaused}
-          isMin={isMinimized}
-        >
-
-          <VideoPlayerControls
-            videoTime={videoTime}
-            videoRef={videoRef}
-            videoContainerRef={videoContainerRef}
-            videoDuration={videoDuration}
-          />
-
-          <TimeBar
-            ref={TimeBarRef}
-            videoTime={timePlayed}
-            click={handleProgressBarClick}
-          />
-        </InterfaceWrapper>}
-
-      {isMinimized &&
-        <TimeBar
-          ref={TimeBarRef}
-          videoTime={timePlayed}
-          click={handleProgressBarClick}
-        />}
-
+      <Interface
+        videoRef={videoRef}
+        videoContainerRef={videoContainerRef}
+        TimeBarRef={TimeBarRef}
+        isPaused={isPaused}
+        isMinimized={isMinimized}
+        setVideoTime={setVideoTime}
+        videoTime={videoTime}
+      />
     </VideoPlayerContainer >
   );
 };
