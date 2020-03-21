@@ -5,25 +5,18 @@ import { FontSize } from "../../../styles/constans/FontSize"
 import UserData from "./UserData"
 
 const Wrapper = styled.div`
-    padding-top: 14px;
-    padding-left: 8px;
     padding-bottom: 10px;
-    display:flex;
-    flex-direction: column;
-    align-items: flex-start;
 `
 
 const ProfilTxt = styled.p`
     margin-bottom: 20px;
     font-size: ${FontSize.VERY_BIG};
     font-weight: bold;
+    text-align: left;
 `
 
-export interface UserSectionProps {
 
-}
-
-const UserSection: React.SFC<UserSectionProps> = () => {
+const UserSection: React.SFC = () => {
     return (
         <Wrapper>
             <ProfilTxt>Profil</ProfilTxt>

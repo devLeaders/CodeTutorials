@@ -9,13 +9,11 @@ const Wrapper = styled.div`
     align-items: center;
     margin-top: 50px;
     height: 100%;
+    width: 100%;
 `
 
-export interface ActionsSectionProps {
 
-}
-
-const ActionsSection: React.SFC<ActionsSectionProps> = () => {
+const ActionsSection: React.SFC = () => {
     return (
         <Wrapper>
             <GoToBtn text="Edytuj profil"></GoToBtn>

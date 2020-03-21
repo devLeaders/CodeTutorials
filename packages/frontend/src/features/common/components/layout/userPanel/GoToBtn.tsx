@@ -1,12 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { FontSize } from "../../../styles/constans/FontSize"
+
 
 const Wrapper = styled.div`
     display: flex;
     padding: 2px;
     align-items: center;
+    width: 100%;
     min-width: 230px;
     min-height: 40px;
     border-radius: 10px;
