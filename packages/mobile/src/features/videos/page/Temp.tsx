@@ -12,20 +12,7 @@ interface Temp {
 }
 
 export default class Temp extends React.Component <Temp>{
-  static navigationOptions = ({navigation}: any) => {
-    return {
-      headerStyle: {
-        backgroundColor: '#00000000',
-        paddingTop: 50,
-      },
-      headerTransparent: true,
-
-      headerTitle: () => <View />,
-      headerLeft: () => <HeaderLeft navigation={navigation} />,
-
-    };
-  };
-
+ 
   render() {
     return (
       <MainDescription 
