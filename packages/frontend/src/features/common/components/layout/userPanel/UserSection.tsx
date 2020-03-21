@@ -20,7 +20,12 @@ const UserSection: React.SFC = () => {
     return (
         <Wrapper>
             <ProfilTxt>Profil</ProfilTxt>
-            <UserData name="sebastian" email="sebastian@gmail.com" userType="mentor" />
+            <UserData
+                name="sebastian"
+                email="sebastian@gmail.com"
+                userType="mentor"
+                userPhoto="https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659652_960_720.png"
+            />
         </Wrapper>
     )
 }

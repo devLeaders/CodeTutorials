@@ -4,9 +4,6 @@ import styled from 'styled-components';
 import GoToBtn from "./GoToBtn"
 
 const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin-top: 50px;
     height: 100%;
     width: 100%;
@@ -16,10 +13,10 @@ const Wrapper = styled.div`
 const ActionsSection: React.SFC = () => {
     return (
         <Wrapper>
-            <GoToBtn text="Edytuj profil"></GoToBtn>
-            <GoToBtn text="Abonament i Faktury"></GoToBtn>
-            <GoToBtn text="Obejrzane Filmy"></GoToBtn>
-            <GoToBtn text="Admin panel"></GoToBtn>
+            <GoToBtn text="Edytuj profil" src="img/check-board.svg"></GoToBtn>
+            <GoToBtn text="Abonament i Faktury" src="img/check-board.svg"></GoToBtn>
+            <GoToBtn text="Obejrzane Filmy" src="img/check-board.svg"></GoToBtn>
+            <GoToBtn text="Admin panel" src="img/check-board.svg"></GoToBtn>
         </Wrapper>);
 }
 
