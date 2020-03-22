@@ -39,15 +39,14 @@ export interface MoviesProps {}
 const Movies: React.SFC<MoviesProps> = () => {
   return (
     <Wrapper>
-      <MovieNavBar></MovieNavBar>
       <Tabs>
-      <div label="Playlista">
+      <div data-label="Playlista">
         Playlista....
       </div>
-      <div label="Zadania">
+      <div data-label="Zadania">
         Zadania...
       </div>
-      <div label="Notatki">
+      <div data-label="Notatki">
         Notatki...
       </div>
     </Tabs>

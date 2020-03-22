@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component,PropsWithChildren,ReactElement } from 'react';
 import PropTypes from 'prop-types';
 import Tab from './tab';
 
-class Tabs extends Component {
-  static propTypes = {
-    children: PropTypes.instanceOf(Array).isRequired,
-  }
+class Tabs extends Component<{children:Array<ReactElement>},{activeTab:string}> {
 
   constructor(props:any) {
     super(props);
 
+    console.log(this.props.children[0].props)
+
     this.state = {
-      activeTab: this.props.children[0].props.label,
+      activeTab: this.props.children[0].props['data-label'],
     };
   }
 
@@ -34,7 +33,7 @@ class Tabs extends Component {
       <div className="tabs">
         <ol className="tab-list">
           {children.map((child:any) => {
-            const { label } = child.props;
+            const label  = child.props['data-label'];
 
             return (
               <Tab
@@ -48,7 +47,7 @@ class Tabs extends Component {
         </ol>
         <div className="tab-content">
           {children.map((child:any) => {
-            if (child.props.label !== activeTab) return undefined;
+            if (child.props['data-label'] !== activeTab) return undefined;
             return child.props.children;
           })}
         </div>
