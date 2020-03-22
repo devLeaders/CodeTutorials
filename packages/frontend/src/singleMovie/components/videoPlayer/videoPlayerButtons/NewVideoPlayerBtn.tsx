@@ -21,8 +21,8 @@ const Img = styled.img`
 export interface NewVideoPlayerButton {
   mainImg: string;
   afterClickImg: string;
-  videoState?: boolean;
-  runVideoAction?: any;
+  videoState: boolean;
+  runVideoAction: any;
 }
 
 const NewVideoPlayerButton: React.SFC<NewVideoPlayerButton> = props => {

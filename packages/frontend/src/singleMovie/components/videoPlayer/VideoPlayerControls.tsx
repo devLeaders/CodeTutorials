@@ -33,14 +33,12 @@ const RightPanel = styled.div`
 `;
 
 export interface VideoPlayerControlsProps {
-  videoRef: any;
-  videoContainerRef: any;
   videoTime: number;
   videoDuration: number;
 }
 
 const VideoPlayerControls: React.SFC<VideoPlayerControlsProps> = props => {
-  const { videoRef, videoContainerRef, videoTime, videoDuration } = props;
+  const { videoTime, videoDuration } = props;
   return (
     <ControlsWrapper>
       <LeftPanel>

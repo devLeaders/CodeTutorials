@@ -14,10 +14,6 @@ export const runVideoAction = (buttonType: string, videoState: boolean, reduxAct
     video.muted = !videoState;
   } else if (buttonType === ButtonTypes.FULLSCREEN) {
     videoResize(videoContainer, videoState);
-  } else if (ButtonTypes.SMALL_MODE) {
-    if (videoState) {
-      videoResize(videoContainer, videoState);
-    }
   }
 
   reduxAction()

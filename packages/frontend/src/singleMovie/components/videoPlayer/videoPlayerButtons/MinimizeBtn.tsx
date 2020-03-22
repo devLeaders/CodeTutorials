@@ -9,14 +9,18 @@ import { ButtonTypes } from "../../../enums";
 import { runVideoAction } from "../../../actions/runVideoAction"
 import { toggleSmallMode } from "../../../../store/singleMovie/actions"
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ min: any }>`
+    position: ${props => props.min ? "absolute" : "static"};
+    top: ${props => props.min ? "0" : "0"};
+    left: ${props => props.min ? "0" : "0"};
 `
 
-export interface MinimizeBtnProps {
-
+interface MinimizeBtnProps {
+    min?: string
 }
 
-const MinimizeBtn: React.SFC<MinimizeBtnProps> = () => {
+const MinimizeBtn: React.SFC<MinimizeBtnProps> = (props) => {
+    const { min } = props;
     const isMinimized = useSelector(state => getMovieState(state).isMinimized)
     const isActive = typeCheck(ButtonTypes.SMALL_MODE, isMinimized)
     const dispatch = useDispatch()
@@ -30,7 +34,7 @@ const MinimizeBtn: React.SFC<MinimizeBtnProps> = () => {
     }
 
     return (
-        <Wrapper>
+        <Wrapper min={min}>
             <NewVideoPlayerBtn
                 mainImg="/icons/small-mode.svg"
                 afterClickImg="/icons/normal-screen.svg"

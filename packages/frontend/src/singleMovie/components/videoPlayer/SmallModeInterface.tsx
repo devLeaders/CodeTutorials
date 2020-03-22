@@ -1,9 +1,8 @@
 import * as React from 'react';
 import styled from "styled-components";
 
-import VideoPlayerBtn from "./VideoPlayerBtn";
-import Timer from "./Timer";
-import { ButtonTypes } from "../../enums";
+import PlayBtn from "../videoPlayer/videoPlayerButtons/PlayBtn"
+import MinimizeBtn from "../videoPlayer/videoPlayerButtons/MinimizeBtn"
 
 const Wrapper = styled.div`
     visibility: hidden;
@@ -11,31 +10,13 @@ const Wrapper = styled.div`
     transition: visibility 0s, opacity 0.5s;
 `;
 
-export interface SmallModeInterfaceProps {
-    videoRef: any;
-    videoContainerRef: any;
-}
 
-const SmallModeInterface: React.SFC<SmallModeInterfaceProps> = (props) => {
-    const { videoRef, videoContainerRef } = props;
+const SmallModeInterface: React.SFC = () => {
+
     return (
         <Wrapper className="small">
-            <VideoPlayerBtn
-                videoRef={videoRef}
-                videoContainerRef={videoContainerRef}
-                mainImg="/icons/play.svg"
-                afterClickImg="/icons/pause.svg"
-                type={ButtonTypes.PLAY}
-                small={"small"}
-            />
-            <VideoPlayerBtn
-                videoRef={videoRef}
-                videoContainerRef={videoContainerRef}
-                mainImg="/icons/smallmode.svg"
-                afterClickImg="/icons/normal-screen.svg"
-                type={ButtonTypes.SMALL_MODE}
-                small={"small"}
-            />
+            <PlayBtn min="true " />
+            <MinimizeBtn min="true" />
         </Wrapper>
     );
 }

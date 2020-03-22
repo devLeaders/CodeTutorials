@@ -8,15 +8,21 @@ import { getMovieState } from "../../../actions/ReduxActions"
 import NewVideoPlayerBtn from "./NewVideoPlayerBtn"
 import { ButtonTypes } from "../../../enums";
 import { runVideoAction } from "../../../actions/runVideoAction"
-import { playPause, toogleFullscreen, toggleSmallMode } from "../../../../store/singleMovie/actions"
+import { playPause } from "../../../../store/singleMovie/actions"
 
-const Wrapper = styled.div``
+const Wrapper = styled.div<{ min: any }>`
+    position: ${props => props.min ? "absolute" : "static"};
+    top: ${props => props.min ? "50%" : "0"};
+    left: ${props => props.min ? "50%" : "0"};
+    transform: ${props => props.min ? "translate(-50%, -50%)" : ""};
+`
 
-export interface PlayBtnProps {
-
+interface PlayBtnProps {
+    min?: string
 }
 
-const PlayBtn: React.SFC<PlayBtnProps> = () => {
+const PlayBtn: React.SFC<PlayBtnProps> = (props) => {
+    const { min } = props;
     const isPaused = useSelector(state => getMovieState(state).isPaused)
     const isActive = typeCheck(ButtonTypes.PLAY, isPaused)
     const dispatch = useDispatch()
@@ -29,7 +35,7 @@ const PlayBtn: React.SFC<PlayBtnProps> = () => {
     }
 
     return (
-        <Wrapper>
+        <Wrapper min={min}>
             <NewVideoPlayerBtn
                 mainImg="/icons/play.svg"
                 afterClickImg="/icons/pause.svg"
