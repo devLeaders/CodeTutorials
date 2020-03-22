@@ -5,6 +5,7 @@ import FiltrationBtns from "../../filters/FiltrationBtns";
 import MovieSection from "../components/movieList/MovieSection";
 import NewContent from "../components/movieList/NewContent";
 import { Device } from "../../common/styles/constans/Device";
+import Tabs from "../../common/components/layout/tabs/tabs"
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,6 +40,17 @@ const Movies: React.SFC<MoviesProps> = () => {
   return (
     <Wrapper>
       <MovieNavBar></MovieNavBar>
+      <Tabs>
+      <div label="Playlista">
+        Playlista....
+      </div>
+      <div label="Zadania">
+        Zadania...
+      </div>
+      <div label="Notatki">
+        Notatki...
+      </div>
+    </Tabs>
       <Section>
         <NewContent />
         <FiltrationBtns></FiltrationBtns>
