@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as yup from 'yup';
 
-const validationSchema = yup.object().shape({
+const validationSchemaReg = yup.object().shape({
   email: yup
     .string()
     .email('Podaj poprawny email')
@@ -20,4 +20,4 @@ const validationSchema = yup.object().shape({
     .oneOf([yup.ref('password'), null], 'hasła muszą być takie same'),
 });
 
-export default validationSchema;
+export default validationSchemaReg;

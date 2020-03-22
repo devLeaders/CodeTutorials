@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import postUser from './PostUser';
 import handleRegistrationAlert from './handleRegistrationAlert';
-import { user } from '../types/types';
+import { user } from '../../common/types/types';
 
 enum Systems {
   IOS = 'ios',

@@ -2,8 +2,8 @@ import * as React from 'react';
 import styled from 'styled-components/native';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 
-import {FontSize} from '../../common/styles/constans/FontSize';
-import {Color} from '../../common/styles/constans/Color';
+import {FontSize} from '../../../common/styles/constans/FontSize';
+import {Color} from '../../../common/styles/constans/Color';
 
 const Btn = styled.View`
   align-self: center;

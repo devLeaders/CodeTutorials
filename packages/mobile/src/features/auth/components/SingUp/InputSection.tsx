@@ -3,12 +3,12 @@ import styled from 'styled-components/native';
 import {ActivityIndicator} from 'react-native';
 import {Formik} from 'formik';
 
-import FormikInput from '../../common/components/FormikInput';
+import FormikInput from '../../../common/components/FormikInput';
 import SignUpBtn from './SignUpBtn';
-import validationSchema from '../../common/actions/validationSchema';
-import handleFormSubmit from '../../common/actions/handleFormSubmit';
-import {user} from '../../common/types/types';
-import {InputTypes} from '../../videos/action/InputTypes';
+import validationSchemaReg from '../../action/validationSchemaRegistration';
+import handleFormSubmit from '../../action/handleFormSubmit';
+import {user} from '../../../common/types/types';
+import {InputTypes} from '../../../common/types/InputTypes';
 
 const Wrapper = styled.View`
   margin-top: 40px;
@@ -30,7 +30,7 @@ const InputSection: React.SFC<InputSectionProps> = () => {
         initialValues={{email: '', password: '', passwordConfirmation: ''}}
         onSubmit={handleSubmit}
         validateOnChange={false}
-        validationSchema={validationSchema}>
+        validationSchema={validationSchemaReg}>
         {({handleChange, handleSubmit, values, isSubmitting, errors}) => (
           <FormWrapper>
             <FormikInput
