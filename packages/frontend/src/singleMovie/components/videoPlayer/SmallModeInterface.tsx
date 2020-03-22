@@ -23,16 +23,16 @@ const SmallModeInterface: React.SFC<SmallModeInterfaceProps> = (props) => {
             <VideoPlayerBtn
                 videoRef={videoRef}
                 videoContainerRef={videoContainerRef}
-                mainImg="/play.svg"
-                afterClickImg="/pause.svg"
+                mainImg="/icons/play.svg"
+                afterClickImg="/icons/pause.svg"
                 type={ButtonTypes.PLAY}
                 small={"small"}
             />
             <VideoPlayerBtn
                 videoRef={videoRef}
                 videoContainerRef={videoContainerRef}
-                mainImg="/smallmode.svg"
-                afterClickImg="/normalscreen.svg"
+                mainImg="/icons/smallmode.svg"
+                afterClickImg="/icons/normal-screen.svg"
                 type={ButtonTypes.SMALL_MODE}
                 small={"small"}
             />

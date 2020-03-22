@@ -4,11 +4,8 @@ import { useState } from "react";
 import { connect } from "react-redux";
 
 import { ButtonTypes } from "../../enums";
-import toggleOnClick from "../../actions/handleToggleOnClick";
-import { type } from "os";
-import { playPauseVideo } from "../../actions/playPauseVideo";
-import { videoResize } from "../../actions/videoResize";
-import toggleonClick from "../../actions/handleToggleOnClick";
+// import toggleOnClick from "../../actions/runVideoAction";
+import { playPauseVideo, videoResize } from "../../actions/videoPlayerActions"
 
 const Wrapper = styled.div.attrs((props: { small: string, type: string }): any => ({
   position: props.small === "small" ? "absolute" : "",
@@ -77,10 +74,10 @@ const VideoPlayerButton: React.SFC<VideoPlayerButton> = props => {
       props.toogleSmallMode();
     }
 
-    toggleOnClick(isClicked, setIsClicked, type);
+    // toggleOnClick(isClicked, setIsClicked, type);
   };
 
-  const TypeCheck = () => {
+  const typeCheck = () => {
     if (type === ButtonTypes.PLAY) {
       return isPaused
     } else if (type === ButtonTypes.SMALL_MODE) {
@@ -92,7 +89,7 @@ const VideoPlayerButton: React.SFC<VideoPlayerButton> = props => {
     }
   }
 
-  const startStopImg = TypeCheck() ?
+  const startStopImg = typeCheck() ?
     (<Img src={mainImg} alt={type} />) :
     (<Img src={afterClickImg} alt={type} />);
 

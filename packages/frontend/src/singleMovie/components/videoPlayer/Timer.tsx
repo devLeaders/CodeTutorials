@@ -7,6 +7,7 @@ export interface TimerProps {
   videoDuration?: any;
 }
 const Time = styled.p`
+  font-size: 8px;
   color: white;
 `;
 

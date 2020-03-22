@@ -1,10 +1,10 @@
 import React, { Component, useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
+import { refsStore } from "./refs.store"
 
 import { breakPoint } from "../../../utils/breakPoint";
-import TimeBar from "./TimeBar";
-import { playPauseVideo } from "../../actions/playPauseVideo";
+import { playPauseVideo } from "../../actions/videoPlayerActions"
 import Interface from "./interface"
 
 const VideoPlayer = styled.video`
@@ -68,6 +68,7 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (
   const [videoTime, setVideoTime] = useState(0);
   const video = videoRef.current;
   const timeskip = 5;
+  refsStore.Refs = [videoRef, videoContainerRef]
 
 
   const handleTimeProgress = () => {

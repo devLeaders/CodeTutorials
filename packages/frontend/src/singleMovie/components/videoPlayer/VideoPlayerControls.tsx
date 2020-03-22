@@ -5,21 +5,27 @@ import { ButtonTypes } from "../../enums";
 
 import VideoPlayerBtn from "./VideoPlayerBtn";
 import Timer from "./Timer";
+import MuteBtn from "../videoPlayer/videoPlayerButtons/MuteBtn"
+import PlayBtn from "../videoPlayer/videoPlayerButtons/PlayBtn"
+import FullscreenBtn from "../videoPlayer/videoPlayerButtons/FullscreenBtn"
+import MinimizeBtn from "../videoPlayer/videoPlayerButtons/MinimizeBtn"
 
 const ControlsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
+  height: 100%;
   padding: 3px;
 `;
 
 const LeftPanel = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
 `;
 const RightPanel = styled.div`
+  height: 100%;
   margin-right: 10px;
   display: flex;
   flex-direction: row;
@@ -38,37 +44,13 @@ const VideoPlayerControls: React.SFC<VideoPlayerControlsProps> = props => {
   return (
     <ControlsWrapper>
       <LeftPanel>
-        <VideoPlayerBtn
-          videoRef={videoRef}
-          videoContainerRef={videoContainerRef}
-          mainImg="/play.svg"
-          afterClickImg="/pause.svg"
-          type={ButtonTypes.PLAY}
-        />
+        <PlayBtn />
         <Timer videoTime={videoTime} />
       </LeftPanel>
       <RightPanel>
-        <VideoPlayerBtn
-          videoRef={videoRef}
-          videoContainerRef={videoContainerRef}
-          mainImg="/mute.svg"
-          afterClickImg="/unMute.svg"
-          type={ButtonTypes.MUTE}
-        />
-        <VideoPlayerBtn
-          videoRef={videoRef}
-          videoContainerRef={videoContainerRef}
-          mainImg="/smallmode.svg"
-          afterClickImg="/normalscreen.svg"
-          type={ButtonTypes.SMALL_MODE}
-        />
-        <VideoPlayerBtn
-          videoRef={videoRef}
-          videoContainerRef={videoContainerRef}
-          mainImg="/fullscreen.svg"
-          afterClickImg="/smallscreen.svg"
-          type={ButtonTypes.FULLSCREEN}
-        />
+        <MuteBtn />
+        <MinimizeBtn />
+        <FullscreenBtn />
         <Timer videoDuration={videoDuration} />
       </RightPanel>
     </ControlsWrapper>

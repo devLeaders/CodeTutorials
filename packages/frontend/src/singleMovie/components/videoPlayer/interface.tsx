@@ -5,7 +5,7 @@ import styled from "styled-components";
 import TimeBar from "./TimeBar";
 import VideoPlayerControls from "./VideoPlayerControls";
 import SmallModeInterface from "./SmallModeInterface"
-import { playPauseVideo } from "../../actions/playPauseVideo";
+import { playPauseVideo } from "../../actions/videoPlayerActions";
 
 const InterfaceWrapper = styled.div<{ paused: boolean; isMin: boolean }>`
   display: ${props => !props.isMin ? "flex" : "block"};

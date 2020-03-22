@@ -5,13 +5,13 @@ import styled from "styled-components";
 const Wrapper = styled.div`
 position: absolute;
 bottom: 0;
-  height: 6px;
+  height: 3px;
   width: 100%;
   background-color: black;
   cursor: pointer;
 `;
 const TimePlayedBar = styled.div<{ videoTime: string }>`
-  height: 6px;
+  height: 3px;
   width: ${props => (props.videoTime ? props.videoTime : 0)};
   background-color: orange;
 `;
