@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { FontSize } from "../../../styles/constans/FontSize"
+import { fontWeight } from '../../../styles/constans/fontWeight';
 import Colors from "../../../styles/constans/Colors"
 
 const Wrapper = styled.div`
@@ -9,29 +10,31 @@ const Wrapper = styled.div`
     display: flex;
 `
 const UserPhoto = styled.img`
-    flex-basis: 122px;
-    width: 122px;
+    flex-basis: 90px;
+    width: 90px;
+    min-width: 90px;
     border-radius: 50%;
-    margin-right: 20px;
+    margin-right: 10px;
 `
 const TextInfoSection = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin-right: 20px;
+    text-align: left;
 `
 
 const UserInfoTxt = styled.p<{ email?: any, name?: any }>`
+    max-width: 210px;
     padding: 4px;
     text-transform: ${props => props.name ? "capitalize" : "none"};
-    font-size: ${props => props.name ? FontSize.BIG : FontSize.MEDIUM};
-    font-weight: ${props => props.email ? "" : "600"};
+    font-size: ${props => props.name ? "18px" : "14px"};
+    font-weight: ${props => props.email ? fontWeight.REGULAR : fontWeight.SEMIBOLD};
     word-wrap: break-word;
 `
 
 const UserEmail = styled(UserInfoTxt)`
-    font-size: ${FontSize.MEDIUM};
+    font-size: "14px";
 `
 const LogoutBtn = styled.button`
     display: flex;

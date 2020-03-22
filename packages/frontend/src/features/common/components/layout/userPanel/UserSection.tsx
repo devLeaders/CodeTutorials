@@ -1,17 +1,19 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { FontSize } from "../../../styles/constans/FontSize"
 
+import { FontSize } from "../../../styles/constans/FontSize"
+import { fontWeight } from '../../../styles/constans/fontWeight';
 import UserData from "./UserData"
 
 const Wrapper = styled.div`
+    width: 100%;
     padding-bottom: 10px;
 `
 
 const ProfilTxt = styled.p`
     margin-bottom: 20px;
     font-size: ${FontSize.VERY_BIG};
-    font-weight: bold;
+    font-weight: ${fontWeight.BOLD};
     text-align: left;
 `
 
@@ -22,7 +24,7 @@ const UserSection: React.SFC = () => {
             <ProfilTxt>Profil</ProfilTxt>
             <UserData
                 name="sebastian"
-                email="sebastian@gmail.com"
+                email="sebastian@gmail.comdsadsadsadsadas"
                 userType="mentor"
                 userPhoto="https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659652_960_720.png"
             />

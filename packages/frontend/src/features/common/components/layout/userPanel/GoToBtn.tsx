@@ -1,6 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+import "../../../styles/constans/fontWeight"
+import { fontWeight } from '../../../styles/constans/fontWeight';
+
 
 const Wrapper = styled.div`
     display:flex;
@@ -11,16 +14,17 @@ const Wrapper = styled.div`
     padding-top: 6px;
     padding-bottom: 6px;
     width: 100%;
-    min-height: 40px;
     border-radius: 10px;
     margin-bottom: 35px;
     box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
 `
 const BtnText = styled.p`
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-self: center;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: ${fontWeight.BOLD};
 `
 const Img = styled.img`
     width: 26px;
