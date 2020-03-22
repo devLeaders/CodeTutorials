@@ -9,10 +9,8 @@ import styled from 'styled-components';
 import {Color} from '../../../../features/common/styles/constans/Color';
 import { FontSize } from '../../../../features/common/styles/constans/FontSize';
 import { FontFamily } from '../../../../features/common/styles/constans/FontFamily';
-import { BackButton, BackArrowImage } from './SingleMovieStyle2';
-import { ButtonFilter, TextButtonActive } from '../Movies/MovieListStyle';
-import { HeaderLeft } from './HeaderLeft';
 import { NavigationName } from '../../../../config/routing/NavigationName';
+import { FontWeight } from '../../../../features/common/styles/constans/FontWeight';
 
 const Wrapper = styled.View`
     background-color: ${Color.LIGHTGREY};
@@ -21,21 +19,22 @@ const Wrapper = styled.View`
 const Title = styled.Text`
     margin-left: 14px;
     margin-right: 16px;
-    font-weight: bold;
+    font-weight: ${FontWeight.BOLD};
+    font-family: ${FontFamily.GLOBAL_MONT};
     font-size: ${FontSize.MIDIUM};
     color: ${Color.DARKGREY};
     line-height: 19px;
-    
-    
 `;
 const Autor = styled.Text`
+    font-family: ${FontFamily.GLOBAL_MONT};
     font-size: ${FontSize.SMALLX};
     color: ${Color.DARKGREY};
-    line-height: 15px;
+    line-height: 13px;
     margin-left: 14px;
     margin-right: 16px;
 `;
 const Description = styled.Text`
+    font-family: ${FontFamily.GLOBAL_MONT};
     font-size: ${FontSize.NORMAL};
     color: ${Color.DARKGREY};
     line-height: 18px;
@@ -56,8 +55,8 @@ const DescriptionButton = styled.TouchableOpacity({
     justifyContent: 'center',
     borderRadius: 10,
     backgroundColor: Color.WHITE,
-    height: 17,
-    shadowColor: "#00000029",
+    //height: 17 px;     ??
+    shadowColor: Color.LIGHTGREYX,
     shadowOffset: {
         width: 0,
         height: 2,
@@ -68,22 +67,16 @@ const DescriptionButton = styled.TouchableOpacity({
 });
 
 const ButtonText = styled.Text`
-    padding-top: 3px;
-    padding-bottom: 3px;
+    font-family: ${FontFamily.GLOBAL_MONT};
+    line-height: 22px;
     padding-left: 12px;
     padding-right: 11px;
     font-size: ${FontSize.SMALLS};
-    font-weight: bold;
-    color: ${Color.DARKGREY};
+    font-weight: ${FontWeight.SEMIBOLD};
+    color: ${Color.BLACK};
 `;
 const Separator = styled.View`
     width: 8px;
-`;
-const InquirySign = styled.Text`
-    font-family: Montserrat;
-    font-size: 105px;
-    color: ${Color.DARKGREY};
-    opacity: 0.4;
 `;
 
 interface MainDescriptionProps {
@@ -108,7 +101,6 @@ export default class MainDescription extends React.Component<MainDescriptionProp
                     <DescriptionButton>
                         <ButtonText onPress={() => this.props.navigation.navigate(NavigationName.HOME)}>DevOps</ButtonText>
                     </DescriptionButton>
-                    <InquirySign>?</InquirySign>
                 </ButtonWrapper>
             </Wrapper>
         );
