@@ -53,7 +53,7 @@ const SingleMoviePage: React.FC<RouteComponentProps<
           name={movie.name}
           rate={movie.rate}
         ></VideoDescribeComponent>
-        <VideoPlayerComponent single={"true"}></VideoPlayerComponent>
+        <VideoPlayerComponent></VideoPlayerComponent>
       </StyledVideoComponent>
       <FooterComponent></FooterComponent>
     </Wrapper>

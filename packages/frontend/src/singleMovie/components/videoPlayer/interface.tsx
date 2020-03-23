@@ -19,68 +19,32 @@ const InterfaceWrapper = styled.div<{ paused: boolean; isMin: boolean }>`
 `;
 
 export interface InterfaceProps {
-    videoContainerRef: any
-    videoRef: any
     isPaused: any
     isMinimized: any
-    TimeBarRef: any
-    videoTime: any
-    setVideoTime: any
+    videoTime?: any
 }
 
 const Interface: React.SFC<InterfaceProps> = (props) => {
-    const { videoContainerRef, videoRef, TimeBarRef, isMinimized, isPaused, videoTime, setVideoTime } = props
-
+    const { isMinimized, isPaused, videoTime, } = props
     const [videoDuration, setVideoDuration] = useState(0);
-    const video = videoRef.current;
-    const timePlayed = videoTime + "%";
 
-
-    const handleProgressBarClick = (e: any) => {
-        changeVideoTimeOnClick(e)
-    }
-
-    const changeVideoTimeOnClick = (e: any) => {
-        const video = videoRef.current;
-        const progressBarPosition = e.nativeEvent.offsetX;
-        const TimeBarWidth = TimeBarRef.current.offsetWidth;
-        const newTime = (progressBarPosition / TimeBarWidth) * video.duration;
-        video.currentTime = newTime;
-        setVideoTime((video.currentTime / video.duration) * 100);
-    };
 
     return (
         <div>
             {isMinimized ?
-                <SmallModeInterface
-                    videoRef={videoRef}
-                    videoContainerRef={videoContainerRef}
-                />
+                <SmallModeInterface />
                 : <InterfaceWrapper
                     className="interfaceWrapper"
                     paused={isPaused}
                     isMin={isMinimized}
                 >
-
                     <VideoPlayerControls
                         videoTime={videoTime}
-                        videoRef={videoRef}
-                        videoContainerRef={videoContainerRef}
                         videoDuration={videoDuration}
                     />
 
-                    <TimeBar
-                        ref={TimeBarRef}
-                        videoTime={timePlayed}
-                        click={handleProgressBarClick}
-                    />
+                    <TimeBar />
                 </InterfaceWrapper>}
-            {isMinimized &&
-                <TimeBar
-                    ref={TimeBarRef}
-                    videoTime={timePlayed}
-                    click={handleProgressBarClick}
-                />}
         </div>
     );
 }
