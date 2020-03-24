@@ -23,7 +23,6 @@ export const movieReducer = (state = initialState, action: any) => {
       return { ...state, isMuted: !state.isMuted };
     }
     case Actions.SET_VIDEO_TIME: {
-      console.log(action.payload)
       return { ...state, videoTime: action.payload };
     }
     default: {

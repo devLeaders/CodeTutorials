@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from "styled-components";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 
 import { refsStore } from "./refs.store"

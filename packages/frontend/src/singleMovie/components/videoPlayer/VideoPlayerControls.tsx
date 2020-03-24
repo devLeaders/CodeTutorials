@@ -41,7 +41,7 @@ const VideoPlayerControls: React.SFC = () => {
         <MuteBtn />
         <MinimizeBtn />
         <FullscreenBtn />
-        <Timer />
+        <Timer duration="duration" />
       </RightPanel>
     </ControlsWrapper>
   );

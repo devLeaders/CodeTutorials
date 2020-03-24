@@ -2,7 +2,7 @@ import { refsStore } from "../components/videoPlayer/refs.store"
 import { ButtonTypes } from "../enums";
 import { playPauseVideo, videoResize, rewindVideoTime } from "./videoPlayerActions"
 import { playPause, toogleFullscreen, toggleSmallMode } from "../../store/singleMovie/actions"
-import { Ref, RefObject } from "react";
+
 
 export const runVideoAction = (buttonType: string, videoState: boolean, reduxAction?: any) => {
   const video = refsStore.Refs[0].current;
@@ -34,7 +34,7 @@ export const handleVideoShortcuts = (e: any, reduxAction: any, videoState: any, 
   const videoContainer = refsStore.Refs[1].current;
   const timeToEnd = video.duration - video.currentTime;
   const key = e.keyCode
-  console.log(key)
+  console.log(video.duration)
 
   if (key == 32) {
     e.preventDefault()
@@ -56,4 +56,10 @@ export const handleVideoShortcuts = (e: any, reduxAction: any, videoState: any, 
     console.log(key)
     reduxAction()
   }
+}
+
+export const getVideoDuration = (setVideoDuration: any) => {
+  const video = refsStore.Refs[0].current;
+  console.log(video.duration)
+  setVideoDuration(video.duration)
 }
