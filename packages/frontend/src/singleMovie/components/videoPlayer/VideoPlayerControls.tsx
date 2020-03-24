@@ -1,9 +1,6 @@
 import * as React from "react";
-import { useRef } from "react";
 import styled from "styled-components";
-import { ButtonTypes } from "../../enums";
 
-import VideoPlayerBtn from "./VideoPlayerBtn";
 import Timer from "./Timer";
 import MuteBtn from "../videoPlayer/videoPlayerButtons/MuteBtn"
 import PlayBtn from "../videoPlayer/videoPlayerButtons/PlayBtn"
@@ -32,24 +29,19 @@ const RightPanel = styled.div`
   align-items: center;
 `;
 
-export interface VideoPlayerControlsProps {
-  videoTime: number;
-  videoDuration: number;
-}
 
-const VideoPlayerControls: React.SFC<VideoPlayerControlsProps> = props => {
-  const { videoTime, videoDuration } = props;
+const VideoPlayerControls: React.SFC = () => {
   return (
     <ControlsWrapper>
       <LeftPanel>
         <PlayBtn />
-        <Timer videoTime={videoTime} />
+        <Timer />
       </LeftPanel>
       <RightPanel>
         <MuteBtn />
         <MinimizeBtn />
         <FullscreenBtn />
-        <Timer videoDuration={videoDuration} />
+        <Timer />
       </RightPanel>
     </ControlsWrapper>
   );

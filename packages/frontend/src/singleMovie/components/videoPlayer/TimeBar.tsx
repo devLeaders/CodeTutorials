@@ -2,7 +2,10 @@ import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-import { changeVideoTime } from "../../actions/runVideoAction"
+import { changeVideoTime } from "../../actions/videoActionController"
+import { useSelector, useDispatch } from "react-redux"
+import { getMovieState } from "../../actions/ReduxActions"
+import { setVideoTime } from "../../../store/singleMovie/actions"
 
 const Wrapper = styled.div`
 position: absolute;
@@ -23,20 +26,21 @@ const TimePlayedBar = styled.div<{ videoTime: any }>`
 const TimeBar: React.SFC = (props: any) => {
   const TimeBarRef: any = useRef()
   const [mouseDown, setMouseDown] = useState(false);
-  const [videoTime, setVideoTime] = useState(0)
+  const videoTime = useSelector(state => getMovieState(state).videoTime)
+  const dispatch = useDispatch()
   const newTime = videoTime + "%";
 
-
+  const setTime = (time: number) => {
+    dispatch(setVideoTime(time))
+  }
   const handleMouseDown = () => {
     setMouseDown(true);
   };
   const handleMouseUp = () => {
     setMouseDown(false);
   };
-
   const handleClick = (e: any) => {
-    changeVideoTime(e, setVideoTime, TimeBarRef)
-    console.log(videoTime)
+    changeVideoTime(e, setTime, TimeBarRef)
   }
 
   return (

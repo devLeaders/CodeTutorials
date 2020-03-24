@@ -1,32 +1,22 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux"
 import styled from "styled-components";
 
-export interface TimerProps {
-  videoTime?: any;
-  videoDuration?: any;
-}
+import { getMovieState } from "../../actions/ReduxActions"
+import * as moment from "moment"
+
 const Time = styled.p`
   font-size: 8px;
   color: white;
 `;
 
-const Timer: React.SFC<TimerProps> = props => {
-  const { videoTime, videoDuration } = props;
-  let seconds;
-  let minutes;
-  if (videoTime !== undefined) {
-    seconds = Math.floor((videoTime % (10 * 60)) / 10);
-    minutes = Math.floor((videoTime % (10 * 60 * 60)) / (10 * 60));
-  } else {
-    seconds = Math.floor((videoDuration % (1 * 60)) / 1);
-    minutes = Math.floor((videoDuration % (1 * 60 * 60)) / (1 * 60));
-  }
-  let timeSeconds = seconds < 10 ? `0${seconds}` : seconds;
-  let timeMinutes = minutes < 10 ? `0${minutes}` : minutes;
+const Timer: React.SFC = () => {
+  const videoTime = useSelector(state => getMovieState(state).videoTime)
+
+
   return (
     <div>
-      <Time>{`${timeMinutes}:${timeSeconds}`}</Time>
+      <Time></Time>
     </div>
   );
 };

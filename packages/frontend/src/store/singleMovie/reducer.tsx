@@ -5,25 +5,26 @@ const initialState: movieState = {
   isFullscreen: false,
   isMinimized: false,
   isMuted: false,
+  videoTime: 0,
 };
 
 export const movieReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case Actions.PLAY: {
-      console.log(state, action)
       return { ...state, isPaused: !state.isPaused };
     }
     case Actions.TOGGLE_FULLSCREEN: {
-      console.log(state, action)
       return { ...state, isFullscreen: !state.isFullscreen };
     }
     case Actions.TOGGLE_SMALLMODE: {
-      console.log(state, action)
       return { ...state, isMinimized: !state.isMinimized };
     }
     case Actions.MUTE_UNMUTE: {
-      console.log(state, action)
       return { ...state, isMuted: !state.isMuted };
+    }
+    case Actions.SET_VIDEO_TIME: {
+      console.log(action.payload)
+      return { ...state, videoTime: action.payload };
     }
     default: {
       return state;

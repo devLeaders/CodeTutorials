@@ -3,11 +3,11 @@ import { useCallback } from 'react';
 import { useSelector, RootStateOrAny, useDispatch } from "react-redux"
 
 import styled from "styled-components";
-import { typeCheck } from "../../../actions/typeCheck"
+import { checkButtonType } from "../../../actions/checkButtonType "
 import { getMovieState } from "../../../actions/ReduxActions"
 import NewVideoPlayerBtn from "./NewVideoPlayerBtn"
 import { ButtonTypes } from "../../../enums";
-import { runVideoAction } from "../../../actions/runVideoAction"
+import { runVideoAction } from "../../../actions/videoActionController"
 import { playPause } from "../../../../store/singleMovie/actions"
 
 const Wrapper = styled.div<{ min: any }>`
@@ -24,7 +24,7 @@ interface PlayBtnProps {
 const PlayBtn: React.SFC<PlayBtnProps> = (props) => {
     const { min } = props;
     const isPaused = useSelector(state => getMovieState(state).isPaused)
-    const isActive = typeCheck(ButtonTypes.PLAY, isPaused)
+    const isActive = checkButtonType(ButtonTypes.PLAY, isPaused)
     const dispatch = useDispatch()
 
     const play = () => {

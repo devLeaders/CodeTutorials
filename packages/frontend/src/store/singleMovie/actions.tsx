@@ -1,4 +1,4 @@
-import { Actions, MoviePlayPauseType, MovieToggleFullscreenType, MovieToggleSmallModeType, MovieMuteUnMuteType } from "./types";
+import { Actions, MoviePlayPauseType, MovieToggleFullscreenType, MovieToggleSmallModeType, MovieMuteUnMuteType, SetVideoTimeType } from "./types";
 
 export function playPause(): MoviePlayPauseType {
   return {
@@ -26,4 +26,12 @@ export function muteUnmute(): MovieMuteUnMuteType {
     type: Actions.MUTE_UNMUTE
   };
 }
+
+export function setVideoTime(time: number): SetVideoTimeType {
+  return {
+    type: Actions.SET_VIDEO_TIME,
+    payload: time
+  };
+}
+
 

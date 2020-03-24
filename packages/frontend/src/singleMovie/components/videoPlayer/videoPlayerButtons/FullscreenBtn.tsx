@@ -2,11 +2,11 @@ import * as React from 'react';
 import { useSelector, RootStateOrAny, useDispatch } from "react-redux"
 
 import styled from "styled-components";
-import { typeCheck } from "../../../actions/typeCheck"
+import { checkButtonType } from "../../../actions/checkButtonType "
 import { getMovieState } from "../../../actions/ReduxActions"
 import NewVideoPlayerBtn from "./NewVideoPlayerBtn"
 import { ButtonTypes } from "../../../enums";
-import { runVideoAction } from "../../../actions/runVideoAction"
+import { runVideoAction } from "../../../actions/videoActionController"
 import { toogleFullscreen } from "../../../../store/singleMovie/actions"
 
 const Wrapper = styled.div``
@@ -17,7 +17,7 @@ export interface FullscreenBtnProps {
 
 const FullscreenBtn: React.SFC<FullscreenBtnProps> = () => {
     const isFullscreen = useSelector(state => getMovieState(state).isFullscreen)
-    const isActive = typeCheck(ButtonTypes.FULLSCREEN, isFullscreen)
+    const isActive = checkButtonType(ButtonTypes.FULLSCREEN, isFullscreen)
     const dispatch = useDispatch()
 
     const changeIsFullscreen = () => {

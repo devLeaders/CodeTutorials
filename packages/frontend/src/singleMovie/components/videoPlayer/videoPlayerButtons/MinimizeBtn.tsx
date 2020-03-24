@@ -2,11 +2,11 @@ import * as React from 'react';
 import { useSelector, RootStateOrAny, useDispatch } from "react-redux"
 
 import styled from "styled-components";
-import { typeCheck } from "../../../actions/typeCheck"
+import { checkButtonType } from "../../../actions/checkButtonType "
 import { getMovieState } from "../../../actions/ReduxActions"
 import NewVideoPlayerBtn from "./NewVideoPlayerBtn"
 import { ButtonTypes } from "../../../enums";
-import { runVideoAction } from "../../../actions/runVideoAction"
+import { runVideoAction } from "../../../actions/videoActionController"
 import { toggleSmallMode } from "../../../../store/singleMovie/actions"
 
 const Wrapper = styled.div<{ min: any }>`
@@ -22,7 +22,7 @@ interface MinimizeBtnProps {
 const MinimizeBtn: React.SFC<MinimizeBtnProps> = (props) => {
     const { min } = props;
     const isMinimized = useSelector(state => getMovieState(state).isMinimized)
-    const isActive = typeCheck(ButtonTypes.SMALL_MODE, isMinimized)
+    const isActive = checkButtonType(ButtonTypes.SMALL_MODE, isMinimized)
     const dispatch = useDispatch()
 
     const changeIsSmallMode = () => {

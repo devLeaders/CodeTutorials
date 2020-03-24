@@ -14,15 +14,32 @@ export const videoResize = (videoContainer: any, isFullscreen: any) => {
     }
 };
 
-// const handleProgressBarClick = (e: any) => {
-//     changeVideoTimeOnClick(e)
-// }
+export const rewindVideoTime = (video: any, timeskip: number, setVideoTime: any) => {
+    video.currentTime += timeskip;
+    setVideoTime((video.currentTime / video.duration) * 100);
+}
 
-// const changeVideoTimeOnClick = (e: any, video:any) => {
-//     const video = videoRef.current;
-//     const progressBarPosition = e.nativeEvent.offsetX;
-//     const TimeBarWidth = TimeBarRef.current.offsetWidth;
-//     const newTime = (progressBarPosition / TimeBarWidth) * video.duration;
-//     video.currentTime = newTime;
-//     setVideoTime((video.currentTime / video.duration) * 100);
-// };
+
+
+// export const handleVideoShortcuts = (e: any, rewindSeconds:number, isPaused:boolean) => {
+//     const keyNumber = e.keyCode
+//     if (keyNumber == 32) {
+//       e.preventDefault()
+
+//     } else if (keyNumber == 37 && !isPaused) {
+//       setTime(-rewindSeconds)
+//     }
+//     else if (keyNumber == 39 && timeToEnd > timeskip) {
+//       if (isPaused) {
+//         props.play();
+//         playPauseVideo(videoRef.current, isPaused)
+//       }
+//       setTime(rewindSeconds)
+//     }
+//   }
+
+//   const video = refsStore.Refs[0].current;
+//     const timeToEnd = video.duration - video.currentTime;
+//     const keyNumber = e.keyCode
+// const keyNumber = e.keyCode
+// console.log(timeToEnd)
