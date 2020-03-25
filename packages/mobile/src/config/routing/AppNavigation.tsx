@@ -22,6 +22,7 @@ import LogIn from '../../features/auth/components/SignIn/LogIn';
 import SignInScreen from '../../features/auth/page/SignInScrren';
 import SignUpScreen from '../../features/auth/page/SingUpScrenn';
 import Temp from '../..//features/videos/page/Temp';
+import FiltersScreen from '../../features/videos/page/FiltersScreen';
 
 
 
@@ -34,6 +35,7 @@ const navigation = createStackNavigator(
     [NavigationName.LOGIN]: LogIn,
     [NavigationName.SINGUP]: SignUpScreen,
     [NavigationName.TEMP]: Temp,
+    [NavigationName.FILTERSSCREEN]: FiltersScreen,
   },
   {
     initialRouteName: NavigationName.HOME,

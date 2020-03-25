@@ -66,9 +66,20 @@ const HomeScreen = ({navigation}:any) => {
                 />
                 <Button
                     color="#e63900"
-                    title="Go to Temp"
+                    title="Go to DescriptionTemp"
                     onPress={() => navigation.navigate(NavigationName.TEMP)}
                 />
+
+                <Button
+                    color="#e63900"
+                    title="FiltersScreen"
+                    onPress={() => navigation.navigate(NavigationName.FILTERSSCREEN)}
+                />
+
+
+
+
+
               </View>
             </View>
           </ScrollView>
