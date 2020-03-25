@@ -2,6 +2,8 @@ import { refsStore } from "../components/videoPlayer/refs.store"
 import { ButtonTypes } from "../enums";
 import { playPauseVideo, videoResize, rewindVideoTime } from "./videoPlayerActions"
 import { playPause, toogleFullscreen, toggleSmallMode } from "../../store/singleMovie/actions"
+import { MouseEvent, ReducerAction } from "react";
+import { RootStateOrAny } from "react-redux";
 
 
 export const runVideoAction = (buttonType: string, videoState: boolean, reduxAction?: any) => {
@@ -20,7 +22,8 @@ export const runVideoAction = (buttonType: string, videoState: boolean, reduxAct
   reduxAction()
 };
 
-export const changeVideoTime = (e: any, setVideoTime: any, TimeBarRef: any) => {
+export const changeVideoTime = (e: MouseEvent, setVideoTime: (num: number) => void, TimeBarRef: any) => {
+  console.log(e)
   const video = refsStore.Refs[0].current;
   const progressBarPosition = e.nativeEvent.offsetX;
   const TimeBarWidth = TimeBarRef.current.offsetWidth;
@@ -29,7 +32,7 @@ export const changeVideoTime = (e: any, setVideoTime: any, TimeBarRef: any) => {
   setVideoTime((video.currentTime / video.duration) * 100);
 }
 
-export const handleVideoShortcuts = (e: any, reduxAction: any, videoState: any, setVideoTime: any) => {
+export const handleVideoShortcuts = (e: KeyboardEvent, reduxAction: any, videoState: RootStateOrAny, setVideoTime: (num: number) => void) => {
   const video = refsStore.Refs[0].current;
   const videoContainer = refsStore.Refs[1].current;
   const timeToEnd = video.duration - video.currentTime;
@@ -58,7 +61,7 @@ export const handleVideoShortcuts = (e: any, reduxAction: any, videoState: any, 
   }
 }
 
-export const getVideoDuration = (setVideoDuration: any) => {
+export const getVideoDuration = (setVideoDuration: (num: number) => void) => {
   const video = refsStore.Refs[0].current;
   console.log(video.duration)
   setVideoDuration(video.duration)

@@ -23,7 +23,7 @@ const TimePlayedBar = styled.div<{ videoTime: any }>`
 
 
 
-const TimeBar: React.SFC = (props: any) => {
+const TimeBar: React.SFC = () => {
   const TimeBarRef: any = useRef()
   const [mouseDown, setMouseDown] = useState(false);
   const videoTime = useSelector(state => getMovieState(state).videoTime)

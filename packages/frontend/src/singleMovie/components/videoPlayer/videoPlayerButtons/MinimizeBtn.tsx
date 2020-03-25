@@ -9,7 +9,7 @@ import { ButtonTypes } from "../../../enums";
 import { runVideoAction } from "../../../actions/videoActionController"
 import { toggleSmallMode } from "../../../../store/singleMovie/actions"
 
-const Wrapper = styled.div<{ min: any }>`
+const Wrapper = styled.div<{ min: string | undefined }>`
     position: ${props => props.min ? "absolute" : "static"};
     top: ${props => props.min ? "0" : "0"};
     left: ${props => props.min ? "0" : "0"};

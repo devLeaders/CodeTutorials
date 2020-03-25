@@ -38,7 +38,6 @@ const VideoPlayerContainer = styled.div<{ minimized: boolean }>`
 
 const VideoPlayerComponent: React.SFC = () => {
   const isMinimized: boolean = useSelector(state => getMovieState(state).isMinimized)
-
   const videoContainerRef: any = useRef();
   refsStore.Refs[1] = videoContainerRef;
 
@@ -52,10 +51,5 @@ const VideoPlayerComponent: React.SFC = () => {
     </VideoPlayerContainer >
   );
 };
-
-const mapStateToProps = (state: any) => {
-  return { movie: state.movie };
-};
-
 
 export default VideoPlayerComponent;

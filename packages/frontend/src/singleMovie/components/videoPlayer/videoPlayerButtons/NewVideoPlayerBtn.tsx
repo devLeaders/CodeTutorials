@@ -22,7 +22,7 @@ export interface NewVideoPlayerButton {
   mainImg: string;
   afterClickImg: string;
   videoState: boolean;
-  runVideoAction: any;
+  runVideoAction(): void;
 }
 
 const NewVideoPlayerButton: React.SFC<NewVideoPlayerButton> = props => {

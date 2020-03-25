@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from "styled-components";
 import { useRef, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector, useDispatch, RootStateOrAny } from "react-redux"
 
 import { refsStore } from "./refs.store"
 import { playPauseVideo } from "../../actions/videoPlayerActions"
@@ -14,12 +14,10 @@ const VideoPlayer = styled.video`
      height: 100%;
      overflow: hidden;
 `
-export interface VPProps {
-}
 
-const VP: React.SFC<VPProps> = (props) => {
-    const videoRef: any = useRef();
-    const movieState: any = useSelector(state => getMovieState(state))
+const VP: React.SFC = () => {
+    const videoRef: any = useRef<HTMLVideoElement>();
+    const movieState: RootStateOrAny = useSelector(state => getMovieState(state))
     const dispatch = useDispatch()
     refsStore.Refs[0] = videoRef
 
@@ -33,7 +31,7 @@ const VP: React.SFC<VPProps> = (props) => {
         setTime(time)
     };
 
-    const handleKeyDown = (e: any) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
         let reduxAction;
         const key = e.keyCode
         if (key == 32 || key == 37 || key == 39) {

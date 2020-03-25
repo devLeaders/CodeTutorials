@@ -10,7 +10,7 @@ import { ButtonTypes } from "../../../enums";
 import { runVideoAction } from "../../../actions/videoActionController"
 import { playPause } from "../../../../store/singleMovie/actions"
 
-const Wrapper = styled.div<{ min: any }>`
+const Wrapper = styled.div<{ min: string | undefined }>`
     position: ${props => props.min ? "absolute" : "static"};
     top: ${props => props.min ? "50%" : "0"};
     left: ${props => props.min ? "50%" : "0"};
