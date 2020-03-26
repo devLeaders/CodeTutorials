@@ -9,6 +9,7 @@ import Interface from "./interface"
 import { getMovieState } from "../../actions/ReduxActions"
 import { SmallInterface } from "./SmallModeInterface"
 import { VideoPlayer } from "./VideoPlayer"
+import { device } from "../../../constans/device"
 
 
 
@@ -19,6 +20,8 @@ const VideoPlayerContainer = styled.div<{ minimized: boolean }>`
   max-height: ${props => props.minimized ? "120px" : ""};
   max-width: ${props => props.minimized ? "200px" : ""};
   overflow: hidden;
+  max-height: 700px;
+  background-color: #222;
   &:hover ${VideoPlayer}{
     filter: ${props => props.minimized ? "brightness(0.5)" : ""};
   }
@@ -28,9 +31,16 @@ const VideoPlayerContainer = styled.div<{ minimized: boolean }>`
   }
   &:hover {
     .interfaceWrapper {
-      transform: translateY(0)
+        transform: translateY(0);
+        @media ${device.TABLET} {
+          transform: translateY(0);
+        }
     }
   }
+  @media ${device.TABLET} {
+        background-color: grey; 
+  }
+  
 `;
 
 const VideoPlayerComponent: React.SFC = () => {

@@ -8,11 +8,15 @@ import { playPauseVideo } from "../../actions/videoPlayerActions"
 import { playPause, toggleSmallMode, toogleFullscreen, setVideoTime } from "../../../store/singleMovie/actions"
 import { handleVideoShortcuts } from "../../actions/videoActionController"
 import { getMovieState } from "../../actions/ReduxActions"
+import { device } from "../../../constans/device"
+
 
 export const VideoPlayer = styled.video`
-     width: 100%;
-     max-height: 600px;
-     overflow: hidden;
+    width: 100%;
+    max-height: 700px;
+    overflow: hidden;
+    object-fit: contain;
+    /* min-height: 198px; */
 `
 
 const VP: React.SFC = () => {

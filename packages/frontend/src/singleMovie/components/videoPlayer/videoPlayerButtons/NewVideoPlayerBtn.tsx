@@ -14,16 +14,18 @@ const ToogleButton = styled.button<{ min: string | undefined, play: string | und
     margin-right: 6px;
     cursor: pointer;
     background: none;
-    margin-right: 6px; 
     padding: 0;
     border: 0;
     outline: 0;
     @media ${device.MOBILE_M}{
       width: 14px
     }
+    @media ${device.MOBILE_L}{
+      width: 18px
+    }
     @media ${device.TABLET}{
       width: 27px;
-      margin-right: 10px;
+      margin-right: 15px;
     }
     @media ${device.LAPTOP}{
       width: 35px;

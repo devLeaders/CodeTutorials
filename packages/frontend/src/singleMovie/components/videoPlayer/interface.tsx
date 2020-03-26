@@ -18,11 +18,18 @@ const InterfaceWrapper = styled.div<{ paused: boolean; isMin: boolean }>`
     background-color: rgba(0, 0, 0, 0.7);
     transition: all 0.2s;
     transform: ${props => (props.paused ? "translateY(0)" : "translateY(100%)")};
+    margin-top: 0;
+    @media ${device.MOBILE_L}{
+        height: 35px;
+        /* transform: ${props => (props.paused ? "translateY(-3px)" : "translateY(100%)")}; */
+        }
     @media ${device.TABLET}{
-        height: 50px
+        height: 50px;
+        transform: ${props => (props.paused ? "translateY(0)" : "translateY(100%)")};
         }
     @media ${device.LAPTOP}{
         height: 80px;
+        /* transform: ${props => (props.paused ? "translateY(-4px)" : "translateY(100%)")}; */
     }
 `;
 
