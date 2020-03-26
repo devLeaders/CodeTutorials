@@ -1,5 +1,5 @@
 export enum FontFamily {
     ARIAL = "Arial",
     SFPRO = "SFProDisplay",
-    GLOBAL_MONT = "Montserrat, sans-serif"
+    GLOBAL_MONT = "Montserrat"
 }
