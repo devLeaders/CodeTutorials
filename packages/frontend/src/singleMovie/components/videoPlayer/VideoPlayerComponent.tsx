@@ -4,36 +4,33 @@ import { useSelector } from "react-redux"
 
 import { refsStore } from "./refs.store"
 import { breakPoint } from "../../../utils/breakPoint";
-import VideoPlayer from "./VideoPlayer"
+import Player from "./VideoPlayer"
 import Interface from "./interface"
 import { getMovieState } from "../../actions/ReduxActions"
+import { SmallInterface } from "./SmallModeInterface"
+import { VideoPlayer } from "./VideoPlayer"
 
 
 
 const VideoPlayerContainer = styled.div<{ minimized: boolean }>`
   position: ${props => props.minimized ? "fixed" : "relative"};
-  right: ${props => props.minimized ? "30px" : ""};
-  bottom: ${props => props.minimized ? "10px" : ""};
-  max-height: ${props => props.minimized ? "200px" : ""};
-  max-width: ${props => props.minimized ? "300px" : ""};
+  right: ${props => props.minimized ? "0" : "0"};
+  bottom: ${props => props.minimized ? "0" : "0"};
+  max-height: ${props => props.minimized ? "120px" : ""};
+  max-width: ${props => props.minimized ? "200px" : ""};
   overflow: hidden;
-  @media screen and (min-width: ${breakPoint.desktop}) {
-    flex-direction: row;
-    width: 60%;
+  &:hover ${VideoPlayer}{
+    filter: ${props => props.minimized ? "brightness(0.5)" : ""};
   }
-  &:hover {
-    .small {
+  &:hover ${SmallInterface} {
       visibility: visible;
       opacity: 1;
-    }
   }
   &:hover {
     .interfaceWrapper {
       transform: translateY(0)
     }
   }
-
-  
 `;
 
 const VideoPlayerComponent: React.SFC = () => {
@@ -46,7 +43,7 @@ const VideoPlayerComponent: React.SFC = () => {
       ref={videoContainerRef}
       minimized={isMinimized}
     >
-      <VideoPlayer />
+      <Player />
       <Interface />
     </VideoPlayerContainer >
   );

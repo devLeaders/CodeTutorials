@@ -14,10 +14,10 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 5px 0 0 0;
   position: relative;
-  @media ${device.mobileM} {
+  @media ${device.MOBILE_M} {
     height: 9rem;
   }
-  @media ${device.tablet} {
+  @media ${device.TABLET} {
     height: 11rem;
   }
 `;
@@ -27,7 +27,7 @@ const Title = styled.h2`
   margin-left: 15px;
   align-self: flex-start;
   color: ${Colors.nLightGrey};
-  @media ${device.tablet} {
+  @media ${device.TABLET} {
     font-size: ${Fonts.desktopMedium};
   }
 `;

@@ -29,14 +29,12 @@ const FullscreenBtn: React.SFC<FullscreenBtnProps> = () => {
     }
 
     return (
-        <Wrapper>
-            <NewVideoPlayerBtn
-                mainImg="/icons/fullscreen.svg"
-                afterClickImg="/icons/small-screen.svg"
-                videoState={isActive}
-                runVideoAction={runAction}
-            />
-        </Wrapper>
+        <NewVideoPlayerBtn
+            mainImg="/icons/fullscreen.svg"
+            afterClickImg="/icons/small-screen.svg"
+            videoState={isActive}
+            runVideoAction={runAction}
+        />
     );
 }
 

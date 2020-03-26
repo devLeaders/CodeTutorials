@@ -15,6 +15,7 @@ const Wrapper = styled.div<{ min: string | undefined }>`
     top: ${props => props.min ? "50%" : "0"};
     left: ${props => props.min ? "50%" : "0"};
     transform: ${props => props.min ? "translate(-50%, -50%)" : ""};
+    background-color: red;
 `
 
 interface PlayBtnProps {
@@ -34,15 +35,17 @@ const PlayBtn: React.SFC<PlayBtnProps> = (props) => {
         runVideoAction(ButtonTypes.PLAY, isPaused, play)
     }
 
+
     return (
-        <Wrapper min={min}>
-            <NewVideoPlayerBtn
-                mainImg="/icons/play.svg"
-                afterClickImg="/icons/pause.svg"
-                videoState={isActive}
-                runVideoAction={runAction}
-            />
-        </Wrapper>
+        <NewVideoPlayerBtn
+            mainImg="/icons/play.svg"
+            afterClickImg="/icons/pause.svg"
+            videoState={isActive}
+            runVideoAction={runAction}
+            min={min}
+            play="play"
+        />
+
     );
 }
 

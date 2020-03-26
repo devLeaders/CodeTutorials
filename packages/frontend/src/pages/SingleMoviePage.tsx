@@ -20,10 +20,6 @@ const StyledVideoComponent = styled.div`
   display: flex;
   flex-direction: column-reverse;
   background-color: ${Colors.backgroundMain};
-
-  @media screen and (min-width: ${breakPoint.desktop}) {
-    flex-direction: row;
-  }
 `;
 
 interface SingleMovieProps {

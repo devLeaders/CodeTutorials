@@ -9,9 +9,9 @@ import { playPause, toggleSmallMode, toogleFullscreen, setVideoTime } from "../.
 import { handleVideoShortcuts } from "../../actions/videoActionController"
 import { getMovieState } from "../../actions/ReduxActions"
 
-const VideoPlayer = styled.video`
+export const VideoPlayer = styled.video`
      width: 100%;
-     height: 100%;
+     max-height: 600px;
      overflow: hidden;
 `
 

@@ -11,18 +11,16 @@ const ControlsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 100%;
-  padding: 3px;
+  padding: 5px;
+  align-items: center;
 `;
 
 const LeftPanel = styled.div`
-  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
 `;
 const RightPanel = styled.div`
-  height: 100%;
   margin-right: 10px;
   display: flex;
   flex-direction: row;

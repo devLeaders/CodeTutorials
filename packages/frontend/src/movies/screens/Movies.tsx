@@ -21,10 +21,10 @@ const Section = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
-  @media ${device.mobileM} {
+  @media ${device.MOBILE_M} {
     height: 300px;
   }
-  @media ${device.tablet} {
+  @media ${device.TABLET} {
     height: 450px;
   }
 `;
@@ -34,7 +34,7 @@ const SliderSection = styled.section`
   width: 100%;
 `;
 
-export interface MoviesProps {}
+export interface MoviesProps { }
 
 const Movies: React.SFC<MoviesProps> = () => {
   return (

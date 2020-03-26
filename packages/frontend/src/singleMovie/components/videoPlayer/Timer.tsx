@@ -6,10 +6,19 @@ import { useState, useEffect } from "react";
 import { getMovieState } from "../../actions/ReduxActions"
 import moment, { duration } from "moment"
 import { getVideoDuration } from "../../actions/videoActionController"
+import { device } from "../../../constans/device"
+
+
 
 const Time = styled.p`
   font-size: 8px;
   color: white;
+  @media ${device.TABLET}{
+    font-size: 10px
+  }
+  @media ${device.LAPTOP}{
+    font-size: 18px
+  }
 `;
 
 interface TimerProps {
@@ -22,9 +31,9 @@ const Timer: React.SFC<TimerProps> = () => {
   const currentTime = moment(videoTime, "ss").format("mm:ss")
 
   return (
-    <div >
-      <Time>{currentTime}</Time>
-    </div>
+
+    <Time>{currentTime}</Time>
+
   );
 };
 

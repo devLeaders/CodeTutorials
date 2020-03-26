@@ -33,15 +33,15 @@ const MinimizeBtn: React.SFC<MinimizeBtnProps> = (props) => {
         runVideoAction(ButtonTypes.SMALL_MODE, isMinimized, changeIsSmallMode)
     }
 
+
     return (
-        <Wrapper min={min}>
-            <NewVideoPlayerBtn
-                mainImg="/icons/small-mode.svg"
-                afterClickImg="/icons/normal-screen.svg"
-                videoState={isActive}
-                runVideoAction={runAction}
-            />
-        </Wrapper>
+        <NewVideoPlayerBtn
+            mainImg="/icons/small-mode.svg"
+            afterClickImg="/icons/normal-screen.svg"
+            videoState={isActive}
+            runVideoAction={runAction}
+            min={min}
+        />
     );
 }
 

@@ -28,15 +28,15 @@ const MuteBtn: React.SFC<MuteBtnProps> = () => {
         runVideoAction(ButtonTypes.MUTE, isMuted, toggleMute)
     }
 
+
     return (
-        <Wrapper>
-            <NewVideoPlayerBtn
-                mainImg="/icons/un-mute.svg"
-                afterClickImg="/icons/mute.svg"
-                videoState={isActive}
-                runVideoAction={runAction}
-            />
-        </Wrapper>
+        <NewVideoPlayerBtn
+            mainImg="/icons/un-mute.svg"
+            afterClickImg="/icons/mute.svg"
+            videoState={isActive}
+            runVideoAction={runAction}
+
+        />
     );
 }
 

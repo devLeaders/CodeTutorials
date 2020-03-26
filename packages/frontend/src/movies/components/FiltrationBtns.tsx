@@ -5,7 +5,7 @@ import Colors from "../../constans/Colors";
 import Fonts from "../../constans/Fonts";
 import FilterMenu from "./FilterMenu";
 import { device } from "../../constans/device";
-export interface FiltrationBtnsProps {}
+export interface FiltrationBtnsProps { }
 
 const Wrapper = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ const Button = styled.button`
   &.isActive span {
     color: ${Colors.nBlack};
   }
-  @media ${device.tablet} {
+  @media ${device.TABLET} {
     width: 10rem;
     height: 3rem;
     &.isActive {
@@ -57,7 +57,7 @@ const Span = styled.span`
   &.left {
     color: black;
   }
-  @media ${device.tablet} {
+  @media ${device.TABLET} {
     font-size: ${Fonts.desktopMedium};
   }
 `;

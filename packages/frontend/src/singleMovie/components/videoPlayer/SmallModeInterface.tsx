@@ -5,7 +5,7 @@ import PlayBtn from "../videoPlayer/videoPlayerButtons/PlayBtn"
 import MinimizeBtn from "../videoPlayer/videoPlayerButtons/MinimizeBtn"
 import TimeBar from "./TimeBar";
 
-const Wrapper = styled.div`
+export const SmallInterface = styled.div`
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s;
@@ -15,11 +15,11 @@ const Wrapper = styled.div`
 const SmallModeInterface: React.SFC = () => {
 
     return (
-        <Wrapper className="small">
+        <SmallInterface className="small">
             <PlayBtn min="true " />
             <MinimizeBtn min="true" />
             <TimeBar />
-        </Wrapper>
+        </SmallInterface>
     );
 }
 
