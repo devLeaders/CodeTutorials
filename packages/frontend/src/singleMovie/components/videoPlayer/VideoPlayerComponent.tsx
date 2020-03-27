@@ -13,17 +13,16 @@ import { device } from "../../../constans/device"
 
 
 
-const VideoPlayerContainer = styled.div<{ minimized: boolean }>`
-  position: ${props => props.minimized ? "fixed" : "relative"};
-  right: ${props => props.minimized ? "0" : "0"};
-  bottom: ${props => props.minimized ? "0" : "0"};
-  max-height: ${props => props.minimized ? "120px" : ""};
-  max-width: ${props => props.minimized ? "200px" : ""};
+const VideoPlayerContainer = styled.div<{ minimized: boolean, small: string | undefined }>`
+display: ${props => !props.small || props.small && props.minimized ? "block" : "none"};
+  position: ${props => props.minimized && props.small ? "fixed" : "relative"};
+  right: ${props => props.minimized && props.small ? "0" : "0"};
+  bottom: ${props => props.minimized && props.small ? "0" : "0"};
+  max-width: ${props => props.minimized && props.small ? "200px" : ""};
   overflow: hidden;
-  max-height: 700px;
   background-color: #222;
   &:hover ${VideoPlayer}{
-    filter: ${props => props.minimized ? "brightness(0.5)" : ""};
+    filter: ${props => props.minimized && props.small ? "brightness(0.5)" : ""};
   }
   &:hover ${SmallInterface} {
       visibility: visible;
@@ -38,18 +37,26 @@ const VideoPlayerContainer = styled.div<{ minimized: boolean }>`
     }
   }
   @media ${device.TABLET} {
-        background-color: grey; 
-  }
-  
-`;
+    max-width: ${props => props.minimized && props.small ? "400px" : ""}; 
+    }
+    @media ${device.LAPTOP} {
+    max-width: ${props => props.minimized && props.small ? "600px" : ""}; 
+    }
 
-const VideoPlayerComponent: React.SFC = () => {
+ 
+`;
+interface VideoPlayerComponentProps {
+  small?: string;
+}
+
+const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
   const isMinimized: boolean = useSelector(state => getMovieState(state).isMinimized)
   const videoContainerRef: any = useRef();
   refsStore.Refs[1] = videoContainerRef;
 
   return (
     <VideoPlayerContainer
+      small={props.small}
       ref={videoContainerRef}
       minimized={isMinimized}
     >

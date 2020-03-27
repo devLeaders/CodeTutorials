@@ -11,9 +11,9 @@ import { getMovieState } from "../../actions/ReduxActions"
 import { device } from "../../../constans/device"
 
 
-export const VideoPlayer = styled.video`
+export const VideoPlayer = styled.video<{ isFullscreen: boolean }>`
     width: 100%;
-    max-height: 700px;
+    max-height: ${props => props.isFullscreen ? "" : "830px"};
     overflow: hidden;
     object-fit: contain;
     /* min-height: 198px; */
@@ -53,13 +53,14 @@ const VP: React.SFC = () => {
 
 
     useEffect(() => {
-        window.addEventListener("keydown", handleKeyDown)
+        document.addEventListener("keydown", handleKeyDown)
         return () => { window.removeEventListener("keydown", handleKeyDown) }
     }, [movieState.isPaused])
 
 
     return (
         <VideoPlayer
+            isFullscreen={movieState.isFullscreen}
             ref={videoRef}
             onTimeUpdate={handleTimeProgress}
             onClick={handleVideoClick}

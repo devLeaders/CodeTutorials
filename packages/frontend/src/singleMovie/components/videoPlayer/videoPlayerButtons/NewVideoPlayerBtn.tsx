@@ -6,18 +6,17 @@ import { device } from "../../../../constans/device"
 
 const ToogleButton = styled.button<{ min: string | undefined, play: string | undefined }>`
     display: flex;
-    position: ${props => props.min ? "absolute" : "static"};
-    top: ${props => props.min && props.play ? "50%" : "5px"};
-    left: ${props => props.min && props.play ? "50%" : "5px"};
-    transform: ${props => props.min && props.play ? "translate(-50%, -50%)" : ""};
-    width:  ${props => props.min && props.play ? "30px" : "12px"};
-    margin-right: 6px;
     cursor: pointer;
     background: none;
     padding: 0;
     border: 0;
     outline: 0;
-    @media ${device.MOBILE_M}{
+   
+`;
+
+const BigModeButton = styled(ToogleButton)`
+    margin-right: 6px;
+   @media ${device.MOBILE_M}{
       width: 14px
     }
     @media ${device.MOBILE_L}{
@@ -31,6 +30,13 @@ const ToogleButton = styled.button<{ min: string | undefined, play: string | und
       width: 35px;
       margin-right: 20px;
     }
+`
+const SmallModeButton = styled(ToogleButton) <{ play: string | undefined }>`
+    position: absolute;
+    top: ${props => props.play ? "50%" : "5px"};
+    left: ${props => props.play ? "50%" : "5px"};
+    transform: ${props => props.play ? "translate(-50%, -50%)" : ""};
+    width:  ${props => props.play ? "30px" : "12px"};
 `;
 
 const Img = styled.img`
@@ -53,10 +59,16 @@ const NewVideoPlayerButton: React.SFC<NewVideoPlayerButton> = props => {
     (<Img src={mainImg} />) :
     (<Img src={afterClickImg} />);
   return (
-
-    <ToogleButton onClick={runVideoAction} min={min} play={play}>
-      {startStopImg}
-    </ToogleButton>
+    <>
+      {min ?
+        <SmallModeButton onClick={runVideoAction} min={min} play={play}>
+          {startStopImg}
+        </SmallModeButton>
+        :
+        <BigModeButton onClick={runVideoAction} min={min} play={play}>
+          {startStopImg}
+        </BigModeButton>}
+    </>
   );
 };
 

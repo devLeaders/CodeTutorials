@@ -37,8 +37,7 @@ export const handleVideoShortcuts = (e: KeyboardEvent, reduxAction: any, videoSt
   const videoContainer = refsStore.Refs[1].current;
   const timeToEnd = video.duration - video.currentTime;
   const key = e.keyCode
-  console.log(video.duration)
-
+  console.log(key)
   if (key == 32) {
     e.preventDefault()
     reduxAction();
@@ -57,7 +56,7 @@ export const handleVideoShortcuts = (e: KeyboardEvent, reduxAction: any, videoSt
     }
   } else if (key == 27) {
     console.log(key)
-    reduxAction()
+    // reduxAction()
   }
 }
 
