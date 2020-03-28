@@ -6,9 +6,13 @@ import { FontSize } from '../../common/styles/constans/FontSize';
 import { Color } from '../../common/styles/constans/Color';
 import WhiteFilterButton from '../components/FiltersScreen/WhiteFilterButton';
 import BlackFilterButton from '../components/FiltersScreen/BlackFilterButton';
+import { NavigationName } from '../../../config/routing/NavigationName';
+import XButton from '../components/FiltersScreen/XButton';
 
+;
 
-const Wrapper = styled.View({
+const Wrapper = styled.ScrollView({
+  flexGrow: 1,
   backgroundColor: Color.WHITE,
   shadowColor: Color.LIGHTGREYX,
     shadowOffset: {
@@ -37,14 +41,6 @@ const Title = styled.Text`
     font-size: ${FontSize.GRANDE};
     color: ${Color.BLACK};
     line-height: 28px;
-`;
-const XButton = styled.TouchableOpacity({
-  backgroundColor: Color.WHITE,
-});
-
-const ImageX = styled.Image`
-    height: 30px;
-    width: 30px; 
 `;
 
 const SearchbarWrapper = styled.View({
@@ -144,13 +140,16 @@ const TextCategory = styled.Text`
   // margin-top: 15 px ma kazdy button 20+15px
 
 const FilersButtonWrapper = styled.View`
-    display: flex;
+    margin-left: 21px;
+    margin-right: 10px;
     flex-direction: row;
-    flex-wrap: wrap;
-    
 `;
 
-
+const FooterImitation= styled.View`
+  margin-top: 40px;
+  height: 50px;
+  background-color: ${Color.BLACK};
+`;
 
 interface FiltersScreenProps {
   navigation: any,
@@ -167,9 +166,9 @@ export default class FiltersScreen extends React.Component <FiltersScreenProps, 
       <Wrapper>
         <TitleAndXWrapper>
             <Title>Szukaj</Title>
-            <XButton>
-              <ImageX source={{uri:'x'}}/>
-            </XButton>   
+            <XButton
+          navigation={this.props.navigation}
+          goto={NavigationName.HOME}/> 
         </TitleAndXWrapper>
         <SearchbarWrapper>
             <InputText 
@@ -193,13 +192,54 @@ export default class FiltersScreen extends React.Component <FiltersScreenProps, 
         </EyeAndTextwrapper>
         <TextCategory>Kategorie</TextCategory>
         <FilersButtonWrapper>
-            <WhiteFilterButton text="UX/UI Design"/>
-            <WhiteFilterButton text="Graphic Design"/>
+            <WhiteFilterButton 
+              text="UX/UI Design"
+              navigation={this.props.navigation}
+              goto={NavigationName.HOME}
+              />
+            <WhiteFilterButton 
+              text="Graphic Design"
+              navigation={this.props.navigation}
+              goto={NavigationName.HOME}/>
         </FilersButtonWrapper>
         <FilersButtonWrapper>
-            <BlackFilterButton text="Computer Science Engineer"/>
+            <BlackFilterButton 
+              text="Computer Science Engineer"
+              navigation={this.props.navigation}
+              goto={NavigationName.HOME}
+              />
+        </FilersButtonWrapper>
+        <FilersButtonWrapper>
+            <WhiteFilterButton 
+              text="UX/UI Design"
+              navigation={this.props.navigation}
+              goto={NavigationName.HOME}
+              />
+            <WhiteFilterButton 
+              text="Graphic Design"
+              navigation={this.props.navigation}
+              goto={NavigationName.HOME}
+              />
+        </FilersButtonWrapper>
+        <FilersButtonWrapper>
+            <WhiteFilterButton 
+              text="Dance"
+              navigation={this.props.navigation}
+              goto={NavigationName.HOME}
+              />
+            <WhiteFilterButton 
+              text="DJ"
+              navigation={this.props.navigation}
+              goto={NavigationName.HOME}
+              />
+            <WhiteFilterButton 
+              text="Guitarist"
+              navigation={this.props.navigation}
+              goto={NavigationName.HOME}
+              />
         </FilersButtonWrapper>
         
+        <FooterImitation></FooterImitation>
       </Wrapper>
       
     );

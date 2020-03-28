@@ -4,8 +4,10 @@ import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { FontFamily } from '../../../common/styles/constans/FontFamily';
 import { FontSize } from '../../../common/styles/constans/FontSize';
 import { Color } from '../../../common/styles/constans/Color';
+import { NavigationName } from '../../../../config/routing/NavigationName';
 
 const Wrapper = styled.TouchableOpacity`
+    flex: 1;
     height: 50px;
     margin-top: 15px;
 `;
@@ -15,6 +17,7 @@ const ButtonFilter = styled.TouchableOpacity({
     height: 50,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 10,
     borderColor: Color.LIGHTGREYXX,
     //border: 1,  ??
@@ -44,6 +47,7 @@ interface BlackFilterButtonProps {
     navigation: any,
     text: string,
     onSubmitFilter(): void,
+    goto: any,
   }
   
   //wybór white button | blackbutton
@@ -52,7 +56,8 @@ export default class BlackFilterButton extends React.Component<BlackFilterButton
     render(){
         return(
             <Wrapper>
-                <ButtonFilter>
+                <ButtonFilter
+                    onPress={() => this.props.navigation.navigate(this.props.goto)}>
                 <TextButton>{this.props.text}</TextButton>
                 </ButtonFilter>
             </Wrapper>
