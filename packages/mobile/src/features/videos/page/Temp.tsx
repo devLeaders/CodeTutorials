@@ -10,7 +10,7 @@ import MainDescription from '../components/SingleScreen/MainDescription';
 interface Temp {
   navigation: any
 }
-
+ 
 export default class Temp extends React.Component <Temp>{
  
   render() {
