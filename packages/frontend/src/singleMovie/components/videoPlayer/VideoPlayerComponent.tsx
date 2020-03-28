@@ -20,7 +20,7 @@ display: ${props => !props.small || props.small && props.minimized ? "block" : "
   bottom: ${props => props.minimized && props.small ? "0" : "0"};
   max-width: ${props => props.minimized && props.small ? "200px" : ""};
   overflow: hidden;
-  background-color: #222;
+  /* background-color: #222; */
   &:hover ${VideoPlayer}{
     filter: ${props => props.minimized && props.small ? "brightness(0.5)" : ""};
   }
@@ -52,7 +52,12 @@ interface VideoPlayerComponentProps {
 const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
   const isMinimized: boolean = useSelector(state => getMovieState(state).isMinimized)
   const videoContainerRef: any = useRef();
-  refsStore.Refs[1] = videoContainerRef;
+  if (props.small) {
+    refsStore.RefsSmall[1] = videoContainerRef
+  } else {
+    refsStore.Refs[1] = videoContainerRef;
+  }
+
 
   return (
     <VideoPlayerContainer
@@ -60,7 +65,7 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
       ref={videoContainerRef}
       minimized={isMinimized}
     >
-      <Player />
+      <Player small={props.small} />
       <Interface />
     </VideoPlayerContainer >
   );

@@ -4,6 +4,7 @@ export interface movieState {
   isMinimized: boolean;
   isMuted: boolean;
   videoTime: number;
+  videoType: string;
 }
 
 export enum Actions {
@@ -11,7 +12,8 @@ export enum Actions {
   TOGGLE_FULLSCREEN = "fullscreen",
   TOGGLE_SMALLMODE = "smallMode",
   MUTE_UNMUTE = "mute",
-  SET_VIDEO_TIME = "setVideoTime"
+  SET_VIDEO_TIME = "setVideoTime",
+  SET_VIDEO_TYPE = "setVideoType"
 }
 
 interface MoviePlayPause {
@@ -30,9 +32,13 @@ interface SetVideoTime {
   type: Actions.SET_VIDEO_TIME;
   payload: number
 }
+interface SetVideoType {
+  type: Actions.SET_VIDEO_TYPE;
+}
 
 export type MoviePlayPauseType = MoviePlayPause;
 export type MovieToggleFullscreenType = MovieToggleFullscreen;
 export type MovieToggleSmallModeType = MovieToggleSmallMode;
 export type MovieMuteUnMuteType = MovieMuteUnMute;
 export type SetVideoTimeType = SetVideoTime;
+export type SetVideoTypeType = SetVideoType;

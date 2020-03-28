@@ -4,7 +4,7 @@ interface Refs {
 
 class RefsStore {
     Refs: any = []
-
+    RefsSmall: any = []
 }
 
 

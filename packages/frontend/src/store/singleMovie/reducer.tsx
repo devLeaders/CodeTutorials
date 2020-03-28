@@ -6,6 +6,7 @@ const initialState: movieState = {
   isMinimized: false,
   isMuted: false,
   videoTime: 0,
+  videoType: "",
 };
 
 export const movieReducer = (state = initialState, action: any) => {
@@ -23,6 +24,9 @@ export const movieReducer = (state = initialState, action: any) => {
       return { ...state, isMuted: !state.isMuted };
     }
     case Actions.SET_VIDEO_TIME: {
+      return { ...state, videoTime: action.payload };
+    }
+    case Actions.SET_VIDEO_TYPE: {
       return { ...state, videoTime: action.payload };
     }
     default: {

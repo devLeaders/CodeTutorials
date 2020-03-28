@@ -13,17 +13,24 @@ import { device } from "../../../constans/device"
 
 export const VideoPlayer = styled.video<{ isFullscreen: boolean }>`
     width: 100%;
-    max-height: ${props => props.isFullscreen ? "" : "830px"};
-    overflow: hidden;
+    height: ${props => props.isFullscreen ? "100%" : "auto"};
+    max-height: ${props => props.isFullscreen ? "100%" : "830px"};
     object-fit: contain;
-    /* min-height: 198px; */
 `
+interface VpProps {
+    small?: string;
+}
 
-const VP: React.SFC = () => {
+const VP: React.SFC<VpProps> = (props) => {
+    const { small } = props
     const videoRef: any = useRef<HTMLVideoElement>();
     const movieState: RootStateOrAny = useSelector(state => getMovieState(state))
     const dispatch = useDispatch()
-    refsStore.Refs[0] = videoRef
+    if (props.small) {
+        refsStore.RefsSmall[0] = videoRef
+    } else {
+        refsStore.Refs[0] = videoRef;
+    }
 
     const setTime = (time: number) => {
         dispatch(setVideoTime(time))
@@ -43,7 +50,7 @@ const VP: React.SFC = () => {
         } else if (document.fullscreenElement) {
             reduxAction = () => dispatch(toogleFullscreen())
         }
-        handleVideoShortcuts(e, reduxAction, movieState, setTime)
+        handleVideoShortcuts(e, reduxAction, movieState, setTime, small)
     }
 
     const handleVideoClick = () => {

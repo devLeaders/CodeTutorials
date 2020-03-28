@@ -9,7 +9,7 @@ import { RootStateOrAny } from "react-redux";
 export const runVideoAction = (buttonType: string, videoState: boolean, reduxAction?: any) => {
   const video = refsStore.Refs[0].current;
   const videoContainer = refsStore.Refs[1].current;
-
+  console.log(refsStore.Refs, refsStore.RefsSmall)
   if (buttonType === ButtonTypes.PLAY) {
     //function that plays and pause video
     playPauseVideo(video, videoState);
@@ -32,7 +32,7 @@ export const changeVideoTime = (e: MouseEvent, setVideoTime: (num: number) => vo
   setVideoTime((video.currentTime / video.duration) * 100);
 }
 
-export const handleVideoShortcuts = (e: KeyboardEvent, reduxAction: any, videoState: RootStateOrAny, setVideoTime: (num: number) => void) => {
+export const handleVideoShortcuts = (e: KeyboardEvent, reduxAction: any, videoState: RootStateOrAny, setVideoTime: (num: number) => void, small: string | undefined) => {
   const video = refsStore.Refs[0].current;
   const videoContainer = refsStore.Refs[1].current;
   const timeToEnd = video.duration - video.currentTime;
