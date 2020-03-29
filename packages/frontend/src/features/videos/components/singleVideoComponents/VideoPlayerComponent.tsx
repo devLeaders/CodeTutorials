@@ -5,7 +5,7 @@ import { Device } from '../../../common/styles/constans/Device';
 const StyledVideo = styled.video`
   width: 100%;
 
-  @media screen and (min-width: ${Device.laptop}) {
+  @media ${Device.LAPTOP} {
       flex-direction: row;
       width:60%;
   }

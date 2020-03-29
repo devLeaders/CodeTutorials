@@ -11,7 +11,7 @@ const DescribeContainer = styled.div`
     padding: 15px;
     display: flex;
     flex-direction: column;
-    @media screen and ${Device.desktop} {
+    @media ${Device.DESKTOP} {
       width:40%;
   }
 `;

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import { FontFamily } from '../../../common/styles/constans/FontFamily';
 import Colors from '../../../common/styles/constans/Colors';
-import {Device} from '../../../common/styles/constans/Device'
+import { Device } from '../../../common/styles/constans/Device'
 
 const StyledRate = styled.section`
     width:100%;
@@ -12,7 +12,7 @@ const StyledRate = styled.section`
 `;
 
 const Subtitle = styled.h4`
- @media screen and ${Device.laptop} {
+ @media ${Device.LAPTOP} {
       width:40%;
   }
 `;

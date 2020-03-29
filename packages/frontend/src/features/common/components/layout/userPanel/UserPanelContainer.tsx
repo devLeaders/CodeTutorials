@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import UserSection from "./UserSection"
 import ActionsSection from "./ActionsSection"
+import { Device } from "../../../styles/constans/Device"
 
 const Wrapper = styled.div`
     position: fixed;
@@ -11,9 +12,14 @@ const Wrapper = styled.div`
     height: 100vh;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    padding: 14px 8px ;
+    box-sizing: border-box;
+    width: 320px;
+    padding: 21px 14px ;
     box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.02);
+    @media ${Device.TABLET}{
+        width: 443px;
+        padding: 24px 37px ;
+    }
 `
 
 

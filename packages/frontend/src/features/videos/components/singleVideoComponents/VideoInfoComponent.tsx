@@ -11,7 +11,7 @@ const Describe = styled.p`
     font-size: ${FontSize.paragraphMobile};
     font-weight: ${fontWeight.medium};
     color: ${Colors.nBlack};
-    @media screen and (min-width: ${Device.desktop}) {
+    @media screen and (min-width: ${Device.DESKTOP}) {
         font-size: ${FontSize.paragraphDesktop};
     }
 `;
@@ -22,7 +22,7 @@ const Subtitle = styled.h4`
     font-weight: ${fontWeight.medium};
 color: ${Colors.nBlack};
 padding: 15px 0;
-@media screen and (min-width: ${Device.desktop}) {
+@media screen and (min-width: ${Device.DESKTOP}) {
     font-size: ${FontSize.subtitleDesktop};
 }
 `;

@@ -20,11 +20,11 @@ const Wrapper = styled.div`
   opacity: 0.9;
   transform: ${(props: { active: boolean }) =>
     props.active ? "translateY(25%)" : "translateY(-100%)"};
-  @media ${Device.mobileM} {
+  @media ${Device.MOBILE_M} {
     transform: ${(props: { active: boolean }) =>
-      props.active ? "translateY(40%)" : "translateY(-100%)"};
+    props.active ? "translateY(40%)" : "translateY(-100%)"};
   }
-  @media ${Device.tablet} {
+  @media ${Device.TABLET} {
     height: 300px;
     width: 40%;
   }
@@ -43,7 +43,7 @@ const BurgerNavItem = styled.li`
   &:hover {
     background-color: ${Colors.nGrey};
   }
-  @media ${Device.tablet} {
+  @media ${Device.TABLET} {
     font-size: 20px;
   }
 `;
@@ -54,7 +54,7 @@ const Footer = styled.footer`
   &:hover {
     background-color: ${Colors.nGrey};
   }
-  @media ${Device.tablet} {
+  @media ${Device.TABLET} {
     font-size: 20px;
   }
 `;

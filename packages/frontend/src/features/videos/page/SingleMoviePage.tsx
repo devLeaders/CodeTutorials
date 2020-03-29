@@ -16,7 +16,7 @@ const StyledVideoComponent = styled.div`
   flex-direction: column-reverse;
   background-color: ${Colors.nWhite};
 
-  @media screen and ${Device.laptop}) {
+  @media screen and ${Device.LAPTOP}) {
       flex-direction: row;
   }
 `;

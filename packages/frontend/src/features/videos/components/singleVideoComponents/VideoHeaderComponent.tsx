@@ -17,7 +17,7 @@ const Title = styled.h1`
         font-size: ${FontSize.headerMobile};
         font-weight: ${fontWeight.black};
         color: ${Colors.nBlack};
-        @media screen and ${Device.laptop} {
+        @media screen and ${Device.LAPTOP} {
             font-size: ${FontSize.headerDesktop};
         }
 `;
@@ -38,7 +38,7 @@ const VideoRatingValue = styled.div`
         display: flex;
         align-content: center;
         color: ${Colors.nBlack};
-        @media screen and ${Device.laptop} {
+        @media screen and ${Device.LAPTOP} {
             font-size: ${FontSize.subtitleDesktop};
         }
 `;

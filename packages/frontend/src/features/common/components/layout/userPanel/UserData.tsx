@@ -3,18 +3,23 @@ import styled from 'styled-components';
 
 import { FontSize } from "../../../styles/constans/FontSize"
 import { fontWeight } from '../../../styles/constans/fontWeight';
+import { Device } from "../../../styles/constans/Device"
 import Colors from "../../../styles/constans/Colors"
 
 const Wrapper = styled.div`
+    width: 100%;
     position: relative;
     display: flex;
 `
 const UserPhoto = styled.img`
-    flex-basis: 90px;
-    width: 90px;
-    min-width: 90px;
+    width: 81px;
     border-radius: 50%;
     margin-right: 10px;
+    background-color: gray;
+    @media ${Device.TABLET}{
+        width: 122px;
+        margin-right: 33px;
+    }
 `
 const TextInfoSection = styled.div`
     display: flex;
@@ -22,19 +27,26 @@ const TextInfoSection = styled.div`
     justify-content: center;
     align-items: flex-start;
     text-align: left;
+    width: 201px;
+    @media ${Device.TABLET}{
+        width: 215px;
+    }
 `
 
 const UserInfoTxt = styled.p<{ email?: any, name?: any }>`
-    max-width: 210px;
-    padding: 4px;
+    max-width: 100%;
+    margin-bottom: 4px;
     text-transform: ${props => props.name ? "capitalize" : "none"};
-    font-size: ${props => props.name ? "18px" : "14px"};
+    font-size: ${props => props.name ? "20px" : "16px"};
     font-weight: ${props => props.email ? fontWeight.REGULAR : fontWeight.SEMIBOLD};
     word-wrap: break-word;
+    @media ${Device.TABLET}{
+        font-size: ${props => props.name ? "20px" : "16px"};
+    }
 `
 
 const UserEmail = styled(UserInfoTxt)`
-    font-size: "14px";
+    font-size: "16px";
 `
 const LogoutBtn = styled.button`
     display: flex;
@@ -49,11 +61,13 @@ const LogoutBtn = styled.button`
     border: none;
     border-radius: 20px;
     outline: none;
-    align-items: center;
+    align-content: center;
     background-color: ${Colors.nWhite};
     justify-items: center;
 `
 const LogoutBtnText = styled.p`
+    display: flex;
+    align-items: center;
     font-size: ${FontSize.SMALL};
     margin-right: 10px;
 `

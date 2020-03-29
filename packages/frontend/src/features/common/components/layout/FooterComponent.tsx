@@ -14,7 +14,7 @@ box-sizing: border-box;
     padding-top: 20px;
     flex-wrap: wrap;
     
-    @media screen and ${Device.laptop} {
+    @media screen and ${Device.LAPTOP} {
         flex-direction: row;
         width: 100%;
         margin: 50px auto 0 auto;
