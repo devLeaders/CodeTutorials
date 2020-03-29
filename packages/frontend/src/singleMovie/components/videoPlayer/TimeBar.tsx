@@ -51,6 +51,7 @@ const TimeBar: React.SFC = () => {
   }
   const handleMouseDown = () => {
     setMouseDown(true);
+    // console.log("ok")
   };
   const handleMouseUp = () => {
     setMouseDown(false);
@@ -58,15 +59,28 @@ const TimeBar: React.SFC = () => {
   const handleClick = (e: any) => {
     changeVideoTime(e, setTime, TimeBarRef)
   }
+  const handleOnMouseMove = (e: any) => {
+    if (mouseDown) {
+      changeVideoTime(e, setTime, TimeBarRef, "onMove")
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleOnMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
+    return () => {
+      window.removeEventListener("mousemove", handleOnMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+    }
+  })
 
   return (
     <Wrapper
       isMinimized={isMinimized}
       ref={TimeBarRef}
       onClick={handleClick}
-      onMouseMove={mouseDown ? handleClick : undefined}
+      onMouseMove={mouseDown ? handleOnMouseMove : undefined}
       onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
     >
       <TimePlayedBar videoTime={newTime} />
     </Wrapper>

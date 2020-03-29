@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Bebas Neue', cursive; 
     margin: 0;
     padding: 0;
+    user-select: none;
   }
 `;
 
@@ -41,7 +42,7 @@ const App: React.FC = () => {
           <Routing />
         </StyledMain>
       </StyledApp>
-      <VideoPlayer small="small" />
+      {/* <VideoPlayer small="small" /> */}
     </BrowserRouter>
   );
 };

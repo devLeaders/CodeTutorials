@@ -17,6 +17,7 @@ export interface FullscreenBtnProps {
 
 const FullscreenBtn: React.SFC<FullscreenBtnProps> = () => {
     const isFullscreen = useSelector(state => getMovieState(state).isFullscreen)
+    const VideoType = useSelector(state => getMovieState(state).VideoType)
     const isActive = checkButtonType(ButtonTypes.FULLSCREEN, isFullscreen)
     const dispatch = useDispatch()
 
@@ -25,7 +26,7 @@ const FullscreenBtn: React.SFC<FullscreenBtnProps> = () => {
     }
 
     const runAction = () => {
-        runVideoAction(ButtonTypes.FULLSCREEN, isFullscreen, changeIsFullscreen)
+        runVideoAction(ButtonTypes.FULLSCREEN, isFullscreen)
     }
 
     return (

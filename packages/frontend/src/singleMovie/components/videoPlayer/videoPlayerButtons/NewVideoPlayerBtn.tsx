@@ -16,6 +16,7 @@ const ToogleButton = styled.button<{ min: string | undefined, play: string | und
 
 const BigModeButton = styled(ToogleButton)`
     margin-right: 6px;
+    width: 12px;
    @media ${device.MOBILE_M}{
       width: 14px
     }

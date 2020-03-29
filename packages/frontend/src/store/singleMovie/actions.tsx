@@ -34,9 +34,10 @@ export function setVideoTime(time: number): SetVideoTimeType {
   };
 }
 
-export function setVideoType(): SetVideoTypeType {
+export function setVideoType(type: string | undefined): SetVideoTypeType {
   return {
     type: Actions.SET_VIDEO_TYPE,
+    payload: type
   };
 }
 

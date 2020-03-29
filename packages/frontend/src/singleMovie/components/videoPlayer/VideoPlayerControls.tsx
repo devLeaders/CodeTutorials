@@ -20,12 +20,12 @@ const LeftPanel = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 15px;
+  margin-left: 10px;
   @media ${device.TABLET}{
-      margin-left: 34px;
+      margin-left: 12px;
   }
   @media ${device.LAPTOP}{
-      margin-left: 60px;
+      margin-left: 17px;
   }
 `;
 const RightPanel = styled.div`
@@ -35,10 +35,10 @@ const RightPanel = styled.div`
   align-items: center;
   margin-right: 10px;
   @media ${device.TABLET}{
-    margin-right: 17px;
+    margin-right: 12px;
   }
   @media ${device.LAPTOP}{
-    margin-right: 22px;
+    margin-right: 17px;
   }
 `;
 

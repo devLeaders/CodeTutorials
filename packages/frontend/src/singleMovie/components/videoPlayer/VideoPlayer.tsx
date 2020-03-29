@@ -4,10 +4,11 @@ import { useRef, useEffect } from "react";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux"
 
 import { refsStore } from "./refs.store"
-import { playPauseVideo } from "../../actions/videoPlayerActions"
+import { playPauseVideo, videoResize } from "../../actions/videoPlayerActions"
 import { playPause, toggleSmallMode, toogleFullscreen, setVideoTime } from "../../../store/singleMovie/actions"
-import { handleVideoShortcuts } from "../../actions/videoActionController"
+import { handleVideoShortcuts, runVideoAction, changeIsFullscreen } from "../../actions/videoActionController"
 import { getMovieState } from "../../actions/ReduxActions"
+import { ButtonTypes } from "../../enums";
 import { device } from "../../../constans/device"
 
 
@@ -25,6 +26,7 @@ const VP: React.SFC<VpProps> = (props) => {
     const { small } = props
     const videoRef: any = useRef<HTMLVideoElement>();
     const movieState: RootStateOrAny = useSelector(state => getMovieState(state))
+    const isFullscreen: any = useSelector(state => getMovieState(state).isFullscreen)
     const dispatch = useDispatch()
     if (props.small) {
         refsStore.RefsSmall[0] = videoRef
@@ -34,6 +36,9 @@ const VP: React.SFC<VpProps> = (props) => {
 
     const setTime = (time: number) => {
         dispatch(setVideoTime(time))
+    }
+    const setIsFullscreen = () => {
+        dispatch(toogleFullscreen())
     }
 
     const handleTimeProgress = () => {
@@ -47,21 +52,25 @@ const VP: React.SFC<VpProps> = (props) => {
         const key = e.keyCode
         if (key == 32 || key == 37 || key == 39) {
             reduxAction = () => dispatch(playPause())
-        } else if (document.fullscreenElement) {
-            reduxAction = () => dispatch(toogleFullscreen())
         }
         handleVideoShortcuts(e, reduxAction, movieState, setTime, small)
     }
+    const handleFullscreenChange = () => {
+        changeIsFullscreen(setIsFullscreen)
+    };
 
     const handleVideoClick = () => {
         dispatch(playPause())
         playPauseVideo(videoRef.current, movieState.isPaused);
     };
 
-
     useEffect(() => {
-        document.addEventListener("keydown", handleKeyDown)
-        return () => { window.removeEventListener("keydown", handleKeyDown) }
+        document.addEventListener("keydown", handleKeyDown);
+        document.addEventListener("fullscreenchange", handleFullscreenChange)
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown)
+            document.removeEventListener("fullscreenchange", handleFullscreenChange)
+        }
     }, [movieState.isPaused])
 
 

@@ -4,7 +4,7 @@ export interface movieState {
   isMinimized: boolean;
   isMuted: boolean;
   videoTime: number;
-  videoType: string;
+  videoType?: string;
 }
 
 export enum Actions {
@@ -34,6 +34,7 @@ interface SetVideoTime {
 }
 interface SetVideoType {
   type: Actions.SET_VIDEO_TYPE;
+  payload: string | undefined
 }
 
 export type MoviePlayPauseType = MoviePlayPause;

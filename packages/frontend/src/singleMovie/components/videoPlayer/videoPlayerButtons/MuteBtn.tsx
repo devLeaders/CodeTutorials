@@ -17,6 +17,7 @@ export interface MuteBtnProps {
 
 const MuteBtn: React.SFC<MuteBtnProps> = () => {
     const isMuted = useSelector(state => getMovieState(state).isMuted)
+    const VideoType = useSelector(state => getMovieState(state).VideoType)
     const isActive = checkButtonType(ButtonTypes.PLAY, isMuted)
     const dispatch = useDispatch()
 

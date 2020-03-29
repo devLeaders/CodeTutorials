@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 
 import { refsStore } from "./refs.store"
 import { breakPoint } from "../../../utils/breakPoint";
@@ -10,17 +10,17 @@ import { getMovieState } from "../../actions/ReduxActions"
 import { SmallInterface } from "./SmallModeInterface"
 import { VideoPlayer } from "./VideoPlayer"
 import { device } from "../../../constans/device"
-
+import { setVideoType } from "../../../store/singleMovie/actions"
 
 
 const VideoPlayerContainer = styled.div<{ minimized: boolean, small: string | undefined }>`
-display: ${props => !props.small || props.small && props.minimized ? "block" : "none"};
+  display: ${props => !props.small || props.small && props.minimized ? "block" : "none"};
   position: ${props => props.minimized && props.small ? "fixed" : "relative"};
   right: ${props => props.minimized && props.small ? "0" : "0"};
   bottom: ${props => props.minimized && props.small ? "0" : "0"};
   max-width: ${props => props.minimized && props.small ? "200px" : ""};
   overflow: hidden;
-  /* background-color: #222; */
+  background-color: #222;
   &:hover ${VideoPlayer}{
     filter: ${props => props.minimized && props.small ? "brightness(0.5)" : ""};
   }
@@ -57,6 +57,8 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
   } else {
     refsStore.Refs[1] = videoContainerRef;
   }
+
+
 
 
   return (

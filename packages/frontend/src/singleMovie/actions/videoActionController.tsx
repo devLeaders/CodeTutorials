@@ -6,38 +6,51 @@ import { MouseEvent, ReducerAction } from "react";
 import { RootStateOrAny } from "react-redux";
 
 
-export const runVideoAction = (buttonType: string, videoState: boolean, reduxAction?: any) => {
+export const runVideoAction = (buttonType: string, videoState: boolean, reduxAction?: any, small?: string | undefined) => {
+
   const video = refsStore.Refs[0].current;
   const videoContainer = refsStore.Refs[1].current;
-  console.log(refsStore.Refs, refsStore.RefsSmall)
+
   if (buttonType === ButtonTypes.PLAY) {
     //function that plays and pause video
     playPauseVideo(video, videoState);
+    reduxAction()
   } else if (buttonType === ButtonTypes.MUTE) {
     video.muted = !videoState;
-  } else if (buttonType === ButtonTypes.FULLSCREEN) {
+    reduxAction()
+  } else if (buttonType === ButtonTypes.SMALL_MODE) {
+    reduxAction()
+  }
+  else if (buttonType === ButtonTypes.FULLSCREEN) {
     videoResize(videoContainer, videoState);
   }
 
-  reduxAction()
 };
 
-export const changeVideoTime = (e: MouseEvent, setVideoTime: (num: number) => void, TimeBarRef: any) => {
-  console.log(e)
+export const changeIsFullscreen = (setIsFullscreen: any) => {
+  setIsFullscreen()
+}
+
+export const changeVideoTime = (e: MouseEvent, setVideoTime: (num: number) => void, TimeBarRef: any, type?: string) => {
   const video = refsStore.Refs[0].current;
-  const progressBarPosition = e.nativeEvent.offsetX;
+
   const TimeBarWidth = TimeBarRef.current.offsetWidth;
-  const newTime = (progressBarPosition / TimeBarWidth) * video.duration;
+  //distance from timbera to left window edge
+  const distanceFromLeft = type && TimeBarRef.current.getBoundingClientRect().left
+
+
+  const mousePosition = type ? e.clientX : e.nativeEvent.offsetX;
+  const newTime = type ? ((mousePosition - distanceFromLeft) / TimeBarWidth) * video.duration : (mousePosition / TimeBarWidth) * video.duration;
   video.currentTime = newTime;
   setVideoTime((video.currentTime / video.duration) * 100);
+
 }
 
 export const handleVideoShortcuts = (e: KeyboardEvent, reduxAction: any, videoState: RootStateOrAny, setVideoTime: (num: number) => void, small: string | undefined) => {
   const video = refsStore.Refs[0].current;
-  const videoContainer = refsStore.Refs[1].current;
+
   const timeToEnd = video.duration - video.currentTime;
   const key = e.keyCode
-  console.log(key)
   if (key == 32) {
     e.preventDefault()
     reduxAction();
@@ -62,6 +75,7 @@ export const handleVideoShortcuts = (e: KeyboardEvent, reduxAction: any, videoSt
 
 export const getVideoDuration = (setVideoDuration: (num: number) => void) => {
   const video = refsStore.Refs[0].current;
+
   console.log(video.duration)
   setVideoDuration(video.duration)
 }

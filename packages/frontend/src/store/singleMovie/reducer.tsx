@@ -12,6 +12,7 @@ const initialState: movieState = {
 export const movieReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case Actions.PLAY: {
+      console.log(state)
       return { ...state, isPaused: !state.isPaused };
     }
     case Actions.TOGGLE_FULLSCREEN: {
@@ -27,7 +28,7 @@ export const movieReducer = (state = initialState, action: any) => {
       return { ...state, videoTime: action.payload };
     }
     case Actions.SET_VIDEO_TYPE: {
-      return { ...state, videoTime: action.payload };
+      return { ...state, videoType: action.payload };
     }
     default: {
       return state;

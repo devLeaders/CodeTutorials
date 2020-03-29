@@ -22,6 +22,7 @@ interface MinimizeBtnProps {
 const MinimizeBtn: React.SFC<MinimizeBtnProps> = (props) => {
     const { min } = props;
     const isMinimized = useSelector(state => getMovieState(state).isMinimized)
+    const VideoType = useSelector(state => getMovieState(state).VideoType)
     const isActive = checkButtonType(ButtonTypes.SMALL_MODE, isMinimized)
     const dispatch = useDispatch()
 
