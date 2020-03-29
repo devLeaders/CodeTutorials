@@ -143,6 +143,14 @@ android {
         }
     }
     signingConfigs {
+        release {
+            if (project.hasProperty('MYAPP_STORE_FILE')) {
+                storeFile file(MYAPP_STORE_FILE)
+                storePassword MYAPP_STORE_PASSWORD
+                keyAlias MYAPP_KEY_ALIAS
+                keyPassword MYAPP_KEY_PASSWORD
+            }
+        }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
