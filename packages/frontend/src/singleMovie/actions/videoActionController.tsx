@@ -33,7 +33,6 @@ export const changeIsFullscreen = (setIsFullscreen: any) => {
 
 export const changeVideoTime = (e: MouseEvent, setVideoTime: (num: number) => void, TimeBarRef: any, type?: string) => {
   const video = refsStore.Refs[0].current;
-
   const TimeBarWidth = TimeBarRef.current.offsetWidth;
   //distance from timbera to left window edge
   const distanceFromLeft = type && TimeBarRef.current.getBoundingClientRect().left

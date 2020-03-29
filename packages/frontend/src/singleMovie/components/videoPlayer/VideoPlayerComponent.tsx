@@ -59,8 +59,6 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
   }
 
 
-
-
   return (
     <VideoPlayerContainer
       small={props.small}
