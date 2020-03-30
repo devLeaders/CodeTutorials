@@ -1,3 +1,5 @@
+import { changeState, setIsFullscreen, setTime } from "../../store/singleMovie/actions"
+
 export const playPauseVideo = (video: HTMLVideoElement, isPaused: boolean) => {
     if (isPaused) {
         video.play();
@@ -14,9 +16,9 @@ export const videoResize = (videoContainer: HTMLDivElement, isFullscreen: boolea
     }
 };
 
-export const rewindVideoTime = (video: HTMLVideoElement, timeskip: number, setVideoTime: (num: number) => void) => {
+export const rewindVideoTime = (video: HTMLVideoElement, timeskip: number) => {
     video.currentTime += timeskip;
-    setVideoTime((video.currentTime / video.duration) * 100);
+    setTime((video.currentTime / video.duration) * 100);
 }
 
 

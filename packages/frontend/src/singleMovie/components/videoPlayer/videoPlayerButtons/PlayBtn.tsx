@@ -1,22 +1,15 @@
 import * as React from 'react';
 import { useCallback } from 'react';
-import { useSelector, RootStateOrAny, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 
 import styled from "styled-components";
 import { checkButtonType } from "../../../actions/checkButtonType "
 import { getMovieState } from "../../../actions/ReduxActions"
 import NewVideoPlayerBtn from "./NewVideoPlayerBtn"
 import { ButtonTypes } from "../../../enums";
-import { runVideoAction } from "../../../actions/videoActionController"
-import { playPause, playPauseSmall } from "../../../../store/singleMovie/actions"
+import { useClickHandler } from "../../../actions/EventController"
 
-const Wrapper = styled.div<{ small: string | undefined }>`
-    position: ${props => props.small ? "absolute" : "static"};
-    top: ${props => props.small ? "50%" : "0"};
-    left: ${props => props.small ? "50%" : "0"};
-    transform: ${props => props.small ? "translate(-50%, -50%)" : ""};
-    background-color: red;
-`
+
 
 interface PlayBtnProps {
     small?: string;
@@ -28,19 +21,8 @@ const PlayBtn: React.SFC<PlayBtnProps> = (props) => {
     const smallIsPaused = useSelector(state => getMovieState(state).smallIsPaused)
     const paused = small ? smallIsPaused : isPaused;
     const isActive = checkButtonType(ButtonTypes.PLAY, paused)
-    const dispatch = useDispatch()
-    console.log(smallIsPaused)
+    const runPlay = useClickHandler(ButtonTypes.PLAY, paused, small)
 
-    const play = () => {
-        if (small) {
-            dispatch(playPauseSmall())
-        } else {
-            dispatch(playPause())
-        }
-    }
-    const runAction = () => {
-        runVideoAction(ButtonTypes.PLAY, paused, play, small)
-    }
 
 
     return (
@@ -48,7 +30,7 @@ const PlayBtn: React.SFC<PlayBtnProps> = (props) => {
             mainImg="/icons/play.svg"
             afterClickImg="/icons/pause.svg"
             videoState={isActive}
-            runVideoAction={runAction}
+            runVideoAction={runPlay}
             small={small}
             play="play"
         />

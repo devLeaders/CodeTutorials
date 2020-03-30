@@ -1,42 +1,37 @@
 import { refsStore } from "../components/videoPlayer/refs.store"
 import { ButtonTypes } from "../enums";
 import { playPauseVideo, videoResize, rewindVideoTime } from "./videoPlayerActions"
-import { playPause, toogleFullscreen, toggleSmallMode } from "../../store/singleMovie/actions"
+import { changeState, setIsFullscreen, setTime } from "../../store/singleMovie/actions"
 import { MouseEvent, ReducerAction } from "react";
-import { RootStateOrAny } from "react-redux";
+import { RootStateOrAny, useDispatch } from "react-redux";
 
 
 export const runVideoAction = (
   buttonType: string,
   videoState: boolean,
-  reduxAction?: any,
   small?: string | undefined) => {
-  console.log(small)
   const video = small ? refsStore.RefsSmall[0].current : refsStore.Refs[0].current;
   const videoContainer = small ? refsStore.RefsSmall[1].current : refsStore.Refs[1].current;
-
   if (buttonType === ButtonTypes.PLAY) {
-    //function that plays and pause video
     playPauseVideo(video, videoState);
-    reduxAction()
   } else if (buttonType === ButtonTypes.MUTE) {
     video.muted = !videoState;
-    reduxAction()
-  } else if (buttonType === ButtonTypes.SMALL_MODE) {
-    reduxAction()
-  }
-  else if (buttonType === ButtonTypes.FULLSCREEN) {
+  } else if (buttonType === ButtonTypes.FULLSCREEN) {
     videoResize(videoContainer, videoState);
+  }
+
+  if (buttonType != ButtonTypes.FULLSCREEN) {
+    changeState(buttonType, small)
   }
 };
 
-export const changeIsFullscreen = (setIsFullscreen: any, small?: string) => {
+export const changeIsFullscreen = (small?: string) => {
   if (!small) {
     setIsFullscreen()
   }
 }
 
-export const changeVideoTime = (e: MouseEvent, setVideoTime: (num: number) => void, TimeBarRef: any, type?: string, small?: string | undefined) => {
+export const changeVideoTime = (e: MouseEvent, TimeBarRef: any, type?: string, small?: string | undefined) => {
   const video = small ? refsStore.RefsSmall[0].current : refsStore.Refs[0].current;
   const TimeBarWidth = TimeBarRef.current.offsetWidth;
   //distance from timbar to left window edge
@@ -46,11 +41,12 @@ export const changeVideoTime = (e: MouseEvent, setVideoTime: (num: number) => vo
   const mousePosition = type ? e.clientX : e.nativeEvent.offsetX;
   const newVideoTime = type ? ((mousePosition - distanceFromLeft) / TimeBarWidth) * video.duration : (mousePosition / TimeBarWidth) * video.duration;
   video.currentTime = newVideoTime;
-  setVideoTime((video.currentTime / video.duration) * 100);
-
+  // setVideoTime(Math.floor((video.currentTime / video.duration) * 100));
+  const time = (Math.floor((video.currentTime / video.duration) * 100));
+  setTime(time, small)
 }
 
-export const handleVideoShortcuts = (e: KeyboardEvent, reduxAction: any, videoState: RootStateOrAny, setVideoTime: (num: number) => void, small: string | undefined) => {
+export const handleVideoShortcuts = (e: KeyboardEvent, reduxAction: any, videoState: RootStateOrAny, ) => {
   const video = refsStore.Refs[0].current;
 
   const timeToEnd = video.duration - video.currentTime;
@@ -67,9 +63,9 @@ export const handleVideoShortcuts = (e: KeyboardEvent, reduxAction: any, videoSt
         reduxAction()
         playPauseVideo(video, videoState)
       }
-      rewindVideoTime(video, timeSkip, setVideoTime)
+      rewindVideoTime(video, timeSkip)
     } else if (key == 37) {
-      rewindVideoTime(video, -timeSkip, setVideoTime)
+      rewindVideoTime(video, -timeSkip)
     }
   } else if (key == 27) {
     console.log(key)

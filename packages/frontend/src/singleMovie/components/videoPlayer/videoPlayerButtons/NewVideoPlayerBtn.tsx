@@ -49,7 +49,7 @@ export interface NewVideoPlayerButton {
   mainImg: string;
   afterClickImg: string;
   videoState: boolean;
-  runVideoAction(): void;
+  runVideoAction: any;
   small?: string;
   play?: string;
 }

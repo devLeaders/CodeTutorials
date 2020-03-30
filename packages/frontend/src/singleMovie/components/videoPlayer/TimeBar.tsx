@@ -1,12 +1,11 @@
 import * as React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, } from "react";
 import styled from "styled-components";
 
-import { changeVideoTime } from "../../actions/videoActionController"
 import { useSelector, useDispatch } from "react-redux"
 import { getMovieState } from "../../actions/ReduxActions"
-import { setVideoTime, setSmallVideoTime } from "../../../store/singleMovie/actions"
 import { device } from "../../../constans/device"
+import { useTimeBarAction } from "../../actions/EventController"
 
 const Wrapper = styled.div<{ small: string | undefined }>`
   position: absolute;
@@ -43,52 +42,20 @@ interface TimeBarProps {
 const TimeBar: React.SFC<TimeBarProps> = (props) => {
   const { small } = props
   const TimeBarRef: any = useRef()
-  const [mouseDown, setMouseDown] = useState(false);
   const videoTime = useSelector(state => getMovieState(state).videoTime)
   const smallVideoTime = useSelector(state => getMovieState(state).smallVideoTime)
-  const isMinimized = useSelector(state => getMovieState(state).isMinimized)
   const dispatch = useDispatch()
   const newTime = small ? smallVideoTime + "%" : videoTime + "%";
+  const { handleMouseUpDown, handleMouseMoveAndClick } = useTimeBarAction(TimeBarRef, small)
 
-  const setTime = (time: number) => {
-    if (small) {
-      dispatch(setSmallVideoTime(time))
-    } else {
-      dispatch(setVideoTime(time))
-    }
-  }
-  const handleMouseDown = () => {
-    setMouseDown(true);
-    // console.log("ok")
-  };
-  const handleMouseUp = () => {
-    setMouseDown(false);
-  };
-  const handleClick = (e: any) => {
-    changeVideoTime(e, setTime, TimeBarRef, "", small)
-  }
-  const handleOnMouseMove = (e: any) => {
-    if (mouseDown) {
-      changeVideoTime(e, setTime, TimeBarRef, "onMove", small)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener("mousemove", handleOnMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
-    return () => {
-      window.removeEventListener("mousemove", handleOnMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
-    }
-  })
 
   return (
     <Wrapper
       small={small}
       ref={TimeBarRef}
-      onClick={handleClick}
-      onMouseMove={mouseDown ? handleOnMouseMove : undefined}
-      onMouseDown={handleMouseDown}
+      onClick={handleMouseMoveAndClick}
+      onMouseMove={handleMouseMoveAndClick}
+      onMouseDown={handleMouseUpDown}
     >
       <TimePlayedBar videoTime={newTime} />
     </Wrapper>

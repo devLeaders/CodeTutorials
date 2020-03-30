@@ -1,33 +1,20 @@
 import * as React from 'react';
-import { useSelector, RootStateOrAny, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 
 import styled from "styled-components";
 import { checkButtonType } from "../../../actions/checkButtonType "
 import { getMovieState } from "../../../actions/ReduxActions"
 import NewVideoPlayerBtn from "./NewVideoPlayerBtn"
 import { ButtonTypes } from "../../../enums";
-import { runVideoAction } from "../../../actions/videoActionController"
-import { muteUnmute } from "../../../../store/singleMovie/actions"
+import { useClickHandler } from "../../../actions/EventController"
 
-const Wrapper = styled.div``
 
-export interface MuteBtnProps {
 
-}
-
-const MuteBtn: React.SFC<MuteBtnProps> = () => {
+const MuteBtn: React.SFC = () => {
     const isMuted = useSelector(state => getMovieState(state).isMuted)
-    const VideoType = useSelector(state => getMovieState(state).VideoType)
     const isActive = checkButtonType(ButtonTypes.PLAY, isMuted)
-    const dispatch = useDispatch()
+    const muteUnmute = useClickHandler(ButtonTypes.MUTE, isMuted)
 
-    const toggleMute = () => {
-        dispatch(muteUnmute())
-    }
-
-    const runAction = () => {
-        runVideoAction(ButtonTypes.MUTE, isMuted, toggleMute)
-    }
 
 
     return (
@@ -35,7 +22,7 @@ const MuteBtn: React.SFC<MuteBtnProps> = () => {
             mainImg="/icons/un-mute.svg"
             afterClickImg="/icons/mute.svg"
             videoState={isActive}
-            runVideoAction={runAction}
+            runVideoAction={muteUnmute}
 
         />
     );

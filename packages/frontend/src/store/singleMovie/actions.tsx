@@ -1,4 +1,15 @@
-import { Actions, MoviePlayPauseType, MovieToggleFullscreenType, MovieToggleSmallModeType, MovieMuteUnMuteType, SetVideoTimeType, SetSmallVideoTimeType, MoviePlayPauseSmallType } from "./types";
+import {
+  Actions,
+  MoviePlayPauseType,
+  MovieToggleFullscreenType,
+  MovieToggleSmallModeType,
+  MovieMuteUnMuteType,
+  SetVideoTimeType,
+  SetSmallVideoTimeType,
+  MoviePlayPauseSmallType
+} from "./types";
+import Store from "../store";
+import { ButtonTypes } from "../../singleMovie/enums";
 
 export function playPause(): MoviePlayPauseType {
   return {
@@ -45,5 +56,41 @@ export function playPauseSmall(): MoviePlayPauseSmallType {
     type: Actions.PLAY_SMALL
   };
 }
+
+export const changeState = (buttonType: string, small?: string) => {
+  let reduxAction: any;
+  if (buttonType === ButtonTypes.PLAY) {
+    if (small) {
+      reduxAction = playPauseSmall
+    } else {
+      reduxAction = playPause
+    }
+  } else if (buttonType === ButtonTypes.MUTE) {
+    reduxAction = muteUnmute
+  } else if (buttonType === ButtonTypes.SMALL_MODE) {
+    reduxAction = toggleSmallMode
+  }
+
+  Store.dispatch(function (dispatch: any) {
+    dispatch(reduxAction())
+  })
+}
+
+export const setTime = (time: number, small?: string) => {
+  Store.dispatch(function (dispatch: any) {
+    if (small) {
+      dispatch(setSmallVideoTime(time))
+    } else {
+      dispatch(setVideoTime(time))
+    }
+  })
+}
+
+export const setIsFullscreen = (small?: string) => {
+  Store.dispatch(function (dispatch: any) {
+    dispatch(toogleFullscreen())
+  })
+}
+
 
 
