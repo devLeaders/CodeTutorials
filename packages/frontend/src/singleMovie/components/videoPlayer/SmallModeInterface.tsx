@@ -11,14 +11,16 @@ export const SmallInterface = styled.div`
     transition: visibility 0s, opacity 0.5s;
 `;
 
-
-const SmallModeInterface: React.SFC = () => {
-
+interface SmallModeInterfaceProps {
+    small?: string;
+}
+const SmallModeInterface: React.SFC<SmallModeInterfaceProps> = (props) => {
+    const { small } = props
     return (
         <SmallInterface className="small">
-            <PlayBtn min="true " />
-            <MinimizeBtn min="true" />
-            <TimeBar />
+            <PlayBtn small={small} />
+            <MinimizeBtn small={small} />
+            <TimeBar small={small} />
         </SmallInterface>
     );
 }

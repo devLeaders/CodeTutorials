@@ -1,4 +1,4 @@
-import { Actions, MoviePlayPauseType, MovieToggleFullscreenType, MovieToggleSmallModeType, MovieMuteUnMuteType, SetVideoTimeType, SetVideoTypeType } from "./types";
+import { Actions, MoviePlayPauseType, MovieToggleFullscreenType, MovieToggleSmallModeType, MovieMuteUnMuteType, SetVideoTimeType, SetSmallVideoTimeType, MoviePlayPauseSmallType } from "./types";
 
 export function playPause(): MoviePlayPauseType {
   return {
@@ -34,10 +34,15 @@ export function setVideoTime(time: number): SetVideoTimeType {
   };
 }
 
-export function setVideoType(type: string | undefined): SetVideoTypeType {
+export function setSmallVideoTime(time: number): SetSmallVideoTimeType {
   return {
-    type: Actions.SET_VIDEO_TYPE,
-    payload: type
+    type: Actions.SET_SMALL_VIDEO_TIME,
+    payload: time
+  };
+}
+export function playPauseSmall(): MoviePlayPauseSmallType {
+  return {
+    type: Actions.PLAY_SMALL
   };
 }
 

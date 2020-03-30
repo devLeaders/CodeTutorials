@@ -10,7 +10,6 @@ import { getMovieState } from "../../actions/ReduxActions"
 import { SmallInterface } from "./SmallModeInterface"
 import { VideoPlayer } from "./VideoPlayer"
 import { device } from "../../../constans/device"
-import { setVideoType } from "../../../store/singleMovie/actions"
 
 
 const VideoPlayerContainer = styled.div<{ minimized: boolean, small: string | undefined }>`
@@ -30,17 +29,14 @@ const VideoPlayerContainer = styled.div<{ minimized: boolean, small: string | un
   }
   &:hover {
     .interfaceWrapper {
-        transform: translateY(0);
-        @media ${device.TABLET} {
-          transform: translateY(0);
-        }
+        transform: ${props => !props.small ? "translateY(0)" : ''};
     }
   }
   @media ${device.TABLET} {
-    max-width: ${props => props.minimized && props.small ? "400px" : ""}; 
+    min-width: ${props => props.minimized && props.small ? "400px" : ""}; 
     }
     @media ${device.LAPTOP} {
-    max-width: ${props => props.minimized && props.small ? "600px" : ""}; 
+    min-width: ${props => props.minimized && props.small ? "600px" : ""}; 
     }
 
  
@@ -66,7 +62,7 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
       minimized={isMinimized}
     >
       <Player small={props.small} />
-      <Interface />
+      <Interface small={props.small} />
     </VideoPlayerContainer >
   );
 };

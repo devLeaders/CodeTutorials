@@ -44,6 +44,7 @@ const RightPanel = styled.div`
 
 
 const VideoPlayerControls: React.SFC = () => {
+
   return (
     <ControlsWrapper>
       <LeftPanel>

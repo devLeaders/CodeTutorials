@@ -5,12 +5,12 @@ import styled from "styled-components";
 import { changeVideoTime } from "../../actions/videoActionController"
 import { useSelector, useDispatch } from "react-redux"
 import { getMovieState } from "../../actions/ReduxActions"
-import { setVideoTime } from "../../../store/singleMovie/actions"
+import { setVideoTime, setSmallVideoTime } from "../../../store/singleMovie/actions"
 import { device } from "../../../constans/device"
 
-const Wrapper = styled.div<{ isMinimized: boolean }>`
+const Wrapper = styled.div<{ small: string | undefined }>`
   position: absolute;
-  top: ${props => props.isMinimized ? "100%" : "0"};
+  top: ${props => props.small ? "100%" : "0"};
   height: 2px;
   width: 100%;
   background-color: black;
@@ -36,18 +36,26 @@ const TimePlayedBar = styled.div<{ videoTime: any }>`
   }
 `;
 
+interface TimeBarProps {
+  small?: string;
+}
 
-
-const TimeBar: React.SFC = () => {
+const TimeBar: React.SFC<TimeBarProps> = (props) => {
+  const { small } = props
   const TimeBarRef: any = useRef()
   const [mouseDown, setMouseDown] = useState(false);
   const videoTime = useSelector(state => getMovieState(state).videoTime)
+  const smallVideoTime = useSelector(state => getMovieState(state).smallVideoTime)
   const isMinimized = useSelector(state => getMovieState(state).isMinimized)
   const dispatch = useDispatch()
-  const newTime = videoTime + "%";
+  const newTime = small ? smallVideoTime + "%" : videoTime + "%";
 
   const setTime = (time: number) => {
-    dispatch(setVideoTime(time))
+    if (small) {
+      dispatch(setSmallVideoTime(time))
+    } else {
+      dispatch(setVideoTime(time))
+    }
   }
   const handleMouseDown = () => {
     setMouseDown(true);
@@ -57,11 +65,11 @@ const TimeBar: React.SFC = () => {
     setMouseDown(false);
   };
   const handleClick = (e: any) => {
-    changeVideoTime(e, setTime, TimeBarRef)
+    changeVideoTime(e, setTime, TimeBarRef, "", small)
   }
   const handleOnMouseMove = (e: any) => {
     if (mouseDown) {
-      changeVideoTime(e, setTime, TimeBarRef, "onMove")
+      changeVideoTime(e, setTime, TimeBarRef, "onMove", small)
     }
   }
 
@@ -76,7 +84,7 @@ const TimeBar: React.SFC = () => {
 
   return (
     <Wrapper
-      isMinimized={isMinimized}
+      small={small}
       ref={TimeBarRef}
       onClick={handleClick}
       onMouseMove={mouseDown ? handleOnMouseMove : undefined}

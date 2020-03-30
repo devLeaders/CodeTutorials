@@ -10,47 +10,47 @@ import { getMovieState } from "../../actions/ReduxActions"
 import { device } from "../../../constans/device"
 
 
-const InterfaceWrapper = styled.div<{ paused: boolean; isMin: boolean }>`
+const InterfaceWrapper = styled.div<{ paused: boolean; small: string | undefined }>`
     display: flex;
-    position: ${props => props.isMin ? "static" : "absolute"};
+    position: ${props => props.small ? "static" : "absolute"};
     bottom: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     transition: all 0.2s;
-    transform: ${props => (props.paused ? "translateY(0)" : "translateY(100%)")};
+    transform: ${props => (props.paused && !props.small ? "translateY(0)" : "translateY(100%)")};
     margin-top: 0;
     @media ${device.MOBILE_L}{
         height: 35px;
-        /* transform: ${props => (props.paused ? "translateY(-3px)" : "translateY(100%)")}; */
         }
     @media ${device.TABLET}{
         height: 50px;
-        transform: ${props => (props.paused ? "translateY(0)" : "translateY(100%)")};
         }
     @media ${device.LAPTOP}{
         height: 80px;
-        /* transform: ${props => (props.paused ? "translateY(-4px)" : "translateY(100%)")}; */
     }
 `;
 
+interface InterfaceProps {
+    small?: string;
+}
 
-const Interface: React.SFC = () => {
+const Interface: React.SFC<InterfaceProps> = (props) => {
+    const { small } = props
     const isPaused = useSelector(state => getMovieState(state).isPaused)
     const isMinimized = useSelector(state => getMovieState(state).isMinimized)
 
 
     return (
         <div>
-            {isMinimized ?
-                <SmallModeInterface />
-                : <InterfaceWrapper
-                    className="interfaceWrapper"
-                    paused={isPaused}
-                    isMin={isMinimized}
-                >
-                    <VideoPlayerControls />
-                    <TimeBar />
-                </InterfaceWrapper>}
+            {small && <SmallModeInterface small={small} />}
+            {!small && <InterfaceWrapper
+                className="interfaceWrapper"
+                paused={isPaused}
+                small={small}>
+
+                <VideoPlayerControls />
+                <TimeBar />
+            </InterfaceWrapper>}
         </div>
     );
 }

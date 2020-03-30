@@ -6,10 +6,14 @@ import { MouseEvent, ReducerAction } from "react";
 import { RootStateOrAny } from "react-redux";
 
 
-export const runVideoAction = (buttonType: string, videoState: boolean, reduxAction?: any, small?: string | undefined) => {
-
-  const video = refsStore.Refs[0].current;
-  const videoContainer = refsStore.Refs[1].current;
+export const runVideoAction = (
+  buttonType: string,
+  videoState: boolean,
+  reduxAction?: any,
+  small?: string | undefined) => {
+  console.log(small)
+  const video = small ? refsStore.RefsSmall[0].current : refsStore.Refs[0].current;
+  const videoContainer = small ? refsStore.RefsSmall[1].current : refsStore.Refs[1].current;
 
   if (buttonType === ButtonTypes.PLAY) {
     //function that plays and pause video
@@ -24,23 +28,24 @@ export const runVideoAction = (buttonType: string, videoState: boolean, reduxAct
   else if (buttonType === ButtonTypes.FULLSCREEN) {
     videoResize(videoContainer, videoState);
   }
-
 };
 
-export const changeIsFullscreen = (setIsFullscreen: any) => {
-  setIsFullscreen()
+export const changeIsFullscreen = (setIsFullscreen: any, small?: string) => {
+  if (!small) {
+    setIsFullscreen()
+  }
 }
 
-export const changeVideoTime = (e: MouseEvent, setVideoTime: (num: number) => void, TimeBarRef: any, type?: string) => {
-  const video = refsStore.Refs[0].current;
+export const changeVideoTime = (e: MouseEvent, setVideoTime: (num: number) => void, TimeBarRef: any, type?: string, small?: string | undefined) => {
+  const video = small ? refsStore.RefsSmall[0].current : refsStore.Refs[0].current;
   const TimeBarWidth = TimeBarRef.current.offsetWidth;
-  //distance from timbera to left window edge
+  //distance from timbar to left window edge
   const distanceFromLeft = type && TimeBarRef.current.getBoundingClientRect().left
 
 
   const mousePosition = type ? e.clientX : e.nativeEvent.offsetX;
-  const newTime = type ? ((mousePosition - distanceFromLeft) / TimeBarWidth) * video.duration : (mousePosition / TimeBarWidth) * video.duration;
-  video.currentTime = newTime;
+  const newVideoTime = type ? ((mousePosition - distanceFromLeft) / TimeBarWidth) * video.duration : (mousePosition / TimeBarWidth) * video.duration;
+  video.currentTime = newVideoTime;
   setVideoTime((video.currentTime / video.duration) * 100);
 
 }

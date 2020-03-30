@@ -5,7 +5,7 @@ import { useSelector, useDispatch, RootStateOrAny } from "react-redux"
 
 import { refsStore } from "./refs.store"
 import { playPauseVideo, videoResize } from "../../actions/videoPlayerActions"
-import { playPause, toggleSmallMode, toogleFullscreen, setVideoTime } from "../../../store/singleMovie/actions"
+import { playPause, toogleFullscreen, setVideoTime, setSmallVideoTime, playPauseSmall } from "../../../store/singleMovie/actions"
 import { handleVideoShortcuts, runVideoAction, changeIsFullscreen } from "../../actions/videoActionController"
 import { getMovieState } from "../../actions/ReduxActions"
 import { ButtonTypes } from "../../enums";
@@ -26,7 +26,6 @@ const VP: React.SFC<VpProps> = (props) => {
     const { small } = props
     const videoRef: any = useRef<HTMLVideoElement>();
     const movieState: RootStateOrAny = useSelector(state => getMovieState(state))
-    const isFullscreen: any = useSelector(state => getMovieState(state).isFullscreen)
     const dispatch = useDispatch()
     if (props.small) {
         refsStore.RefsSmall[0] = videoRef
@@ -35,7 +34,11 @@ const VP: React.SFC<VpProps> = (props) => {
     }
 
     const setTime = (time: number) => {
-        dispatch(setVideoTime(time))
+        if (small) {
+            dispatch(setSmallVideoTime(time))
+        } else {
+            dispatch(setVideoTime(time))
+        }
     }
     const setIsFullscreen = () => {
         dispatch(toogleFullscreen())
@@ -56,12 +59,17 @@ const VP: React.SFC<VpProps> = (props) => {
         handleVideoShortcuts(e, reduxAction, movieState, setTime, small)
     }
     const handleFullscreenChange = () => {
-        changeIsFullscreen(setIsFullscreen)
+        changeIsFullscreen(setIsFullscreen, small)
     };
 
     const handleVideoClick = () => {
-        dispatch(playPause())
-        playPauseVideo(videoRef.current, movieState.isPaused);
+        if (small) {
+            dispatch(playPauseSmall())
+        } else {
+            dispatch(playPause())
+        }
+        const paused = small ? movieState.smallIsPaused : movieState.isPaused
+        playPauseVideo(videoRef.current, paused);
     };
 
     useEffect(() => {

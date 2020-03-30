@@ -16,11 +16,11 @@ const Wrapper = styled.div<{ min: string | undefined }>`
 `
 
 interface MinimizeBtnProps {
-    min?: string
+    small?: string;
 }
 
 const MinimizeBtn: React.SFC<MinimizeBtnProps> = (props) => {
-    const { min } = props;
+    const { small } = props;
     const isMinimized = useSelector(state => getMovieState(state).isMinimized)
     const VideoType = useSelector(state => getMovieState(state).VideoType)
     const isActive = checkButtonType(ButtonTypes.SMALL_MODE, isMinimized)
@@ -31,7 +31,7 @@ const MinimizeBtn: React.SFC<MinimizeBtnProps> = (props) => {
     }
 
     const runAction = () => {
-        runVideoAction(ButtonTypes.SMALL_MODE, isMinimized, changeIsSmallMode)
+        runVideoAction(ButtonTypes.SMALL_MODE, isMinimized, changeIsSmallMode, small)
     }
 
 
@@ -41,7 +41,7 @@ const MinimizeBtn: React.SFC<MinimizeBtnProps> = (props) => {
             afterClickImg="/icons/normal-screen.svg"
             videoState={isActive}
             runVideoAction={runAction}
-            min={min}
+            small={small}
         />
     );
 }

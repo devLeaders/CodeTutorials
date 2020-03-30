@@ -42,7 +42,7 @@ const App: React.FC = () => {
           <Routing />
         </StyledMain>
       </StyledApp>
-      {/* <VideoPlayer small="small" /> */}
+      <VideoPlayer small="small" />
     </BrowserRouter>
   );
 };

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { device } from "../../../../constans/device"
 
 
-const ToogleButton = styled.button<{ min: string | undefined, play: string | undefined }>`
+const ToogleButton = styled.button`
     display: flex;
     cursor: pointer;
     background: none;
@@ -50,23 +50,23 @@ export interface NewVideoPlayerButton {
   afterClickImg: string;
   videoState: boolean;
   runVideoAction(): void;
-  min?: string;
+  small?: string;
   play?: string;
 }
 
 const NewVideoPlayerButton: React.SFC<NewVideoPlayerButton> = props => {
-  const { mainImg, afterClickImg, videoState, runVideoAction, min, play } = props;
+  const { mainImg, afterClickImg, videoState, runVideoAction, small, play } = props;
   const startStopImg = videoState ?
     (<Img src={mainImg} />) :
     (<Img src={afterClickImg} />);
   return (
     <>
-      {min ?
-        <SmallModeButton onClick={runVideoAction} min={min} play={play}>
+      {small ?
+        <SmallModeButton onClick={runVideoAction} play={play}>
           {startStopImg}
         </SmallModeButton>
         :
-        <BigModeButton onClick={runVideoAction} min={min} play={play}>
+        <BigModeButton onClick={runVideoAction}>
           {startStopImg}
         </BigModeButton>}
     </>
