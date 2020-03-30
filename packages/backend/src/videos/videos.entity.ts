@@ -3,7 +3,7 @@ import CategoryEntity from './category.entity';
 
     @Entity('videos')
     class VideosEntity {
-        @PrimaryGeneratedColumn('uuid') id: number;
+        @PrimaryGeneratedColumn() id: number;
 
         @CreateDateColumn() created: Date;
 
