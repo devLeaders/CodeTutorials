@@ -1,4 +1,4 @@
-import { IsString, IsNumber  } from 'class-validator';
+import { IsString, IsNumberString, IsOptional, Min } from 'class-validator';
 export interface VideoDTO {
     id: string,
     title: string,
@@ -14,9 +14,11 @@ export class ShortVersionDTO {
 
 export class FilterVideoDTO {
 
-    @IsNumber()
+    @IsOptional()
+    @IsNumberString()
     page: number;
 
+    @IsOptional()
     @IsString()
     title: string;
     
