@@ -8,6 +8,7 @@ import WhiteFilterButton from '../components/FiltersScreen/WhiteFilterButton';
 import BlackFilterButton from '../components/FiltersScreen/BlackFilterButton';
 import { NavigationName } from '../../../config/routing/NavigationName';
 import XButton from '../components/FiltersScreen/XButton';
+import {MyText} from '../../common/styles/MyText';
 
 ;
 
@@ -34,10 +35,9 @@ const TitleAndXWrapper = styled.View`
     justify-content: space-between;
 `;
 
-const Title = styled.Text`
+const Title = styled(MyText)`
     margin-left: 15px;
     font-weight: ${FontWeight.BOLD};
-    font-family: ${FontFamily.GLOBAL_MONT};
     font-size: ${FontSize.GRANDE};
     color: ${Color.BLACK};
     line-height: 28px;
@@ -118,21 +118,19 @@ const ImageEye = styled.Image`
     width: 20px; 
 `;
 
-const TextEye = styled.Text`
+const TextEye = styled(MyText)`
     font-size: ${FontSize.GRANDEMIDIUM};
     line-height: 27px;
     margin-left: 14px;
     font-weight: ${FontWeight.SEMIBOLD};
-    font-family: ${FontFamily.GLOBAL_MONT};
     color: ${Color.BLACK};
 `;
 
-const TextCategory = styled.Text`
+const TextCategory = styled(MyText)`
     margin-top: 35px;
     margin-left: 21px;
     font-size: ${FontSize.GRANDEMIDIUM};
     font-weight: ${FontWeight.SEMIBOLD};
-    font-family: ${FontFamily.GLOBAL_MONT};
     color: ${Color.BLACK};
     line-height: 27px;
     margin-bottom: 20px;  
