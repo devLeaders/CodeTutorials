@@ -5,7 +5,6 @@ import { HeaderTitle } from '../components/Movies/HeaderTitle';
 import { HeaderLeft } from '../components/Movies/HeaderLeft';
 import { HeaderRight } from '../components/Movies/HeaderRight';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
-// import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {  
   ButtonFilter, 
   TextButtonActive,
@@ -21,7 +20,17 @@ import {
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
 import { SlaiderSmall } from '../components/Movies/SlaiderSmall';
 import Axios from '../../../config/axios/AxiosConfig';
+// import Icon  from 'react-native-vector-icons';
 
+
+// const tabBarIcon = name => ({tintColor}) => (
+//   <Icon 
+//       style = {{backgroundColor: "blue"}}
+//       name = {name}
+//       color = {tintColor}
+//       size = {24}
+//   />
+// );
 export class  MoviesList extends React.Component{
   static navigationOptions = ({ navigation }:any) => {
     return {
@@ -31,9 +40,9 @@ export class  MoviesList extends React.Component{
       headerTitle: () => <HeaderTitle/>,
       headerLeft: () => <HeaderLeft/>,
       headerRight: () => <HeaderRight/>,
+      // tabBarIcon: tabBarIcon("home-outline")
     };
   };
-//do odzdzielnego componentu linie 39-43
 
   async componentDidMount() {
     const token = await AsyncStorage.getItem("token");

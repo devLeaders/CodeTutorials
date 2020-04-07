@@ -27,7 +27,8 @@ import { NavigationName } from '../../../config/routing/NavigationName';
 
 declare var global: {HermesInternal: null | {}};
 
-const HomeScreen = ({navigation}:any) => {
+
+export const HomeScreen = ({navigation}:any) => {
     return (
       <>
         <StatusBar barStyle="dark-content" />
@@ -46,7 +47,7 @@ const HomeScreen = ({navigation}:any) => {
                 <Text>Buttons to Exaples</Text>
                 <Button
                     color="#e63900"
-                    title="Go to SingleMovie after CR"
+                    title="Go to SingleMovie"
                     onPress={() => navigation.navigate(NavigationName.SINGLEMOVIE)}
                 />
                  <Button

@@ -12,6 +12,7 @@ import React, {Component} from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { NavigationName } from './NavigationName';
+import TabNavigator from '../../features/common/components/TabNavigator';
 
 // Here we can import new screens
 import HomeScreen from '../../features/videos/page/HomeScreen';
@@ -21,6 +22,8 @@ import SignIn from '../../features/auth/page/SignInScrren';
 import LogIn from '../../features/auth/components/SignIn/LogIn';
 import SignInScreen from '../../features/auth/page/SignInScrren';
 import SignUpScreen from '../../features/auth/page/SingUpScrenn';
+
+
 
 
 
@@ -38,10 +41,11 @@ const navigation = createStackNavigator(
   },
 );
 
+
 const AppContainer = createAppContainer(navigation);
 
 export default class AppNavigation extends Component {
   render() {
-    return <AppContainer />;
+    return <TabNavigator/>;
   }
 }
