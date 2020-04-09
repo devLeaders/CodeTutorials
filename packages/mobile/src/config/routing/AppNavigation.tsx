@@ -1,51 +1,31 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
 import React, {Component} from 'react';
 //navigation import
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 import { NavigationName } from './NavigationName';
-import TabNavigator from '../../features/common/components/TabNavigator';
+import { ParamList } from './ParamList'
 
 // Here we can import new screens
 import HomeScreen from '../../features/videos/page/HomeScreen';
-import { MoviesList } from '../../features/videos/page/MoviesList';
+import MoviesList from '../../features/videos/page/MoviesList';
 import SingleMovie2 from '../../features/videos/page/SingleMovie2';
-import SignIn from '../../features/auth/page/SignInScrren';
-import LogIn from '../../features/auth/components/SignIn/LogIn';
 import SignInScreen from '../../features/auth/page/SignInScrren';
 import SignUpScreen from '../../features/auth/page/SingUpScrenn';
 
-
-
-
-
-const navigation = createStackNavigator(
-  {
-    [NavigationName.HOME]: HomeScreen,
-    [NavigationName.MOVIELIST]: MoviesList,
-    [NavigationName.SINGLEMOVIE]: SingleMovie2,
-    [NavigationName.SIGNINSCREEN]: SignInScreen,
-    [NavigationName.LOGIN]: LogIn,
-    [NavigationName.SINGUP]: SignUpScreen 
-  },
-  {
-    initialRouteName: NavigationName.HOME,
-  },
-);
-
-
-const AppContainer = createAppContainer(navigation);
+const Stack = createStackNavigator<ParamList>()
 
 export default class AppNavigation extends Component {
   render() {
-    return <TabNavigator/>;
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name={NavigationName.HOME} component={HomeScreen}/>
+          <Stack.Screen name={NavigationName.MOVIELIST} component={MoviesList}/>
+          <Stack.Screen name={NavigationName.SINGLEMOVIE} component={SingleMovie2}/>
+          <Stack.Screen name={NavigationName.SIGNINSCREEN} component={SignInScreen}/>
+          <Stack.Screen name={NavigationName.SINGUP} component={SignUpScreen}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
   }
 }

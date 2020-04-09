@@ -1,13 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -24,11 +14,14 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import { NavigationName } from '../../../config/routing/NavigationName';
+import { NavProps } from '../../../config/routing/ParamList';
 
 declare var global: {HermesInternal: null | {}};
 
-
-export const HomeScreen = ({navigation}:any) => {
+export const HomeScreen = ({ 
+  navigation,
+  route 
+}: NavProps<NavigationName.HOME> ) => {
     return (
       <>
         <StatusBar barStyle="dark-content" />

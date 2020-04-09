@@ -20,19 +20,15 @@ import {
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
 import { SlaiderSmall } from '../components/Movies/SlaiderSmall';
 import Axios from '../../../config/axios/AxiosConfig';
-// import Icon  from 'react-native-vector-icons';
+import { NavigationName } from '../../../config/routing/NavigationName';
+import { NavProps } from '../../../config/routing/ParamList';
 
 
-// const tabBarIcon = name => ({tintColor}) => (
-//   <Icon 
-//       style = {{backgroundColor: "blue"}}
-//       name = {name}
-//       color = {tintColor}
-//       size = {24}
-//   />
-// );
 export class  MoviesList extends React.Component{
-  static navigationOptions = ({ navigation }:any) => {
+  static navigationOptions = ({ 
+    navigation,
+    route 
+  }: NavProps<NavigationName.MOVIELIST> ) => {
     return {
       headerStyle: {
         backgroundColor: '#f0f2fa',
@@ -40,7 +36,6 @@ export class  MoviesList extends React.Component{
       headerTitle: () => <HeaderTitle/>,
       headerLeft: () => <HeaderLeft/>,
       headerRight: () => <HeaderRight/>,
-      // tabBarIcon: tabBarIcon("home-outline")
     };
   };
 

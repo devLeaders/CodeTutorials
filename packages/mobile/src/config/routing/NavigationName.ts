@@ -5,4 +5,4 @@ export enum NavigationName {
     SIGNINSCREEN = 'SigInScreen',
     LOGIN ='LogIn',
     SINGUP = 'SignUpScreen'
-}
+};
