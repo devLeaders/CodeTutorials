@@ -35,10 +35,14 @@ export class DescriptionLeft extends React.Component<any,DesLeft> {
   )
 
   componentDidMount(){
-    const listVideos =  GetVideosListExpandedV();
+    const listVideos:any =  GetVideosListExpandedV();
     this.setState ({
       listVideos
     })
+  }
+
+  desLeft = (item:any)=>{
+    return null;
   }
 
   render(){
@@ -53,7 +57,7 @@ export class DescriptionLeft extends React.Component<any,DesLeft> {
               showsHorizontalScrollIndicator={false}
               horizontal={true}
               data={this.state.listVideos}
-              renderItem={({item}) => this.DesLeft(item)}
+              renderItem={({item}) => this.desLeft(item)}
               keyExtractor={ item => item.id}
             />
           </ImageList>

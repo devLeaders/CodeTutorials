@@ -7,6 +7,7 @@ export type ParamList = {
     SingleMovie: undefined;
     SigInScreen: undefined;
     SignUpScreen: undefined;
+    TabNavigator: undefined;
 };
 
 export type NavProps<ParamName extends keyof ParamList > =  { 

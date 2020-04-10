@@ -1,26 +1,21 @@
-import { createAppContainer } from 'react-navigation';
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { ParamList } from '../../../config/routing/ParamList'
 import { NavigationName } from '../../../config/routing/NavigationName';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import HomeScreen from '../../videos/page/HomeScreen';
 import MoviesList from '../../videos/page/MoviesList';
-import SingleMovie2 from '../../videos/page/SingleMovie2';
-import { Color } from '../styles/constans/Color';
 
+interface TabNavigatorProps {
 
+}
 
+const Tabs = createBottomTabNavigator<ParamList>();
 
-const TabNavigator = createMaterialBottomTabNavigator(
-    {
-        [NavigationName.HOME]: HomeScreen, 
-        [NavigationName.MOVIELIST]: MoviesList,
-        [NavigationName.SINGLEMOVIE]: SingleMovie2,
-    },
-    {
-        initialRouteName: 'Home',
-        activeColor: Color.WHITE,
-        inactiveColor: Color.DARK_GREY,
-        barStyle: { backgroundColor: Color.BLACK },
-      }
-  );
-  
-  export default createAppContainer(TabNavigator);
+export const TabNavigator: React.FC<TabNavigatorProps> = ({}) => {
+        return (
+            <Tabs.Navigator>
+                <Tabs.Screen name={NavigationName.HOME} component={HomeScreen} />
+                <Tabs.Screen name={NavigationName.MOVIELIST} component={MoviesList} />
+            </Tabs.Navigator>
+        );
+}

@@ -11,6 +11,7 @@ import MoviesList from '../../features/videos/page/MoviesList';
 import SingleMovie2 from '../../features/videos/page/SingleMovie2';
 import SignInScreen from '../../features/auth/page/SignInScrren';
 import SignUpScreen from '../../features/auth/page/SingUpScrenn';
+import { TabNavigator } from '../../features/common/components/TabNavigator';
 
 const Stack = createStackNavigator<ParamList>()
 
@@ -19,7 +20,7 @@ export default class AppNavigation extends Component {
     return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name={NavigationName.HOME} component={HomeScreen}/>
+          <Stack.Screen name={NavigationName.HOME} component={TabNavigator}/>
           <Stack.Screen name={NavigationName.MOVIELIST} component={MoviesList}/>
           <Stack.Screen name={NavigationName.SINGLEMOVIE} component={SingleMovie2}/>
           <Stack.Screen name={NavigationName.SIGNINSCREEN} component={SignInScreen}/>

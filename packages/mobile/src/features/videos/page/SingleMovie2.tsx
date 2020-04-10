@@ -74,7 +74,7 @@ export default class SingleMovie2 extends React.Component <SingleMovie2Props>{
           <ColumContainerRight>
             <RatioContainer>
               <Heart source={{uri:'ic_heart'}} />
-              <HeartRatio> {DATA[0].ratio}</HeartRatio>
+              <HeartRatio> {/*DATA[0].ratio*/}</HeartRatio>
             </RatioContainer>
 
             <StarsContainer>
