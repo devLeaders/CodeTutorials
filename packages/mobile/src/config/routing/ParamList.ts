@@ -8,9 +8,16 @@ export type ParamList = {
     SigInScreen: undefined;
     SignUpScreen: undefined;
     TabNavigator: undefined;
+    
+    Menu: undefined;
+    Zespoly: undefined;
+    Zadania: undefined;
+    Playlista: undefined;
+    Alerty: undefined;
+    Szukaj: undefined;
 };
 
-export type NavProps<ParamName extends keyof ParamList > =  { 
+export type NavProps<ParamName extends keyof ParamList> =  { 
     navigation: StackNavigationProp<ParamList, ParamName>;
     route: RouteProp<ParamList, ParamName>; 
 }

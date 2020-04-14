@@ -5,6 +5,11 @@ export enum NavigationName {
     SIGNINSCREEN = 'SigInScreen',
     LOGIN ='LogIn',
     SINGUP = 'SignUpScreen',
-    BOTOMNAV = 'TabNavigator'
 
+    MENU = 'Menu',
+    TEAMS = 'Zespoly',
+    TASKS = 'Zadania',
+    PLAYLIST = 'Playlista',
+    ALERT = 'Alerty', 
+    SEARCH = 'Szukaj'
 };
