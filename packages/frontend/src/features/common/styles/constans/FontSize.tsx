@@ -1,4 +1,9 @@
 export enum FontSize {
+    VERY_SMALL = '9px',
+    SMALL = '15px',
+    NORMAL = '16px',
+    MEDIUM = '20px',
+    BIG = '30px',
     paragraphDesktop = '18px',
     paragraphMobile = '16px',
     headerDesktop = '32px',
