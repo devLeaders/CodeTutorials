@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import Colors from "../common/styles/constans/Colors";
+import {Colors} from "../common/styles/constans/Colors";
 
 const Wrapper = styled.div`
   position: absolute;

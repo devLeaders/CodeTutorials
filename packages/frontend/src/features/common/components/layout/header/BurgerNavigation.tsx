@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import Colors from "../../../styles/constans/Colors";
+import {Colors} from "../../../styles/constans/Colors";
 import { Device } from "../../../styles/constans/Device";
 
 const Wrapper = styled.div`
