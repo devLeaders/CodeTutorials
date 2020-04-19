@@ -13,8 +13,13 @@ import React, {Component} from 'react';
 // Here we can import new screens
 import AppNavigation from './src/config/routing/AppNavigation';
 import {View} from 'react-native';
+import SplashScreen from 'react-native-splash-screen'
 
 export default class App extends Component {
+  componentDidMount(){
+    SplashScreen.hide();
+  }
+
   render() {
     return <AppNavigation />;
   }
