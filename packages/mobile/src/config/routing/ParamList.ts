@@ -1,5 +1,6 @@
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RouteProp } from "@react-navigation/native";
+import { NavigationName } from './NavigationName';
 
 export type ParamList = {
     Home: undefined;

@@ -1,11 +1,11 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { ParamList } from '../../../config/routing/ParamList';
-import { NavigationName } from '../../../config/routing/NavigationName';
-import HomeScreen from '../../videos/page/HomeScreen';
-import MoviesList from '../../videos/page/MoviesList';
-import { TeamsScreen } from '../../videos/page/TeamsScreen';
-import { Color } from '../styles/constans/Color';
+import { ParamList } from './ParamList';
+import { NavigationName } from './NavigationName';
+import HomeScreen from '../../features/videos/page/HomeScreen';
+import MoviesList from '../../features/videos/page/MoviesList';
+import { TeamsScreen } from '../../features/videos/page/TeamsScreen';
+import { Color } from '../../features/common/styles/constans/Color';
 import { 
     HamburgerIc, 
     TeamIc,
@@ -15,7 +15,7 @@ import {
     AlertIc, 
     AlertView, 
     AlertText, 
-    SearchWIc } from "./TabBottomNavStyle";
+    SearchWIc } from "../../features/common/components/TabBottomNavStyle";
 
 
 const kvArray = [
@@ -37,13 +37,9 @@ const kvArray = [
 
 const myMap = new Map(kvArray as any);
 
-interface TabNavigatorProps {
-
-}
-
 const Tabs = createBottomTabNavigator<ParamList>();
 
-export const TabNavigator: React.FC<TabNavigatorProps> = ({}) => {
+export const TabNavigator: React.FC = ({}) => {
         return (
             <Tabs.Navigator
                 screenOptions={({ route }) => ({
