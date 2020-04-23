@@ -2,14 +2,16 @@ import * as React from 'react';
 import styled from "styled-components"
 
 import {fontWeight} from "../../../common/styles/constans/fontWeight"
+import Colors from "../../../common/styles/constans/Colors"
 import {Device} from "../../../common/styles/constans/Device"
+import {FontSize} from "../../../common/styles/constans/FontSize"
 
 const Cell = styled.div`
     display: flex;
     justify-content: center;
     text-align: center;
     padding: 4px 16px;
-    box-shadow: 0px 3px 6px 0px #00000029;
+    box-shadow: 0px 3px 6px 0px ${Colors.GRAY_OPACITY};
     border-radius: 10px;
     width: 59px;
     height: 18px;
@@ -22,9 +24,9 @@ const Cell = styled.div`
 `
 const TechTxt = styled.p`
     font-weight: ${fontWeight.SEMI_BOLD};
-    font-size: 8px;
+    font-size: ${FontSize.VERY_SMALL};
     @media ${Device.tablet} {
-        font-size: 13px;
+        font-size: ${FontSize.small};
     }
 `
 interface TechCellProps {
