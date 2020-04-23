@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import Colors from "../common/styles/constans/Colors";
+import {Colors} from "../common/styles/constans/Colors";
 import Fonts from "../common/styles/constans/Fonts";
 import FilterMenu from "./FilterMenu";
 import { Device } from "../common/styles/constans/Device";

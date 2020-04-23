@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { useState } from "react";
-import Colors from "../../../styles/constans/Colors";
+import {Colors} from "../../../styles/constans/Colors";
 import BurgerNavigation from "./BurgerNavigation";
 
 const NavWrapper = styled.div`
