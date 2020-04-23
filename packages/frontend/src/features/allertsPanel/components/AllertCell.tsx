@@ -2,8 +2,9 @@ import * as React from "react";
 import styled from "styled-components";
 
 import { FontSize } from "../../common/styles/constans/FontSize";
-import { FontWeight } from "../../common/styles/constans/FontWeight";
+import { FontWeight } from "../../common/styles/constans/fontWeight";
 import { Device } from "../../common/styles/constans/Device";
+import { Colors } from "../../common/styles/constans/Colors";
 
 const AllertContainer = styled.div`
   position: relative;
@@ -17,7 +18,7 @@ const AllertContainer = styled.div`
   border: 2px solid transparent;
   cursor: pointer;
   &:hover {
-    border: 2px solid black;
+    border: 2px solid ${Colors.BLACK};
   }
   @media ${Device.tablet} {
     padding: 5px 37px;

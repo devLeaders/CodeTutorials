@@ -2,7 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 
 import { FontSize } from "../../common/styles/constans/FontSize";
-import { FontWeight } from "../../common/styles/constans/FontWeight";
+import { FontWeight } from "../../common/styles/constans/fontWeight";
+import { Colors } from "../../common/styles/constans/Colors";
 import {Device} from "../../common/styles/constans/Device"
 import Description from "./Description";
 import AllertsSection from "./AllertsSection"
@@ -13,7 +14,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 24px 24px;
   width: 320px;
-  border-right: 1px solid gray;
+  border-right: 1px solid ${Colors.GRAY};
   @media ${Device.tablet} {
     width: 443px;
     padding: 24px 34px;

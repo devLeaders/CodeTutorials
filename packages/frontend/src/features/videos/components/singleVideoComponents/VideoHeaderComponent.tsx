@@ -5,7 +5,7 @@ import { FontFamily } from '../../../common/styles/constans/FontFamily';
 import {Colors} from '../../../common/styles/constans/Colors';
 import { Device } from '../../../common/styles/constans/Device';
 import { FontSize } from '../../../common/styles/constans/FontSize';
-import {FontWeight} from "../../../common/styles/constans/FontWeight"
+import {FontWeight} from "../../../common/styles/constans/fontWeight";
 
 const Header = styled.header`
         display: flex;

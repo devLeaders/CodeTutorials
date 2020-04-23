@@ -24,7 +24,7 @@ const DragableEl = styled.div`
     width: 10px;
     border-radius: 20px;
     background-color: ${Colors.BLACK};
-    box-shadow: 0px 2px 8px 0px #00000029;
+    box-shadow: 0px 2px 8px 0px ${Colors.OPACITY_GRAY};
 `
 
 export interface ScrollBarProps {

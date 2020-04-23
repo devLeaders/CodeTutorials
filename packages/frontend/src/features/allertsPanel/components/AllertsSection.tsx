@@ -6,7 +6,7 @@ import ScrollBar from "./ScrollBar"
 
 const Wrapper = styled.section`
     position: relative;
-    height: 666px;
+    height: 100%;
     padding-top: 41px;
     display: flex;
     flex-direction: column;
