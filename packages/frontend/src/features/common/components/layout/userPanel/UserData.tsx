@@ -51,7 +51,7 @@ const UserEmail = styled(UserInfoTxt)`
 const LogoutBtn = styled.button`
     display: flex;
     position: absolute;
-    padding:  5px 10px;
+    padding: 5px 10px;
     bottom: 0;
     right: 10px;
     height: 26px;
