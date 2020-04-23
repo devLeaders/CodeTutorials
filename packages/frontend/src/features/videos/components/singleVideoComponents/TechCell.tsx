@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from "styled-components"
 
-import {fontWeight} from "../../../common/styles/constans/fontWeight"
-import Colors from "../../../common/styles/constans/Colors"
+import {FontWeight} from "../../../common/styles/constans/fontWeight"
+import {Colors} from "../../../common/styles/constans/Colors"
 import {Device} from "../../../common/styles/constans/Device"
 import {FontSize} from "../../../common/styles/constans/FontSize"
 
@@ -11,7 +11,7 @@ const Cell = styled.div`
     justify-content: center;
     text-align: center;
     padding: 4px 16px;
-    box-shadow: 0px 3px 6px 0px ${Colors.GRAY_OPACITY};
+    box-shadow: 0px 3px 6px 0px ${Colors.OPACITY_GRAY};
     border-radius: 10px;
     width: 59px;
     height: 18px;
@@ -23,7 +23,7 @@ const Cell = styled.div`
     }
 `
 const TechTxt = styled.p`
-    font-weight: ${fontWeight.SEMI_BOLD};
+    font-weight: ${FontWeight.SEMI_BOLD};
     font-size: ${FontSize.VERY_SMALL};
     @media ${Device.tablet} {
         font-size: ${FontSize.small};
