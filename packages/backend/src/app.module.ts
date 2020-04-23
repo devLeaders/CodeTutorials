@@ -6,7 +6,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { VideosModule } from './videos/videos.module';
 import { configService } from './config/config.service';
 import { FilesModule } from './files/files.module';
-import {PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [

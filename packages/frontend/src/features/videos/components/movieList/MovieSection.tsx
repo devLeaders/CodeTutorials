@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import Colors from "../../../common/styles/constans/Colors";
+import {Colors} from "../../../common/styles/constans/Colors";
 import Fonts from "../../../common/styles/constans/Fonts";
 import Slider from "./Slider";
 import { Device } from "../../../common/styles/constans/Device";
@@ -13,10 +13,10 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 5px 0 0 0;
   position: relative;
-  @media ${Device.MOBILE_M} {
+  @media ${Device.mobileM} {
     height: 9rem;
   }
-  @media ${Device.TABLET} {
+  @media ${Device.tablet} {
     height: 11rem;
   }
 `;
@@ -26,7 +26,7 @@ const Title = styled.h2`
   margin-left: 15px;
   align-self: flex-start;
   color: ${Colors.nLightGrey};
-  @media ${Device.TABLET} {
+  @media ${Device.tablet} {
     font-size: ${Fonts.desktopMedium};
   }
 `;

@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import Colors from "../../../styles/constans/Colors";
+import {Colors} from "../../../styles/constans/Colors";
 import { Device } from "../../../styles/constans/Device";
 
 const Wrapper = styled.div`
@@ -20,11 +20,11 @@ const Wrapper = styled.div`
   opacity: 0.9;
   transform: ${(props: { active: boolean }) =>
     props.active ? "translateY(25%)" : "translateY(-100%)"};
-  @media ${Device.MOBILE_M} {
+  @media ${Device.mobileM} {
     transform: ${(props: { active: boolean }) =>
     props.active ? "translateY(40%)" : "translateY(-100%)"};
   }
-  @media ${Device.TABLET} {
+  @media ${Device.tablet} {
     height: 300px;
     width: 40%;
   }
@@ -43,7 +43,7 @@ const BurgerNavItem = styled.li`
   &:hover {
     background-color: ${Colors.nGrey};
   }
-  @media ${Device.TABLET} {
+  @media ${Device.tablet} {
     font-size: 20px;
   }
 `;
@@ -54,7 +54,7 @@ const Footer = styled.footer`
   &:hover {
     background-color: ${Colors.nGrey};
   }
-  @media ${Device.TABLET} {
+  @media ${Device.tablet} {
     font-size: 20px;
   }
 `;

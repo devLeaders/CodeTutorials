@@ -20,10 +20,10 @@ const Section = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
-  @media ${Device.MOBILE_M} {
+  @media ${Device.mobileM} {
     height: 300px;
   }
-  @media ${Device.TABLET} {
+  @media ${Device.tablet} {
     height: 450px;
   }
 `;

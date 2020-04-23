@@ -2,9 +2,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { FontSize } from "../../../styles/constans/FontSize"
-import { fontWeight } from '../../../styles/constans/fontWeight';
+import { FontWeight } from '../../../styles/constans/fontWeight';
 import { Device } from "../../../styles/constans/Device"
-import Colors from "../../../styles/constans/Colors"
+import {Colors} from "../../../styles/constans/Colors"
 
 const Wrapper = styled.div`
     width: 100%;
@@ -16,7 +16,7 @@ const UserPhoto = styled.img`
     border-radius: 50%;
     margin-right: 10px;
     background-color: gray;
-    @media ${Device.TABLET}{
+    @media ${Device.tablet}{
         width: 122px;
         margin-right: 33px;
     }
@@ -28,7 +28,7 @@ const TextInfoSection = styled.div`
     align-items: flex-start;
     text-align: left;
     width: 201px;
-    @media ${Device.TABLET}{
+    @media ${Device.tablet}{
         width: 215px;
     }
 `
@@ -38,9 +38,9 @@ const UserInfoTxt = styled.p<{ email?: any, name?: any }>`
     margin-bottom: 4px;
     text-transform: ${props => props.name ? "capitalize" : "none"};
     font-size: ${props => props.name ? "20px" : "16px"};
-    font-weight: ${props => props.email ? fontWeight.REGULAR : fontWeight.SEMIBOLD};
+    font-weight: ${props => props.email ? FontWeight.REGULAR : FontWeight.SEMI_BOLD};
     word-wrap: break-word;
-    @media ${Device.TABLET}{
+    @media ${Device.tablet}{
         font-size: ${props => props.name ? "20px" : "16px"};
     }
 `

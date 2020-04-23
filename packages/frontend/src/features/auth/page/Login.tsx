@@ -20,7 +20,7 @@ const LoginForm = styled.div`
     display: flex;
     flex-direction: column;
 
-    @media screen and (min-width: ${Device.TABLET}) {
+    @media screen and (min-width: ${Device.tablet}) {
         max-width: 600px;
         margin: 100px auto 0 auto;
     }

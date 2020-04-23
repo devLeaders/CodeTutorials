@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import VideoDescribeComponent from '../components/singleVideoComponents/VideoDescribeComponent';
 import VideoPlayerComponent from '../components/singleVideoComponents/VideoPlayerComponent';
 import { RouteComponentProps } from 'react-router-dom';
-import Colors from '../../common/styles/constans/Colors';
+import {Colors} from '../../common/styles/constans/Colors';
 import { Device } from '../../common/styles/constans/Device';
 
 
@@ -16,7 +16,7 @@ const StyledVideoComponent = styled.div`
   flex-direction: column-reverse;
   background-color: ${Colors.nWhite};
 
-  @media screen and ${Device.LAPTOP}) {
+  @media ${Device.laptop} {
       flex-direction: row;
   }
 `;

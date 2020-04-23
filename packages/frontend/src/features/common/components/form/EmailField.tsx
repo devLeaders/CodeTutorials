@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontFamily } from '../../styles/constans/FontFamily';
 import { FontSize } from '../../styles/constans/FontSize';
-import Colors from '../../styles/constans/Colors';
+import {Colors} from '../../styles/constans/Colors';
 
 const Input = styled.input`
   width: 100%;

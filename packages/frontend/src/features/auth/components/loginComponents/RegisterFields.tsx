@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FontFamily } from '../../../common/styles/constans/FontFamily';
 import { FontSize } from '../../../common/styles/constans/FontSize';
 import SocialMedia from './SocialMedia';
-import Colors from '../../../common/styles/constans/Colors';
+import {Colors} from '../../../common/styles/constans/Colors';
 
 const Link = styled.a`
   width: 100%;
