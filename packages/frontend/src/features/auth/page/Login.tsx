@@ -6,8 +6,8 @@ import PassField from '../../common/components/form/PassField';
 import RecoveryPass from '../components/loginComponents/RecoveryPass';
 import SubmitButton from '../components/loginComponents/SubmitButton';
 import RegisterFields from '../components/loginComponents/RegisterFields';
-import {Field, Form, Formik, FormikProps} from 'formik';
-import {useHistory} from "react-router-dom"
+import { Field, Form, Formik, FormikProps } from 'formik';
+import { useHistory } from "react-router-dom"
 import NAVIGATION from "../../../config/routing/NavigationPath"
 import Axios from "../../../config/axios/configAxios"
 import { Device } from '../../common/styles/constans/Device';
@@ -25,41 +25,41 @@ const LoginForm = styled.div`
         margin: 100px auto 0 auto;
     }
 `;
-  
+
 const Login: React.FC = (props: any) => {
 
-const history = useHistory();
+    const history = useHistory();
 
     const loginSubmit = async (value: any, action: any) => {
 
-        try{
-        const dataResponse = await Axios.post('/auth/signin', {
-            "email": `${value.lastName}`,
-            "password": `${value.pass}`
+        try {
+            const dataResponse = await Axios.post('/auth/signin', {
+                "email": `${value.lastName}`,
+                "password": `${value.pass}`
             })
 
 
             const token = dataResponse.data.token
             localStorage.setItem('token', token)
-            Axios.defaults.headers.common['Authorization'] = `Bearer ${token}` 
+            Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
             history.push(NAVIGATION.MOVIES)
         }
-            catch(err) {
-                history.push(NAVIGATION.LOGIN)
-            }
+        catch (err) {
+            history.push(NAVIGATION.LOGIN)
+        }
     }
 
     return (
         <Formik
             initialValues={{}}
             onSubmit={loginSubmit}
-            >{(props: FormikProps<any>) => (
+        >{(props: FormikProps<any>) => (
             <Form>
-                <LoginForm>  
-                    <TitleForm/>
-                    <Field name="lastName" placeholder="Doe" component={EmailField}/>
-                    <Field name="pass"  component={PassField}/>
-                    <SubmitButton></SubmitButton>      
+                <LoginForm>
+                    <TitleForm />
+                    <Field name="lastName" placeholder="Doe" component={EmailField} />
+                    <Field name="pass" component={PassField} />
+                    <SubmitButton></SubmitButton>
                     <RecoveryPass></RecoveryPass>
                     <RegisterFields></RegisterFields>
                 </LoginForm>

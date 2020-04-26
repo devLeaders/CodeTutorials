@@ -22,7 +22,7 @@ const Wrapper = styled.div`
     props.active ? "translateY(25%)" : "translateY(-100%)"};
   @media ${Device.mobileM} {
     transform: ${(props: { active: boolean }) =>
-      props.active ? "translateY(40%)" : "translateY(-100%)"};
+    props.active ? "translateY(40%)" : "translateY(-100%)"};
   }
   @media ${Device.tablet} {
     height: 300px;

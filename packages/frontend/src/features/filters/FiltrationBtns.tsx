@@ -5,7 +5,7 @@ import {Colors} from "../common/styles/constans/Colors";
 import Fonts from "../common/styles/constans/Fonts";
 import FilterMenu from "./FilterMenu";
 import { Device } from "../common/styles/constans/Device";
-export interface FiltrationBtnsProps {}
+export interface FiltrationBtnsProps { }
 
 const Wrapper = styled.div`
   display: flex;

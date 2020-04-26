@@ -33,7 +33,7 @@ const SliderSection = styled.section`
   width: 100%;
 `;
 
-export interface MoviesProps {}
+export interface MoviesProps { }
 
 const Movies: React.SFC<MoviesProps> = () => {
   return (
