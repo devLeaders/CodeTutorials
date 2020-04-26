@@ -8,7 +8,8 @@ export enum Colors {
   LIGHT_GRAY="#0000000D",
   BLACK="black",
   GRAY="gray",
-  OPACITY_GRAY="#00000029"
+  OPACITY_GRAY="#00000029",
+  OPACITY_VERY_LIGHT_GRAY="#00000005"
 };
 
 

@@ -1,14 +1,14 @@
 import * as React from 'react';
 import styled from "styled-components"
 
-import {Colors} from "../../common/styles/constans/Colors"
-import { Device } from "../../common/styles/constans/Device";
+import {Colors} from "../../styles/constans/Colors"
+import { Device } from "../../styles/constans/Device";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{type?: string}>`
     display: none;
     position: absolute;
-    top: 8px;
-    right: -17px;
+    top: ${({type}) => type ? "52px" : "8px"};
+    right: ${({type}) => type ? "11px" : "-17px"};
     width: 6px;
     height: 100%;
     border-radius: 20px;
@@ -28,12 +28,12 @@ const DragableEl = styled.div`
 `
 
 export interface ScrollBarProps {
-    
+    type?: string;
 }
  
-const ScrollBar: React.SFC<ScrollBarProps> = () => {
+const ScrollBar: React.SFC<ScrollBarProps> = ({type}) => {
     return ( 
-        <Wrapper>
+        <Wrapper type={type}>
             <DragableEl/>
         </Wrapper>);
 }

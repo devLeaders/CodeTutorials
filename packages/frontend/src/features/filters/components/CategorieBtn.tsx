@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { FontSize } from "../../common/styles/constans/FontSize";
 import { Colors } from "../../common/styles/constans/Colors";
+import {Device} from "../../common/styles/constans/Device";
 
 const Btn = styled.button<{isActive: boolean}>`
   display: flex;
@@ -26,6 +27,9 @@ const Btn = styled.button<{isActive: boolean}>`
 `;
 const CategorieTxt = styled.p`
   font-size: ${FontSize.SMALL};
+  @media ${Device.tablet}{
+        font-size: ${FontSize.paragraphDesktop};
+    }
 `;
 export interface CategorieBtnProps {
   categorie: string;

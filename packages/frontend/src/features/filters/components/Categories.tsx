@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import {FontSize} from "../../common/styles/constans/FontSize"
 import {FontWeight} from "../../common/styles/constans/fontWeight"
+import {Device} from "../../common/styles/constans/Device";
 import CategorieBtn from "./CategorieBtn"
 
 const BtnWrapper = styled.div`
@@ -10,6 +11,9 @@ const BtnWrapper = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 21px;
+    @media ${Device.tablet}{
+        width: 334px;
+    }
 `
 
 const Title = styled.h3`
