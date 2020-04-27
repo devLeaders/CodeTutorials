@@ -8,7 +8,7 @@ import {Device} from "../../../common/styles/constans/Device"
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   border-top-left-radius: 55px;
   width: 115px;
@@ -17,7 +17,14 @@ const Wrapper = styled.div`
   height: 65px;
   background-color: ${Colors.VERY_LIGHT_PURPLE};
   @media ${Device.mobileM} {
+    padding-left: 47px;
+    padding-right: 24px;
     width: 130px;
+  }
+  @media ${Device.tablet} {
+    width: 184px;
+    height: 72px;
+    border-top-left-radius: 72px;
   }
 `;
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-
+import {Device} from "../../../common/styles/constans/Device"
 
 const Wrapper = styled.button`
   display: flex;
@@ -12,6 +12,10 @@ const Wrapper = styled.button`
   padding: 8px;
   border-radius: 50px;
   border: none;
+  @media ${Device.tablet} {
+    width: 38px;
+    height: 38px;
+  }
 `;
 
 

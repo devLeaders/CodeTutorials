@@ -5,7 +5,7 @@ import Colors from "../../../common/styles/constans/Colors";
 import { FontSize } from "../../../common/styles/constans/FontSize";
 import { fontWeight } from "../../../common/styles/constans/fontWeight";
 import Interactions from "./VideoInteractions"
-
+import {Device} from "../../../common/styles/constans/Device"
 
 
 const Wrapper = styled.div`
@@ -15,6 +15,11 @@ const Wrapper = styled.div`
   justify-content: space-between;
   padding-top: 10px;
   padding-left: 5px;
+  @media ${Device.tablet} {
+    height: 115px;
+    padding-top:16px;
+    padding-left: 9px;
+  }
 `;
 const Title = styled.h3`
   width: 100%;

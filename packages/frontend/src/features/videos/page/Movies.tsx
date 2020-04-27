@@ -49,7 +49,6 @@ const Movies: React.SFC<MoviesProps> = () => {
       <Slider>
         <NewMovie />
         <NewMovie />
-        <NewMovie />
       </Slider>
 
       {/* <SliderSection>
