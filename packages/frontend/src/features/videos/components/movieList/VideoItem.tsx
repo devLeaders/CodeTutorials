@@ -25,7 +25,7 @@ const Img = styled.img`
   height: 145px;
   width: 100%;
   border-radius: 2px;
-  @media ${Device.tablet} {
+  @media ${Device.mobileL} {
     height: 177px;
     width: 330px;
   }

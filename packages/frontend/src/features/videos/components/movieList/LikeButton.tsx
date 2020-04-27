@@ -12,7 +12,7 @@ const Wrapper = styled.button`
   padding: 8px;
   border-radius: 50px;
   border: none;
-  @media ${Device.tablet} {
+  @media ${Device.mobileL} {
     width: 38px;
     height: 38px;
   }

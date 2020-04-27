@@ -21,7 +21,7 @@ const Wrapper = styled.div`
     padding-right: 24px;
     width: 130px;
   }
-  @media ${Device.tablet} {
+  @media ${Device.mobileL} {
     width: 184px;
     height: 72px;
     border-top-left-radius: 72px;
