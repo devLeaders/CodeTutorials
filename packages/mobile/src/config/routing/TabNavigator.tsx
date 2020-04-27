@@ -16,6 +16,7 @@ import {
     AlertView, 
     AlertText, 
     SearchWIc } from "../../features/common/components/TabBottomNavStyle";
+import SingleMovie2 from '../../features/videos/page/SingleMovie2';
 
 
 const kvArray = [
@@ -43,7 +44,7 @@ export const TabNavigator: React.FC = ({}) => {
         return (
             <Tabs.Navigator
                 screenOptions={({ route }) => ({
-                    tabBarIcon: ({ focused, color, size }) : any => {
+                    tabBarIcon: () : any => {
                         return myMap.get(route.name)
                 }
                 })}
@@ -58,7 +59,7 @@ export const TabNavigator: React.FC = ({}) => {
                 <Tabs.Screen name={NavigationName.TASKS} component={MoviesList} />
                 <Tabs.Screen name={NavigationName.PLAYLIST} component={HomeScreen} />
                 <Tabs.Screen name={NavigationName.ALERT} component={TeamsScreen} />
-                <Tabs.Screen name={NavigationName.SEARCH} component={MoviesList} />
+                <Tabs.Screen name={NavigationName.SEARCH} component={SingleMovie2} />
             </Tabs.Navigator>
         );
 }
