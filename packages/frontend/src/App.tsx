@@ -13,25 +13,13 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const StyledApp = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
-const StyledMain = styled.div`
-  flex-grow: 1;
-  text-align: center;
-`;
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <StyledApp className="app">
-        <StyledMain>
           <Routing />
-        </StyledMain>
-      </StyledApp>
     </BrowserRouter>
   );
 };

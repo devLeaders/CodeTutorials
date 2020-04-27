@@ -1,11 +1,10 @@
 import React from "react";
 import MovieNavBar from "../../common/components/layout/header/MovieNavBar";
 import styled from "styled-components";
-import FiltrationBtns from "../../filters/FiltrationBtns";
 import MovieSection from "../components/movieList/MovieSection";
 import NewContent from "../components/movieList/NewContent";
 import { Device } from "../../common/styles/constans/Device";
-import NewMovie from "../components/movieList/NewMovie";
+import NewMovie from "../components/movieList/VideoItem";
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,6 +12,7 @@ const Wrapper = styled.div`
   align-items: center;
   min-height: 100vh;
   width: 100%;
+  overflow: hidden;
 `;
 
 const Section = styled.section`
@@ -33,6 +33,10 @@ const SliderSection = styled.section`
   width: 100%;
 `;
 
+const Slider = styled.div`
+  display: flex;
+`;
+
 export interface MoviesProps {}
 
 const Movies: React.SFC<MoviesProps> = () => {
@@ -41,15 +45,18 @@ const Movies: React.SFC<MoviesProps> = () => {
       <MovieNavBar></MovieNavBar>
       <Section>
         <NewContent />
-        <FiltrationBtns></FiltrationBtns>
       </Section>
-      <NewMovie></NewMovie>
-      <SliderSection>
+      <Slider>
+        <NewMovie />
+        <NewMovie />
+        <NewMovie />
+      </Slider>
+
+      {/* <SliderSection>
         <MovieSection title="Polecane dla ciebie" id={1}></MovieSection>
         <MovieSection title="Akcja" id={2}></MovieSection>
         <MovieSection title="Dramaty" id={3}></MovieSection>
-      </SliderSection>
-      
+      </SliderSection> */}
     </Wrapper>
   );
 };

@@ -1,17 +1,19 @@
 import * as React from "react";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import NavigationPath from "../../../../config/routing/NavigationPath";
-import Colors from "../../../common/styles/constans/Colors";
-import {FontSize} from "../../../common/styles/constans/FontSize"
+
+
 
 const Wrapper = styled.button`
-
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+  border-radius: 50px;
+  border: none;
 `;
 
-const Img = styled.div`
-
-`;
 
 interface LikeButtonProps {
     type: 'like' | 'dislike'
