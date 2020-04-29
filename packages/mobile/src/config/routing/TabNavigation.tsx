@@ -1,16 +1,10 @@
 import React, {Component} from 'react';
 //navigation import
-import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { NavigationName } from './NavigationName';
 
 // Here we can import new screens
-import HomeScreen from '../../features/videos/page/HomeScreen';
 import MoviesList from '../../features/videos/page/MoviesList';
-import SingleMovie2 from '../../features/videos/page/SingleMovie2';
-import SignInScreen from '../../features/auth/page/SignInScrren';
-import SignUpScreen from '../../features/auth/page/SingUpScrenn';
-import { TabNavigator } from './TabNavigation';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TeamsScreen } from '../../features/videos/page/TeamsScreen';
 import { Color } from '../../features/common/styles/constans/Color';
@@ -31,7 +25,6 @@ import {HomeStackScreen} from './AppNavigation'
 
 
 const Tabs = createBottomTabNavigator();
-const HomeStack = createStackNavigator();
 
 const kvArray = [
   [NavigationName.MENU,  <HamburgerIc source={{uri:'ic_burger'}}/>],
