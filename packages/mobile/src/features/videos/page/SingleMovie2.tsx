@@ -33,10 +33,7 @@ interface SingleMovie2Props {
 }
 
 export default class SingleMovie2 extends React.Component <SingleMovie2Props>{
-  static navigationOptions = ({ 
-    navigation,
-    route 
-  }: NavProps<NavigationName.SINGLEMOVIE> ) => {
+  static navigationOptions = (navigation) => {
     return {
       headerStyle: {
         backgroundColor: '#00000000',

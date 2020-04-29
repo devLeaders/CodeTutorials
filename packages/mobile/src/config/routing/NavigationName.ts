@@ -7,9 +7,9 @@ export enum NavigationName {
     SINGUP = 'SignUpScreen',
 
     MENU = 'Menu',
-    TEAMS = 'Zespoly',
-    TASKS = 'Zadania',
-    PLAYLIST = 'Playlista',
-    ALERT = 'Alerty', 
-    SEARCH = 'Szukaj'
+    TEAMS = 'Teams',
+    TASKS = 'Tasks',
+    PLAYLIST = 'Playlist',
+    ALERT = 'Alerts', 
+    SEARCH = 'Search'
 };

@@ -11,11 +11,11 @@
 import React, {Component} from 'react';
 
 // Here we can import new screens
-import AppNavigation from './src/config/routing/AppNavigation';
+import TabNavigation from './src/config/routing/TabNavigation';
 
 
 export default class App extends Component {
   render() {
-    return <AppNavigation />;
+    return <TabNavigation />;
   }
 }

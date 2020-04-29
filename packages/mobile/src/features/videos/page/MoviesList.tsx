@@ -25,10 +25,7 @@ import { NavProps } from '../../../config/routing/ParamList';
 
 
 export class  MoviesList extends React.Component{
-  static navigationOptions = ({ 
-    navigation,
-    route 
-  }: NavProps<NavigationName.MOVIELIST> ) => {
+  static navigationOptions = () => {
     return {
       headerStyle: {
         backgroundColor: '#f0f2fa',
