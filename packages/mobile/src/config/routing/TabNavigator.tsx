@@ -17,7 +17,7 @@ import {
     AlertText, 
     SearchWIc } from "../../features/common/components/TabBottomNavStyle";
 import SingleMovie2 from '../../features/videos/page/SingleMovie2';
-
+import { Search } from '../../features/videos/page/Search';
 
 const kvArray = [
     [NavigationName.MENU,  <HamburgerIc source={{uri:'ic_burger'}}/>],
@@ -38,13 +38,13 @@ const kvArray = [
 
 const myMap = new Map(kvArray as any);
 
-const Tabs = createBottomTabNavigator<ParamList>();
+const Tabs = createBottomTabNavigator();
 
 export const TabNavigator: React.FC = ({}) => {
         return (
             <Tabs.Navigator
                 screenOptions={({ route }) => ({
-                    tabBarIcon: () : any => {
+                    tabBarIcon: (): any => {
                         return myMap.get(route.name)
                 }
                 })}
@@ -54,12 +54,12 @@ export const TabNavigator: React.FC = ({}) => {
                 style: {backgroundColor: 'black'}
               }}
             >
-                <Tabs.Screen name={NavigationName.MENU} component={HomeScreen} />
-                <Tabs.Screen name={NavigationName.TEAMS} component={TeamsScreen} />
+                <Tabs.Screen name={NavigationName.MENU} options={{title: NavigationName.MENU}} component={HomeScreen} />
+                <Tabs.Screen name={NavigationName.TEAMS} options={{title: NavigationName.TASKS}} component={TeamsScreen} />
                 <Tabs.Screen name={NavigationName.TASKS} component={MoviesList} />
                 <Tabs.Screen name={NavigationName.PLAYLIST} component={HomeScreen} />
                 <Tabs.Screen name={NavigationName.ALERT} component={TeamsScreen} />
-                <Tabs.Screen name={NavigationName.SEARCH} component={SingleMovie2} />
+                <Tabs.Screen name={NavigationName.SEARCH}  component={Search} />
             </Tabs.Navigator>
         );
 }
