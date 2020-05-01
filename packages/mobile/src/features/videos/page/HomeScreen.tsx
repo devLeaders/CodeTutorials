@@ -66,7 +66,7 @@ const HomeScreen = ({navigation}:any) => {
                 />
                 <Button
                     color="#e63900"
-                    title="Go to Temp"
+                    title="Go to SINGLEMOVIEDESCRIPTION"
                     onPress={() => navigation.navigate(NavigationName.SINGLEMOVIEDESCRIPTION)}
                 />
               </View>
