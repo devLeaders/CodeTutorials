@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 
 const Btn = styled.View`

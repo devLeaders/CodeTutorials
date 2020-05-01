@@ -1,6 +1,6 @@
 export enum FontWeight {
-    REGULAR = "normal",
-    BOLD = "bold",
+    REGULAR="400",
+    SEMIBOLD = "600",
+    BOLD="700",
     LIGHT = "lighter",
-    SEMIBOLD = 400
 }

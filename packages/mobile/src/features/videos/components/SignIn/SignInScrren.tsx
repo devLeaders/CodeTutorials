@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import LogIn from './LogIn';
-import SignInHeader from './SignInHeader';
-import AnotherSingInMethods from './AnotherSingInMethods';
-import {Color} from '../../variables/Color';
-import {FontSize} from '../../variables/FontSize';
+import LogIn from '../components/SignIn/LogIn';
+import SignInHeader from '../components/SignIn/SignInHeader';
+import AnotherSingInMethods from '../components/SignIn/AnotherSingInMethods';
+import {Color} from '../../common/styles/constans/Color';
+import {FontSize} from '../../common/styles/constans/FontSize';
 
 const Wrapper = styled.ScrollView({
     flexDirection: 'column',

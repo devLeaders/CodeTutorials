@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 //import {EmailView, EmailText} from './SignInStyle';
 import styled from 'styled-components/native';
-import Color from '../../variables/Color';
 
 const Wrapper = styled.View``;
 

@@ -1,9 +1,15 @@
 import styled from 'styled-components/native';
 import {FontSize} from '../../../common/styles/constans/FontSize';
 import {FontWeight} from '../../../common/styles/constans/FontWeight';
+<<<<<<< HEAD:packages/mobile/src/features/videos/components/SingleScreen/SingleMovieStyle2.tsx
+import {FontFamily} from '../../../common/styles/constans/FontFamily';
+import {Color} from '../../../common/styles/constans/Color';
+import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
+=======
 import {Color} from '../../../common/styles/constans/Color';
 import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
 import { MyText } from '../../../common/styles/MyText';
+>>>>>>> qa2:packages/mobile/src/screens/SingleScreen/SingleMovieStyle2.tsx
 
 export enum SIZE {
   WIDTH = 100,

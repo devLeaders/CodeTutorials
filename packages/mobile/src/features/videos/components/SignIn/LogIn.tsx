@@ -7,15 +7,15 @@ import {
     AsyncStorage,
 } from 'react-native';
 import { Formik } from 'formik';
-import validationSchema from './validationSchema';
+import validationSchema from '../../action/validationSchema';
 import SignInInput from './SignInInput';
-import styled from 'styled-components';
-import {FontSize} from '../../variables/FontSize';
-import {Color} from '../../variables/Color';
-import Axios from './../../api/AxiosConfig';
+import styled from 'styled-components/native';
+import {FontSize} from '../../../common/styles/constans/FontSize';
+import {Color} from '../../../common/styles/constans/Color';
+import Axios from '../../../../config/axios/AxiosConfig';
 //import {AsyncStorage} from 'react-native';
 
-import { NavigationName } from './../../variables/NavigationName';
+import { NavigationName } from '../../../../config/routing/NavigationName';
 
 
 const Btn = styled.TouchableOpacity`

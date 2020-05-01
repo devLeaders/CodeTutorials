@@ -69,6 +69,17 @@ const HomeScreen = ({navigation}:any) => {
                     title="Go to SINGLEMOVIEDESCRIPTION"
                     onPress={() => navigation.navigate(NavigationName.SINGLEMOVIEDESCRIPTION)}
                 />
+
+                <Button
+                    color="#e63900"
+                    title="FiltersScreen"
+                    onPress={() => navigation.navigate(NavigationName.FILTERSSCREEN)}
+                />
+
+
+
+
+
               </View>
             </View>
           </ScrollView>
