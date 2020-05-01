@@ -114,7 +114,12 @@ export const Heart = styled.Image({
   marginLeft: 30,
 });
 
+<<<<<<< HEAD:packages/mobile/src/features/videos/components/SingleScreen/SingleMovieStyle2.tsx
+export const HeartRatio = styled.Text({
+  fontFamily: FontFamily.ARIAL,
+=======
 export const HeartRatio = styled(MyText)({
+>>>>>>> qa2:packages/mobile/src/screens/SingleScreen/SingleMovieStyle2.tsx
   fontSize: FontSize.BIG,
   color: Color.DARK_BROWN,
   alignSelf: 'stretch',
@@ -128,7 +133,12 @@ export const VoteText = styled(MyText)({
   marginRight: 3,
 });
 
+<<<<<<< HEAD:packages/mobile/src/features/videos/components/SingleScreen/SingleMovieStyle2.tsx
+export const MovieName = styled.Text({
+  fontFamily: FontFamily.ARIAL,
+=======
 export const MovieName = styled(MyText)({
+>>>>>>> qa2:packages/mobile/src/screens/SingleScreen/SingleMovieStyle2.tsx
   fontSize: FontSize.LARGE,
   fontWeight: FontWeight.BOLD,
   color: Color.DARK_BROWN,
@@ -155,6 +165,10 @@ export const Owerview = styled(MyText)({
 
 export const Description = styled(MyText)({
   marginLeft: 10,
+<<<<<<< HEAD:packages/mobile/src/features/videos/components/SingleScreen/SingleMovieStyle2.tsx
+  fontFamily: FontFamily.ARIAL,
+=======
+>>>>>>> qa2:packages/mobile/src/screens/SingleScreen/SingleMovieStyle2.tsx
   fontSize: FontSize.VERY_BIG,
   color: Color.DARK_GREY,
 });

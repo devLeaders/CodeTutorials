@@ -21,6 +21,7 @@ import SignIn from '../../features/auth/page/SignInScrren';
 import LogIn from '../../features/auth/components/SignIn/LogIn';
 import SignInScreen from '../../features/auth/page/SignInScrren';
 import SignUpScreen from '../../features/auth/page/SingUpScrenn';
+import Temp from '../..//features/videos/page/Temp';
 
 
 
@@ -31,7 +32,8 @@ const navigation = createStackNavigator(
     [NavigationName.SINGLEMOVIE]: SingleMovie2,
     [NavigationName.SIGNINSCREEN]: SignInScreen,
     [NavigationName.LOGIN]: LogIn,
-    [NavigationName.SINGUP]: SignUpScreen 
+    [NavigationName.SINGUP]: SignUpScreen,
+    [NavigationName.TEMP]: Temp,
   },
   {
     initialRouteName: NavigationName.HOME,

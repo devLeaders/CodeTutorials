@@ -3,9 +3,12 @@ export enum Color {
   DARK_GREY = '#707070',
   DARK_BROWN = '#34241a',
   DARKGREY = '#363535',
-  LIGHTGREY = '#f0f2fa',
+  DARKGREYX = '#A7A6AB',
+  LIGHTGREY = '#F0F2FA',
+  LIGHTGREYX ='#00000029',
   WHITE = '#ffffff',
   PURPLE = 'purple',
   BLACK = 'black',
-  LIGHT_PURPLE = "#a08ef4"
+  LIGHT_PURPLE = "#a08ef4",
+
 }
