@@ -2,13 +2,28 @@ import * as React from 'react';
 import styled from 'styled-components/native';
 import {ActivityIndicator} from 'react-native';
 import {Formik} from 'formik';
+<<<<<<< HEAD
 
+<<<<<<< HEAD:packages/mobile/src/features/auth/components/InputSection.tsx
 import FormikInput from '../../common/components/FormikInput';
 import SignUpBtn from './SignUpBtn';
 import validationSchema from '../../common/actions/validationSchema';
 import handleFormSubmit from '../../common/actions/handleFormSubmit';
 import {user} from '../../common/types/types';
 import {InputTypes} from '../../videos/action/InputTypes';
+=======
+=======
+>>>>>>> qa2
+import FormikInput from '../../../common/components/FormikInput';
+import SignUpBtn from './SignUpBtn';
+import validationSchemaReg from '../../action/validationSchemaRegistration';
+import handleFormSubmit from '../../action/handleFormSubmit';
+import {user} from '../../../common/types/types';
+import {InputTypes} from '../../../common/types/InputTypes';
+<<<<<<< HEAD
+>>>>>>> qa2:packages/mobile/src/features/auth/components/SingUp/InputSection.tsx
+=======
+>>>>>>> qa2
 
 const Wrapper = styled.View`
   margin-top: 40px;
@@ -30,7 +45,7 @@ const InputSection: React.SFC<InputSectionProps> = () => {
         initialValues={{email: '', password: '', passwordConfirmation: ''}}
         onSubmit={handleSubmit}
         validateOnChange={false}
-        validationSchema={validationSchema}>
+        validationSchema={validationSchemaReg}>
         {({handleChange, handleSubmit, values, isSubmitting, errors}) => (
           <FormWrapper>
             <FormikInput
@@ -69,6 +84,10 @@ const InputSection: React.SFC<InputSectionProps> = () => {
       </Formik>
     </Wrapper>
   );
+<<<<<<< HEAD
 };
+=======
+};  
+>>>>>>> qa2
 
 export default InputSection;

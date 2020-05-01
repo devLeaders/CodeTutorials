@@ -7,7 +7,6 @@ export enum FontSize {
     MIDIUM = 16,
     MIDPLUS = 18,
     GRANDEMIDIUM= 20,
-    GRANDE= 23,
     BIG = 25,
     VERY_BIG = 26,
     LARGE = 42,

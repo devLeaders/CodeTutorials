@@ -4,7 +4,7 @@ import {View, TextInput, Image} from 'react-native';
 
 import Error from './Error';
 import {ErrorMessage} from 'formik';
-import {InputTypes} from '../../videos/action/InputTypes';
+import {InputTypes} from '../types/InputTypes';
 import {returnKyeType} from '../types/types';
 
 const InputWrapper = styled.View`

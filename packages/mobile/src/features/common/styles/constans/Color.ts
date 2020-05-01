@@ -6,10 +6,8 @@ export enum Color {
   DARKGREYX = '#A7A6AB',
   LIGHTGREY = '#F0F2FA',
   LIGHTGREYX ='#00000029',
-  LIGHTGREYXX ='#DFDFDF',
   WHITE = '#ffffff',
   PURPLE = 'purple',
   BLACK = 'black',
   LIGHT_PURPLE = "#a08ef4",
-
 }

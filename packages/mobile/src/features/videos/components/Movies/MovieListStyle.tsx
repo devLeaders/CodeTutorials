@@ -1,30 +1,27 @@
 import styled from 'styled-components/native'
 import { FontSize } from '../../../common/styles/constans/FontSize';
 import { FontWeight } from '../../../common/styles/constans/FontWeight';
-import { FontFamily } from '../../../common/styles/constans/FontFamily'
 import { Color } from '../../../common/styles/constans/Color'
 import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
+import { MyText } from '../../../common/styles/MyText';
 
 export const Hamburger = styled.Image({
     width: 16,
     height: 16,
     marginTop: 17,
     marginBottom: 17,
-    marginLeft: 16,
-    
+    marginLeft: 16, 
 })
 
 export const ScrollViewStyle = styled.ScrollView({
     marginHorizontal: 20
 })
 
-export const FilterList = styled.Text({
+export const FilterList = styled(MyText)({
     textAlign: "center",
-    fontFamily: FontFamily.ARIAL,
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
     color: Color.DARKGREY,
- 
 })
 
 export const Arrow = styled.Image({
@@ -66,8 +63,7 @@ export const ButtonFilter = styled.TouchableOpacity({
     elevation: "5",
 })
 
-export const TextButtonActive = styled.Text ({
-    fontFamily: FontFamily.ARIAL,
+export const TextButtonActive = styled(MyText)({
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
     lineHeight: "16px",
@@ -75,8 +71,7 @@ export const TextButtonActive = styled.Text ({
     color: Color.DARKGREY
 })
 
-export const TextButtonNOAct = styled.Text ({
-    fontFamily: FontFamily.ARIAL,
+export const TextButtonNOAct = styled(MyText)({
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
     lineHeight: "19px",
@@ -115,8 +110,7 @@ export const GroupForSubtitle = styled.View({
     marginBottom: 5
 })
 
-export const SubTitleLeft = styled.Text({
-    fontFamily: FontFamily.ARIAL,
+export const SubTitleLeft =styled(MyText)({
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
     lineHeight: "19px",
@@ -124,8 +118,7 @@ export const SubTitleLeft = styled.Text({
     marginLeft: 15
 })
 
-export const SubTitleRight = styled.Text({
-    fontFamily: FontFamily.ARIAL,
+export const SubTitleRight = styled(MyText)({
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
     lineHeight: "19px",
@@ -147,9 +140,8 @@ export const ImageTherdSlaider = styled.Image({
     marginBottom: 4
 })
 
-export const SubTitleLeftSecond = styled.Text({
+export const SubTitleLeftSecond =styled(MyText)({
     textAlign: "left",
-    fontFamily: FontFamily.ARIAL,
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
     lineHeight: "19px",
@@ -158,9 +150,8 @@ export const SubTitleLeftSecond = styled.Text({
     marginBottom: 0,
 })
 
-export const SubTitleRightSecond = styled.Text({
+export const SubTitleRightSecond = styled(MyText)({
     right: 14,
-    fontFamily: FontFamily.ARIAL,
     fontSize: FontSize.NORMAL,
     fontWeight: FontWeight.BOLD,
     lineHeight: "19px",
@@ -180,8 +171,7 @@ export const IcHeart = styled.Image({
     marginRight: 3
 })
 
-export const ItemLike = styled.Text({
-    fontFamily: FontFamily.ARIAL,
+export const ItemLike = styled(MyText)({
     fontSize: FontSize.SMALL,
     fontWeight: FontWeight.REGULAR,
     lineHeight: "10px",
@@ -194,8 +184,7 @@ export const GroupCenter = styled.View({
     flexDirection: "row"
 })
 
-export const ViewTitle = styled.Text({
-    fontFamily: FontFamily.ARIAL,
+export const ViewTitle = styled(MyText)({
     fontSize: FontSize.SMALL,
     fontWeight: FontWeight.REGULAR,
     lineHeight: "8px",

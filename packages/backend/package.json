@@ -19,7 +19,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm:cli": "ts-node -r tsconfig-paths/register ../../node_modules/typeorm/cli",
+    "typeorm:cli": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli",
     "start:devts": "nodemon --config nodemon.json",
     "pretypeorm:cli": "(rm ormconfig.json | echo 'generate:') && ts-node -r tsconfig-paths/register src/config/scripts/write-type-orm-config.ts"
   },
@@ -27,6 +27,7 @@
     "@nestjs/common": "^6.7.2",
     "@nestjs/core": "^6.7.2",
     "@nestjs/microservices": "^6.11.5",
+    "@nestjs/passport": "^6.2.0",
     "@nestjs/platform-express": "^6.7.2",
     "@nestjs/swagger": "^4.2.3",
     "@nestjs/typeorm": "^6.2.0",

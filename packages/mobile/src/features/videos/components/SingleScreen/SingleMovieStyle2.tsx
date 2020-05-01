@@ -1,9 +1,15 @@
 import styled from 'styled-components/native';
 import {FontSize} from '../../../common/styles/constans/FontSize';
 import {FontWeight} from '../../../common/styles/constans/FontWeight';
+<<<<<<< HEAD:packages/mobile/src/features/videos/components/SingleScreen/SingleMovieStyle2.tsx
 import {FontFamily} from '../../../common/styles/constans/FontFamily';
 import {Color} from '../../../common/styles/constans/Color';
 import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
+=======
+import {Color} from '../../../common/styles/constans/Color';
+import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
+import { MyText } from '../../../common/styles/MyText';
+>>>>>>> qa2:packages/mobile/src/screens/SingleScreen/SingleMovieStyle2.tsx
 
 export enum SIZE {
   WIDTH = 100,
@@ -114,15 +120,13 @@ export const Heart = styled.Image({
   marginLeft: 30,
 });
 
-export const HeartRatio = styled.Text({
-  fontFamily: FontFamily.ARIAL,
+export const HeartRatio = styled(MyText)({
   fontSize: FontSize.BIG,
   color: Color.DARK_BROWN,
   alignSelf: 'stretch',
 });
 
-export const VoteText = styled.Text({
-  fontFamily: FontFamily.ARIAL,
+export const VoteText = styled(MyText)({
   fontSize: FontSize.MIDIUM,
   fontWeight: FontWeight.BOLD,
   color: Color.DARK_BROWN,
@@ -130,38 +134,33 @@ export const VoteText = styled.Text({
   marginRight: 3,
 });
 
-export const MovieName = styled.Text({
-  fontFamily: FontFamily.ARIAL,
+export const MovieName = styled(MyText)({
   fontSize: FontSize.LARGE,
   fontWeight: FontWeight.BOLD,
   color: Color.DARK_BROWN,
 });
 
-export const MovieKind = styled.Text({
-  fontFamily: FontFamily.ARIAL,
+export const MovieKind = styled(MyText)({
   fontSize: FontSize.MIDIUM,
   fontWeight: FontWeight.BOLD,
   color: Color.DARK_GREY,
 });
 
-export const MovieTime = styled.Text({
-  fontFamily: FontFamily.ARIAL,
+export const MovieTime = styled(MyText)({
   fontSize: FontSize.VERYSMALL,
   fontWeight: FontWeight.BOLD,
   color: Color.DARK_GREY,
 });
 
-export const Owerview = styled.Text({
+export const Owerview = styled(MyText)({
   marginTop: 15,
-  fontFamily: FontFamily.ARIAL,
   fontSize: FontSize.VERYSMALL,
   fontWeight: FontWeight.BOLD,
   color: Color.DARK_BROWN,
 });
 
-export const Description = styled.Text({
+export const Description = styled(MyText)({
   marginLeft: 10,
-  fontFamily: FontFamily.ARIAL,
   fontSize: FontSize.VERY_BIG,
   color: Color.DARK_GREY,
 });
@@ -186,8 +185,6 @@ export const Triangle = styled.Image({
   borderRadius: 100, //Then Make the Border Radius twice the size of width or Height
   backgroundColor: 'white',
   justifyContent: 'center',
-  //alignContent: 'space-around',
-  //alignSelf: 'center',
 });
 
 export const ImageList = styled.View({
@@ -203,9 +200,6 @@ export const ImageItem = styled.Image({
   borderRadius: 0,
   borderColor: Color.DARK_GREY,
   borderWidth: 1,
-  //shadowColor: '#4f1035ec',
-  //shadowOpacity: 0.5,
-  //shadowRadius: 15,
 });
 
 export const Separator = styled.View({
