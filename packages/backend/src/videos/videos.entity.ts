@@ -3,7 +3,7 @@ import CategoryEntity from './category.entity';
 
     @Entity('videos')
     class VideosEntity {
-        @PrimaryGeneratedColumn('uuid') id: number;
+        @PrimaryGeneratedColumn() id: number;
 
         @CreateDateColumn() created: Date;
 
@@ -25,7 +25,7 @@ import CategoryEntity from './category.entity';
 
         @Column('text') urlPhoto: string;
 
-        @ManyToMany(type => CategoryEntity,{
+        @ManyToMany(type => CategoryEntity, category => category.videos,{
             cascade: ["insert"]
         })
         @JoinTable()

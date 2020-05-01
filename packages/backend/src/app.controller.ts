@@ -6,9 +6,8 @@ import { AuthGuard } from '@nestjs/passport';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get("test23/:id")
-  @UseGuards(AuthGuard('jwt'))
-  getHello(@Param('id') id:string, @Query("test1") zbys:number): string {
+  @Get("test23")
+  getHello(): string {
     return this.appService.getHello();
   }
 }
