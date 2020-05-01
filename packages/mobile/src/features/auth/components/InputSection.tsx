@@ -2,22 +2,12 @@ import * as React from 'react';
 import styled from 'styled-components/native';
 import {ActivityIndicator} from 'react-native';
 import {Formik} from 'formik';
-
-<<<<<<< HEAD:packages/mobile/src/features/auth/components/InputSection.tsx
-import FormikInput from '../../common/components/FormikInput';
-import SignUpBtn from './SignUpBtn';
-import validationSchema from '../../common/actions/validationSchema';
-import handleFormSubmit from '../../common/actions/handleFormSubmit';
-import {user} from '../../common/types/types';
-import {InputTypes} from '../../videos/action/InputTypes';
-=======
 import FormikInput from '../../../common/components/FormikInput';
 import SignUpBtn from './SignUpBtn';
 import validationSchemaReg from '../../action/validationSchemaRegistration';
 import handleFormSubmit from '../../action/handleFormSubmit';
 import {user} from '../../../common/types/types';
 import {InputTypes} from '../../../common/types/InputTypes';
->>>>>>> qa2:packages/mobile/src/features/auth/components/SingUp/InputSection.tsx
 
 const Wrapper = styled.View`
   margin-top: 40px;
@@ -78,6 +68,6 @@ const InputSection: React.SFC<InputSectionProps> = () => {
       </Formik>
     </Wrapper>
   );
-};
+};  
 
 export default InputSection;

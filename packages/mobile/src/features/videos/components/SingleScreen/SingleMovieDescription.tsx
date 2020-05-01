@@ -2,16 +2,16 @@ import React from 'react';
 import {View } from 'react-native';
 import {
   Background,
-} from '../components/SingleScreen/SingleMovieStyle2';
+} from './SingleMovieStyle2';
 
-import {HeaderLeft} from '../components/SingleScreen/HeaderLeft';
-import MainDescription from '../components/SingleScreen/MainDescription';
+import {HeaderLeft} from './HeaderLeft';
+import MainDescription from './MainDescription';
 
-interface Temp {
+interface SingleMovieDescription {
   navigation: any
 }
 
-export default class Temp extends React.Component <Temp>{
+export default class SingleMovieDescription extends React.Component <SingleMovieDescription>{
  
   render() {
     return (

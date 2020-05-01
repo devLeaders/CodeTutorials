@@ -21,7 +21,7 @@ import SignIn from '../../features/auth/page/SignInScrren';
 import LogIn from '../../features/auth/components/SignIn/LogIn';
 import SignInScreen from '../../features/auth/page/SignInScrren';
 import SignUpScreen from '../../features/auth/page/SingUpScrenn';
-import Temp from '../..//features/videos/page/Temp';
+import SingleMovieDescription from '../../features/videos/components/SingleScreen/SingleMovieDescription';
 
 
 
@@ -33,7 +33,7 @@ const navigation = createStackNavigator(
     [NavigationName.SIGNINSCREEN]: SignInScreen,
     [NavigationName.LOGIN]: LogIn,
     [NavigationName.SINGUP]: SignUpScreen,
-    [NavigationName.TEMP]: Temp,
+    [NavigationName.SINGLEMOVIEDESCRIPTION]: SingleMovieDescription,
   },
   {
     initialRouteName: NavigationName.HOME,
