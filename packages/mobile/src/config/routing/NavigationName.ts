@@ -4,5 +4,6 @@ export enum NavigationName {
     SINGLEMOVIE = 'SingleMovie',
     SIGNINSCREEN = 'SigInScreen',
     LOGIN ='LogIn',
-    SINGUP = 'SignUpScreen'
+    SINGUP = 'SignUpScreen',
+    DRAWERMENU = 'DrawerMenu'
 }

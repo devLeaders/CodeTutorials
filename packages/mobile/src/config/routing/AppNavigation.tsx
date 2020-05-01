@@ -17,10 +17,10 @@ import { NavigationName } from './NavigationName';
 import HomeScreen from '../../features/videos/page/HomeScreen';
 import { MoviesList } from '../../features/videos/page/MoviesList';
 import SingleMovie2 from '../../features/videos/page/SingleMovie2';
-import SignIn from '../../features/auth/page/SignInScrren';
 import LogIn from '../../features/auth/components/SignIn/LogIn';
-import SignInScreen from '../../features/auth/page/SignInScrren';
-import SignUpScreen from '../../features/auth/page/SingUpScrenn';
+import SignUpScreen from '../../features/auth/page/SingUpScreen';
+import SignInScreen from '../../features/auth/page/SignInScreen';
+import DrawerMenu from '../../features/videos/page/DrawerMenu';
 
 
 
@@ -31,7 +31,8 @@ const navigation = createStackNavigator(
     [NavigationName.SINGLEMOVIE]: SingleMovie2,
     [NavigationName.SIGNINSCREEN]: SignInScreen,
     [NavigationName.LOGIN]: LogIn,
-    [NavigationName.SINGUP]: SignUpScreen 
+    [NavigationName.SINGUP]: SignUpScreen,
+    [NavigationName.DRAWERMENU]: DrawerMenu 
   },
   {
     initialRouteName: NavigationName.HOME,
