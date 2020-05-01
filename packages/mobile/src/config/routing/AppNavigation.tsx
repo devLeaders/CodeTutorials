@@ -21,12 +21,8 @@ import SignIn from '../../features/auth/page/SignInScrren';
 import LogIn from '../../features/auth/components/SignIn/LogIn';
 import SignInScreen from '../../features/auth/page/SignInScrren';
 import SignUpScreen from '../../features/auth/page/SingUpScrenn';
-<<<<<<< HEAD
-import Temp from '../..//features/videos/page/Temp';
+import SingleMovieDescription from '../..//features/videos/components/SingleScreen/SingleMovieDescription';
 import FiltersScreen from '../../features/videos/page/FiltersScreen';
-=======
-import SingleMovieDescription from '../../features/videos/components/SingleScreen/SingleMovieDescription';
->>>>>>> qa2
 
 
 
@@ -38,39 +34,18 @@ const navigation = createStackNavigator(
     [NavigationName.SIGNINSCREEN]: SignInScreen,
     [NavigationName.LOGIN]: LogIn,
     [NavigationName.SINGUP]: SignUpScreen,
-<<<<<<< HEAD
-    [NavigationName.TEMP]: Temp,
+    [NavigationName.SINGLEMOVIEDESCRIPTION]: SingleMovieDescription,
     [NavigationName.FILTERSSCREEN]: FiltersScreen,
   },
   {
-<<<<<<<< HEAD:packages/mobile/src/config/routing/AppNavigation.tsx
     initialRouteName: NavigationName.HOME,
   },
-========
-    initialRouteName: 'Home',
-  }
->>>>>>>> qa2:packages/mobile/src/components/AppNavigation.tsx
-=======
-    [NavigationName.SINGLEMOVIEDESCRIPTION]: SingleMovieDescription,
-  },
-  {
-    initialRouteName: NavigationName.HOME,
-  },
->>>>>>> qa2
 );
 
 const AppContainer = createAppContainer(navigation);
 
 export default class AppNavigation extends Component {
   render() {
-<<<<<<< HEAD
-    return (
-    <AppContainer />
-    )
-  }
-}
-=======
     return <AppContainer />;
   }
 }
->>>>>>> qa2

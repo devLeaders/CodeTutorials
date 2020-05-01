@@ -38,7 +38,7 @@ const TitleAndXWrapper = styled.View`
 const Title = styled(MyText)`
     margin-left: 15px;
     font-weight: ${FontWeight.BOLD};
-    font-size: ${FontSize.GRANDE};
+    font-size: ${FontSize.BIG};
     color: ${Color.BLACK};
     line-height: 28px;
 `;
@@ -100,7 +100,7 @@ const EyeButton = styled.TouchableOpacity({
   justifyContent: 'center',
   alignItems: 'center',
   borderRadius: 10,
-  borderColor: Color.LIGHTGREYXX,
+  borderColor: Color.LIGHTGREYX,
   //border: 1,  ??
   backgroundColor: Color.WHITE,
   shadowColor: Color.LIGHTGREYX,
