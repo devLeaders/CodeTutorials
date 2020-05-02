@@ -9,8 +9,9 @@
  */
 import React, {Component} from 'react';
 //navigation import
-import { createAppContainer } from 'react-navigation';
+//mport { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 import { NavigationName } from './NavigationName';
 
 // Here we can import new screens
@@ -38,14 +39,14 @@ const navigation = createStackNavigator(
     [NavigationName.FILTERSSCREEN]: FiltersScreen,
   },
   {
-    initialRouteName: NavigationName.HOME,
+    initialRouteName: NavigationName.SINGUP,
   },
 );
 
-const AppContainer = createAppContainer(navigation);
+const DrawContainer = createAppContainer(navigation);
 
-export default class AppNavigation extends Component {
+export default class DrawNavigation extends Component {
   render() {
-    return <AppContainer />;
+    return <DrawContainer />;
   }
 }

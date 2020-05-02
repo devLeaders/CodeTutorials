@@ -1,7 +1,5 @@
 import React from 'react';
 import {View } from 'react-native';
-import {
-  Background,
 } from '../components/SingleScreen/SingleMovieStyle2';
 
 import {HeaderLeft} from '../components/SingleScreen/HeaderLeft';
