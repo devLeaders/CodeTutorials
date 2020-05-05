@@ -17,6 +17,7 @@ const Checkbox = styled.input<{isActive: boolean}>`
     width: 50px;
     height: 50px;
     border-radius: 10px;
+    outline: none;
     box-shadow: 0px 2px 8px 0px ${Colors.OPACITY_GRAY};
     margin-right: 14px;
     cursor: pointer;
