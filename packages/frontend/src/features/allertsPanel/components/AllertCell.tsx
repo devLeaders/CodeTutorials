@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 import { FontSize } from "../../common/styles/constans/FontSize";
-import { FontWeight } from "../../common/styles/constans/fontWeight";
+import { fontWeight } from "../../common/styles/constans/fontWeight";
 import { Device } from "../../common/styles/constans/Device";
 import { Colors } from "../../common/styles/constans/Colors";
 
@@ -65,7 +65,7 @@ const AllertIcon = styled.img`
 const Title = styled.h3`
   font-size: 14px;
   margin-bottom: 8px;
-  font-weight: ${FontWeight.BOLD};
+  font-weight: ${fontWeight.BOLD};
 `;
 const Desc = styled.p`
   font-size: ${FontSize.VERY_SMALL};

@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from "styled-components"
 
 import {FontSize} from "../../../common/styles/constans/FontSize"
-import {FontWeight} from "../../../common/styles/constans/fontWeight"
+import {fontWeight} from "../../../common/styles/constans/fontWeight"
 import {Device} from "../../../common/styles/constans/Device"
 
 const Title = styled.h2`
@@ -10,7 +10,7 @@ const Title = styled.h2`
     text-align: left;
     font-size: ${FontSize.SMALL};
     margin-bottom: 2px;
-    font-weight:  ${FontWeight.bold};
+    font-weight:  ${fontWeight.bold};
     @media ${Device.tablet} {
         font-size: ${FontSize.BIG};
         margin-bottom: 4px;

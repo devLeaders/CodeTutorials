@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 import { FontSize } from "../../common/styles/constans/FontSize";
-import { FontWeight } from "../../common/styles/constans/fontWeight";
+import { fontWeight } from "../../common/styles/constans/fontWeight";
 import { Colors } from "../../common/styles/constans/Colors";
 import {Device} from "../../common/styles/constans/Device"
 import Description from "./Description";
@@ -24,7 +24,7 @@ const Title = styled.h2`
   width: 100%;
   text-align: left;
   font-size: ${FontSize.MEDIUM_BIG};
-  font-weight: ${FontWeight.BOLD};
+  font-weight: ${fontWeight.BOLD};
   margin-bottom: 12px;
 `;
 const Ximg = styled.img`
