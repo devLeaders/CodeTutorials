@@ -30,11 +30,7 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <StyledApp className="app">
-        <StyledMain>
           <Routing />
-        </StyledMain>
-      </StyledApp>
     </BrowserRouter>
   );
 };

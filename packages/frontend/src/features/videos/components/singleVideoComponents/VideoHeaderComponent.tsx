@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
-
 import { FontFamily } from '../../../common/styles/constans/FontFamily';
-import {Colors} from '../../../common/styles/constans/Colors';
+import { fontWeight } from '../../../common/styles/constans/fontWeight';
+import Colors from '../../../common/styles/constans/Colors';
 import { Device } from '../../../common/styles/constans/Device';
 import { FontSize } from '../../../common/styles/constans/FontSize';
-import {FontWeight} from "../../../common/styles/constans/fontWeight";
 
 const Header = styled.header`
         display: flex;
@@ -16,9 +15,9 @@ const Header = styled.header`
 const Title = styled.h1`
         font-family: ${FontFamily.openSansFont};
         font-size: ${FontSize.headerMobile};
-        font-weight: ${FontWeight.black};
+        font-weight: ${fontWeight.black};
         color: ${Colors.nBlack};
-        @media ${Device.laptop} {
+        @media screen and ${Device.laptop} {
             font-size: ${FontSize.headerDesktop};
         }
 `;
@@ -33,13 +32,13 @@ const VideoRating = styled.div`
 const VideoRatingValue = styled.div`
         font-family: ${FontFamily.openSansFont};
         font-size: ${FontSize.subtitleMobile};
-        font-weight: ${FontWeight.black};
+        font-weight: ${fontWeight.black};
         line-height:40px;
         padding-left: 10px;
         display: flex;
         align-content: center;
         color: ${Colors.nBlack};
-        @media  ${Device.laptop} {
+        @media screen and ${Device.laptop} {
             font-size: ${FontSize.subtitleDesktop};
         }
 `;
