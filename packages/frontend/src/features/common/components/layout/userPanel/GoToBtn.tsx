@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import "../../../styles/constans/fontWeight"
-import { FontWeight } from '../../../styles/constans/fontWeight';
+import { fontWeight } from '../../../styles/constans/fontWeight';
 
 
 const Wrapper = styled.div`
@@ -24,7 +24,7 @@ const BtnText = styled.p`
     display: flex;
     justify-self: center;
     font-size: 14px;
-    font-weight: ${FontWeight.BOLD};
+    font-weight: ${fontWeight.BOLD};
 `
 const Img = styled.img`
     width: 26px;

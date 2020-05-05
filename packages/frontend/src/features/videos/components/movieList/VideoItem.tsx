@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-import Colors from "../../../common/styles/constans/Colors";
+import {Colors} from "../../../common/styles/constans/Colors";
 import {Device} from "../../../common/styles/constans/Device"
 import VideoInfo from "./VideoInfo"
 
@@ -10,9 +10,9 @@ const Wrapper = styled(NavLink)`
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
-  border: 1px solid ${Colors.LIGHT_GREY};
+  border: 1px solid ${Colors.VERY_LIGHT_PURPLE};
   border-radius: 5px;
-  box-shadow: 1px 1px 2px 0px ${Colors.VERYLIGHT_GREY};
+  box-shadow: 1px 1px 2px 0px ${Colors.LIGHT_GRAY};
   margin-inline: 10px;
   min-width: 240px;
   @media ${Device.mobileM} {

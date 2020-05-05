@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from "styled-components"
 
-import {FontWeight} from "../../../common/styles/constans/fontWeight"
+import {fontWeight} from "../../../common/styles/constans/fontWeight"
 import {Colors} from "../../../common/styles/constans/Colors"
 import {Device} from "../../../common/styles/constans/Device"
 import {FontSize} from "../../../common/styles/constans/FontSize"
@@ -23,10 +23,10 @@ const Cell = styled.div`
     }
 `
 const TechTxt = styled.p`
-    font-weight: ${FontWeight.SEMI_BOLD};
+    font-weight: ${fontWeight.SEMI_BOLD};
     font-size: ${FontSize.VERY_SMALL};
     @media ${Device.tablet} {
-        font-size: ${FontSize.small};
+        font-size: ${FontSize.SMALL};
     }
 `
 interface TechCellProps {

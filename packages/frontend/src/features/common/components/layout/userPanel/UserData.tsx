@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { FontSize } from "../../../styles/constans/FontSize"
-import { FontWeight } from '../../../styles/constans/fontWeight';
+import { fontWeight } from '../../../styles/constans/fontWeight';
 import { Device } from "../../../styles/constans/Device"
 import {Colors} from "../../../styles/constans/Colors"
 
@@ -38,7 +38,7 @@ const UserInfoTxt = styled.p<{ email?: any, name?: any }>`
     margin-bottom: 4px;
     text-transform: ${props => props.name ? "capitalize" : "none"};
     font-size: ${props => props.name ? "20px" : "16px"};
-    font-weight: ${props => props.email ? FontWeight.REGULAR : FontWeight.SEMI_BOLD};
+    font-weight: ${props => props.email ? fontWeight.REGULAR : fontWeight.SEMI_BOLD};
     word-wrap: break-word;
     @media ${Device.tablet}{
         font-size: ${props => props.name ? "20px" : "16px"};

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import { FontFamily } from '../../../common/styles/constans/FontFamily';
 import { fontWeight } from '../../../common/styles/constans/fontWeight';
-import Colors from '../../../common/styles/constans/Colors';
+import {Colors} from '../../../common/styles/constans/Colors';
 import { Device } from '../../../common/styles/constans/Device';
 import { FontSize } from '../../../common/styles/constans/FontSize';
 
@@ -17,7 +17,7 @@ const Title = styled.h1`
         font-size: ${FontSize.headerMobile};
         font-weight: ${fontWeight.black};
         color: ${Colors.nBlack};
-        @media screen and ${Device.laptop} {
+        ${Device.laptop} {
             font-size: ${FontSize.headerDesktop};
         }
 `;
@@ -38,7 +38,7 @@ const VideoRatingValue = styled.div`
         display: flex;
         align-content: center;
         color: ${Colors.nBlack};
-        @media screen and ${Device.laptop} {
+        ${Device.laptop} {
             font-size: ${FontSize.subtitleDesktop};
         }
 `;

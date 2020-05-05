@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import Colors from "../../../common/styles/constans/Colors";
+import {Colors} from "../../../common/styles/constans/Colors";
 import LikeButton from "./LikeButton";
 import Options from "./Options";
 import {Device} from "../../../common/styles/constans/Device"

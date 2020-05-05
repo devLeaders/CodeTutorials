@@ -9,4 +9,7 @@ export enum FontSize {
     SMALL = "14px",
     VERYLARGE = '23px',
     MEDIUM = '18px',
+    MEDIUM_BIG = "23px",
+    NORMAL = "20px",
+    BIG = "30px",
 }

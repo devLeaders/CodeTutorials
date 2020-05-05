@@ -1,11 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Device } from '../../styles/constans/Device';
-<<<<<<< HEAD:packages/frontend/src/features/common/components/layout/FooterComponent.tsx
-import Colors from '../../styles/constans/Colors'
-=======
 import {Colors} from '../../styles/constans/Colors'
->>>>>>> master:packages/frontend/src/components/FooterComponents/FooterComponent.tsx
 
 const StyledFooter = styled.ul`
 box-sizing: border-box;

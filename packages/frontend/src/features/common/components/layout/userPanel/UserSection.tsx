@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { FontSize } from "../../../styles/constans/FontSize"
-import { FontWeight } from '../../../styles/constans/fontWeight';
+import { fontWeight } from '../../../styles/constans/fontWeight';
 
 import UserData from "./UserData"
 
@@ -16,8 +16,8 @@ const Wrapper = styled.div`
 
 const ProfilTxt = styled.p`
     margin-bottom: 20px;
-    font-size: ${FontSize.VERY_BIG};
-    font-weight: ${FontWeight.BOLD};
+    font-size: ${FontSize.MEDIUM_BIG};
+    font-weight: ${fontWeight.BOLD};
     text-align: left;
 `
 const Ximg = styled.img`
