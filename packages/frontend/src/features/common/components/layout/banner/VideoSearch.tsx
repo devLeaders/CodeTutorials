@@ -29,7 +29,7 @@ const Lens = styled.img`
 `
 const Input = styled.input`
     outline: none;
-    font-size: ${FontSize.MEDIUM};
+    font-size: ${FontSize.NORMAL};
     font-weight: ${fontWeight.SEMI_BOLD};
     width: 120px;
     height: 24px;

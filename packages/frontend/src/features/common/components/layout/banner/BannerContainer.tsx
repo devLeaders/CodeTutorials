@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from "styled-components"
 
 import {Device} from "../../../styles/constans/Device"
-import Colors from "../../../styles/constans/Colors"
+import {Colors} from "../../../styles/constans/Colors"
 import {fontWeight} from "../../../styles/constans/fontWeight"
 import {FontSize} from "../../../styles/constans/FontSize"
 import VideoSearch from "./VideoSearch"
@@ -32,7 +32,7 @@ const Logo = styled.img`
 `
 const Title = styled.h3`
     display: none;
-    font-size: ${FontSize.MEDIUM};
+    font-size: ${FontSize.NORMAL};
     font-weight: ${fontWeight.SEMI_BOLD};
     margin-left: 13px;
     @media ${Device.tablet}{
