@@ -1,7 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Device } from '../../styles/constans/Device';
+<<<<<<< HEAD:packages/frontend/src/features/common/components/layout/FooterComponent.tsx
 import Colors from '../../styles/constans/Colors'
+=======
+import {Colors} from '../../styles/constans/Colors'
+>>>>>>> master:packages/frontend/src/components/FooterComponents/FooterComponent.tsx
 
 const StyledFooter = styled.ul`
 box-sizing: border-box;
@@ -14,7 +18,7 @@ box-sizing: border-box;
     padding-top: 20px;
     flex-wrap: wrap;
     
-    @media screen and ${Device.laptop} {
+    @media ${Device.laptop} {
         flex-direction: row;
         width: 100%;
         margin: 50px auto 0 auto;

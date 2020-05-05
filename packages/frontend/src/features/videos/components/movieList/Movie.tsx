@@ -6,38 +6,18 @@ import NavigationPath from "../../../../config/routing/NavigationPath";
 const Wrapper = styled(NavLink)`
   cursor: pointer;
   min-width: ${(props: { width: number }) => `${props.width - 1}%`};
-  height: 292px;
+  height: 100%;
   overflow: hidden;
   margin-right: 0.5%;
   margin-left: 0.5%;
   color: white;
-  border: 2px solid black;
 `;
 
 const Img = styled.img`
-  height: 80%;
+  height: 100%;
   width: 100%;
-  border-radius: 2px;
+  border-radius: 8px;
 `;
-
-const InfoWrapper = styled.div`
-
-`;
-const Title = styled.div`
-
-`;
-
-const PostedText = styled.div`
-
-`;
-
-const ButtonWrapper = styled.div`
-`;
-
-
-
-
-
 
 export interface MovieProps {
   id: number;
@@ -55,14 +35,7 @@ const Movie: React.ForwardRefExoticComponent<MovieProps> = React.forwardRef(
           src="https://cdn.pixabay.com/photo/2020/02/12/16/13/landscape-4843193_960_720.jpg"
           alt=""
         />
-        <InfoWrapper>
-          <Title>ok</Title>
-          <PostedText>ok</PostedText>
-
-        </InfoWrapper>
-
       </Wrapper>
-     
     );
   }
 );

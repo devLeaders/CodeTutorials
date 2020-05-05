@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontFamily } from '../../../common/styles/constans/FontFamily';
 import { FontSize } from '../../../common/styles/constans/FontSize';
-import { fontWeight } from '../../../common/styles/constans/fontWeight';
-import Colors from '../../../common/styles/constans/Colors';
+import {Colors} from '../../../common/styles/constans/Colors';
+import { FontWeight } from '../../../common/styles/constans/fontWeight';
 
 
 const Title = styled.h1`
@@ -11,7 +11,7 @@ const Title = styled.h1`
     color: ${Colors.nBlack};
     font-family: ${FontFamily.openSansFont};
     font-size: ${FontSize.headerMobile};
-    font-weight: ${fontWeight.medium};
+    font-weight: ${FontWeight.medium};
     text-align: left;
     padding-bottom: 50px;
 `;
