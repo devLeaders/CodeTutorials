@@ -6,7 +6,7 @@ import {FontSize} from "../../../styles/constans/FontSize"
 import {Device} from "../../../styles/constans/Device"
 
 const Wrapper = styled.div`
-    display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     width: 268px;
@@ -16,6 +16,9 @@ const Wrapper = styled.div`
     margin-right: 23px;
     padding-left: 45px;
     padding-right: 25px;
+    @media ${Device.LAPTOP}{
+        display: flex;
+    }
     @media ${Device.laptopL}{
         width: 401px;
     }
@@ -25,6 +28,7 @@ const Lens = styled.img`
     cursor: pointer;   
 `
 const Input = styled.input`
+    outline: none;
     font-size: ${FontSize.MEDIUM};
     font-weight: ${fontWeight.SEMI_BOLD};
     width: 120px;

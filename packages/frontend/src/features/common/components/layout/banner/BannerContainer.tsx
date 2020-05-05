@@ -2,7 +2,9 @@ import * as React from 'react';
 import styled from "styled-components"
 
 import {Device} from "../../../styles/constans/Device"
+import Colors from "../../../styles/constans/Colors"
 import {fontWeight} from "../../../styles/constans/fontWeight"
+import {FontSize} from "../../../styles/constans/FontSize"
 import VideoSearch from "./VideoSearch"
 
 
@@ -13,7 +15,7 @@ const Wrapper = styled.div`
     position: fixed;
     width: 100%;
     height: 55px;
-    background-color: white;
+    background-color: ${Colors.WHITE};
     @media ${Device.LAPTOP}{
         height: 112px;
     }
@@ -30,14 +32,14 @@ const Logo = styled.img`
 `
 const Title = styled.h3`
     display: none;
-    font-size: 20px;
+    font-size: ${FontSize.MEDIUM};
     font-weight: ${fontWeight.SEMI_BOLD};
     margin-left: 13px;
     @media ${Device.tablet}{
         display: block;
     }
     @media ${Device.LAPTOP}{
-        font-size: 28px;
+        font-size: ${FontSize.MEDIUM_LARGE};
     }
 `
 const LogoTitleContainer = styled.div`
