@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 import AllertCell from "./AllertCell";
-import ScrollBar from "./ScrollBar"
+import ScrollBar from "../../common/components/layout/ScrollBar"
 
 const Wrapper = styled.section`
     position: relative;
