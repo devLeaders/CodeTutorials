@@ -1,11 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { FontFamily } from '../../../common/styles/constans/FontFamily';
-<<<<<<< HEAD:packages/frontend/src/features/videos/components/singleVideoComponents/VideoRateComponent.tsx
-import Colors from '../../../common/styles/constans/Colors';
-=======
 import {Colors} from '../../../common/styles/constans/Colors';
->>>>>>> master:packages/frontend/src/components/SingleVideoComponents/VideoRateComponent.tsx
 import {Device} from '../../../common/styles/constans/Device'
 
 const StyledRate = styled.section`
