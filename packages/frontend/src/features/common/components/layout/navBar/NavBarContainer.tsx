@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 import { Device } from "../../../styles/constans/Device";
-import Colors from "../../../styles/constans/Colors";
+import {Colors} from "../../../styles/constans/Colors";
 import BtnsSection from "./BtnsSection";
 import UserName from "./UserName"
 import UserImg from "./UserImg";

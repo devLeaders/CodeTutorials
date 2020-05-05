@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import Btn from "./Btn"
 import { Device } from "../../../styles/constans/Device";
-import  Colors  from "../../../styles/constans/Colors";
+import  {Colors}  from "../../../styles/constans/Colors";
 
 
 const BtnsSection = styled.section`
