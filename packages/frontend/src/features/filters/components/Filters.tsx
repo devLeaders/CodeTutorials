@@ -3,7 +3,7 @@ import {useState} from 'react';
 import styled from "styled-components"
 
 import {FontSize} from "../../common/styles/constans/FontSize"
-import {FontWeight} from "../../common/styles/constans/fontWeight"
+import {fontWeight} from "../../common/styles/constans/fontWeight"
 import {Device} from "../../common/styles/constans/Device"
 import { Colors } from "../../common/styles/constans/Colors";
 import ScrollBar from "../../common/components/layout/ScrollBar"
@@ -21,8 +21,8 @@ const Wrapper = styled.div`
     }
 `
 const Title = styled.h3`
-    font-size: ${FontSize.VERY_BIG};
-    font-weight: ${FontWeight.BOLD};
+    font-size: ${FontSize.MEDIUM_BIG};
+    font-weight: ${fontWeight.BOLD};
 `
  
 const Filters: React.SFC = () => {

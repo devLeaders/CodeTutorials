@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from "styled-components"
 
 import {FontSize} from "../../common/styles/constans/FontSize"
-import {FontWeight} from "../../common/styles/constans/fontWeight"
+import {fontWeight} from "../../common/styles/constans/fontWeight"
 import {Device} from "../../common/styles/constans/Device";
 import CategorieBtn from "./CategorieBtn"
 
@@ -19,7 +19,7 @@ const BtnWrapper = styled.div`
 const Title = styled.h3`
     margin-top: 35px;
     font-size: ${FontSize.MEDIUM};
-    font-weight: ${FontWeight.SEMI_BOLD};
+    font-weight: ${fontWeight.SEMI_BOLD};
 `
 
 const categories = ["UX/UI Design", "Graphic Design", "Computer Science Engineer", "Movies", "Web Developer", "Dance", "DJ", "Guitarist"]

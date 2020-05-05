@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import {Colors} from "../../common/styles/constans/Colors"
 import {FontSize} from "../../common/styles/constans/FontSize"
-import {FontWeight} from "../../common/styles/constans/fontWeight"
+import {fontWeight} from "../../common/styles/constans/fontWeight"
 import {Device} from "../../common/styles/constans/Device"
 
 const Wrapper = styled.div`
@@ -28,7 +28,7 @@ const Checkbox = styled.input<{isActive: boolean}>`
 `
 const Title = styled.p`
     font-size: ${FontSize.NORMAL};
-    font-weight: ${FontWeight.SEMI_BOLD};
+    font-weight: ${fontWeight.SEMI_BOLD};
     @media ${Device.tablet}{
         font-size: ${FontSize.MEDIUM};
     }
