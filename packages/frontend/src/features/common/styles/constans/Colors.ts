@@ -5,6 +5,7 @@ export enum Colors {
   nGrey= "#222",
   nLightGrey= "#999",
   nWhite= "#ddd",
+  WHITE = "#fff",
   VERY_LIGHT_GRAY = "#EEE",
   BLACK_OPACITY = "rgba(0,0,0,0.15)",
   BLACK="black",
