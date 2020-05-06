@@ -9,6 +9,7 @@ import BlackFilterButton from '../components/FiltersScreen/BlackFilterButton';
 import { NavigationName } from '../../../config/routing/NavigationName';
 import XButton from '../components/FiltersScreen/XButton';
 import {MyText} from '../../common/styles/MyText';
+import { View, TouchableOpacity, Text} from 'react-native';
 
 ;
 
@@ -115,7 +116,8 @@ const EyeButton = styled.TouchableOpacity({
 
 const ImageEye = styled.Image`
     height: 20px;
-    width: 20px; 
+    width: 20px;
+     
 `;
 
 const TextEye = styled(MyText)`
@@ -143,11 +145,6 @@ const FilersButtonWrapper = styled.View`
     flex-direction: row;
 `;
 
-const FooterImitation= styled.View`
-  margin-top: 40px;
-  height: 50px;
-  background-color: ${Color.BLACK};
-`;
 
 interface FiltersScreenProps {
   navigation: any,
@@ -156,9 +153,30 @@ interface FiltersScreenProps {
 }
 
 export default class FiltersScreen extends React.Component <FiltersScreenProps, any>{
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isModalVisable : false,
+    };
+
+    this.callFunc = this.callFunc.bind(this);
+  }
+
+  callFunc() {
+    if (this.state.isModalVisable) {
+      this.setState({isModalVisable:false});
+    }else {
+      this.setState({isModalVisable: true});      
+    }
+  }
+
+
   static navigationOptions = {
     headerShown: false,
 };
+
+
   render() {
     return (
       <Wrapper>
@@ -182,9 +200,10 @@ export default class FiltersScreen extends React.Component <FiltersScreenProps, 
               <ImageSerach source={{uri:'magnifier'}}/>
             </SearchButton>      
         </SearchbarWrapper>
+        
         <EyeAndTextwrapper>
-            <EyeButton>
-              <ImageEye source={{uri: 'eye'}} />
+            <EyeButton onPress={this.callFunc}>
+            {this.state.isModalVisable && <ImageEye source={{uri: 'eye'}} /> }
             </EyeButton>
             <TextEye>Pomiń "już oglądane"</TextEye>
         </EyeAndTextwrapper>
@@ -236,10 +255,11 @@ export default class FiltersScreen extends React.Component <FiltersScreenProps, 
               goto={NavigationName.HOME}
               />
         </FilersButtonWrapper>
-        
-        <FooterImitation></FooterImitation>
+      
       </Wrapper>
       
     );
   }
 }
+
+
