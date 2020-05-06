@@ -4,16 +4,18 @@ const size = {
   mobileL: "425px",
   tablet: "768px",
   laptop: "1024px",
+  LAPTOP: "1280px",
   laptopL: "1440px",
   desktop: "2560px"
 };
 
-export enum Device {
-  mobileS = `(min-width: 320px)`,
-  mobileM = `(min-width: 375px)`,
-  mobileL = `(min-width: 425px)`,
-  tablet = `(min-width: 768px)`,
-  laptop = `(min-width: 1024px)`,
-  laptopL = `(min-width: 1440px)`,
-  desktop = `(min-width: 2560px)`
+export const Device = {
+  mobileS: `(min-width: ${size.mobileS})`,
+  mobileM: `(min-width: ${size.mobileM})`,
+  mobileL: `(min-width: ${size.mobileL})`,
+  tablet: `(min-width: ${size.tablet})`,
+  laptop: `(min-width: ${size.laptop})`,
+  LAPTOP: `(min-width: ${size.LAPTOP})`,
+  laptopL: `(min-width: ${size.laptopL})`,
+  desktop: `(min-width: ${size.desktop})`
 };
