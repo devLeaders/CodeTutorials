@@ -12,7 +12,7 @@ const Wrapper = styled(NavLink)`
   overflow: hidden;
   border: 1px solid ${Colors.VERY_LIGHT_PURPLE};
   border-radius: 5px;
-  box-shadow: 1px 1px 2px 0px ${Colors.LIGHT_GRAY};
+  box-shadow: 1px 1px 2px 0px ${Colors.LIGHT_OPACITY_BLACK};
   margin-inline: 10px;
   min-width: 240px;
   @media ${Device.mobileM} {
