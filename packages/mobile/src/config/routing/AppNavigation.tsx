@@ -23,7 +23,7 @@ import SignInScreen from '../../features/auth/page/SignInScrren';
 import SignUpScreen from '../../features/auth/page/SingUpScrenn';
 import SingleMovieDescription from '../..//features/videos/components/SingleScreen/SingleMovieDescription';
 import FiltersScreen from '../../features/videos/page/FiltersScreen';
-
+import MainScreenHeader from '../../features/videos/components/MainScreen/MainScreenHeader';
 
 
 const navigation = createStackNavigator(
@@ -36,6 +36,7 @@ const navigation = createStackNavigator(
     [NavigationName.SINGUP]: SignUpScreen,
     [NavigationName.SINGLEMOVIEDESCRIPTION]: SingleMovieDescription,
     [NavigationName.FILTERSSCREEN]: FiltersScreen,
+    [NavigationName.MAINSCREENHEADER]: MainScreenHeader,
   },
   {
     initialRouteName: NavigationName.HOME,
