@@ -26,11 +26,10 @@ const Title = styled.h2`
 
 export interface MovieSectionProps {
   title: string;
-  id: number;
 }
 
 const MovieSection: React.SFC<MovieSectionProps> = props => {
-  const { title, id } = props;
+  const { title } = props;
   return (
     <Wrapper>
       <Title>{title}</Title>

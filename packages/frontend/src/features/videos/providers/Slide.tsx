@@ -30,10 +30,8 @@ class Slide extends React.Component<SlideProps, SlideState> {
     private calcMargins = () => {
         const {gsapMovies, videoWrapperRef} = this.props;
         const elementsOnScreen = this.calcElementsOnScreen()
-        console.log(elementsOnScreen)
         const freeSpace = videoWrapperRef.current.offsetWidth - (gsapMovies[0].offsetWidth * elementsOnScreen)
         const margin = (freeSpace) / (elementsOnScreen + 1)
-        console.log( videoWrapperRef.current.offsetWidth, (gsapMovies[0].offsetWidth * elementsOnScreen), freeSpace, margin)
         this.setState({margin})
     }
 
@@ -53,11 +51,6 @@ class Slide extends React.Component<SlideProps, SlideState> {
         this.calcMargins()
     }
 
-    componentDidUpdate(){
-        document.addEventListener("resize", () => {
-            console.log(this.state.margin)
-        })
-    }
 
     render() { 
         const renderProps = {
