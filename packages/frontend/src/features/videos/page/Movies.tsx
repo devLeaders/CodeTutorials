@@ -10,7 +10,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-color: #222;
   width: 100%;
 `;
 

@@ -1,12 +1,13 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import {Colors} from "../../../common/styles/constans/Colors";
+import {Colors} from "../../../../common/styles/constans/Colors";
 import LikeButton from "./LikeButton";
 import Options from "./Options";
-import {Device} from "../../../common/styles/constans/Device"
+import {Device} from "../../../../common/styles/constans/Device"
 
 const Wrapper = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,12 +18,14 @@ const Wrapper = styled.div`
   height: 65px;
   background-color: ${Colors.VERY_LIGHT_PURPLE};
   @media ${Device.mobileM} {
-    padding-left: 47px;
-    padding-right: 24px;
+    padding-left: 27px;
+    padding-right: 14px;
     width: 130px;
   }
   @media ${Device.mobileL} {
     width: 184px;
+    padding-left: 47px;
+    padding-right: 24px;
     height: 72px;
     border-top-left-radius: 72px;
   }

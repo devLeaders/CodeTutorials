@@ -1,11 +1,11 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import {Colors} from "../../../common/styles/constans/Colors";
-import { FontSize } from "../../../common/styles/constans/FontSize";
-import { fontWeight } from "../../../common/styles/constans/fontWeight";
+import {Colors} from "../../../../common/styles/constans/Colors";
+import { FontSize } from "../../../../common/styles/constans/FontSize";
+import { fontWeight } from "../../../../common/styles/constans/fontWeight";
 import Interactions from "./VideoInteractions"
-import {Device} from "../../../common/styles/constans/Device"
+import {Device} from "../../../../common/styles/constans/Device"
 
 
 const Wrapper = styled.div`

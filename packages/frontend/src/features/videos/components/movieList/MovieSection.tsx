@@ -9,16 +9,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 10px;
-  height: 8rem;
   width: 100%;
   padding: 5px 0 0 0;
   position: relative;
-  @media ${Device.mobileM} {
-    height: 9rem;
-  }
-  @media ${Device.tablet} {
-    height: 11rem;
-  }
 `;
 
 const Title = styled.h2`
@@ -41,7 +34,7 @@ const MovieSection: React.SFC<MovieSectionProps> = props => {
   return (
     <Wrapper>
       <Title>{title}</Title>
-      <Slider id={id}></Slider>
+      <Slider></Slider>
     </Wrapper>
   );
 };
