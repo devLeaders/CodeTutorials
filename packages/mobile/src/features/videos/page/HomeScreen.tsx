@@ -85,6 +85,12 @@ const HomeScreen = ({navigation}:any) => {
                     title="MainScreenHeader"
                     onPress={() => navigation.navigate(NavigationName.MAINSCREENHEADER)}
                 />
+                <HemeButton
+                    color="#e63900"
+                    title="SquareOfMovie"
+                    onPress={() => navigation.navigate(NavigationName.SQUAREOFMOVIE)}
+                />
+
 
 
 
