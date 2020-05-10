@@ -8,8 +8,8 @@ import { MyText } from '../../../common/styles/MyText';
 const Wrapper = styled.TouchableOpacity({
     marginTop: 10,
     marginLeft: 10,
-    height: 168,
-    width: 243,
+    height: 110,
+    width: 173,
     borderColor: Color.LIGHTGREYXX,
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
@@ -29,14 +29,12 @@ const Wrapper = styled.TouchableOpacity({
 const ImageButton = styled.Image`
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    width: 243px;
-    height: 130px;
+    width: 172px;
+    height: 92px;
 `;
 
 const ButtonSquare = styled.TouchableOpacity({
-    height: 130,
-    width: 243,
-   
+
   });
 
   const TextWrapper = styled.View`
@@ -44,24 +42,24 @@ const ButtonSquare = styled.TouchableOpacity({
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    height: 38px;
+    height: 17px;
   `;
   const TextButton = styled(MyText)`
     font-size: ${FontSize.SMALLXS};
     font-weight: ${FontWeight.SEMIBOLD};
     text-align: left;
     color: ${Color.BLACK};
-    margin-left: 11px;
+    margin-left: 4px;
 `;
 
-interface SquareOfMovieProps {
+interface SmallSquareOfMovieProps {
     navigation: any,
     text: string,
     image: string,
     goto: any,
   }
 
-export default class SquareOfMovie extends React.Component<SquareOfMovieProps> {
+export default class SmallSquareOfMovie extends React.Component<SmallSquareOfMovieProps> {
     navi = (navigation) => {
         this.props.navigation.navigate(this.props.goto)
         }
@@ -69,7 +67,7 @@ export default class SquareOfMovie extends React.Component<SquareOfMovieProps> {
     render(){
         return(
             <Wrapper onPress={this.navi}> 
-                <ButtonSquare>  
+                <ButtonSquare onPress={this.navi}>  
                 <ImageButton source={{uri: this.props.image}}/>
                 </ButtonSquare>
                 <TextWrapper>
