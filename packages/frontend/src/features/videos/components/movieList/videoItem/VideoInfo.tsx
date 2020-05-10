@@ -10,6 +10,7 @@ import {Device} from "../../../../common/styles/constans/Device"
 
 const Wrapper = styled.div`
   height: 80px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

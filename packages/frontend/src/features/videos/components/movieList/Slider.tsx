@@ -1,11 +1,10 @@
-import React, {useRef, useEffect, useState} from "react";
+import React, {useRef} from "react";
 import styled from "styled-components";
-import { gsap, TweenLite, Power3 } from "gsap";
 
-import getMovieList from "../../action/getMoviesList";
 import VideoItem from "./videoItem/VideoItem";
 import SliderBtns from "./SliderBtns"
 import Slide from "../../providers/Slide";
+import {Device} from "../../../common/styles/constans/Device"
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -20,6 +19,9 @@ const VideoWrapper = styled.div`
   margin-right: auto;
   background-color: red;
   width: 85%;
+  @media ${Device.tablet}{
+    width: 95%;
+  }
   /* overflow: hidden; */
 `;
 

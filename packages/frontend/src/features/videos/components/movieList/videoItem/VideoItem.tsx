@@ -15,16 +15,13 @@ const Wrapper = styled(NavLink)<{margin: number}>`
   border-radius: 5px;
   box-shadow: 1px 1px 2px 0px ${Colors.LIGHT_GRAY};
   margin-left: ${({margin}) => `${margin}px`};
-  /* margin-right: ${({margin}) => `${margin}px`}; */
   min-width: 240px;
   @media ${Device.mobileM} {
     min-width: 260px;
   }
-  /* @media ${Device.tablet} {
-    &:nth-child(1){
-      margin-left: ${({margin}) => `${2 * margin}px`};
-    }
-  } */
+  @media ${Device.tablet} {
+    min-width: 331px;
+  }
 `;
 
 const Img = styled.img`
