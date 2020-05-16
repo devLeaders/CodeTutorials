@@ -21,33 +21,23 @@ class Slide extends React.Component<SlideProps, SlideState> {
         margin: 0,
     }
 
-    private calcMargins = () => {
-        const {gsapMovies, videoWrapperRef} = this.props;
-        const wrapperWidth = videoWrapperRef.current.offsetWidth
-        const elementWidth = gsapMovies[0].offsetWidth
-        const minMargin = 15;
-        const elementsOnScreen = Math.floor(wrapperWidth/ (elementWidth + (minMargin * 2)));
-        const freeSpace = wrapperWidth- (elementWidth * elementsOnScreen)
-        const margin = (freeSpace) / (elementsOnScreen + 1)
-        this.setState({margin})
-    }
 
     private handleResize = () => {
         const {gsapMovies, videoWrapperRef} = this.props;
         const margin = calcMargins(gsapMovies[0].offsetWidth, videoWrapperRef.current.offsetWidth)
         this.setState({margin})
-        TweenLite.to(gsapMovies, 0.4, {
+        TweenLite.to(gsapMovies, 0, {
             x: 0,
             ease: Power3.easeOut
         });
     }
 
-    private animate = (elements: any, move: number, pace: number) => {
-        TweenLite.to(elements, pace, {
+    private animate = (elements: any, move: number, time: number) => {
+        TweenLite.to(elements, time, {
             x: "+=" + move,
             ease: Power3.easeOut
           });
-          this.setState((prevState: any) =>  {return {videoPosition: prevState.videoPosition + move}} )
+          this.setState((prevState: SlideState) =>  {return {videoPosition: prevState.videoPosition + move}} )
     }
     
    
@@ -58,25 +48,22 @@ class Slide extends React.Component<SlideProps, SlideState> {
         const containerWidth = videoWrapperRef.current.offsetWidth;
         const videoWidth = gsapMovies[0].offsetWidth;
         const {lastMove, end, move, additionalVideosNum} = handleCalculations(videoWidth,containerWidth, gsapMovies.length, margin)
+        let x = e.target.name === Directions.RIGHT ? move : -move
         
 
         if(videoPosition >= 0 && e.target.name === Directions.RIGHT){
-                this.animate(gsapMovies, end, 0.8)
-        }else if (videoPosition === end && e.target.name === Directions.LEFT){
-                TweenLite.to(gsapMovies, 0.8, {
-                    x: 0,
-                    ease: Power3.easeOut
-                });
-                this.setState({videoPosition: 0})
+                x = end
+        }else if (videoPosition <= end && e.target.name === Directions.LEFT){
+                x = -end
         }else if(videoPosition === -lastMove && e.target.name === Directions.RIGHT && additionalVideosNum !== 0){
-                this.animate(gsapMovies, lastMove, 0.4)
+                x= lastMove
         }
-        else if (videoPosition <= end + lastMove && e.target.name === Directions.LEFT && additionalVideosNum !== 0) {
-                this.animate(gsapMovies, - lastMove, 0.4)
-        }else{
-            const x = e.target.name === Directions.RIGHT ? move : -move;
-            this.animate(gsapMovies, x, 0.4)
+        else if (videoPosition === end + lastMove && e.target.name === Directions.LEFT && additionalVideosNum !== 0) {
+                x =  - lastMove
         }
+        
+        let time = Math.abs(x) === Math.abs(end) ? 0.8 : 0.6
+        this.animate(gsapMovies, x, time)
     }
 
 
