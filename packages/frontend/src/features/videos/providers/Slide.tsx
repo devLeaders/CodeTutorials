@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TweenLite, Power3 } from "gsap";
 
 import {Directions} from "../components/movieList/SliderBtns"
+import {handleCalculations, calcMargins} from "../action/SliderCalcService"
 
 export interface SlideProps {
     videoWrapperRef: any;
@@ -20,94 +21,70 @@ class Slide extends React.Component<SlideProps, SlideState> {
         margin: 0,
     }
 
-    private calcElementsOnScreen = () => {
-        const {gsapMovies, videoWrapperRef} = this.props;
-        const minMargin = 15;
-        const elementsOnScreen = Math.floor(videoWrapperRef.current.offsetWidth/ (gsapMovies[0].offsetWidth + (minMargin * 2)));
-        return elementsOnScreen
-    }
-
     private calcMargins = () => {
         const {gsapMovies, videoWrapperRef} = this.props;
-        const elementsOnScreen = this.calcElementsOnScreen()
-        const freeSpace = videoWrapperRef.current.offsetWidth - (gsapMovies[0].offsetWidth * elementsOnScreen)
+        const wrapperWidth = videoWrapperRef.current.offsetWidth
+        const elementWidth = gsapMovies[0].offsetWidth
+        const minMargin = 15;
+        const elementsOnScreen = Math.floor(wrapperWidth/ (elementWidth + (minMargin * 2)));
+        const freeSpace = wrapperWidth- (elementWidth * elementsOnScreen)
         const margin = (freeSpace) / (elementsOnScreen + 1)
         this.setState({margin})
     }
 
     private handleResize = () => {
-        const {gsapMovies} = this.props;
-        this.calcMargins()
+        const {gsapMovies, videoWrapperRef} = this.props;
+        const margin = calcMargins(gsapMovies[0].offsetWidth, videoWrapperRef.current.offsetWidth)
+        this.setState({margin})
         TweenLite.to(gsapMovies, 0.4, {
             x: 0,
             ease: Power3.easeOut
-          });
+        });
     }
 
-    private animate = (elements: any, move: number) => {
-        TweenLite.to(elements, 0.4, {
+    private animate = (elements: any, move: number, pace: number) => {
+        TweenLite.to(elements, pace, {
             x: "+=" + move,
             ease: Power3.easeOut
           });
+          this.setState((prevState: any) =>  {return {videoPosition: prevState.videoPosition + move}} )
     }
     
-    private calcEndWidth = (elements: Array<any>, elementsOnScreen: number, additionalVideosNum: number, move: number) => {
-        const numOfFullMoves = Math.abs(Math.ceil((elements.length / elementsOnScreen) - 1) * move)
-        const endWidth =   additionalVideosNum !== 0 ? 
-            // numOfFullMoves - move + (additionalVideosNum * elements[0].offsetWidth + this.state.margin) 
-            numOfFullMoves - Math.abs(move) + (additionalVideosNum * elements[0].offsetWidth + this.state.margin) 
-        : numOfFullMoves;
-        return -endWidth
-    }
+   
 
-    private calcLastMove = (videosNum: number, videoWidth:number, direction: string) => {
-        return direction === Directions.LEFT ?
-        videosNum * (videoWidth + this.state.margin) 
-        :  videosNum * (videoWidth + this.state.margin);
-    }
-
-
-    handleMove = (e: any) => {
+    protected handleMove = (e: any) => {
         const {gsapMovies, videoWrapperRef} = this.props;
         const {margin, videoPosition} = this.state;
         const containerWidth = videoWrapperRef.current.offsetWidth;
         const videoWidth = gsapMovies[0].offsetWidth;
-        const move = e.target.name === Directions.LEFT ? 
-        - (containerWidth - (margin)) 
-        : (containerWidth- (margin));
-        const elementsOnScreen = this.calcElementsOnScreen()
-        const additionalVideosNum = gsapMovies.length % elementsOnScreen
-        const endWidth = ((Math.ceil((gsapMovies.length / elementsOnScreen) - 1) * move));
-        const end = this.calcEndWidth(gsapMovies, elementsOnScreen, additionalVideosNum, move)
-        const lastMoveRight = this.calcLastMove(additionalVideosNum, videoWidth, e.target.LEFT)
+        const {lastMove, end, move, additionalVideosNum} = handleCalculations(videoWidth,containerWidth, gsapMovies.length, margin)
         
-        console.log(endWidth ,end, lastMoveRight)
-        console.log(videoPosition)
-       
-        if(videoPosition === 0 && e.target.name === Directions.RIGHT){
-            const x = additionalVideosNum !== 0 ? (end) : -endWidth
-            this.animate(gsapMovies, x)
-            this.setState({videoPosition: x})
-        }else if(videoPosition === -lastMoveRight && e.target.name === Directions.RIGHT){
-            this.animate(gsapMovies, lastMoveRight)
-            this.setState((prevState: any) =>  {return {videoPosition: prevState.videoPosition + lastMoveRight}} )
-        }else if (videoPosition === endWidth - move && e.target.name === Directions.LEFT && additionalVideosNum !== 0) {
-            const lastMoveLeft = this.calcLastMove(additionalVideosNum, gsapMovies[0].offsetWidth, e.target.name)
-            this.animate(gsapMovies, - lastMoveLeft)
-            this.setState((prevState: any) =>  {return {videoPosition: prevState.videoPosition - lastMoveLeft}} )
-        }else if(videoPosition === end && e.target.name === Directions.LEFT){
-            this.animate(gsapMovies, -end)
-            this.setState({videoPosition: 0})
-        }else {
-            this.animate(gsapMovies, move)
-            this.setState((prevState: any) =>  {return {videoPosition: prevState.videoPosition + move}} )
+
+        if(videoPosition >= 0 && e.target.name === Directions.RIGHT){
+                this.animate(gsapMovies, end, 0.8)
+        }else if (videoPosition === end && e.target.name === Directions.LEFT){
+                TweenLite.to(gsapMovies, 0.8, {
+                    x: 0,
+                    ease: Power3.easeOut
+                });
+                this.setState({videoPosition: 0})
+        }else if(videoPosition === -lastMove && e.target.name === Directions.RIGHT && additionalVideosNum !== 0){
+                this.animate(gsapMovies, lastMove, 0.4)
+        }
+        else if (videoPosition <= end + lastMove && e.target.name === Directions.LEFT && additionalVideosNum !== 0) {
+                this.animate(gsapMovies, - lastMove, 0.4)
+        }else{
+            const x = e.target.name === Directions.RIGHT ? move : -move;
+            this.animate(gsapMovies, x, 0.4)
         }
     }
 
 
     componentDidMount() {
+        const {gsapMovies, videoWrapperRef} = this.props;
         window.addEventListener("resize", this.handleResize);
-        this.calcMargins()
+        const margin = calcMargins(gsapMovies[0].offsetWidth, videoWrapperRef.current.offsetWidth)
+        this.setState({margin})
     }
 
     componentWillUnmount() {
