@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { TweenLite, Power3 } from "gsap";
+import memoizeOne from 'memoize-one';
 
 import {Directions} from "../components/movieList/SliderBtns"
 import {handleCalculations, calcMargins} from "../action/SliderCalcService"
 
 export interface SlideProps {
-    videoWrapperRef: any;
-    gsapMovies: any;
-    render:any;
+    videoWrapperRef: React.RefObject<any>;
+    gsapMovies: Array<HTMLDivElement>;
+    render: (renderProps: RenderProps) => JSX.Element;
 }
  
 export interface SlideState {
@@ -15,6 +16,11 @@ export interface SlideState {
     margin: number,
 }
  
+export interface RenderProps {
+    handleMove: (e: any) => void;
+    margin: number;
+}
+
 class Slide extends React.Component<SlideProps, SlideState> {
     state = { 
         videoPosition: 0,
@@ -32,7 +38,7 @@ class Slide extends React.Component<SlideProps, SlideState> {
         });
     }
 
-    private animate = (elements: any, move: number, time: number) => {
+    private animate = (elements: Array<HTMLDivElement>, move: number, time: number) => {
         TweenLite.to(elements, time, {
             x: "+=" + move,
             ease: Power3.easeOut
@@ -42,12 +48,13 @@ class Slide extends React.Component<SlideProps, SlideState> {
     
    
 
-    protected handleMove = (e: any) => {
+    protected handleMove = (e: any)  => {
         const {gsapMovies, videoWrapperRef} = this.props;
         const {margin, videoPosition} = this.state;
         const containerWidth = videoWrapperRef.current.offsetWidth;
         const videoWidth = gsapMovies[0].offsetWidth;
-        const {lastMove, end, move, additionalVideosNum} = handleCalculations(videoWidth,containerWidth, gsapMovies.length, margin)
+        const memoizedCalculations = memoizeOne(handleCalculations)
+        const {lastMove, end, move, additionalVideosNum} = memoizedCalculations(videoWidth,containerWidth, gsapMovies.length, margin)
         let x = e.target.name === Directions.RIGHT ? move : -move
         
 
@@ -61,8 +68,8 @@ class Slide extends React.Component<SlideProps, SlideState> {
         else if (videoPosition === end + lastMove && e.target.name === Directions.LEFT && additionalVideosNum !== 0) {
                 x =  - lastMove
         }
-        
         let time = Math.abs(x) === Math.abs(end) ? 0.8 : 0.6
+
         this.animate(gsapMovies, x, time)
     }
 

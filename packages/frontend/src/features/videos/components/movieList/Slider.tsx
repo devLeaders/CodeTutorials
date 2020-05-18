@@ -5,6 +5,7 @@ import VideoItem from "./videoItem/VideoItem";
 import SliderBtns from "./SliderBtns"
 import Slide from "../../providers/Slide";
 import {Device} from "../../../common/styles/constans/Device"
+import {RenderProps} from "../../providers/Slide"
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -95,14 +96,14 @@ const movies = [
 
 const Slider: React.SFC = () => {
   const VideoWrapperRef = useRef<HTMLDivElement>(null)
-  const gsapMovies:any = [];
+  const gsapMovies:Array<HTMLDivElement> = [];
 
   
     return (
       <Slide
         gsapMovies={gsapMovies}
         videoWrapperRef={VideoWrapperRef}
-        render={({handleMove, margin}: any) => (
+        render={({handleMove, margin}: RenderProps) => (
           <Wrapper>
             <SliderBtns onClick={handleMove}/>
             <VideoWrapper ref={VideoWrapperRef}>
@@ -113,7 +114,7 @@ const Slider: React.SFC = () => {
                     id={movie.id}
                     index={index}
                     margin={margin}
-                    ref={(video: any) => (gsapMovies[index] = video)}
+                    ref={(video: HTMLDivElement) => (gsapMovies[index] = video)}
                   ></VideoItem>
                 );
               })}
