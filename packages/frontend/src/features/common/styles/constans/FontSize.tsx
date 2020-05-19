@@ -13,4 +13,5 @@ export enum FontSize {
     MEDIUM_BIG = "23px",
     NORMAL = "20px",
     BIG = "30px",
+    XSMALL = "10px"
 }
