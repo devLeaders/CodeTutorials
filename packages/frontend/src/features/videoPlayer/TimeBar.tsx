@@ -3,9 +3,9 @@ import { useRef, } from "react";
 import styled from "styled-components";
 
 import { useSelector, useDispatch } from "react-redux"
-import { getMovieState } from "../../actions/ReduxActions"
-import { device } from "../../../constans/device"
-import { useTimeBarAction } from "../../actions/EventController"
+import { getMovieState } from "./actions/ReduxActions"
+import { device } from "../../constans/device"
+import { useTimeBarAction } from "./actions/EventController"
 
 const Wrapper = styled.div<{ small: string | undefined }>`
   position: absolute;

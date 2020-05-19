@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux"
 
 import { refsStore } from "./refs.store"
-import { breakPoint } from "../../../utils/breakPoint";
+import { breakPoint } from "../../utils/breakPoint";
 import Player from "./VideoPlayer"
 import Interface from "./interface"
-import { getMovieState } from "../../actions/ReduxActions"
+import { getMovieState } from "./actions/ReduxActions"
 import { SmallInterface } from "./SmallModeInterface"
 import { VideoPlayer } from "./VideoPlayer"
-import { device } from "../../../constans/device"
+import { device } from "../../constans/device"
 
 
 const VideoPlayerContainer = styled.div<{ minimized: boolean, small: string | undefined }>`

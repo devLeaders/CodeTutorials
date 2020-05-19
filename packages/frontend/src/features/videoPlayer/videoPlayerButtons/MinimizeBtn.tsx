@@ -2,11 +2,11 @@ import * as React from 'react';
 import { useSelector, RootStateOrAny, useDispatch } from "react-redux"
 import styled from "styled-components";
 
-import { checkButtonType } from "../../../actions/checkButtonType "
-import { getMovieState } from "../../../actions/ReduxActions"
+import { checkButtonType } from "../actions/checkButtonType "
+import { getMovieState } from "../actions/ReduxActions"
 import NewVideoPlayerBtn from "./NewVideoPlayerBtn"
-import { ButtonTypes } from "../../../enums";
-import { useClickHandler } from "../../../actions/EventController"
+import { ButtonTypes } from "../enums";
+import { useClickHandler } from "../actions/EventController"
 
 
 

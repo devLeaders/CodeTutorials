@@ -6,8 +6,8 @@ import TimeBar from "./TimeBar";
 import VideoPlayerControls from "./VideoPlayerControls";
 import SmallModeInterface from "./SmallModeInterface"
 import { useSelector } from "react-redux"
-import { getMovieState } from "../../actions/ReduxActions"
-import { device } from "../../../constans/device"
+import { getMovieState } from "./actions/ReduxActions"
+import { device } from "../../constans/device"
 
 
 const InterfaceWrapper = styled.div<{ paused: boolean; small: string | undefined }>`

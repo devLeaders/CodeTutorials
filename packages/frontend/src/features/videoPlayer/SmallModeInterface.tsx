@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from "styled-components";
 
-import PlayBtn from "../videoPlayer/videoPlayerButtons/PlayBtn"
-import MinimizeBtn from "../videoPlayer/videoPlayerButtons/MinimizeBtn"
+import PlayBtn from "./videoPlayerButtons/PlayBtn"
+import MinimizeBtn from "./videoPlayerButtons/MinimizeBtn"
 import TimeBar from "./TimeBar";
 
 export const SmallInterface = styled.div`

@@ -9,7 +9,7 @@ import {
   MoviePlayPauseSmallType
 } from "./types";
 import Store from "../store";
-import { ButtonTypes } from "../../singleMovie/enums";
+import { ButtonTypes } from "../../features/videoPlayer/enums";
 
 export function playPause(): MoviePlayPauseType {
   return {

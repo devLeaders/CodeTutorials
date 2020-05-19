@@ -2,11 +2,11 @@ import * as React from "react";
 import styled from "styled-components";
 
 import Timer from "./Timer";
-import MuteBtn from "../videoPlayer/videoPlayerButtons/MuteBtn"
-import PlayBtn from "../videoPlayer/videoPlayerButtons/PlayBtn"
-import FullscreenBtn from "../videoPlayer/videoPlayerButtons/FullscreenBtn"
-import MinimizeBtn from "../videoPlayer/videoPlayerButtons/MinimizeBtn"
-import { device } from "../../../constans/device"
+import MuteBtn from "./videoPlayerButtons/MuteBtn"
+import PlayBtn from "./videoPlayerButtons/PlayBtn"
+import FullscreenBtn from "./videoPlayerButtons/FullscreenBtn"
+import MinimizeBtn from "./videoPlayerButtons/MinimizeBtn"
+import { device } from "../../constans/device"
 
 const ControlsWrapper = styled.div`
   display: flex;

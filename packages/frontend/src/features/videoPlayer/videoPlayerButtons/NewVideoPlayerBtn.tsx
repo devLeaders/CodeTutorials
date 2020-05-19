@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { device } from "../../../../constans/device"
+import { device } from "../../../constans/device"
 
 
 const ToogleButton = styled.button`

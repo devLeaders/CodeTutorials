@@ -5,7 +5,7 @@ import Navigation from "./layouts/Navigation";
 import Routing from "./layouts/Routing";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
-import VideoPlayer from "./singleMovie/components/videoPlayer/VideoPlayerComponent"
+import VideoPlayer from "./features/videoPlayer/VideoPlayerComponent"
 
 const GlobalStyle = createGlobalStyle`
   @import url('"https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap"');

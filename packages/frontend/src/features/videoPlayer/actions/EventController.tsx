@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux";
 
 import { runVideoAction, changeVideoTime, handleVideoShortcuts, changeIsFullscreen, } from "./videoActionController";
-import { playPause, playPauseSmall, setTime, changeState } from "../../store/singleMovie/actions";
+import { playPause, playPauseSmall, setTime, changeState } from "../../../store/singleMovie/actions";
 import { playPauseVideo } from "../actions/videoPlayerActions";
-import { refsStore } from "../components/videoPlayer/refs.store";
+import { refsStore } from "../refs.store";
 import { getMovieState } from "../actions/ReduxActions"
 import { ButtonTypes } from "../enums";
 

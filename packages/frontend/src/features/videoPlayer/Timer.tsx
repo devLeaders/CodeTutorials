@@ -1,12 +1,11 @@
 import * as React from "react";
 import { useSelector } from "react-redux"
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
-import { getMovieState } from "../../actions/ReduxActions"
-import moment, { duration } from "moment"
-import { getVideoDuration } from "../../actions/videoActionController"
-import { device } from "../../../constans/device"
+import { getMovieState } from "./actions/ReduxActions"
+import moment from "moment"
+import { device } from "../../constans/device"
 
 
 

@@ -4,9 +4,9 @@ import { useRef, useEffect } from "react";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux"
 
 
-import { getMovieState } from "../../actions/ReduxActions"
-import { useVideoPlayerActions } from "../../actions/EventController"
-import { device } from "../../../constans/device"
+import { getMovieState } from "./actions/ReduxActions"
+import { useVideoPlayerActions } from "./actions/EventController"
+import { device } from "../../constans/device"
 
 
 export const VideoPlayer = styled.video<{ isFullscreen: boolean }>`

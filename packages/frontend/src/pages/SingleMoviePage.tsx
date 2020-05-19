@@ -8,7 +8,7 @@ import FooterComponent from "../components/footerComponent/FooterComponent";
 import { getMovie } from "../singleMovie/actions/movieArray";
 import { useEffect, useState } from "react";
 import VideoDescribeComponent from "../singleMovie/components/VideoDescribeComponent";
-import VideoPlayerComponent from "../singleMovie/components/videoPlayer/VideoPlayerComponent";
+import VideoPlayerComponent from "../features/videoPlayer/VideoPlayerComponent";
 import { RouteComponentProps } from "react-router-dom";
 
 const Wrapper = styled.div`
