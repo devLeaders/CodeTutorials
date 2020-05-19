@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import styled from "styled-components";
 
 import NavItem from "./NavItem";
@@ -24,11 +24,17 @@ const items = ["Opis", "Zadania", "Notatki"];
 
 const AsideNav: React.SFC = () => {
   const [isActive, setIsActive] = useState("Opis");
+
+  const handleClick = useCallback((e: any) => {
+    console.log(e.target.title)
+    setIsActive(e.target.title)
+  }, [])
+  
   return (
     <Wrapper>
       <Nav>
         {items.map((item: string) => (
-          <NavItem title={item} setIsActive={setIsActive} isActive={isActive} />
+          <NavItem title={item} handleClick={handleClick} isActive={isActive} key={item}/>
         ))}
       </Nav>
       <Title title="Docker od podstaw"/>

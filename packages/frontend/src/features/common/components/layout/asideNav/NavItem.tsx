@@ -11,8 +11,8 @@ const ListItem = styled.li<{isActive: string, title: string}>`
     display: flex;
     align-items: center;
     padding: 10px 12px;
-    border-bottom: ${({isActive, title}) => isActive === title ? "none" : `1px solid ${Colors.ASH}`};
-    border-right: 1px solid ${Colors.ASH};
+    border-bottom: ${({isActive, title}) => isActive === title ? "1px solid transparent" : `1px solid ${Colors.GRAY_1}`};
+    border-right: 1px solid ${Colors.GRAY_1};
     cursor: pointer;
     &:nth-last-child(1){
         flex-grow: 1;
@@ -35,16 +35,14 @@ const Title = styled.h4`
 export interface NavItemProps {
     title: string,
     isActive: string,
-    setIsActive: (title: string) => void
+    handleClick: (e: any) => void
 }
  
-const NavItem: React.SFC<NavItemProps> = ({title, isActive, setIsActive}) => {
-    const handleClick = () => {
-        setIsActive(title)
-    }
+const NavItem: React.SFC<NavItemProps> = ({title, isActive, handleClick}) => {
+    
     return ( 
         <ListItem onClick={handleClick} isActive={isActive} title={title}>
-           <Title>{title}</Title> 
+           <Title title={title}>{title}</Title> 
         </ListItem>
      );
 }

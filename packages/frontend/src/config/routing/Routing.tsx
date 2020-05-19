@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import NAVIGATION from "./NavigationPath";
 import SingleMoviePage from "../../features/videos/page/SingleMoviePage";
 import Movies from "../../features/videos/page/Movies";
-import AsideNav from "../../features/common/components/layout/asideNav/asideNav"
+import AsideNav from "../../features/common/components/layout/asideNav/AsideNav"
 
 const Routing: React.FC = () => {
   return (

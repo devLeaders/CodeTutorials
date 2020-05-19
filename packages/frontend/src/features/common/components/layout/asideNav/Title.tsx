@@ -12,7 +12,6 @@ export interface TitleProps {
 
 const TitleTxt = styled.h5`
     display: none;
-    /* margin-left: 22px; */
     font-size: ${FontSize.MEDIUM};
     font-weight: ${fontWeight.BOLD};
     padding: 29px 0px 22px 29px;

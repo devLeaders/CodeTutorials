@@ -16,7 +16,7 @@ export enum Colors {
   MEDIUM_GRAY = "#AAAAAA",
   VERY_LIGHT_PURPLE = "#D9DAE6",
   LIGHT_OPACITY_BLACK="#0000000D",
-  ASH = "#707070",
+  GRAY_1 = "#707070",
   ULTRA_LIGHT_GRAY = "#F9F9F9"
 };
 
