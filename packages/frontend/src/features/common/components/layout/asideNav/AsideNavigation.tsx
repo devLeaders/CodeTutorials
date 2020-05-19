@@ -22,7 +22,7 @@ const Nav = styled.ul`
 
 const items = ["Opis", "Zadania", "Notatki"];
 
-const AsideNav: React.SFC = () => {
+const AsideNavigation: React.SFC = () => {
   const [isActive, setIsActive] = useState("Opis");
 
   const handleClick = useCallback((e: any) => {
@@ -42,4 +42,4 @@ const AsideNav: React.SFC = () => {
   );
 };
 
-export default AsideNav;
+export default AsideNavigation;
