@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Res, Req } from '@nestjs/common';
+import { Controller, Get, Res, Req } from '@nestjs/common';
 import { VideoStreamService } from './video-stream.service';
 
 @Controller('videos')
