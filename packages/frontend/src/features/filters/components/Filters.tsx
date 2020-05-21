@@ -14,6 +14,7 @@ const Wrapper = styled.div`
     position: relative;
     width: 320px;
     padding: 24px 24px;
+    background-color: ${Colors.WHITE};
     @media ${Device.tablet}{
         padding: 24px 34px;
         width: 443px;
@@ -24,9 +25,10 @@ const Title = styled.h3`
     font-size: ${FontSize.MEDIUM_BIG};
     font-weight: ${fontWeight.BOLD};
 `
- 
-const Filters: React.SFC = () => {
+
+const Filters: React.FC = () => {
     const [isACtive, setIsActive] = useState(true)
+
     return ( 
         <Wrapper>
             <ScrollBar type="filters"/>
