@@ -6,7 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { VideosModule } from './videos/videos.module';
 import { configService } from './config/config.service';
 import { FilesModule } from './files/files.module';
-import { VideoStreamModule } from './video-stream/video-stream.module';
+// import { VideoStreamModule } from './video-stream/video-stream.module';
 
 @Module({
   imports: [
@@ -14,7 +14,6 @@ import { VideoStreamModule } from './video-stream/video-stream.module';
     VideosModule,
     FilesModule,
     AuthModule,
-    VideoStreamModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Res, Req } from '@nestjs/common';
 import { VideosService } from './videos.service';
 @Controller('videos')
 export class VideosController{
@@ -13,4 +13,9 @@ export class VideosController{
     getAllCategoryList(){
         return this.videosService.getAllCategoryList();
     }
+
+    @Get('/video')
+    getStream(@Res() res, @Req() req) {
+    this.videosService.getStream(res, req);
+  }
 }
