@@ -28,7 +28,6 @@ export class VideosService {
 
     async getStream(res: any, req: any) {
         const video = await this.getSingleVideo("d8ffbf77-2bed-4694-a773-61f800ec2a6e")
-        console.log(video)
         const path = 'uploads/mov_bbb.mp4';
         const stat = fs.statSync(path);
         const range = req.headers.range;
