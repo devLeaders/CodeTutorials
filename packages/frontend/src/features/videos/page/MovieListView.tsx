@@ -1,88 +1,80 @@
 import * as React from "react";
-import {useState} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import styled from 'styled-components';
-import VideoSearch from '../../common/components/layout/banner/VideoSearch'
 import VideoItem from '../components/movieList/VideoItem'
+import BannerContainer from '../../common/components/layout/banner/BannerContainer'
 import NavBarContainer from '../../common/components/layout/navBar/NavBarContainer'
+import Filters from '../../filters/components/Filters'
 import {Device} from '../../common/styles/constans/Device'
-import {Colors} from '../../common/styles/constans/Colors'
 
-const StyledPageWrapper = styled.main`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas: 
-    'Logo NavBar'
-    'Movies Movies';
-@media ${Device.tablet} {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas: ${(props: {active:boolean}) => props.active ?`'Logo NavBar'
-    'Movies NavBar'` : `'Logo NavBar' 'Movies Movies'` };
-}
+const Wrapper = styled.div`
+display:flex;
+flex-direction:column;
+padding-top:110px;
 `
-const StyledHeaderWrapper = styled.div`
- grid-area: NavBar;
-/* background-color: ${Colors.VERY_LIGHT_GRAY}; */
-display: flex;
+const HeaderWrapper = styled.div`
+display:flex;
 flex-direction:row;
-justify-content:flex-end;
-margin-bottom: 60px;
-@media ${Device.tablet} {
+width:100%;
+justify-content:space-between;
+position:fixed;
+top:0;
+`
+const MovieListConstainer = styled.div`
+padding-top:38px;
+height:700px;
+display:flex;
+flex-wrap:wrap;
+margin:0 auto;
+/* justify-content: space-around; */
+@media ${Device.LAPTOP} {
+   margin-right:475px;
+  }
+`
+const MainSectionWrapper = styled.div`
+display:flex;
+align-content:center;
+margin:0 auto;
+`
+
+
+const moviesList = ['1','2','3','4','5','6','7','8','9','10','11',]
+
+export interface MovieListViewProps {containerWidth:number}
+
+const MovieListView: React.ForwardRefExoticComponent<MovieListViewProps>= React.forwardRef(() => {
+    let movieListContainer = useRef<HTMLDivElement>(null)
+    let movieItem = useRef(null)
+    const [containerWidth, setContainerWidth] = useState<number | null>()
+    useEffect(() => {
+        setContainerWidth(movieListContainer.current?.offsetWidth)
+        if(movieItem !== null) {
+        console.log(movieItem, 'not null')
+        
+     
+        } else {
+            console.log(movieListContainer, 'null')
+        }
+    }, [])
    
-}
-`
-const StyledFilterButton = styled.button`
-    grid-area:Logo;
-    height:55px;
-    padding:0px;
-`
-
-const VideoWrapper = styled.ul`
- grid-area: Movies;
-display: flex;
-flex-direction:row;
-flex-wrap: wrap;
-justify-content: space-evenly;
-transition: transform .3s ease-in-out;
-@media ${Device.tablet} {
-   
-    transform: ${(props: {active:boolean}) => props.active ? 'scale(0.8)' : 'scale()'}
-}
-
-`
-const StyledListFiller = styled.li`
-    display:block;
-    flex-grow:10;
-`
-
-const moviesList = ['1','2','3','4','5']
-
-export interface MovieListViewProps {}
-
-const MovieListView: React.FC<MovieListViewProps>= () => {
-const [filterIsOpen, setFilersisOpen] = useState(false)
-const handleFilterOpen = React.useCallback(() => {
-    setFilersisOpen(!filterIsOpen);
-  }, [filterIsOpen]);
 
     return(
-    <StyledPageWrapper active={filterIsOpen}> 
-    <StyledFilterButton onClick={handleFilterOpen}>Bykowski</StyledFilterButton>
-    <StyledHeaderWrapper>
-        <VideoSearch/>
-        <NavBarContainer filterIsOpen={filterIsOpen}/>
-    </StyledHeaderWrapper>
-       
-        <VideoWrapper active={filterIsOpen}>
-            {moviesList.map((movie)=> (
-                <VideoItem key={movie}/>
-            ))}
-          <StyledListFiller/>
-        </VideoWrapper>
-        
-    </StyledPageWrapper>
+        <Wrapper>
+            <HeaderWrapper>
+                <BannerContainer/>
+                <NavBarContainer/>
+            </HeaderWrapper>
+            <MainSectionWrapper>
+                <MovieListConstainer ref={movieListContainer}>
+                    {moviesList.map((item) => (
+                    <VideoItem key={item} movieItem={movieItem}/>
+                    ))}
+                </MovieListConstainer>
+                <Filters/>
+            </MainSectionWrapper>
+           
+        </Wrapper>
     )
-}
+  }
+)
 export default MovieListView;

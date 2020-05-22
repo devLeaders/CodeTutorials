@@ -15,6 +15,7 @@ const Wrapper = styled(NavLink)`
   box-shadow: 1px 1px 2px 0px ${Colors.LIGHT_GRAY};
   margin-inline: 10px;
   min-width: 240px;
+  margin: 0 25px 49px 0;
  
   @media ${Device.mobileM} {
     margin-inline: 15px;

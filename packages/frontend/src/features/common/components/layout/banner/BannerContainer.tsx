@@ -12,9 +12,10 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
-    width: 100%;
+    /* position: fixed; */
+    width:100%;
     height: 55px;
+    left: 0;
     background-color: ${Colors.WHITE};
     @media ${Device.LAPTOP}{
         height: 112px;

@@ -11,13 +11,17 @@ import WatchedCheckbox from "./WatchedCheckbox"
 import Categories from "./Categories"
 
 const Wrapper = styled.div`
-    position: relative;
-    width: 320px;
+    display:none;
+    position: fixed;
+    right:0;
+    height:100vh;
+    width: 475px;
     padding: 24px 24px;
     background-color: ${Colors.WHITE};
-    @media ${Device.tablet}{
+    border-left: 3px solid ${Colors.BLACK_OPACITY}; 
+    @media ${Device.LAPTOP}{
+        display:block;
         padding: 24px 34px;
-        width: 443px;
         box-shadow: 1px 1px 2px 0px ${Colors.OPACITY_VERY_LIGHT_GRAY};
     }
 `
