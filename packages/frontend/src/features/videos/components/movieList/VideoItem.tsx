@@ -13,12 +13,8 @@ const Wrapper = styled(NavLink)`
   border: 1px solid ${Colors.VERY_LIGHT_PURPLE};
   border-radius: 5px;
   box-shadow: 1px 1px 2px 0px ${Colors.LIGHT_GRAY};
-  margin-inline: 10px;
   min-width: 240px;
-  margin: 0 25px 49px 0;
- 
   @media ${Device.mobileM} {
-    margin-inline: 15px;
     min-width: 260px;
   }
 `;
@@ -34,11 +30,9 @@ const Img = styled.img`
 `;
 
 
-
-
-const VideoItem: React.ForwardRefExoticComponent<any> = React.forwardRef(()=>{
+const VideoItem: React.ForwardRefExoticComponent<any> = React.forwardRef((props: any, ref: any) =>{
     return (
-      <Wrapper to={''}>
+      <Wrapper to={''} ref={ref}>
         <Img
           src="https://cdn.pixabay.com/photo/2020/02/12/16/13/landscape-4843193_960_720.jpg"
           alt=""
