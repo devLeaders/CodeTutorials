@@ -7,8 +7,8 @@ import {Colors} from '../../../common/styles/constans/Colors';
 const Link = styled.a`
   width: 100%;
   color: ${Colors.nRed};
-  font-family:${FontFamily.openSansFont};
-  font-size: ${FontSize.paragraphMobile};
+  font-family:${FontFamily.MONTSERRAT};
+  font-size: ${FontSize.SMALLX};
   text-decoration: none;
   text-align: right;
   padding: 50px 0;

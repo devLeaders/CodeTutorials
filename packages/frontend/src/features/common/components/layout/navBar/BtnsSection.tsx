@@ -16,7 +16,7 @@ const BtnsSection = styled.section`
     padding-right: 15px;
     border-right: 2px solid ${Colors.BLACK_OPACITY};
     border-left: 2px solid ${Colors.BLACK_OPACITY}; 
-    @media ${Device.tablet} {
+    @media ${Device.TABLET} {
     width: 220px;
     }
     @media ${Device.LAPTOP} {

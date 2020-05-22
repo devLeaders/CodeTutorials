@@ -15,7 +15,7 @@ const Wrapper = styled(NavLink)`
   box-shadow: 1px 1px 2px 0px ${Colors.LIGHT_OPACITY_BLACK};
   margin-inline: 10px;
   min-width: 240px;
-  @media ${Device.mobileM} {
+  @media ${Device.MOBILE_M} {
     margin-inline: 15px;
     min-width: 260px;
   }
@@ -25,7 +25,7 @@ const Img = styled.img`
   height: 145px;
   width: 100%;
   border-radius: 2px;
-  @media ${Device.mobileL} {
+  @media ${Device.MOBILE_L} {
     height: 177px;
     width: 330px;
   }

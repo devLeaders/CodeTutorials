@@ -11,8 +11,7 @@ const Input = styled.input`
   border-bottom: 2px solid ${Colors.nGrey};
   padding-bottom: 8px;
   margin-bottom: 30px;
-  font-family: ${FontFamily.openSansFont};
-  font-size: ${FontSize.paragraphMobile};
+  font-size: ${FontSize.SMALLX};
   background-image: url('img/pass.svg');
   background-position: left top;
   background-size: 20px 20px;

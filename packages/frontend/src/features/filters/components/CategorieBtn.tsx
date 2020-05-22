@@ -17,7 +17,6 @@ const Btn = styled.button<{isActive: boolean}>`
   padding: 14px 8px;
   box-shadow: 0px 2px 8px 0px ${Colors.OPACITY_GRAY};
   border-radius: 7px;
-  /* margin-inline: 5px; */
   margin-bottom: 15px;
   margin-right: 5px;
   margin-left: 5px;
@@ -29,8 +28,8 @@ const Btn = styled.button<{isActive: boolean}>`
 `;
 const CategorieTxt = styled.p`
   font-size: ${FontSize.SMALL};
-  @media ${Device.tablet}{
-        font-size: ${FontSize.paragraphDesktop};
+  @media ${Device.TABLET}{
+        font-size: ${FontSize.XXMEDIUM};
     }
 `;
 export interface CategorieBtnProps {

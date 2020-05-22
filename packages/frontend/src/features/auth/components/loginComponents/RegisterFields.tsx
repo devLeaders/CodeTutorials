@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FontFamily } from '../../../common/styles/constans/FontFamily';
 import { FontSize } from '../../../common/styles/constans/FontSize';
 import SocialMedia from './SocialMedia';
 import {Colors} from '../../../common/styles/constans/Colors';
@@ -8,8 +7,7 @@ import {Colors} from '../../../common/styles/constans/Colors';
 const Link = styled.a`
   width: 100%;
   color: ${Colors.nRed};
-  font-family:${FontFamily.openSansFont};
-  font-size: ${FontSize.paragraphMobile};
+  font-size: ${FontSize.SMALLX};
   text-decoration: none;
   text-align: center;
   margin-top: 50px;
@@ -18,8 +16,7 @@ const Link = styled.a`
 const Paragraph = styled.p`
   width: min-content;
   color: ${Colors.nLightGrey};
-  font-family:${FontFamily.openSansFont};
-  font-size: ${FontSize.paragraphMobile};
+  font-size: ${FontSize.SMALLX};
   text-decoration: none;
   text-align: center;
   margin: 30px auto;

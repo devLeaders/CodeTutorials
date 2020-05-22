@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import FooterComponent from '../../common/components/layout/FooterComponent';
 import { getMovie } from "../action/movieArray";
 import { useEffect, useState } from "react";
-import VideoDescribeComponent from '../components/singleVideoComponents/VideoDescribeComponent';
-import VideoPlayerComponent from '../components/singleVideoComponents/VideoPlayerComponent';
 import { RouteComponentProps } from 'react-router-dom';
 import {Colors} from '../../common/styles/constans/Colors';
 import { Device } from '../../common/styles/constans/Device';
@@ -16,7 +13,7 @@ const StyledVideoComponent = styled.div`
   flex-direction: column-reverse;
   background-color: ${Colors.nWhite};
 
-  @media ${Device.laptop} {
+  @media ${Device.LAPTOP} {
       flex-direction: row;
   }
 `;
@@ -42,10 +39,8 @@ const SingleMoviePage: React.FC<RouteComponentProps<SingleMovieProps>> = (props)
     return (
         <>
             <StyledVideoComponent >
-                <VideoDescribeComponent name={movie.name} rate={movie.rate}></VideoDescribeComponent>
-                <VideoPlayerComponent></VideoPlayerComponent>
+                
             </StyledVideoComponent >
-            <FooterComponent></FooterComponent>
         </>
     )
 }

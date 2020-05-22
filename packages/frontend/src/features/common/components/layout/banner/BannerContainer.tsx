@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 const Logo = styled.img`
     width: 58px;
     margin-left: 10px;
-    @media ${Device.tablet}{
+    @media ${Device.TABLET}{
         width: 76px;
     }
     @media ${Device.LAPTOP}{
@@ -32,14 +32,14 @@ const Logo = styled.img`
 `
 const Title = styled.h3`
     display: none;
-    font-size: ${FontSize.NORMAL};
+    font-size: ${FontSize.MEDIUM};
     font-weight: ${fontWeight.SEMI_BOLD};
     margin-left: 13px;
-    @media ${Device.tablet}{
+    @media ${Device.TABLET}{
         display: block;
     }
     @media ${Device.LAPTOP}{
-        font-size: ${FontSize.MEDIUM_LARGE};
+        font-size: ${FontSize.XXBIG};
     }
 `
 const LogoTitleContainer = styled.div`

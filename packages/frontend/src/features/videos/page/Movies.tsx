@@ -19,10 +19,10 @@ const Section = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
-  @media ${Device.mobileM} {
+  @media ${Device.MOBILE_M} {
     height: 300px;
   }
-  @media ${Device.tablet} {
+  @media ${Device.TABLET} {
     height: 450px;
   }
 `;

@@ -16,7 +16,7 @@ const Cell = styled.div`
     width: 59px;
     height: 18px;
     margin-right: 8px;
-    @media ${Device.tablet} {
+    @media ${Device.TABLET} {
         margin-right: 12px;
         width: 83px;
         height: 25px;
@@ -25,7 +25,7 @@ const Cell = styled.div`
 const TechTxt = styled.p`
     font-weight: ${fontWeight.SEMI_BOLD};
     font-size: ${FontSize.VERY_SMALL};
-    @media ${Device.tablet} {
+    @media ${Device.TABLET} {
         font-size: ${FontSize.SMALL};
     }
 `

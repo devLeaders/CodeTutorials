@@ -11,10 +11,10 @@ const Wrapper = styled.div`
     padding: 12px 11px;
     display: flex;
     flex-wrap: wrap;
-    @media ${Device.tablet} {
+    @media ${Device.TABLET} {
         padding: 40px 22px;
     }
-    @media ${Device.laptop} {
+    @media ${Device.TABLET_L} {
         padding: 56px 22px;
     }
 `

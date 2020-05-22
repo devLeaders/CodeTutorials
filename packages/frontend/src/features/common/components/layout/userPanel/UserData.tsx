@@ -16,7 +16,7 @@ const UserPhoto = styled.img`
     border-radius: 50%;
     margin-right: 10px;
     background-color: gray;
-    @media ${Device.tablet}{
+    @media ${Device.TABLET}{
         width: 122px;
         margin-right: 33px;
     }
@@ -28,7 +28,7 @@ const TextInfoSection = styled.div`
     align-items: flex-start;
     text-align: left;
     width: 201px;
-    @media ${Device.tablet}{
+    @media ${Device.TABLET}{
         width: 215px;
     }
 `
@@ -40,7 +40,7 @@ const UserInfoTxt = styled.p<{ email?: any, name?: any }>`
     font-size: ${props => props.name ? "20px" : "16px"};
     font-weight: ${props => props.email ? fontWeight.REGULAR : fontWeight.SEMI_BOLD};
     word-wrap: break-word;
-    @media ${Device.tablet}{
+    @media ${Device.TABLET}{
         font-size: ${props => props.name ? "20px" : "16px"};
     }
 `
@@ -68,7 +68,7 @@ const LogoutBtn = styled.button`
 const LogoutBtnText = styled.p`
     display: flex;
     align-items: center;
-    font-size: ${FontSize.SMALL};
+    font-size: ${FontSize.VERY_SMALLXX};
     margin-right: 10px;
 `
 

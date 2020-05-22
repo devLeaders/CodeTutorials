@@ -16,12 +16,12 @@ const Wrapper = styled.div`
   padding-right: 5px;
   height: 65px;
   background-color: ${Colors.VERY_LIGHT_PURPLE};
-  @media ${Device.mobileM} {
+  @media ${Device.MOBILE_M} {
     padding-left: 47px;
     padding-right: 24px;
     width: 130px;
   }
-  @media ${Device.mobileL} {
+  @media ${Device.MOBILE_L} {
     width: 184px;
     height: 72px;
     border-top-left-radius: 72px;

@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 
 const ProfilTxt = styled.p`
     margin-bottom: 20px;
-    font-size: ${FontSize.MEDIUM_BIG};
+    font-size: ${FontSize.XXMEDIUM_L};
     font-weight: ${fontWeight.BOLD};
     text-align: left;
 `

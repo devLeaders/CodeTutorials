@@ -14,14 +14,14 @@ const Wrapper = styled.div`
     position: relative;
     width: 320px;
     padding: 24px 24px;
-    @media ${Device.tablet}{
+    @media ${Device.TABLET}{
         padding: 24px 34px;
         width: 443px;
         box-shadow: 1px 1px 2px 0px ${Colors.OPACITY_VERY_LIGHT_GRAY};
     }
 `
 const Title = styled.h3`
-    font-size: ${FontSize.MEDIUM_BIG};
+    font-size: ${FontSize.XXMEDIUM_L};
     font-weight: ${fontWeight.BOLD};
 `
  
