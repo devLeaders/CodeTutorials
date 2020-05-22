@@ -58,20 +58,20 @@ const MovieListView: React.FC<MovieListViewProps>= () => {
             let sidesMargin = (container - item*3)/4
             movieListContainer.current.style.padding = `38px ${sidesMargin}px`
             MovieListArray.map((item:any) => {
-                item.style.margin = `0 ${sidesMargin/8}px 49px`
+                item.style.margin = `0 ${sidesMargin/3}px 49px`
             })
         } else if ( container / item > 2) {
             let sidesMargin = (container - item*2)/4
             movieListContainer.current.style.padding = `38px ${sidesMargin}px`
             MovieListArray.map((item:any) => {
-                item.style.margin = `0 ${sidesMargin/4}px 49px`
+                item.style.margin = `0 ${sidesMargin/3}px 49px`
             })
         }else if ( container / item > 1) {
             console.log(container / item > 1)
             let sidesMargin = (container - item)
-            movieListContainer.current.style.padding = `38px ${sidesMargin/3}px`
+            movieListContainer.current.style.padding = `38px ${sidesMargin/6}px`
             MovieListArray.map((item:any) => {
-                item.style.margin = `49px 0px 0px 0px`
+                item.style.margin = `0 ${sidesMargin/4}px 49px`
             })
         }
     } 
