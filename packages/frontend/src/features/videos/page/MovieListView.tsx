@@ -33,7 +33,7 @@ justify-content:space-around;
 const MainSectionWrapper = styled.div`
 display:flex;
 `
-const StyledFiller = styled.div`
+const InvisibleMovie = styled.div`
 width:${(props: {width:any}) => `${props.width}px`};
 `
 
@@ -43,30 +43,20 @@ export interface MovieListViewProps {containerWidth:number}
 
 const MovieListView: React.FC<MovieListViewProps>= () => {
     let movieListContainer = useRef<any>(null)
-    let movieItem = useRef<any>(null)
+    const movieItem = useRef<any>(null)
 
-    const [arrayOfFillerItems, setArrayOfFillerItems] = useState<any>()
+    const [fillerItems, setFillerItems] = useState<Array<number>>()
     useEffect(() => {   
         handleLastRowFill(movieListContainer.current?.offsetWidth, movieItem.current?.offsetWidth);
         window.addEventListener("resize", () => handleLastRowFill(movieListContainer.current?.offsetWidth, movieItem.current?.offsetWidth));
 
-        return  window.removeEventListener("resize", () => handleLastRowFill(movieListContainer.current?.offsetWidth, movieItem.current?.offsetWidth));
-            
+        return  window.removeEventListener("resize", () => handleLastRowFill(movieListContainer.current?.offsetWidth, movieItem.current?.offsetWidth)); 
     }, [])
     const handleLastRowFill = (container:number, item:number) => {  
-            let numberOfItemsInRow = Math.floor(container/item)
-            let numberOfFullRows = Math.floor(moviesList.length / Math.floor(container/item));
-            let numberOfItemsInLastRow = moviesList.length - numberOfItemsInRow * numberOfFullRows;
-            let numbersOfItemsNeededInLastRow = numberOfItemsInRow - numberOfItemsInLastRow;
-            let arrayOfFillerItems = new Array(numbersOfItemsNeededInLastRow).fill(undefined).map((val,idx) => idx);
-            setArrayOfFillerItems(arrayOfFillerItems);
-        //     const handleLastRowFill = (container:number, item:number) => {  
-        //         let numberOfItemsInRow = Math.floor(container/item)
-        //         let numberOfFullRows = Math.floor(moviesList.length / Math.floor(container/item));
-        //         let numberOfItemsInLastRow = moviesList.length - numberOfItemsInRow * numberOfFullRows;
-        //         let numbersOfItemsNeededInLastRow = numberOfItemsInRow - numberOfItemsInLastRow;
-        //         setWidthofFillerItem(numbersOfItemsNeededInLastRow*item)
-        // }
+            const ItemsInRow = Math.floor(container/item)
+            const ItemsNeededInRow =  ItemsInRow - (moviesList.length % ItemsInRow);
+            const FillerItems = new Array(ItemsNeededInRow).fill(undefined).map((val,idx) => idx);
+            setFillerItems(fillerItems);
     } 
     return(
         <Wrapper>
@@ -79,8 +69,8 @@ const MovieListView: React.FC<MovieListViewProps>= () => {
                     {moviesList.map((item) => (
                     <VideoItem key={item} ref={movieItem}/>
                     ))}
-                    {arrayOfFillerItems && arrayOfFillerItems.map((item:any) => (
-                    <StyledFiller key={item} width={movieItem.current?.offsetWidth}/>
+                    {FillerItems && FillerItems.map((item:any) => (
+                    <InvisibleMovie key={item} width={movieItem.current?.offsetWidth}/>
                 ))}
                 </MovieListConstainer>
                <Filters/>
