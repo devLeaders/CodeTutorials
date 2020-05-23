@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useRef, useEffect} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import styled from 'styled-components';
 import VideoItem from '../components/movieList/VideoItem'
 import BannerContainer from '../../common/components/layout/banner/BannerContainer'
@@ -22,9 +22,9 @@ position:fixed;
 top:0;
 `
 const MovieListConstainer = styled.div`
-height:700px;
 display:flex;
 flex-wrap:wrap;
+justify-content:space-around;
 margin:0 auto;
 @media ${Device.LAPTOP} {
    margin-right:475px;
@@ -33,49 +33,36 @@ margin:0 auto;
 const MainSectionWrapper = styled.div`
 display:flex;
 `
+const StyledFiller = styled.div`
 
-const moviesList = ['1','2','3','4','5','6','7','8','9','10','11',]
+width:${(props: {width:any}) => `${props.width}px`};
+`
+
+const moviesList = ['1','2','3','4','5','6','7','8','9','10','11']
 
 export interface MovieListViewProps {containerWidth:number}
 
 const MovieListView: React.FC<MovieListViewProps>= () => {
     let movieListContainer = useRef<any>(null)
     let movieItem = useRef<any>(null)
+
+    const [arrayOfFillerItems, setArrayOfFillerItems] = useState<any>()
     useEffect(() => {   
-        handleContainerMargin(movieListContainer.current?.offsetWidth, movieItem.current?.offsetWidth);
-        handleResize()
+        handleLastRowFill(movieListContainer.current?.offsetWidth, movieItem.current?.offsetWidth);
+        window.addEventListener("resize", () => handleLastRowFill(movieListContainer.current?.offsetWidth, movieItem.current?.offsetWidth));
+
+        return  window.removeEventListener("resize", () => handleLastRowFill(movieListContainer.current?.offsetWidth, movieItem.current?.offsetWidth));
+            
     }, [])
-    const handleResize = () => {
-        window.addEventListener("resize", () => {
-            handleContainerMargin(movieListContainer.current?.offsetWidth, movieItem.current?.offsetWidth);
-        });
-    }
-
-    const handleContainerMargin = (container:number, item:number) => {
-        const MovieListArray =  Array.from(movieListContainer.current.children)
-        
-        if(container / item > 3) {
-            let sidesMargin = (container - item*3)/4
-            movieListContainer.current.style.padding = `38px ${sidesMargin}px`
-            MovieListArray.map((item:any) => {
-                item.style.margin = `0 ${sidesMargin/3}px 49px`
-            })
-        } else if ( container / item > 2) {
-            let sidesMargin = (container - item*2)/4
-            movieListContainer.current.style.padding = `38px ${sidesMargin}px`
-            MovieListArray.map((item:any) => {
-                item.style.margin = `0 ${sidesMargin/3}px 49px`
-            })
-        }else if ( container / item > 1) {
-            console.log(container / item > 1)
-            let sidesMargin = (container - item)
-            movieListContainer.current.style.padding = `38px ${sidesMargin/6}px`
-            MovieListArray.map((item:any) => {
-                item.style.margin = `0 ${sidesMargin/4}px 49px`
-            })
-        }
+    const handleLastRowFill = (container:number, item:number) => {  
+            let numberOfItemsInRow = Math.floor(container/item)
+            let numberOfFullRows = Math.floor(moviesList.length / Math.floor(container/item));
+            let numberOfItemsInLastRow = moviesList.length - numberOfItemsInRow * numberOfFullRows;
+            let numbersOfItemsNeededInLastRow = numberOfItemsInRow - numberOfItemsInLastRow;
+            let arrayOfFillerItems = new Array(numbersOfItemsNeededInLastRow).fill(undefined).map((val,idx) => idx);
+            setArrayOfFillerItems(arrayOfFillerItems);
+            console.log(arrayOfFillerItems)
     } 
-
     return(
         <Wrapper>
             <HeaderWrapper>
@@ -87,8 +74,11 @@ const MovieListView: React.FC<MovieListViewProps>= () => {
                     {moviesList.map((item) => (
                     <VideoItem key={item} ref={movieItem}/>
                     ))}
+                    {arrayOfFillerItems && arrayOfFillerItems.map((item:any) => (
+                    <StyledFiller key={item} width={movieItem.current?.offsetWidth}/>
+                ))}
                 </MovieListConstainer>
-                <Filters/>
+               <Filters/>
             </MainSectionWrapper>
            
         </Wrapper>

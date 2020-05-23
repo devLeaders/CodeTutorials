@@ -14,6 +14,7 @@ const Wrapper = styled(NavLink)`
   border-radius: 5px;
   box-shadow: 1px 1px 2px 0px ${Colors.LIGHT_GRAY};
   min-width: 240px;
+  margin-bottom:49px;
   @media ${Device.mobileM} {
     min-width: 260px;
   }
