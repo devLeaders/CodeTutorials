@@ -19,7 +19,6 @@ const Wrapper = styled(NavLink)`
     min-width: 260px;
   }
 `;
-
 const Img = styled.img`
   height: 145px;
   width: 100%;

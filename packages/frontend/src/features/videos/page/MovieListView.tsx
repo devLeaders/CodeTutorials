@@ -17,15 +17,15 @@ z-index:2;
 display:flex;
 flex-direction:row;
 width:100%;
-justify-content:space-between;
+justify-content:space-around;
 position:fixed;
 top:0;
 `
 const MovieListConstainer = styled.div`
+margin-top: 38px;
 display:flex;
 flex-wrap:wrap;
 justify-content:space-around;
-margin:0 auto;
 @media ${Device.LAPTOP} {
    margin-right:475px;
   }
@@ -34,7 +34,6 @@ const MainSectionWrapper = styled.div`
 display:flex;
 `
 const StyledFiller = styled.div`
-
 width:${(props: {width:any}) => `${props.width}px`};
 `
 
@@ -61,7 +60,13 @@ const MovieListView: React.FC<MovieListViewProps>= () => {
             let numbersOfItemsNeededInLastRow = numberOfItemsInRow - numberOfItemsInLastRow;
             let arrayOfFillerItems = new Array(numbersOfItemsNeededInLastRow).fill(undefined).map((val,idx) => idx);
             setArrayOfFillerItems(arrayOfFillerItems);
-            console.log(arrayOfFillerItems)
+        //     const handleLastRowFill = (container:number, item:number) => {  
+        //         let numberOfItemsInRow = Math.floor(container/item)
+        //         let numberOfFullRows = Math.floor(moviesList.length / Math.floor(container/item));
+        //         let numberOfItemsInLastRow = moviesList.length - numberOfItemsInRow * numberOfFullRows;
+        //         let numbersOfItemsNeededInLastRow = numberOfItemsInRow - numberOfItemsInLastRow;
+        //         setWidthofFillerItem(numbersOfItemsNeededInLastRow*item)
+        // }
     } 
     return(
         <Wrapper>
