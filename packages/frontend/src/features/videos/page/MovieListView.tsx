@@ -56,7 +56,7 @@ const MovieListView: React.FC<MovieListViewProps>= () => {
             const ItemsInRow = Math.floor(container/item)
             const ItemsNeededInRow =  ItemsInRow - (moviesList.length % ItemsInRow);
             const FillerItems = new Array(ItemsNeededInRow).fill(undefined).map((val,idx) => idx);
-            setFillerItems(fillerItems);
+            setFillerItems(FillerItems);
     } 
     return(
         <Wrapper>
@@ -69,7 +69,7 @@ const MovieListView: React.FC<MovieListViewProps>= () => {
                     {moviesList.map((item) => (
                     <VideoItem key={item} ref={movieItem}/>
                     ))}
-                    {FillerItems && FillerItems.map((item:any) => (
+                    {fillerItems && fillerItems.map((item:any) => (
                     <InvisibleMovie key={item} width={movieItem.current?.offsetWidth}/>
                 ))}
                 </MovieListConstainer>
