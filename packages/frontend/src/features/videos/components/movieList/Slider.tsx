@@ -18,12 +18,10 @@ const VideoWrapper = styled.div`
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  background-color: red;
   width: 85%;
   @media ${Device.tablet}{
     width: 95%;
   }
-  /* overflow: hidden; */
 `;
 
 const movies = [
@@ -88,9 +86,6 @@ const movies = [
     urlphoto: "p2",
   },
 ];
-
-
- 
 
 
 
