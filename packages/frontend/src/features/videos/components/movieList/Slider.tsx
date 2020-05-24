@@ -113,7 +113,7 @@ const Slider: React.SFC = () => {
                     key={movie.id}
                     id={movie.id}
                     index={index}
-                    margin={margin}
+                    marginLeft={margin}
                     ref={(video: HTMLDivElement) => (gsapMovies[index] = video)}
                   ></VideoItem>
                 );

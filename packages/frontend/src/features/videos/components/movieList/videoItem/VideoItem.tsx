@@ -7,14 +7,14 @@ import {Device} from "../../../../common/styles/constans/Device"
 import NavigationPath from "../../../../../config/routing/NavigationPath";
 import VideoInfo from "./VideoInfo"
 
-const Wrapper = styled(NavLink)<{margin: number}>`
+const Wrapper = styled(NavLink)<{marginLeft: number}>`
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
   border: 1px solid ${Colors.VERY_LIGHT_PURPLE};
   border-radius: 5px;
   box-shadow: 1px 1px 2px 0px ${Colors.LIGHT_GRAY};
-  margin-left: ${({margin}) => `${margin}px`};
+  margin-left: ${({marginLeft}) => `${marginLeft}px`};
   min-width: 240px;
   @media ${Device.mobileM} {
     min-width: 260px;
@@ -37,10 +37,9 @@ const Img = styled.img`
 
 
 
-const VideoItem: React.ForwardRefExoticComponent<any> = React.forwardRef(({id, margin}, ref:any)=>{
-  // console.log(margin)
+const VideoItem: React.ForwardRefExoticComponent<any> = React.forwardRef(({id, marginLeft}, ref:any)=>{
     return (
-      <Wrapper to={`${NavigationPath.MOVIES}/${id}`} ref={ref} margin={margin}>
+      <Wrapper to={`${NavigationPath.MOVIES}/${id}`} ref={ref} marginLeft={marginLeft}>
         <Img
           src="https://cdn.pixabay.com/photo/2020/02/12/16/13/landscape-4843193_960_720.jpg"
           alt=""
