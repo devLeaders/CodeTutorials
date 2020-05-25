@@ -25,6 +25,7 @@ import SingleMovieDescription from '../..//features/videos/components/SingleScre
 import FiltersScreen from '../../features/videos/page/FiltersScreen';
 import MainScreenHeader from '../../features/videos/components/MainScreen/MainScreenHeader';
 import SquareToRenderTemp from '../../features/videos/components/MainScreen/SquareToRenderTemp';
+import ShortcutToFilters from '../../features/videos/components/FiltersScreen/ShortcutToFilters';
 
 
 const navigation = createStackNavigator(
@@ -39,6 +40,7 @@ const navigation = createStackNavigator(
     [NavigationName.FILTERSSCREEN]: FiltersScreen,
     [NavigationName.MAINSCREENHEADER]: MainScreenHeader,
     [NavigationName.SQUAREOFMOVIE]: SquareToRenderTemp,
+    [NavigationName.SHORTCUTTOFILTERS]: ShortcutToFilters,
   },
   {
     initialRouteName: NavigationName.HOME,

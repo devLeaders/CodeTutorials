@@ -17,7 +17,7 @@ interface XButtonProps {
     goto: any,
   }
 
-export default class XBuutton extends React.Component<XButtonProps> {
+export default class XButton extends React.Component<XButtonProps> {
     render(){
         return(
             <Wrapper onPress={() => this.props.navigation.navigate(this.props.goto)}>

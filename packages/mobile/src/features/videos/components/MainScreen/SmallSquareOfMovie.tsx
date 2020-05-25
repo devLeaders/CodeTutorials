@@ -34,7 +34,6 @@ const ImageButton = styled.Image`
 `;
 
 const ButtonSquare = styled.TouchableOpacity({
-
   });
 
   const TextWrapper = styled.View`

@@ -27,7 +27,7 @@ import { NavigationName } from '../../../config/routing/NavigationName';
 import styled from 'styled-components';
 
 const HemeButton = styled.Button`
-  padding: 2px;
+  
 `;
 
 declare var global: {HermesInternal: null | {}};
@@ -91,6 +91,11 @@ const HomeScreen = ({navigation}:any) => {
                     onPress={() => navigation.navigate(NavigationName.SQUAREOFMOVIE)}
                 />
 
+                <HemeButton
+                    color="#e63900"
+                    title="ShortcutToFilters"
+                    onPress={() => navigation.navigate(NavigationName.SHORTCUTTOFILTERS)}
+                />
 
 
 
