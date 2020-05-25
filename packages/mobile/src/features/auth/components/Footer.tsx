@@ -3,13 +3,15 @@ import styled from 'styled-components/native';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {FontSize} from '../../common/styles/constans/FontSize';
 import {Color} from '../../common/styles/constans/Color';
+import { NavigationName } from '../../../config/routing/NavigationName';
+import { NavProps } from '../../../config/routing/ParamList';
 
 const Wrapper = styled.View`
   margin-top: 20px;
   align-self: center;
   flex-direction: row;
 `;
-const GotoSignInBtn = styled.View`
+const GotoSignInBtn = styled.TouchableOpacity`
   margin-left: 10px;
 `;
 const GotoSignInTxt = styled.Text`
@@ -21,11 +23,11 @@ const Txt = styled.Text`
   color: ${Color.BLACK};
 `;
 
-const Footer: React.SFC = () => {
+const Footer = ({ navigation }: NavProps<NavigationName.SINGUP>) => {
   return (
     <Wrapper>
       <Txt>Masz konto?</Txt>
-      <GotoSignInBtn>
+      <GotoSignInBtn >
         <GotoSignInTxt>Zaloguj się</GotoSignInTxt>
         <TouchableOpacity />
       </GotoSignInBtn>

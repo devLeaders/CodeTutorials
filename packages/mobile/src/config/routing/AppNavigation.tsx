@@ -13,13 +13,22 @@ import SignUpScreen from '../../features/auth/page/SingUpScrenn';
 
 
 const HomeStack = createStackNavigator();
+const AuthStack = createStackNavigator();
 
 export const HomeStackScreen = () => (
     <HomeStack.Navigator>
           <HomeStack.Screen name={NavigationName.HOME} component={HomeScreen}/> 
           <HomeStack.Screen name={NavigationName.MOVIELIST} component={MoviesList}/>
           <HomeStack.Screen name={NavigationName.SINGLEMOVIE} component={SingleMovie2}/>
-          <HomeStack.Screen name={NavigationName.SIGNINSCREEN} component={SignInScreen}/>
-          <HomeStack.Screen name={NavigationName.SINGUP} component={SignUpScreen}/>
     </HomeStack.Navigator>
+)
+
+export const AuthStackScreen = () => (
+    <NavigationContainer>
+        <AuthStack.Navigator>
+            <AuthStack.Screen name={NavigationName.SIGNINSCREEN} component={SignInScreen}/>
+            <AuthStack.Screen name={NavigationName.SINGUP} component={SignUpScreen}/>
+        </AuthStack.Navigator>
+    </NavigationContainer>
+    
 )

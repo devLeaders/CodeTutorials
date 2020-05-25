@@ -72,10 +72,7 @@ class LogIn extends React.Component<LogInProps> {
             "email": `${value.email}`,
             "password": `${value.password}`
              })
-             console.log(dataResponse);
-
             const token = dataResponse.data.token;
-            console.log(token);
             AsyncStorage.setItem('token', token);
 
             //Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
