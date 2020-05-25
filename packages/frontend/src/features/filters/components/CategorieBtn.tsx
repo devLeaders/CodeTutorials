@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { FontSize } from "../../common/styles/constans/FontSize";
 import { Colors } from "../../common/styles/constans/Colors";
 import {Device} from "../../common/styles/constans/Device";
+import {setCategories} from "../reducer/filtersActions"
+import {useDispatch} from "react-redux"
 
 const Btn = styled.button<{isActive: boolean}>`
   display: flex;
@@ -34,13 +36,18 @@ const CategorieTxt = styled.p`
 `;
 export interface CategorieBtnProps {
   categorie: string;
+  id: number;
 }
 
-const CategorieBtn: React.SFC<CategorieBtnProps> = ({ categorie }) => {
+const CategorieBtn: React.SFC<CategorieBtnProps> = ({ categorie , id }) => {
   const [isActive, setIsActive] = useState(false);
+  const dispatch = useDispatch()
+
   const handleClick = () => {
+    dispatch(setCategories())
     setIsActive(!isActive)
   }
+  
   return (
     <Btn onClick={handleClick} isActive={isActive}>
       <CategorieTxt>{categorie}</CategorieTxt>
