@@ -6,7 +6,7 @@ import {Colors} from "../../../common/styles/constans/Colors";
 import {Device} from "../../../common/styles/constans/Device"
 import VideoInfo from "./VideoInfo"
 
-const Wrapper = styled(NavLink)`
+const Wrapper = styled(NavLink)<{margin:number}>`
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
@@ -14,7 +14,7 @@ const Wrapper = styled(NavLink)`
   border-radius: 5px;
   box-shadow: 1px 1px 2px 0px ${Colors.LIGHT_GRAY};
   min-width: 240px;
-  margin-bottom:49px;
+  margin: ${({margin}) => `0 ${margin}px 49px ${margin}px `};
   @media ${Device.mobileM} {
     min-width: 260px;
   }
@@ -32,7 +32,7 @@ const Img = styled.img`
 
 const VideoItem: React.ForwardRefExoticComponent<any> = React.forwardRef((props: any, ref: any) =>{
     return (
-      <Wrapper to={''} ref={ref}>
+      <Wrapper to={''} ref={ref} margin={props.margin}>
         <Img
           src="https://cdn.pixabay.com/photo/2020/02/12/16/13/landscape-4843193_960_720.jpg"
           alt=""
