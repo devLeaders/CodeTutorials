@@ -1,13 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import { useFormik } from "formik";
+import {useSelector, RootStateOrAny} from "react-redux"
 
 import { FontSize } from "../../common/styles/constans/FontSize";
 import { fontWeight } from "../../common/styles/constans/fontWeight";
 import { Device } from "../../common/styles/constans/Device";
 import CategorieBtn from "./CategorieBtn";
-import {useFetch} from "../hooks/useFetch"
+import { useCategories } from "../hooks/useCategories";
 
-const BtnWrapper = styled.div`
+const Form = styled.form`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -23,23 +25,38 @@ const Title = styled.h3`
   font-weight: ${fontWeight.SEMI_BOLD};
 `;
 
-type Categorie = {
+export type Categorie = {
   id: number;
   name: string;
-  videos: Array<any>
-}
+  videos: Array<any>;
+};
+
+const initValues = {
+  activeCategories: [],
+};
 
 const Categories: React.SFC = () => {
-  const {data} = useFetch("/videos/category");
+  const { data } = useCategories();
+  const categories = useSelector((state: RootStateOrAny) => state.filters.categories)
+  const formik = useFormik({
+    initialValues: initValues,
+    onSubmit: () => {},
+  });
 
   return (
     <>
       <Title>Kategorie</Title>
-      <BtnWrapper>
-        {data.map((categorie: Categorie) => (
-          <CategorieBtn key={categorie.id} id={categorie.id} categorie={categorie.name}/>
+      <Form onSubmit={formik.handleSubmit}>
+        {console.log(categories)}
+        {data.map((categorie: Categorie) =>  (
+          <CategorieBtn
+            key={categorie.id}
+            id={categorie.id}
+            categorie={categorie.name}
+            activeCategories={categories}
+          />
         ))}
-      </BtnWrapper>
+      </Form>
     </>
   );
 };

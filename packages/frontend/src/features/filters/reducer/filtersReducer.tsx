@@ -7,8 +7,10 @@ const initState: FiltersState = {
 export const filtersReducer = (state = initState, action: any) => {
     console.log(action.type)
     switch(action.type){
-        case Actions.SET_CATEGORIES:
-            return state
+        case Actions.ADD_CATEGORIE:
+            return {categories: [...state.categories, action.payload]}
+        case Actions.REMOVE_CATEGORIE:
+                return {categories: action.payload}
         default:
             return state;
     }
