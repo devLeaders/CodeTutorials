@@ -3,8 +3,7 @@ import styled from 'styled-components/native';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {FontSize} from '../../common/styles/constans/FontSize';
 import {Color} from '../../common/styles/constans/Color';
-import { NavigationName } from '../../../config/routing/NavigationName';
-import { NavProps } from '../../../config/routing/ParamList';
+import { NavigationName } from 'src/config/routing/NavigationName';
 
 const Wrapper = styled.View`
   margin-top: 20px;
@@ -23,7 +22,7 @@ const Txt = styled.Text`
   color: ${Color.BLACK};
 `;
 
-const Footer = ({ navigation }: NavProps<NavigationName.SINGUP>) => {
+const Footer: React.SFC = () => {
   return (
     <Wrapper>
       <Txt>Masz konto?</Txt>

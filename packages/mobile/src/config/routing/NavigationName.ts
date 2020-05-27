@@ -7,6 +7,8 @@ export enum NavigationName {
     SINGUP = 'SignUpScreen',
 
     MENU = 'Menu',
+    BOTTOMMENU = 'BottomMenu',
+
     TEAMS = 'Teams',
     TASKS = 'Tasks',
     PLAYLIST = 'Playlist',

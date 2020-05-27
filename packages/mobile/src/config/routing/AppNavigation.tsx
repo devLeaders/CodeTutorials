@@ -10,6 +10,7 @@ import MoviesList from '../../features/videos/page/MoviesList';
 import SingleMovie2 from '../../features/videos/page/SingleMovie2';
 import SignInScreen from '../../features/auth/page/SignInScrren';
 import SignUpScreen from '../../features/auth/page/SingUpScrenn';
+import TabNavigation from './TabNavigation';
 
 
 const HomeStack = createStackNavigator();
@@ -28,6 +29,7 @@ export const AuthStackScreen = () => (
         <AuthStack.Navigator>
             <AuthStack.Screen name={NavigationName.SIGNINSCREEN} component={SignInScreen}/>
             <AuthStack.Screen name={NavigationName.SINGUP} component={SignUpScreen}/>
+            <AuthStack.Screen name={NavigationName.BOTTOMMENU} component={TabNavigation}/>
         </AuthStack.Navigator>
     </NavigationContainer>
     

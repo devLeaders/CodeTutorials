@@ -19,7 +19,8 @@ import { NavProps } from '../../../config/routing/ParamList';
 
 declare var global: {HermesInternal: null | {}};
 
-export const HomeScreen = ({ navigation }: NavProps<NavigationName.HOME> ) => { 
+export const HomeScreen = ({ navigation }: NavProps<NavigationName.HOME>) => { 
+  
     return (
       <>
         <StatusBar barStyle="dark-content" />

@@ -45,9 +45,9 @@ const kvArray = [
 const myMap = new Map(kvArray as any);
 
 export default class TabNavigation extends Component {
+
   render() {
     return (
-      <NavigationContainer>
         <Tabs.Navigator
                 screenOptions={({ route }) => ({
                     tabBarIcon: (): any => {
@@ -67,7 +67,6 @@ export default class TabNavigation extends Component {
                 <Tabs.Screen name={NavigationName.ALERT} options={{title: 'Alerty'}} component={Alert} />
                 <Tabs.Screen name={NavigationName.SEARCH} options={{title: 'Szukaj'}}  component={Search} />
             </Tabs.Navigator>
-      </NavigationContainer>
     );
   }
 }
