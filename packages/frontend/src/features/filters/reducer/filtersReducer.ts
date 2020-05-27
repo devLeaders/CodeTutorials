@@ -1,7 +1,8 @@
-import {Actions, FiltersState} from "./types"
+import {Actions, FiltersState} from "./Types"
 
 const initState: FiltersState = {
-    categories: []
+    categories: [],
+    searchPhrase: ""
 }
 
 export const filtersReducer = (state = initState, action: any) => {
@@ -10,7 +11,9 @@ export const filtersReducer = (state = initState, action: any) => {
         case Actions.ADD_CATEGORIE:
             return {categories: [...state.categories, action.payload]}
         case Actions.REMOVE_CATEGORIE:
-                return {categories: action.payload}
+            return {categories: action.payload}
+        case Actions.REMOVE_CATEGORIE:
+            return {searchPhrase: action.payload}
         default:
             return state;
     }

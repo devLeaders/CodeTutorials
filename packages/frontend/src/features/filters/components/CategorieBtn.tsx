@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { FontSize } from "../../common/styles/constans/FontSize";
 import { Colors } from "../../common/styles/constans/Colors";
 import {Device} from "../../common/styles/constans/Device";
-import {addCategorie, removeCategorie} from "../reducer/filtersActions"
+import {addCategorie, removeCategorie} from "../reducer/FiltersActions"
 import {useDispatch} from "react-redux"
 import {useFiltration} from "../hooks/useFiltration"
 

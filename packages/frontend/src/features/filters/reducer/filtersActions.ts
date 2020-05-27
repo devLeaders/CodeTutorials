@@ -1,4 +1,4 @@
-import {Actions} from "./types"
+import {Actions} from "./Types"
 
 export function addCategorie(payload: number): any {
     return {

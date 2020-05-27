@@ -1,5 +1,5 @@
 import {useState} from "react"
-import {addCategorie, removeCategorie} from "../reducer/filtersActions"
+import {addCategorie, removeCategorie} from "../reducer/FiltersActions"
 import {useDispatch} from "react-redux"
 import {useSelector, RootStateOrAny} from "react-redux"
 

@@ -1,6 +1,6 @@
 
 import { combineReducers } from 'redux'
-import {filtersReducer} from "../../features/filters/reducer/filtersReducer"
+import {filtersReducer} from "../../features/filters/reducer/FiltersReducer"
 
 const rootReducer = combineReducers({filters: filtersReducer})
 

@@ -1,5 +1,6 @@
 export interface FiltersState {
     categories: Array<any>;
+    searchPhrase: string;
 }
 
 export enum Actions {
