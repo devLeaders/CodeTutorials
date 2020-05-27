@@ -1,20 +1,18 @@
 import * as React from 'react';
 import styled from "styled-components"
-
 import {Device} from "../../../styles/constans/Device"
 import {Colors} from "../../../styles/constans/Colors"
 import {fontWeight} from "../../../styles/constans/fontWeight"
 import {FontSize} from "../../../styles/constans/FontSize"
 import VideoSearch from "./VideoSearch"
 
-
 const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
-    width: 100%;
+    width:100%;
     height: 55px;
+    left: 0;
     background-color: ${Colors.WHITE};
     @media ${Device.LAPTOP}{
         height: 112px;

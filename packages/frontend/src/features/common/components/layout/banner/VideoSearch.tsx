@@ -13,14 +13,16 @@ const Wrapper = styled.div`
     height: 81px;
     border-radius: 40px;
     box-shadow: 0px 2px 8px 0px #00000029;
-    margin-right: 23px;
+    margin-right:25px;
     padding-left: 45px;
     padding-right: 25px;
     @media ${Device.LAPTOP}{
         display: flex;
+      
     }
     @media ${Device.laptopL}{
         width: 401px;
+
     }
 `
 const Lens = styled.img`
