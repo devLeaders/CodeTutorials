@@ -37,7 +37,6 @@ const initValues = {
 
 const Categories: React.SFC = () => {
   const { data } = useCategories();
-  const categories = useSelector((state: RootStateOrAny) => state.filters.categories)
   const formik = useFormik({
     initialValues: initValues,
     onSubmit: () => {},
@@ -47,13 +46,11 @@ const Categories: React.SFC = () => {
     <>
       <Title>Kategorie</Title>
       <Form onSubmit={formik.handleSubmit}>
-        {console.log(categories)}
         {data.map((categorie: Categorie) =>  (
           <CategorieBtn
             key={categorie.id}
             id={categorie.id}
             categorie={categorie.name}
-            activeCategories={categories}
           />
         ))}
       </Form>

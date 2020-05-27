@@ -15,6 +15,7 @@
     "ts-node": "^8.6.2"
   },
   "dependencies": {
+    "lodash": "^4.17.15",
     "redux-thunk": "^2.3.0"
   },
   "repository": {

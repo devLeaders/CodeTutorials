@@ -7,6 +7,7 @@ import { Colors } from "../../common/styles/constans/Colors";
 import {Device} from "../../common/styles/constans/Device";
 import {addCategorie, removeCategorie} from "../reducer/filtersActions"
 import {useDispatch} from "react-redux"
+import {useFiltration} from "../hooks/useFiltration"
 
 const Btn = styled.button<{isActive: boolean}>`
   display: flex;
@@ -37,22 +38,10 @@ const CategorieTxt = styled.p`
 export interface CategorieBtnProps {
   categorie: string;
   id: number;
-  activeCategories: any;
 }
 
-const CategorieBtn: React.SFC<CategorieBtnProps> = ({ categorie , id, activeCategories}) => {
-  const [isActive, setIsActive] = useState(false);
-  const dispatch = useDispatch()
-
-  const handleFiltration = (activeCategories: any) => {
-    return activeCategories.filter((name: any) => name != categorie)
-  }
-  
-  const handleClick = (e: any) => {
-    e.preventDefault()
-    isActive ? dispatch(removeCategorie(handleFiltration(activeCategories))) : dispatch(addCategorie(categorie))
-    setIsActive(!isActive)
-  }
+const CategorieBtn: React.SFC<CategorieBtnProps> = ({ categorie , id}) => {
+  const {handleClick, isActive} = useFiltration(id)
   
   return (
     <Btn onClick={handleClick} isActive={isActive}>
