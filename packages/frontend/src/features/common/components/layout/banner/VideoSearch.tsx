@@ -1,12 +1,13 @@
 import * as React from "react";
 import styled from "styled-components";
+import _ from "lodash"
 import { useFormik } from "formik";
 
 import { fontWeight } from "../../../styles/constans/fontWeight";
 import { FontSize } from "../../../styles/constans/FontSize";
 import { Device } from "../../../styles/constans/Device";
 
-const Wrapper = styled.form`
+const Form = styled.form`
   display: none;
   justify-content: space-between;
   align-items: center;
@@ -42,20 +43,29 @@ const Input = styled.input`
 const VideoSearch: React.SFC = () => {
   const formik = useFormik({
     initialValues: { videoTitle: "" },
-    onSubmit: () => {},
+    onSubmit: () => {
+      
+    },
   });
+
+  const handleFiltration = (e: any) => {
+    formik.handleChange(e); 
+    const timer = _.delay(() => {formik.submitForm()}, 1000)
+    clearTimeout(timer)
+  }
+
   return (
-    <Wrapper>
+    <Form onSubmit={formik.handleSubmit}>
       {console.log(formik.values)}
       <Input
         type="text"
         name="videoTitle"
-        onChange={formik.handleChange}
+        onChange={handleFiltration}
         value={formik.values.videoTitle}
         placeholder="Wyszukaj"
       />
       <Lens src="/img/lens.svg" />
-    </Wrapper>
+    </Form>
   );
 };
 
