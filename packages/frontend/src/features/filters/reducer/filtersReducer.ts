@@ -9,11 +9,11 @@ export const filtersReducer = (state = initState, action: any) => {
     console.log(action.type)
     switch(action.type){
         case Actions.ADD_CATEGORIE:
-            return {categories: [...state.categories, action.payload]}
+            return {...state, categories: [...state.categories, action.payload]}
         case Actions.REMOVE_CATEGORIE:
-            return {categories: action.payload}
-        case Actions.REMOVE_CATEGORIE:
-            return {searchPhrase: action.payload}
+            return {...state, categories: action.payload}
+        case Actions.SET_SEARCH_PHRASE:
+            return {...state, searchPhrase: action.payload}
         default:
             return state;
     }
