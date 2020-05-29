@@ -9,7 +9,7 @@ export const useFiltration = (id: number) => {
   const dispatch = useDispatch();
 
   const filterActive = (activeCategories: Array<number>) =>
-    activeCategories.filter((i: number) => i != id);
+    activeCategories.filter((item: number) => item != id);
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
