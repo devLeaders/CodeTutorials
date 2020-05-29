@@ -6,7 +6,6 @@ const initState: FiltersState = {
 }
 
 export const filtersReducer = (state = initState, action: any) => {
-    console.log(action.type)
     switch(action.type){
         case Actions.ADD_CATEGORIE:
             return {...state, categories: [...state.categories, action.payload]}
