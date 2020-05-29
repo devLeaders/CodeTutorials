@@ -7,7 +7,7 @@ import  {Colors}  from "../../../styles/constans/Colors";
 
 
 const BtnsSection = styled.section`
-    margin-left: 40px;
+    /* margin-left: 40px; */
     display: flex;
     justify-content: space-around;
     align-items: center;
