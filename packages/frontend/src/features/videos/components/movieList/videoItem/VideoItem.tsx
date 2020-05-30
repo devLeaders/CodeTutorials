@@ -7,13 +7,13 @@ import {Device} from "../../../../common/styles/constans/Device"
 import NavigationPath from "../../../../../config/routing/NavigationPath";
 import VideoInfo from "./VideoInfo"
 
-const Wrapper = styled(NavLink)<{marginLeft: number, margin:number}>`
+const Wrapper = styled(NavLink)<{marginLeft?: number, margin?:number}>`
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
   border: 1px solid ${Colors.VERY_LIGHT_PURPLE};
   border-radius: 5px;
-  margin-left: ${({marginLeft}) => `${marginLeft}px`};
+  margin: ${({marginLeft, margin}) => marginLeft ? `0 0 0 ${marginLeft}px` : `0 ${margin}px 49px ${margin}px ` };
   box-shadow: 1px 1px 2px 0px ${Colors.LIGHT_OPACITY_BLACK};
   min-width: 240px;
   /* margin: ${({margin}) => `0 ${margin}px 49px ${margin}px `}; */
@@ -34,12 +34,18 @@ const Img = styled.img`
   }
 `;
 
+export interface VideoItemProps {
+  id:number
+  marginLeft?: number
+  margin?: number
+  index?: number
+  ref: any
+}
 
 
-
-const VideoItem: React.ForwardRefExoticComponent<any> = React.forwardRef(({id, marginLeft}, ref:any)=>{
+const VideoItem: React.ForwardRefExoticComponent<VideoItemProps> = React.forwardRef(({id, marginLeft, margin}, ref:any)=>{
     return (
-      <Wrapper to={`${NavigationPath.MOVIES}/${id}`} ref={ref} marginLeft={marginLeft} margin={marginLeft}>
+      <Wrapper to={`${NavigationPath.MOVIES}/${id}`} ref={ref} marginLeft={marginLeft} margin={margin}>
         <Img
           src="https://cdn.pixabay.com/photo/2020/02/12/16/13/landscape-4843193_960_720.jpg"
           alt=""

@@ -57,7 +57,7 @@ const MovieListView: React.FC<MovieListViewProps>= () => {
             <MainSectionWrapper>
                 <MovieListConstainer ref={movieListContainer}>
                     {moviesList.map((item) => (
-                    <VideoItem key={item} ref={movieItem} margin={minMargin} />
+                    <VideoItem id={1} key={item} ref={movieItem} margin={minMargin} />
                     ))}
                     {fillerItems && fillerItems.map((item:any) => (
                     <InvisibleMovie key={item} width={movieItem.current?.offsetWidth} margin={minMargin}/>
