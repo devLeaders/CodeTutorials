@@ -24,15 +24,14 @@ const Header = styled.div`
     justify-content:space-around;
     position:fixed;
     top:0;
-`
+`;
 const MainWrapper = styled.div`
     display:flex;
     flex-direction:column;
     @media ${Device.LAPTOP} {
     flex-direction:row;
   }
-`
-
+`;
 const DescriptionWrapper = styled.div`
 display:flex;
 flex-direction:column;

@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   width: 100%;
   @media ${Device.LAPTOP} {
       /* max-width: 443px; */
+      max-width:475px;
       border-top: 2px solid ${Colors.BLACK};
       border-bottom: 2px solid ${Colors.BLACK};
   }
