@@ -33,12 +33,12 @@ const MainWrapper = styled.div`
   }
 `;
 const DescriptionWrapper = styled.div`
-display:flex;
-flex-direction:column;
-justify-content:center;
-justify-content:space-between;
-align-content:center;
-padding: 25px 10px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    justify-content:space-between;
+    align-content:center;
+    padding: 25px 10px;
 @media ${Device.LAPTOP} {
     width: calc(100vw - 443px);
     flex-direction:row;
@@ -54,7 +54,7 @@ const SingleMovieView:React.FC = () => {
                     <NavBarContainer/>
                 </Header>
                 <MainWrapper>
-                    <VideoPlayerComponent />
+                    <VideoPlayerComponent/>
                     <AsideNavigation/>
                 </MainWrapper> 
                 <DescriptionWrapper >

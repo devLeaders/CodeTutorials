@@ -17,7 +17,6 @@ const Wrapper = styled.div`
 @media ${Device.tablet} {
   padding:33px;
 }
-
 `;
 const Title = styled.h3`
   font-size: 15px;
@@ -48,7 +47,6 @@ const desc = 'In sed tristique anthe, vitae eleifend erat. Curabitur euismod ero
 
 const Quiz:React.FC = () => {
     return(
-
         <Wrapper>
             <Title>Sprawdź swoją wiedzę</Title>
             <Desc>{desc}</Desc>
