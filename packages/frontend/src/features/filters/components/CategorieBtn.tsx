@@ -40,7 +40,6 @@ export interface CategorieBtnProps {
 }
 
 const CategorieBtn: React.SFC<CategorieBtnProps> = ({ categorie , id, isActive, handleClick}) => {
-  // const {handleClick, isActive} = useFiltration(id)
   return (
     <Btn onClick={handleClick} isActive={isActive} data-id={id}>
       <CategorieTxt data-id={id}>{categorie}</CategorieTxt>

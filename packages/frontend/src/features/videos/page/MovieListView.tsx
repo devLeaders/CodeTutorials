@@ -1,6 +1,8 @@
 import * as React from "react";
 import {useRef} from 'react';
 import styled from 'styled-components';
+import {useSelector,RootStateOrAny} from "react-redux"
+
 import VideoItem from '../components/movieList/VideoItem';
 import BannerContainer from '../../common/components/layout/banner/BannerContainer';
 import NavBarContainer from '../../common/components/layout/navBar/NavBarContainer';
@@ -44,6 +46,7 @@ const moviesList = ['1','2','3','4','5','6','7','8','9','10','11'];
 export interface MovieListViewProps {containerWidth:number}
 
 const MovieListView: React.FC<MovieListViewProps>= () => {
+    const data = useSelector((state: RootStateOrAny) => state.filters)
     const movieListContainer = useRef<HTMLDivElement>(null);
     const movieItem = useRef<HTMLDivElement>(null);
     const minMargin = 20;
@@ -53,6 +56,7 @@ const MovieListView: React.FC<MovieListViewProps>= () => {
     return(
         <Wrapper>
             <HeaderWrapper>
+                {console.log(data)}
                 <BannerContainer/>
                 <NavBarContainer/>
             </HeaderWrapper>

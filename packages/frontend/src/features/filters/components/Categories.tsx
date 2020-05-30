@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useFormik } from "formik";
 
 import { FontSize } from "../../common/styles/constans/FontSize";
 import { fontWeight } from "../../common/styles/constans/fontWeight";
