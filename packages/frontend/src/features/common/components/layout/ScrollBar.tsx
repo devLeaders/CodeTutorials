@@ -12,7 +12,7 @@ const Wrapper = styled.div<{type?: string}>`
     width: 6px;
     height: 100%;
     border-radius: 20px;
-    background-color: ${Colors.LIGHT_GRAY};
+    background-color: ${Colors.LIGHT_OPACITY_BLACK};
 
     @media ${Device.tablet}{
         display: block;

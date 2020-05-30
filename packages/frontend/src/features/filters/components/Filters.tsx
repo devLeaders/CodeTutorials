@@ -11,12 +11,17 @@ import WatchedCheckbox from "./WatchedCheckbox"
 import Categories from "./Categories"
 
 const Wrapper = styled.div`
-    position: relative;
-    width: 320px;
+    display:none;
+    position: fixed;
+    right:0;
+    height:100vh;
+    width: 475px;
     padding: 24px 24px;
-    @media ${Device.tablet}{
+    background-color: ${Colors.WHITE};
+    border-left: 3px solid ${Colors.BLACK_OPACITY}; 
+    @media ${Device.LAPTOP}{
+        display:block;
         padding: 24px 34px;
-        width: 443px;
         box-shadow: 1px 1px 2px 0px ${Colors.OPACITY_VERY_LIGHT_GRAY};
     }
 `
@@ -24,9 +29,10 @@ const Title = styled.h3`
     font-size: ${FontSize.MEDIUM_BIG};
     font-weight: ${fontWeight.BOLD};
 `
- 
-const Filters: React.SFC = () => {
+
+const Filters: React.FC = () => {
     const [isACtive, setIsActive] = useState(true)
+
     return ( 
         <Wrapper>
             <ScrollBar type="filters"/>
