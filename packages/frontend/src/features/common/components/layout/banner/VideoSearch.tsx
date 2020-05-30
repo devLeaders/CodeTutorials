@@ -47,15 +47,15 @@ const VideoSearch: React.SFC = () => {
     initialValues: { videoTitle: title ? title : "" },
     onSubmit: values => {submit(values.videoTitle)}
   });
-  const { handleFiltration } = useFormDelay(formik, formik.values.videoTitle);
+  const { handleTyping } = useFormDelay(formik, formik.values.videoTitle);
 
-  
+
   return (
     <Form onSubmit={formik.handleSubmit}>
       <Input
         type="text"
         name="videoTitle"
-        onChange={handleFiltration}
+        onChange={handleTyping}
         value={formik.values.videoTitle}
         placeholder="Wyszukaj"
       />

@@ -5,7 +5,7 @@ import _ from "lodash"
 export const useFormDelay = (formik: any, phrase: string) => {
     let timer: number
 
-    const handleFiltration = (e: React.ChangeEvent) => {
+    const handleTyping = (e: React.ChangeEvent) => {
         clearTimeout(timer)
         formik.handleChange(e); 
     }
@@ -15,6 +15,6 @@ export const useFormDelay = (formik: any, phrase: string) => {
     },[phrase])
 
     return{
-        handleFiltration
+        handleTyping
     }
 }
