@@ -1,13 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
 import { useFormik } from "formik";
-import {useDispatch, useSelector, RootStateOrAny} from "react-redux"
 
 import { fontWeight } from "../../../styles/constans/fontWeight";
 import { FontSize } from "../../../styles/constans/FontSize";
 import { Device } from "../../../styles/constans/Device";
-import {useFormDelay} from "../../../../filters/hooks/useFormDelay"
-import {setSearchPhrase} from "../../../../filters/reducer/FiltersActions"
+import { useFormDelay } from "../../../../filters/hooks/useFormDelay";
+import { useFormikData } from "../../../../filters/hooks/useFormikData";
 
 const Form = styled.form`
   display: none;
@@ -43,14 +42,14 @@ const Input = styled.input`
   }
 `;
 const VideoSearch: React.SFC = () => {
-  const data = useSelector((state: RootStateOrAny) => state.filters)
-  const dispatch = useDispatch()
+  const { title, submit } = useFormikData();
   const formik = useFormik({
-    initialValues: { videoTitle: "" },
-    onSubmit: () => {dispatch(setSearchPhrase(formik.values.videoTitle))}
-});
-  const {handleFiltration} = useFormDelay(formik, formik.values.videoTitle)
+    initialValues: { videoTitle: title ? title : "" },
+    onSubmit: values => {submit(values.videoTitle)}
+  });
+  const { handleFiltration } = useFormDelay(formik, formik.values.videoTitle);
 
+  
   return (
     <Form onSubmit={formik.handleSubmit}>
       <Input

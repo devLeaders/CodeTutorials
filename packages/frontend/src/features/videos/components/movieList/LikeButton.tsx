@@ -12,6 +12,8 @@ const Wrapper = styled.button`
   padding: 8px;
   border-radius: 50px;
   border: none;
+  outline: none;
+  cursor: pointer;
   @media ${Device.mobileL} {
     width: 38px;
     height: 38px;

@@ -1,13 +1,10 @@
 import * as React from "react";
-import { useState } from "react";
 import styled from "styled-components";
 
 import { FontSize } from "../../common/styles/constans/FontSize";
 import { Colors } from "../../common/styles/constans/Colors";
 import {Device} from "../../common/styles/constans/Device";
-import {addCategorie, removeCategorie} from "../reducer/FiltersActions"
-import {useDispatch} from "react-redux"
-import {useFiltration} from "../hooks/useFiltration"
+
 
 const Btn = styled.button<{isActive: boolean}>`
   display: flex;
@@ -38,14 +35,15 @@ const CategorieTxt = styled.p`
 export interface CategorieBtnProps {
   categorie: string;
   id: number;
+  isActive: boolean;
+  handleClick: (e: React.MouseEvent) => void
 }
 
-const CategorieBtn: React.SFC<CategorieBtnProps> = ({ categorie , id}) => {
-  const {handleClick, isActive} = useFiltration(id)
-  
+const CategorieBtn: React.SFC<CategorieBtnProps> = ({ categorie , id, isActive, handleClick}) => {
+  // const {handleClick, isActive} = useFiltration(id)
   return (
-    <Btn onClick={handleClick} isActive={isActive}>
-      <CategorieTxt>{categorie}</CategorieTxt>
+    <Btn onClick={handleClick} isActive={isActive} data-id={id}>
+      <CategorieTxt data-id={id}>{categorie}</CategorieTxt>
     </Btn>
   );
 };

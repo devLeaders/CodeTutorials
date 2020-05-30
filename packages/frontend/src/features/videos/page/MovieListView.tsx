@@ -44,10 +44,12 @@ const moviesList = ['1','2','3','4','5','6','7','8','9','10','11'];
 export interface MovieListViewProps {containerWidth:number}
 
 const MovieListView: React.FC<MovieListViewProps>= () => {
-    const movieListContainer = useRef<any>(null);
-    const movieItem = useRef<any>(null);
+    const movieListContainer = useRef<HTMLDivElement>(null);
+    const movieItem = useRef<HTMLDivElement>(null);
     const minMargin = 20;
     const fillerItems = useFillerItems(movieListContainer, movieItem, moviesList.length, minMargin)
+
+    
     return(
         <Wrapper>
             <HeaderWrapper>

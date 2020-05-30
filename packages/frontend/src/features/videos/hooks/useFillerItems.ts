@@ -12,8 +12,6 @@ export const useFillerItems = (movieListContainer:any, movieItem:any, moviesList
     }
     useEffect(() => { 
         handleLastRowFill();
-        window.addEventListener("resize", () => handleLastRowFill());
-        return  window.removeEventListener("resize", () => handleLastRowFill()); 
-    }, [])
+    }, [movieListContainer.current?.offsetWidth])
     return fillerItems
 }
