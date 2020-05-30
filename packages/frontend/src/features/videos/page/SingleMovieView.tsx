@@ -40,7 +40,7 @@ justify-content:space-between;
 align-content:center;
 padding: 25px 10px;
 @media ${Device.LAPTOP} {
-    width: calc(100vw - 475px);
+    width: calc(100vw - 443px);
     flex-direction:row;
     padding: 72px 19px 30px 80px;
   }

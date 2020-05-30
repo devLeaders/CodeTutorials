@@ -7,13 +7,13 @@ import {fontWeight} from '../../../common/styles/constans/fontWeight'
 import {FontSize} from '../../../common/styles/constans/FontSize'
 
 const Wrapper = styled.div`
-margin:25px auto;
-max-width: 482px;
-box-shadow: 0px 0px 2px 2px  ${Colors.OPACITY_GRAY};
-padding: 16px;
-border-radius:20px;
-display:flex;
-flex-direction:column;
+  margin:25px auto;
+  max-width: 482px;
+  box-shadow: 0px 0px 2px 2px  ${Colors.OPACITY_GRAY};
+  padding: 16px;
+  border-radius:20px;
+  display:flex;
+  flex-direction:column;
 @media ${Device.tablet} {
   padding:33px;
 }
@@ -32,16 +32,16 @@ const Desc = styled.p`
   margin-bottom:25px;
 `;
 const Button = styled(NavLink)`
-text-align:center;
-text-decoration:none;
-cursor: pointer;
-padding:10px 30px;
-border-radius:30px;
-font-size:18px;
-font-weight:${fontWeight.BOLD};
-background-color: ${Colors.BLACK};
-color: ${Colors.WHITE};
-margin:0 auto;
+  text-align:center;
+  text-decoration:none;
+  cursor: pointer;
+  padding:10px 30px;  
+  border-radius:30px;
+  font-size:18px;
+  font-weight:${fontWeight.BOLD};
+  background-color: ${Colors.BLACK};
+  color: ${Colors.WHITE};
+  margin:0 auto;
 `;
 
 const desc = 'In sed tristique anthe, vitae eleifend erat. Curabitur euismod eros nec tincidunt molestie. Donec maximus, nunc ut dapibus aliquet, lacus nisl rhoncus nisi';
