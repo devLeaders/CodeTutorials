@@ -1,12 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import {Device} from "../../../common/styles/constans/Device"
+import {Device} from "../../../../common/styles/constans/Device"
 
 const Wrapper = styled.button`
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   width: 30px;
   height: 30px;
   padding: 8px;

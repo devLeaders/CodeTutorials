@@ -10,7 +10,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-color: #222;
   width: 100%;
 `;
 
@@ -42,9 +41,9 @@ const Movies: React.SFC<MoviesProps> = () => {
         <NewContent />
       </Section>
       <SliderSection>
-        <MovieSection title="Polecane dla ciebie" id={1}></MovieSection>
-        <MovieSection title="Akcja" id={2}></MovieSection>
-        <MovieSection title="Dramaty" id={3}></MovieSection>
+        <MovieSection title="Polecane dla ciebie"></MovieSection>
+        <MovieSection title="Akcja"></MovieSection>
+        <MovieSection title="Dramaty"></MovieSection>
       </SliderSection>
     </Wrapper>
   );
