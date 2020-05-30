@@ -1,11 +1,9 @@
-import React, {useRef} from "react";
+import * as React from "react";
 import styled from "styled-components";
 
+import { Device } from "../../../common/styles/constans/Device";
 import VideoItem from "./videoItem/VideoItem";
-import SliderBtns from "./SliderBtns"
-import Slide from "../../providers/Slide";
-import {Device} from "../../../common/styles/constans/Device"
-import {RenderProps} from "../../providers/Slide"
+import SliderBtns from "./SliderBtns";
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -13,17 +11,22 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
-
 const VideoWrapper = styled.div`
   display: flex;
   margin-left: auto;
   margin-right: auto;
   width: 85%;
-  @media ${Device.tablet}{
+  @media ${Device.tablet} {
     width: 95%;
   }
 `;
 
+export interface SliderProps {
+  handleMove: any;
+  margin: any;
+  videoWrapperRef: any;
+  gsapMovies: any;
+}
 const movies = [
   {
     id: 1,
@@ -87,37 +90,30 @@ const movies = [
   },
 ];
 
-
-
-const Slider: React.SFC = () => {
-  const VideoWrapperRef = useRef<HTMLDivElement>(null)
-  const gsapMovies:Array<HTMLDivElement> = [];
-
-  
-    return (
-      <Slide
-        gsapMovies={gsapMovies}
-        videoWrapperRef={VideoWrapperRef}
-        render={({handleMove, margin}: RenderProps) => (
-          <Wrapper>
-            <SliderBtns onClick={handleMove}/>
-            <VideoWrapper ref={VideoWrapperRef}>
-              {movies.map((movie, index) => {
-                return (
-                  <VideoItem
-                    key={movie.id}
-                    id={movie.id}
-                    index={index}
-                    marginLeft={margin}
-                    ref={(video: HTMLDivElement) => (gsapMovies[index] = video)}
-                  ></VideoItem>
-                );
-              })}
-            </VideoWrapper>
-          </Wrapper>
-        )}
-      />
-    );
-}
+const Slider: React.SFC<SliderProps> = ({
+  handleMove,
+  margin,
+  videoWrapperRef,
+  gsapMovies,
+}) => {
+  return (
+    <Wrapper>
+      <SliderBtns onClick={handleMove} />
+      <VideoWrapper ref={videoWrapperRef}>
+        {movies.map((movie, index) => {
+          return (
+            <VideoItem
+              key={movie.id}
+              id={movie.id}
+              index={index}
+              marginLeft={margin}
+              ref={(video: HTMLDivElement) => (gsapMovies[index] = video)}
+            ></VideoItem>
+          );
+        })}
+      </VideoWrapper>
+    </Wrapper>
+  );
+};
 
 export default Slider;
