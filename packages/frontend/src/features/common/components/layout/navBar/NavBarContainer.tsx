@@ -7,12 +7,7 @@ import UserName from "./UserName"
 import UserImg from "./UserImg";
 
 
-const NavBarWrapper = styled.div`
-display:flex;
-flex-direction:column;
-background-color: ${Colors.VERY_LIGHT_GRAY};
-position:relative;
-`
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -21,19 +16,17 @@ const Wrapper = styled.div`
   background-color: ${Colors.VERY_LIGHT_GRAY};
   @media ${Device.LAPTOP} {
     height: 112px;
+    max-width:443px
   }
 `;
 
 const NavBarContainer: React.FC<any> = () => {
   return (
-    <NavBarWrapper>
     <Wrapper>
       <BtnsSection />
       <UserName name="Sebastian"/>
       <UserImg />
     </Wrapper>
-
-     </NavBarWrapper>
   );
 };
 

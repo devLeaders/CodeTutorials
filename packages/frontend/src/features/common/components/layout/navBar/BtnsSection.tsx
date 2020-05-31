@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from "styled-components"
-
 import Btn from "./Btn"
 import { Device } from "../../../styles/constans/Device";
 import  {Colors}  from "../../../styles/constans/Colors";
@@ -24,14 +23,14 @@ const BtnsSection = styled.section`
     border-left: 3px solid ${Colors.BLACK_OPACITY}; 
     }
 `
- 
+
 const IconsSection: React.SFC = () => {
     return (  
         <BtnsSection>
-            <Btn src="/img/navBarImg/teams.svg"/>
-            <Btn src="/img/navBarImg/cos.svg"/>
-            <Btn src="/img/navBarImg/filters.svg"/>
-            <Btn src="/img/navBarImg/allerts.svg"/>
+            <Btn src="/img/navBarImg/teams.svg" value="teams"/>
+            <Btn src="/img/navBarImg/cos.svg" value="cos"/>
+            <Btn src="/img/navBarImg/filters.svg" value="filters"/>
+            <Btn src="/img/navBarImg/allerts.svg" value="allerts"/>
         </BtnsSection>
     );
 }

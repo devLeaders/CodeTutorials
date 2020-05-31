@@ -9,8 +9,8 @@ import Title from "./Title"
 
 const Wrapper = styled.div`
   width: 100%;
-  max-width: 443px;
   @media ${Device.LAPTOP} {
+      width: 443px;
       border-top: 2px solid ${Colors.BLACK};
       border-bottom: 2px solid ${Colors.BLACK};
   }

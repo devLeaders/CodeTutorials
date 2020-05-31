@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import VideoItem from '../components/movieList/VideoItem';
 import BannerContainer from '../../common/components/layout/banner/BannerContainer';
 import NavBarContainer from '../../common/components/layout/navBar/NavBarContainer';
-import Filters from '../../filters/components/Filters';
+// import Filters from '../../filters/components/Filters';
 import {Device} from '../../common/styles/constans/Device';
 import {useFillerItems} from '../hooks/useFillerItems';
+import Aside from '../../common/components/layout/aside/Aside';
 
 const Wrapper = styled.div`
 display:flex;
@@ -28,7 +29,7 @@ display:flex;
 flex-wrap:wrap;
 justify-content:space-around;
  @media ${Device.LAPTOP} {
-    width:calc(100% - 475px);
+    width:calc(100% - 443px);
   }
 `
 const MainSectionWrapper = styled.div`
@@ -63,7 +64,8 @@ const MovieListView: React.FC<MovieListViewProps>= () => {
                     <InvisibleMovie key={item} width={movieItem.current?.offsetWidth} margin={minMargin}/>
                 ))}
                 </MovieListConstainer>
-               <Filters/>
+               {/* <Filters/> */}
+               <Aside/>
             </MainSectionWrapper >
         </Wrapper>
     )

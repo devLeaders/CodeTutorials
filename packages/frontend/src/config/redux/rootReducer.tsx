@@ -1,6 +1,8 @@
 
 import { combineReducers } from 'redux'
-
-const rootReducer = combineReducers({})
+import {asideTypeReducer} from './reducers/asideTypeReducer'
+const rootReducer = combineReducers({
+    asideType:asideTypeReducer,
+})
 
 export default rootReducer
