@@ -11,7 +11,11 @@ import {Device} from '../../../styles/constans/Device';
 const Wrapper = styled.div`
    display:none;
     @media ${Device.LAPTOP} {
+    display:block;
     max-width:443px;
+    position:fixed;
+    top:112px;
+    right:0;
   }
 `
 const TemporaryTeamDiv = styled.div`
