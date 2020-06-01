@@ -26,9 +26,14 @@ export interface BtnProps {
 }
 
 const Btn: React.SFC<BtnProps> = ({ src, value }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(changeType(value))
+  }
+
   return (
-    <Wrapper onClick={() => dispatch(changeType(value))}>
+    <Wrapper onClick={handleClick}>
       <BtnImg src={src} />
     </Wrapper>
   );

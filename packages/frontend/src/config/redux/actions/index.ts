@@ -1,6 +1,10 @@
+enum Type {
+    CHANGE_TYPE = 'CHANGE_TYPE'
+}
+
 export const changeType = (type:any) => {
     return {
-        type: 'CHANGE_TYPE',
+        type: Type.CHANGE_TYPE,
         payload: type,
     }
 };

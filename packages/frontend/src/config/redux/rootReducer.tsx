@@ -1,8 +1,7 @@
-
 import { combineReducers } from 'redux'
-import {asideTypeReducer} from './reducers/asideTypeReducer'
+import {typeReducer} from './reducers/typeReducer';
 const rootReducer = combineReducers({
-    asideType:asideTypeReducer,
+    type:typeReducer,
 })
 
 export default rootReducer
