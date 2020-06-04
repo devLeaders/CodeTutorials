@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { View, ScrollView, AsyncStorage} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { HeaderTitle } from '../components/Movies/HeaderTitle';
-import { HeaderLeft } from '../components/Movies/HeaderLeft';
-import { HeaderRight } from '../components/Movies/HeaderRight';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
 import {  
   ButtonFilter, 
@@ -25,16 +22,6 @@ import { NavProps } from '../../../config/routing/ParamList';
 
 
 export class  MoviesList extends React.Component{
-  static navigationOptions = () => {
-    return {
-      headerStyle: {
-        backgroundColor: '#f0f2fa',
-      },
-      headerTitle: () => <HeaderTitle/>,
-      headerLeft: () => <HeaderLeft/>,
-      headerRight: () => <HeaderRight/>,
-    };
-  };
 
   async componentDidMount() {
     const token = await AsyncStorage.getItem("token");

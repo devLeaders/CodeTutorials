@@ -33,7 +33,7 @@ const SignUpOpacity = styled.TouchableOpacity({
 export default class SignInScreen extends React.Component<any> {
     static navigationOptions = () => {
         return{
-        headerShown: null,   
+        headerShown : false
         }
     }
 

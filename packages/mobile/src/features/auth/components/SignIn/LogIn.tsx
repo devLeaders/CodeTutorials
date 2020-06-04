@@ -61,7 +61,6 @@ export interface LogInProps {
 class LogIn extends React.Component<LogInProps> {
     loginSubmit = async (value: any, action: any) => {
         console.log(value);
-
         // const dataResponse = await Axios.post('/auth/signin', {
         //     "email": `${value.email}`,
         //     "password": `${value.password}`
@@ -72,7 +71,7 @@ class LogIn extends React.Component<LogInProps> {
             //Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             
             //zabezpieczyc wywolanie po nieodpowiednim statusie, 
-            this.props.navigation.navigate(NavigationName.BOTTOMMENU);
+            this.props.navigation.navigate(NavigationName.MENU);
     }
 
     render() {

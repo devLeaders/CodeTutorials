@@ -22,6 +22,7 @@ import { Search } from '../../features/videos/page/Search';
 import { Tasks } from '../../features/videos/page/Tasks';
 import { Alert } from '../../features/videos/page/Alert';
 import {HomeStackScreen} from './AppNavigation'
+import { NavOption } from '../../features/videos/components/Movies/NavOption'
 
 
 const Tabs = createBottomTabNavigator();
@@ -45,7 +46,6 @@ const kvArray = [
 const myMap = new Map(kvArray as any);
 
 export default class TabNavigation extends Component {
-
   render() {
     return (
         <Tabs.Navigator
@@ -60,10 +60,10 @@ export default class TabNavigation extends Component {
                 style: {backgroundColor: 'black'}
               }}
             >
-                <Tabs.Screen name={NavigationName.MENU} options={{title: NavigationName.MENU}} component={HomeStackScreen} />
+                <Tabs.Screen name={NavigationName.MENU} options={{title: 'Menu'}} component={HomeStackScreen} />
                 <Tabs.Screen name={NavigationName.TEAMS} options={{title: 'Zespoły'}} component={TeamsScreen} />
                 <Tabs.Screen name={NavigationName.TASKS} options={{title: 'Zadania'}} component={Tasks} />
-                <Tabs.Screen name={NavigationName.PLAYLIST} options={{title: 'Playlista'}} component={MoviesList} />
+                <Tabs.Screen name={NavigationName.PLAYLIST} options={NavOption.navigationOptions} component={MoviesList} />
                 <Tabs.Screen name={NavigationName.ALERT} options={{title: 'Alerty'}} component={Alert} />
                 <Tabs.Screen name={NavigationName.SEARCH} options={{title: 'Szukaj'}}  component={Search} />
             </Tabs.Navigator>
