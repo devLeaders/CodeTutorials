@@ -38,7 +38,7 @@ export class DescriptionLeft extends React.Component<any,DesLeft> {
     })
   }
 
-  desLeft = ()=>{
+  desLeft = (item)=>{
     return null;
   }
 
