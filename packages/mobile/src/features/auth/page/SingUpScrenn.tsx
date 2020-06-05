@@ -16,9 +16,6 @@ const Section = styled.View`
 `;
 
 export default class SignUpScreen extends React.Component<any> {
-  static navigationOptions = {
-      headerShown: null,
-  };
   render(){
     return (
       <ScrollView contentContainerStyle={{flexGrow: 1, justifyContent: 'center'}}>

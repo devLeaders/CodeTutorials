@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 //navigation import
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,25 +12,25 @@ import SignInScreen from '../../features/auth/page/SignInScrren';
 import SignUpScreen from '../../features/auth/page/SingUpScrenn';
 import TabNavigation from './TabNavigation';
 
-import { NavOption } from '../../features/videos/components/Movies/NavOption';
+import { NavOption } from '../../features/common/components/NavOption';
 
 const HomeStack = createStackNavigator();
 const AuthStack = createStackNavigator();
 
 export const HomeStackScreen = () => (
     <HomeStack.Navigator>
-        <HomeStack.Screen name={NavigationName.HOME} component={HomeScreen}/> 
-        <HomeStack.Screen name={NavigationName.MOVIELIST} options={NavOption.navigationOptions} component={MoviesList}/>
+        <HomeStack.Screen name={NavigationName.MOVIELIST} options={NavOption.optionsMovieList} component={MoviesList}/>
         <HomeStack.Screen name={NavigationName.SINGLEMOVIE} component={SingleMovie2}/>
+        <HomeStack.Screen name={NavigationName.HOME} component={HomeScreen}/> 
     </HomeStack.Navigator>
  )
 
 export const AuthStackScreen = () => (
     <NavigationContainer>
         <AuthStack.Navigator>
-            <AuthStack.Screen name={NavigationName.SIGNINSCREEN} component={SignInScreen}/>
-            <AuthStack.Screen name={NavigationName.SINGUP}  component={SignUpScreen}/>
-            <AuthStack.Screen name={NavigationName.MENU}  options={{ headerShown: false }} component={TabNavigation}/>
+            <AuthStack.Screen name={NavigationName.SIGNINSCREEN} options={NavOption.optionsSingIn} component={SignInScreen}/>
+            <AuthStack.Screen name={NavigationName.SINGUP} options={NavOption.optionsSingUp}  component={SignUpScreen}/>
+            <AuthStack.Screen name={NavigationName.MENU}  options={NavOption.optionsTabNavigator} component={TabNavigation}/>
         </AuthStack.Navigator>
     </NavigationContainer>
     

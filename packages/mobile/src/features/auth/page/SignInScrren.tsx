@@ -31,18 +31,15 @@ const SignUpOpacity = styled.TouchableOpacity({
     });
       
 export default class SignInScreen extends React.Component<any> {
-    static navigationOptions = () => {
-        return{
-        headerShown : false
-        }
-    }
+    
+    public navToSingUp = () => this.props.navigation.navigate(NavigationName.SINGUP)
 
     render(){
         return(
             <Wrapper>
                 <SignInHeader title={"Sign In"} />
                 <LogIn navigation={this.props.navigation} />
-                <SignUpOpacity onPress={() => this.props.navigation.navigate(NavigationName.SINGUP)}>
+                <SignUpOpacity onPress={this.navToSingUp}>
                     <SignUpText>Don't have an account?</SignUpText>
                 </SignUpOpacity>
                 <OrText>———OR———</OrText>

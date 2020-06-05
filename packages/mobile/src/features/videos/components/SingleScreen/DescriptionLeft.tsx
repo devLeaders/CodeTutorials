@@ -2,11 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
-import { MovieDescript } from './MoviesType';
+import { MovieDescript, MoviesListExpandedType } from './MoviesType';
 import {
   ImageList,
   ImageItem,
-  Separator,
   ViewSeparator,
 } from './SingleMovieStyle2';
 import { GetVideosListExpandedV } from '../../action/conector';
@@ -14,7 +13,7 @@ import { GetVideosListExpandedV } from '../../action/conector';
 
 
 type DesLeft = {
-  listVideos: Array<MovieDescript>
+  listVideos: Array<MoviesListExpandedType>
 }
 
 export class DescriptionLeft extends React.Component<any,DesLeft> {
@@ -23,8 +22,6 @@ export class DescriptionLeft extends React.Component<any,DesLeft> {
     this.state = {
       listVideos : []
     }
-    this.Separator = this.Separator.bind(this);
-    this.ImgeSlaider = this.ImgeSlaider.bind(this);
   }
 
   public Separator = () => (<ViewSeparator/>)
@@ -35,15 +32,17 @@ export class DescriptionLeft extends React.Component<any,DesLeft> {
   )
 
   componentDidMount(){
-    const listVideos:any =  GetVideosListExpandedV();
+    const listVideos =  GetVideosListExpandedV();
     this.setState ({
       listVideos
     })
   }
 
-  desLeft = (item:any)=>{
+  desLeft = ()=>{
     return null;
   }
+
+  public renderItem = ({item}) => this.desLeft(item)
 
   render(){
         return (
@@ -57,7 +56,7 @@ export class DescriptionLeft extends React.Component<any,DesLeft> {
               showsHorizontalScrollIndicator={false}
               horizontal={true}
               data={this.state.listVideos}
-              renderItem={({item}) => this.desLeft(item)}
+              renderItem={this.renderItem}
               keyExtractor={ item => item.id}
             />
           </ImageList>

@@ -23,8 +23,6 @@ export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
     this.state = {
       listVideos : []
     }
-    this.separator = this.separator.bind(this);
-    this.imgeSlaider = this.imgeSlaider.bind(this);
   }
 
   public separator = () => (<ViewSeparator/>)
@@ -48,6 +46,8 @@ export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
     })
   }
 
+  private renderIt = ({item}) => this.imgeSlaider(item)
+
   render(){
         return(
             <FlatList 
@@ -58,7 +58,7 @@ export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
             showsHorizontalScrollIndicator={false}
             horizontal={true}
             data={this.state.listVideos} 
-            renderItem={({item}) => this.imgeSlaider(item)} 
+            renderItem={this.renderIt} 
             keyExtractor={ item => item.id }
           /> 
         )
