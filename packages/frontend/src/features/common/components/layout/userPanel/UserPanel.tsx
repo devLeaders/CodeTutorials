@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   width: 320px;
   padding: 21px 14px;
   box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.02);
-  @media ${Device.tablet} {
+  @media ${Device.TABLET} {
     width: 443px;
     padding: 24px 37px;
   }

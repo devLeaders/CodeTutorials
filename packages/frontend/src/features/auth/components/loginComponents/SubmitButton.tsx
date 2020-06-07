@@ -11,8 +11,8 @@ const Btn = styled.button`
   color: ${Colors.nGrey};
   width: 100%;
   background-color: ${Colors.nRed};
-  font-family:${FontFamily.openSansFont};
-  font-size: ${FontSize.subtitleMobile};
+  font-family:${FontFamily.MONTSERRAT};
+  font-size: ${FontSize.MEDIUM};
   text-decoration: none;
   text-align: right;
   border: none;

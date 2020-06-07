@@ -16,7 +16,7 @@ const VideoWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 85%;
-  @media ${Device.tablet} {
+  @media ${Device.TABLET} {
     width: 95%;
   }
 `;

@@ -17,10 +17,10 @@ const Wrapper = styled(NavLink)<{marginLeft?: number, margin?:number}>`
   box-shadow: 1px 1px 2px 0px ${Colors.LIGHT_OPACITY_BLACK};
   min-width: 240px;
   /* margin: ${({margin}) => `0 ${margin}px 49px ${margin}px `}; */
-  @media ${Device.mobileM} {
+  @media ${Device.MOBILE_M} {
     min-width: 260px;
   }
-  @media ${Device.tablet} {
+  @media ${Device.TABLET} {
     min-width: 331px;
   }
 `;
@@ -28,7 +28,7 @@ const Img = styled.img`
   height: 145px;
   width: 100%;
   border-radius: 2px;
-  @media ${Device.mobileL} {
+  @media ${Device.MOBILE_L} {
     height: 177px;
     width: 330px;
   }

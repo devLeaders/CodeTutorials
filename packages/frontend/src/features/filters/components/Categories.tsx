@@ -11,14 +11,14 @@ const BtnWrapper = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 21px;
-    @media ${Device.tablet}{
+    @media ${Device.TABLET}{
         width: 334px;
     }
 `
 
 const Title = styled.h3`
     margin-top: 35px;
-    font-size: ${FontSize.MEDIUM};
+    font-size: ${FontSize.XXMEDIUM};
     font-weight: ${fontWeight.SEMI_BOLD};
 `
 

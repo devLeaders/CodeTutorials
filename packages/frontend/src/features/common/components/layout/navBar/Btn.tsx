@@ -11,7 +11,7 @@ const Wrapper = styled.button`
   cursor: pointer;
 `;
 const BtnImg = styled.img`
-  @media ${Device.tablet} {
+  @media ${Device.TABLET} {
     width: 28px;
   }
   @media ${Device.LAPTOP} {

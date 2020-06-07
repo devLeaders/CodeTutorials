@@ -1,9 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
 import {Colors} from "../../../common/styles/constans/Colors";
-import Fonts from "../../../common/styles/constans/Fonts";
 import Slider from "./SliderContainer";
 import { Device } from "../../../common/styles/constans/Device";
+import {FontSize} from "../../../common/styles/constans/FontSize"
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,12 +15,12 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: ${Fonts.medium};
+  font-size: ${FontSize.XXXXMEDIUM};
   margin-left: 15px;
   align-self: flex-start;
   color: ${Colors.nLightGrey};
-  @media ${Device.tablet} {
-    font-size: ${Fonts.desktopMedium};
+  @media ${Device.TABLET} {
+    font-size: ${FontSize.XMEDIUM_L};
   }
 `;
 

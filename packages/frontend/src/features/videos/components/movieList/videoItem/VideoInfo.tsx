@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   padding-top: 10px;
   padding-left: 5px;
-  @media ${Device.mobileL} {
+  @media ${Device.MOBILE_L} {
     height: 115px;
     padding-top:16px;
     padding-left: 9px;

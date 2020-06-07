@@ -20,7 +20,7 @@ const Wrapper = styled.div`
         display: flex;
       
     }
-    @media ${Device.laptopL}{
+    @media ${Device.LAPTOP_L}{
         width: 401px;
 
     }
@@ -31,12 +31,12 @@ const Lens = styled.img`
 `
 const Input = styled.input`
     outline: none;
-    font-size: ${FontSize.NORMAL};
+    font-size: ${FontSize.MEDIUM};
     font-weight: ${fontWeight.SEMI_BOLD};
     width: 120px;
     height: 24px;
     border: none;
-    @media ${Device.laptopL}{
+    @media ${Device.LAPTOP_L}{
         width: 250px;
     }
 `
