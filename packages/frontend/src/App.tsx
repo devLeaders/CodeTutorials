@@ -19,10 +19,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-
-
-
-
 const App: React.FC = () => {
   return (
     <BrowserRouter>

@@ -17,9 +17,7 @@ const Wrapper = styled.div`
     @media ${Device.TABLET_L} {
         padding: 56px 22px;
     }
-`
-
-
+`;
 
 const desc = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis saepe quis pariatur blanditiis sapiente unde voluptas ullam, repellendus non est consequuntur enim, debitis aliquid labore facilis qui vel laborum magni."
 
