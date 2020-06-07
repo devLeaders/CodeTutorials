@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import Routing from "./config/routing/Routing";
-import  { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body{
@@ -16,15 +16,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-
-
-
-
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <GlobalStyle />
-          <Routing />
+      <Routing />
     </BrowserRouter>
   );
 };
