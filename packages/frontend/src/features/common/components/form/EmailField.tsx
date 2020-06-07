@@ -11,8 +11,7 @@ const Input = styled.input`
   border-bottom: 2px solid ${Colors.nGrey};
   padding-bottom: 8px;
   margin-bottom: 30px;
-  font-family: ${FontFamily.openSansFont};
-  font-size: ${FontSize.paragraphMobile};
+  font-size: ${FontSize.XXXXMEDIUM};
   background-image: url('img/email.svg');
   background-position: left 20%;
   background-size: 17px 17px;

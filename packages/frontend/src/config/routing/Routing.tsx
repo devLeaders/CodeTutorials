@@ -10,8 +10,6 @@ const Routing: React.FC = () => {
     <Switch>
       <Route path={`${NAVIGATION.MOVIES}/:id`} exact component={SingleMoviePage} />
       <Route path={NAVIGATION.MOVIELIST} exact component={MovieListView} />
-      <Route path={NAVIGATION.MOVIES} exact component={Movies} />
-      <Route path='/movie' exact component={SingleMovieView}/>
       <Route component={Movies} />
     </Switch>
   );

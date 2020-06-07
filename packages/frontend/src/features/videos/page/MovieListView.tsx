@@ -1,7 +1,7 @@
 import * as React from "react";
 import {useRef} from 'react';
 import styled from 'styled-components';
-import VideoItem from '../components/movieList/VideoItem';
+import VideoItem from "../components/movieList/videoItem/VideoItem"
 import BannerContainer from '../../common/components/layout/banner/BannerContainer';
 import NavBarContainer from '../../common/components/layout/navBar/NavBarContainer';
 import Filters from '../../filters/components/Filters';
@@ -57,7 +57,7 @@ const MovieListView: React.FC<MovieListViewProps>= () => {
             <MainSectionWrapper>
                 <MovieListConstainer ref={movieListContainer}>
                     {moviesList.map((item) => (
-                    <VideoItem key={item} ref={movieItem} margin={minMargin} />
+                    <VideoItem id={1} key={item} ref={movieItem} margin={minMargin} />
                     ))}
                     {fillerItems && fillerItems.map((item:any) => (
                     <InvisibleMovie key={item} width={movieItem.current?.offsetWidth} margin={minMargin}/>

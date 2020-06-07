@@ -26,7 +26,6 @@ const AsideNavigation: React.SFC = () => {
   const [isActive, setIsActive] = useState("Opis");
 
   const handleClick = useCallback((e: any) => {
-    console.log(e.target.title)
     setIsActive(e.target.title)
   }, [])
   

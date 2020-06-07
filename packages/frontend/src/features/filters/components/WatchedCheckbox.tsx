@@ -27,9 +27,9 @@ const Checkbox = styled.input<{isActive: boolean}>`
     }
 `
 const Title = styled.p`
-    font-size: ${FontSize.NORMAL};
+    font-size: ${FontSize.MEDIUM};
     font-weight: ${fontWeight.SEMI_BOLD};
-    @media ${Device.tablet}{
+    @media ${Device.TABLET}{
         font-size: ${FontSize.MEDIUM};
     }
 `

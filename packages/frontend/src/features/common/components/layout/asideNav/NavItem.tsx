@@ -28,8 +28,8 @@ const ListItem = styled.li<{isActive: string, title: string}>`
 const Title = styled.h4`
     font-size: ${FontSize.XSMALL};
     font-weight: ${fontWeight.BOLD};
-    @media ${Device.tablet} {
-        font-size: ${FontSize.MEDIUM_BIG};
+    @media ${Device.TABLET} {
+        font-size: ${FontSize.XXMEDIUM_L};
     }
 `
 export interface NavItemProps {
