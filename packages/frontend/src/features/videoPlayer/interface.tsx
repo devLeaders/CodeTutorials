@@ -7,7 +7,7 @@ import VideoPlayerControls from "./VideoPlayerControls";
 import SmallModeInterface from "./SmallModeInterface"
 import { useSelector } from "react-redux"
 import { getMovieState } from "./actions/ReduxActions"
-import { device } from "../../constans/device"
+import { Device } from "../common/styles/constans/Device"
 
 
 const InterfaceWrapper = styled.div<{ paused: boolean; small: string | undefined }>`
@@ -19,13 +19,13 @@ const InterfaceWrapper = styled.div<{ paused: boolean; small: string | undefined
     transition: all 0.2s;
     transform: ${props => (props.paused && !props.small ? "translateY(0)" : "translateY(100%)")};
     margin-top: 0;
-    @media ${device.MOBILE_L}{
+    @media ${Device.MOBILE_L}{
         height: 35px;
         }
-    @media ${device.TABLET}{
+    @media ${Device.TABLET}{
         height: 50px;
         }
-    @media ${device.LAPTOP}{
+    @media ${Device.LAPTOP}{
         height: 80px;
     }
 `;

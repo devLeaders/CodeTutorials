@@ -1,9 +1,9 @@
 import { refsStore } from "../refs.store"
 import { ButtonTypes } from "../enums";
 import { playPauseVideo, videoResize, rewindVideoTime } from "./videoPlayerActions"
-import { changeState, setIsFullscreen, setTime } from "../../../store/singleMovie/actions"
-import { MouseEvent, ReducerAction } from "react";
-import { RootStateOrAny, useDispatch } from "react-redux";
+import { changeState, setIsFullscreen, setTime } from "../../../config/redux/singleMovie/actions"
+import { MouseEvent} from "react";
+import { RootStateOrAny} from "react-redux";
 
 
 export const runVideoAction = (

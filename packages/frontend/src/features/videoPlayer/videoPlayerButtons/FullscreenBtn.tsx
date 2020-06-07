@@ -15,15 +15,14 @@ import { useClickHandler } from "../actions/EventController"
 
 const FullscreenBtn: React.SFC = () => {
     const isFullscreen = useSelector(state => getMovieState(state).isFullscreen)
-    const VideoType = useSelector(state => getMovieState(state).VideoType)
     const isActive = checkButtonType(ButtonTypes.FULLSCREEN, isFullscreen)
     const toggleFullscreen = useClickHandler(ButtonTypes.FULLSCREEN, isFullscreen)
 
 
     return (
         <NewVideoPlayerBtn
-            mainImg="/icons/fullscreen.svg"
-            afterClickImg="/icons/small-screen.svg"
+            mainImg="/img/videoPlayer/fullscreen.svg"
+            afterClickImg="/img/videoPlayer/small-screen.svg"
             videoState={isActive}
             runVideoAction={toggleFullscreen}
         />

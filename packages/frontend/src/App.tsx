@@ -1,48 +1,34 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-
-import Navigation from "./layouts/Navigation";
-import Routing from "./layouts/Routing";
-import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
-import VideoPlayer from "./features/videoPlayer/VideoPlayerComponent"
+import Routing from "./config/routing/Routing";
+import  { createGlobalStyle } from "styled-components";
+import VideoPlayerComponent from "./features/videoPlayer/VideoPlayerComponent"
 
 const GlobalStyle = createGlobalStyle`
-  @import url('"https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap"');
-
   body{
-    font-family: 'Bebas Neue', cursive; 
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     user-select: none;
   }
+  button{
+    font-family: 'Montserrat', sans-serif;
+  }
+  *, *::before, *::after {
+      box-sizing: border-box;
+  }
 `;
 
-const StyledApp = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
-const StyledNav = styled.nav`
-  display: flex;
-  justify-content: center;
-`;
 
-const StyledMain = styled.div`
-  flex-grow: 1;
-  text-align: center;
-`;
+
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <StyledApp className="app">
-        <StyledMain>
           <Routing />
-        </StyledMain>
-      </StyledApp>
-      <VideoPlayer small="small" />
+      <VideoPlayerComponent small="small"/>
     </BrowserRouter>
   );
 };

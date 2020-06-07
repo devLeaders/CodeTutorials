@@ -3,13 +3,12 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux"
 
 import { refsStore } from "./refs.store"
-import { breakPoint } from "../../utils/breakPoint";
 import Player from "./VideoPlayer"
 import Interface from "./interface"
 import { getMovieState } from "./actions/ReduxActions"
 import { SmallInterface } from "./SmallModeInterface"
 import { VideoPlayer } from "./VideoPlayer"
-import { device } from "../../constans/device"
+import { Device } from "../common/styles/constans/Device"
 
 
 const VideoPlayerContainer = styled.div<{ minimized: boolean, small: string | undefined }>`
@@ -17,7 +16,7 @@ const VideoPlayerContainer = styled.div<{ minimized: boolean, small: string | un
   position: ${props => props.minimized && props.small ? "fixed" : "relative"};
   right: ${props => props.minimized && props.small ? "0" : "0"};
   bottom: ${props => props.minimized && props.small ? "0" : "0"};
-  max-width: ${props => props.minimized && props.small ? "200px" : ""};
+  width: ${props => props.minimized && props.small ? "200px" : ""};
   overflow: hidden;
   background-color: #222;
   &:hover ${VideoPlayer}{
@@ -32,10 +31,10 @@ const VideoPlayerContainer = styled.div<{ minimized: boolean, small: string | un
         transform: ${props => !props.small ? "translateY(0)" : ''};
     }
   }
-  @media ${device.TABLET} {
+  @media ${Device.TABLET} {
     min-width: ${props => props.minimized && props.small ? "400px" : ""}; 
     }
-    @media ${device.LAPTOP} {
+    @media ${Device.LAPTOP} {
     min-width: ${props => props.minimized && props.small ? "600px" : ""}; 
     }
 
@@ -48,12 +47,10 @@ interface VideoPlayerComponentProps {
 const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
   const isMinimized: boolean = useSelector(state => getMovieState(state).isMinimized)
   const videoContainerRef: any = useRef();
-  if (props.small) {
-    refsStore.RefsSmall[1] = videoContainerRef
-  } else {
-    refsStore.Refs[1] = videoContainerRef;
-  }
-
+  props.small ? 
+  refsStore.RefsSmall[1] = videoContainerRef
+  :refsStore.Refs[1] = videoContainerRef;
+  
 
   return (
     <VideoPlayerContainer

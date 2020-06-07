@@ -19,8 +19,8 @@ const MuteBtn: React.SFC = () => {
 
     return (
         <NewVideoPlayerBtn
-            mainImg="/icons/un-mute.svg"
-            afterClickImg="/icons/mute.svg"
+            mainImg="/img/videoPlayer/un-mute.svg"
+            afterClickImg="/img/videoPlayer/mute.svg"
             videoState={isActive}
             runVideoAction={muteUnmute}
 

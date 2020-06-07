@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { useSelector, useDispatch } from "react-redux"
 import { getMovieState } from "./actions/ReduxActions"
-import { device } from "../../constans/device"
+import { Device } from "../common/styles/constans/Device"
 import { useTimeBarAction } from "./actions/EventController"
 
 const Wrapper = styled.div<{ small: string | undefined }>`
@@ -15,11 +15,11 @@ const Wrapper = styled.div<{ small: string | undefined }>`
   background-color: black;
   cursor: pointer;
   transform: translateY(-100%);
-  @media ${device.TABLET}{
+  @media ${Device.TABLET}{
     top: 100%;
     height: 3px;
   }
-  @media ${device.LAPTOP}{
+  @media ${Device.LAPTOP}{
     height: 4px;
   }
 `;
@@ -27,10 +27,10 @@ const TimePlayedBar = styled.div<{ videoTime: any }>`
   height: 2px;
   width: ${props => (props.videoTime ? props.videoTime : 0)};
   background-color: purple;
-  @media ${device.TABLET}{
+  @media ${Device.TABLET}{
     height: 3px;
   }
-  @media ${device.LAPTOP}{
+  @media ${Device.LAPTOP}{
     height: 4px;
   }
 `;

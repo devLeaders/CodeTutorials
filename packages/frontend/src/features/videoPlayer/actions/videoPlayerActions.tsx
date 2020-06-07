@@ -1,4 +1,4 @@
-import { changeState, setIsFullscreen, setTime } from "../../../store/singleMovie/actions"
+import { changeState, setIsFullscreen, setTime } from "../../../config/redux/singleMovie/actions"
 
 export const playPauseVideo = (video: HTMLVideoElement, isPaused: boolean) => {
     if (isPaused) {

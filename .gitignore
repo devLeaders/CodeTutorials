@@ -1,4 +1,5 @@
 node_modules/**/*
+lib/**/*
 .expo/*
 npm-debug.*
 *.jks
@@ -13,4 +14,3 @@ web-report/
 # macOS
 .DS_Store
 lerna-debug.log
-package-lock.json

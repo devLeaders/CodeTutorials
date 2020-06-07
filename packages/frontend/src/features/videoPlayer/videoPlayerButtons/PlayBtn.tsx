@@ -27,8 +27,8 @@ const PlayBtn: React.SFC<PlayBtnProps> = (props) => {
 
     return (
         <NewVideoPlayerBtn
-            mainImg="/icons/play.svg"
-            afterClickImg="/icons/pause.svg"
+            mainImg="/img/videoPlayer/play.svg"
+            afterClickImg="/img/videoPlayer/pause.svg"
             videoState={isActive}
             runVideoAction={runPlay}
             small={small}

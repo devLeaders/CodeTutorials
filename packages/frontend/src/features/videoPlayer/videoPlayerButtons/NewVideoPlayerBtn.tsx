@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { device } from "../../../constans/device"
+import { Device } from "../../common/styles/constans/Device"
 
 
 const ToogleButton = styled.button`
@@ -17,17 +17,17 @@ const ToogleButton = styled.button`
 const BigModeButton = styled(ToogleButton)`
     margin-right: 6px;
     width: 12px;
-   @media ${device.MOBILE_M}{
+   @media ${Device.MOBILE_M}{
       width: 14px
     }
-    @media ${device.MOBILE_L}{
+    @media ${Device.MOBILE_L}{
       width: 18px
     }
-    @media ${device.TABLET}{
+    @media ${Device.TABLET}{
       width: 27px;
       margin-right: 15px;
     }
-    @media ${device.LAPTOP}{
+    @media ${Device.LAPTOP}{
       width: 35px;
       margin-right: 20px;
     }

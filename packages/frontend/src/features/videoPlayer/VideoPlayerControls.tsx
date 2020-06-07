@@ -6,7 +6,7 @@ import MuteBtn from "./videoPlayerButtons/MuteBtn"
 import PlayBtn from "./videoPlayerButtons/PlayBtn"
 import FullscreenBtn from "./videoPlayerButtons/FullscreenBtn"
 import MinimizeBtn from "./videoPlayerButtons/MinimizeBtn"
-import { device } from "../../constans/device"
+import { Device } from "../common/styles/constans/Device"
 
 const ControlsWrapper = styled.div`
   display: flex;
@@ -21,10 +21,10 @@ const LeftPanel = styled.div`
   flex-direction: row;
   align-items: center;
   margin-left: 10px;
-  @media ${device.TABLET}{
+  @media ${Device.TABLET}{
       margin-left: 12px;
   }
-  @media ${device.LAPTOP}{
+  @media ${Device.LAPTOP}{
       margin-left: 17px;
   }
 `;
@@ -34,10 +34,10 @@ const RightPanel = styled.div`
   flex-direction: row;
   align-items: center;
   margin-right: 10px;
-  @media ${device.TABLET}{
+  @media ${Device.TABLET}{
     margin-right: 12px;
   }
-  @media ${device.LAPTOP}{
+  @media ${Device.LAPTOP}{
     margin-right: 17px;
   }
 `;

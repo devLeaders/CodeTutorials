@@ -24,8 +24,8 @@ const MinimizeBtn: React.SFC<MinimizeBtnProps> = (props) => {
 
     return (
         <NewVideoPlayerBtn
-            mainImg="/icons/small-mode.svg"
-            afterClickImg="/icons/normal-screen.svg"
+            mainImg="/img/videoPlayer/small-mode.svg"
+            afterClickImg="/img/videoPlayer/normal-screen.svg"
             videoState={isActive}
             runVideoAction={toggleSmallMode}
             small={small}
