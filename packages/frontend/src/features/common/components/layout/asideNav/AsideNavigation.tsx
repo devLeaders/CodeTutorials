@@ -9,13 +9,13 @@ import Title from "./Title"
 const Wrapper = styled.div`
   width: 100%;
   @media ${Device.LAPTOP} {
-      /* max-width: 443px; */
-      max-width:475px;
+      position:fixed;
+      right:0;
+      max-width: 443px;
       border-top: 2px solid ${Colors.BLACK};
       border-bottom: 2px solid ${Colors.BLACK};
   }
 `;
-
 const Nav = styled.ul`
   display: flex;
 `;    

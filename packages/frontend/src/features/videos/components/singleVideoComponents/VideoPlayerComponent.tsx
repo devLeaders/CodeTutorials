@@ -7,8 +7,7 @@ const StyledVideo = styled.video`
 
   @media ${Device.LAPTOP} {
       flex-direction: row;
-      /* width:80%; */
-      width:calc(100% - 475px);
+      width:calc(100% - 443px);
   }
 `;
 

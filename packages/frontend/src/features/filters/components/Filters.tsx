@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {useState} from 'react';
 import styled from "styled-components"
-
 import {FontSize} from "../../common/styles/constans/FontSize"
 import {fontWeight} from "../../common/styles/constans/fontWeight"
 import {Device} from "../../common/styles/constans/Device"
@@ -15,7 +14,7 @@ const Wrapper = styled.div`
     position: fixed;
     right:0;
     height:100vh;
-    width: 475px;
+    width: 443px;
     padding: 24px 24px;
     background-color: ${Colors.WHITE};
     border-left: 3px solid ${Colors.BLACK_OPACITY}; 
