@@ -8,7 +8,7 @@ import {Colors} from '../../../styles/constans/Colors';
 import {Device} from '../../../styles/constans/Device';
 
 const Wrapper = styled.div`
-   display:none;
+    display:none;
     @media ${Device.LAPTOP} {
     border-left: 3px solid ${Colors.BLACK_OPACITY}; 
     display:inline-block;
