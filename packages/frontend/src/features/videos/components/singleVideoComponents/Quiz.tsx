@@ -14,7 +14,7 @@ padding: 16px;
 border-radius:20px;
 display:flex;
 flex-direction:column;
-@media ${Device.tablet} {
+@media ${Device.TABLET} {
   padding:33px;
 }
 
