@@ -122,7 +122,7 @@ export const HeartRatio = styled(MyText)({
 
 export const VoteText = styled(MyText)({
   fontSize: FontSize.MIDIUM,
-  fontWeight: FontWeight.BOLD,
+  fontWeight: parseInt(FontWeight.BOLD, 10),
   color: Color.DARK_BROWN,
   marginTop: 5,
   marginRight: 3,
@@ -130,26 +130,26 @@ export const VoteText = styled(MyText)({
 
 export const MovieName = styled(MyText)({
   fontSize: FontSize.LARGE,
-  fontWeight: FontWeight.BOLD,
+  fontWeight: parseInt(FontWeight.BOLD, 10),
   color: Color.DARK_BROWN,
 });
 
 export const MovieKind = styled(MyText)({
   fontSize: FontSize.MIDIUM,
-  fontWeight: FontWeight.BOLD,
+  fontWeight: parseInt(FontWeight.BOLD, 10),
   color: Color.DARK_GREY,
 });
 
 export const MovieTime = styled(MyText)({
   fontSize: FontSize.VERYSMALL,
-  fontWeight: FontWeight.BOLD,
+  fontWeight: parseInt(FontWeight.BOLD, 10),
   color: Color.DARK_GREY,
 });
 
 export const Owerview = styled(MyText)({
   marginTop: 15,
   fontSize: FontSize.VERYSMALL,
-  fontWeight: FontWeight.BOLD,
+  fontWeight: parseInt(FontWeight.BOLD, 10),
   color: Color.DARK_BROWN,
 });
 

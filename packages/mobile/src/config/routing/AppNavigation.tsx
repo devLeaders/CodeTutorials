@@ -13,15 +13,20 @@ import SignUpScreen from '../../features/auth/page/SingUpScrenn';
 import TabNavigation from './TabNavigation';
 
 import { NavOption } from '../../features/common/components/NavOption';
+import SingleMovieDescription from '../../features/videos/components/SingleScreen/SingleMovieDescription';
+import FiltersScreen from '../../features/videos/page/FiltersScreen';
 
 const HomeStack = createStackNavigator();
 const AuthStack = createStackNavigator();
 
 export const HomeStackScreen = () => (
     <HomeStack.Navigator>
+        <HomeStack.Screen name={NavigationName.HOME} component={HomeScreen}/> 
         <HomeStack.Screen name={NavigationName.MOVIELIST} options={NavOption.optionsMovieList} component={MoviesList}/>
         <HomeStack.Screen name={NavigationName.SINGLEMOVIE} component={SingleMovie2}/>
-        <HomeStack.Screen name={NavigationName.HOME} component={HomeScreen}/> 
+        
+        <HomeStack.Screen name={NavigationName.SINGLEMOVIEDESCRIPTION} component={SingleMovieDescription} />
+        <HomeStack.Screen name={NavigationName.FILTERSSCREEN} component={FiltersScreen} />
     </HomeStack.Navigator>
  )
 

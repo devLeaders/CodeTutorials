@@ -49,7 +49,7 @@ export const AlertView = styled.View({
 export const AlertText = styled(MyText)({
     fontSize: 10, 
     color: Color.WHITE, 
-    fontWeight: FontWeight.BOLD, 
+    fontWeight:parseInt(FontWeight.BOLD, 10), 
     textAlign: "center"
 })
 

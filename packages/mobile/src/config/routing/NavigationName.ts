@@ -13,5 +13,8 @@ export enum NavigationName {
     TASKS = 'Tasks',
     PLAYLIST = 'Playlist',
     ALERT = 'Alerts', 
-    SEARCH = 'Search'
-};
+    SEARCH = 'Search',
+
+    SINGLEMOVIEDESCRIPTION = 'SingleMovieDescription',
+    FILTERSSCREEN = 'FiltersScreen'
+}

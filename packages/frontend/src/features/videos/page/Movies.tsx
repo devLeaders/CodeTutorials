@@ -1,7 +1,6 @@
 import React from "react";
 import MovieNavBar from "../../common/components/layout/header/MovieNavBar";
 import styled from "styled-components";
-import FiltrationBtns from "../../filters/FiltrationBtns";
 import MovieSection from "../components/movieList/MovieSection";
 import NewContent from "../components/movieList/NewContent";
 import { Device } from "../../common/styles/constans/Device";
@@ -11,7 +10,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-color: #222;
   width: 100%;
 `;
 
@@ -33,7 +31,7 @@ const SliderSection = styled.section`
   width: 100%;
 `;
 
-export interface MoviesProps {}
+export interface MoviesProps { }
 
 const Movies: React.SFC<MoviesProps> = () => {
   return (
@@ -41,12 +39,11 @@ const Movies: React.SFC<MoviesProps> = () => {
       <MovieNavBar></MovieNavBar>
       <Section>
         <NewContent />
-        <FiltrationBtns></FiltrationBtns>
       </Section>
       <SliderSection>
-        <MovieSection title="Polecane dla ciebie" id={1}></MovieSection>
-        <MovieSection title="Akcja" id={2}></MovieSection>
-        <MovieSection title="Dramaty" id={3}></MovieSection>
+        <MovieSection title="Polecane dla ciebie"></MovieSection>
+        <MovieSection title="Akcja"></MovieSection>
+        <MovieSection title="Dramaty"></MovieSection>
       </SliderSection>
     </Wrapper>
   );

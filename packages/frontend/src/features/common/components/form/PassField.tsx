@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Colors from '../../styles/constans/Colors';
+import {Colors} from '../../styles/constans/Colors';
 import { FontFamily } from '../../styles/constans/FontFamily';
 import { FontSize } from '../../styles/constans/FontSize';
 

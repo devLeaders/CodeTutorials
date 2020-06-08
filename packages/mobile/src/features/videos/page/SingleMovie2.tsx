@@ -93,6 +93,8 @@ export default class SingleMovie2 extends React.Component <SingleMovie2Props>{
           </Description>
         </ColumContainerLeft>
       </Background>
+
+
     );
   }
 }

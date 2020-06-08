@@ -43,6 +43,7 @@ export class NavOption extends React.Component {
     }
     static optionsSearch = () => {
         return {
+            headerShown: true,
             title: 'Szukaj',
       };
     }

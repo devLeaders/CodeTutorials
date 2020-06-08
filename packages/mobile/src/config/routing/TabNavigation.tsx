@@ -18,11 +18,11 @@ import {
     AlertView, 
     AlertText, 
     SearchWIc } from "../../features/common/components/TabBottomNavStyle";
-import { Search } from '../../features/videos/page/Search';
 import { Tasks } from '../../features/videos/page/Tasks';
 import { Alert } from '../../features/videos/page/Alert';
 import {HomeStackScreen} from './AppNavigation'
 import { NavOption } from '../../features/common/components/NavOption'
+import FiltersScreen from '../../features/videos/page/FiltersScreen';
 
 
 const Tabs = createBottomTabNavigator();
@@ -40,7 +40,7 @@ const kvArray = [
           </AlertView>
       </AlertV>
   ],
-  [NavigationName.SEARCH, <SearchWIc source={{uri:'ic_searchW'}}/>],
+  [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'ic_searchW'}}/>],
 ];
 
 const myMap = new Map(kvArray as any);
@@ -68,7 +68,7 @@ export default class TabNavigation extends Component {
           <Tabs.Screen name={NavigationName.TASKS} options={NavOption.optionsTasks} component={Tasks} />
           <Tabs.Screen name={NavigationName.PLAYLIST} options={NavOption.optionsMovieList} component={MoviesList} />
           <Tabs.Screen name={NavigationName.ALERT} options={NavOption.optionsAlert} component={Alert} />
-          <Tabs.Screen name={NavigationName.SEARCH} options={NavOption.optionsSearch}  component={Search} />
+          <Tabs.Screen name={NavigationName.FILTERSSCREEN} options={NavOption.optionsSearch}  component={FiltersScreen} />
         </Tabs.Navigator>
     );
   }
