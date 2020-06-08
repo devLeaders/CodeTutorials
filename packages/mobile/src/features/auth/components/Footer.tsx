@@ -23,7 +23,7 @@ const Txt = styled.Text`
   color: ${Color.BLACK};
 `;
 
-const Footer: React.SFC = () => {
+const Footer: React.FC = () => {
 
   const navigation = useNavigation();
   const navBack = useCallback(() => {navigation.goBack()},[])

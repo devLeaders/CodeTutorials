@@ -22,7 +22,7 @@ const FormWrapper = styled.View`
 
 export interface InputSectionProps {}
 
-const InputSection: React.SFC<InputSectionProps> = () => {
+const InputSection: React.FC<InputSectionProps> = () => {
   const handleSubmit = (values: user, actions: any) =>
     handleFormSubmit(values, actions);
   return (

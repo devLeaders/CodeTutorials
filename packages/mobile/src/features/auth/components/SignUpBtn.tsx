@@ -33,7 +33,7 @@ export interface SignUpBtnProps {
   handleSubmit(): void;
 }
 
-const SignUpBtn: React.SFC<SignUpBtnProps> = props => {
+const SignUpBtn: React.FC<SignUpBtnProps> = props => {
   return (
     <TouchableOpacity onPress={props.handleSubmit}>
       <Btn>

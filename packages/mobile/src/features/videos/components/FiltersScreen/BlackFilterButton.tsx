@@ -38,7 +38,6 @@ const ButtonFilter = styled.TouchableOpacity({
     fontSize: FontSize.MIDIUM,
     fontWeight: parseInt(FontWeight.REGULAR, 10),
     color: Color.WHITE,
-    // line-height: 24
   });
   
 

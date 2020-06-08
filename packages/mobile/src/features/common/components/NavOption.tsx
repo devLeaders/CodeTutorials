@@ -23,7 +23,14 @@ export class NavOption extends React.Component {
     };
     static optionsMenu = () => {
         return {
+            headerShown: true,
             title: 'Menu',
+            headerStyle: {
+                backgroundColor: '#f0f2fa',
+               },
+            headerTitle: () => <HeaderTitle/>,
+            headerLeft: () => <HeaderLeft/>,
+            headerRight: () => <HeaderRight/>,
       };
     }
     static optionsTeams = () => {
