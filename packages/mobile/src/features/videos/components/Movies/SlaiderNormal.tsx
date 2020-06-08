@@ -23,12 +23,10 @@ export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
     this.state = {
       listVideos : []
     }
-    this.Separator = this.Separator.bind(this);
-    this.ImgeSlaider = this.ImgeSlaider.bind(this);
   }
 
-  public Separator = () => (<ViewSeparator/>)
-  public ImgeSlaider = (item:MoviesListExpandedType) => (
+  public separator = () => (<ViewSeparator/>)
+  public imgeSlaider = (item:MoviesListExpandedType) => (
     <View>
         <ImageSecondSlaider source={{uri: item.uri}}/>
           <GroupForDescription>
@@ -48,17 +46,19 @@ export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
     })
   }
 
+  private renderIt = ({item}) => this.imgeSlaider(item)
+
   render(){
         return(
             <FlatList 
             snapToAlignment={"start"}
             snapToInterval={DifrentSlaider.WIDTHNORMAL + 10}
             decelerationRate={"fast"}
-            ItemSeparatorComponent={this.Separator} 
+            ItemSeparatorComponent={this.separator} 
             showsHorizontalScrollIndicator={false}
             horizontal={true}
             data={this.state.listVideos} 
-            renderItem={({item}) => this.ImgeSlaider(item)} 
+            renderItem={this.renderIt} 
             keyExtractor={ item => item.id }
           /> 
         )

@@ -14,7 +14,7 @@ export interface HeaderProps {
   title: string;
 }
 
-const SignInHeader: React<HeaderProps> = props => {
+const SignInHeader: React.FC<HeaderProps> = props => {
   return (
     <Wrapper>
       <Title>{props.title}</Title>

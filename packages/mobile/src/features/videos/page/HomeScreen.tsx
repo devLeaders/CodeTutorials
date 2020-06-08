@@ -1,13 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -24,10 +14,13 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import { NavigationName } from '../../../config/routing/NavigationName';
+import { NavProps } from '../../../config/routing/ParamList';
+
 
 declare var global: {HermesInternal: null | {}};
 
-const HomeScreen = ({navigation}:any) => {
+export const HomeScreen = ({ navigation }: NavProps<NavigationName.HOME>) => { 
+  
     return (
       <>
         <StatusBar barStyle="dark-content" />
@@ -46,7 +39,7 @@ const HomeScreen = ({navigation}:any) => {
                 <Text>Buttons to Exaples</Text>
                 <Button
                     color="#e63900"
-                    title="Go to SingleMovie after CR"
+                    title="Go to SingleMovie"
                     onPress={() => navigation.navigate(NavigationName.SINGLEMOVIE)}
                 />
                  <Button
@@ -75,10 +68,6 @@ const HomeScreen = ({navigation}:any) => {
                     title="FiltersScreen"
                     onPress={() => navigation.navigate(NavigationName.FILTERSSCREEN)}
                 />
-
-
-
-
 
               </View>
             </View>

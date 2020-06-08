@@ -25,13 +25,15 @@ import {
 import {DATA} from '../action/ExampleData'
 import {SliderOfImage} from '../components/SingleScreen/SliderOfImage';
 import {HeaderLeft} from '../components/SingleScreen/HeaderLeft';
+import { NavigationName } from '../../../config/routing/NavigationName';
+import { NavProps } from '../../../config/routing/ParamList';
 
 interface SingleMovie2Props {
   navigation: any
 }
 
 export default class SingleMovie2 extends React.Component <SingleMovie2Props>{
-  static navigationOptions = ({navigation}: any) => {
+  static navigationOptions = (navigation) => {
     return {
       headerStyle: {
         backgroundColor: '#00000000',
@@ -69,7 +71,7 @@ export default class SingleMovie2 extends React.Component <SingleMovie2Props>{
           <ColumContainerRight>
             <RatioContainer>
               <Heart source={{uri:'ic_heart'}} />
-              <HeartRatio> {DATA[0].ratio}</HeartRatio>
+              <HeartRatio> {/*DATA[0].ratio*/}</HeartRatio>
             </RatioContainer>
 
             <StarsContainer>

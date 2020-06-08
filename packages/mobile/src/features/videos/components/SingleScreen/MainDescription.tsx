@@ -5,7 +5,7 @@ import {
     Text,
     TouchableOpacity,
 } from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import {Color} from '../../../../features/common/styles/constans/Color';
 import { FontSize } from '../../../../features/common/styles/constans/FontSize';
 import { FontFamily } from '../../../../features/common/styles/constans/FontFamily';
@@ -55,7 +55,6 @@ const DescriptionButton = styled.TouchableOpacity({
     justifyContent: 'center',
     borderRadius: 10,
     backgroundColor: Color.WHITE,
-    //height: 17 px;     ??
     shadowColor: Color.LIGHTGREYX,
     shadowOffset: {
         width: 0,

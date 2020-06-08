@@ -1,10 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { FontFamily } from '../../../common/styles/constans/FontFamily';
 import { FontSize } from '../../../common/styles/constans/FontSize';
 import { Color } from '../../../common/styles/constans/Color';
 import { NavigationName } from '../../../../config/routing/NavigationName';
+import {TouchableOpacity} from 'react-native';
+import { MyText } from '../../../common/styles/MyText';
 
 const Wrapper = styled.TouchableOpacity`
     flex: 1;
@@ -19,8 +21,7 @@ const ButtonFilter = styled.TouchableOpacity({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
-    borderColor: Color.LIGHTGREYXX,
-    //border: 1,  ??
+    borderColor: Color.LIGHTGREYX,
     backgroundColor: Color.WHITE,
     shadowColor: Color.LIGHTGREYX,
     shadowOffset: {
@@ -32,21 +33,20 @@ const ButtonFilter = styled.TouchableOpacity({
     elevation: "3",
   });
 
-  const TextButton = styled.Text`
-    margin-right: 10px;
-    margin-left: 10px;
-    font-size: ${FontSize.MIDPLUS};
-    font-weight: ${FontWeight.REGULAR};
-    font-family: ${FontFamily.GLOBAL_MONT};
-    color: ${Color.BLACK};
-    line-height: 27px;
-`;
+  const TextButton = styled(MyText)({
+    marginRight: 10,
+    marginLeft: 10,
+    fontSize: FontSize.MIDPLUS,
+    fontWeight: parseInt(FontWeight.REGULAR, 10),
+    color: Color.BLACK,
+    // lineHeight: 27px,
+  });
   
 
 interface WhiteFilterButtonProps {
     navigation: any,
     text: string,
-    //onSubmitFilter(): void,
+    goto: any
   }
   
   //wybór white button | blackbutton

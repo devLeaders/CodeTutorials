@@ -20,7 +20,7 @@ export const ScrollViewStyle = styled.ScrollView({
 export const FilterList = styled(MyText)({
     textAlign: "center",
     fontSize: FontSize.NORMAL,
-    fontWeight: FontWeight.BOLD,
+    fontWeight: parseInt(FontWeight.BOLD, 10),
     color: Color.DARKGREY,
 })
 
@@ -65,7 +65,7 @@ export const ButtonFilter = styled.TouchableOpacity({
 
 export const TextButtonActive = styled(MyText)({
     fontSize: FontSize.NORMAL,
-    fontWeight: FontWeight.BOLD,
+    fontWeight: parseInt(FontWeight.BOLD, 10) ,
     lineHeight: "16px",
     textAlign: "center",
     color: Color.DARKGREY
@@ -73,7 +73,7 @@ export const TextButtonActive = styled(MyText)({
 
 export const TextButtonNOAct = styled(MyText)({
     fontSize: FontSize.NORMAL,
-    fontWeight: FontWeight.BOLD,
+    fontWeight: parseInt(FontWeight.BOLD, 10),
     lineHeight: "19px",
     textAlign: "center",
     opacity: 0.5,
@@ -112,7 +112,7 @@ export const GroupForSubtitle = styled.View({
 
 export const SubTitleLeft =styled(MyText)({
     fontSize: FontSize.NORMAL,
-    fontWeight: FontWeight.BOLD,
+    fontWeight: parseInt(FontWeight.BOLD, 10),
     lineHeight: "19px",
     color: Color.DARKGREY, 
     marginLeft: 15
@@ -120,7 +120,7 @@ export const SubTitleLeft =styled(MyText)({
 
 export const SubTitleRight = styled(MyText)({
     fontSize: FontSize.NORMAL,
-    fontWeight: FontWeight.BOLD,
+    fontWeight: parseInt(FontWeight.BOLD, 10),
     lineHeight: "19px",
     color: Color.DARKGREY
 })
@@ -143,7 +143,7 @@ export const ImageTherdSlaider = styled.Image({
 export const SubTitleLeftSecond =styled(MyText)({
     textAlign: "left",
     fontSize: FontSize.NORMAL,
-    fontWeight: FontWeight.BOLD,
+    fontWeight: parseInt(FontWeight.BOLD, 10),
     lineHeight: "19px",
     color: Color.DARKGREY, 
     marginLeft: 15,
@@ -153,7 +153,7 @@ export const SubTitleLeftSecond =styled(MyText)({
 export const SubTitleRightSecond = styled(MyText)({
     right: 14,
     fontSize: FontSize.NORMAL,
-    fontWeight: FontWeight.BOLD,
+    fontWeight: parseInt(FontWeight.BOLD, 10),
     lineHeight: "19px",
     marginBottom: 0,
     color: Color.DARKGREY
@@ -173,7 +173,7 @@ export const IcHeart = styled.Image({
 
 export const ItemLike = styled(MyText)({
     fontSize: FontSize.SMALL,
-    fontWeight: FontWeight.REGULAR,
+    fontWeight: parseInt(FontWeight.REGULAR, 10) ,
     lineHeight: "10px",
     justifyContent: "center",
     color: Color.DARKGREY
@@ -186,7 +186,7 @@ export const GroupCenter = styled.View({
 
 export const ViewTitle = styled(MyText)({
     fontSize: FontSize.SMALL,
-    fontWeight: FontWeight.REGULAR,
+    fontWeight: parseInt(FontWeight.REGULAR, 10) ,
     lineHeight: "8px",
     color: Color.DARKGREY
 })

@@ -2,13 +2,8 @@ import * as React from 'react';
 import styled from 'styled-components/native';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 
-<<<<<<< HEAD:packages/mobile/src/features/auth/components/SignUpBtn.tsx
 import {FontSize} from '../../common/styles/constans/FontSize';
 import {Color} from '../../common/styles/constans/Color';
-=======
-import {FontSize} from '../../../common/styles/constans/FontSize';
-import {Color} from '../../../common/styles/constans/Color';
->>>>>>> qa2:packages/mobile/src/features/auth/components/SingUp/SignUpBtn.tsx
 
 const Btn = styled.View`
   align-self: center;

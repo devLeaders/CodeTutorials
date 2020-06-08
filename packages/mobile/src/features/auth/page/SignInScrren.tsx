@@ -5,6 +5,7 @@ import SignInHeader from '../components/SignIn/SignInHeader';
 import AnotherSingInMethods from '../components/SignIn/AnotherSingInMethods';
 import {Color} from '../../common/styles/constans/Color';
 import {FontSize} from '../../common/styles/constans/FontSize';
+import { NavigationName } from '../../../config/routing/NavigationName';
 
 const Wrapper = styled.ScrollView({
     flexDirection: 'column',
@@ -23,7 +24,6 @@ const SignUpText = styled.Text({
     marginBottom: 10, 
     color: Color.LIGHT_PURPLE,
     fontSize: FontSize.MIDPLUS,
-    
     });
 
 const SignUpOpacity = styled.TouchableOpacity({
@@ -31,17 +31,16 @@ const SignUpOpacity = styled.TouchableOpacity({
     });
       
 export default class SignInScreen extends React.Component<any> {
-    static navigationOptions = {
-        headerShown: false,
-    };
+    
+    public navToSingUp = () => this.props.navigation.navigate(NavigationName.SINGUP)
+
     render(){
         return(
             <Wrapper>
                 <SignInHeader title={"Sign In"} />
                 <LogIn navigation={this.props.navigation} />
-                <SignUpOpacity>
+                <SignUpOpacity onPress={this.navToSingUp}>
                     <SignUpText>Don't have an account?</SignUpText>
-                    
                 </SignUpOpacity>
                 <OrText>———OR———</OrText>
                 <AnotherSingInMethods 
