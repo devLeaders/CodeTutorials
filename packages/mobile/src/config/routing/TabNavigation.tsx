@@ -63,7 +63,7 @@ export default class TabNavigation extends Component {
             style: {backgroundColor: 'black'}
           }}
         >
-          <Tabs.Screen name={NavigationName.MENU} options={NavOption.optionsMenu} component={MoviesList} />
+          <Tabs.Screen name={NavigationName.MENU} options={NavOption.optionsMenu} component={HomeStackScreen} />
           <Tabs.Screen name={NavigationName.TEAMS} options={NavOption.optionsTeams} component={TeamsScreen} />
           <Tabs.Screen name={NavigationName.TASKS} options={NavOption.optionsTasks} component={Tasks} />
           <Tabs.Screen name={NavigationName.PLAYLIST} options={NavOption.optionsMovieList} component={MoviesList} />
