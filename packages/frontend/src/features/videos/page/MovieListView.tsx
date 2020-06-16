@@ -13,6 +13,7 @@ const Main = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  padding-top: 40px;
   @media ${Device.LAPTOP} {
     padding-top: 120px;
     width: calc(100% - 446px);
