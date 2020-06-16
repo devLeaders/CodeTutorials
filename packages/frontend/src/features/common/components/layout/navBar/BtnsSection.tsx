@@ -13,15 +13,13 @@ const BtnsSection = styled.section`
     height: 100%;
     padding-left: 15px;
     padding-right: 15px;
-    border-right: 2px solid ${Colors.BLACK_OPACITY};
-    border-left: 2px solid ${Colors.BLACK_OPACITY}; 
+    border-right: 2px solid ${Colors.BLACK_OPACITY}; 
     @media ${Device.TABLET} {
     width: 220px;
     }
     @media ${Device.LAPTOP} {
     width: 280px;
-    border-right: 3px solid ${Colors.BLACK_OPACITY};
-    border-left: 3px solid ${Colors.BLACK_OPACITY}; 
+    border-right: 3px solid ${Colors.BLACK_OPACITY}; 
     }
 `
  

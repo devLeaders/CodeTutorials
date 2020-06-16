@@ -10,7 +10,7 @@ const ListItem = styled.li<{isActive: string, title: string}>`
     background-color: ${({isActive, title}) => isActive === title ? `${Colors.WHITE}` : `${Colors.ULTRA_LIGHT_GRAY}` };
     display: flex;
     align-items: center;
-    padding: 10px 12px;
+    padding: 0px 12px;
     border-bottom: ${({isActive, title}) => isActive === title ? "1px solid transparent" : `1px solid ${Colors.GRAY_1}`};
     border-right: 1px solid ${Colors.GRAY_1};
     cursor: pointer;

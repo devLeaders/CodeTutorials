@@ -2,8 +2,8 @@ import * as React from "react";
 import {useRef} from 'react';
 import styled from 'styled-components';
 import VideoItem from "../components/movieList/videoItem/VideoItem"
-import BannerContainer from '../../common/components/layout/banner/BannerContainer';
-import NavBarContainer from '../../common/components/layout/navBar/NavBarContainer';
+import Banner from '../../common/components/layout/banner/Banner';
+import NavBar from '../../common/components/layout/navBar/NavBar';
 import Filters from '../../filters/components/Filters';
 import {Device} from '../../common/styles/constans/Device';
 import {useFillerItems} from '../hooks/useFillerItems';
@@ -51,8 +51,8 @@ const MovieListView: React.FC<MovieListViewProps>= () => {
     return(
         <Wrapper>
             <HeaderWrapper>
-                <BannerContainer/>
-                <NavBarContainer/>
+                <Banner/>
+                <NavBar/>
             </HeaderWrapper>
             <MainSectionWrapper>
                 <MovieListConstainer ref={movieListContainer}>
