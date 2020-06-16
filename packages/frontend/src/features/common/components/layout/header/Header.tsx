@@ -8,11 +8,14 @@ const Wrapper = styled.header`
   display: flex;
 `;
 
+interface HeaderProps {
+  homePage?: boolean;
+}
 
-const Header: React.SFC = () => {
+const Header: React.SFC<HeaderProps> = ({homePage}) => {
   return (
     <Wrapper>
-      <Banner />
+      <Banner homePage={homePage}/>
       <NavBar header={true} />
     </Wrapper>
   );

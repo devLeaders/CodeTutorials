@@ -7,6 +7,7 @@ import Header from "../../common/components/layout/header/Header";
 import Aside from "../../common/components/layout/Aside";
 import { Device } from "../../common/styles/constans/Device";
 import { useFillerItems } from "../hooks/useFillerItems";
+import { NavLink, Link } from "react-router-dom";
 
 const Main = styled.div`
   width: 100%;
@@ -19,7 +20,7 @@ const Main = styled.div`
     width: calc(100% - 446px);
   }
 `;
-const InvisibleMovie = styled.div<{ width: number; margin: number}>`
+const InvisibleMovie = styled.div<{ width: number | undefined; margin: number}>`
   width: ${({ width }) => `${width}px`};
   margin: ${({ margin }) => `0 ${margin}px`};
 `;
@@ -31,12 +32,12 @@ export interface MovieListViewProps {
 }
 
 const MovieListView: React.FC<MovieListViewProps> = () => {
-  const movieListContainer = useRef<any>(null);
-  const movieItem = useRef<any>(null);
+  const movieListContainer = useRef<HTMLDivElement>(null);
+  const videoItem = useRef<HTMLDivElement>(null);
   const minMargin = 20;
   const fillerItems = useFillerItems(
     movieListContainer,
-    movieItem,
+    videoItem,
     moviesList.length,
     minMargin
   );
@@ -46,13 +47,13 @@ const MovieListView: React.FC<MovieListViewProps> = () => {
       <Header />
       <Main ref={movieListContainer}>
         {moviesList.map((item) => (
-          <VideoItem id={1} key={item} ref={movieItem} margin={minMargin} />
+          <VideoItem id={1} key={item} ref={videoItem} margin={minMargin} />
         ))}
         {fillerItems &&
           fillerItems.map((item: number) => (
             <InvisibleMovie
               key={item}
-              width={movieItem.current?.offsetWidth}
+              width={videoItem.current?.offsetWidth}
               margin={minMargin}
             />
           ))}

@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import {fontWeight} from "../../../styles/constans/fontWeight"
 import {FontSize} from "../../../styles/constans/FontSize"
+import {Colors} from "../../../styles/constans/Colors"
 import {Device} from "../../../styles/constans/Device"
 
 const Wrapper = styled.div`
@@ -13,6 +14,7 @@ const Wrapper = styled.div`
     height: 81px;
     border-radius: 40px;
     box-shadow: 0px 2px 8px 0px #00000029;
+    background-color: ${Colors.WHITE};
     margin-right:25px;
     padding-left: 45px;
     padding-right: 25px;
