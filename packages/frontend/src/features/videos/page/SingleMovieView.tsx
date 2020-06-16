@@ -5,9 +5,9 @@ import { Device } from "../../common/styles/constans/Device";
 import VideoDescription from "../components/singleVideoComponents/VideoDescription";
 import Quiz from "../components/singleVideoComponents/Quiz";
 import VideoPlayerComponent from "../../videoPlayer/VideoPlayerComponent";
-import Aside from "../../common/components/layout/Aside"
-import AsideNavigation from "../../common/components/layout/asideNav/AsideNavigation"
-import Header from "../../common/components/layout/header/Header"
+import Aside from "../../common/components/layout/Aside";
+import AsideNavigation from "../../common/components/layout/asideNav/AsideNavigation";
+import Header from "../../common/components/layout/header/Header";
 
 const VideoInfo = styled.div`
   display: flex;
@@ -30,19 +30,15 @@ const SingleMovieView: React.FC = () => {
   return (
     <>
       <Main>
-        
-        <Header/> 
+        <Header />
         <VideoPlayerComponent />
-        <AsideNavigation/>
-
+        <AsideNavigation />
         <VideoInfo>
           <VideoDescription />
           <Quiz />
         </VideoInfo>
-
       </Main>
-
-      <Aside/>
+      <Aside />
     </>
   );
 };
