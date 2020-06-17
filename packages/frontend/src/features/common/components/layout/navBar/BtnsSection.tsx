@@ -6,7 +6,7 @@ import { Device } from "../../../styles/constans/Device";
 import  {Colors}  from "../../../styles/constans/Colors";
 
 
-const BtnsSection = styled.section`
+const BtnsSection = styled.section<{singleMovie?: boolean}>`
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -19,13 +19,20 @@ const BtnsSection = styled.section`
     }
     @media ${Device.LAPTOP} {
     width: 280px;
+    border-left: ${({singleMovie}) => singleMovie ? "none" : `3px solid ${Colors.BLACK_OPACITY}`}; 
     border-right: 3px solid ${Colors.BLACK_OPACITY}; 
     }
+    @media ${Device.LAPTOP_L} {
+    border-left: none;  
+    }
 `
+interface IconsSectionProps {
+    singleMovie?: boolean
+}
  
-const IconsSection: React.SFC = () => {
+const IconsSection: React.SFC<IconsSectionProps> = ({singleMovie}) => {
     return (  
-        <BtnsSection>
+        <BtnsSection singleMovie={singleMovie}>
             <Btn src="/img/navBarImg/teams.svg"/>
             <Btn src="/img/navBarImg/cos.svg"/>
             <Btn src="/img/navBarImg/filters.svg"/>

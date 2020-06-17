@@ -8,6 +8,7 @@ import VideoPlayerComponent from "../../videoPlayer/VideoPlayerComponent";
 import Aside from "../../common/components/layout/Aside";
 import AsideNavigation from "../../common/components/layout/asideNav/AsideNavigation";
 import Header from "../../common/components/layout/header/Header";
+import { Sizes } from "../../common/styles/constans/Sizes";
 
 const VideoInfo = styled.div`
   display: flex;
@@ -19,9 +20,11 @@ const VideoInfo = styled.div`
 `;
 
 const Main = styled.div`
+  margin-top: ${Sizes.BANNER_MOBILE};
   position: relative;
   width: 100%;
   @media ${Device.LAPTOP} {
+    margin-top: 0;
     width: calc(100% - 446px);
   }
 `;
@@ -29,8 +32,8 @@ const Main = styled.div`
 const SingleMovieView: React.FC = () => {
   return (
     <>
+      <Header singleMovie={true}/>
       <Main>
-        <Header />
         <VideoPlayerComponent />
         <AsideNavigation />
         <VideoInfo>
@@ -38,7 +41,7 @@ const SingleMovieView: React.FC = () => {
           <Quiz />
         </VideoInfo>
       </Main>
-      <Aside />
+      <Aside singleMovie={true}/>
     </>
   );
 };

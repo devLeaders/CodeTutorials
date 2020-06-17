@@ -13,10 +13,13 @@ const Wrapper = styled.div`
   display: flex;
   z-index: 2;
   flex-direction: column;
-  margin-bottom: 62px;
+  margin-bottom: 30px;
   width: 100%;
   padding: 5px 0 0 0;
   position: relative;
+  @media ${Device.TABLET}{
+    margin-bottom: 62px;
+  }
 `;
 
 const Title = styled.h2`

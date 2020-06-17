@@ -9,20 +9,12 @@ import { FontSize } from "../../../styles/constans/FontSize";
 import NavigationPath from "../../../../../config/routing/NavigationPath";
 import VideoSearch from "./VideoSearch";
 
-const Wrapper = styled.div<{ homePage?: boolean }>`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   height: 55px;
-  background-color: ${({ homePage }) =>
-    homePage ? `${Colors.WHITE}00` : `${Colors.WHITE}`};
-  @media ${Device.LAPTOP} {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: calc(100% - 446px);
-  }
   @media ${Device.LAPTOP} {
     z-index: 4;
     height: 112px;
@@ -58,13 +50,10 @@ const LogoTitleContainer = styled.div`
 
 const title = "Docker od podstaw";
 
-interface BannerProps {
-  homePage?: boolean;
-}
 
-const Banner: React.SFC<BannerProps> = ({ homePage }) => {
+const Banner: React.SFC = () => {
   return (
-    <Wrapper homePage={homePage}>
+    <Wrapper>
       <LogoTitleContainer>
         <NavLink to={NavigationPath.HOME}>
           <Logo src="/img/logo.svg" />

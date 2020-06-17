@@ -45,15 +45,15 @@ export interface VideoItemProps {
 const VideoItem: React.ForwardRefExoticComponent<VideoItemProps> = React.forwardRef(
   ({ id, marginLeft, margin }, ref: any) => {
     return (
-      <NavLink to={`${NavigationPath.MOVIES}/${id}`}>
-        <Wrapper ref={ref} marginLeft={marginLeft} margin={margin}>
+      <Wrapper ref={ref} marginLeft={marginLeft} margin={margin}>
+        <NavLink to={`${NavigationPath.MOVIES}/${id}`}>
           <Img
             src="https://cdn.pixabay.com/photo/2020/02/12/16/13/landscape-4843193_960_720.jpg"
             alt=""
           />
-          <VideoInfo />
-        </Wrapper>
-      </NavLink>
+        </NavLink>
+        <VideoInfo />
+      </Wrapper>
     );
   }
 );

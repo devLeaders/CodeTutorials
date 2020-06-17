@@ -7,16 +7,17 @@ import Header from "../../common/components/layout/header/Header";
 import Aside from "../../common/components/layout/Aside";
 import { Device } from "../../common/styles/constans/Device";
 import { useFillerItems } from "../hooks/useFillerItems";
-import { NavLink, Link } from "react-router-dom";
 
 const Main = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding-top: 40px;
+  padding-top: 90px;
   @media ${Device.LAPTOP} {
-    padding-top: 120px;
+    padding-top: 150px;
+  }
+  @media ${Device.LAPTOP_L} {
     width: calc(100% - 446px);
   }
 `;
@@ -44,7 +45,7 @@ const MovieListView: React.FC<MovieListViewProps> = () => {
 
   return (
     <>
-      <Header />
+      <Header opacity={true}/>
       <Main ref={movieListContainer}>
         {moviesList.map((item) => (
           <VideoItem id={1} key={item} ref={videoItem} margin={minMargin} />
