@@ -16,8 +16,6 @@ const Main = styled.div`
   padding-top: 90px;
   @media ${Device.LAPTOP} {
     padding-top: 150px;
-  }
-  @media ${Device.LAPTOP_L} {
     width: calc(100% - 446px);
   }
 `;

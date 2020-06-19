@@ -32,7 +32,7 @@ const Main = styled.div`
 const SingleMovieView: React.FC = () => {
   return (
     <>
-      <Header singleMovie={true}/>
+      <Header/>
       <Main>
         <VideoPlayerComponent />
         <AsideNavigation />
@@ -41,7 +41,7 @@ const SingleMovieView: React.FC = () => {
           <Quiz />
         </VideoInfo>
       </Main>
-      <Aside singleMovie={true}/>
+      <Aside/>
     </>
   );
 };

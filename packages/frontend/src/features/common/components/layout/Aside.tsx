@@ -17,24 +17,17 @@ const Wrapper = styled.aside<{singleMovie?: boolean}>`
   flex-direction: column;
   height: 100vh;
   @media ${Device.LAPTOP} {
-    display: ${({singleMovie}) => singleMovie ? "flex" : "none"};
-    border-left: ${({singleMovie}) => singleMovie ? `3px solid ${Colors.BLACK_OPACITY}` : "none"};
-  }
-  @media ${Device.LAPTOP_L} {
     display: flex;
     border-left: 3px solid ${Colors.BLACK_OPACITY};
   }
 `;
 
-export interface AsideProps {
-  singleMovie?: boolean;
-}
 
-const Aside: React.FC<AsideProps> = ({singleMovie}) => {
+const Aside: React.FC = () => {
 
   return (
-    <Wrapper singleMovie={singleMovie}>
-      <NavBar  singleMovie={singleMovie}/>
+    <Wrapper>
+      <NavBar/>
       <Filters />
     </Wrapper>
   );

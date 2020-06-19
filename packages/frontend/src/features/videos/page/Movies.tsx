@@ -14,7 +14,7 @@ const Main = styled.div`
   @media ${Device.TABLET_L} {
     margin-top: 0;
   }
-  @media ${Device.LAPTOP_L} {
+  @media ${Device.LAPTOP} {
     width: calc(100% - 446px);
   }
 `;
