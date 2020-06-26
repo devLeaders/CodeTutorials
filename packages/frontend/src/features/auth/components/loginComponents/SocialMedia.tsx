@@ -1,21 +1,20 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
- 
- display:flex;
- justify-content: center;
+  display: flex;
+  justify-content: center;
 `;
 
 interface ImageProps {
-    imageIcon: string
+  imageIcon: string;
 }
 
 const Icon = styled.div`
     width: 50px;
     height: 50px;
     background: url('${(props: ImageProps) => props.imageIcon}');
-    background-size: 80%;
+    background-size: 60%;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 50%;
@@ -31,14 +30,13 @@ const Icon = styled.div`
 `;
 
 const SocialMedia: React.FC = (props) => {
-
-    return (
-        <Wrapper>
-            <Icon imageIcon="img/facebook.svg"></Icon>
-            <Icon imageIcon="img/twitter.svg"></Icon>
-            <Icon imageIcon="img/instagram.svg"></Icon>
-        </Wrapper>
-    )
-}
+  return (
+    <Wrapper>
+      <Icon imageIcon='img/facebook.svg' />
+      <Icon imageIcon='img/twitter.svg' />
+      <Icon imageIcon='img/instagram.svg' />
+    </Wrapper>
+  );
+};
 
 export default SocialMedia;

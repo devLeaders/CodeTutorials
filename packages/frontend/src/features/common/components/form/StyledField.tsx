@@ -4,7 +4,7 @@ import { Colors } from "../../styles/constans/Colors";
 import { FontFamily } from "../../styles/constans/FontFamily";
 import { FontSize } from "../../styles/constans/FontSize";
 
-const Input = styled.input`
+const Input = styled.input<{ icon: string }>`
   width: 100%;
   outline: 0;
   border: 0;
@@ -12,7 +12,7 @@ const Input = styled.input`
   padding-bottom: 8px;
   margin-bottom: 30px;
   font-size: ${FontSize.XXXXMEDIUM};
-  background-image: url("img/pass.svg");
+  background-image: ${({ icon }) => `url(${icon})`};
   background-position: left top;
   background-size: 20px 20px;
   background-repeat: no-repeat;
@@ -23,9 +23,21 @@ const Input = styled.input`
     color: ${Colors.nGrey};
   }
 `;
-
-const PassField = ({ field, form, ...props }: any) => {
-  return <Input type='password' placeholder='Hasło' {...field} />;
+interface FieldInterface {
+  field: any;
+  form: any;
+  type: string;
+  placeholder: string;
+  icon: string;
+}
+const StyledField: React.FC<FieldInterface> = ({
+  field,
+  form,
+  type,
+  placeholder,
+  icon,
+}) => {
+  // const { placeholder, icon, type } = props;
+  return <Input type={type} placeholder={placeholder} icon={icon} {...field} />;
 };
-
-export default PassField;
+export default StyledField;
