@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { fontWeight } from "../../styles/constans/fontWeight";
 import { FontSize } from "../../styles/constans/FontSize";
 import { Colors } from "../../styles/constans/Colors";
-
+import { Device } from "../../styles/constans/Device";
 const Wrapper = styled.div`
   position: absolute;
   right: 0;
@@ -22,14 +22,20 @@ const Wrapper = styled.div`
     border-radius: 5px;
     width: 100%;
   }
+  @media ${Device.MOBILE_L} {
+    max-height: 27px;
+  }
 `;
 const ErrMsg = styled.h2`
   display: none;
+  opacity: 0;
+  transition: 1s ease-in;
   ${Wrapper}:hover & {
+    opacity: 1;
     display: block;
   }
 `;
-const Error = styled.p`
+const Error = styled.div`
   font-size: ${FontSize.XXMEDIUM};
   margin: auto 0;
   font-weight: ${fontWeight.BOLD};

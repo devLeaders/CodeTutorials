@@ -1,9 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Field, Form, Formik, FormikProps } from "formik";
-import Axios from "../../../config/axios/configAxios";
-import { useHistory } from "react-router-dom";
-import NAVIGATION from "../../../config/routing/NavigationPath";
 import TitleForm from "../components/loginComponents/TitleForm";
 import StyledField from "../../common/components/form/StyledField";
 import { Device } from "../../common/styles/constans/Device";
@@ -11,47 +8,39 @@ import SubmitButton from "../components/loginComponents/SubmitButton";
 import LoginFields from "../components/loginComponents/LoginFields";
 import { RegValidationSchema } from "../action/validationSchema";
 import { Fields, FieldsPlaceholders } from "../enums";
+import { signUpSubmit } from "../action/authAction";
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+`;
+const StyledForm = styled(Form)`
   width: 100%;
-  margin-top: 100px;
+  min-height: 60vh;
+  margin: 50px 0;
   padding: 0 50px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-
   @media ${Device.TABLET} {
     max-width: 600px;
-    margin: 100px auto 0 auto;
+    margin: 50px auto;
   }
 `;
-// UNCOMMENT videoActionController
 
 const SignUpView: React.FC = (props: any) => {
-  const history = useHistory();
-  const signUpSubmit = async (value: any, action: any) => {
-    console.log(value);
-    try {
-      const dataResponse = await Axios.post("/auth/signup", {
-        email: `${value.Email}`,
-        password: `${value.Password}`,
-      });
-      const created = dataResponse.data.created;
-      history.push(NAVIGATION.LOGIN);
-    } catch (err) {
-      history.push(NAVIGATION.REGISTER);
-    }
-  };
   return (
-    <Formik
-      validateOnChange={false}
-      validateOnBlur={false}
-      initialValues={{ email: "", password: "", passwordConfirmation: "" }}
-      onSubmit={signUpSubmit}
-      validationSchema={RegValidationSchema}>
-      {(props: FormikProps<any>) => (
-        <Form>
-          <Wrapper>
+    <Wrapper>
+      <Formik
+        validateOnChange={false}
+        validateOnBlur={false}
+        initialValues={{ email: "", password: "", passwordConfirmation: "" }}
+        onSubmit={signUpSubmit}
+        validationSchema={RegValidationSchema}>
+        {(props: FormikProps<any>) => (
+          <StyledForm>
             <TitleForm title='Rejestracja' />
             <Field
               label={Fields.EMAIL}
@@ -81,10 +70,10 @@ const SignUpView: React.FC = (props: any) => {
             />
             <SubmitButton title='Zarejestruj' />
             <LoginFields />
-          </Wrapper>
-        </Form>
-      )}
-    </Formik>
+          </StyledForm>
+        )}
+      </Formik>
+    </Wrapper>
   );
 };
 export default SignUpView;
