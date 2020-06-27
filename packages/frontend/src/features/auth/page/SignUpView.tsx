@@ -30,11 +30,11 @@ const Wrapper = styled.div`
 const SignUpView: React.FC = (props: any) => {
   const history = useHistory();
   const signUpSubmit = async (value: any, action: any) => {
+    console.log(value);
     try {
       const dataResponse = await Axios.post("/auth/signup", {
-        username: `${value.username}`,
-        email: `${value.lastName}`,
-        password: `${value.pass}`,
+        email: `${value.Email}`,
+        password: `${value.Password}`,
       });
       const created = dataResponse.data.created;
       history.push(NAVIGATION.LOGIN);
@@ -45,10 +45,10 @@ const SignUpView: React.FC = (props: any) => {
   return (
     <Formik
       validateOnChange={false}
-      // validateOnBlur={false}
-      initialValues={{ Email: "", Password: "", PasswordConfirmation: "" }}
-      validationSchema={RegValidationSchema}
-      onSubmit={signUpSubmit}>
+      validateOnBlur={false}
+      initialValues={{ email: "", password: "", passwordConfirmation: "" }}
+      onSubmit={signUpSubmit}
+      validationSchema={RegValidationSchema}>
       {(props: FormikProps<any>) => (
         <Form>
           <Wrapper>

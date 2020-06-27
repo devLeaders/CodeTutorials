@@ -1,7 +1,7 @@
 export enum Fields {
-  EMAIL = "Email",
-  PASSWORD = "Password",
-  PASSWORD_CONFIRMATION = "PasswordConfirmation",
+  EMAIL = "email",
+  PASSWORD = "password",
+  PASSWORD_CONFIRMATION = "passwordConfirmation",
 }
 export enum FieldsPlaceholders {
   EMAIL = "Email",

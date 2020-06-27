@@ -31,24 +31,26 @@ const SignInView: React.FC = (props: any) => {
   const history = useHistory();
 
   const signInSubmit = async (value: any, action: any) => {
-    try {
-      const dataResponse = await Axios.post("/auth/signin", {
-        email: `${value.lastName}`,
-        password: `${value.pass}`,
-      });
+    console.log(action);
+    console.log(value);
+    // try {
+    //   const dataResponse = await Axios.post("/auth/signin", {
+    //     email: `${value.Email}`,
+    //     password: `${value.Password}`,
+    //   });
 
-      const token = dataResponse.data.token;
-      localStorage.setItem("token", token);
-      Axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      history.push(NAVIGATION.MOVIES);
-    } catch (err) {
-      history.push(NAVIGATION.LOGIN);
-    }
+    //   const token = dataResponse.data.token;
+    //   localStorage.setItem("token", token);
+    //   Axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    //   history.push(NAVIGATION.MOVIES);
+    // } catch (err) {
+    //   history.push(NAVIGATION.LOGIN);
+    // }
   };
 
   return (
     <Formik
-      initialValues={{ email: "", password: "" }}
+      initialValues={{ Email: "", Password: "" }}
       validateOnChange={false}
       validateOnBlur={false}
       onSubmit={signInSubmit}
@@ -65,17 +67,15 @@ const SignInView: React.FC = (props: any) => {
               icon='img/email.svg'
               error={props.errors.email}
             />
-
             <Field
               label={Fields.PASSWORD}
               type={Fields.PASSWORD}
-              name='password'
+              name={Fields.PASSWORD}
               placeholder={FieldsPlaceholders.PASSWORD}
               component={StyledField}
               icon='img/pass.svg'
               error={props.errors.password}
             />
-
             <SubmitButton title='Zaloguj' />
             <RecoveryPass />
             <RegisterFields />

@@ -23,7 +23,7 @@ const Wrapper = styled.div`
     width: 100%;
   }
 `;
-const Information = styled.h2`
+const ErrMsg = styled.h2`
   display: none;
   ${Wrapper}:hover & {
     display: block;
@@ -35,13 +35,13 @@ const Error = styled.p`
   font-weight: ${fontWeight.BOLD};
 `;
 interface ErrorPopUpInterface {
-  error: any;
+  error: string;
 }
 
 const ErrorPopUp: React.FC<ErrorPopUpInterface> = ({ error }) => {
   return (
     <Wrapper>
-      <Information>{error}</Information>
+      <ErrMsg>{error}</ErrMsg>
       <Error>X</Error>
     </Wrapper>
   );
