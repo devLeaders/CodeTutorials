@@ -9,8 +9,10 @@ import StyledField from "../../common/components/form/StyledField";
 import { Device } from "../../common/styles/constans/Device";
 import SubmitButton from "../components/loginComponents/SubmitButton";
 import LoginFields from "../components/loginComponents/LoginFields";
+import { RegValidationSchema } from "../action/validationSchema";
+import { Fields, FieldsPlaceholders } from "../enums";
 
-const LoginForm = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   margin-top: 100px;
   padding: 0 50px;
@@ -23,7 +25,7 @@ const LoginForm = styled.div`
     margin: 100px auto 0 auto;
   }
 `;
-// UNCOMMENT videoActionControllet
+// UNCOMMENT videoActionController
 
 const SignUpView: React.FC = (props: any) => {
   const history = useHistory();
@@ -42,40 +44,44 @@ const SignUpView: React.FC = (props: any) => {
   };
   return (
     <Formik
-      initialValues={{
-        username: "",
-        email: "",
-        password: "",
-      }}
+      validateOnChange={false}
+      // validateOnBlur={false}
+      initialValues={{ Email: "", Password: "", PasswordConfirmation: "" }}
+      validationSchema={RegValidationSchema}
       onSubmit={signUpSubmit}>
       {(props: FormikProps<any>) => (
         <Form>
-          <LoginForm>
+          <Wrapper>
             <TitleForm title='Rejestracja' />
             <Field
-              name='username'
-              type='text'
+              label={Fields.EMAIL}
+              name={Fields.EMAIL}
               component={StyledField}
-              placeholder='Nazwa użytkownika'
-              icon='img/user.svg'
-            />
-            <Field
-              name='email'
-              type='email'
-              component={StyledField}
-              placeholder='Email'
+              placeholder={FieldsPlaceholders.EMAIL}
               icon='img/email.svg'
+              error={props.errors.email}
             />
             <Field
-              name='password'
-              type='password'
+              label={Fields.PASSWORD}
+              name={Fields.PASSWORD}
+              type={Fields.PASSWORD}
               component={StyledField}
-              placeholder='Hasło'
+              placeholder={FieldsPlaceholders.PASSWORD}
               icon='img/pass.svg'
+              error={props.errors.password}
+            />
+            <Field
+              label={Fields.PASSWORD_CONFIRMATION}
+              name={Fields.PASSWORD_CONFIRMATION}
+              type={Fields.PASSWORD}
+              component={StyledField}
+              placeholder={FieldsPlaceholders.REPEAT_PASSWORD}
+              icon='img/pass.svg'
+              error={props.errors.passwordConfirmation}
             />
             <SubmitButton title='Zarejestruj' />
             <LoginFields />
-          </LoginForm>
+          </Wrapper>
         </Form>
       )}
     </Formik>

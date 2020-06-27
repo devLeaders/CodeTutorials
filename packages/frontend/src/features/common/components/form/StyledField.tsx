@@ -3,12 +3,18 @@ import styled from "styled-components";
 import { Colors } from "../../styles/constans/Colors";
 import { FontFamily } from "../../styles/constans/FontFamily";
 import { FontSize } from "../../styles/constans/FontSize";
+import ErrorPopUp from "./ErrorPopUp";
 
-const Input = styled.input<{ icon: string }>`
+const Wrapper = styled.div`
+  position: relative;
+`;
+const Input = styled.input<{ icon: string; error: string }>`
   width: 100%;
   outline: 0;
   border: 0;
-  border-bottom: 2px solid ${Colors.nGrey};
+  transition: 0.5s ease-in-out;
+  border-bottom: ${({ error }) =>
+    error ? `2px solid red` : `2px solid ${Colors.nGrey}`};
   padding-bottom: 8px;
   margin-bottom: 30px;
   font-size: ${FontSize.XXXXMEDIUM};
@@ -17,27 +23,37 @@ const Input = styled.input<{ icon: string }>`
   background-size: 20px 20px;
   background-repeat: no-repeat;
   padding-left: 25px;
-
   cursor: pointer;
   &::placeholder {
     color: ${Colors.nGrey};
   }
 `;
+
 interface FieldInterface {
   field: any;
-  form: any;
   type: string;
   placeholder: string;
   icon: string;
+  error: string;
 }
 const StyledField: React.FC<FieldInterface> = ({
   field,
-  form,
   type,
   placeholder,
   icon,
+  error,
 }) => {
-  // const { placeholder, icon, type } = props;
-  return <Input type={type} placeholder={placeholder} icon={icon} {...field} />;
+  return (
+    <Wrapper>
+      <Input
+        type={type}
+        placeholder={placeholder}
+        icon={icon}
+        error={error}
+        {...field}
+      />
+      {error && <ErrorPopUp error={error} />}
+    </Wrapper>
+  );
 };
 export default StyledField;

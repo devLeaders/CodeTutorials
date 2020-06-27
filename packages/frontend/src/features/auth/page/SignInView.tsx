@@ -10,8 +10,10 @@ import RegisterFields from "../components/loginComponents/RegisterFields";
 import { useHistory } from "react-router-dom";
 import NAVIGATION from "../../../config/routing/NavigationPath";
 import { Device } from "../../common/styles/constans/Device";
+import { loginValidationSchema } from "../action/validationSchema";
+import { Fields, FieldsPlaceholders } from "../enums";
 
-const LoginForm = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   margin-top: 100px;
   padding: 0 50px;
@@ -45,27 +47,39 @@ const SignInView: React.FC = (props: any) => {
   };
 
   return (
-    <Formik initialValues={{ email: "", password: "" }} onSubmit={signInSubmit}>
+    <Formik
+      initialValues={{ email: "", password: "" }}
+      validateOnChange={false}
+      validateOnBlur={false}
+      onSubmit={signInSubmit}
+      validationSchema={loginValidationSchema}>
       {(props: FormikProps<any>) => (
         <Form>
-          <LoginForm>
+          <Wrapper>
             <TitleForm title='Logowanie' />
             <Field
-              name='email'
-              placeholder='Email'
+              label={Fields.EMAIL}
+              name={Fields.EMAIL}
+              placeholder={FieldsPlaceholders.EMAIL}
               component={StyledField}
               icon='img/email.svg'
+              error={props.errors.email}
             />
+
             <Field
+              label={Fields.PASSWORD}
+              type={Fields.PASSWORD}
               name='password'
-              placeholder='Hasło'
+              placeholder={FieldsPlaceholders.PASSWORD}
               component={StyledField}
               icon='img/pass.svg'
+              error={props.errors.password}
             />
+
             <SubmitButton title='Zaloguj' />
             <RecoveryPass />
             <RegisterFields />
-          </LoginForm>
+          </Wrapper>
         </Form>
       )}
     </Formik>
