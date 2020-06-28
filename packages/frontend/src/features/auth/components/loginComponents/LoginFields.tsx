@@ -6,7 +6,6 @@ import { Colors } from "../../../common/styles/constans/Colors";
 import NAVIGATION from "../../../../config/routing/NavigationPath";
 
 const StyledLink = styled(Link)`
-  width: 100%;
   color: ${Colors.LIGHT_PURPLE};
   font-size: ${FontSize.XXXXMEDIUM};
   text-decoration: none;

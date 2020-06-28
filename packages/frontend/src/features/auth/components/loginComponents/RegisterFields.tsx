@@ -11,35 +11,29 @@ const StyledLink = styled(Link)`
   font-size: ${FontSize.XXXXMEDIUM};
   text-decoration: none;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 20px;
 `;
 
 const Paragraph = styled.p`
-  width: min-content;
   color: ${Colors.nLightGrey};
   font-size: ${FontSize.XXXXMEDIUM};
   text-decoration: none;
   text-align: center;
   margin: 30px auto;
   position: relative;
-  &:after {
-    display: block;
+  &:after,
+  :before {
     position: absolute;
     width: 30px;
     height: 1px;
     background-color: ${Colors.nLightGrey};
     content: "";
     top: 10px;
+  }
+  &:after {
     left: -40px;
   }
   &:before {
-    display: block;
-    position: absolute;
-    width: 30px;
-    height: 1px;
-    background-color: ${Colors.nLightGrey};
-    content: "";
-    top: 10px;
     right: -40px;
   }
 `;

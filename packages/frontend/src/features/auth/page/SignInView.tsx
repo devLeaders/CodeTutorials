@@ -9,7 +9,7 @@ import RegisterFields from "../components/loginComponents/RegisterFields";
 import { Device } from "../../common/styles/constans/Device";
 import { loginValidationSchema } from "../action/validationSchema";
 import { Fields, FieldsPlaceholders } from "../enums";
-import { signInSubmit } from "../action/authAction";
+import { signInSubmit } from "../action/signInSubmit";
 
 const Wrapper = styled.main`
   display: flex;

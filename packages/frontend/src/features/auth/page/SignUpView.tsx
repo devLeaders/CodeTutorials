@@ -8,7 +8,7 @@ import SubmitButton from "../components/loginComponents/SubmitButton";
 import LoginFields from "../components/loginComponents/LoginFields";
 import { RegValidationSchema } from "../action/validationSchema";
 import { Fields, FieldsPlaceholders } from "../enums";
-import { signUpSubmit } from "../action/authAction";
+import { signUpSubmit } from "../action/signUpSubmit";
 
 const Wrapper = styled.main`
   display: flex;

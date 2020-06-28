@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Colors } from "../../styles/constans/Colors";
 import { FontSize } from "../../styles/constans/FontSize";
-import ErrorPopUp from "./ErrorPopUp";
+import ErrorMsg from "./ErrorMsg";
 
 const Wrapper = styled.div`
   position: relative;
@@ -11,11 +11,11 @@ const Input = styled.input<{ icon: string; error: string }>`
   width: 100%;
   outline: 0;
   border: 0;
-  transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in;
   border-bottom: ${({ error }) =>
     error ? `2px solid red` : `2px solid ${Colors.nGrey}`};
   padding-bottom: 8px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   font-size: ${FontSize.XXXXMEDIUM};
   background-image: ${({ icon }) => `url(${icon})`};
   background-position: left top;
@@ -44,6 +44,7 @@ const StyledField: React.FC<FieldInterface> = ({
 }) => {
   return (
     <Wrapper>
+      {error && <ErrorMsg error={error} />}
       <Input
         type={type}
         placeholder={placeholder}
@@ -51,7 +52,6 @@ const StyledField: React.FC<FieldInterface> = ({
         error={error}
         {...field}
       />
-      {error && <ErrorPopUp error={error} />}
     </Wrapper>
   );
 };

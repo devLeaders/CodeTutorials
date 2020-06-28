@@ -5,7 +5,6 @@ import { FontSize } from "../../../common/styles/constans/FontSize";
 import { Colors } from "../../../common/styles/constans/Colors";
 import { Device } from "../../../common/styles/constans/Device";
 const StyledLink = styled(Link)`
-  width: 100%;
   color: ${Colors.LIGHT_PURPLE};
   font-size: ${FontSize.XXXXMEDIUM};
   text-decoration: none;

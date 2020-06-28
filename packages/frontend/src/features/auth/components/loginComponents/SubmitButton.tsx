@@ -8,22 +8,16 @@ const Btn = styled.button`
   width: 100%;
   height: 60px;
   color: ${Colors.nGrey};
-  width: 100%;
   background-color: ${Colors.LIGHT_PURPLE};
   font-family: ${FontFamily.MONTSERRAT};
   font-size: ${FontSize.MEDIUM};
-  text-decoration: none;
-  text-align: right;
   border: none;
   border-radius: 30px;
   text-align: center;
   position: relative;
   overflow: hidden;
-  display: block;
   z-index: 0;
-
   &:before {
-    display: block;
     position: absolute;
     content: "";
     width: 110%;
@@ -44,7 +38,6 @@ const Btn = styled.button`
     &:before {
       opacity: 0.15;
       transform: translate(-50%, -50%) scale(1, 1);
-      transition: transform 0.3s ease 0s;
     }
   }
 `;
@@ -57,12 +50,10 @@ interface SubmitButtonInterface {
   title: string;
 }
 
-const SubmitButton: React.FC<SubmitButtonInterface> = (props: {
-  title: string;
-}) => {
+const SubmitButton: React.FC<SubmitButtonInterface> = ({ title }) => {
   return (
     <Btn type='submit'>
-      {props.title}
+      {title}
       <Arrow>></Arrow>
     </Btn>
   );
