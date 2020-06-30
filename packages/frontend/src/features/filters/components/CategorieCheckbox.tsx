@@ -69,7 +69,6 @@ const CategorieCheckbox: React.SFC<CategorieBtnProps> = ({
 
   const handleChange = useCallback((e: any) => {
     const value = parseInt(e.target.value)
-    console.log(value, categories)
     categories.includes(value)
       ? (setValues({categories: filterActive(categories, value)}))
       : (setValues({categories: [...categories, value]}));
