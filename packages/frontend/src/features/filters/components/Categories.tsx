@@ -9,7 +9,6 @@ import CategorieCheckbox from "./CategorieCheckbox";
 import { useCategories } from "../hooks/useCategories";
 import { useSubmit } from "../hooks/useSubmit";
 import { Formik, Form } from "formik";
-import { values } from "lodash";
 
 const FilterForm = styled(Form)`
   display: flex;

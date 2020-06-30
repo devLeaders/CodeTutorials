@@ -1,5 +1,5 @@
 import  React, {useCallback} from "react";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { Field } from "formik";
 
 import { FontSize } from "../../common/styles/constans/FontSize";
@@ -13,8 +13,8 @@ const CheckboxLabel = styled.label<{ isActive: boolean }>`
   justify-content: center;
   border: none;
   outline: none;
-  background-color: ${({ isActive }) => (isActive ? "black" : "white")};
-  color: ${({ isActive }) => (isActive ? "white" : "black")};
+  background-color: ${Colors.WHITE};
+  color: ${Colors.BLACK};
   padding: 14px 8px;
   box-shadow: 0px 2px 8px 0px ${Colors.OPACITY_GRAY};
   border-radius: 7px;
@@ -25,7 +25,14 @@ const CheckboxLabel = styled.label<{ isActive: boolean }>`
   transition: ease 0.2s;
   &:hover {
     transform: scale(1.1);
-  }
+  };
+
+  ${({isActive}) => (
+    isActive && css`
+      background-color: ${Colors.BLACK};
+      color: ${Colors.WHITE};
+    `
+  )}
 `;
 
 const InvisibleCheckbox = styled.input`
