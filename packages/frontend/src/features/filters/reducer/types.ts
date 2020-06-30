@@ -4,7 +4,6 @@ export interface FiltersState {
 }
 
 export enum Actions {
-    ADD_CATEGORIE = "add_categorie",
-    REMOVE_CATEGORIE = "remove_categorie",
+    SET_CATEGORIES = "SET_CATEGORIES",
     SET_SEARCH_PHRASE = "set_search_phrase"
 }

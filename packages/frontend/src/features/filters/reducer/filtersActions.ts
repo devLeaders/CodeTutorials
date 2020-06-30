@@ -1,18 +1,12 @@
-import {Actions} from "./Types"
+import {Actions} from "./types"
 
-export function addCategorie(payload: number): any {
+export function setCategories(payload: Array<number>): any {
     return {
-        type: Actions.ADD_CATEGORIE,
+        type: Actions.SET_CATEGORIES,
         payload
     }
 }
 
-export function removeCategorie(payload: Array<number>): any {
-    return {
-        type: Actions.REMOVE_CATEGORIE,
-        payload
-    }
-}
 
 export function setSearchPhrase(payload: string): any {
     return {

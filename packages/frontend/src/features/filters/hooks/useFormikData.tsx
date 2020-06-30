@@ -2,7 +2,7 @@ import * as React from "react";
 import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { setSearchPhrase } from "../reducer/FiltersActions";
+import { setSearchPhrase } from "../reducer/filtersActions";
 
 export const useFormikData = () => {
   const title = useSelector((state: RootStateOrAny) => state.filters.searchPhrase);

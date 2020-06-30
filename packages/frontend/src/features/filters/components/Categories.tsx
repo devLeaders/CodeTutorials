@@ -1,15 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector, RootStateOrAny } from "react-redux";
 
 import { FontSize } from "../../common/styles/constans/FontSize";
 import { fontWeight } from "../../common/styles/constans/fontWeight";
 import { Device } from "../../common/styles/constans/Device";
-import CategorieBtn from "./CategorieBtn";
+import CategorieCheckbox from "./CategorieCheckbox";
 import { useCategories } from "../hooks/useCategories";
-import {useFiltration} from "../hooks/useFiltration"
+import { useSubmit } from "../hooks/useSubmit";
+import { Formik, Form } from "formik";
+import { values } from "lodash";
 
-
-const Form = styled.form`
+const FilterForm = styled(Form)`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -31,26 +33,34 @@ export type Categorie = {
   videos: Array<any>;
 };
 
-
 const Categories: React.SFC = () => {
   const { data } = useCategories();
-  const {handleClick, categories} = useFiltration()
-
+  const categories = useSelector((state: RootStateOrAny) => state.filters.categories);
+  const {handleSubmit}  = useSubmit()
+  
   return (
-    <>
-      <Title>Kategorie</Title>
-      <Form>
-        {data.map((categorie: Categorie) =>  (
-          <CategorieBtn
-            key={categorie.id}
-            id={categorie.id}
-            categorie={categorie.name}
-            isActive={categories.includes(categorie.id)}
-            handleClick={handleClick}
-          />
-        ))}
-      </Form>
-    </>
+    <Formik
+      initialValues={{categories: [...categories]}}
+      onSubmit={handleSubmit}
+    >
+      {({ values, handleSubmit, setValues, submitForm }) => (
+        <div>
+          <Title>Kategorie</Title>
+          <FilterForm onSubmit={handleSubmit}>
+            {data.map((categorie: Categorie) => (
+              <CategorieCheckbox
+                name={categorie.name}
+                categories={values.categories}
+                value={categorie.id}
+                setValues={setValues}
+                submit={submitForm}
+                key={categorie.id}
+              />
+            ))}
+          </FilterForm>
+        </div>
+      )}
+    </Formik>
   );
 };
 

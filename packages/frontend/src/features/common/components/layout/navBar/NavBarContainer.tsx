@@ -18,9 +18,11 @@ const Wrapper = styled.div`
   justify-content: flex-end;
   align-items: center;
   height: 55px;
-  background-color: ${Colors.VERY_LIGHT_GRAY};
+  background-color: ${Colors.WHITE};
+  
   @media ${Device.LAPTOP} {
     height: 112px;
+    background-color: ${Colors.VERY_LIGHT_GRAY};
   }
 `;
 
