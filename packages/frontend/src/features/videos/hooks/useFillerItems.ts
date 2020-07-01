@@ -7,7 +7,7 @@ export const useFillerItems = (movieListContainer:any, movieItem:any, moviesList
         const itemWidth = movieItem.current?.offsetWidth + minMargin *2;
         const itemsInRow = Math.floor(containerWidth/itemWidth);
         const itemsNeededInRow =  itemsInRow - (moviesList % itemsInRow);
-        const fillerItems = new Array(itemsNeededInRow).fill(undefined).map((val,idx) => idx);
+        const fillerItems = new Array(itemsNeededInRow).fill(1).map((val,idx) => idx);
         setFillerItems(fillerItems);
     }
     useEffect(() => { 

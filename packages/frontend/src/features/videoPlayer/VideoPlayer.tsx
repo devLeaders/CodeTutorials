@@ -14,6 +14,7 @@ export const VideoPlayer = styled.video<{ isFullscreen: boolean }>`
     height: ${props => props.isFullscreen ? "100%" : "auto"};
     max-height: ${props => props.isFullscreen ? "100%" : "830px"};
     object-fit: contain;
+    cursor: pointer;
 `
 interface VpProps {
     small?: string;

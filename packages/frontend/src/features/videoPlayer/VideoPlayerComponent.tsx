@@ -19,6 +19,7 @@ const VideoPlayerContainer = styled.div<{ minimized: boolean, small: string | un
   width: ${props => props.minimized && props.small ? "200px" : ""};
   overflow: hidden;
   background-color: #222;
+  z-index: 2;
   &:hover ${VideoPlayer}{
     filter: ${props => props.minimized && props.small ? "brightness(0.5)" : ""};
   }

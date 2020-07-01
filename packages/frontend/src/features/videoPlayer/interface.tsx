@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import {useLocation} from "react-router-dom"
 import styled from "styled-components";
 
 import TimeBar from "./TimeBar";
@@ -8,10 +8,11 @@ import SmallModeInterface from "./SmallModeInterface"
 import { useSelector } from "react-redux"
 import { getMovieState } from "./actions/ReduxActions"
 import { Device } from "../common/styles/constans/Device"
+import NavigationPath from "../../config/routing/NavigationPath"
 
 
-const InterfaceWrapper = styled.div<{ paused: boolean; small: string | undefined }>`
-    display: flex;
+const InterfaceWrapper = styled.div<{ paused: boolean; small: string | undefined, location: string }>`
+    display: ${({location}) => location == NavigationPath.HOME ? "none": "flex"};
     position: ${props => props.small ? "static" : "absolute"};
     bottom: 0;
     width: 100%;
@@ -37,7 +38,7 @@ interface InterfaceProps {
 const Interface: React.SFC<InterfaceProps> = (props) => {
     const { small } = props
     const isPaused = useSelector(state => getMovieState(state).isPaused)
-    const isMinimized = useSelector(state => getMovieState(state).isMinimized)
+    const location = useLocation()
 
 
     return (
@@ -46,7 +47,8 @@ const Interface: React.SFC<InterfaceProps> = (props) => {
             {!small && <InterfaceWrapper
                 className="interfaceWrapper"
                 paused={isPaused}
-                small={small}>
+                small={small}
+                location={location.pathname}>
 
                 <VideoPlayerControls />
                 <TimeBar />

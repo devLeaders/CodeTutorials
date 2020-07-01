@@ -4,6 +4,7 @@ enum NAVIGATION {
   LOGIN = "/login",
   MOVIELIST = "/movielist",
   MOVIE = "/movie",
+  HOME = "/"
 }
 
 export default NAVIGATION;

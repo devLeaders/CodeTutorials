@@ -14,7 +14,7 @@ const Btn = styled.button<{isActive: boolean}>`
   outline: none;
   background-color: ${({isActive}) => isActive ? "black" : "white"};
   color: ${({isActive}) => isActive ? "white" : "black"};
-  padding: 14px 8px;
+  padding: 16px 8px;
   box-shadow: 0px 2px 8px 0px ${Colors.OPACITY_GRAY};
   border-radius: 7px;
   margin-bottom: 15px;
