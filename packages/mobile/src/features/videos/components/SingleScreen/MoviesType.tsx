@@ -14,5 +14,6 @@ export type MovieDescript = {
     id: string,
     name: string,
     kind: string,
-    runtime: string
+    runtime: string,
+    uri?:string
 }

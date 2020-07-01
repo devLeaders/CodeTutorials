@@ -37,7 +37,7 @@ export interface AnotherSingInMethodsProps {
   src3: string;
 }
 
-const AnotherSingInMethods: React<AnotherSingInMethodsProps> = props => {
+const AnotherSingInMethods: React.FC<AnotherSingInMethodsProps> = props => {
  return (
     <Wrapper>
       <ImageWrapper>

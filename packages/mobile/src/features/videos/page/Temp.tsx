@@ -7,11 +7,11 @@ import {
 import {HeaderLeft} from '../components/SingleScreen/HeaderLeft';
 import MainDescription from '../components/SingleScreen/MainDescription';
 
-interface Temp {
+interface TempP {
   navigation: any
 }
  
-export default class Temp extends React.Component <Temp>{
+export default class Temp extends React.Component <TempP>{
  
   render() {
     return (

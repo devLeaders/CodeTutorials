@@ -55,33 +55,23 @@ const ForgotOpacity = styled.TouchableOpacity({
   });
   
 export interface LogInProps {
-    // label: string;
-    // formikProps: any;
-    // formikKey: string;
     navigation: any;
   }
-
-  
- 
 
 class LogIn extends React.Component<LogInProps> {
     loginSubmit = async (value: any, action: any) => {
         console.log(value);
-
-        const dataResponse = await Axios.post('/auth/signin', {
-            "email": `${value.email}`,
-            "password": `${value.password}`
-             })
-             console.log(dataResponse);
-
-            const token = dataResponse.data.token;
-            console.log(token);
-            AsyncStorage.setItem('token', token);
+        // const dataResponse = await Axios.post('/auth/signin', {
+        //     "email": `${value.email}`,
+        //     "password": `${value.password}`
+        //      })
+            // const token = dataResponse.data.token;
+            // AsyncStorage.setItem('token', token);
 
             //Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             
             //zabezpieczyc wywolanie po nieodpowiednim statusie, 
-            this.props.navigation.navigate(NavigationName.MOVIELIST);
+            this.props.navigation.navigate(NavigationName.MENU);
     }
 
     render() {
