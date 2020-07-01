@@ -36,7 +36,7 @@ const Categories: React.SFC = () => {
   const { data } = useCategories();
   const categories = useSelector((state: RootStateOrAny) => state.filters.categories);
   const {handleSubmit}  = useSubmit()
-  
+
   return (
     <Formik
       initialValues={{categories: [...categories]}}
@@ -46,14 +46,14 @@ const Categories: React.SFC = () => {
         <div>
           <Title>Kategorie</Title>
           <FilterForm onSubmit={handleSubmit}>
-            {data.map((categorie: Categorie) => (
+            {data.map(({name, id}: Categorie) => (
               <CategorieCheckbox
-                name={categorie.name}
+                name={name}
                 categories={values.categories}
-                value={categorie.id}
+                value={id}
                 setValues={setValues}
                 submit={submitForm}
-                key={categorie.id}
+                key={id}
               />
             ))}
           </FilterForm>
