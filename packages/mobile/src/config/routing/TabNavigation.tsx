@@ -40,7 +40,7 @@ const kvArray = [
           </AlertView>
       </AlertV>
   ],
-  [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'ic_searchW'}}/>],
+  [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'ic_searchw'}}/>],
 ];
 
 const myMap = new Map(kvArray as any);

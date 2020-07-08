@@ -4,6 +4,7 @@ import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { Color } from '../../../common/styles/constans/Color'
 import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
 import { MyText } from '../../../common/styles/MyText';
+import { Animated } from 'react-native';
 
 export const Hamburger = styled.Image({
     width: 16,
@@ -94,7 +95,7 @@ export const ViewSeparator = styled.View({
 })
 
 
-export const ImageSlaider = styled.Image({
+export const ImageSlaider = styled(Animated.Image)({
     width: DifrentSlaider.WIDTHLARGE,
     height: 136, 
     resizeMode: 'cover', 
