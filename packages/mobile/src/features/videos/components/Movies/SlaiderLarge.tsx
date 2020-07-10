@@ -14,13 +14,19 @@ import { GetVideosList } from '../../action/conector';
 
 export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
   x: Animated.Value;
+  onScroll: any;
 
   constructor(props:any){
     super(props);
     this.state = {
       listVideos : []
     }
-    this.x = new Animated.Value(0);
+    this.x = new Animated.Value(10);
+    this.renderIt = ({item, index}) => this.ImgeSlaider(item, index, this.x);
+    this.onScroll = Animated.event(
+      [{nativeEvent: { contentOffset: { x: this.x} } } ], 
+      { useNativeDriver: true}
+  );
   }
 
   componentDidMount(){
@@ -33,7 +39,9 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
   public Separator = () => (<ViewSeparator/>)
   public ImgeSlaider = (item:MoviesListSimpleType, index, x:Animated.Value) => {
     const { width } = Dimensions.get('window')
-    const position = Animated.subtract(index * width,x);
+    const wCard = width ;
+    const position = Animated.subtract(index * wCard,x);
+    console.log('x=',x)
     const isDisappearing = -width;
     const isLeft = 0;
     const isRight =  width;
@@ -55,21 +63,18 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
     )
   }
 
-  private renderIt = ({item, index}) => this.ImgeSlaider(item, index, this.x)
-  onScroll = (event) =>{
-    console.log('param1',event.nativeEvent.contentOffset.x)
+  private renderIt : any;
+  // onScroll = (event) =>{
+  //   console.log('param1',event.nativeEvent.contentOffset.x)
     
-  }
+  // }
 
-//   onScroll = Animated.event(
-//     [{nativeEvent: { contentOffset: { x: this.x} } } ], 
-//     { useNativeDriver: true}
-// );
+ 
 
     render(){
         return(
             <Animated.FlatList 
-                scrollEventThrottle={1000}
+                // scrollEventThrottle={1}
                 snapToAlignment={"start"}
                 // snapToInterval={DifrentSlaider.WIDTHLARGE + 10}
                 decelerationRate={"fast"}
