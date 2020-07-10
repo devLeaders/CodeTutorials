@@ -76,6 +76,9 @@ export const changeState = (buttonType: string, small?: string) => {
     reduxAction = muteUnmute
   } else if (buttonType === ButtonTypes.SMALL_MODE) {
     reduxAction = toggleSmallMode
+    if(!Store.getState().movie.isPaused){
+      Store.dispatch(playPause())
+    }
   }
 
   Store.dispatch(reduxAction())

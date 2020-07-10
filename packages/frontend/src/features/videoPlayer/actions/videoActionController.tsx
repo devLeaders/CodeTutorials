@@ -18,6 +18,10 @@ export const runVideoAction = (
     video.muted = !videoState;
   } else if (buttonType === ButtonTypes.FULLSCREEN) {
     videoResize(videoContainer, videoState);
+  }else if(buttonType === ButtonTypes.SMALL_MODE){
+    if(!videoState){
+      playPauseVideo(video, videoState);
+    }
   }
 
   if (buttonType != ButtonTypes.FULLSCREEN) {
