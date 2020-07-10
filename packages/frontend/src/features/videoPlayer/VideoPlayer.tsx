@@ -1,10 +1,13 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import styled from "styled-components";
 import { useRef} from "react";
-import { useSelector} from "react-redux"
+import { useSelector, useDispatch} from "react-redux"
+import {useHistory} from "react-router-dom"
 
 import { getMovieState } from "./actions/ReduxActions"
 import { useVideoPlayerActions } from "./actions/EventController"
+import {reset} from "../../config/redux/videoPlayer/actions"
+
 
 
 
@@ -24,6 +27,18 @@ const VP: React.SFC<VpProps> = ({small, home}) => {
     const videoRef: any = useRef<HTMLVideoElement>();
     const isFullscreen: boolean = useSelector(state => getMovieState(state).isFullscreen)
     const { handleTimeProgress, handleVideoClick } = useVideoPlayerActions(videoRef, small)
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    useEffect(() => {
+        const unlisten = history.listen(() => {
+            dispatch(reset())
+        })
+
+        return () => {
+           unlisten()
+        }
+    })
 
     return (
         <VideoPlayer

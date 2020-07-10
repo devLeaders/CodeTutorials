@@ -6,7 +6,8 @@ import {
   MovieMuteUnMuteType,
   SetVideoTimeType,
   SetSmallVideoTimeType,
-  MoviePlayPauseSmallType
+  MoviePlayPauseSmallType,
+  ResetVideoStateType
 } from "./types";
 import Store from "../store";
 import { ButtonTypes } from "../../../features/videoPlayer/enums";
@@ -15,6 +16,12 @@ export function playPause(): MoviePlayPauseType {
   return {
     type: Actions.PLAY
   };
+}
+
+export function reset(): ResetVideoStateType{
+  return{
+    type: Actions.RESET_VIDEO_STATE
+  }
 }
 
 

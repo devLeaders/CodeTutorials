@@ -13,6 +13,7 @@ const initialState: movieState = {
 export const movieReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case Actions.PLAY: {
+      console.log(state);
       return { ...state, isPaused: !state.isPaused };
     }
     case Actions.TOGGLE_FULLSCREEN: {
@@ -32,6 +33,17 @@ export const movieReducer = (state = initialState, action: any) => {
     }
     case Actions.PLAY_SMALL: {
       return { ...state, smallIsPaused: !state.smallIsPaused };
+    }
+    case Actions.RESET_VIDEO_STATE: {
+      return {
+        isPaused: true,
+        smallIsPaused: true,
+        isFullscreen: false,
+        isMinimized: false,
+        isMuted: false,
+        videoTime: 0,
+        smallVideoTime: 0,
+      };
     }
     default: {
       return state;
