@@ -1,8 +1,7 @@
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
 import { useRef} from "react";
 import { useSelector} from "react-redux"
-
 
 import { getMovieState } from "./actions/ReduxActions"
 import { useVideoPlayerActions } from "./actions/EventController"
@@ -18,14 +17,13 @@ export const VideoPlayer = styled.video<{ isFullscreen: boolean }>`
 `
 interface VpProps {
     small?: string;
+    home?: boolean
 }
 
-const VP: React.SFC<VpProps> = (props) => {
-    const { small } = props
+const VP: React.SFC<VpProps> = ({small, home}) => {
     const videoRef: any = useRef<HTMLVideoElement>();
     const isFullscreen: boolean = useSelector(state => getMovieState(state).isFullscreen)
     const { handleTimeProgress, handleVideoClick } = useVideoPlayerActions(videoRef, small)
-
 
     return (
         <VideoPlayer
@@ -33,6 +31,7 @@ const VP: React.SFC<VpProps> = (props) => {
             ref={videoRef}
             onTimeUpdate={handleTimeProgress}
             onClick={handleVideoClick}
+            autoPlay={home && true}
         >
             <source
                 src="http://localhost:3300/videos/video"

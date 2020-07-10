@@ -8,6 +8,7 @@ import VideoPlayerComponent from "../../videoPlayer/VideoPlayerComponent";
 import SliderContainer from "../components/movieList/SliderContainer";
 import {Sizes} from "../../common/styles/constans/Sizes"
 
+
 const Main = styled.div`
   width: 100%;
   margin-top: ${Sizes.BANNER_MOBILE};
@@ -43,7 +44,7 @@ const Movies: React.SFC = () => {
     <>
       <Header/>
       <Main>
-        <VideoPlayerComponent />
+        <VideoPlayerComponent home={true}/>
         <SlidersSection>
           {titles.map((title: string) => (
             <SliderContainer key={title} title={title} />
