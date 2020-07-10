@@ -4,7 +4,7 @@ import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { Color } from '../../../common/styles/constans/Color'
 import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
 import { MyText } from '../../../common/styles/MyText';
-import { Animated } from 'react-native';
+import { Animated, Dimensions } from 'react-native';
 
 export const Hamburger = styled.Image({
     width: 16,
@@ -91,15 +91,16 @@ export const ButtonNOFilter = styled.TouchableOpacity({
 })
 
 export const ViewSeparator = styled.View({
-    width:20
+    width:0
 })
 
-
+const { width } = Dimensions.get("window")
 export const ImageSlaider = styled(Animated.Image)({
-    width: DifrentSlaider.WIDTHLARGE,
+    width: width - 50,
     height: 136, 
     resizeMode: 'cover', 
-    borderRadius: 10
+    borderRadius: 10,
+   
 })
 
 export const GroupForSubtitle = styled.View({

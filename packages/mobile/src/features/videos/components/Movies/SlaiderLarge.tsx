@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, FlatList ,Animated } from 'react-native';
+import { View, FlatList ,Animated, Dimensions } from 'react-native';
 import { DifrentSlaider, width } from '../../../common/styles/constans/DifrentEnum';
 import { MoviesListSimpleType } from './MoviesType';
 import {  
@@ -12,14 +12,15 @@ import { GetVideosList } from '../../action/conector';
   listVideos: Array<MoviesListSimpleType>
  }
 
- const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
-
 export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
+  x: Animated.Value;
+
   constructor(props:any){
     super(props);
     this.state = {
       listVideos : []
     }
+    this.x = new Animated.Value(0);
   }
 
   componentDidMount(){
@@ -30,67 +31,58 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
   }
 
   public Separator = () => (<ViewSeparator/>)
-  public ImgeSlaider = (item:MoviesListSimpleType, x:Animated.Value, index) => {
-    const position = Animated.subtract(index * 200,x);
-    const isDisappearing = -200;
+  public ImgeSlaider = (item:MoviesListSimpleType, index, x:Animated.Value) => {
+    const { width } = Dimensions.get('window')
+    const position = Animated.subtract(index * width,x);
+    const isDisappearing = -width;
     const isLeft = 0;
-    const isRight = 200 - 100;
-    const isAppearing = 200;
-    const translateX = Animated.add(
-      Animated.add(
-        this.x,
-        this.x.interpolate({
-          inputRange: [0, index * 200],
-          outputRange: [0, -index *200],
-          extrapolateRight: 'clamp'
-        })
-      ),
-        position.interpolate({
-          inputRange: [isRight, isAppearing],
-          outputRange: [0, -index * 200],
-          extrapolateRight: 'clamp',
-        }),
-    );
+    const isRight =  width;
+    const isAppearing = width*2 ;
     const scale = position.interpolate({
       inputRange: [isDisappearing, isLeft, isRight, isAppearing],
-      outputRange: [0.5, 1, 1, 0.5],
+      outputRange: [0.5,1,1,0.5],
       extrapolate: 'clamp'
     })
     const opacity = position.interpolate({
-      inputRange: [isDisappearing, isLeft, isRight, isAppearing],
-      outputRange: [0.5, 1, 1, 0.5],
+      inputRange: [isRight, isAppearing],
+      outputRange: [0,0.5],
     })
 
     return(
-      <Animated.View style={{ transform: [{translateX}]}}>
-        <ImageSlaider source={{uri: item.uri}}/>
+      <Animated.View >
+        <ImageSlaider style={{  transform: [{ scale }], margin:0, padding:0}} source={{uri: item.uri}}/>
       </Animated.View>
     )
   }
 
-  private renderIt = ({item, x, index}) => this.ImgeSlaider(item, x, index)
-  x = new Animated.Value(0);
-  onScroll = Animated.event(
-    [{nativeEvent: 
-      { contentOffset: { x: this.x} } } ], 
-      { useNativeDriver: true, 
-  });
+  private renderIt = ({item, index}) => this.ImgeSlaider(item, index, this.x)
+  onScroll = (event) =>{
+    console.log('param1',event.nativeEvent.contentOffset.x)
+    
+  }
+
+//   onScroll = Animated.event(
+//     [{nativeEvent: { contentOffset: { x: this.x} } } ], 
+//     { useNativeDriver: true}
+// );
 
     render(){
         return(
-            <AnimatedFlatList 
-                scrollEventThrottle={16}
+            <Animated.FlatList 
+                scrollEventThrottle={1000}
                 snapToAlignment={"start"}
-                snapToInterval={DifrentSlaider.WIDTHLARGE + 10}
+                // snapToInterval={DifrentSlaider.WIDTHLARGE + 10}
                 decelerationRate={"fast"}
                 style={{marginTop: 27}}
-                ItemSeparatorComponent={this.Separator}
+                // ItemSeparatorComponent={this.Separator}
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 data={this.state.listVideos} 
                 renderItem={this.renderIt}
                 keyExtractor={ item => item.id }
+                bounces={ false }
                 {...{onScroll: this.onScroll}}
+                
               /> 
         )
     }
