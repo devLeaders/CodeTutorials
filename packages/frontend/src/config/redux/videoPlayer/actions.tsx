@@ -6,7 +6,8 @@ import {
   MovieMuteUnMuteType,
   SetVideoTimeType,
   SetSmallVideoTimeType,
-  MoviePlayPauseSmallType
+  MoviePlayPauseSmallType,
+  ResetVideoStateType
 } from "./types";
 import Store from "../store";
 import { ButtonTypes } from "../../../features/videoPlayer/enums";
@@ -15,6 +16,12 @@ export function playPause(): MoviePlayPauseType {
   return {
     type: Actions.PLAY
   };
+}
+
+export function reset(): ResetVideoStateType{
+  return{
+    type: Actions.RESET_VIDEO_STATE
+  }
 }
 
 
@@ -69,6 +76,9 @@ export const changeState = (buttonType: string, small?: string) => {
     reduxAction = muteUnmute
   } else if (buttonType === ButtonTypes.SMALL_MODE) {
     reduxAction = toggleSmallMode
+    if(!Store.getState().movie.isPaused){
+      Store.dispatch(playPause())
+    }
   }
 
   Store.dispatch(reduxAction())

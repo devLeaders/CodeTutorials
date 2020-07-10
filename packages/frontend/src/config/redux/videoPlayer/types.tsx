@@ -15,7 +15,8 @@ export enum Actions {
   TOGGLE_SMALLMODE = "smallMode",
   MUTE_UNMUTE = "mute",
   SET_VIDEO_TIME = "setVideoTime",
-  SET_SMALL_VIDEO_TIME = "setSmallVideoTime"
+  SET_SMALL_VIDEO_TIME = "setSmallVideoTime",
+  RESET_VIDEO_STATE="resetVideoState"
 }
 
 interface MoviePlayPause {
@@ -41,6 +42,9 @@ interface SetSmallVideoTime {
   type: Actions.SET_SMALL_VIDEO_TIME;
   payload: number
 }
+interface ResetVideoState{
+  type: Actions.RESET_VIDEO_STATE
+}
 
 export type MoviePlayPauseType = MoviePlayPause;
 export type MoviePlayPauseSmallType = MoviePlayPauseSmall;
@@ -49,3 +53,4 @@ export type MovieToggleSmallModeType = MovieToggleSmallMode;
 export type MovieMuteUnMuteType = MovieMuteUnMute;
 export type SetVideoTimeType = SetVideoTime;
 export type SetSmallVideoTimeType = SetSmallVideoTime;
+export type ResetVideoStateType = ResetVideoState
