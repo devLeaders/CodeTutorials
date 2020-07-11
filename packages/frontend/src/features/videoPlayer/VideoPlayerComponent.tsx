@@ -60,7 +60,7 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
       ref={videoContainerRef}
       minimized={isMinimized}
     >
-      <Player small={props.small} home={props.home}/>
+      <Player small={props.small}/>
       <Interface small={props.small} />
     </VideoPlayerContainer >
   );
