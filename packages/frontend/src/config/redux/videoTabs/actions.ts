@@ -1,19 +1,26 @@
 export enum Actions {
-    SET_ACTIVE_TAB = "set active tab",
-    SET_DEFAULT_TAB = "set default tab"
+  SET_ACTIVE_TAB = "setActiveTab",
+  SET_DEFAULT_TAB = "setDefaultTab",
 }
 
-
-export const setActiveTab = (activeTab: string) => {
-    return{
-        type: Actions.SET_ACTIVE_TAB,
-        payload: activeTab
-    }
+interface ActiveTabData {
+  activeTab: string;
 }
 
+export type VideoTabsAction =
+  | { type: Actions.SET_ACTIVE_TAB, payload: ActiveTabData }
+  | { type: Actions.SET_DEFAULT_TAB, payload: any };
+  
+
+export const setActiveTab = (data: ActiveTabData) => {
+  return {
+    type: Actions.SET_ACTIVE_TAB,
+    payload: data.activeTab,
+  };
+};
 
 export const setDefaultTab = () => {
-    return{
-        type: Actions.SET_DEFAULT_TAB
-    }
-}
+  return {
+    type: Actions.SET_DEFAULT_TAB,
+  };
+};

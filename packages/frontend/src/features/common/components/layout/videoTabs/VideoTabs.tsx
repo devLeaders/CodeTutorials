@@ -38,8 +38,10 @@ const VideoTabs: React.SFC<VideoTabs> = ({ aside }) => {
   const dispatch = useDispatch()
 
   const handleClick = useCallback((e: any) => {
-    dispatch(setActiveTab(e.target.id))
+    dispatch(setActiveTab({activeTab: e.target.id}))
   }, []);
+
+  console.log(activeTab)
 
   return (
     <Wrapper aside={aside}>

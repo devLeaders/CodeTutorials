@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {useSelector, RootStateOrAny} from "react-redux"
+import { useSelector, RootStateOrAny } from "react-redux";
 
 import { Device } from "../../common/styles/constans/Device";
 import VideoDescription from "../components/singleVideoComponents/VideoDescription";
@@ -10,6 +10,7 @@ import Aside from "../../common/components/layout/Aside";
 import VideoTabs from "../../common/components/layout/videoTabs/VideoTabs";
 import Header from "../../common/components/layout/header/Header";
 import { Sizes } from "../../common/styles/constans/Sizes";
+import { Tabs } from "../../../config/redux/videoTabs/videoTabsReducer";
 
 const VideoInfo = styled.div`
   display: flex;
@@ -33,21 +34,24 @@ const Main = styled.div`
 `;
 
 const SingleMovieView: React.FC = () => {
-  const activeVideoTab = useSelector((state: RootStateOrAny) => state.videoTabs.activeTab) 
+  const activeVideoTab = useSelector(
+    (state: RootStateOrAny) => state.videoTabs.activeTab
+  );
 
   return (
     <>
-      <Header/>
+      <Header />
       <Main>
         <VideoPlayerComponent />
         <VideoTabs />
-       {activeVideoTab == "Description" && 
-       <VideoInfo>
-          <VideoDescription />
-          <Quiz />
-        </VideoInfo>}
+        {activeVideoTab == Tabs.DESCRIPTION && (
+          <VideoInfo>
+            <VideoDescription />
+            <Quiz />
+          </VideoInfo>
+        )}
       </Main>
-      <Aside tabs={true}/>
+      <Aside tabs={true} />
     </>
   );
 };
