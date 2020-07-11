@@ -1,6 +1,8 @@
-import { movieReducer } from "./videoPlayer/reducer";
 import { combineReducers } from 'redux'
 
-const rootReducer = combineReducers({movie: movieReducer})
+import { movieReducer } from "./videoPlayer/reducer";
+import {videoTabsReducer} from "./videoTabs/videoTabsReducer"
+
+const rootReducer = combineReducers({movie: movieReducer, videoTabs: videoTabsReducer})
 
 export default rootReducer

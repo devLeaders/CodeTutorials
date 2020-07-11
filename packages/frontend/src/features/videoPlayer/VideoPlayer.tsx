@@ -21,6 +21,7 @@ export const VideoPlayer = styled.video<{ isFullscreen: boolean }>`
 `
 interface VpProps {
     small?: string;
+    home?: boolean
 }
 
 const VP: React.SFC<VpProps> = ({small}) => {

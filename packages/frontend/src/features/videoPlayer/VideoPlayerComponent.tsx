@@ -43,6 +43,7 @@ const VideoPlayerContainer = styled.div<{ minimized: boolean, small: string | un
 `;
 interface VideoPlayerComponentProps {
   small?: string;
+  home?: boolean;
 }
 
 const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {

@@ -1,15 +1,16 @@
 import * as React from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import {useLocation} from "react-router-dom"
 
 import { Device } from "../../styles/constans/Device";
 import { Colors } from "../../styles/constans/Colors";
 import NavBar from "./navBar/NavBar";
-import Filters from "../../../filters/components/Filters";
+import VideoTabs from "./videoTabs/VideoTabs";
+import Navigation from "../../../../config/routing/NavigationPath";
+import Filters from "../../../filters/components/Filters"
 
-export interface AsideProps {}
 
-const Wrapper = styled.aside<{singleMovie?: boolean}>`
+const Wrapper = styled.aside<{ singleMovie?: boolean }>`
   position: fixed;
   right: 0;
   top: 0;
@@ -22,14 +23,17 @@ const Wrapper = styled.aside<{singleMovie?: boolean}>`
   }
 `;
 
+interface AsideProps  {
+  tabs?: boolean
+}
 
-const Aside: React.FC = () => {
-
+const Aside: React.FC<AsideProps> = ({tabs}) => {
   return (
     <Wrapper>
-      <NavBar/>
-      <Filters />
+      <NavBar />
+      {tabs ? <VideoTabs aside={true}/> : <Filters/>}
     </Wrapper>
   );
 };
+
 export default Aside;

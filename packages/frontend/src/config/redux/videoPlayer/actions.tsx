@@ -79,6 +79,10 @@ export const changeState = (buttonType: string, small?: string) => {
     if(!Store.getState().movie.isPaused){
       Store.dispatch(playPause())
     }
+
+    if(Store.getState().movie.isMinimized && !Store.getState().movie.smallIsPaused){
+      Store.dispatch(playPauseSmall())
+    }
   }
 
   Store.dispatch(reduxAction())
