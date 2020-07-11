@@ -20,6 +20,8 @@ const VideoInfo = styled.div`
 `;
 
 const Main = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-top: ${Sizes.BANNER_MOBILE};
   position: relative;
   width: 100%;
