@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import styled from "styled-components";
 import { useRef} from "react";
 import { useSelector, useDispatch} from "react-redux"
-import {useHistory} from "react-router-dom"
+import {useHistory, useLocation} from "react-router-dom"
 
 import { getMovieState } from "./actions/ReduxActions"
 import { useVideoPlayerActions } from "./actions/EventController"
 import {reset} from "../../config/redux/videoPlayer/actions"
+import NavigationPath from "../../config/routing/NavigationPath"
 
 
 
@@ -20,15 +21,15 @@ export const VideoPlayer = styled.video<{ isFullscreen: boolean }>`
 `
 interface VpProps {
     small?: string;
-    home?: boolean
 }
 
-const VP: React.SFC<VpProps> = ({small, home}) => {
+const VP: React.SFC<VpProps> = ({small}) => {
     const videoRef: any = useRef<HTMLVideoElement>();
     const isFullscreen: boolean = useSelector(state => getMovieState(state).isFullscreen)
     const { handleTimeProgress, handleVideoClick } = useVideoPlayerActions(videoRef, small)
     const dispatch = useDispatch()
     const history = useHistory()
+    const location = useLocation()
 
     useEffect(() => {
         const unlisten = history.listen(() => {
@@ -46,7 +47,7 @@ const VP: React.SFC<VpProps> = ({small, home}) => {
             ref={videoRef}
             onTimeUpdate={handleTimeProgress}
             onClick={handleVideoClick}
-            autoPlay={home && true}
+            autoPlay={location.pathname === NavigationPath.HOME && true}
         >
             <source
                 src="http://localhost:3300/videos/video"

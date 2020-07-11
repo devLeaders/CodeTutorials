@@ -44,7 +44,7 @@ const Movies: React.SFC = () => {
     <>
       <Header/>
       <Main>
-        <VideoPlayerComponent home={true}/>
+        <VideoPlayerComponent/>
         <SlidersSection>
           {titles.map((title: string) => (
             <SliderContainer key={title} title={title} />
