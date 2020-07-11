@@ -10,11 +10,13 @@ export interface TitleProps {
     title: string
 }
 
-const TitleTxt = styled.h5`
+const TitleTxt = styled.p`
     display: none;
     font-size: ${FontSize.MEDIUM};
     font-weight: ${fontWeight.BOLD};
-    padding: 29px 0px 22px 29px;
+    padding-left: 29px;
+    padding-top: 29px;
+    padding-bottom: 29px;
     @media ${Device.LAPTOP}{
         display: block;
     }
