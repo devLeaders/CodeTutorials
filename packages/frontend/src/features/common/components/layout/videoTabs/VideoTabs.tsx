@@ -41,8 +41,6 @@ const VideoTabs: React.SFC<VideoTabs> = ({ aside }) => {
     dispatch(setActiveTab({activeTab: e.target.id}))
   }, []);
 
-  console.log(activeTab)
-
   return (
     <Wrapper aside={aside}>
       <Nav>
