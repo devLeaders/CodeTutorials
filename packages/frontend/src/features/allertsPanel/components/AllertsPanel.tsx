@@ -1,19 +1,25 @@
 import * as React from "react";
+import {useSelector, RootStateOrAny} from "react-redux"
 import styled from "styled-components";
 
 import { FontSize } from "../../common/styles/constans/FontSize";
 import { fontWeight } from "../../common/styles/constans/fontWeight";
 import { Colors } from "../../common/styles/constans/Colors";
 import {Device} from "../../common/styles/constans/Device"
+import {BtnsType} from "../../common/components/layout/navBar/BtnsSection"
 import Description from "./Description";
+import ClosePopUp from "../../common/components/layout/ClosePopUp"
 import AllertsSection from "./AllertsSection"
  
-const Wrapper = styled.div`
-  position: relative;
-  display: flex;
+const Wrapper = styled.div<{active: boolean}>`
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: ${({active}) => active ? "flex" : 'none'};
   flex-direction: column;
   padding: 24px 24px;
   width: 320px;
+  background-color: ${Colors.WHITE};
   border-right: 1px solid ${Colors.GRAY};
   @media ${Device.TABLET} {
     width: 443px;
@@ -27,20 +33,18 @@ const Title = styled.h2`
   font-weight: ${fontWeight.BOLD};
   margin-bottom: 12px;
 `;
-const Ximg = styled.img`
-  width: 30px;
-  position: absolute;
-  top: 13px;
-  right: 13px;
-`;
 
 
+interface AllertsPanelProps {
+  active: boolean
+}
 
 
-const AllertsContainer: React.SFC = () => {
+const AllertsPanel: React.SFC<AllertsPanelProps> = ({active}) => {
+  
   return (
-    <Wrapper>
-      <Ximg src="/img/allerts/x.svg" />
+    <Wrapper active={active}>
+      <ClosePopUp name={BtnsType.ALERTS}/>
       <Title>Alerty</Title>
       <Description />
       <AllertsSection/>
@@ -48,4 +52,4 @@ const AllertsContainer: React.SFC = () => {
   );
 };
 
-export default AllertsContainer;
+export default AllertsPanel;

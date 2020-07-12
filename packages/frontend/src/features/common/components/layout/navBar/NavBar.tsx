@@ -28,7 +28,7 @@ const NavBar: React.FC<HeaderProps> = ({header}) => {
     <Wrapper header={header}>
       <BtnsSection/>
       <UserName name="Sebastian"/>
-      <UserImg />
+      <UserImg/>
     </Wrapper>
    
   );
