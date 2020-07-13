@@ -1,12 +1,10 @@
 import React from 'react';
+import {TouchableOpacity} from 'react-native';
 import styled from 'styled-components';
 import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { FontSize } from '../../../common/styles/constans/FontSize';
 import { Color } from '../../../common/styles/constans/Color';
 import { MyText } from '../../../common/styles/MyText';
-
-const Wrapper = styled.TouchableOpacity`
-`;
 
 const ButtonFilter = styled.TouchableOpacity({
     height: 30,
@@ -58,14 +56,13 @@ export default class BigHeaderButton extends React.Component<BigHeaderButtonProp
     }
     render(){
         return(
-            // onPress={() => this.props.navigation.navigate(this.props.goto)}>
-            <Wrapper>
+            <TouchableOpacity>
                 <ButtonFilter
                     onPress={this.navi} > 
                 <ImageButton source={{uri: this.props.image}}/>       
                 <TextButton>{this.props.text}</TextButton>
                 </ButtonFilter>
-            </Wrapper>
+            </TouchableOpacity>
 
         );
     }
