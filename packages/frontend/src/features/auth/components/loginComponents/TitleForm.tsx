@@ -9,9 +9,8 @@ import { fontWeight } from '../../../common/styles/constans/fontWeight';
 const Title = styled.h1`
     width: 100%;
     color: ${Colors.nBlack};
-    font-family: ${FontFamily.openSansFont};
-    font-size: ${FontSize.headerMobile};
-    font-weight: ${fontWeight.medium};
+    font-size: ${FontSize.BIG};
+    font-weight: ${fontWeight.MEDIUM};
     text-align: left;
     padding-bottom: 50px;
 `;

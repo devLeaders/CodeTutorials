@@ -1,11 +1,11 @@
 import React from 'react';
 import SquareOfMovie from '../components/MainScreen/BigSquareOfMovie';
 
-interface Temp {
+interface TempP {
   navigation: any
 }
  
-export default class Temp extends React.Component <Temp>{
+export default class Temp extends React.Component <TempP>{
  
   render() {
     return (

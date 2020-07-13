@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import {fontWeight} from "../../../styles/constans/fontWeight"
 import {FontSize} from "../../../styles/constans/FontSize"
+import {Colors} from "../../../styles/constans/Colors"
 import {Device} from "../../../styles/constans/Device"
 
 const Wrapper = styled.div`
@@ -13,14 +14,17 @@ const Wrapper = styled.div`
     height: 81px;
     border-radius: 40px;
     box-shadow: 0px 2px 8px 0px #00000029;
-    margin-right: 23px;
+    background-color: ${Colors.WHITE};
+    margin-right:25px;
     padding-left: 45px;
     padding-right: 25px;
     @media ${Device.LAPTOP}{
         display: flex;
+      
     }
-    @media ${Device.laptopL}{
+    @media ${Device.LAPTOP_L}{
         width: 401px;
+
     }
 `
 const Lens = styled.img`
@@ -29,12 +33,12 @@ const Lens = styled.img`
 `
 const Input = styled.input`
     outline: none;
-    font-size: ${FontSize.NORMAL};
+    font-size: ${FontSize.MEDIUM};
     font-weight: ${fontWeight.SEMI_BOLD};
     width: 120px;
     height: 24px;
     border: none;
-    @media ${Device.laptopL}{
+    @media ${Device.LAPTOP_L}{
         width: 250px;
     }
 `

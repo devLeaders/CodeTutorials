@@ -9,9 +9,9 @@ const Title = styled.h2`
     width: 100%;
     text-align: left;
     font-size: ${FontSize.SMALL};
-    margin-bottom: 2px;
-    font-weight:  ${fontWeight.bold};
-    @media ${Device.tablet} {
+    margin-bottom: 8px;
+    font-weight:  ${fontWeight.BOLD};
+    @media ${Device.TABLET} {
         font-size: ${FontSize.BIG};
         margin-bottom: 4px;
     }
@@ -20,8 +20,8 @@ const Title = styled.h2`
 const Author = styled.h4`
     text-align: left;
     font-size: ${FontSize.VERY_SMALL};
-    @media ${Device.tablet} {
-        font-size: ${FontSize.MEDIUM};
+    @media ${Device.TABLET} {
+        font-size: ${FontSize.XXMEDIUM};
     }
 `
 

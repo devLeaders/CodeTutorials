@@ -12,7 +12,7 @@ const Wrapper = styled.div`
     align-items: center;
 `
 const Checkbox = styled.input<{isActive: boolean}>`
-    background: ${({isActive}) => isActive ? "url('img/watched.svg') no-repeat center" : ""};
+    background: ${({isActive}) => isActive ? "url('/img/watched.svg') no-repeat center" : ""};
     appearance: none;
     width: 50px;
     height: 50px;
@@ -27,9 +27,9 @@ const Checkbox = styled.input<{isActive: boolean}>`
     }
 `
 const Title = styled.p`
-    font-size: ${FontSize.NORMAL};
+    font-size: ${FontSize.MEDIUM};
     font-weight: ${fontWeight.SEMI_BOLD};
-    @media ${Device.tablet}{
+    @media ${Device.TABLET}{
         font-size: ${FontSize.MEDIUM};
     }
 `

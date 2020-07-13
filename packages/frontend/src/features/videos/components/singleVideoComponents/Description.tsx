@@ -10,8 +10,8 @@ const DescTxt = styled.p`
     padding-top: 15px;
     padding-bottom: 15px;
     font-size: 14px;
-    @media ${Device.tablet} {
-        font-size: ${FontSize.NORMAL};
+    @media ${Device.TABLET} {
+        font-size: ${FontSize.MEDIUM};
         padding-top: 43px;
         padding-bottom: 30px;
     }

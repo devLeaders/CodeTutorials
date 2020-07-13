@@ -21,8 +21,6 @@ export class SliderOfImage extends React.Component<any,Slider> {
     this.state = {
       listImages : []
     }
-    this.Separator = this.Separator.bind(this);
-    this.ImgeSlaider = this.ImgeSlaider.bind(this);
   }
 
   public Separator = () => (<ViewSeparator/>)
@@ -37,7 +35,9 @@ export class SliderOfImage extends React.Component<any,Slider> {
     this.setState ({
       listImages
     })
-  }
+  };
+
+  private renderIt = ({item}) => this.ImgeSlaider(item)
 
   render(){
         return (
@@ -51,7 +51,7 @@ export class SliderOfImage extends React.Component<any,Slider> {
               showsHorizontalScrollIndicator={false}
               horizontal={true}
               data={this.state.listImages}
-              renderItem={({item}) => this.ImgeSlaider(item)}
+              renderItem={this.renderIt}
               keyExtractor={ item => item.id}
             />
           </ImageList>

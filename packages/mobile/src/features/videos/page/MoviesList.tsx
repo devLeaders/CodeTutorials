@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { View, ScrollView, AsyncStorage} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { HeaderTitle } from '../components/Movies/HeaderTitle';
-import { HeaderLeft } from '../components/Movies/HeaderLeft';
-import { HeaderRight } from '../components/Movies/HeaderRight';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
-// import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {  
   ButtonFilter, 
   TextButtonActive,
@@ -21,19 +17,11 @@ import {
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
 import { SlaiderSmall } from '../components/Movies/SlaiderSmall';
 import Axios from '../../../config/axios/AxiosConfig';
+import { NavigationName } from '../../../config/routing/NavigationName';
+import { NavProps } from '../../../config/routing/ParamList';
+
 
 export class  MoviesList extends React.Component{
-  static navigationOptions = ({ navigation }:any) => {
-    return {
-      headerStyle: {
-        backgroundColor: '#f0f2fa',
-      },
-      headerTitle: () => <HeaderTitle/>,
-      headerLeft: () => <HeaderLeft/>,
-      headerRight: () => <HeaderRight/>,
-    };
-  };
-//do odzdzielnego componentu linie 39-43
 
   async componentDidMount() {
     const token = await AsyncStorage.getItem("token");

@@ -9,6 +9,7 @@ import {FontSize} from "../../../common/styles/constans/FontSize"
 const Cell = styled.div`
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 4px 16px;
     box-shadow: 0px 3px 6px 0px ${Colors.OPACITY_GRAY};
@@ -16,7 +17,7 @@ const Cell = styled.div`
     width: 59px;
     height: 18px;
     margin-right: 8px;
-    @media ${Device.tablet} {
+    @media ${Device.TABLET} {
         margin-right: 12px;
         width: 83px;
         height: 25px;
@@ -25,7 +26,7 @@ const Cell = styled.div`
 const TechTxt = styled.p`
     font-weight: ${fontWeight.SEMI_BOLD};
     font-size: ${FontSize.VERY_SMALL};
-    @media ${Device.tablet} {
+    @media ${Device.TABLET} {
         font-size: ${FontSize.SMALL};
     }
 `

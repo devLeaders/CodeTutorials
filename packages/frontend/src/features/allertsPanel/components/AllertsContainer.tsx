@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   padding: 24px 24px;
   width: 320px;
   border-right: 1px solid ${Colors.GRAY};
-  @media ${Device.tablet} {
+  @media ${Device.TABLET} {
     width: 443px;
     padding: 24px 34px;
   }
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 const Title = styled.h2`
   width: 100%;
   text-align: left;
-  font-size: ${FontSize.MEDIUM_BIG};
+  font-size: ${FontSize.XXMEDIUM_L};
   font-weight: ${fontWeight.BOLD};
   margin-bottom: 12px;
 `;

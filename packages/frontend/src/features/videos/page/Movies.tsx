@@ -1,52 +1,58 @@
 import React from "react";
-import MovieNavBar from "../../common/components/layout/header/MovieNavBar";
 import styled from "styled-components";
-import MovieSection from "../components/movieList/MovieSection";
-import NewContent from "../components/movieList/NewContent";
+
 import { Device } from "../../common/styles/constans/Device";
+import Header from "../../common/components/layout/header/Header";
+import Aside from "../../common/components/layout/Aside";
+import VideoPlayerComponent from "../../videoPlayer/VideoPlayerComponent";
+import SliderContainer from "../components/movieList/SliderContainer";
+import {Sizes} from "../../common/styles/constans/Sizes"
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #222;
-  width: 100%;
-`;
 
-const Section = styled.section`
-  height: 250px;
-  display: flex;
-  flex-direction: column;
+const Main = styled.div`
   width: 100%;
-  @media ${Device.mobileM} {
-    height: 300px;
+  margin-top: ${Sizes.BANNER_MOBILE};
+  @media ${Device.TABLET_L} {
+    margin-top: 0;
   }
-  @media ${Device.tablet} {
-    height: 450px;
+  @media ${Device.LAPTOP} {
+    width: calc(100% - 446px);
   }
 `;
-const SliderSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+
+const SlidersSection = styled.div`
+  overflow: hidden;
+  @media ${Device.TABLET} {
+    margin-top: -90px;
+  }
+  @media ${Device.LAPTOP} {
+    margin-top: -120px;
+  }
+  @media ${Device.LAPTOP_L} {
+    margin-top: -160px;
+  }
 `;
+const titles = [
+  "Ostatnio dodane",
+  "Najlepiej Oceniane",
+  "Najczęściej oglądane",
+];
 
-export interface MoviesProps { }
 
-const Movies: React.SFC<MoviesProps> = () => {
+const Movies: React.SFC = () => {
   return (
-    <Wrapper>
-      <MovieNavBar></MovieNavBar>
-      <Section>
-        <NewContent />
-      </Section>
-      <SliderSection>
-        <MovieSection title="Polecane dla ciebie" id={1}></MovieSection>
-        <MovieSection title="Akcja" id={2}></MovieSection>
-        <MovieSection title="Dramaty" id={3}></MovieSection>
-      </SliderSection>
-    </Wrapper>
+    <>
+      <Header/>
+      <Main>
+        <VideoPlayerComponent/>
+        <SlidersSection>
+          {titles.map((title: string) => (
+            <SliderContainer key={title} title={title} />
+          ))}
+        </SlidersSection>
+      </Main>
+      <Aside />
+    </>
   );
 };
 

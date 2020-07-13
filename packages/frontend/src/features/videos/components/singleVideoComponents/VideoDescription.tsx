@@ -11,15 +11,13 @@ const Wrapper = styled.div`
     padding: 12px 11px;
     display: flex;
     flex-wrap: wrap;
-    @media ${Device.tablet} {
+    @media ${Device.TABLET} {
         padding: 40px 22px;
     }
-    @media ${Device.laptop} {
+    @media ${Device.TABLET_L} {
         padding: 56px 22px;
     }
-`
-
-
+`;
 
 const desc = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis saepe quis pariatur blanditiis sapiente unde voluptas ullam, repellendus non est consequuntur enim, debitis aliquid labore facilis qui vel laborum magni."
 

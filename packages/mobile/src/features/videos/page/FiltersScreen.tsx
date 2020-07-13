@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { FontWeight } from '../../common/styles/constans/FontWeight';
 import { FontFamily } from '../../common/styles/constans/FontFamily';
 import { FontSize } from '../../common/styles/constans/FontSize';
@@ -9,7 +9,7 @@ import BlackFilterButton from '../components/FiltersScreen/BlackFilterButton';
 import { NavigationName } from '../../../config/routing/NavigationName';
 import XButton from '../components/FiltersScreen/XButton';
 import {MyText} from '../../common/styles/MyText';
-import { View, TouchableOpacity, Text} from 'react-native';
+import { View, TouchableOpacity, Text, ScrollView} from 'react-native';
 
 ;
 
@@ -54,7 +54,6 @@ const SearchbarWrapper = styled.View({
   marginRight: 22,
   borderRadius: 20,
   backgroundColor: Color.WHITE,
-  //height: 17 px;     ??
   shadowColor: Color.LIGHTGREYX,
   shadowOffset: {
       width: 0,
@@ -102,7 +101,6 @@ const EyeButton = styled.TouchableOpacity({
   alignItems: 'center',
   borderRadius: 10,
   borderColor: Color.LIGHTGREYX,
-  //border: 1,  ??
   backgroundColor: Color.WHITE,
   shadowColor: Color.LIGHTGREYX,
   shadowOffset: {
@@ -137,14 +135,12 @@ const TextCategory = styled(MyText)`
     line-height: 27px;
     margin-bottom: 20px;  
 `;
-  // margin-top: 15 px ma kazdy button 20+15px
 
 const FilersButtonWrapper = styled.View`
     margin-left: 21px;
     margin-right: 10px;
     flex-direction: row;
 `;
-
 
 interface FiltersScreenProps {
   navigation: any,
@@ -193,8 +189,7 @@ export default class FiltersScreen extends React.Component <FiltersScreenProps, 
                 placeholder="Wyszukaj"
                 value={this.props.serachitem}
                 onChangeText={this.props.onSubmitSearch}                   
-                onEndEditing={this.props.onSubmitSearch}    
-                //??? do sprawdzenia                      
+                onEndEditing={this.props.onSubmitSearch}                         
             />
             <SearchButton>
               <ImageSerach source={{uri:'magnifier'}}/>

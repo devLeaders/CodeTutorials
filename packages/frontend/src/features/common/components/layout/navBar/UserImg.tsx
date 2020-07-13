@@ -7,7 +7,7 @@ const Img = styled.img`
   width: 37px;
   margin-right: 13px;
   margin-left: 13px;
-  @media ${Device.tablet} {
+  @media ${Device.TABLET} {
     width: 50px;
   }
 `;
