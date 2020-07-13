@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SmallHeaderButton from './SmallHeaderButton';
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import BigHeaderButton from './BigHeaderButton';
+import SmallHeaderButton2 from './SmallHeaderButton copy';
 
 const Wrapper = styled.ScrollView`
 `;
@@ -52,6 +53,12 @@ export default class MainScreenHeader extends React.Component <MainScreenHeaderP
                 goto={NavigationName.HOME}
                 image="info"
           />
+          {/* <SmallHeaderButton2
+                text="Informacje"
+                navigation={this.props.navigation}
+                goto={NavigationName.HOME}
+                image="info"
+          /> */}
         </ButtonsWraper>
       </Wrapper>
       

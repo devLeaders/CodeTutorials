@@ -55,11 +55,15 @@ interface SmallHeaderButtonProps {
   //wybór white button | blackbutton
 
 export default class SmallHeaderButton extends React.Component<SmallHeaderButtonProps> {
+    navi = (navigation) => {
+        this.props.navigation.navigate(this.props.goto)
+    
+        }
     render(){
         return(
             <TouchableOpacity>
                 <ButtonFilter
-                    onPress={() => this.props.navigation.navigate(this.props.goto)}>
+                     onPress={this.navi} > 
                 <ImageButton source={{uri: this.props.image}}/>       
                 <TextButton>{this.props.text}</TextButton>
                 </ButtonFilter>

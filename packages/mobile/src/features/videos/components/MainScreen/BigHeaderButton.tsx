@@ -48,14 +48,20 @@ interface BigHeaderButtonProps {
     navigation: any,
     text: string,
     image: string,
+    goto: any,
   }
 
 export default class BigHeaderButton extends React.Component<BigHeaderButtonProps> {
+    navi = (navigation) => {
+    this.props.navigation.navigate(this.props.goto)
+
+    }
     render(){
         return(
+            // onPress={() => this.props.navigation.navigate(this.props.goto)}>
             <Wrapper>
                 <ButtonFilter
-                    onPress={() => this.props.navigation.navigate(this.props.goto)}>
+                    onPress={this.navi} > 
                 <ImageButton source={{uri: this.props.image}}/>       
                 <TextButton>{this.props.text}</TextButton>
                 </ButtonFilter>
