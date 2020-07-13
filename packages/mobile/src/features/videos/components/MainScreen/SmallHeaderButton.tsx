@@ -1,4 +1,5 @@
 import React from 'react';
+import {TouchableOpacity} from 'react-native';
 import styled from 'styled-components';
 import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { FontFamily } from '../../../common/styles/constans/FontFamily';
@@ -6,19 +7,13 @@ import { FontSize } from '../../../common/styles/constans/FontSize';
 import { Color } from '../../../common/styles/constans/Color';
 import { MyText } from '../../../common/styles/MyText';
 
-const Wrapper = styled.TouchableOpacity`
-`;
-
 const ButtonFilter = styled.TouchableOpacity({
-    //marginRight: 10,
     height: 26,
     minWidth: 51,
-    //flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
     borderColor: Color.LIGHTGREYXX,
-    //border: 1,  ??
     backgroundColor: Color.WHITE,
     shadowColor: Color.LIGHTGREYX,
     shadowOffset: {
@@ -45,31 +40,24 @@ const ButtonFilter = styled.TouchableOpacity({
     width: 10px;
      
 `;
-  
 
 interface SmallHeaderButtonProps {
     navigation: any,
     text: string,
     image: string,
-    //onSubmitFilter(): void,
   }
-  
-  //wybór white button | blackbutton
+
 
 export default class SmallHeaderButton extends React.Component<SmallHeaderButtonProps> {
-    navi = (navigation) => {
-        this.props.navigation.navigate(this.props.goto)
-    
-        }
     render(){
         return(
-            <Wrapper>
+            <TouchableOpacity>
                 <ButtonFilter
-                     onPress={this.navi} > 
+                    onPress={() => this.props.navigation.navigate(this.props.goto)}>
                 <ImageButton source={{uri: this.props.image}}/>       
                 <TextButton>{this.props.text}</TextButton>
                 </ButtonFilter>
-            </Wrapper>
+            </TouchableOpacity>
 
         );
     }
