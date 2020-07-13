@@ -1,13 +1,11 @@
 import React from 'react';
+import {TouchableOpacity} from 'react-native';
 import styled from 'styled-components';
 import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { FontFamily } from '../../../common/styles/constans/FontFamily';
 import { FontSize } from '../../../common/styles/constans/FontSize';
 import { Color } from '../../../common/styles/constans/Color';
 import { MyText } from '../../../common/styles/MyText';
-
-const Wrapper = styled.TouchableOpacity`
-`;
 
 const ButtonFilter = styled.TouchableOpacity({
     //marginRight: 10,
@@ -59,13 +57,13 @@ interface SmallHeaderButtonProps {
 export default class SmallHeaderButton extends React.Component<SmallHeaderButtonProps> {
     render(){
         return(
-            <Wrapper>
+            <TouchableOpacity>
                 <ButtonFilter
                     onPress={() => this.props.navigation.navigate(this.props.goto)}>
                 <ImageButton source={{uri: this.props.image}}/>       
                 <TextButton>{this.props.text}</TextButton>
                 </ButtonFilter>
-            </Wrapper>
+            </TouchableOpacity>
 
         );
     }

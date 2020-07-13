@@ -26,7 +26,7 @@ import {
 import { NavigationName } from '../../../config/routing/NavigationName';
 import styled from 'styled-components';
 
-const HemeButton = styled.Button`
+const HomeButton = styled.Button`
   padding: 2px;
 `;
 
@@ -49,43 +49,43 @@ const HomeScreen = ({navigation}:any) => {
             <View style={styles.body}>
             <View style={styles.sectionContainer}>
                 <Text>Buttons to Exaples</Text>
-                <HemeButton
+                <HomeButton
                     color="#e63900"
                     title="Go to SingleMovie after CR"
                     onPress={() => navigation.navigate(NavigationName.SINGLEMOVIE)}
                 />
-                 <HemeButton
+                 <HomeButton
                     color="#e63900"
                     title="Go to MovieList"
                     onPress={() => navigation.navigate(NavigationName.MOVIELIST)}
                 />
-                <HemeButton
+                <HomeButton
                     color="#e63900"
                     title="Go to SignIn"
                     onPress={() => navigation.navigate(NavigationName.SIGNINSCREEN)}
                 />
-                  <HemeButton
+                  <HomeButton
                     color="#e63900"
                     title="Go to SignUp"
                     onPress={() => navigation.navigate(NavigationName.SINGUP)}
                 />
-                <HemeButton
+                <HomeButton
                     color="#e63900"
                     title="Go to SINGLEMOVIEDESCRIPTION"
                     onPress={() => navigation.navigate(NavigationName.SINGLEMOVIEDESCRIPTION)}
                 />
 
-                <HemeButton
+                <HomeButton
                     color="#e63900"
                     title="FiltersScreen"
                     onPress={() => navigation.navigate(NavigationName.FILTERSSCREEN)}
                 />
-                <HemeButton
+                <HomeButton
                     color="#e63900"
                     title="MainScreenHeader"
                     onPress={() => navigation.navigate(NavigationName.MAINSCREENHEADER)}
                 />
-                <HemeButton
+                <HomeButton
                     color="#e63900"
                     title="SquareOfMovie"
                     onPress={() => navigation.navigate(NavigationName.SQUAREOFMOVIE)}
