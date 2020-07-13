@@ -24,6 +24,7 @@ import SignUpScreen from '../../features/auth/page/SingUpScrenn';
 import SingleMovieDescription from '../..//features/videos/components/SingleScreen/SingleMovieDescription';
 import FiltersScreen from '../../features/videos/page/FiltersScreen';
 import MainScreenHeader from '../../features/videos/components/MainScreen/MainScreenHeader';
+import SquareToRenderTemp from '../../features/videos/components/MainScreen/SquareToRenderTemp';
 
 
 const navigation = createStackNavigator(
@@ -37,6 +38,7 @@ const navigation = createStackNavigator(
     [NavigationName.SINGLEMOVIEDESCRIPTION]: SingleMovieDescription,
     [NavigationName.FILTERSSCREEN]: FiltersScreen,
     [NavigationName.MAINSCREENHEADER]: MainScreenHeader,
+    [NavigationName.SQUAREOFMOVIE]: SquareToRenderTemp,
   },
   {
     initialRouteName: NavigationName.HOME,
