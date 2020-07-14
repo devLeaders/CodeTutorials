@@ -35,14 +35,9 @@ const MainWrapper = styled.div`
 const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  justify-content: space-between;
-  align-content: center;
-  padding: 25px 10px;
-  @media ${Device.LAPTOP} {
+  @media ${Device.LAPTOP_L} {
     width: calc(100vw - 443px);
     flex-direction: row;
-    padding: 72px 19px 30px 80px;
   }
 `;
 
