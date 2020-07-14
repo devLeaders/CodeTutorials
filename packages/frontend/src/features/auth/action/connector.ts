@@ -4,7 +4,7 @@ interface UserInterface {
   email: string;
   password: string;
 }
-export const postUser = (user: UserInterface) => {
-  const dataResponse = instance.post("/auth/signup", user);
+export const postUser = (user: UserInterface, url: string) => {
+  const dataResponse = instance.post(url, user);
   return dataResponse;
 };

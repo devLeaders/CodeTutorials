@@ -30,7 +30,6 @@ interface SignInInputsInterface {
 
 const SignInInputs: React.FC<SignInInputsInterface> = ({ errors }) => {
   const { email, password } = errors;
-
   return (
     <>
       <StyledForm>

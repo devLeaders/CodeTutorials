@@ -3,17 +3,16 @@ import { ErrorMessages } from "../enums";
 import { postUser } from "./connector";
 export const signUpSubmit = async (
   value: { email: string; password: string },
-  action: any
+  action: { setErrors: any }
 ) => {
   try {
-    // const dataResponse = await instance.post("/auth/signup", {
-    //   email: `${value.email}`,
-    //   password: `${value.password}`,
-    // });
-    const dataResponse = await postUser({
-      email: `${value.email}`,
-      password: `${value.password}`,
-    });
+    const dataResponse = await postUser(
+      {
+        email: `${value.email}`,
+        password: `${value.password}`,
+      },
+      "/auth/signin"
+    );
     const response = dataResponse.data;
   } catch (err) {
     const error = err.response.data;
