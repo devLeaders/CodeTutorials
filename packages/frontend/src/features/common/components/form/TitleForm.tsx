@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { FontSize } from "../../../common/styles/constans/FontSize";
-import { Colors } from "../../../common/styles/constans/Colors";
-import { fontWeight } from "../../../common/styles/constans/fontWeight";
+import { FontSize } from "../../styles/constans/FontSize";
+import { Colors } from "../../styles/constans/Colors";
+import { fontWeight } from "../../styles/constans/fontWeight";
 
 const Title = styled.h1`
   color: ${Colors.nBlack};

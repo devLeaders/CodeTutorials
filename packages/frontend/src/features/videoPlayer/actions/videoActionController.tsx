@@ -92,14 +92,11 @@ export const handleVideoShortcuts = (
       rewindVideoTime(video, -timeSkip);
     }
   } else if (key == 27) {
-    console.log(key);
     // reduxAction()
   }
 };
 
 export const getVideoDuration = (setVideoDuration: (num: number) => void) => {
   const video = refsStore.Refs[0].current;
-
-  console.log(video.duration);
   setVideoDuration(video.duration);
 };

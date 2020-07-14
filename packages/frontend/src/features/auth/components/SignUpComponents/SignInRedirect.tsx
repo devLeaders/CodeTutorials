@@ -13,9 +13,9 @@ const StyledLink = styled(Link)`
   margin-top: 50px;
 `;
 
-const LoginFields: React.FC = () => {
+const LoginRedirect: React.FC = () => {
   return (
     <StyledLink to={NAVIGATION.LOGIN}>Posiadasz konto? Zaloguj się</StyledLink>
   );
 };
-export default LoginFields;
+export default LoginRedirect;

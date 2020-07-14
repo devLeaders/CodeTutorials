@@ -7,7 +7,7 @@ import ErrorMsg from "./ErrorMsg";
 const Wrapper = styled.div`
   position: relative;
 `;
-const Input = styled.input<{ icon: string; error: string }>`
+const Field = styled.input<{ icon: string; error: string }>`
   width: 100%;
   outline: 0;
   border: 0;
@@ -35,7 +35,7 @@ interface FieldInterface {
   icon: string;
   error: string;
 }
-const StyledField: React.FC<FieldInterface> = ({
+const Input: React.FC<FieldInterface> = ({
   field,
   type,
   placeholder,
@@ -45,7 +45,7 @@ const StyledField: React.FC<FieldInterface> = ({
   return (
     <Wrapper>
       {error && <ErrorMsg error={error} />}
-      <Input
+      <Field
         type={type}
         placeholder={placeholder}
         icon={icon}
@@ -55,4 +55,4 @@ const StyledField: React.FC<FieldInterface> = ({
     </Wrapper>
   );
 };
-export default StyledField;
+export default Input;

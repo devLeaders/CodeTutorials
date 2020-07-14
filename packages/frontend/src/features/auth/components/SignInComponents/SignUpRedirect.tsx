@@ -38,7 +38,7 @@ const Paragraph = styled.p`
   }
 `;
 
-const RegisterFields: React.FC = (props: any) => {
+const RegisterRedirect: React.FC = (props: any) => {
   return (
     <>
       <StyledLink to={NAVIGATION.REGISTER}>Nie posiadasz konta?</StyledLink>
@@ -48,4 +48,4 @@ const RegisterFields: React.FC = (props: any) => {
   );
 };
 
-export default RegisterFields;
+export default RegisterRedirect;

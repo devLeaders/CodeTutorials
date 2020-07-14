@@ -4,24 +4,27 @@ import NAVIGATION from "../../../config/routing/NavigationPath";
 
 export const ProtectedRoute = ({ component: Component, ...rest }: any) => {
   const checkToken = localStorage.getItem("token");
+  const handleTokenCheck = (props: any) => {
+    if (checkToken) {
+      return <Component {...props} />;
+    } else {
+      return (
+        <Redirect
+          to={{
+            pathname: NAVIGATION.LOGIN,
+            state: {
+              from: props.location,
+            },
+          }}
+        />
+      );
+    }
+  };
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (checkToken) {
-          return <Component {...props} />;
-        } else {
-          return (
-            <Redirect
-              to={{
-                pathname: NAVIGATION.LOGIN,
-                state: {
-                  from: props.location,
-                },
-              }}
-            />
-          );
-        }
+        handleTokenCheck(props);
       }}
     />
   );
