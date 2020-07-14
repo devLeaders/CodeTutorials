@@ -5,6 +5,7 @@ import { MoviesListSimpleType } from './MoviesType';
 import {  
   ViewSeparator,
   ImageSlaider,
+  ImageWidth
 } from './MovieListStyle';
 import { GetVideosList } from '../../action/conector';
 
@@ -15,7 +16,7 @@ import { GetVideosList } from '../../action/conector';
 export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
   x: Animated.Value;
   onScroll: any;
-
+  renderIt: any;
   constructor(props:any){
     super(props);
     this.state = {
@@ -39,16 +40,15 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
   public Separator = () => (<ViewSeparator/>)
   public ImgeSlaider = (item:MoviesListSimpleType, index, x:Animated.Value) => {
     const { width } = Dimensions.get('window')
-    const wCard = width ;
+    const wCard = width -90 ;
     const position = Animated.subtract(index * wCard,x);
-    console.log('x=',x)
     const isDisappearing = -width;
     const isLeft = 0;
-    const isRight =  width;
-    const isAppearing = width*2 ;
+    const isRight =  width - 20;
+    const isAppearing = width * 2;
     const scale = position.interpolate({
       inputRange: [isDisappearing, isLeft, isRight, isAppearing],
-      outputRange: [0.5,1,1,0.5],
+      outputRange: [0.4,1,0.8,0.8],
       extrapolate: 'clamp'
     })
     const opacity = position.interpolate({
@@ -58,28 +58,20 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
 
     return(
       <Animated.View >
-        <ImageSlaider style={{  transform: [{ scale }], margin:0, padding:0}} source={{uri: item.uri}}/>
+        <ImageSlaider style={{  transform: [{ scale }]}} source={{uri: item.uri}}/>
       </Animated.View>
     )
   }
 
-  private renderIt : any;
-  // onScroll = (event) =>{
-  //   console.log('param1',event.nativeEvent.contentOffset.x)
-    
-  // }
-
- 
-
     render(){
         return(
             <Animated.FlatList 
-                // scrollEventThrottle={1}
+                scrollEventThrottle={10}
                 snapToAlignment={"start"}
-                // snapToInterval={DifrentSlaider.WIDTHLARGE + 10}
+                snapToInterval={ImageWidth + 10}
                 decelerationRate={"fast"}
                 style={{marginTop: 27}}
-                // ItemSeparatorComponent={this.Separator}
+                ItemSeparatorComponent={this.Separator}
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 data={this.state.listVideos} 

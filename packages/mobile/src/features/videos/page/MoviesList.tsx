@@ -54,7 +54,7 @@ export class  MoviesList extends React.Component{
           <View>
             <SlaiderLarge/>
           </View>
-          {/* <View>
+          <View>
               <GroupForSubtitle>
                 <TouchableOpacity>
                   <SubTitleLeft>Movies</SubTitleLeft>
@@ -79,7 +79,7 @@ export class  MoviesList extends React.Component{
               <View>
                 <SlaiderSmall/>
               </View>
-          </ViewMarginSmall> */}
+          </ViewMarginSmall>
         </ScrollView>
       </View>
     );

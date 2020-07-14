@@ -91,12 +91,14 @@ export const ButtonNOFilter = styled.TouchableOpacity({
 })
 
 export const ViewSeparator = styled.View({
-    width:0
+    width:10
 })
 
-const { width } = Dimensions.get("window")
+const { width } = Dimensions.get("window");
+export const ImageWidth = width -90;
+
 export const ImageSlaider = styled(Animated.Image)({
-    width: width - 50,
+    width: ImageWidth,
     height: 136, 
     resizeMode: 'cover', 
     borderRadius: 10,
