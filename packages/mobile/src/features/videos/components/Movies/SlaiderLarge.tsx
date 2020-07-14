@@ -52,13 +52,13 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
       extrapolate: 'clamp'
     })
     const opacity = position.interpolate({
-      inputRange: [isRight, isAppearing],
-      outputRange: [0,0.5],
+      inputRange: [isDisappearing, isLeft, isRight, isAppearing],
+      outputRange: [0.4,1,0.3,0.5],
     })
 
     return(
-      <Animated.View >
-        <ImageSlaider style={{  transform: [{ scale }]}} source={{uri: item.uri}}/>
+      <Animated.View>
+        <ImageSlaider style={{ opacity, transform: [{ scale }]}} source={{uri: item.uri}}/>
       </Animated.View>
     )
   }
@@ -71,7 +71,6 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
                 snapToInterval={ImageWidth + 10}
                 decelerationRate={"fast"}
                 style={{marginTop: 27}}
-                ItemSeparatorComponent={this.Separator}
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
                 data={this.state.listVideos} 
@@ -79,7 +78,6 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
                 keyExtractor={ item => item.id }
                 bounces={ false }
                 {...{onScroll: this.onScroll}}
-                
               /> 
         )
     }

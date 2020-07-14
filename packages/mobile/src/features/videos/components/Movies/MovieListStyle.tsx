@@ -91,18 +91,18 @@ export const ButtonNOFilter = styled.TouchableOpacity({
 })
 
 export const ViewSeparator = styled.View({
-    width:10
+    width:10 
 })
 
 const { width } = Dimensions.get("window");
-export const ImageWidth = width -90;
+export const ImageWidth = width -100;
 
 export const ImageSlaider = styled(Animated.Image)({
     width: ImageWidth,
-    height: 136, 
+    height: 168, 
     resizeMode: 'cover', 
     borderRadius: 10,
-   
+    marginLeft: 10
 })
 
 export const GroupForSubtitle = styled.View({
@@ -129,6 +129,7 @@ export const SubTitleRight = styled(MyText)({
     color: Color.DARKGREY
 })
 
+export const ImageWidthNormal = width -220;
 export const ImageSecondSlaider = styled.Image({
     width: DifrentSlaider.WIDTHNORMAL,
     height: 216,
