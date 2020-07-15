@@ -33,7 +33,6 @@ export class  MoviesList extends React.Component{
     console.log("token: ", token);
 
     const test = await Axios.get('/videos', {headers} )
-    console.log("test: ", test);
   }
   
   render(){
@@ -67,19 +66,6 @@ export class  MoviesList extends React.Component{
                 <SlaiderNormal/>
               </View>
           </View>
-          <ViewMarginSmall>
-              <ViewGroupUnderCategory>
-                  <TouchableOpacity>
-                      <SubTitleLeft>Recommends</SubTitleLeft>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                      <SubTitleRight>View All</SubTitleRight>
-                  </TouchableOpacity>
-              </ViewGroupUnderCategory>
-              <View>
-                <SlaiderSmall/>
-              </View>
-          </ViewMarginSmall>
         </ScrollView>
       </View>
     );

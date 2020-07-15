@@ -203,3 +203,8 @@ export const ViewGroupUnderCategory = styled.View({
     marginTop: 24,
     marginBottom: 5
 })
+
+export const ViewCentred = styled.View({
+    justifyContent:'center',
+    alignItems:'center'
+})
