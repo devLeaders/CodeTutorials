@@ -56,7 +56,7 @@ export default class TabNavigation extends Component {
   render() {
     return (
         <Tabs.Navigator
-          screenOptions={this.screenOptions}
+          // screenOptions={this.screenOptions}
           tabBarOptions={{
             activeTintColor: Color.WHITE,
             inactiveTintColor: Color.LIGHTGREY,

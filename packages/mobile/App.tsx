@@ -17,6 +17,6 @@ import { AuthStackScreen, HomeStackScreen } from './src/config/routing/AppNaviga
 
 export default class App extends Component {
   render() {
-    return <AuthStackScreen />
+    return <HomeStackScreen />
   }
 }

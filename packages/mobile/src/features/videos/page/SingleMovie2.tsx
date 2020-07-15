@@ -27,6 +27,7 @@ import {SliderOfImage} from '../components/SingleScreen/SliderOfImage';
 import {HeaderLeft} from '../components/SingleScreen/HeaderLeft';
 import { NavigationName } from '../../../config/routing/NavigationName';
 import { NavProps } from '../../../config/routing/ParamList';
+import  MainScreenHeader from '../components/MainScreen/MainScreenHeader'
 
 interface SingleMovie2Props {
   navigation: any
@@ -50,15 +51,7 @@ export default class SingleMovie2 extends React.Component <SingleMovie2Props>{
   render() {
     return (
       <Background>
-        <Container>
-          <Player>
-            <PlayerImage source={{uri:'ic_player'}} />
-            <PlayButton onPress={() => this.props.navigation.navigate('Home')}>
-              <Triangle source={{uri:'ic_play'}} />
-            </PlayButton>
-          </Player>
-          <SliderOfImage />
-        </Container>
+          <MainScreenHeader navigation />
 
         <RowContainer>
           <ColumContainerLeft>
