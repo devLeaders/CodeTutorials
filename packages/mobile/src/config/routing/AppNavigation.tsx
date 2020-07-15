@@ -16,6 +16,7 @@ import MainScreenHeader from '../../features/videos/components/MainScreen/MainSc
 import SquareToRenderTemp from '../../features/videos/components/MainScreen/SquareToRenderTemp';
 import TabNavigation from './TabNavigation';
 import { NavOption } from '../../features/common/components/NavOption';
+import ShortcutToFilters from '../../features/videos/components/FiltersScreen/ShortcutToFilters';
 
 const HomeStack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -29,6 +30,7 @@ export const HomeStackScreen = () => (
         <HomeStack.Screen name={NavigationName.FILTERSSCREEN} component={FiltersScreen} />
         <HomeStack.Screen name={NavigationName.MAINSCREENHEADER} component={MainScreenHeader} />
         <HomeStack.Screen name={NavigationName.SQUAREOFMOVIE} component={SquareToRenderTemp} />
+        <HomeStack.Screen name={NavigationName.SHORTCUTTOFILTERS} component={ShortcutToFilters} />
     </HomeStack.Navigator>
  )
 
