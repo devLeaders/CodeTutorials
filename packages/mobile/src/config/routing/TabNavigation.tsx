@@ -20,9 +20,9 @@ import {
     SearchWIc } from "../../features/common/components/TabBottomNavStyle";
 import { Tasks } from '../../features/videos/page/Tasks';
 import { Alert } from '../../features/videos/page/Alert';
-import {HomeStackScreen} from './AppNavigation'
 import { NavOption } from '../../features/common/components/NavOption'
 import FiltersScreen from '../../features/videos/page/FiltersScreen';
+import { HomeStackScreen } from './HomeNavigation';
 
 
 const Tabs = createBottomTabNavigator();
@@ -40,7 +40,7 @@ const kvArray = [
           </AlertView>
       </AlertV>
   ],
-  [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'ic_searchW'}}/>],
+  [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'ic_searchw'}}/>],
 ];
 
 const myMap = new Map(kvArray as any);
