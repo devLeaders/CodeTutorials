@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+/// styled-components/native
 import { FontWeight } from '../../../../features/common/styles/constans/FontWeight';
 import { FontFamily } from '../../../../features/common/styles/constans/FontFamily';
 import { FontSize } from '../../../../features/common/styles/constans/FontSize';
