@@ -72,29 +72,29 @@ export const handleVideoShortcuts = (
   reduxAction: any,
   videoState: RootStateOrAny
 ) => {
-  // const video = refsStore.Refs[0].current;
-  // const timeToEnd = video.duration - video.currentTime;
-  // const key = e.keyCode
-  // if (key == 32) {
-  //   e.preventDefault()
-  //   reduxAction();
-  //   playPauseVideo(video, videoState.isPaused)
-  // } else if (key == 37 || key == 39) {
-  //   const timeSkip = 5;
-  //   if (key == 39 && timeToEnd > timeSkip) {
-  //     e.preventDefault()
-  //     if (videoState.isPaused) {
-  //       reduxAction()
-  //       playPauseVideo(video, videoState)
-  //     }
-  //     rewindVideoTime(video, timeSkip)
-  //   } else if (key == 37) {
-  //     rewindVideoTime(video, -timeSkip)
-  //   }
-  // } else if (key == 27) {
-  //   console.log(key)
-  //   // reduxAction()
-  // }
+  const video = refsStore.Refs[0].current;
+  const timeToEnd = video.duration - video.currentTime;
+  const key = e.keyCode;
+  if (key == 32) {
+    e.preventDefault();
+    reduxAction();
+    playPauseVideo(video, videoState.isPaused);
+  } else if (key == 37 || key == 39) {
+    const timeSkip = 5;
+    if (key == 39 && timeToEnd > timeSkip) {
+      e.preventDefault();
+      if (videoState.isPaused) {
+        reduxAction();
+        playPauseVideo(video, videoState);
+      }
+      rewindVideoTime(video, timeSkip);
+    } else if (key == 37) {
+      rewindVideoTime(video, -timeSkip);
+    }
+  } else if (key == 27) {
+    console.log(key);
+    // reduxAction()
+  }
 };
 
 export const getVideoDuration = (setVideoDuration: (num: number) => void) => {
