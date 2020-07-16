@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { View, FlatList ,Animated, Dimensions } from 'react-native';
-import { DifrentSlaider, width } from '../../../common/styles/constans/DifrentEnum';
+import { Animated, Dimensions } from 'react-native';
 import { MoviesListSimpleType } from './MoviesType';
 import {  
   ViewSeparator,
@@ -15,8 +14,8 @@ import { GetVideosList } from '../../action/conector';
 
 export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
   x: Animated.Value;
-  onScroll: any;
-  renderIt: any;
+  onScroll: ()=>void;
+  renderIt: (item,index)=>void;
   constructor(props:any){
     super(props);
     this.state = {
@@ -77,7 +76,7 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
                 renderItem={this.renderIt}
                 keyExtractor={ item => item.id }
                 bounces={ false }
-                {...{onScroll: this.onScroll}}
+                onScroll={ this.onScroll }
               /> 
         )
     }

@@ -129,7 +129,6 @@ export const SubTitleRight = styled(MyText)({
     color: Color.DARKGREY
 })
 
-export const ImageWidthNormal = width -220;
 export const ImageSecondSlaider = styled.Image({
     width: DifrentSlaider.WIDTHNORMAL,
     height: 216,
