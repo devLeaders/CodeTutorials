@@ -33,16 +33,16 @@ const TextInfoSection = styled.div`
   }
 `;
 
-const UserInfoTxt = styled.p<{ email?: string; name?: string }>`
+const UserInfoTxt = styled.p<{ type?: string }>`
   max-width: 100%;
   margin-bottom: 4px;
   font-size: ${FontSize.XXXXMEDIUM};
-  font-weight: ${(props) =>
-    props.email ? fontWeight.REGULAR : fontWeight.SEMI_BOLD};
+  font-weight: ${({type}) =>
+    type === TextTypes.EMAIL ? fontWeight.REGULAR : fontWeight.SEMI_BOLD};
   word-wrap: break-word;
 
-  ${({ name }) =>
-    name &&
+  ${({ type }) =>
+    type === TextTypes.NAME &&
     css`
       text-transform: capitalize;
       font-size: ${FontSize.MEDIUM};
@@ -85,14 +85,19 @@ interface UserDataProps {
   userPhoto: string;
 }
 
+enum TextTypes  {
+  EMAIL = "email",
+  NAME = "name"
+}
+
 const UserData: React.SFC<UserDataProps> = (props) => {
   const { name, email, userType, userPhoto } = props;
   return (
     <Wrapper>
       <UserPhoto src={userPhoto} />
       <TextInfoSection>
-        <UserInfoTxt name="true">{name}</UserInfoTxt>
-        <UserInfoTxt email="true">{email}</UserInfoTxt>
+        <UserInfoTxt type={TextTypes.NAME}>{name}</UserInfoTxt>
+        <UserInfoTxt type={TextTypes.EMAIL}>{email}</UserInfoTxt>
         <UserInfoTxt>{userType}</UserInfoTxt>
       </TextInfoSection>
       <LogoutBtn>

@@ -21,6 +21,7 @@ const Wrapper = styled.div<{active: boolean}>`
   padding: 21px 14px;
   box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.02);
   background-color: ${Colors.WHITE};
+  z-index: 2;
   @media ${Device.TABLET} {
     width: 443px;
     padding: 24px 37px;
