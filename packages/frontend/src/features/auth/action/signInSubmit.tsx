@@ -4,9 +4,10 @@ import { postUser } from "./connector";
 
 export const signInSubmit = async (
   value: { email: string; password: string },
-  action: { setErrors: any }
+  action: { setErrors: (fields: { [field: string]: string }) => void }
 ) => {
   try {
+    console.log(action.setErrors);
     const dataResponse = await postUser(
       {
         email: `${value.email}`,

@@ -1,9 +1,9 @@
-import instance from "../../../config/axios/configAxios";
 import { ErrorMessages } from "../enums";
 import { postUser } from "./connector";
+
 export const signUpSubmit = async (
   value: { email: string; password: string },
-  action: { setErrors: any }
+  action: { setErrors: (fields: { [field: string]: string }) => void }
 ) => {
   try {
     const dataResponse = await postUser(

@@ -1,24 +1,30 @@
 import React from "react";
 import styled from "styled-components";
-import { Formik, FormikProps } from "formik";
+import { Formik } from "formik";
 import { signInSubmit } from "../action/signInSubmit";
 import SignInInputs from "../components/SignInComponents/SignInInputs";
+
 const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
 `;
+interface FormValuesInterface {
+  email: string;
+  password: string;
+}
 
 const SignInView: React.FC = (props: any) => {
+  const initialValues: FormValuesInterface = { email: "", password: "" };
   return (
     <Wrapper>
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={initialValues}
         validateOnChange={false}
         validateOnBlur={false}
         onSubmit={signInSubmit}>
-        {(props: FormikProps<any>) => <SignInInputs {...props} />}
+        {(props: { errors: string }) => <SignInInputs {...props} />}
       </Formik>
     </Wrapper>
   );
