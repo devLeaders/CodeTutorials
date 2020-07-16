@@ -112,6 +112,8 @@ const ImageEyeBeforeClick = styled.Image`
 `;
 
 const FilersButtonWrapper = styled.View`
+    display:flex;
+    flex-wrap: wrap;
     margin-right: 16px;
     flex-direction: row;
 `;
@@ -176,7 +178,27 @@ export default class ShortcutToFilters extends React.Component <ShortcutToFilter
 
         <FilersButtonWrapper>
             <BlackFilterButtonInShorcut 
+              text="Ux/UI Design"
+              navigation={this.props.navigation}
+              goto={NavigationName.HOME}
+              />
+              <BlackFilterButtonInShorcut 
+              text="Graphic Design"
+              navigation={this.props.navigation}
+              goto={NavigationName.HOME}
+              />
+              <BlackFilterButtonInShorcut 
               text="Computer Science Engineer"
+              navigation={this.props.navigation}
+              goto={NavigationName.HOME}
+              />
+              <BlackFilterButtonInShorcut 
+              text="X"
+              navigation={this.props.navigation}
+              goto={NavigationName.HOME}
+              />
+              <BlackFilterButtonInShorcut 
+              text="ABCDEFGHIJK"
               navigation={this.props.navigation}
               goto={NavigationName.HOME}
               />

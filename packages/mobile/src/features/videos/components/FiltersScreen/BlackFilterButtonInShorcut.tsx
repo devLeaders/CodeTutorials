@@ -7,18 +7,20 @@ import { Color } from '../../../common/styles/constans/Color';
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import { MyText } from '../../../common/styles/MyText';
 
+
 const Wrapper = styled.TouchableOpacity`
     display: flex;
     margin-left: 16px;
+    margin-bottom: 7px;
 `;
 
 const ButtonFilter = styled.TouchableOpacity({
-    minWidth: 80,
+    minWidth: 50,
     height: 25,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: 8,
+    borderRadius: 3,
     borderColor: Color.LIGHTGREYX,
     backgroundColor: Color.BLACK,
     shadowColor: Color.LIGHTGREYX,
@@ -32,29 +34,71 @@ const ButtonFilter = styled.TouchableOpacity({
   });
 
   const TextButton = styled(MyText)({
-    minWidth: 80,
+    marginLeft: 5,
+    marginRight: 10,
+    minWidth: 30,
     fontSize: FontSize.SMALLXXS,
     fontWeight: parseInt(FontWeight.REGULAR, 10),
     color: Color.WHITE,
   });
+
+  const Separator = styled.View({
+    marginRight: 5,
+  });
+
+  const WrapperImageX = styled.TouchableOpacity({});
+
+  const ImageX = styled.Image`
+      background-color: black;
+      height: 11px;
+      width: 11px; 
+  `;
   
 
 interface BlackFilterButtonInShorcutProps {
-    navigation: any,
     text: string,
-    goto: any,
   }
   
   //wybór white button | blackbutton
 
 export default class BlackFilterButtonInShorcut extends React.Component<BlackFilterButtonInShorcutProps> {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          showX : true,
+        };
+    
+        this.showFilter = this.showFilter.bind(this);
+      }
+    
+      showFilter() {
+        if (this.state.showX) {
+          this.setState({showX:false});
+        }else {
+          this.setState({showX: true});      
+        }
+      }
+    
+      static navigationOptions = {
+        headerShown: false,
+    };
+
+
     render(){
         return(
             <Wrapper>
-                <ButtonFilter
-                    onPress={() => this.props.navigation.navigate(this.props.goto)}>
+                {this.state.showX === true &&
+                <ButtonFilter>
                 <TextButton>{this.props.text}</TextButton>
+                <WrapperImageX onPress={this.showFilter}>
+                    <ImageX
+                    source={{uri:'xsmall'}}
+                    />
+                </WrapperImageX>
+                <Separator/>
                 </ButtonFilter>
+                }
             </Wrapper>
 
         );
