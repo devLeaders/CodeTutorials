@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   max-width: 100%;
   padding: 12px 11px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   @media ${Device.TABLET} {
     padding: 40px 48px 40px 22px;
   }
@@ -21,6 +21,9 @@ const Wrapper = styled.div`
   @media ${Device.LAPTOP_L} {
     max-width: 819px;
   }
+`;
+const TechWrapper = styled.div`
+  display: flex;
 `;
 
 const desc =
@@ -33,9 +36,11 @@ const VideoDescription: React.SFC = () => {
     <Wrapper>
       <TitleAndAuthor title='Doker od podstaw' author='Przemysław Bykowski' />
       <Description desc={desc} />
-      {technologies.map((technology: string) => (
-        <TechCell key={technology} technology={technology} />
-      ))}
+      <TechWrapper>
+        {technologies.map((technology: string) => (
+          <TechCell key={technology} technology={technology} />
+        ))}
+      </TechWrapper>
     </Wrapper>
   );
 };

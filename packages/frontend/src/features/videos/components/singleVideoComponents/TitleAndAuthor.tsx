@@ -8,10 +8,13 @@ const Title = styled.h2`
   width: 100%;
   text-align: left;
   font-size: ${FontSize.SMALL};
-  margin-bottom: 2px;
+  margin: 0 0 2px 0;
   font-weight: ${fontWeight.BOLD};
   @media ${Device.TABLET} {
     font-size: ${FontSize.BIG};
+    margin-bottom: 4px;
+  }
+  @media ${Device.LAPTOP_L} {
     margin-bottom: 4px;
   }
 `;

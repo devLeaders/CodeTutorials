@@ -36,6 +36,7 @@ const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   @media ${Device.LAPTOP_L} {
+    margin-top: 32px;
     width: calc(100vw - 443px);
     flex-direction: row;
   }
