@@ -1,13 +1,11 @@
-import  React, {useCallback} from "react";
-import styled, {css} from "styled-components";
-import { Field } from "formik";
+import React from "react";
+import styled from "styled-components";
 
 import { FontSize } from "../../common/styles/constans/FontSize";
 import { Colors } from "../../common/styles/constans/Colors";
 import { Device } from "../../common/styles/constans/Device";
 
-
-const CheckboxLabel = styled.label<{ isActive: boolean }>`
+const CheckboxLabel = styled.label`
   display: flex;
   flex-grow: 1;
   justify-content: center;
@@ -22,22 +20,13 @@ const CheckboxLabel = styled.label<{ isActive: boolean }>`
   margin-right: 5px;
   margin-left: 5px;
   cursor: pointer;
+  z-index: 10;
   transition: ease 0.2s;
   &:hover {
     transform: scale(1.1);
-  };
-
-  ${({isActive}) => (
-    isActive && css`
-      background-color: ${Colors.BLACK};
-      color: ${Colors.WHITE};
-    `
-  )}
+  }
 `;
 
-const InvisibleCheckbox = styled.input`
-  display: none;
-`;
 const CategorieTxt = styled.p`
   font-size: ${FontSize.SMALL};
   @media ${Device.tablet} {
@@ -45,50 +34,40 @@ const CategorieTxt = styled.p`
   }
 `;
 
-const filterActive = (activeCategories: Array<number>, value: number) =>
-    activeCategories.filter((item: number) => item != value);
+const InvisibleCheckbox = styled.input`
+  display: none;
+  &:checked + ${CheckboxLabel} {
+    background-color: black;
+    & ${CategorieTxt}{
+      color: white
+    }
+  }
+`;
 
 
 export interface CategorieBtnProps {
-  name: string;
-  categories: any;
   value: number;
-  setValues: any
-  submit: any
-  // React.MouseEvent
+  text: string
+  field: any;
 }
 
 const CategorieCheckbox: React.SFC<CategorieBtnProps> = ({
-  name,
-  categories,
   value,
-  setValues,
-  submit
+  text,
+  field,
 }) => {
-  
-
-  const handleChange = useCallback((e: any) => {
-    const value = parseInt(e.target.value)
-    categories.includes(value)
-      ? (setValues({categories: filterActive(categories, value)}))
-      : (setValues({categories: [...categories, value]}));
-    submit()
-  }, [categories]);
-
   return (
-    <Field name={name}>
-      {() => (
-        <CheckboxLabel isActive={categories.includes(value)}>
-          <InvisibleCheckbox
-            type="checkbox"
-            value={value}
-            checked={categories.includes(value)}
-            onChange={handleChange}
-          />
-          <CategorieTxt>{name}</CategorieTxt>
-        </CheckboxLabel>
-      )}
-    </Field>
+    <>
+      <InvisibleCheckbox
+        type="checkbox"
+        id={value}
+        name={field.name}
+        {...field}
+      />
+      <CheckboxLabel htmlFor={value.toString()}>
+        <CategorieTxt>{text}</CategorieTxt>
+      </CheckboxLabel>
+    </>
   );
 };
 

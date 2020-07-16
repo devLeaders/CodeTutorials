@@ -8,7 +8,7 @@ import { Device } from "../../common/styles/constans/Device";
 import CategorieCheckbox from "./CategorieCheckbox";
 import { useCategories } from "../hooks/useCategories";
 import { useSubmit } from "../hooks/useSubmit";
-import { Formik, Form } from "formik";
+import { Formik, Form, Field, FormikValues } from "formik";
 
 const FilterForm = styled(Form)`
   display: flex;
@@ -34,26 +34,33 @@ export type Categorie = {
 
 const Categories: React.SFC = () => {
   const { data } = useCategories();
-  const categories = useSelector((state: RootStateOrAny) => state.filters.categories);
-  const {handleSubmit}  = useSubmit()
+  const categories = useSelector(
+    (state: RootStateOrAny) => state.filters.categories
+  );
+  const { handleSubmit } = useSubmit();
+  const initValues = []
+
+  console.log(categories)
 
   return (
-    <Formik
-      initialValues={{categories: [...categories]}}
-      onSubmit={handleSubmit}
-    >
-      {({ values, handleSubmit, setValues, submitForm }) => (
+    <Formik initialValues={{}} onSubmit={handleSubmit}>
+      {({ handleSubmit, handleChange, submitForm }) => (
         <div>
           <Title>Kategorie</Title>
-          <FilterForm onSubmit={handleSubmit}>
-            {data.map(({name, id}: Categorie) => (
-              <CategorieCheckbox
-                name={name}
-                categories={values.categories}
+          <FilterForm
+            onSubmit={handleSubmit}
+            onChange={(e: any) => {
+              handleChange(e);
+              submitForm();
+            }}
+          >
+            {data.map(({ name, id }: Categorie) => (
+              <Field
+                name={id}
+                text={name}
                 value={id}
-                setValues={setValues}
-                submit={submitForm}
                 key={id}
+                component={CategorieCheckbox}
               />
             ))}
           </FilterForm>
@@ -64,3 +71,7 @@ const Categories: React.SFC = () => {
 };
 
 export default Categories;
+
+const _convertToObject = () => [
+
+]

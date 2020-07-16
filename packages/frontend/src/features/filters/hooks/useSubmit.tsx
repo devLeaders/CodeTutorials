@@ -10,7 +10,17 @@ export const useSubmit = () => {
   const dispatch = useDispatch()
 
   const handleSubmit = (values: FormikValues) => {
-    dispatch(setCategories(values.categories))
+    const valuesArr = Object.entries(values)
+    let activeCategories: Array<number> = []
+
+    valuesArr.forEach(([key, value]) => {
+      if(value){
+        activeCategories = [...activeCategories, parseInt(key)]
+      }
+    })
+
+    dispatch(setCategories(activeCategories))
+    
     if(location.pathname !== "/movielist"){
         history.push("/movielist")
       }
