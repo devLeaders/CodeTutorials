@@ -8,7 +8,7 @@ import SubmitButton from '../components/loginComponents/SubmitButton';
 import RegisterFields from '../components/loginComponents/RegisterFields';
 import {Field, Form, Formik, FormikProps} from 'formik';
 import {useHistory} from "react-router-dom"
-import NAVIGATION from "../../../config/routing/NavigationPath"
+import {Navigation} from "../../../config/routing/NavigationPath"
 import Axios from "../../../config/axios/configAxios"
 import { Device } from '../../common/styles/constans/Device';
 
@@ -42,10 +42,10 @@ const history = useHistory();
             const token = dataResponse.data.token
             localStorage.setItem('token', token)
             Axios.defaults.headers.common['Authorization'] = `Bearer ${token}` 
-            history.push(NAVIGATION.MOVIES)
+            history.push(Navigation.MOVIES)
         }
             catch(err) {
-                history.push(NAVIGATION.LOGIN)
+                history.push(Navigation.LOGIN)
             }
     }
 

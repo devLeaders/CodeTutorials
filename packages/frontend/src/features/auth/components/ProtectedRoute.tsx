@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { loginSubmit } from "../action/authAction"
-import NAVIGATION from '../../../config/routing/NavigationPath'
+import {Navigation} from '../../../config/routing/NavigationPath'
 
 export const ProtectedRoute = ({ component: Component, ...rest }:any) => {
     const checkToken = localStorage.getItem('token')
@@ -15,7 +15,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }:any) => {
             return (
               <Redirect
                 to={{
-                    pathname: NAVIGATION.LOGIN,
+                    pathname: Navigation.LOGIN,
                     state: {
                     from: props.location
                   }

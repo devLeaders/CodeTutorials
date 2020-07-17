@@ -1,14 +1,13 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import styled from "styled-components";
-import { useSelector, RootStateOrAny } from "react-redux";
 
 import { FontSize } from "../../common/styles/constans/FontSize";
 import { fontWeight } from "../../common/styles/constans/fontWeight";
 import { Device } from "../../common/styles/constans/Device";
 import CategorieCheckbox from "./CategorieCheckbox";
 import { useCategories } from "../hooks/useCategories";
-import { useSubmit } from "../hooks/useSubmit";
-import { Formik, Form, Field, FormikValues } from "formik";
+import { useFiltersForm } from "../hooks/useFiltersForm";
+import { Formik, Form, Field } from "formik";
 
 const FilterForm = styled(Form)`
   display: flex;
@@ -34,22 +33,16 @@ export type Categorie = {
 
 const Categories: React.SFC = () => {
   const { data } = useCategories();
-  const categories = useSelector(
-    (state: RootStateOrAny) => state.filters.categories
-  );
-  const { handleSubmit } = useSubmit();
-  const initValues = []
-
-  console.log(categories)
+  const { handleSubmit, initValues } = useFiltersForm();
 
   return (
-    <Formik initialValues={{}} onSubmit={handleSubmit}>
-      {({ handleSubmit, handleChange, submitForm }) => (
+    <Formik initialValues={initValues} onSubmit={handleSubmit}>
+      {({ handleSubmit, handleChange, submitForm, values }) => (
         <div>
           <Title>Kategorie</Title>
           <FilterForm
             onSubmit={handleSubmit}
-            onChange={(e: any) => {
+            onChange={(e: FormEvent<HTMLFormElement>) => {
               handleChange(e);
               submitForm();
             }}
@@ -59,6 +52,7 @@ const Categories: React.SFC = () => {
                 name={id}
                 text={name}
                 value={id}
+                checked={values[id] ? values[id] : false}
                 key={id}
                 component={CategorieCheckbox}
               />
@@ -71,7 +65,3 @@ const Categories: React.SFC = () => {
 };
 
 export default Categories;
-
-const _convertToObject = () => [
-
-]

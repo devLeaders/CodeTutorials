@@ -47,13 +47,15 @@ const InvisibleCheckbox = styled.input`
 
 export interface CategorieBtnProps {
   value: number;
-  text: string
+  text: string;
+  checked:boolean;
   field: any;
 }
 
 const CategorieCheckbox: React.SFC<CategorieBtnProps> = ({
   value,
   text,
+  checked,
   field,
 }) => {
   return (
@@ -62,6 +64,7 @@ const CategorieCheckbox: React.SFC<CategorieBtnProps> = ({
         type="checkbox"
         id={value}
         name={field.name}
+        checked={checked}
         {...field}
       />
       <CheckboxLabel htmlFor={value.toString()}>
