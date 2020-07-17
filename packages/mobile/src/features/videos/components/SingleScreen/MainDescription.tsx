@@ -14,6 +14,7 @@ import { FontWeight } from '../../../../features/common/styles/constans/FontWeig
 
 const Wrapper = styled.View`
     background-color: ${Color.LIGHTGREY};
+    margin-top: 29px
 `;
 
 const Title = styled.Text`

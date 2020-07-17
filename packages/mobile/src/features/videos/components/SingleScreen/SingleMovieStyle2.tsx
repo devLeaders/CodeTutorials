@@ -204,3 +204,12 @@ export const ViewImage = styled.View({
   height: 90,
   width: 90,
 });
+
+export const Title = styled(MyText)({
+  marginLeft: 14,
+  marginRight: 16,
+  fontWeight: parseInt(FontWeight.BOLD, 10) ,
+  fontSize: FontSize.MIDIUM,
+  color: Color.DARKGREY,
+  marginTop: 74
+});
