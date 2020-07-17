@@ -19,12 +19,14 @@ const Form = styled.form`
   margin-right: 23px;
   padding-left: 45px;
   padding-right: 25px;
-  @media ${Device.LAPTOP} {
-    display: flex;
-  }
-  @media ${Device.laptopL} {
-    width: 401px;
-  }
+  @media ${Device.LAPTOP}{
+        display: flex;
+      
+    }
+    @media ${Device.LAPTOP_L}{
+        width: 401px;
+
+    }
 `;
 const Lens = styled.img`
   width: 38px;
@@ -32,14 +34,14 @@ const Lens = styled.img`
 `;
 const Input = styled.input`
   outline: none;
-  font-size: ${FontSize.NORMAL};
-  font-weight: ${fontWeight.SEMI_BOLD};
+  font-size: ${FontSize.MEDIUM};
+    font-weight: ${fontWeight.SEMI_BOLD};
   width: 120px;
   height: 24px;
   border: none;
-  @media ${Device.laptopL} {
-    width: 250px;
-  }
+  @media ${Device.LAPTOP_L}{
+        width: 250px;
+    }
 `;
 const VideoSearch: React.SFC = () => {
   const { title, submit } = useFormikData();

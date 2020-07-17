@@ -22,8 +22,6 @@ export class SlaiderSmall extends React.Component<any,SlaiderSmallS>{
     this.state = {
       listVideos : []
     }
-    this.Separator = this.Separator.bind(this);
-    this.ImgeSlaider = this.ImgeSlaider.bind(this);
   }
 
   public Separator = () => (<ViewSeparator/>)
@@ -47,6 +45,8 @@ export class SlaiderSmall extends React.Component<any,SlaiderSmallS>{
     })
   }
 
+  private renderIt = ({item}) => this.ImgeSlaider(item)
+
   render(){
         return(
             <FlatList 
@@ -57,7 +57,7 @@ export class SlaiderSmall extends React.Component<any,SlaiderSmallS>{
               showsHorizontalScrollIndicator={false}
               horizontal={true}
               data={this.state.listVideos} 
-              renderItem={({item}) => this.ImgeSlaider(item)} 
+              renderItem={this.renderIt} 
               keyExtractor={ item => item.id }
           /> 
         )

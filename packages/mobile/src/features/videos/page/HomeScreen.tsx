@@ -1,13 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -24,10 +14,17 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import { NavigationName } from '../../../config/routing/NavigationName';
+import styled from 'styled-components';
+import { NavProps } from '../../../config/routing/ParamList';
+
+const HomeButton = styled.Button`
+  padding: 2px;
+`;
 
 declare var global: {HermesInternal: null | {}};
 
-const HomeScreen = ({navigation}:any) => {
+export const HomeScreen = ({ navigation }: NavProps<NavigationName.HOME>) => { 
+  
     return (
       <>
         <StatusBar barStyle="dark-content" />
@@ -44,40 +41,47 @@ const HomeScreen = ({navigation}:any) => {
             <View style={styles.body}>
             <View style={styles.sectionContainer}>
                 <Text>Buttons to Exaples</Text>
-                <Button
+                <HomeButton
                     color="#e63900"
-                    title="Go to SingleMovie after CR"
+                    title="Go to SingleMovie"
                     onPress={() => navigation.navigate(NavigationName.SINGLEMOVIE)}
                 />
-                 <Button
+                 <HomeButton
                     color="#e63900"
                     title="Go to MovieList"
                     onPress={() => navigation.navigate(NavigationName.MOVIELIST)}
                 />
-                <Button
+                <HomeButton
                     color="#e63900"
                     title="Go to SignIn"
                     onPress={() => navigation.navigate(NavigationName.SIGNINSCREEN)}
                 />
-                  <Button
+                  <HomeButton
                     color="#e63900"
                     title="Go to SignUp"
                     onPress={() => navigation.navigate(NavigationName.SINGUP)}
                 />
-                <Button
+                <HomeButton
                     color="#e63900"
                     title="Go to SINGLEMOVIEDESCRIPTION"
                     onPress={() => navigation.navigate(NavigationName.SINGLEMOVIEDESCRIPTION)}
                 />
 
-                <Button
+                <HomeButton
                     color="#e63900"
                     title="FiltersScreen"
                     onPress={() => navigation.navigate(NavigationName.FILTERSSCREEN)}
                 />
-
-
-
+                <HomeButton
+                    color="#e63900"
+                    title="MainScreenHeader"
+                    onPress={() => navigation.navigate(NavigationName.MAINSCREENHEADER)}
+                />
+                <HomeButton
+                    color="#e63900"
+                    title="SquareOfMovie"
+                    onPress={() => navigation.navigate(NavigationName.SQUAREOFMOVIE)}
+                />
 
 
               </View>

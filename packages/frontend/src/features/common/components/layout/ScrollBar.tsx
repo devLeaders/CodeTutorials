@@ -14,7 +14,7 @@ const Wrapper = styled.div<{type?: string}>`
     border-radius: 20px;
     background-color: ${Colors.LIGHT_OPACITY_BLACK};
 
-    @media ${Device.tablet}{
+    @media ${Device.TABLET}{
         display: block;
     }
 `

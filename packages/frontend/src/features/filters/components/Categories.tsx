@@ -14,15 +14,15 @@ const FilterForm = styled(Form)`
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 21px;
-  @media ${Device.tablet} {
-    width: 334px;
-  }
+  @media ${Device.TABLET}{
+        width: 334px;
+    }
 `;
 
 const Title = styled.h3`
   margin-top: 35px;
-  font-size: ${FontSize.MEDIUM};
-  font-weight: ${fontWeight.SEMI_BOLD};
+  font-size: ${FontSize.XXMEDIUM};
+    font-weight: ${fontWeight.SEMI_BOLD};
 `;
 
 export type Categorie = {

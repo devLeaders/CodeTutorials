@@ -20,7 +20,7 @@ const AllertContainer = styled.div`
   &:hover {
     border: 2px solid ${Colors.BLACK};
   }
-  @media ${Device.tablet} {
+  @media ${Device.TABLET} {
     padding: 5px 37px;
     width: 369px;
   }
@@ -39,7 +39,7 @@ const BlackRectangle = styled.div`
   ${AllertContainer}:hover & {
     display: block;
   }
-  @media ${Device.tablet} {
+  @media ${Device.TABLET} {
     width: 30px;
     height: 28px;
   }
@@ -58,7 +58,7 @@ const TextContainer = styled.div`
 const AllertIcon = styled.img`
   width: 30px;
   margin-right: 15px;
-  @media ${Device.tablet} {
+  @media ${Device.TABLET} {
     margin-right: 29px;
   }
 `;
@@ -68,7 +68,7 @@ const Title = styled.h3`
   font-weight: ${fontWeight.BOLD};
 `;
 const Desc = styled.p`
-  font-size: ${FontSize.VERY_SMALL};
+  font-size: ${FontSize.XXXXSMALL};
   line-height: 10px;
 `;
 

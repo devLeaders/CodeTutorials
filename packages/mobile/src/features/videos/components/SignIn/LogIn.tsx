@@ -7,7 +7,7 @@ import {
     AsyncStorage,
 } from 'react-native';
 import { Formik } from 'formik';
-import validationSchema from '../../action/validationSchema';
+import validationSchema from '../SignIn/validationSchema';
 import SignInInput from './SignInInput';
 import styled from 'styled-components/native';
 import {FontSize} from '../../../common/styles/constans/FontSize';

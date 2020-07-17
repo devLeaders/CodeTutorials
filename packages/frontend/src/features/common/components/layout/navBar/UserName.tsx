@@ -7,7 +7,7 @@ import { FontSize } from "../../../styles/constans/FontSize";
 
 const Name = styled.h4`
     display: none;
-    font-size: ${FontSize.NORMAL};
+    font-size: ${FontSize.MEDIUM};
     font-weight: ${fontWeight.SEMI_BOLD};
     margin-left: 9px;
     margin-right: 9px;

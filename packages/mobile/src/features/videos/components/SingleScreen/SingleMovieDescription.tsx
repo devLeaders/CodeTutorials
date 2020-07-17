@@ -7,11 +7,11 @@ import {
 import {HeaderLeft} from './HeaderLeft';
 import MainDescription from './MainDescription';
 
-interface SingleMovieDescription {
+interface SingleMovieDescriptionP {
   navigation: any
 }
 
-export default class SingleMovieDescription extends React.Component <SingleMovieDescription>{
+export default class SingleMovieDescription extends React.Component <SingleMovieDescriptionP>{
  
   render() {
     return (
