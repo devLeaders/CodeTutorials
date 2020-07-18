@@ -20,7 +20,7 @@ const CheckboxLabel = styled.label`
   margin-right: 5px;
   margin-left: 5px;
   cursor: pointer;
-  z-index: 10;
+  z-index: 1;
   transition: ease 0.2s;
   &:hover {
     transform: scale(1.1);
