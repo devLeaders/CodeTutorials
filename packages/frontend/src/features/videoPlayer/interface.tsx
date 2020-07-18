@@ -8,11 +8,11 @@ import SmallModeInterface from "./SmallModeInterface"
 import { useSelector } from "react-redux"
 import { getMovieState } from "./actions/ReduxActions"
 import { Device } from "../common/styles/constans/Device"
-import NavigationPath from "../../config/routing/NavigationPath"
+import {Navigation} from "../../config/routing/NavigationPath"
 
 
 const InterfaceWrapper = styled.div<{ paused: boolean; small: string | undefined, location: string }>`
-    display: ${({location}) => location == NavigationPath.HOME ? "none": "flex"};
+    display: ${({location}) => location == Navigation.HOME ? "none": "flex"};
     position: ${props => props.small ? "static" : "absolute"};
     bottom: 0;
     width: 100%;
