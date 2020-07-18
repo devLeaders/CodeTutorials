@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import { fontWeight } from "../../../styles/constans/fontWeight";
 import { FontSize } from "../../../styles/constans/FontSize";
 import { Device } from "../../../styles/constans/Device";
+import { Colors } from "../../../styles/constans/Colors";
 import { useFormDelay } from "../../../../filters/hooks/useFormDelay";
 import { useFormikData } from "../../../../filters/hooks/useFormikData";
 
@@ -19,6 +20,7 @@ const Form = styled.form`
   margin-right: 23px;
   padding-left: 45px;
   padding-right: 25px;
+  background-color: ${Colors.WHITE};
   @media ${Device.LAPTOP}{
         display: flex;
       

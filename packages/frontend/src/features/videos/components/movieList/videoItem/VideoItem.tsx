@@ -46,7 +46,7 @@ const VideoItem: React.ForwardRefExoticComponent<VideoItemProps> = React.forward
   ({ id, marginLeft, margin }, ref: any) => {
     return (
       <Wrapper ref={ref} marginLeft={marginLeft} margin={margin}>
-        <NavLink to={`${NavigationPath.MOVIES}/${id}`}>
+        <NavLink to={`${Navigation.MOVIES}/${id}`}>
           <Img
             src="https://cdn.pixabay.com/photo/2020/02/12/16/13/landscape-4843193_960_720.jpg"
             alt=""

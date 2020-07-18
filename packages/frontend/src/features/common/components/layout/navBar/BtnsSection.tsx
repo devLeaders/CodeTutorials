@@ -7,17 +7,6 @@ import { Colors } from "../../../styles/constans/Colors";
 import {usePopUp} from "../../../hooks/usePopUp"
 
 const BtnsSection = styled.section`
-<<<<<<< HEAD
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-right: 2px solid ${Colors.BLACK_OPACITY};
-    border-left: 2px solid ${Colors.BLACK_OPACITY}; 
-    @media ${Device.tablet} {
-=======
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -26,7 +15,6 @@ const BtnsSection = styled.section`
   padding-right: 15px;
   border-right: 2px solid ${Colors.BLACK_OPACITY};
   @media ${Device.TABLET} {
->>>>>>> master
     width: 220px;
   }
   @media ${Device.LAPTOP} {

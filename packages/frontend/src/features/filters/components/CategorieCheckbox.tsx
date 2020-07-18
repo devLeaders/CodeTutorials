@@ -29,8 +29,8 @@ const CheckboxLabel = styled.label`
 
 const CategorieTxt = styled.p`
   font-size: ${FontSize.SMALL};
-  @media ${Device.tablet} {
-    font-size: ${FontSize.paragraphDesktop};
+  @media ${Device.TABLET} {
+    font-size: ${FontSize.XXMEDIUM};
   }
 `;
 
