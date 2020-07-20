@@ -44,31 +44,31 @@ export const DATA = [
     {
       id: 'b1',
       uri: 'movie1',
-      title: 'Ford v Ferrari',
+      title: 'Which tool is better? Sketch VS Adobe XD',
       like: '97%'
     },
     {
       id: '32',
       uri: 'movie2',
-      title: 'Sherlock Holms',
+      title: 'Which tool is better? Sketch VS Adobe XD',
       like: '99%'
     },
     {
       id: '2222',
       uri: 'movie3',
-      title: 'The Witcher',
+      title: 'Which tool is better? Sketch VS Adobe XD',
       like: '90%'
     },
     {
       id: '23338ba2',
       uri: 'movie4',
-      title: 'Bad boys',
+      title: 'Which tool is better? Sketch VS Adobe XD',
       like: '75%'
     },
     {
       id: '33444f632',
       uri: 'movie5',
-      title: 'Frozen II',
+      title: 'Which tool is better? Sketch VS Adobe XD',
       like: '80%'
     },
   ];

@@ -109,7 +109,6 @@ export const GroupForSubtitle = styled.View({
     flexDirection: 'row', 
     justifyContent: 'space-between', 
     marginLeft: 15,
-    marginRight: 15,
     marginTop: 24,
     marginBottom: 5
 })
@@ -122,11 +121,24 @@ export const SubTitleLeft =styled(MyText)({
     marginLeft: 15
 })
 
+export const ButtonContainer = styled.TouchableOpacity({
+    marginRight: 20,
+    justifyContent:'space-between',
+    flexDirection:'row'
+})
+
 export const SubTitleRight = styled(MyText)({
-    fontSize: FontSize.NORMAL,
-    fontWeight: parseInt(FontWeight.BOLD, 10),
+    fontSize: FontSize.SMALLXX,
+    fontWeight: parseInt(FontWeight.SEMIBOLD, 10),
     lineHeight: "19px",
-    color: Color.DARKGREY
+    color: Color.DARKGREY,
+})
+
+export const SmallArrow = styled.Image({
+    width:7,
+    height:10,
+    marginTop:5,
+    marginLeft:5
 })
 
 export const ImageSecondSlaider = styled.Image({
@@ -206,4 +218,9 @@ export const ViewGroupUnderCategory = styled.View({
     marginRight: 15,
     marginTop: 24,
     marginBottom: 5
+})
+
+export const ViewCentred = styled.View({
+    justifyContent:'center',
+    alignItems:'center'
 })
