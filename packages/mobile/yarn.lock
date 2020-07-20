@@ -1138,7 +1138,6 @@
   integrity sha512-hU9ize/NPHS5wWR5KVx/cgN9DH29Y9iHa+SxUd3IJmBnK8ujj0rM8xz3hihY4yfu0kOvTFOPHojoBwnpH5cs+g==
   dependencies:
     nanoid "^3.0.2"
-
 "@react-navigation/stack@5.2.9":
   version "5.2.9"
   resolved "https://registry.yarnpkg.com/@react-navigation/stack/-/stack-5.2.9.tgz#6bc849c9d6ece4f2659a07c1b3afd93adc9bc0c7"

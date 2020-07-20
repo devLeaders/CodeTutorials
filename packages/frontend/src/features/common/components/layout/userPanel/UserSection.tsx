@@ -20,19 +20,12 @@ const ProfilTxt = styled.p`
     font-weight: ${fontWeight.BOLD};
     text-align: left;
 `
-const Ximg = styled.img`
-    position:absolute;
-    width: 30px;
-    height: 30px;
-    top: 0;
-    right: 0;
-`
+
 
 
 const UserSection: React.SFC = () => {
     return (
         <Wrapper>
-            <Ximg src="img/x-icon.svg" alt="" />
             <ProfilTxt>Profil</ProfilTxt>
             <UserData
                 name="sebastian"

@@ -6,7 +6,7 @@ import { Device } from "../../../styles/constans/Device";
 import { Colors } from "../../../styles/constans/Colors";
 import { fontWeight } from "../../../styles/constans/fontWeight";
 import { FontSize } from "../../../styles/constans/FontSize";
-import NavigationPath from "../../../../../config/routing/NavigationPath";
+import {Navigation} from "../../../../../config/routing/NavigationPath";
 import VideoSearch from "./VideoSearch";
 
 const Wrapper = styled.div`
@@ -55,7 +55,7 @@ const Banner: React.SFC = () => {
   return (
     <Wrapper>
       <LogoTitleContainer>
-        <NavLink to={NavigationPath.HOME}>
+        <NavLink to={Navigation.HOME}>
           <Logo src="/img/logo.svg" />
         </NavLink>
         <Title>{title}</Title>
