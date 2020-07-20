@@ -23,7 +23,6 @@ const MuteBtn: React.SFC = () => {
             afterClickImg="/img/videoPlayer/mute.svg"
             videoState={isActive}
             runVideoAction={muteUnmute}
-
         />
     );
 }

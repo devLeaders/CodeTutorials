@@ -9,6 +9,7 @@ import {FontSize} from "../../../common/styles/constans/FontSize"
 const Cell = styled.div`
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 4px 16px;
     box-shadow: 0px 3px 6px 0px ${Colors.OPACITY_GRAY};

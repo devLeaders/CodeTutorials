@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef} from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector} from "react-redux"
 
 import { refsStore } from "./refs.store"
 import Player from "./VideoPlayer"
@@ -19,6 +19,7 @@ const VideoPlayerContainer = styled.div<{ minimized: boolean, small: string | un
   width: ${props => props.minimized && props.small ? "200px" : ""};
   overflow: hidden;
   background-color: #222;
+  z-index: 2;
   &:hover ${VideoPlayer}{
     filter: ${props => props.minimized && props.small ? "brightness(0.5)" : ""};
   }
@@ -42,6 +43,7 @@ const VideoPlayerContainer = styled.div<{ minimized: boolean, small: string | un
 `;
 interface VideoPlayerComponentProps {
   small?: string;
+  home?: boolean;
 }
 
 const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
@@ -58,7 +60,7 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
       ref={videoContainerRef}
       minimized={isMinimized}
     >
-      <Player small={props.small} />
+      <Player small={props.small}/>
       <Interface small={props.small} />
     </VideoPlayerContainer >
   );

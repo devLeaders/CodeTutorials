@@ -7,28 +7,32 @@ import UserName from "./UserName"
 import UserImg from "./UserImg";
 
 
-const Wrapper = styled.div`
-  display: flex;
+const Wrapper = styled.div<{header?: boolean, singleMovie?: boolean}>`
+  display: ${({header}) => header ? "flex" : "none"};
   justify-content: flex-end;
   align-items: center;
   height: 55px;
-  background-color: ${Colors.VERY_LIGHT_GRAY};
   max-width:443px;
   @media ${Device.LAPTOP} {
+    background-color: ${Colors.VERY_LIGHT_GRAY};
+    display: ${({header}) => header ? "none" : "flex"};
     height: 112px;
+    background-color: ${Colors.VERY_LIGHT_GRAY};
   }
 `;
-
-const NavBarContainer: React.FC<any> = () => {
+interface HeaderProps {
+  header?: boolean
+}
+const NavBar: React.FC<HeaderProps> = ({header}) => {
   return (
 
-    <Wrapper>
-      <BtnsSection />
+    <Wrapper header={header}>
+      <BtnsSection/>
       <UserName name="Sebastian"/>
-      <UserImg />
+      <UserImg/>
     </Wrapper>
    
   );
 };
 
-export default NavBarContainer;
+export default NavBar;
