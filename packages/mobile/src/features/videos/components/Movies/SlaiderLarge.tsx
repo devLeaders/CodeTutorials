@@ -7,6 +7,8 @@ import {
   ImageWidth
 } from './MovieListStyle';
 import { GetVideosList } from '../../action/conector';
+import { NavigationName } from '../../../../config/routing/NavigationName';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
  type SlaiderLargeS = {
   listVideos: Array<MoviesListSimpleType>
@@ -26,7 +28,7 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
     this.onScroll = Animated.event(
       [{nativeEvent: { contentOffset: { x: this.x} } } ], 
       { useNativeDriver: true}
-  );
+    );
   }
 
   componentDidMount(){
@@ -35,6 +37,8 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
       listVideos
     })
   }
+
+  public navToSingleMovie = () => {this.props.navigation.navigate(NavigationName.SINGLEMOVIE)}
 
   public Separator = () => (<ViewSeparator/>)
   public ImgeSlaider = (item:MoviesListSimpleType, index, x:Animated.Value) => {
@@ -56,9 +60,11 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
     })
 
     return(
-      <Animated.View>
-        <ImageSlaider style={{ opacity, transform: [{ scale }]}} source={{uri: item.uri}}/>
-      </Animated.View>
+      <TouchableOpacity onPress={this.navToSingleMovie}>
+        <Animated.View >
+          <ImageSlaider style={{ opacity, transform: [{ scale }]}} source={{uri: item.uri}}/>
+        </Animated.View>
+      </TouchableOpacity>
     )
   }
 

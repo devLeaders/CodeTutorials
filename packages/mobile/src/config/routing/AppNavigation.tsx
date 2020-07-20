@@ -20,17 +20,17 @@ const HomeStack = createStackNavigator();
 const AuthStack = createStackNavigator();
 
 export const HomeStackScreen = () => (
-    <NavigationContainer>
+    // <NavigationContainer>
     <HomeStack.Navigator>
-        <HomeStack.Screen name={NavigationName.HOME} component={HomeScreen}/> 
+       
         <HomeStack.Screen name={NavigationName.MOVIELIST} options={NavOption.optionsMovieList} component={MoviesList}/>
         <HomeStack.Screen name={NavigationName.SINGLEMOVIE} component={SingleMovie2}/>
-        
+        <HomeStack.Screen name={NavigationName.HOME} component={HomeScreen}/> 
         <HomeStack.Screen name={NavigationName.FILTERSSCREEN} component={FiltersScreen} />
         <HomeStack.Screen name={NavigationName.MAINSCREENHEADER} component={MainScreenHeader} />
         <HomeStack.Screen name={NavigationName.SQUAREOFMOVIE} component={SquareToRenderTemp} />
     </HomeStack.Navigator>
-    </NavigationContainer>
+    // </NavigationContainer>
  )
 
 export const AuthStackScreen = () => (

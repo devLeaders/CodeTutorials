@@ -17,11 +17,14 @@ import {
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
 import { SlaiderSmall } from '../components/Movies/SlaiderSmall';
 import Axios from '../../../config/axios/AxiosConfig';
-import { NavigationName } from '../../../config/routing/NavigationName';
 import { NavProps } from '../../../config/routing/ParamList';
+import { NavigationName } from '../../../config/routing/NavigationName';
 
+interface MovieListP {
+  navigation: NavProps<NavigationName.MOVIELIST>
+}
 
-export class  MoviesList extends React.Component{
+export class  MoviesList extends React.Component<MovieListP>{
 
   async componentDidMount() {
     const token = await AsyncStorage.getItem("token");
@@ -52,7 +55,7 @@ export class  MoviesList extends React.Component{
             </ButtonNOFilter>
           </ViewButtons>
           <View>
-            <SlaiderLarge/>
+            <SlaiderLarge navigation={this.props.navigation}/>
           </View>
           <View>
               <GroupForSubtitle>
