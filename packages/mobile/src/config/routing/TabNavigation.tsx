@@ -13,16 +13,13 @@ import {
     TeamIc,
     TasksIc, 
     PlayListIc, 
-    AlertV, 
-    AlertIc, 
-    AlertView, 
-    AlertText, 
     SearchWIc } from "../../features/common/components/TabBottomNavStyle";
 import { Tasks } from '../../features/videos/page/Tasks';
 import { Alert } from '../../features/videos/page/Alert';
-import {HomeStackScreen} from './AppNavigation'
 import { NavOption } from '../../features/common/components/NavOption'
 import FiltersScreen from '../../features/videos/page/FiltersScreen';
+import { HomeStackScreen } from './HomeNavigation';
+import AlertIcon from './AlertIcon';
 
 
 const Tabs = createBottomTabNavigator();
@@ -32,18 +29,11 @@ const kvArray = [
   [NavigationName.TEAMS, <TeamIc source={{uri:'ic_team'}}/>],
   [NavigationName.TASKS, <TasksIc source={{uri:'ic_tasks'}}/>],
   [NavigationName.PLAYLIST, <PlayListIc source={{uri:'ic_playlist'}}/>],
-  [NavigationName.ALERT,  
-      <AlertV>
-          <AlertIc source={{uri:'ic_alert'}}/>
-          <AlertView>
-              <AlertText>2</AlertText>
-          </AlertView>
-      </AlertV>
-  ],
+  [NavigationName.ALERT,  <AlertIcon />],
   [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'ic_searchw'}}/>],
 ];
 
-const myMap = new Map(kvArray as any);
+const myMap = new Map(kvArray as Array<any>);
 
 export default class TabNavigation extends Component {
   

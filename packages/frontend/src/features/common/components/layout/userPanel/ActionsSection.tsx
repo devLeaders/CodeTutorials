@@ -13,10 +13,10 @@ const Wrapper = styled.div`
 const ActionsSection: React.SFC = () => {
     return (
         <Wrapper>
-            <GoToBtn text="Edytuj profil" src="img/check-board.svg"></GoToBtn>
-            <GoToBtn text="Abonament i Faktury" src="img/check-board.svg"></GoToBtn>
-            <GoToBtn text="Obejrzane Filmy" src="img/check-board.svg"></GoToBtn>
-            <GoToBtn text="Admin panel" src="img/check-board.svg"></GoToBtn>
+            <GoToBtn text="Edytuj profil" src="/img/check-board.svg"></GoToBtn>
+            <GoToBtn text="Abonament i Faktury" src="/img/check-board.svg"></GoToBtn>
+            <GoToBtn text="Obejrzane Filmy" src="/img/check-board.svg"></GoToBtn>
+            <GoToBtn text="Admin panel" src="/img/check-board.svg"></GoToBtn>
         </Wrapper>);
 }
 

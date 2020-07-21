@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { FontFamily } from '../../../common/styles/constans/FontFamily';
 import { FontSize } from '../../../common/styles/constans/FontSize';
