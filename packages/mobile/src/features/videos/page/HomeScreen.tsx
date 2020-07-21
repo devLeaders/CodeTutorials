@@ -82,6 +82,12 @@ export const HomeScreen = ({ navigation }: NavProps<NavigationName.HOME>) => {
                     title="SquareOfMovie"
                     onPress={() => navigation.navigate(NavigationName.SQUAREOFMOVIE)}
                 />
+                <HomeButton
+                    color="#e63900"
+                    title="ShortcutToFilters"
+                    onPress={() => navigation.navigate(NavigationName.SHORTCUTTOFILTERS)}
+                />
+
 
 
               </View>
