@@ -40,35 +40,34 @@ export const DATA = [
   }
 ];
   
- export const IMAGES = [
-    {
-      id: 'b1',
-      uri: 'movie1',
-      title: 'Ford v Ferrari',
-      like: '97%'
-    },
-    {
-      id: '32',
-      uri: 'movie2',
-      title: 'Sherlock Holms',
-      like: '99%'
-    },
-    {
-      id: '2222',
-      uri: 'movie3',
-      title: 'The Witcher',
-      like: '90%'
-    },
-    {
-      id: '23338ba2',
-      uri: 'movie4',
-      title: 'Bad boys',
-      like: '75%'
-    },
-    {
-      id: '33444f632',
-      uri: 'movie5',
-      title: 'Frozen II',
-      like: '80%'
-    },
-  ];
+export const IMAGES = [
+  {
+    id: 'b1',
+    uri: 'movie1',
+    title: '1Which tool is better? Sketch VS Adobe XD',
+    like: '97%'
+  },
+  {
+    id: '32',
+    uri: 'movie2',
+    title: '2Which tool is better? Sketch VS Adobe XD',
+    like: '99%'
+  },
+  {
+    id: '2222',
+    uri: 'movie3',
+    title: '3Which tool is better? Sketch VS Adobe XD',
+    like: '90%'
+  },
+  {
+    id: '23338ba2',
+    uri: 'movie4',
+    title: '4Which tool is better? Sketch VS Adobe XD',
+    like: '75%'
+  },
+  {
+    id: '33444f632',
+    uri: 'movie5',
+    title: '5Which tool is better? Sketch VS Adobe XD',
+  },
+];

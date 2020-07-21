@@ -40,6 +40,7 @@ export class  MoviesList extends React.Component<MovieListP>{
   }
   
   render(){
+    const { navigation } = this.props;
     return (
       <View>
         <ScrollView>
@@ -55,7 +56,7 @@ export class  MoviesList extends React.Component<MovieListP>{
             </ButtonNOFilter>
           </ViewButtons>
           <View>
-            <SlaiderLarge navigation={this.props.navigation}/>
+            <SlaiderLarge navigation={navigation}/>
           </View>
           <View>
               <GroupForSubtitle>

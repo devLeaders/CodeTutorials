@@ -29,7 +29,7 @@ export class SlaiderLarge extends React.Component<SlaiderLargeP,SlaiderLargeS>{
       listVideos : []
     }
     this.x = new Animated.Value(10);
-    this.renderIt = ({item, index}) => <AnimationSlaider item={item} index={index} x={this.x} navigation={this.props.navigation} />;
+    this.renderIt = ({item, index}) => <AnimationSlaider item={item} index={index} x={this.x} />;
     this.onScroll = Animated.event(
       [{nativeEvent: { contentOffset: { x: this.x} } } ], 
       { useNativeDriver: true}

@@ -6,15 +6,15 @@ import {
 } from './MovieListStyle';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { NavigationName } from '../../../../config/routing/NavigationName';
+import { useNavigation } from '@react-navigation/native';
 
 interface AnimationSlaiderType {
     x: Animated.Value,
     item: MoviesListSimpleType,
     index: any,
-    navigation?:any
 }
 
-export const AnimationSlaider = ({item, index, x, navigation}:AnimationSlaiderType) => {
+export const AnimationSlaider = ({item, index, x}:AnimationSlaiderType) => {
     const { width } = Dimensions.get('window')
     const wCard = width -90 ;
     const position = Animated.subtract(index * wCard,x);
@@ -32,8 +32,12 @@ export const AnimationSlaider = ({item, index, x, navigation}:AnimationSlaiderTy
       outputRange: [0.4,1,0.3,0.5],
     })
 
-    const navToSingleMovie = () => {navigation.navigate(NavigationName.SINGLEMOVIE)}
-
+    const navigation = useNavigation();
+    const navToSingleMovie = () => {
+        navigation.navigate(NavigationName.SINGLEMOVIE),
+        {itemId: item.id}
+    }
+    
     return(
       <TouchableOpacity onPress={navToSingleMovie}>
         <Animated.View >
