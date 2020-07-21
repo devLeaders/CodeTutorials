@@ -1,4 +1,5 @@
 import React from 'react';
+import {TouchableOpacity} from 'react-native';
 import styled from 'styled-components/native';
 import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { FontFamily } from '../../../common/styles/constans/FontFamily';
@@ -46,8 +47,6 @@ const ButtonFilter = styled.TouchableOpacity({
     marginRight: 5,
   });
 
-  const WrapperImageX = styled.TouchableOpacity({});
-
   const ImageX = styled.Image`
       background-color: black;
       height: 11px;
@@ -61,22 +60,22 @@ interface BlackFilterButtonInShorcutProps {
   
   //wybór white button | blackbutton
 
-export default class BlackFilterButtonInShorcut extends React.Component<BlackFilterButtonInShorcutProps> {
+export default class BlackFilterButtonInShortcut extends React.Component<BlackFilterButtonInShorcutProps> {
     constructor(props) {
         super(props);
     
         this.state = {
-          showX : true,
+          blackButton : true,
         };
     
-        this.showFilter = this.showFilter.bind(this);
+        this.showBlackFilterButton = this.showBlackFilterButton.bind(this);
       }
     
-      showFilter() {
-        if (this.state.showX) {
-          this.setState({showX:false});
+      showBlackFilterButton() {
+        if (this.state.blackButton) {
+          this.setState({blackButton:false});
         }else {
-          this.setState({showX: true});      
+          this.setState({blackButton: true});      
         }
       }
     
@@ -88,14 +87,14 @@ export default class BlackFilterButtonInShorcut extends React.Component<BlackFil
     render(){
         return(
             <Wrapper>
-                {this.state.showX === true &&
+                {this.state.blackButton &&
                 <ButtonFilter>
                 <TextButton>{this.props.text}</TextButton>
-                <WrapperImageX onPress={this.showFilter}>
+                <TouchableOpacity onPress={this.showBlackFilterButton}>
                     <ImageX
                     source={{uri:'xsmall'}}
                     />
-                </WrapperImageX>
+                </TouchableOpacity>
                 <Separator/>
                 </ButtonFilter>
                 }

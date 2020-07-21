@@ -4,7 +4,7 @@ import { FontWeight } from '../../../../features/common/styles/constans/FontWeig
 import { FontFamily } from '../../../../features/common/styles/constans/FontFamily';
 import { FontSize } from '../../../../features/common/styles/constans/FontSize';
 import { Color } from '../../../../features/common/styles/constans/Color';
-import BlackFilterButtonInShorcut from './BlackFilterButtonInShorcut';
+import BlackFilterButtonInShorcut from './BlackFilterButtonInShortcut';
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import XButton from './XButton';
 import {MyText} from '../../../common/styles/MyText';
@@ -29,10 +29,7 @@ const TitleEyeAndXWrapper = styled.View`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 12px;
-    margin-left: 16px;
-    margin-right: 16px;
-    margin-bottom: 8px;
+    margin: 12px 16px 8px 16px;
 `;
 
 const TitleAndEyeWrapper = styled.View`
@@ -60,15 +57,14 @@ const SearchbarWrapper = styled.View({
   elevation: "3",
 });
 
-const InputText = styled.TextInput`
-  width: 138px;
-  font-size: ${FontSize.SMALLXXS};
-  line-height: 15px;
-  margin-left: 13px;
-  font-weight: ${FontWeight.REGULAR};
-  font-family: ${FontFamily.GLOBAL_MONT};
-  color: ${Color.BLACK};
-`;
+const InputText = styled(MyText)({
+  width: 138,
+  fontSize: FontSize.SMALLXXS,
+  lineHeight: 15,
+  marginLeft: 13,
+  fontWeight: FontWeight.REGULAR,
+  color: Color.BLACK,
+});
 
 const SearchButton = styled.TouchableOpacity({
   backgroundColor: Color.WHITE,
@@ -130,17 +126,17 @@ export default class ShortcutToFilters extends React.Component <ShortcutToFilter
     super(props);
 
     this.state = {
-      showEye : false,
+      eyeButton : false,
     };
 
-    this.callFunc = this.callFunc.bind(this);
+    this.showEye = this.showEye.bind(this);
   }
 
-  callFunc() {
-    if (this.state.showEye) {
-      this.setState({showEye:false});
+  showEye() {
+    if (this.state.eyeButton) {
+      this.setState({eyeButton:false});
     }else {
-      this.setState({showEye: true});      
+      this.setState({eyeButton: true});      
     }
   }
 
@@ -166,9 +162,9 @@ export default class ShortcutToFilters extends React.Component <ShortcutToFilter
                   <ImageSerach source={{uri:'magnifier'}}/>
                 </SearchButton>  
               </SearchbarWrapper>   
-              <EyeButton onPress={this.callFunc}>
-                  {this.state.showEye === false && <ImageEyeBeforeClick source={{uri: 'eye'}} />}
-                  {this.state.showEye && <ImageEye source={{uri: 'eye'}} /> }
+              <EyeButton onPress={this.showEye}>
+                  {this.state.eyeButton === false && <ImageEyeBeforeClick source={{uri: 'eye'}} />}
+                  {this.state.eyeButton && <ImageEye source={{uri: 'eye'}} /> }
               </EyeButton>
             </TitleAndEyeWrapper>   
             <XButton
