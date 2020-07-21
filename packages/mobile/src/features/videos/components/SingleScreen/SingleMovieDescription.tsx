@@ -1,10 +1,5 @@
 import React from 'react';
 import {View } from 'react-native';
-import {
-  Background,
-} from './SingleMovieStyle2';
-
-import {HeaderLeft} from './HeaderLeft';
 import MainDescription from './MainDescription';
 
 interface SingleMovieDescriptionP {

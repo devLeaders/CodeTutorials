@@ -2,6 +2,7 @@ import * as React from 'react'
 import { HeaderTitle } from '../../videos/components/Movies/HeaderTitle';
 import { HeaderLeft } from '../../videos/components/Movies/HeaderLeft';
 import { HeaderRight } from '../../videos/components/Movies/HeaderRight';
+import { View } from 'react-native';
 
 
 export class NavOption extends React.Component {
@@ -15,6 +16,17 @@ export class NavOption extends React.Component {
             headerLeft: () => <HeaderLeft/>,
             headerRight: () => <HeaderRight/>,
         };
+      };
+      static optionsMainScreen = () => {
+        return {
+            headerStyle: {
+              backgroundColor: '#00000000',
+              paddingTop: 50,
+            },
+            headerTransparent: true,
+            headerTitle: () => <View />,
+      
+          };
       };
     static optionsTabNavigator = () => {
         return {

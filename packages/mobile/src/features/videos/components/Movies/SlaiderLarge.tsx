@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { Animated, Dimensions } from 'react-native';
-import { MoviesListSimpleType } from './MoviesType';
+import { MoviesListExpandedType } from './MoviesType';
 import {  
   ViewSeparator,
-  ImageSlaider,
   ImageWidth
 } from './MovieListStyle';
-import { GetVideosList } from '../../action/conector';
+import { GetVideosListExpandedV } from '../../action/conector';
+import BigSquareOfMovie from './BigSquareOfMovie'
+import { NavigationName } from '../../../../config/routing/NavigationName';
 
  type SlaiderLargeS = {
-  listVideos: Array<MoviesListSimpleType>
+  listVideos: Array<MoviesListExpandedType>
  }
 
 export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
@@ -30,14 +31,14 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
   }
 
   componentDidMount(){
-    const listVideos =  GetVideosList();
+    const listVideos =  GetVideosListExpandedV();
     this.setState ({
       listVideos
     })
   }
 
   public Separator = () => (<ViewSeparator/>)
-  public ImgeSlaider = (item:MoviesListSimpleType, index, x:Animated.Value) => {
+  public ImgeSlaider = (item:MoviesListExpandedType, index, x:Animated.Value) => {
     const { width } = Dimensions.get('window')
     const wCard = width -90 ;
     const position = Animated.subtract(index * wCard,x);
@@ -56,8 +57,13 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
     })
 
     return(
-      <Animated.View>
-        <ImageSlaider style={{ opacity, transform: [{ scale }]}} source={{uri: item.uri}}/>
+      <Animated.View style={{ opacity, transform: [{ scale }]}}>
+        <BigSquareOfMovie 
+          text = {item.title}
+          navigation = {this.props.navigation}
+          goto = {NavigationName.SINGLEMOVIE}
+          image = {item.uri}
+        />
       </Animated.View>
     )
   }

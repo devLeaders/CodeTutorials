@@ -16,9 +16,14 @@ import {
 } from '../components/Movies/MovieListStyle';
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
 import Axios from '../../../config/axios/AxiosConfig';
+import MainScreenHeader from '../components/MainScreen/MainScreenHeader';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
+interface MoviesListP {
+  navigation: any
+}
 
-export class  MoviesList extends React.Component{
+export class  MoviesList extends React.Component<MoviesListP>{
 
   async componentDidMount() {
     const token = await AsyncStorage.getItem("token");
@@ -31,19 +36,9 @@ export class  MoviesList extends React.Component{
   
   render(){
     return (
-      <View>
+      <SafeAreaView>
         <ScrollView>
-          <ViewButtons>
-            <ButtonFilter>
-              <TextButtonActive>Nowości</TextButtonActive>  
-            </ButtonFilter>
-            <ButtonNOFilter>
-              <TextButtonNOAct>Moja kolekcja</TextButtonNOAct>  
-            </ButtonNOFilter>
-            <ButtonNOFilter>
-              <TextButtonNOAct>Popularne</TextButtonNOAct>  
-            </ButtonNOFilter>
-          </ViewButtons>
+            <MainScreenHeader navigation={this.props.navigation}/>
           <View>
             <SlaiderLarge/>
           </View>
@@ -62,7 +57,7 @@ export class  MoviesList extends React.Component{
               </View>
           </View>
         </ScrollView>
-      </View>
+      </SafeAreaView>
     );
   }
 }

@@ -24,7 +24,7 @@ import {
 } from '../components/SingleScreen/SingleMovieStyle2';
 import {DATA} from '../action/ExampleData'
 import {SliderOfImage} from '../components/SingleScreen/SliderOfImage';
-import {HeaderLeft} from '../components/SingleScreen/HeaderLeft';
+import {HeaderLeftSingle} from '../components/SingleScreen/HeaderLeftSingle';
 
 interface SingleMovie2Props {
   navigation: any
@@ -40,7 +40,7 @@ export default class SingleMovie2 extends React.Component <SingleMovie2Props>{
       headerTransparent: true,
 
       headerTitle: () => <View />,
-      headerLeft: () => <HeaderLeft navigation={navigation} />,
+      headerLeft: () => <HeaderLeftSingle navigation={navigation} />,
 
     };
   };

@@ -4,6 +4,7 @@ import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { FontSize } from '../../../common/styles/constans/FontSize';
 import { Color } from '../../../common/styles/constans/Color';
 import { MyText } from '../../../common/styles/MyText';
+import { Image, TouchableOpacity, Animated, Dimensions } from 'react-native';
 
 const Wrapper = styled.TouchableOpacity({
     marginTop: 10,
@@ -26,15 +27,17 @@ const Wrapper = styled.TouchableOpacity({
     elevation: "2"
 });
 
-const ImageButton = styled.Image`
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    width: 243px;
-    height: 130px;
-`;
+const { width } = Dimensions.get("window");
+export const ImageWidth = width -100;
 
-const ButtonSquare = styled.TouchableOpacity({
-  });
+const ImageButton = styled(Animated.Image)({
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
+    width: ImageWidth,
+    height: 140, 
+    resizeMode: 'cover', 
+  
+});
 
   const TextWrapper = styled.View`
     display: flex;
@@ -56,6 +59,7 @@ interface BigSquareOfMovieProps {
     text: string,
     image: string,
     goto: any,
+    style?: any
   }
 
 export default class BigSquareOfMovie extends React.Component<BigSquareOfMovieProps> {
@@ -65,10 +69,10 @@ export default class BigSquareOfMovie extends React.Component<BigSquareOfMoviePr
 
     render(){
         return(
-            <Wrapper onPress={this.navi}> 
-                <ButtonSquare onPress={this.navi}>  
-                <ImageButton source={{uri: this.props.image}}/>
-                </ButtonSquare>
+            <Wrapper style={{width:ImageWidth}} onPress={this.navi}> 
+                <TouchableOpacity onPress={this.navi}>  
+                <ImageButton style={this.props.style} source={{uri: this.props.image}}/>
+                </TouchableOpacity>
                 <TextWrapper>
                 <TextButton>{this.props.text}</TextButton>
                 </TextWrapper>
