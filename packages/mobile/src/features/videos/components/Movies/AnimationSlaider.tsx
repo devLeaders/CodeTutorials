@@ -11,7 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 interface AnimationSlaiderType {
     x: Animated.Value,
     item: MoviesListSimpleType,
-    index: any,
+    index: number,
 }
 
 export const AnimationSlaider = ({item, index, x}:AnimationSlaiderType) => {
@@ -34,12 +34,12 @@ export const AnimationSlaider = ({item, index, x}:AnimationSlaiderType) => {
 
     const navigation = useNavigation();
     const navToSingleMovie = () => {
-        navigation.navigate(NavigationName.SINGLEMOVIE),
-        {itemId: item.id}
+        navigation.navigate(NavigationName.SINGLEMOVIE,
+        {itemId: item.id})
     }
     
     return(
-      <TouchableOpacity onPress={navToSingleMovie}>
+      <TouchableOpacity onPress={navToSingleMovie} key={item.id}>
         <Animated.View >
           <ImageSlaider style={{ opacity, transform: [{ scale }]}} source={{uri: item.uri}}/>
         </Animated.View>

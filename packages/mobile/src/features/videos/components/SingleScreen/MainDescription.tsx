@@ -11,39 +11,37 @@ import { FontSize } from '../../../../features/common/styles/constans/FontSize';
 import { FontFamily } from '../../../../features/common/styles/constans/FontFamily';
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import { FontWeight } from '../../../../features/common/styles/constans/FontWeight';
+import { MyText } from '../../../../features/common/styles/MyText';
 
 const Wrapper = styled.View`
     background-color: ${Color.LIGHTGREY};
     margin-top: 29px
 `;
 
-const Title = styled.Text`
-    margin-left: 14px;
-    margin-right: 16px;
-    font-weight: ${FontWeight.BOLD};
-    font-family: ${FontFamily.GLOBAL_MONT};
-    font-size: ${FontSize.MIDIUM};
-    color: ${Color.DARKGREY};
-    line-height: 19px;
-`;
-const Autor = styled.Text`
-    font-family: ${FontFamily.GLOBAL_MONT};
-    font-size: ${FontSize.SMALLX};
-    color: ${Color.DARKGREY};
-    line-height: 13px;
-    margin-left: 14px;
-    margin-right: 16px;
-`;
-const Description = styled.Text`
-    font-family: ${FontFamily.GLOBAL_MONT};
-    font-size: ${FontSize.NORMAL};
-    color: ${Color.DARKGREY};
-    line-height: 18px;
-    margin-top: 12px;
-    margin-bottom: 30px;
-    margin-left: 14px;
-    margin-right: 16px;
-`;
+const Title = styled(MyText)({
+    marginLeft: 14,
+    marginRight: 16,
+    fontWeight: parseInt(FontWeight.BOLD, 10),
+    fontSize: FontSize.MIDIUM,
+    color: Color.DARKGREY
+});
+
+const Autor = styled(MyText)({
+    fontWeight: parseInt(FontWeight.REGULAR, 10),
+    fontSize: FontSize.SMALLX,
+    color: Color.DARKGREY,
+    marginLeft: 14,
+    marginRight: 16
+});
+const Description = styled(MyText)({
+    fontSize: FontSize.NORMAL,
+    color: Color.DARKGREY,
+    fontWeight: parseInt(FontWeight.REGULAR, 10),
+    marginTop: 12,
+    marginBottom: 30,
+    marginLeft: 14,
+    marginRight: 16
+});
 
 const ButtonWrapper = styled.View`
     margin-left: 14px;
@@ -66,15 +64,14 @@ const DescriptionButton = styled.TouchableOpacity({
     elevation: "5",
 });
 
-const ButtonText = styled.Text`
-    font-family: ${FontFamily.GLOBAL_MONT};
-    line-height: 22px;
-    padding-left: 12px;
-    padding-right: 11px;
-    font-size: ${FontSize.SMALLS};
-    font-weight: ${FontWeight.SEMIBOLD};
-    color: ${Color.BLACK};
-`;
+const ButtonText = styled(MyText)({
+    paddingLeft: 12,
+    paddingRight: 11,
+    fontSize: FontSize.SMALLS,
+    fontWeight: parseInt(FontWeight.SEMIBOLD, 10),
+    color: Color.BLACK
+});
+
 const Separator = styled.View`
     width: 8px;
 `;
@@ -87,6 +84,9 @@ interface MainDescriptionProps {
 }
 
 export default class MainDescription extends React.Component<MainDescriptionProps> { 
+
+    public NavToHome = () =>{this.props.navigation.navigate(NavigationName.HOME)}
+
     render() {
         return (
             <Wrapper> 
@@ -95,11 +95,11 @@ export default class MainDescription extends React.Component<MainDescriptionProp
                 <Description>{this.props.description}</Description>
                 <ButtonWrapper>
                     <DescriptionButton>
-                        <ButtonText onPress={() => this.props.navigation.navigate(NavigationName.HOME)}>Docker</ButtonText>
+                        <ButtonText onPress={this.NavToHome}>Docker</ButtonText>
                     </DescriptionButton>
                     <Separator />
                     <DescriptionButton>
-                        <ButtonText onPress={() => this.props.navigation.navigate(NavigationName.HOME)}>DevOps</ButtonText>
+                        <ButtonText onPress={this.NavToHome}>DevOps</ButtonText>
                     </DescriptionButton>
                 </ButtonWrapper>
             </Wrapper>

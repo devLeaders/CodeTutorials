@@ -3,23 +3,18 @@ import { Animated, Dimensions } from 'react-native';
 import { MoviesListSimpleType } from './MoviesType';
 import {  
   ViewSeparator,
-  ImageSlaider,
   ImageWidth
 } from './MovieListStyle';
 import { GetVideosList } from '../../action/conector';
-import { NavigationName } from '../../../../config/routing/NavigationName';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AnimationSlaider } from './AnimationSlaider';
+import { NavProps } from '../../../../config/routing/ParamList';
+import { NavigationName } from '../../../../config/routing/NavigationName';
 
  type SlaiderLargeS = {
   listVideos: Array<MoviesListSimpleType>
  }
 
- type SlaiderLargeP = {
-   navigation: any
- }
-
-export class SlaiderLarge extends React.Component<SlaiderLargeP,SlaiderLargeS>{
+export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
   x: Animated.Value;
   onScroll: ()=>void;
   renderIt: (item,index)=>void;

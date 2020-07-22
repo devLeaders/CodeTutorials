@@ -56,7 +56,7 @@ export class  MoviesList extends React.Component<MovieListP>{
             </ButtonNOFilter>
           </ViewButtons>
           <View>
-            <SlaiderLarge navigation={navigation}/>
+            <SlaiderLarge />
           </View>
           <View>
               <GroupForSubtitle>
