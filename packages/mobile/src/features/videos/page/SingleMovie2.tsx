@@ -40,10 +40,3 @@ export default class SingleMovie2 extends React.Component <SingleMovie2Props>{
     );
   }
 }
-
-{/* <BigSquareOfMovie 
-text = {item.title}
-navigation = {this.props.navigation}
-goto = {NavigationName.SINGLEMOVIE}
-image = {item.uri}
-/> */}
