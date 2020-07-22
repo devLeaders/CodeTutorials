@@ -48,7 +48,7 @@ const VP: React.SFC<VpProps> = ({small}) => {
             ref={videoRef}
             onTimeUpdate={handleTimeProgress}
             onClick={handleVideoClick}
-            autoPlay={location.pathname === Navigation.HOME && true}
+            // autoPlay={location.pathname === Navigation.HOME && true}
         >
             <source
                 src="http://localhost:3300/videos/video"
