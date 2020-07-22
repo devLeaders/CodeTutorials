@@ -6,7 +6,7 @@ import NavBar from "../navBar/NavBar";
 import { Device } from "../../../styles/constans/Device";
 import { Colors } from "../../../styles/constans/Colors";
 
-const Wrapper = styled.header<{ opacity?: boolean}>`
+const Wrapper = styled.header<{ transparency?: boolean}>`
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -16,19 +16,19 @@ const Wrapper = styled.header<{ opacity?: boolean}>`
   z-index: 10;
   background-color: ${Colors.WHITE};
   @media ${Device.LAPTOP} {
-    background-color: ${({ opacity }) =>
-    opacity ? `${Colors.WHITE}` : `${Colors.WHITE}CF`};
+    background-color: ${({ transparency }) =>
+    transparency ? `${Colors.WHITE}` : `${Colors.WHITE}CF`};
      width: calc(100% - 446px);
   }
 `;
 
 interface HeaderProps {
-  opacity?: boolean;
+  transparency?: boolean;
 }
 
-const Header: React.SFC<HeaderProps> = ({ opacity}) => {
+const Header: React.SFC<HeaderProps> = ({ transparency}) => {
   return (
-    <Wrapper opacity={opacity}>
+    <Wrapper transparency={transparency}>
       <Banner />
       <NavBar header={true} />
     </Wrapper>
