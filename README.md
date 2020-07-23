@@ -41,11 +41,15 @@ or
 |Open video from QR Code        |           |               |             	|        	|
 
 
-## Autors
+## Authors
 
+### Developers
 [![](./readmeasset/adam.png)](https://github.com/Adamwojty)
 [![](./readmeasset/justyna.png)](https://github.com/JustynaKolenda)
 [![](./readmeasset/michal.png)](https://github.com/mbobas)
 [![](./readmeasset/mikolaj.png)](https://github.com/duch0416)
+
+### UX Designer
+[![](./readmeasset/beata.png)](https://www.linkedin.com/in/beata-stankowska-sta%C5%84czyk/)
 
 [c]: ./readmeasset/check.png
