@@ -9,6 +9,9 @@ import { NavigationName } from './NavigationName';
 import { NavOption } from '../../features/common/components/NavOption';
 import MoviesList from '../../features/videos/page/MoviesList';
 import FiltersScreen from '../../features/videos/page/FiltersScreen';
+import ShortcutToFilters from '../../features/videos/components/FiltersScreen/ShortcutToFilters';
+import FilterWithList from '../../features/videos/page/FilterWithList';
+
 
 
 const HomeStack = createStackNavigator();
@@ -22,5 +25,7 @@ export const HomeStackScreen = () => (
       <HomeStack.Screen name={NavigationName.FILTERSSCREEN} component={FiltersScreen} />
       <HomeStack.Screen name={NavigationName.MAINSCREENHEADER} component={MainScreenHeader} />
       <HomeStack.Screen name={NavigationName.SQUAREOFMOVIE} component={SquareToRenderTemp} />
+      <HomeStack.Screen name={NavigationName.SHORTCUTTOFILTERS} component={ShortcutToFilters} />
+      <HomeStack.Screen name={NavigationName.FILTERWITHLIST} component={FilterWithList} />
   </HomeStack.Navigator>
 )

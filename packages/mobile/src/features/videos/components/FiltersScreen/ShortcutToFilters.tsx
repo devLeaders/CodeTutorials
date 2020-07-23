@@ -57,12 +57,13 @@ const SearchbarWrapper = styled.View({
   elevation: "3",
 });
 
-const InputText = styled(MyText)({
+const InputText = styled.TextInput({
   width: 138,
   fontSize: FontSize.SMALLXXS,
   lineHeight: 15,
   marginLeft: 13,
   fontWeight: FontWeight.REGULAR,
+  fontFamily: FontFamily.GLOBAL_MONT,
   color: Color.BLACK,
 });
 

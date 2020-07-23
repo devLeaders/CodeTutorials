@@ -14,11 +14,13 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import { NavigationName } from '../../../config/routing/NavigationName';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { NavProps } from '../../../config/routing/ParamList';
 
 const HomeButton = styled.Button`
   padding: 2px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 `;
 
 declare var global: {HermesInternal: null | {}};
@@ -86,6 +88,11 @@ export const HomeScreen = ({ navigation }: NavProps<NavigationName.HOME>) => {
                     color="#e63900"
                     title="ShortcutToFilters"
                     onPress={() => navigation.navigate(NavigationName.SHORTCUTTOFILTERS)}
+                />
+                <HomeButton
+                    color="#e63900"
+                    title="FILTERWITH"
+                    onPress={() => navigation.navigate(NavigationName.FILTERWITHLIST)}
                 />
 
 

@@ -5,6 +5,7 @@ export enum NavigationName {
     SIGNINSCREEN = 'SigInScreen',
     LOGIN ='LogIn',
     SINGUP = 'SignUpScreen',
+    FILTERWITHLIST = 'FilterWithList',
 
     MENU = 'Menu',
     BOTTOMMENU = 'BottomMenu',
