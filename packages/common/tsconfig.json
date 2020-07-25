@@ -4,9 +4,10 @@
       "module": "commonjs",
       "lib": ["es2017", "es7", "es6", "dom"],
       "declaration": true,
-      "outDir": "dist",
+      "outDir": "features",
       "strict": false,
-      "esModuleInterop": true
+      "esModuleInterop": true,
+      "experimentalDecorators":true
     },
     "include": [
       "./src"

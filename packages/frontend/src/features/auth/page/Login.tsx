@@ -9,7 +9,7 @@ import RegisterFields from '../components/loginComponents/RegisterFields';
 import {Field, Form, Formik, FormikProps} from 'formik';
 import {useHistory} from "react-router-dom"
 import {Navigation} from "../../../config/routing/NavigationPath"
-import Axios from "../../../config/axios/configAxios"
+import Axios from "axios";
 import { Device } from '../../common/styles/constans/Device';
 
 const LoginForm = styled.div`
@@ -33,6 +33,7 @@ const history = useHistory();
     const loginSubmit = async (value: any, action: any) => {
 
         try{
+            //TODO:do conectora
         const dataResponse = await Axios.post('/auth/signin', {
             "email": `${value.lastName}`,
             "password": `${value.pass}`

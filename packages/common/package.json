@@ -1,9 +1,9 @@
 {
   "name": "@project/common",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "> TODO: description",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "features/index.js",
+  "types": "features/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -30,5 +30,15 @@
   },
   "bugs": {
     "url": "https://github.com/devLeaders/myNetflix/issues"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.158",
+    "@types/query-string": "^6.3.0",
+    "@types/react": "^16.9.43",
+    "axios": "^0.19.2",
+    "class-validator": "^0.12.2",
+    "lodash": "^4.17.19",
+    "query-string": "^6.13.1",
+    "react": "^16.13.1"
   }
 }
