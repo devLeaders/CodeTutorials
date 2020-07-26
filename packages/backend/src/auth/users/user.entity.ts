@@ -3,7 +3,7 @@ import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BaseEntity, Un
 @Entity('Users')
 @Unique(['email'])
 export class UserEntity extends BaseEntity {
-    @PrimaryGeneratedColumn('uuid') id: number;
+    @PrimaryGeneratedColumn() id: number;
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'LOCALTIMESTAMP' }) created: string;
 
