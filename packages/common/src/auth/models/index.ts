@@ -8,3 +8,8 @@ export interface ISingInRequest {
     email: string;
     password: string;
 }
+
+
+export interface ISingInResponse {
+    token:string;
+}

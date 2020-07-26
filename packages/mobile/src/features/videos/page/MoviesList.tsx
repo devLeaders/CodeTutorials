@@ -15,18 +15,13 @@ import {
   ButtonContainer
 } from '../components/Movies/MovieListStyle';
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
-import Axios from '../../../config/axios/AxiosConfig';
+import {getVideos} from '@project/common/features/videos/connector';
 
 
 export class  MoviesList extends React.Component{
 
   async componentDidMount() {
-    const token = await AsyncStorage.getItem("token");
-    const headers = {
-      ...Axios.defaults.headers,
-      'Authorization': `Bearer ${token}`
-    };
-    const test = await Axios.get('/videos', {headers} )
+    const test = await getVideos();
   }
   
   render(){

@@ -62,7 +62,7 @@ const InputText = styled(MyText)({
   fontSize: FontSize.SMALLXXS,
   lineHeight: 15,
   marginLeft: 13,
-  fontWeight: FontWeight.REGULAR,
+  fontWeight: parseInt(FontWeight.REGULAR),
   color: Color.BLACK,
 });
 
@@ -150,14 +150,14 @@ export default class ShortcutToFilters extends React.Component <ShortcutToFilter
         <TitleEyeAndXWrapper>
            <TitleAndEyeWrapper>
               <SearchbarWrapper>
-                <InputText 
+                {/* <InputText 
                     autoCapitalize='none'
                     autoCorrect={false} 
                     placeholder="Docker od podstaw"
                     value={this.props.serachitem}
                     onChangeText={this.props.onSubmitSearch}                   
                     onEndEditing={this.props.onSubmitSearch}                        
-                />
+                /> */}
                 <SearchButton>
                   <ImageSerach source={{uri:'magnifier'}}/>
                 </SearchButton>  

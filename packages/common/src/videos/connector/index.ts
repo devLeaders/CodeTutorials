@@ -6,12 +6,6 @@ import {IFilterVideoRequest} from '../models';
 export const getCategories = async () => AxiosInstance.get("/videos/category")
 
 //TODO:ładny komentarz ?category=${categories}?title=${title}
-export const getVideos = async (categories: string, title: string) => {
-
-    const data:IFilterVideoRequest = {
-        category:categories,
-        title
-    }
-
-    AxiosInstance.get(`/vidoes?${queryString.stringify(data)}`)
+export const getVideos = async (obj?:IFilterVideoRequest) => {
+    AxiosInstance.get(`/vidoes?${queryString.stringify(obj)}`)
 }
