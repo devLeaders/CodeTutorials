@@ -1,14 +1,7 @@
-import { IsString, IsNumberString, IsOptional, Min } from 'class-validator';
 
-export class FilterVideoDTO {
 
-    @IsOptional()
-    @IsNumberString()
+export interface IFilterVideoRequest {
     page?: number;
-
-    @IsOptional()
-    @IsString()
-    title?: string;
-    
+    title?: string;   
     category: string; 
 }
