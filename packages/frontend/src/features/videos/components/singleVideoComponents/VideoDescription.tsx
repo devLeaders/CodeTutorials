@@ -11,10 +11,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   @media ${Device.TABLET} {
     padding: 40px 48px 40px 22px;
-    width: calc(100% - 500px);
-    max-width: 819px;
   }
-  @media ${Device.LAPTOP} {
+  @media ${Device.LAPTOP_L} {
+    max-width: 819px;
+    width: calc(100% - 500px);
     padding: 40px 0 40px 22px;
   }
 `;
