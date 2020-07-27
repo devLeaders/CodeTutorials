@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   margin-top: 10px;
   display: flex;
   height: 100%;
+  position: relative;
 `;
 
 const VideoWrapper = styled.div`

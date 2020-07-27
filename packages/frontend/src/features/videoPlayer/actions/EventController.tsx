@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux";
 
 import { runVideoAction, changeVideoTime, handleVideoShortcuts, changeIsFullscreen, } from "./videoActionController";
-import {setTime, changeState } from "../../../config/redux/singleMovie/actions";
+import {setTime, changeState } from "../../../config/redux/videoPlayer/actions";
 import { playPauseVideo } from "../actions/videoPlayerActions";
 import { refsStore } from "../refs.store";
 import { getMovieState } from "../actions/ReduxActions"

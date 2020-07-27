@@ -9,7 +9,9 @@ import {
   changeState,
   setIsFullscreen,
   setTime,
-} from "../../../config/redux/singleMovie/actions";
+  playPauseSmall,
+  playPause,
+} from "../../../config/redux/videoPlayer/actions";
 import { MouseEvent } from "react";
 import { RootStateOrAny } from "react-redux";
 
@@ -30,6 +32,17 @@ export const runVideoAction = (
     video.muted = !videoState;
   } else if (buttonType === ButtonTypes.FULLSCREEN) {
     videoResize(videoContainer, videoState);
+  } else if (buttonType === ButtonTypes.SMALL_MODE) {
+    if (!videoState) {
+      playPauseVideo(video, videoState);
+    }
+
+    if (!refsStore.RefsSmall[0].current.paused) {
+      playPauseVideo(
+        refsStore.RefsSmall[0].current,
+        refsStore.RefsSmall[0].current.paused
+      );
+    }
   }
 
   if (buttonType != ButtonTypes.FULLSCREEN) {

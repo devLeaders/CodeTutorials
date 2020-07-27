@@ -1,9 +1,9 @@
-enum NAVIGATION {
+export enum Navigation {
   MOVIES = "/videos",
   SERIES = "/seriale",
   LOGIN = "/login",
   MOVIELIST = "/movielist",
   MOVIE = "/movie",
+  HOME = "/"
 }
 
-export default NAVIGATION;

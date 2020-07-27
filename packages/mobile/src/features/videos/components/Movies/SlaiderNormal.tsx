@@ -5,14 +5,12 @@ import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
 import { MoviesListExpandedType } from './MoviesType';
 import {  
     ViewSeparator,
-    ImageSecondSlaider,
-    GroupForDescription,
-    IcHeart,
-    ItemLike,
-    GroupCenter,
-    ViewTitle,
-  } from './MovieListStyle';
+    ViewCentred,
+} from './MovieListStyle';
 import { GetVideosListExpandedV } from '../../action/conector';
+import SmallSquareOfMovie from '../MainScreen/SmallSquareOfMovie';
+import { NavigationName } from '../../../../config/routing/NavigationName';
+
 
 type SlaiderNormalS = {
     listVideos: Array<MoviesListExpandedType>
@@ -27,16 +25,12 @@ export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
 
   public separator = () => (<ViewSeparator/>)
   public imgeSlaider = (item:MoviesListExpandedType) => (
-    <View>
-        <ImageSecondSlaider source={{uri: item.uri}}/>
-          <GroupForDescription>
-              <IcHeart source={{uri:'ic_heart'}}/>
-              <ItemLike>{item.like}</ItemLike>
-            </GroupForDescription>
-            <GroupCenter>
-              <ViewTitle>{item.title}</ViewTitle>
-            </GroupCenter>
-    </View>
+    <SmallSquareOfMovie 
+    text= {item.title}
+    navigation= {this.props.navigation}
+    goto= {NavigationName.SINGLEMOVIE}
+    image= {item.uri}
+    />
   )
 
   componentDidMount(){
@@ -50,17 +44,20 @@ export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
 
   render(){
         return(
+          <ViewCentred>
             <FlatList 
-            snapToAlignment={"start"}
-            snapToInterval={DifrentSlaider.WIDTHNORMAL + 10}
-            decelerationRate={"fast"}
-            ItemSeparatorComponent={this.separator} 
-            showsHorizontalScrollIndicator={false}
-            horizontal={true}
-            data={this.state.listVideos} 
-            renderItem={this.renderIt} 
-            keyExtractor={ item => item.id }
-          /> 
+              snapToAlignment={"start"}
+              snapToInterval={DifrentSlaider.WIDTHNORMAL + 10}
+              decelerationRate={"fast"}
+              ItemSeparatorComponent={this.separator} 
+              showsHorizontalScrollIndicator={false}
+              horizontal={false}
+              data={this.state.listVideos} 
+              renderItem={this.renderIt} 
+              keyExtractor={ item => item.id }
+              numColumns={2}
+            /> 
+          </ViewCentred>
         )
     }
 }

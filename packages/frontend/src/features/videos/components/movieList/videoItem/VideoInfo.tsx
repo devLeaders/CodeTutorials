@@ -9,6 +9,7 @@ import {Device} from "../../../../common/styles/constans/Device"
 
 
 const Wrapper = styled.div`
+ text-decoration: none;
   height: 80px;
   width: 100%;
   display: flex;

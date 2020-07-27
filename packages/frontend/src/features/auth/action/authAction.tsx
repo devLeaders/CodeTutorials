@@ -1,6 +1,5 @@
 import Axios from "../../../config/axios/configAxios"
-import {useHistory} from "react-router-dom"
-import NAVIGATION from "../../../config/routing/NavigationPath"
+
 
     export const loginSubmit = async (value: any, action: any) => {
 

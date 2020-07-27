@@ -1,38 +1,67 @@
-import * as React from 'react';
-import styled from "styled-components"
+import React, { FormEvent } from "react";
+import styled from "styled-components";
 
-import {FontSize} from "../../common/styles/constans/FontSize"
-import {fontWeight} from "../../common/styles/constans/fontWeight"
-import {Device} from "../../common/styles/constans/Device";
-import CategorieBtn from "./CategorieBtn"
+import { FontSize } from "../../common/styles/constans/FontSize";
+import { fontWeight } from "../../common/styles/constans/fontWeight";
+import { Device } from "../../common/styles/constans/Device";
+import CategorieCheckbox from "./CategorieCheckbox";
+import { useCategories } from "../hooks/useCategories";
+import { useFiltersForm } from "../hooks/useFiltersForm";
+import { Formik, Form, Field } from "formik";
 
-const BtnWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 21px;
-    @media ${Device.TABLET}{
+const FilterForm = styled(Form)`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 21px;
+  @media ${Device.TABLET}{
         width: 334px;
     }
-`
+`;
 
 const Title = styled.h3`
-    margin-top: 35px;
-    font-size: ${FontSize.XXMEDIUM};
+  margin-top: 35px;
+  font-size: ${FontSize.XXMEDIUM};
     font-weight: ${fontWeight.SEMI_BOLD};
-`
+`;
 
-const categories = ["UX/UI Design", "Graphic Design", "Computer Science Engineer", "Movies", "Web Developer", "Dance", "DJ", "Guitarist"]
+export type Categorie = {
+  id: number;
+  name: string;
+  videos: Array<any>;
+};
 
 const Categories: React.SFC = () => {
-    return ( 
-        <>
-        <Title>Kategorie</Title>
-        <BtnWrapper>
-            {categories.map((categorie: string) => <CategorieBtn key={categorie} categorie={categorie}/>)}
-        </BtnWrapper>
-        </>
-     );
-}
- 
+  const { data } = useCategories();
+  const { handleSubmit, initValues } = useFiltersForm();
+
+  return (
+    <Formik initialValues={initValues} onSubmit={handleSubmit}>
+      {({ handleSubmit, handleChange, submitForm, values }) => (
+        <div>
+          <Title>Kategorie</Title>
+          <FilterForm
+            onSubmit={handleSubmit}
+            onChange={(e: FormEvent<HTMLFormElement>) => {
+              handleChange(e);
+              submitForm();
+            }}
+          >
+            {data.map(({ name, id }: Categorie) => (
+              <Field
+                name={id}
+                text={name}
+                value={id}
+                checked={values[id] ? values[id] : false}
+                key={id}
+                component={CategorieCheckbox}
+              />
+            ))}
+          </FilterForm>
+        </div>
+      )}
+    </Formik>
+  );
+};
+
 export default Categories;
