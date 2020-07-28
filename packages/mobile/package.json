@@ -20,7 +20,12 @@
     "@react-navigation/material-top-tabs": "^5.1.7",
     "@react-navigation/native": "^5.1.4",
     "@react-navigation/stack": "5.2.9",
+    "@wdio/cli": "^6.3.5",
+    "appcenter": "^3.1.1",
+    "appcenter-analytics": "^3.1.1",
+    "appcenter-crashes": "^3.1.1",
     "axios": "^0.19.1",
+    "chai": "^4.2.0",
     "formik": "^2.1.4",
     "react": "16.9.0",
     "react-native": "^0.61.5",
@@ -33,6 +38,8 @@
     "react-native-screens": "^2.0.0-alpha.25",
     "react-native-vector-icons": "^6.6.0",
     "styled-components": "^5.0.1",
+    "wd": "^1.12.1",
+    "webdriverio": "^6.3.5",
     "yup": "^0.28.1"
   },
   "devDependencies": {

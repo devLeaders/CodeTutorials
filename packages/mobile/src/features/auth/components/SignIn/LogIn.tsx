@@ -5,6 +5,7 @@ import {
     TouchableOpacity,
     Text,
     AsyncStorage,
+    Button,
 } from 'react-native';
 import { Formik } from 'formik';
 import validationSchema from '../../action/validationSchema';
@@ -77,6 +78,12 @@ class LogIn extends React.Component<LogInProps> {
     render() {
         return (
             <SafeAreaView style={{ marginTop: 20}}>
+                <TouchableOpacity
+                accessibilityLabel="alertButton"
+                style={{width:100,height:100,backgroundColor:'aqua'}}
+                onPress={() => console.log("test")}>
+                <Text>Hello</Text>
+                </TouchableOpacity>
                 <Formik
                     initialValues={{ email: "", password: ''}}
                     onSubmit={this.loginSubmit}
