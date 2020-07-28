@@ -8,6 +8,7 @@ export enum NavigationName {
 
     MENU = 'Menu',
     BOTTOMMENU = 'BottomMenu',
+    DRAWER = 'DrawerNavigation',
 
     TEAMS = 'Teams',
     TASKS = 'Tasks',

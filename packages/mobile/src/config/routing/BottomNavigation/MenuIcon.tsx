@@ -1,16 +1,17 @@
 import React from 'react'
 import { View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { DrawerItem, DrawerContentScrollView, DrawerItemList} from '@react-navigation/drawer'
+import { DrawerItem } from '@react-navigation/drawer'
+import { HamburgerIc } from '../../../features/common/components/TabBottomNavStyle'
 import { useNavigation, DrawerActions } from '@react-navigation/native'
-import { Hamburger } from './MovieListStyle'
 
-export const HeaderLeft =(props)=>{
+export const MenuIcon = ()=>{
     const nav = useNavigation()
-
     return(
+        <View>
             <TouchableOpacity onPress={() => nav.dispatch(DrawerActions.openDrawer())}>
-                <Hamburger source={{uri:'ic_menu'}}/>
-          </TouchableOpacity> 
-    );
+                <HamburgerIc source={{uri:'ic_burger'}}/>
+            </TouchableOpacity>
+        </View>
+    )
 }
