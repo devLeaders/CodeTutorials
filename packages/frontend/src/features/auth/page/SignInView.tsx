@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Formik } from "formik";
 import { signInSubmit } from "../action/signInSubmit";
 import SignInInputs from "../components/SignInComponents/SignInInputs";
-
+import SignUpRedirect from "../components/SignInComponents/SignUpRedirect";
 const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
@@ -26,6 +26,7 @@ const SignInView: React.FC = (props: any) => {
         onSubmit={signInSubmit}>
         {(props: { errors: string }) => <SignInInputs {...props} />}
       </Formik>
+      <SignUpRedirect />
     </Wrapper>
   );
 };

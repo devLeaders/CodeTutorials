@@ -16,5 +16,9 @@ export enum NavigationName {
     SEARCH = 'Search',
 
     SINGLEMOVIEDESCRIPTION = 'SingleMovieDescription',
-    FILTERSSCREEN = 'FiltersScreen'
+    FILTERSSCREEN = 'FiltersScreen',
+    MAINSCREENHEADER = 'MainScreenHeader',
+    SQUAREOFMOVIE = 'SquareToRenderTemp',
+    SHORTCUTTOFILTERS = 'ShortcutToFilters',
 }
+

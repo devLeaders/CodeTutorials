@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import { validationSchema } from "../action/validationSchema";
 import { signUpSubmit } from "../action/signUpSubmit";
 import SignUpInputs from "../components/SignUpComponents/SignUpInputs";
+import SignInRedirect from "../components/SignUpComponents/SignInRedirect";
 
 const Wrapper = styled.main`
   display: flex;
@@ -33,6 +34,7 @@ const SignUpView: React.FC = (props: any) => {
         validationSchema={validationSchema}>
         {(props: { errors: string }) => <SignUpInputs {...props} />}
       </Formik>
+      <SignInRedirect />
     </Wrapper>
   );
 };

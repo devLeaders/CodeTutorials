@@ -13,14 +13,12 @@ export const useFillerItems = (
     const itemsInRow = Math.floor(containerWidth / itemWidth);
     const itemsNeededInRow = itemsInRow - (moviesList % itemsInRow);
     const fillerItems = new Array(itemsNeededInRow)
-      .fill(undefined)
+      .fill(1)
       .map((val, idx) => idx);
     setFillerItems(fillerItems);
   };
   useEffect(() => {
     handleLastRowFill();
-    window.addEventListener("resize", () => handleLastRowFill());
-    return window.removeEventListener("resize", () => handleLastRowFill());
-  }, []);
+  }, [movieListContainer.current?.offsetWidth]);
   return fillerItems;
 };

@@ -5,20 +5,18 @@ import { Device } from "../../../common/styles/constans/Device";
 import { Fields, FieldsPlaceholders } from "../../enums";
 import Input from "../../../common/components/form/Input";
 import RecoveryPass from "./RecoveryPass";
-import SignUpRedirect from "./SignUpRedirect";
 import SubmitButton from "../../../common/components/form/SubmitButton";
 import TitleForm from "../../../common/components/form/TitleForm";
 const StyledForm = styled(Form)`
   width: 100%;
-  min-height: 60vh;
-  margin: 50px 0;
+  margin: 50px 0 0 0;
   padding: 0 50px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   @media ${Device.TABLET} {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 50px auto 0 auto;
   }
 `;
 interface SignInInputsInterface {
@@ -53,7 +51,6 @@ const SignInInputs: React.FC<SignInInputsInterface> = ({ errors }) => {
         />
         <SubmitButton title='Zaloguj' />
         <RecoveryPass />
-        <SignUpRedirect />
       </StyledForm>
     </>
   );

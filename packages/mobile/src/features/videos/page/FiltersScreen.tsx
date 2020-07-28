@@ -9,7 +9,7 @@ import BlackFilterButton from '../components/FiltersScreen/BlackFilterButton';
 import { NavigationName } from '../../../config/routing/NavigationName';
 import XButton from '../components/FiltersScreen/XButton';
 import {MyText} from '../../common/styles/MyText';
-import { View, TouchableOpacity, Text, ScrollView} from 'react-native';
+import { View, TouchableOpacity, Text, ScrollView, SafeAreaView} from 'react-native';
 
 ;
 
@@ -174,13 +174,14 @@ export default class FiltersScreen extends React.Component <FiltersScreenProps, 
 
 
   render() {
-    return (
+    return ( 
       <Wrapper>
+        <SafeAreaView>
         <TitleAndXWrapper>
             <Title>Szukaj</Title>
             <XButton
           navigation={this.props.navigation}
-          goto={NavigationName.HOME}/> 
+          goto={NavigationName.MENU}/> 
         </TitleAndXWrapper>
         <SearchbarWrapper>
             <InputText 
@@ -250,7 +251,7 @@ export default class FiltersScreen extends React.Component <FiltersScreenProps, 
               goto={NavigationName.HOME}
               />
         </FilersButtonWrapper>
-      
+        </SafeAreaView>
       </Wrapper>
       
     );

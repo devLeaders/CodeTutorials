@@ -1,6 +1,15 @@
-import { movieReducer } from "./singleMovie/reducer";
-import { combineReducers } from 'redux'
+import { combineReducers } from "redux";
+import { filtersReducer } from "../../features/filters/reducer/filtersReducer";
 
-const rootReducer = combineReducers({movie: movieReducer})
+import { movieReducer } from "./videoPlayer/reducer";
+import { videoTabsReducer } from "./videoTabs/videoTabsReducer";
+import { popUpsReducer } from "./popups/popupsReducer";
 
-export default rootReducer
+const rootReducer = combineReducers({
+  movie: movieReducer,
+  videoTabs: videoTabsReducer,
+  popUps: popUpsReducer,
+  filters: filtersReducer,
+});
+
+export default rootReducer;

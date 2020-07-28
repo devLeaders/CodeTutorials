@@ -10,7 +10,7 @@ const Wrapper = styled.div<{type?: string}>`
     top: ${({type}) => type ? "52px" : "8px"};
     right: ${({type}) => type ? "11px" : "-17px"};
     width: 6px;
-    height: 100%;
+    height: 80%;
     border-radius: 20px;
     background-color: ${Colors.LIGHT_OPACITY_BLACK};
 

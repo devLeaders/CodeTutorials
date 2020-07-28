@@ -11,11 +11,21 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     user-select: none;
   }
+  ul{
+    padding: 0;
+    margin: 0;
+  }
+  li{
+    margin: 0;
+    padding: 0;
+  }
   button{
     font-family: 'Montserrat', sans-serif;
   }
   *, *::before, *::after {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
   }
 `;
 

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FontSize } from "../../../common/styles/constans/FontSize";
 import SocialMedia from "./SocialMedia";
 import { Colors } from "../../../common/styles/constans/Colors";
-import NAVIGATION from "../../../../config/routing/NavigationPath";
+import { Navigation } from "../../../../config/routing/NavigationPath";
 const StyledLink = styled(Link)`
   width: 100%;
   color: ${Colors.LIGHT_PURPLE};
@@ -38,14 +38,14 @@ const Paragraph = styled.p`
   }
 `;
 
-const RegisterRedirect: React.FC = (props: any) => {
+const SignUpRedirect: React.FC = (props: any) => {
   return (
     <>
-      <StyledLink to={NAVIGATION.REGISTER}>Nie posiadasz konta?</StyledLink>
+      <StyledLink to={Navigation.REGISTER}>Nie posiadasz konta?</StyledLink>
       <Paragraph>lub</Paragraph>
       <SocialMedia />
     </>
   );
 };
 
-export default RegisterRedirect;
+export default SignUpRedirect;

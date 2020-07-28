@@ -5,7 +5,7 @@ const calcEndWidth = ( numOfFullMoves:number, move: number, lastMove: number, ad
     return -endWidth
 }
 
-const calcLastMove = (videosNum: number, videoWidth:number, margin: number) => (videosNum * (videoWidth + margin))
+const calcLastMove = (videosNum: number, videoWidth:number, margin: number) => (Math.floor(videosNum * (videoWidth + margin)))
 
 
 const calcElementsOnScreen = (elementWidth: number, wrapperWidth: number, minMargin: number) => {
@@ -13,14 +13,16 @@ const calcElementsOnScreen = (elementWidth: number, wrapperWidth: number, minMar
 }
 
 export const calcMargins = (elementWidth: number, wrapperWidth: number) => {
-        const elementsOnScreen = calcElementsOnScreen(elementWidth, wrapperWidth, 15)
+        const minMargin = wrapperWidth < 768 ? 15 : 30
+        const elementsOnScreen = calcElementsOnScreen(elementWidth, wrapperWidth,minMargin)
         const freeSpace = wrapperWidth- (elementWidth * elementsOnScreen)
         return (freeSpace) / (elementsOnScreen + 1)
 }
 
 
 export const handleCalculations = (elementWidth: number, wrapperWidth: number, numOfElements: number, margin: number) => {
-    const elementsOnScreen = calcElementsOnScreen( elementWidth, wrapperWidth, 15)
+    const minMargin = wrapperWidth < 768 ? 15 : 30
+    const elementsOnScreen = calcElementsOnScreen( elementWidth, wrapperWidth,minMargin)
     const additionalVideosNum = numOfElements % elementsOnScreen
     const move = wrapperWidth - margin
     const numOfFullMoves = Math.ceil((numOfElements / elementsOnScreen) - 1)

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FontSize } from "../../../common/styles/constans/FontSize";
 import { Colors } from "../../../common/styles/constans/Colors";
-import NAVIGATION from "../../../../config/routing/NavigationPath";
+import { Navigation } from "../../../../config/routing/NavigationPath";
 
 const StyledLink = styled(Link)`
   color: ${Colors.LIGHT_PURPLE};
@@ -13,9 +13,9 @@ const StyledLink = styled(Link)`
   margin-top: 50px;
 `;
 
-const LoginRedirect: React.FC = () => {
+const SignInRedirect: React.FC = () => {
   return (
-    <StyledLink to={NAVIGATION.LOGIN}>Posiadasz konto? Zaloguj się</StyledLink>
+    <StyledLink to={Navigation.LOGIN}>Posiadasz konto? Zaloguj się</StyledLink>
   );
 };
-export default LoginRedirect;
+export default SignInRedirect;

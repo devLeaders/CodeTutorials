@@ -25,8 +25,6 @@ import {
 import {DATA} from '../action/ExampleData'
 import {SliderOfImage} from '../components/SingleScreen/SliderOfImage';
 import {HeaderLeft} from '../components/SingleScreen/HeaderLeft';
-import { NavigationName } from '../../../config/routing/NavigationName';
-import { NavProps } from '../../../config/routing/ParamList';
 
 interface SingleMovie2Props {
   navigation: any
