@@ -23,7 +23,7 @@ export default class SingleMovie2 extends React.Component <SingleMovie2Props>{
     return (
       <SafeAreaView style={{backgroundColor:Color.DARKGREY}}>
         <Background>
-            <MainScreenHeader navigation={navigation} />  
+            <MainScreenHeader navigation={navigation}/>  
             <MainDescription 
                 title="Docker od podstaw"
                 autor="Przemysław Bykowski"

@@ -7,8 +7,7 @@ import { Color } from '../../../../features/common/styles/constans/Color';
 import BlackFilterButtonInShorcut from './BlackFilterButtonInShortcut';
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import XButton from './XButton';
-import {MyText} from '../../../common/styles/MyText';
-;
+import { TextInput } from 'react-native';
 
 const Wrapper = styled.ScrollView({
   flexGrow: 1,
@@ -57,14 +56,14 @@ const SearchbarWrapper = styled.View({
   elevation: "3",
 });
 
-const InputText = styled(MyText)({
-  width: 138,
-  fontSize: FontSize.SMALLXXS,
-  lineHeight: 15,
-  marginLeft: 13,
-  fontWeight: FontWeight.REGULAR,
-  color: Color.BLACK,
-});
+const InputText = styled.TextInput`
+  font-family: ${FontFamily.GLOBAL_MONT};
+  width: 138px;
+  font-size: ${FontSize.SMALLXXS};
+  margin-left: 13px;
+  font-weight: ${FontWeight.REGULAR};
+  color: ${Color.BLACK};
+`;
 
 const SearchButton = styled.TouchableOpacity({
   backgroundColor: Color.WHITE,

@@ -14,7 +14,7 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import { NavigationName } from '../../../config/routing/NavigationName';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { NavProps } from '../../../config/routing/ParamList';
 
 const HomeButton = styled.Button`
