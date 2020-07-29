@@ -6,7 +6,7 @@ import { Device } from "../../styles/constans/Device";
 import { Colors } from "../../styles/constans/Colors";
 import NavBar from "./navBar/NavBar";
 import VideoTabs from "./videoTabs/VideoTabs";
-import Navigation from "../../../../config/routing/NavigationPath";
+import PopUps from "./PopUps"
 import Filters from "../../../filters/components/Filters"
 
 
@@ -30,6 +30,7 @@ interface AsideProps  {
 const Aside: React.FC<AsideProps> = ({tabs}) => {
   return (
     <Wrapper>
+      <PopUps/>
       <NavBar />
       {tabs ? <VideoTabs aside={true}/> : <Filters/>}
     </Wrapper>

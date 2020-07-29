@@ -45,7 +45,6 @@ class Slide extends React.Component<SlideProps, SlideState> {
     move: number,
     time: number
   ) => {
-      
     TweenLite.to(elements, time, {
       x: "+=" + move,
       ease: Power3.easeOut,

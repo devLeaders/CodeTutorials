@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, ScrollView, AsyncStorage} from 'react-native';
+import { View, ScrollView, AsyncStorage, Image} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
 import {  
@@ -11,11 +11,10 @@ import {
   SubTitleLeft,
   SubTitleRight,
   GroupForSubtitle,
-  ViewMarginSmall,
-  ViewGroupUnderCategory
+  SmallArrow,
+  ButtonContainer
 } from '../components/Movies/MovieListStyle';
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
-import { SlaiderSmall } from '../components/Movies/SlaiderSmall';
 import Axios from '../../../config/axios/AxiosConfig';
 import { NavProps } from '../../../config/routing/ParamList';
 import { NavigationName } from '../../../config/routing/NavigationName';
@@ -32,11 +31,7 @@ export class  MoviesList extends React.Component<MovieListP>{
       ...Axios.defaults.headers,
       'Authorization': `Bearer ${token}`
     };
-    console.log("header: ", headers)
-    console.log("token: ", token);
-
     const test = await Axios.get('/videos', {headers} )
-    console.log("test: ", test);
   }
   
   render(){
@@ -61,29 +56,17 @@ export class  MoviesList extends React.Component<MovieListP>{
           <View>
               <GroupForSubtitle>
                 <TouchableOpacity>
-                  <SubTitleLeft>Movies</SubTitleLeft>
+                  <SubTitleLeft>DevOps</SubTitleLeft>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                  <SubTitleRight>View All</SubTitleRight>
-                </TouchableOpacity>
+                <ButtonContainer>
+                  <SubTitleRight>Zobacz wszystkie</SubTitleRight>
+                  <SmallArrow source={{uri:'ic_arrowright'}}/>
+                </ButtonContainer>
               </GroupForSubtitle>
               <View>
                 <SlaiderNormal/>
               </View>
           </View>
-          <ViewMarginSmall>
-              <ViewGroupUnderCategory>
-                  <TouchableOpacity>
-                      <SubTitleLeft>Recommends</SubTitleLeft>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                      <SubTitleRight>View All</SubTitleRight>
-                  </TouchableOpacity>
-              </ViewGroupUnderCategory>
-              <View>
-                <SlaiderSmall/>
-              </View>
-          </ViewMarginSmall>
         </ScrollView>
       </View>
     );

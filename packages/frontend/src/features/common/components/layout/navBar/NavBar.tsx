@@ -17,6 +17,7 @@ const Wrapper = styled.div<{header?: boolean, singleMovie?: boolean}>`
     background-color: ${Colors.VERY_LIGHT_GRAY};
     display: ${({header}) => header ? "none" : "flex"};
     height: 112px;
+    background-color: ${Colors.VERY_LIGHT_GRAY};
   }
 `;
 interface HeaderProps {
@@ -28,7 +29,7 @@ const NavBar: React.FC<HeaderProps> = ({header}) => {
     <Wrapper header={header}>
       <BtnsSection/>
       <UserName name="Sebastian"/>
-      <UserImg />
+      <UserImg/>
     </Wrapper>
    
   );

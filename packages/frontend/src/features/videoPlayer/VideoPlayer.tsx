@@ -7,7 +7,7 @@ import {useHistory, useLocation} from "react-router-dom"
 import { getMovieState } from "./actions/ReduxActions"
 import { useVideoPlayerActions } from "./actions/EventController"
 import {reset} from "../../config/redux/videoPlayer/actions"
-import NavigationPath from "../../config/routing/NavigationPath"
+import {Navigation} from "../../config/routing/NavigationPath"
 
 
 
@@ -48,7 +48,7 @@ const VP: React.SFC<VpProps> = ({small}) => {
             ref={videoRef}
             onTimeUpdate={handleTimeProgress}
             onClick={handleVideoClick}
-            autoPlay={location.pathname === NavigationPath.HOME && true}
+            autoPlay={location.pathname === Navigation.HOME && true}
         >
             <source
                 src="http://localhost:3300/videos/video"

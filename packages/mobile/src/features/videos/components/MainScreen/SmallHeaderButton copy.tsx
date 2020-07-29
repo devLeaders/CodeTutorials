@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { FontSize } from '../../../common/styles/constans/FontSize';
 import { Color } from '../../../common/styles/constans/Color';
@@ -10,7 +10,6 @@ import BigHeaderButton from './BigHeaderButton';
 export default class SmallHeaderButton2 extends BigHeaderButton {
     
      ButtonFilter = styled.TouchableOpacity({
-        //marginRight: 10,
         height: 26,
         minWidth: 51,
         justifyContent: 'center',
