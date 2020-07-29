@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, ScrollView, AsyncStorage, Image} from 'react-native';
+import { View, ScrollView, AsyncStorage, Image, SafeAreaView} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
 import {  
@@ -18,6 +18,7 @@ import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
 import Axios from '../../../config/axios/AxiosConfig';
 import { NavProps } from '../../../config/routing/ParamList';
 import { NavigationName } from '../../../config/routing/NavigationName';
+import MainScreenHeader from '../components/MainScreen/MainScreenHeader';
 
 interface MovieListP {
   navigation: NavProps<NavigationName.MOVIELIST>
@@ -37,19 +38,9 @@ export class  MoviesList extends React.Component<MovieListP>{
   render(){
     const { navigation } = this.props;
     return (
-      <View>
+      <SafeAreaView>
         <ScrollView>
-          <ViewButtons>
-            <ButtonFilter>
-              <TextButtonActive>Nowości</TextButtonActive>  
-            </ButtonFilter>
-            <ButtonNOFilter>
-              <TextButtonNOAct>Moja kolekcja</TextButtonNOAct>  
-            </ButtonNOFilter>
-            <ButtonNOFilter>
-              <TextButtonNOAct>Popularne</TextButtonNOAct>  
-            </ButtonNOFilter>
-          </ViewButtons>
+            <MainScreenHeader navigation={this.props.navigation}/>
           <View>
             <SlaiderLarge />
           </View>
@@ -68,7 +59,7 @@ export class  MoviesList extends React.Component<MovieListP>{
               </View>
           </View>
         </ScrollView>
-      </View>
+      </SafeAreaView>
     );
   }
 }

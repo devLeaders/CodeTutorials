@@ -1,16 +1,14 @@
 import * as React from 'react';
 import { Animated, Dimensions } from 'react-native';
-import { MoviesListSimpleType } from './MoviesType';
-import {  
-  ImageSlaider,
-} from './MovieListStyle';
+import {  MoviesListExpandedType } from './MoviesType';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import { useNavigation } from '@react-navigation/native';
+import BigSquareOfMovie from './BigSquareOfMovie'
 
 interface AnimationSlaiderType {
     x: Animated.Value,
-    item: MoviesListSimpleType,
+    item: MoviesListExpandedType,
     index: number,
 }
 
@@ -40,9 +38,16 @@ export const AnimationSlaider = ({item, index, x}:AnimationSlaiderType) => {
     
     return(
       <TouchableOpacity onPress={navToSingleMovie} key={item.id}>
-        <Animated.View >
-          <ImageSlaider style={{ opacity, transform: [{ scale }]}} source={{uri: item.uri}}/>
-        </Animated.View>
+       <Animated.View style={{ opacity, transform: [{ scale }]}}>
+          <BigSquareOfMovie 
+            text = {item.title}
+            navigation = {navigation}
+            goto = {NavigationName.SINGLEMOVIE}
+            image = {item.uri}
+          />
+      </Animated.View>
       </TouchableOpacity>
     )
   }
+
+  

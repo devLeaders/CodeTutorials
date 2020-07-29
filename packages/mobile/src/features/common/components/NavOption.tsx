@@ -19,6 +19,17 @@ export class NavOption extends React.Component {
             headerRight: () => <HeaderRight/>,
         };
       };
+      static optionsMainScreen = () => {
+        return {
+            headerStyle: {
+              backgroundColor: '#00000000',
+              paddingTop: 50,
+            },
+            headerTransparent: true,
+            headerTitle: () => <View />,
+      
+          };
+    };
     static optionsSingleMovie = ({navigation}: NavProps<NavigationName.MOVIELIST>) => {
         return {
             headerStyle: {

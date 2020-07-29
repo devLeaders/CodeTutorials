@@ -1,17 +1,15 @@
 import * as React from 'react';
 import { Animated, Dimensions } from 'react-native';
-import { MoviesListSimpleType } from './MoviesType';
+import { MoviesListExpandedType } from './MoviesType';
 import {  
   ViewSeparator,
   ImageWidth
 } from './MovieListStyle';
-import { GetVideosList } from '../../action/conector';
 import { AnimationSlaider } from './AnimationSlaider';
-import { NavProps } from '../../../../config/routing/ParamList';
-import { NavigationName } from '../../../../config/routing/NavigationName';
+import { GetVideosListExpandedV } from '../../action/conector';
 
  type SlaiderLargeS = {
-  listVideos: Array<MoviesListSimpleType>
+  listVideos: Array<MoviesListExpandedType>
  }
 
 export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
@@ -32,7 +30,7 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
   }
 
   componentDidMount(){
-    const listVideos =  GetVideosList();
+    const listVideos =  GetVideosListExpandedV();
     this.setState ({
       listVideos
     })
