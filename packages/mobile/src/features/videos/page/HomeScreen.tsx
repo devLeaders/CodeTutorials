@@ -14,7 +14,7 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import { NavigationName } from '../../../config/routing/NavigationName';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { NavProps } from '../../../config/routing/ParamList';
 
 const HomeButton = styled.Button`
@@ -82,6 +82,12 @@ export const HomeScreen = ({ navigation }: NavProps<NavigationName.HOME>) => {
                     title="SquareOfMovie"
                     onPress={() => navigation.navigate(NavigationName.SQUAREOFMOVIE)}
                 />
+                <HomeButton
+                    color="#e63900"
+                    title="ShortcutToFilters"
+                    onPress={() => navigation.navigate(NavigationName.SHORTCUTTOFILTERS)}
+                />
+
 
 
               </View>

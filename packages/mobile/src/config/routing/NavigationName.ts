@@ -19,5 +19,6 @@ export enum NavigationName {
     FILTERSSCREEN = 'FiltersScreen',
     MAINSCREENHEADER = 'MainScreenHeader',
     SQUAREOFMOVIE = 'SquareToRenderTemp',
+    SHORTCUTTOFILTERS = 'ShortcutToFilters',
 }
 

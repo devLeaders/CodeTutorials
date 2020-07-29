@@ -45,6 +45,7 @@ interface SmallHeaderButtonProps {
     navigation: any,
     text: string,
     image: string,
+    goto: any
   }
 
 
