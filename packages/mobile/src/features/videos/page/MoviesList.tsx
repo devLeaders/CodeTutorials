@@ -16,9 +16,14 @@ import {
 } from '../components/Movies/MovieListStyle';
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
 import Axios from '../../../config/axios/AxiosConfig';
+import { NavProps } from '../../../config/routing/ParamList';
+import { NavigationName } from '../../../config/routing/NavigationName';
 
+interface MovieListP {
+  navigation: NavProps<NavigationName.MOVIELIST>
+}
 
-export class  MoviesList extends React.Component{
+export class  MoviesList extends React.Component<MovieListP>{
 
   async componentDidMount() {
     const token = await AsyncStorage.getItem("token");
@@ -30,6 +35,7 @@ export class  MoviesList extends React.Component{
   }
   
   render(){
+    const { navigation } = this.props;
     return (
       <View>
         <ScrollView>
@@ -45,7 +51,7 @@ export class  MoviesList extends React.Component{
             </ButtonNOFilter>
           </ViewButtons>
           <View>
-            <SlaiderLarge/>
+            <SlaiderLarge />
           </View>
           <View>
               <GroupForSubtitle>

@@ -6,9 +6,9 @@ interface Navi {
   navigation: any;
 }
 
-export class HeaderLeft extends React.Component<Navi> {
+export class HeaderLeftSingle extends React.Component<Navi> {
 
-  public navToHome = () => this.props.navigation.navigate(NavigationName.HOME)
+  public navToHome = () => this.props.navigation.navigate(NavigationName.MOVIELIST)
 
   render() {
     return (

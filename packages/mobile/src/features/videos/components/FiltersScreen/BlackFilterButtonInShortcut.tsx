@@ -56,11 +56,16 @@ const ButtonFilter = styled.TouchableOpacity({
 
 interface BlackFilterButtonInShorcutProps {
     text: string,
+    navigation: any,
+    goto: any
+  }
+  interface BlackFilterButtonInShorcutState {
+    blackButton: boolean
   }
   
   //wybór white button | blackbutton
 
-export default class BlackFilterButtonInShortcut extends React.Component<BlackFilterButtonInShorcutProps> {
+export default class BlackFilterButtonInShortcut extends React.Component<BlackFilterButtonInShorcutProps,BlackFilterButtonInShorcutState> {
     constructor(props) {
         super(props);
     
