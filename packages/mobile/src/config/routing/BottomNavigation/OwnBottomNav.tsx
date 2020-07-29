@@ -2,8 +2,9 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native';
 import { NavigationName } from '../NavigationName';
 import { useNavigation, DrawerActions } from '@react-navigation/native'
+import { Color } from '../../../features/common/styles/constans/Color';
 
-export function TestButton(props) {
+export function OwnBottomNav(props) {
     const { state, descriptors, navigation } = props
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
@@ -24,15 +25,6 @@ export function TestButton(props) {
 
         const isFocused = state.index === index;
         const onPress = () => {
-        //   const event = navigation.emit({
-        //     type: 'tabPress',
-        //     target: route.key,
-        //     canPreventDefault: true,
-        //   });
-
-        //   if (!isFocused && !event.defaultPrevented) {
-        //     navigation.navigate(route.name);
-        //   }
             if(route.name == NavigationName.DRAWER){
                 navigation.dispatch(DrawerActions.openDrawer())
             } else{
@@ -57,7 +49,7 @@ export function TestButton(props) {
             onLongPress={onLongPress}
             style={{ flex: 1 }}
           >
-            <Text style={{ color: isFocused ? 'white' : 'white' }}>
+            <Text style={{ color: isFocused ? Color.WHITE : Color.WHITE }}>
               {label}
             </Text>
           </TouchableOpacity>

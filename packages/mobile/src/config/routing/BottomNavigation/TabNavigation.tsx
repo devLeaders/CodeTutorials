@@ -18,14 +18,9 @@ import { Tasks } from '../../../features/videos/page/Tasks';
 import { Alert } from '../../../features/videos/page/Alert';
 import { NavOption } from '../../../features/common/components/NavOption'
 import FiltersScreen from '../../../features/videos/page/FiltersScreen';
-import { HomeStackScreen } from '../HomeNavigation';
 import AlertIcon from './AlertIcon';
-import DrawerNavigation from '../DrawerNavigation';
-import { View, TouchableOpacity, Text } from 'react-native';
-import { DrawerItem } from '@react-navigation/drawer';
 import { MenuIcon } from './MenuIcon';
-import { DrawerContent } from '../DrawerContentScreen';
-import { TestButton } from './TestButton';
+import { OwnBottomNav } from './OwnBottomNav';
 
 
 const Tabs = createBottomTabNavigator();
@@ -60,7 +55,7 @@ export default class TabNavigation extends Component {
             inactiveTintColor: Color.LIGHTGREY,
             style: {backgroundColor: 'black'}
           }}
-          tabBar={TestButton}
+          tabBar={OwnBottomNav}
         > 
           <Tabs.Screen name={NavigationName.DRAWER} options={NavOption.optionsMenu} component={MoviesList} />
           <Tabs.Screen name={NavigationName.TEAMS} options={NavOption.optionsTeams} component={TeamsScreen} />
@@ -68,7 +63,6 @@ export default class TabNavigation extends Component {
           <Tabs.Screen name={NavigationName.PLAYLIST} options={NavOption.optionsMovieList} component={MoviesList} />
           <Tabs.Screen name={NavigationName.ALERT} options={NavOption.optionsAlert} component={Alert} />
           <Tabs.Screen name={NavigationName.FILTERSSCREEN} options={NavOption.optionsSearch}  component={FiltersScreen} />
-          {/* <Tabs.Screen name={NavigationName.DRAWER} options={NavOption.optionsMenu} component={DrawerContent} /> */}
         </Tabs.Navigator>
     );
   }
