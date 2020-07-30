@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/lodash": "^4.14.158",
+    "@types/yup": "^0.29.3",
     "axios": "^0.19.2",
     "formik": "^2.1.4",
     "gsap": "^3.1.1",
@@ -22,7 +23,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.1",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "yup": "^0.29.2"
   },
   "scripts": {
     "start": "react-scripts start",
