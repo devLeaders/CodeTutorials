@@ -4,21 +4,23 @@ import { FontWeight } from '../../../features/common/styles/constans/FontWeight'
 import { FontSize } from '../../../features/common/styles/constans/FontSize';
 import { Color } from '../../../features/common/styles/constans/Color';
 import { NavigationName } from '../NavigationName';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, Image} from 'react-native';
 import { MyText } from '../../../features/common/styles/MyText';
+import { useNavigation } from '@react-navigation/native';
 
-const Wrapper = styled.TouchableOpacity`
-    flex: 1;
-    height: 50px;
-    margin-top: 15px;
-`;
+const Wrapper = styled.TouchableOpacity({
+    flex: 1,
+});
 
-const ButtonFilter = styled.TouchableOpacity({
-    marginRight: 10,
-    height: 50,
+const ButtonDraw = styled.TouchableOpacity({
+    marginRight: 16,
+    marginLeft: 16,
+    marginBottom: 25,
+    height: 37,
+    width: 224,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     borderRadius: 10,
     borderColor: Color.LIGHTGREYX,
     backgroundColor: Color.WHITE,
@@ -33,31 +35,35 @@ const ButtonFilter = styled.TouchableOpacity({
   });
 
   const TextButton = styled(MyText)({
-    marginRight: 10,
-    marginLeft: 10,
-    fontSize: FontSize.MIDPLUS,
-    fontWeight: parseInt(FontWeight.REGULAR, 10),
+    fontSize: FontSize.NORMAL,
+    fontWeight: parseInt(FontWeight.BOLD, 10),
     color: Color.BLACK,
+  });
+
+  const IcDraw = styled.Image({
+    width: 26,
+    height: 26,
+    marginRight: 9,
+    marginLeft: 19
   });
   
 
 interface ButtonDrawerP {
-    navigation: any,
     text: string,
-    goto: any
-  }
+    goto: NavigationName,
+    icon: string
+}
 
-
-export default class ButtonDrawer extends React.Component<ButtonDrawerP> {
-    render(){
+export default function ButtonDrawer(props:ButtonDrawerP){
+        const navigation = useNavigation()
         return(
-            <Wrapper>
-                <ButtonFilter
-                    onPress={() => this.props.navigation.navigate(this.props.goto)}>
-                <TextButton>{this.props.text}</TextButton>
-                </ButtonFilter>
-            </Wrapper>
+        <Wrapper>
+            <ButtonDraw
+                onPress={() => navigation.navigate(props.goto)}>
+            <IcDraw source={{uri: props.icon}}/>
+            <TextButton>{ props.text}</TextButton>
+            </ButtonDraw>
+         </Wrapper>
 
-        );
-    }
+    );
 }

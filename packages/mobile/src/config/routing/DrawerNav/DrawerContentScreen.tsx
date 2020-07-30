@@ -5,18 +5,35 @@ import {
     DrawerItem
 } from '@react-navigation/drawer';
 import { NavigationName } from '../NavigationName';
+import ButtonDrawer from './ButtonDrawer';
+import { Color } from '../../../features/common/styles/constans/Color';
 
 export function DrawerContent(props) {
 
 
     return(
-        <View style={{flex:1,  backgroundColor:'red'}}>
+        <View style={{flex:1,  backgroundColor: Color.WHITE}}>
             <DrawerContentScrollView {...props}>
                 <View style={styles.drawerContent}>
-                    <Text>Cosssssss</Text>
-                    <DrawerItem 
-                        label="Bookmarks"
-                        onPress={() => {props.navigation.navigate(NavigationName.MENU)}}
+                    <ButtonDrawer 
+                        goto={NavigationName.MOVIELIST}
+                        text='Edytuj profil'
+                        icon='drawer_ic'
+                    />
+                    <ButtonDrawer 
+                        goto={NavigationName.MOVIELIST}
+                        text='Abonament i Faktury'
+                        icon='drawer_ic'
+                    />
+                    <ButtonDrawer 
+                        goto={NavigationName.MOVIELIST}
+                        text='Obejrzane Filmy'
+                        icon='drawer_ic'
+                    />
+                    <ButtonDrawer 
+                        goto={NavigationName.MOVIELIST}
+                        text='Admin Panel'
+                        icon='drawer_ic'
                     />
                 </View>
             </DrawerContentScrollView>
