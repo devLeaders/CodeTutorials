@@ -8,20 +8,23 @@
     "prebuild": "rimraf dist",
     "build": "nest build --watch --webpack",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest build & node dist/main",
-    "start:watch": "node dist/main",
+
+    "start": "nodemon --config nodemon.json",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "lint": "tslint -p tsconfig.json -c tslint.json",
+
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
+
     "typeorm:cli": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli",
-    "start:devts": "nodemon --config nodemon.json",
-    "pretypeorm:cli": "(rm ormconfig.json | echo 'generate:') && ts-node -r tsconfig-paths/register src/config/scripts/write-type-orm-config.ts"
+    "pretypeorm:cli": "(rimraf  ormconfig.json | echo 'generate:') && ts-node -r tsconfig-paths/register src/config/scripts/write-type-orm-config.ts",
+
+    "db:fill":"npm run typeorm:cli -- migration:run",
+    "db:revertLast":"npm run typeorm:cli -- migration:revert"
   },
   "dependencies": {
     "@nestjs/common": "^6.7.2",
@@ -32,7 +35,6 @@
     "@nestjs/swagger": "^4.2.3",
     "@nestjs/typeorm": "^6.2.0",
     "@nestjs/websockets": "^6.11.5",
-    "@nestjs/passport": "^6.2.0",
     "@project/common": "*",
     "bcrypt": "^4.0.1",
     "csurf": "^1.11.0",
