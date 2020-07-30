@@ -31,7 +31,7 @@ export class  MoviesList extends React.Component{
   
   render(){
     return (
-      <View>
+      <View style={{paddingTop:50}}>
         <ScrollView>
           <ViewButtons>
             <ButtonFilter>

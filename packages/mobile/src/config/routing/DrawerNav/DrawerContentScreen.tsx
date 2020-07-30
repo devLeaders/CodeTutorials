@@ -4,9 +4,7 @@ import {
     DrawerContentScrollView,
     DrawerItem
 } from '@react-navigation/drawer';
-import { MenuIcon } from './BottomNavigation/MenuIcon';
-import { NavigationName } from './NavigationName';
-import { Background } from 'src/features/videos/components/SingleScreen/SingleMovieStyle2';
+import { NavigationName } from '../NavigationName';
 
 export function DrawerContent(props) {
 
@@ -17,9 +15,9 @@ export function DrawerContent(props) {
                 <View style={styles.drawerContent}>
                     <Text>Cosssssss</Text>
                     <DrawerItem 
-                            label="Bookmarks"
-                            onPress={() => {props.navigation.navigate(NavigationName.MENU)}}
-                        />
+                        label="Bookmarks"
+                        onPress={() => {props.navigation.navigate(NavigationName.MENU)}}
+                    />
                 </View>
             </DrawerContentScrollView>
         </View>

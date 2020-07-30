@@ -15,7 +15,7 @@ const HomeStack = createStackNavigator();
 
 export const HomeStackScreen = () => (
   <HomeStack.Navigator>
-      <HomeStack.Screen name={NavigationName.MOVIELIST} options={NavOption.optionsMovieList} component={MoviesList}/>
+      <HomeStack.Screen name={NavigationName.MOVIELIST} options={NavOption.optionsMenu} component={MoviesList}/>
       <HomeStack.Screen name={NavigationName.SINGLEMOVIE} component={SingleMovie2}/>
       <HomeStack.Screen name={NavigationName.HOME} component={HomeScreen}/> 
       <HomeStack.Screen name={NavigationName.SINGLEMOVIEDESCRIPTION} component={SingleMovieDescription} />

@@ -1,19 +1,12 @@
 import * as React from 'react';
 import { Button, View, StyleSheet, Text, Alert } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationName } from './NavigationName';
-import TabNavigation from './BottomNavigation/TabNavigation';
-import MoviesList from '../../features/videos/page/MoviesList';
-import { NavOption } from '../../features/common/components/NavOption';
+import { NavigationName } from '../NavigationName';
+import TabNavigation from '../BottomNavigation/TabNavigation';
+import MoviesList from '../../../features/videos/page/MoviesList';
+import { NavOption } from '../../../features/common/components/NavOption';
 import { DrawerContent } from './DrawerContentScreen';
-
-function NotificationsScreen( props ) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button onPress={() => props.navigation.goBack()} title="Go back home" />
-    </View>
-  );
-}
+import { HomeStackScreen } from '../HomeNavigation';
 
 const SupportScreen = () => {
     return (
@@ -41,6 +34,7 @@ export default function DrawerNavigation() {
   return (
       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}> 
         <Drawer.Screen name={NavigationName.MENU} options={NavOption.optionsMenu} component={TabNavigation} />
+        <Drawer.Screen name={NavigationName.MOVIELIST} component={HomeStackScreen} />
         <Drawer.Screen name="SupportScreen" component={SupportScreen} />
       </Drawer.Navigator>
   );

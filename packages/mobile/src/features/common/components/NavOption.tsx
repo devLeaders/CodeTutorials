@@ -2,6 +2,7 @@ import * as React from 'react'
 import { HeaderTitle } from '../../videos/components/Movies/HeaderTitle';
 import { HeaderLeft } from '../../videos/components/Movies/HeaderLeft';
 import { HeaderRight } from '../../videos/components/Movies/HeaderRight';
+import { View } from 'react-native';
 
 
 export class NavOption extends React.Component {
@@ -63,5 +64,15 @@ export class NavOption extends React.Component {
         headerShown : false
         }
     }
+    static optionsDrawer = () => {
+        return{
+            headerTransparent: true,
+            headerTitle: () => <View />,
+            headerLeft: () => <View />,
+            headerStyle: {
+                backgroundColor: '#00000000',
+            }
+        }
+    }   
 
 }
