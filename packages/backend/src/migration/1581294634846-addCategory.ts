@@ -15,11 +15,11 @@ export class addCategory1581294634846 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<any> {
-        await queryRunner.query(`ALTER TABLE "videos_categories_category" DROP CONSTRAINT "FK_e0a755380320438818115bb92f6"`, undefined);
-        await queryRunner.query(`ALTER TABLE "videos_categories_category" DROP CONSTRAINT "FK_645da06109950573441acb45e16"`, undefined);
-        await queryRunner.query(`DROP INDEX "IDX_e0a755380320438818115bb92f"`, undefined);
-        await queryRunner.query(`DROP INDEX "IDX_645da06109950573441acb45e1"`, undefined);
-        await queryRunner.query(`DROP TABLE "videos_categories_category"`, undefined);
+        await queryRunner.query(`ALTER TABLE "videos_category_category" DROP CONSTRAINT "FK_68666f8a5ca56b014d4b4e5402a"`, undefined);
+        await queryRunner.query(`ALTER TABLE "videos_category_category" DROP CONSTRAINT "FK_039b08e7db66f6646683eae7b61"`, undefined);
+        await queryRunner.query(`DROP INDEX "IDX_68666f8a5ca56b014d4b4e5402"`, undefined);
+        await queryRunner.query(`DROP INDEX "IDX_039b08e7db66f6646683eae7b6"`, undefined);
+        await queryRunner.query(`DROP TABLE "videos_category_category"`, undefined);
         await queryRunner.query(`DROP TABLE "category"`, undefined);
     }
 

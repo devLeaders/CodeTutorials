@@ -34,8 +34,11 @@ const kvArray = [
 ];
 
 const myMap = new Map(kvArray as Array<any>);
+interface TabNavigationP {
+  navigation:any
+}
 
-export default class TabNavigation extends Component {
+export default class TabNavigation extends Component<TabNavigationP> {
   
   public screenOptions = ({ route }) => ({
     tabBarIcon: (): any => {

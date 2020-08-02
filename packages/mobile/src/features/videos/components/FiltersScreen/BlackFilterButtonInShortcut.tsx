@@ -63,8 +63,6 @@ interface BlackFilterButtonInShorcutProps {
 interface BlackFilterButtonInShorcutState {
   blackButton:boolean
 }
-  
-  //wybór white button | blackbutton
 
 export default class BlackFilterButtonInShortcut extends React.Component<BlackFilterButtonInShorcutProps,BlackFilterButtonInShorcutState> {
     constructor(props) {
