@@ -56,6 +56,7 @@ const SearchbarWrapper = styled.View({
   elevation: "3",
 });
 
+
 const InputText = styled.TextInput`
   font-family: ${FontFamily.GLOBAL_MONT};
   width: 138px;
@@ -64,6 +65,7 @@ const InputText = styled.TextInput`
   font-weight: ${FontWeight.REGULAR};
   color: ${Color.BLACK};
 `;
+
 
 const SearchButton = styled.TouchableOpacity({
   backgroundColor: Color.WHITE,

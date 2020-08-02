@@ -3,7 +3,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 require('dotenv').config();
 import { Logger,ValidationPipe } from '@nestjs/common';
-import * as helmet from 'helmet';
+const helmet = require("helmet");
 
 
 declare const module: any;

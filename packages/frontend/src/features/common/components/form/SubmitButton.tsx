@@ -54,7 +54,7 @@ const SubmitButton: React.FC<SubmitButtonInterface> = ({ title }) => {
   return (
     <Btn type='submit'>
       {title}
-      <Arrow>></Arrow>
+      <Arrow>&gt;</Arrow>
     </Btn>
   );
 };

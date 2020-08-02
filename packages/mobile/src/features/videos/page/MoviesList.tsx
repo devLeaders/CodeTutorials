@@ -15,10 +15,10 @@ import {
   ButtonContainer
 } from '../components/Movies/MovieListStyle';
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
-import Axios from '../../../config/axios/AxiosConfig';
-import { NavProps } from '../../../config/routing/ParamList';
-import { NavigationName } from '../../../config/routing/NavigationName';
+import {getVideos} from '@project/common/features/videos/connector';
 import MainScreenHeader from '../components/MainScreen/MainScreenHeader';
+import { NavigationName } from '../../../config/routing/NavigationName';
+import { NavProps } from '../../../config/routing/ParamList';
 
 interface MovieListP {
   navigation: NavProps<NavigationName.MOVIELIST>
@@ -27,12 +27,7 @@ interface MovieListP {
 export class  MoviesList extends React.Component<MovieListP>{
 
   async componentDidMount() {
-    const token = await AsyncStorage.getItem("token");
-    const headers = {
-      ...Axios.defaults.headers,
-      'Authorization': `Bearer ${token}`
-    };
-    const test = await Axios.get('/videos', {headers} )
+    const test = await getVideos();
   }
   
   render(){

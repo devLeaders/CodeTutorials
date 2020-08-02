@@ -62,6 +62,7 @@ export const changeVideoTime = (
   type?: string,
   small?: string | undefined
 ) => {
+  //TODO: ogarnąć refsStore.Refs[0].current i RefsSmall[0].current bo nie macie tu penosci ze current nie jest undefined
   const video = small
     ? refsStore.RefsSmall[0].current
     : refsStore.Refs[0].current;

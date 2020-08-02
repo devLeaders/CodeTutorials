@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
-      "module": "commonjs",
+      "module": "esnext",
+      "moduleResolution": "node",
       "declaration": true,
       "noImplicitAny": false,
       "removeComments": true,
@@ -8,9 +9,12 @@
       "noEmit": true, 
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "target": "es6",
+      "esModuleInterop": true,
+      "target": "esnext",
       "sourceMap": true,    
+      "jsx": "react",
       "skipLibCheck": true,
+      // "strict": true,
       "lib": [
         "es6"
       ]

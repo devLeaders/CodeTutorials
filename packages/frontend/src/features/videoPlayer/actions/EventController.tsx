@@ -78,6 +78,7 @@ export const useVideoPlayerActions = (videoRef: any, small?: string) => {
     }
 
     const handleTimeProgress = () => {
+        //TODO:ogarnąć sytuacje w której ref jest pusty lub nie ma .current
         const video = videoRef.current;
         const time = (video.currentTime / video.duration) * 100
         setTime(time, small)
