@@ -17,6 +17,7 @@ const VideoInfo = styled.div`
   flex-direction: column;
   padding: 10px 20px;
   @media ${Device.LAPTOP_L} {
+    justify-content: right;
     flex-direction: row;
   }
 `;

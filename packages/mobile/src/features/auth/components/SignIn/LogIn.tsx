@@ -12,7 +12,6 @@ import SignInInput from './SignInInput';
 import styled from 'styled-components/native';
 import {FontSize} from '../../../common/styles/constans/FontSize';
 import {Color} from '../../../common/styles/constans/Color';
-import Axios from '../../../../config/axios/AxiosConfig';
 //import {AsyncStorage} from 'react-native';
 
 import { NavigationName } from '../../../../config/routing/NavigationName';

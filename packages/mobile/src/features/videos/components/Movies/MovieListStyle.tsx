@@ -4,6 +4,7 @@ import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { Color } from '../../../common/styles/constans/Color'
 import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
 import { MyText } from '../../../common/styles/MyText';
+import { Animated, Dimensions } from 'react-native';
 
 export const Hamburger = styled.Image({
     width: 16,
@@ -90,22 +91,16 @@ export const ButtonNOFilter = styled.TouchableOpacity({
 })
 
 export const ViewSeparator = styled.View({
-    width:20
+    width:10 
 })
 
-
-export const ImageSlaider = styled.Image({
-    width: DifrentSlaider.WIDTHLARGE,
-    height: 136, 
-    resizeMode: 'cover', 
-    borderRadius: 10
-})
+const { width } = Dimensions.get("window");
+export const ImageWidth = width -100;
 
 export const GroupForSubtitle = styled.View({
     flexDirection: 'row', 
     justifyContent: 'space-between', 
     marginLeft: 15,
-    marginRight: 15,
     marginTop: 24,
     marginBottom: 5
 })
@@ -118,11 +113,24 @@ export const SubTitleLeft =styled(MyText)({
     marginLeft: 15
 })
 
+export const ButtonContainer = styled.TouchableOpacity({
+    marginRight: 20,
+    justifyContent:'space-between',
+    flexDirection:'row'
+})
+
 export const SubTitleRight = styled(MyText)({
-    fontSize: FontSize.NORMAL,
-    fontWeight: parseInt(FontWeight.BOLD, 10),
+    fontSize: FontSize.SMALLXX,
+    fontWeight: parseInt(FontWeight.SEMIBOLD, 10),
     lineHeight: "19px",
-    color: Color.DARKGREY
+    color: Color.DARKGREY,
+})
+
+export const SmallArrow = styled.Image({
+    width:7,
+    height:10,
+    marginTop:5,
+    marginLeft:5
 })
 
 export const ImageSecondSlaider = styled.Image({
@@ -202,4 +210,9 @@ export const ViewGroupUnderCategory = styled.View({
     marginRight: 15,
     marginTop: 24,
     marginBottom: 5
+})
+
+export const ViewCentred = styled.View({
+    justifyContent:'center',
+    alignItems:'center'
 })

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import BigSquareOfMovie from './BigSquareOfMovie';
+import BigSquareOfMovie from '../Movies/BigSquareOfMovie';
 import SmallSquareOfMovie from './SmallSquareOfMovie';
 import {NavigationName} from '../../../../config/routing/NavigationName';
 

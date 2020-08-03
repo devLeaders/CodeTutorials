@@ -1,6 +1,7 @@
 export enum FontSize {
     VERYSMALL = 12,
     SMALLXS=6,
+    SMALLXXS=7,
     SMALL = 8,
     SMALLS = 9,
     SMALLX = 10,

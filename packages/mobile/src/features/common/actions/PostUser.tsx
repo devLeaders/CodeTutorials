@@ -1,8 +1,7 @@
-import axiosConfig from '../../../config/axios/AxiosConfig';
-import axios from 'axios';
+import {signUp} from '@project/common/features/auth/connectors';
 
 const postUser = async (user: {email: string; password: string}) => {
-  return axiosConfig.post('/auth/signup', user);
+  return signUp(user);
 };
 
 export default postUser;

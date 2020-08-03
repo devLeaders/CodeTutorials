@@ -1,11 +1,12 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { FontFamily } from '../../../common/styles/constans/FontFamily';
 import { FontSize } from '../../../common/styles/constans/FontSize';
 import { Color } from '../../../common/styles/constans/Color';
 import { MyText } from '../../../common/styles/MyText';
+import { NavigationName } from '../../../../config/routing/NavigationName';
 
 const ButtonFilter = styled.TouchableOpacity({
     height: 26,
@@ -30,7 +31,6 @@ const ButtonFilter = styled.TouchableOpacity({
     font-weight: ${FontWeight.LIGHT};
     text-align: left;
     min-width: 26px;
-    font-family: ${FontFamily.GLOBAL_MONT};
     color: ${Color.BLACK};
     justify-content: space-around;
 `;
@@ -45,6 +45,7 @@ interface SmallHeaderButtonProps {
     navigation: any,
     text: string,
     image: string,
+    goto:NavigationName
   }
 
 
