@@ -7,6 +7,9 @@ import { VideosModule } from './videos/videos.module';
 import { configService } from './config/config.service';
 import { FilesModule } from './files/files.module';
 // import { VideoStreamModule } from './video-stream/video-stream.module';
+import { NotificationsController } from './notifications/notifications.controller';
+import { NotificationsService } from './notifications/notifications.service';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @Module({
   imports: [
@@ -14,8 +17,9 @@ import { FilesModule } from './files/files.module';
     VideosModule,
     FilesModule,
     AuthModule,
+    NotificationsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, NotificationsController],
+  providers: [AppService, NotificationsService],
 })
 export class AppModule {}
