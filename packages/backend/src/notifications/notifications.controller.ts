@@ -1,4 +1,14 @@
-import { Controller } from '@nestjs/common';
+import { NotificationDto } from './notification.dto';
+import { Controller, Post, Res, Req, Body } from '@nestjs/common';
+import {NotificationsService} from "./notifications.service"
+
 
 @Controller('notifications')
-export class NotificationsController {}
+export class NotificationsController {
+    constructor(private notificationService: NotificationsService){}
+
+    @Post('/firebase')
+    notify(@Res() res: Response, @Req() req: Request){
+        return this.notificationService.notify(res, req)
+    }
+}
