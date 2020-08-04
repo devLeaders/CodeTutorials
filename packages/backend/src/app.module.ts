@@ -6,9 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { VideosModule } from './videos/videos.module';
 import { configService } from './config/config.service';
 import { FilesModule } from './files/files.module';
-// import { VideoStreamModule } from './video-stream/video-stream.module';
-import { NotificationsController } from './notifications/notifications.controller';
-import { NotificationsService } from './notifications/notifications.service';
+
 import { NotificationsModule } from './notifications/notifications.module';
 
 @Module({
@@ -19,7 +17,7 @@ import { NotificationsModule } from './notifications/notifications.module';
     AuthModule,
     NotificationsModule,
   ],
-  controllers: [AppController, NotificationsController],
-  providers: [AppService, NotificationsService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
