@@ -27,14 +27,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
 
-  const configService: ConfigService = app.get(ConfigService);
-  // Set the config options
-  const adminConfig: ServiceAccount = {
-    "projectId": configService.get<string>('FIREBASE_PROJECT_ID'),
-    "privateKey": configService.get<string>('FIREBASE_PRIVATE_KEY')
-                               .replace(/\\n/g, '\n'),
-    "clientEmail": configService.get<string>('FIREBASE_CLIENT_EMAIL'),
-  };
+
+  const serviceAccount = require("./notifications/firebaseConfig.json")
 
   admin.initializeApp({
     credential: admin.credential.cert(adminConfig),
