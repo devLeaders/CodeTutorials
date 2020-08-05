@@ -13,8 +13,10 @@ export class NotificationsService {
         const registrationToken = req.body.registrationToken
         const message = req.body.message
         
+        console.log(registrationToken, message)
         try{
             const res = await admin.messaging().sendToDevice(registrationToken, message, notification_config)
+            return res
             console.log(res)
         }catch(err){
             console.log(err)
