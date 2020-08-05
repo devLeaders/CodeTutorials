@@ -25,30 +25,12 @@ import { OwnBottomNav } from './OwnBottomNav';
 
 const Tabs = createBottomTabNavigator();
 
-const kvArray = [
-  [NavigationName.MENU, <HamburgerIc source={{uri:'ic_burger'}}/>],
-  [NavigationName.TEAMS, <TeamIc source={{uri:'ic_team'}}/>],
-  [NavigationName.TASKS, <TasksIc source={{uri:'ic_tasks'}}/>],
-  [NavigationName.PLAYLIST, <PlayListIc source={{uri:'ic_playlist'}}/>],
-  [NavigationName.ALERT,  <AlertIcon  />],
-  [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'ic_searchw'}}/>],
-  [NavigationName.DRAWER,  <MenuIcon/>],
-];
-
-const myMap = new Map(kvArray as Array<any>);
-
 export default class TabNavigation extends Component {
-  
-  public screenOptions = ({ route }) => ({
-    tabBarIcon: (): any => {
-        return myMap.get(route.name)
-    }
-  })
 
   render() {
     return (
         <Tabs.Navigator
-          screenOptions={this.screenOptions}
+        
           initialRouteName={NavigationName.MENU}
           tabBarOptions={{
             activeTintColor: Color.WHITE,
