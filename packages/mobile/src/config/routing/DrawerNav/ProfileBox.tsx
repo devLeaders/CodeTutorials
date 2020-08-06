@@ -20,12 +20,11 @@ interface ProfileBoxP {
     name: string,
     icon: string,
     mail: string,
-    userType: string
+    userType: string,
+    navigation: any
 }
 
-export default function ProfileBox (props:ProfileBoxP){
-    const navigation = useNavigation()
-
+ const ProfileBox = (props:ProfileBoxP)=>{
     return(
         <ProfileWrap >
             <ProfileImage source={{uri: props.icon}}/> 
@@ -37,12 +36,14 @@ export default function ProfileBox (props:ProfileBoxP){
                 </WrapInfo>
                 <LogoutWrap>
                     <LogOut
-                        onPress={() => navigation.navigate(NavigationName.SIGNINSCREEN)}>
+                        onPress={() => props.navigation.navigate(NavigationName.SIGNINSCREEN)}>
                         <ProfileLogout>Wyloguj</ProfileLogout>
                         <LogOutIc source={{uri:'ic_logout'}}/>
                     </LogOut>
-                </LogoutWrap>
-            </ProfileWrapButton>
+                </LogoutWrap> 
+        </ProfileWrapButton>
         </ProfileWrap>
     );
 }
+
+export default ProfileBox;

@@ -24,7 +24,6 @@ export function OwnBottomNav(props) {
   if (focusedOptions.tabBarVisible === false) {
     return null;
   }
-  console.log('props', props)
   return (
     <View style={{flexDirection: 'row',height:80, ...props.style }}>
       {state.routes.map((route, index) => {

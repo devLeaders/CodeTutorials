@@ -24,7 +24,7 @@ const Btn = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   height: 60px;
-  background-color: #9F8DF0;;
+  background-color: ${Color.DARKGREY};
   border-radius: 40px;
   width: 80%;
   margin-top: 15px;
@@ -45,7 +45,7 @@ const Img = styled.Image`
 const ForgotText = styled.Text({
     marginBottom: 10, 
     marginTop: 10,
-    color: Color.LIGHT_PURPLE,
+    color: Color.DARKGREY,
     fontSize: FontSize.MIDPLUS,
     marginRight: 30,
   });

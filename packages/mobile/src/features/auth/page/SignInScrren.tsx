@@ -6,6 +6,7 @@ import AnotherSingInMethods from '../components/SignIn/AnotherSingInMethods';
 import {Color} from '../../common/styles/constans/Color';
 import {FontSize} from '../../common/styles/constans/FontSize';
 import { NavigationName } from '../../../config/routing/NavigationName';
+import { MyText } from '../../../features/common/styles/MyText';
 
 const Wrapper = styled.ScrollView({
     flexDirection: 'column',
@@ -19,10 +20,10 @@ const OrText = styled.Text`
     color: grey;
     `;
 
-const SignUpText = styled.Text({
+const SignUpText = styled(MyText)({
     marginTop: 10,
     marginBottom: 10, 
-    color: Color.LIGHT_PURPLE,
+    color: Color.DARKGREYX,
     fontSize: FontSize.MIDPLUS,
     });
 

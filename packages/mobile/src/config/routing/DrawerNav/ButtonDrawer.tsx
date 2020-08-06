@@ -7,15 +7,15 @@ import { Wrapper, ButtonDraw, IcDraw, TextButton } from './DrawerStyle';
 interface ButtonDrawerP {
     text: string,
     goto: NavigationName,
-    icon: string
+    icon: string,
+    navigation: any
 }
 
-export default function ButtonDrawer(props:ButtonDrawerP){
-        const navigation = useNavigation()
+const ButtonDrawer = (props:ButtonDrawerP) =>{
         return(
         <Wrapper>
             <ButtonDraw
-                onPress={() => navigation.navigate(props.goto)}>
+                onPress={() => props.navigation.navigate(props.goto)}>
             <IcDraw source={{uri: props.icon}}/>
             <TextButton>{ props.text}</TextButton>
             </ButtonDraw>
@@ -23,3 +23,5 @@ export default function ButtonDrawer(props:ButtonDrawerP){
 
     );
 }
+
+export default ButtonDrawer;
