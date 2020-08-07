@@ -5,7 +5,6 @@ import { useNavigation, DrawerActions } from '@react-navigation/native'
 import { Color } from '../../../features/common/styles/constans/Color';
 import { HamburgerIc, TeamIc, TasksIc, PlayListIc, SearchWIc } from '../../../features/common/components/TabBottomNavStyle';
 import AlertIcon from './AlertIcon';
-import { MenuIcon } from './MenuIcon';
 
 const myMap = new Map([
   [NavigationName.MENU, <HamburgerIc source={{uri:'ic_burger'}}/>],
@@ -14,10 +13,9 @@ const myMap = new Map([
   [NavigationName.PLAYLIST, <PlayListIc source={{uri:'ic_playlist'}}/>],
   [NavigationName.ALERT,  <AlertIcon  />],
   [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'ic_searchw'}}/>],
-  [NavigationName.DRAWER,  <MenuIcon/>],
 ]);
 
-export function OwnBottomNav(props) {
+function OwnBottomNav(props) {
   const { state, descriptors, navigation, name } = props
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
@@ -37,7 +35,7 @@ export function OwnBottomNav(props) {
 
         const isFocused = state.index === index;
         const onPress = () => {
-            if(route.name == NavigationName.DRAWER){
+            if(route.name == NavigationName.MENU){
                 navigation.dispatch(DrawerActions.openDrawer())
             } else{
                 navigation.navigate(route.name);
@@ -73,3 +71,5 @@ export function OwnBottomNav(props) {
     </View>
   );
 }
+
+export default OwnBottomNav

@@ -5,11 +5,7 @@ export enum NavigationName {
     SIGNINSCREEN = 'SigInScreen',
     LOGIN ='LogIn',
     SINGUP = 'SignUpScreen',
-
     MENU = 'Menu',
-    BOTTOMMENU = 'BottomMenu',
-    DRAWER = 'DrawerNavigation',
-
     TEAMS = 'Teams',
     TASKS = 'Tasks',
     PLAYLIST = 'Playlist',

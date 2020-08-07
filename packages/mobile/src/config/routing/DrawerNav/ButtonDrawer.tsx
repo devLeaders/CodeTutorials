@@ -12,10 +12,12 @@ interface ButtonDrawerP {
 }
 
 const ButtonDrawer = (props:ButtonDrawerP) =>{
-        return(
+   const onPress = () => props.navigation.navigate(props.goto)
+
+    return(
         <Wrapper>
             <ButtonDraw
-                onPress={() => props.navigation.navigate(props.goto)}>
+                onPress={onPress}>
             <IcDraw source={{uri: props.icon}}/>
             <TextButton>{ props.text}</TextButton>
             </ButtonDraw>

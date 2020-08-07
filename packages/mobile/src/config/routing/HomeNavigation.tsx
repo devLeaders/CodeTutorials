@@ -13,7 +13,7 @@ import FiltersScreen from '../../features/videos/page/FiltersScreen';
 
 const HomeStack = createStackNavigator();
 
-export const HomeStackScreen = () => (
+const HomeStackScreen = () => (
   <HomeStack.Navigator>
       <HomeStack.Screen name={NavigationName.MOVIELIST} options={NavOption.optionsMenu} component={MoviesList}/>
       <HomeStack.Screen name={NavigationName.SINGLEMOVIE} component={SingleMovie2}/>
@@ -24,3 +24,4 @@ export const HomeStackScreen = () => (
       <HomeStack.Screen name={NavigationName.SQUAREOFMOVIE} component={SquareToRenderTemp} />
   </HomeStack.Navigator>
 )
+export default HomeStackScreen;

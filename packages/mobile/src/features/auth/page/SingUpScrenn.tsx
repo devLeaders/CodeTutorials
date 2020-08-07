@@ -15,7 +15,7 @@ const Section = styled.View`
   width: 80%;
 `;
 
-export default class SignUpScreen extends React.Component<any> {
+class SignUpScreen extends React.Component<any> {
   render(){
     return (
       <ScrollView contentContainerStyle={{flexGrow: 1, justifyContent: 'center'}}>
@@ -31,3 +31,4 @@ export default class SignUpScreen extends React.Component<any> {
   }
 };
 
+export default SignUpScreen

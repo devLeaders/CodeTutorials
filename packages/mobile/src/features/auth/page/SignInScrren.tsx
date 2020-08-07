@@ -31,7 +31,7 @@ const SignUpOpacity = styled.TouchableOpacity({
     alignItems: 'center',
     });
       
-export default class SignInScreen extends React.Component<any> {
+class SignInScreen extends React.Component<any> {
     
     public navToSingUp = () => this.props.navigation.navigate(NavigationName.SINGUP)
 
@@ -54,4 +54,4 @@ export default class SignInScreen extends React.Component<any> {
     }
 }
 
-
+export default SignInScreen 

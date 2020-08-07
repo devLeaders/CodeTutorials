@@ -10,7 +10,7 @@ import { Color } from '../../../features/common/styles/constans/Color';
 import { DrawerWraper, TitleProfile, WrapWidth } from './DrawerStyle';
 import ProfileBox from './ProfileBox';
 
-export const DrawerContent = (props) => {
+const DrawerContent = (props) => {
     return(
         <View style={{flex:1,  backgroundColor: Color.WHITE}}>
             <DrawerContentScrollView {...props}>
@@ -19,7 +19,7 @@ export const DrawerContent = (props) => {
                         <TitleProfile>Profil</TitleProfile>
                         <ProfileBox 
                             name={'Sebastian'}
-                            icon={'useric'}
+                            icon={'ic_profile'}
                             mail={'seba@gmail.com'}
                             userType={'Mentor'}
                             navigation= {props.navigation}
@@ -29,25 +29,25 @@ export const DrawerContent = (props) => {
                         <ButtonDrawer 
                             goto={NavigationName.TASKS}
                             text='Edytuj profil'
-                            icon='drawer_ic'
+                            icon='ic_drawer'
                             navigation ={props.navigation}
                         />
                         <ButtonDrawer 
                             goto={NavigationName.ALERT}
                             text='Abonament i Faktury'
-                            icon='drawer_ic'
+                            icon='ic_drawer'
                             navigation ={props.navigation}
                         />
                         <ButtonDrawer 
                             goto={NavigationName.TEAMS}
                             text='Obejrzane Filmy'
-                            icon='drawer_ic'
+                            icon='ic_drawer'
                             navigation ={props.navigation}
                         />
                         <ButtonDrawer 
                             goto={NavigationName.PLAYLIST}
                             text='Admin Panel'
-                            icon='drawer_ic'
+                            icon='ic_drawer'
                             navigation ={props.navigation}
                         />
                 </WrapWidth>
@@ -56,10 +56,4 @@ export const DrawerContent = (props) => {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    drawerContent: {
-      flex: 1,
-    },
-
-  });
+export default DrawerContent;
