@@ -22,3 +22,4 @@ export const HomeStackScreen = (navigation) => (
       <HomeStack.Screen name={NavigationName.SQUAREOFMOVIE} component={SquareToRenderTemp} />
   </HomeStack.Navigator>
 )
+export default HomeStackScreen;

@@ -4,6 +4,7 @@ import {View, Text, TouchableOpacity, Image} from 'react-native';
 
 import {FontSize} from '../../../common/styles/constans/FontSize';
 import {Color} from '../../../common/styles/constans/Color';
+import { MyText } from '../../../../features/common/styles/MyText';
 
 const Btn = styled.View`
   align-self: center;
@@ -11,7 +12,7 @@ const Btn = styled.View`
   justify-content: center;
   align-items: center;
   height: 60px;
-  background-color: ${Color.PURPLE};
+  background-color: ${Color.DARKGREY};
   border-radius: 40px;
   width: 80%;
   margin-top: 15px;
@@ -24,7 +25,7 @@ const Img = styled.Image`
   width: 34px;
 `;
 
-const SignUpTxt = styled.Text`
+const SignUpTxt = styled(MyText)`
   font-size: ${FontSize.MIDPLUS};
   color: white;
 `;

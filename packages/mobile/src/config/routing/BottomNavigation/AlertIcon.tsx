@@ -1,7 +1,7 @@
 import React from "react";
-import { AlertV, AlertIc, AlertView, AlertText } from "../../features/common/components/TabBottomNavStyle";
+import { AlertV, AlertIc, AlertView, AlertText } from "../../../features/common/components/TabBottomNavStyle";
 
-export default class AlertIcon extends React.Component {
+class AlertIcon extends React.Component {
     render(){
         return(
             <AlertV>
@@ -13,3 +13,4 @@ export default class AlertIcon extends React.Component {
         )
     }
 }
+export default AlertIcon 
