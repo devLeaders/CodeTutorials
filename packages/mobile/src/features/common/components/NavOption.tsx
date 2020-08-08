@@ -2,8 +2,10 @@ import * as React from 'react'
 import { HeaderTitle } from '../../videos/components/Movies/HeaderTitle';
 import { HeaderLeft } from '../../videos/components/Movies/HeaderLeft';
 import { HeaderRight } from '../../videos/components/Movies/HeaderRight';
+import HeaderLeftSingle from '../../../features/videos/components/SingleScreen/HeaderLeftSingle';
 import { View } from 'react-native';
-
+import { NavProps } from '../../../config/routing/ParamList';
+import { NavigationName } from '../../../config/routing/NavigationName';
 
 export class NavOption extends React.Component {
     static optionsMovieList = () => {
@@ -15,6 +17,27 @@ export class NavOption extends React.Component {
             headerTitle: () => <HeaderTitle/>,
             headerLeft: () => <HeaderLeft/>,
             headerRight: () => <HeaderRight/>,
+        };
+      };
+      static optionsMainScreen = () => {
+        return {
+            headerStyle: {
+              backgroundColor: '#00000000',
+              paddingTop: 50,
+            },
+            headerTransparent: true,
+            headerTitle: () => <View />,
+      
+          };
+    };
+    static optionsSingleMovie = (navigation) => {
+        return {
+            headerStyle: {
+                backgroundColor: '#00000000',
+            },
+            headerTransparent: true,
+            headerTitle: () => <View />,
+            headerLeft: () => <HeaderLeftSingle navigation={navigation}/>,
         };
       };
     static optionsTabNavigator = () => {

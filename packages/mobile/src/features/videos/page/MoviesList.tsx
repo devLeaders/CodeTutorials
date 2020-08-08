@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, ScrollView, AsyncStorage, Image} from 'react-native';
+import { View, ScrollView, AsyncStorage, Image, SafeAreaView} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
 import {  
@@ -15,37 +15,29 @@ import {
   ButtonContainer
 } from '../components/Movies/MovieListStyle';
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
-import Axios from '../../../config/axios/AxiosConfig';
+import {getVideos} from '@project/common/features/videos/connector';
+import MainScreenHeader from '../components/MainScreen/MainScreenHeader';
+import { NavigationName } from '../../../config/routing/NavigationName';
+import { NavProps } from '../../../config/routing/ParamList';
 
+interface MovieListP {
+  navigation: NavProps<NavigationName.MOVIELIST>
+}
 
-export class  MoviesList extends React.Component{
+export class  MoviesList extends React.Component<MovieListP>{
 
   async componentDidMount() {
-    const token = await AsyncStorage.getItem("token");
-    const headers = {
-      ...Axios.defaults.headers,
-      'Authorization': `Bearer ${token}`
-    };
-    const test = await Axios.get('/videos', {headers} )
+    const test = await getVideos();
   }
   
   render(){
+    const { navigation } = this.props;
     return (
-      <View style={{paddingTop:50}}>
+      <SafeAreaView>
         <ScrollView>
-          <ViewButtons>
-            <ButtonFilter>
-              <TextButtonActive>Nowości</TextButtonActive>  
-            </ButtonFilter>
-            <ButtonNOFilter>
-              <TextButtonNOAct>Moja kolekcja</TextButtonNOAct>  
-            </ButtonNOFilter>
-            <ButtonNOFilter>
-              <TextButtonNOAct>Popularne</TextButtonNOAct>  
-            </ButtonNOFilter>
-          </ViewButtons>
+            <MainScreenHeader navigation={this.props.navigation}/>
           <View>
-            <SlaiderLarge/>
+            <SlaiderLarge />
           </View>
           <View>
               <GroupForSubtitle>
@@ -62,7 +54,7 @@ export class  MoviesList extends React.Component{
               </View>
           </View>
         </ScrollView>
-      </View>
+      </SafeAreaView>
     );
   }
 }

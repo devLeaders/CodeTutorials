@@ -7,10 +7,14 @@ import {Color} from '../../common/styles/constans/Color';
 import {FontSize} from '../../common/styles/constans/FontSize';
 import { NavigationName } from '../../../config/routing/NavigationName';
 import { MyText } from '../../../features/common/styles/MyText';
+import { ScrollView, View } from 'react-native';
+import Header from '../../../features/common/components/Header';
 
-const Wrapper = styled.ScrollView({
-    flexDirection: 'column',
-    flex: 1,  
+const Wrapper = styled.View({
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
     backgroundColor: Color.WHITE,
   
   });
@@ -27,6 +31,10 @@ const SignUpText = styled(MyText)({
     fontSize: FontSize.MIDPLUS,
     });
 
+const Section = styled.View`
+    width: 80%;
+`;
+
 const SignUpOpacity = styled.TouchableOpacity({
     alignItems: 'center',
     });
@@ -37,19 +45,23 @@ class SignInScreen extends React.Component<any> {
 
     render(){
         return(
-            <Wrapper>
-                <SignInHeader title={"Sign In"} />
-                <LogIn navigation={this.props.navigation} />
-                <SignUpOpacity onPress={this.navToSingUp}>
-                    <SignUpText>Don't have an account?</SignUpText>
-                </SignUpOpacity>
-                <OrText>———OR———</OrText>
-                <AnotherSingInMethods 
-                    src1='facebook'
-                    src2='google'
-                    src3='twitter'
-                /> 
-            </Wrapper>
+            <ScrollView contentContainerStyle={{flexGrow: 1, justifyContent: 'center'}}>
+                <Wrapper>
+                    <Section >
+                        <Header title="Zaloguj się"></Header>
+                    </Section>
+                    <LogIn navigation={this.props.navigation} />
+                    <SignUpOpacity onPress={this.navToSingUp}>
+                        <SignUpText>Nie masz konta?</SignUpText>
+                    </SignUpOpacity>
+                    <OrText>———LUB———</OrText>
+                    <AnotherSingInMethods 
+                        src1='facebook'
+                        src2='google'
+                        src3='twitter'
+                    /> 
+                </Wrapper>
+            </ScrollView>
         )
     }
 }

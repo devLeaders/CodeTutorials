@@ -97,14 +97,6 @@ export const ViewSeparator = styled.View({
 const { width } = Dimensions.get("window");
 export const ImageWidth = width -100;
 
-export const ImageSlaider = styled(Animated.Image)({
-    width: ImageWidth,
-    height: 168, 
-    resizeMode: 'cover', 
-    borderRadius: 10,
-    marginLeft: 10
-})
-
 export const GroupForSubtitle = styled.View({
     flexDirection: 'row', 
     justifyContent: 'space-between', 

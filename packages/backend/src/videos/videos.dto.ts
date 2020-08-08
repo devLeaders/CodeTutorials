@@ -1,4 +1,7 @@
 import { IsString, IsNumberString, IsOptional, Min } from 'class-validator';
+import {IFilterVideoRequest} from '@project/common/features/videos/models'
+import {ApiProperty} from '@nestjs/swagger'
+
 export interface VideoDTO {
     id: string,
     title: string,
@@ -12,15 +15,18 @@ export class ShortVersionDTO {
     urlPhoto: string = null;
 }
 
-export class FilterVideoDTO {
+export class FilterVideoDTO implements IFilterVideoRequest{
 
+    @ApiProperty({required:false})
     @IsOptional()
     @IsNumberString()
     page: number;
 
+    @ApiProperty({required:false})
     @IsOptional()
     @IsString()
     title: string;
     
+    @ApiProperty()
     category: string; 
 }

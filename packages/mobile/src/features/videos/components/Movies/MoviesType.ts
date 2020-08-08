@@ -7,5 +7,4 @@ export type MoviesListExpandedType = {
     id: string,
     uri: string,
     title: string,
-    like: string
 }

@@ -6,7 +6,5 @@ export enum Device {
   TABLET_L = `(min-width: 1024px)`,
   LAPTOP = `(min-width: 1280px)`,
   LAPTOP_L = `(min-width: 1440px)`,
-  DESKTOP = `(min-width: 2560px)`
-};
-
-
+  DESKTOP = `(min-width: 2560px)`,
+}
