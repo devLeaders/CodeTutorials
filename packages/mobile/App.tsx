@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import { AuthStackScreen } from './src/config/routing/AppNavigation';
+
+import DrawerNavigation  from './src/config/routing/DrawerNavigation';
 
 
-export default class App extends Component {
+class App extends Component {
   render() {
-    return <AuthStackScreen />
+    return <DrawerNavigation />
   }
 }
+export default App 
