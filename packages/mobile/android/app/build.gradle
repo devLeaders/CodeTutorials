@@ -183,6 +183,7 @@ android {
 dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
     implementation project(path: ":@react-native-firebase_messaging")
+    implementation project(path: ":@react-native-firebase_app")
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     

@@ -5,12 +5,18 @@ import { Alert } from 'react-native';
 
 const App = () => {
   useEffect(() => {
-    const unsubscribe = messaging().setBackgroundMessageHandler(async remoteMessage => {
+    const openApp = messaging().onMessage(async remoteMessage => {
       Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
     });
-
-    return unsubscribe;
+    return openApp;
   }, []);
+  
+  // useEffect(() => {
+  //   const closeApp = messaging().setBackgroundMessageHandler(async remoteMessage => {
+  //     Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+  //   });
+  //   return closeApp;
+  // }, []);
 
   return(
     <AuthStackScreen />
