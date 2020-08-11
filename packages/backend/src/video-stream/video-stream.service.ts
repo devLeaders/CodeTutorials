@@ -4,7 +4,7 @@ import * as fs from 'fs';
 @Injectable()
 export class VideoStreamService {
   getVideo(res: any, req: any) {
-    const path = 'uploads/mov_bbb.mp4';
+    const path = 'uploads/video/p720-angular-cli-dla-programistow-java-angular-w-45-min.mp4';
     const stat = fs.statSync(path);
     const range = req.headers.range;
     const fileSize = stat.size;
