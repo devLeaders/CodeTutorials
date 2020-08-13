@@ -1,7 +1,6 @@
 import firebase from "firebase";
 import "firebase/messaging";
-import AxiosInstance from "@project/common/features/config/axios/configAxios";
-import { AxiosPromise } from "axios";
+import { postRegistrationToken } from "@project/common/features/sw/connectors";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -19,15 +18,6 @@ const messaging = firebase.messaging();
 messaging.usePublicVapidKey(
   "BF-HkewrYpoAcowNgCltNvAtPZUZny8jjQkioxzEHkXJe2_M5PLshvsOOl3DyKLZOWruB-JB2_hKQfShYNWf67k"
 );
-
-interface TokenPost {
-  registrationToken: string;
-  userVisibleOnly: boolean;
-}
-
-export const postRegistrationToken = (obj: TokenPost): AxiosPromise<any> => {
-  return AxiosInstance.post(`/notifications/firebase`, obj);
-};
 
 const registerToken = async () => {
   try {
