@@ -22,6 +22,25 @@ interface FilterWithListProps {
 }
 
 export default class FilterWithList extends React.Component <FilterWithListProps, any>{
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      movieList : false,
+      searchedMovie: "Docker podstawy",
+    };
+
+    this.showList = this.showList.bind(this);
+  }
+
+  showList() {
+    if (this.state.movieList) {
+      this.setState({movieList:false});
+    }else {
+      this.setState({movieList: true});      
+    }
+  }
+
   static navigationOptions = {
     headerShown: false,
 };
@@ -32,11 +51,12 @@ render() {
     <Wrapper>
       <ShortcutToFilters 
         navigation={this.props.navigation}
-        serachitem="Docker podstawy"
+        serachitem={this.state.searchedMovie}
         onSubmitSearch={() => this.props.navigation.navigate(NavigationName.HOME)}
         />
+
       <ListOfMovies>
-        <Text>List of Movies</Text>
+        <Text>Results</Text>
         <SlaiderNormal></SlaiderNormal>
       </ListOfMovies>
     </Wrapper>

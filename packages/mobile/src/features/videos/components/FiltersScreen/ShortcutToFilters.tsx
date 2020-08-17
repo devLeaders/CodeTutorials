@@ -13,16 +13,8 @@ import {MyText} from '../../../common/styles/MyText';
 const Wrapper = styled.ScrollView({
   flexGrow: 1,
   backgroundColor: Color.WHITE,
-  shadowColor: Color.LIGHTGREYX,
-    shadowOffset: {
-        width: 1,
-        height: 1,
-    },
-    shadowOpacity: "1",
-    shadowRadius: 2,
-    elevation: "5",
-    flex: 1,
-    flexDirection: 'column',
+  flex: 1,
+  flexDirection: 'column',
 });
 
 const TitleEyeAndXWrapper = styled.View`
