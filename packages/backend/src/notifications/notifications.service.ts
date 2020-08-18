@@ -1,27 +1,45 @@
+import { Repository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import admin from 'firebase-admin';
+
 import { NotificationDto } from './notification.dto';
-import { Injectable} from '@nestjs/common';
-import admin from "firebase-admin"
+import { NotificationTokenEntity } from './notificationToken.entity';
 
 @Injectable()
 export class NotificationsService {
-    async notify(res, req){
-        const notification_config = {
-            priority: "high",
-            timeToLive: 60 * 60 * 24
-        }
+  constructor(
+    @InjectRepository(NotificationTokenEntity)
+    private NotificationTokenRepository: Repository<NotificationTokenEntity>,
+  ) {}
 
-        const registrationToken = req.body.registrationToken
-        const message = req.body.message
-        
-        console.log(registrationToken, message)
-        try{
-            const res = await admin.messaging().sendToDevice(registrationToken, message, notification_config)
-            return res
-            console.log(res)
-        }catch(err){
-            console.log(err)
-        }
-        
+  async notifyFirebase(notificationDto) {
+    const notification_config = {
+      priority: 'high',
+      timeToLive: 60 * 60 * 24,
+    };
 
+    const NotificationToken = notificationDto.NotificationToken;
+    const message = notificationDto.message;
+
+    try {
+      const res = await admin
+        .messaging()
+        .sendToDevice(NotificationToken, message, notification_config);
+      console.log(res);
+      return {
+        res,
+      };
+    } catch (err) {
+      console.log(err);
     }
+  }
+
+  async notifyHms(NotificationDto) {}
+
+  async saveNotificationToken(id: string) {
+    const NotificationToken = new NotificationTokenEntity();
+    NotificationToken.id = id;
+    await this.NotificationTokenRepository.save(NotificationToken);
+  }
 }
