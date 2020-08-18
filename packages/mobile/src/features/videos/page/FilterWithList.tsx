@@ -13,6 +13,7 @@ const Wrapper = styled.View({
 const ListOfMovies = styled.ScrollView({
   flex: 3,
   backgroundColor: Color.WHITE,
+  padding: 10,
 });
 
 interface FilterWithListProps {
@@ -55,7 +56,9 @@ render() {
         onSubmitSearch={() => this.props.navigation.navigate(NavigationName.HOME)}
         />
 
-      <ListOfMovies>
+      <ListOfMovies 
+        showsVerticalScrollIndicator={false}
+      >
         <Text>Results</Text>
         <SlaiderNormal></SlaiderNormal>
       </ListOfMovies>
