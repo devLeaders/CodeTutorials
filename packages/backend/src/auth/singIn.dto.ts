@@ -7,4 +7,7 @@ export class SingInDTO implements  ISingInRequest {
 
     @ApiProperty()
     password: string;
+
+    @ApiProperty()
+    notificationToken: string;
 }
