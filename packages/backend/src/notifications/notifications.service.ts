@@ -1,17 +1,19 @@
+import { UserEntity } from './../auth/users/user.entity';
 import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import admin from 'firebase-admin';
 
 import { NotificationDto } from './notification.dto';
-import { NotificationTokenEntity } from './notificationToken.entity';
+import { DevicesEntity } from './devices.entity';
 
 @Injectable()
 export class NotificationsService {
   constructor(
-    @InjectRepository(NotificationTokenEntity)
-    private NotificationTokenRepository: Repository<NotificationTokenEntity>,
+    @InjectRepository(DevicesEntity)
+    private NotificationTokenRepository: Repository<DevicesEntity>,
   ) {}
+
 
   async notifyFirebase(notificationDto) {
     const notification_config = {
@@ -37,9 +39,15 @@ export class NotificationsService {
 
   async notifyHms(NotificationDto) {}
 
-  async saveNotificationToken(id: string) {
-    const NotificationToken = new NotificationTokenEntity();
-    NotificationToken.id = id;
-    await this.NotificationTokenRepository.save(NotificationToken);
+  async saveNotificationToken(id: string, user: UserEntity) {
+    const device = new DevicesEntity();
+    device.firebaseToken = id;
+    await this.NotificationTokenRepository.save(device);
+
+    user.firebaseDevices = [...user.firebaseDevices, device]
+  }
+
+  async findNotificationToken(id: string) {
+    this.NotificationTokenRepository.findOne({ where: { id } });
   }
 }

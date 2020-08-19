@@ -7,7 +7,7 @@ import {
   Unique,
   OneToMany,
 } from 'typeorm';
-import { NotificationTokenEntity } from '../../notifications/notificationToken.entity';
+import { DevicesEntity } from '../../notifications/devices.entity';
 
 @Entity('Users')
 @Unique(['email'])
@@ -24,8 +24,8 @@ export class UserEntity extends BaseEntity {
   @Column() salt: string;
 
   @OneToMany(
-    type => NotificationTokenEntity,
-    notificationTokens => notificationTokens.user,
+    type => DevicesEntity,
+    firebaseDevices => firebaseDevices.user,
   )
-  notificationTokens: NotificationTokenEntity[];
+  firebaseDevices: DevicesEntity[];
 }

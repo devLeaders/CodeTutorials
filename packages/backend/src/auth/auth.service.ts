@@ -5,34 +5,55 @@ import * as bcrypt from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import { SignInPayload } from './users/models/SignInPayload';
 import { ErrorMessage } from './users/enums/ErrorMessage';
+import { NotificationsService } from '../notifications/notifications.service';
 
 @Injectable()
 export class AuthService {
+  constructor(
+    private usersService: UsersService,
+    private notificationsService: NotificationsService,
+  ) {}
 
-    constructor(private usersService: UsersService){} 
+  async signIn(sigInDTO: SingInDTO) {
+    const user = await this.usersService.findByEmail(sigInDTO.email);
 
-    async signIn(sigInDTO: SingInDTO) {
-        const user = await this.usersService.findByEmail(sigInDTO.email);
+    if (!user)
+      throw new HttpException(
+        ErrorMessage.UNAUTHORIZED,
+        HttpStatus.UNAUTHORIZED,
+      );
 
-        if (!user) throw new HttpException(ErrorMessage.UNAUTHORIZED, HttpStatus.UNAUTHORIZED);
-        
-        if (await bcrypt.compare(sigInDTO.password, user.password)) {
-            const sterilizedUserData = this.usersService.sanitizeUser(user);
-            const payload = {id:user.id,email:user.email}
+    if (await bcrypt.compare(sigInDTO.password, user.password)) {
+      const sterilizedUserData = this.usersService.sanitizeUser(user);
+      const payload = { id: user.id, email: user.email };
 
-            const jwtToken = sign(payload, process.env.SECRET_KEY, { expiresIn: process.env.EXPIRESIN_JWT });
+      const jwtToken = sign(payload, process.env.SECRET_KEY, {
+        expiresIn: process.env.EXPIRESIN_JWT,
+      });
 
-            return {
-                user:sterilizedUserData,
-                token:jwtToken
-            }
+      const notifivationToken = this.notificationsService.findNotificationToken(
+        sigInDTO.notificationToken,
+      );
+      if (!notifivationToken) {
+        this.notificationsService.saveNotificationToken(
+          sigInDTO.notificationToken,
+          user
+        );
+      }
 
-        } else {
-            throw new HttpException(ErrorMessage.UNAUTHORIZED, HttpStatus.UNAUTHORIZED);
-        }
+      return {
+        user: sterilizedUserData,
+        token: jwtToken,
+      };
+    } else {
+      throw new HttpException(
+        ErrorMessage.UNAUTHORIZED,
+        HttpStatus.UNAUTHORIZED,
+      );
     }
+  }
 
-    async validateUser(payload: SignInPayload) {
-        return await this.usersService.findByPayload(payload);
-    }
+  async validateUser(payload: SignInPayload) {
+    return await this.usersService.findByPayload(payload);
+  }
 }
