@@ -4,19 +4,13 @@ import messaging from '@react-native-firebase/messaging';
 import { Alert } from 'react-native';
 
 const App = () => {
-  useEffect(() => {
-    const openApp = messaging().onMessage(async remoteMessage => {
-      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
-    });
-    return openApp;
-  }, []);
-  
   // useEffect(() => {
-  //   const closeApp = messaging().setBackgroundMessageHandler(async remoteMessage => {
+  //   const openApp = messaging().onMessage(async remoteMessage => {
   //     Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
   //   });
-  //   return closeApp;
+  //   return openApp;
   // }, []);
+  
 
   return(
     <AuthStackScreen />
