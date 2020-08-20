@@ -51,10 +51,7 @@ export class NotificationsService {
 
 
     try{
-      console.log(message)
       const res = await admin.messaging().sendMulticast(message);
-      console.log(res)
-      console.log(messageData)
     }catch(err){
       console.log(err)
     }

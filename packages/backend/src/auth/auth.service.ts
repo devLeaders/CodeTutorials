@@ -48,10 +48,6 @@ export class AuthService {
         );
       }
 
-      const message = {title: "cos", body: "cos"}
-      const messageData = {messageType: MessageTypes.NEW_VIDEO}
-      this.notificationsService.notifyAllFirebase(message, messageData)
-
       return {
         user: sterilizedUserData,
         token: jwtToken,
