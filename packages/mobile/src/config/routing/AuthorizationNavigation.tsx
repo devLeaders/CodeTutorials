@@ -6,8 +6,8 @@ import SignInScreen from '../../features/auth/page/SignInScrren';
 import SignUpScreen from '../../features/auth/page/SingUpScrenn';
 import { NavOption } from '../../features/common/components/NavOption';
 import TabNavigation from './BottomNavigation/TabNavigation';
-import HomeStackScreen from './HomeNavigation'
-import SingleMovie2 from '../../features/videos/page/SingleMovie2';
+import SingleMovie from '../../features/videos/page/SingleMovie';
+import { VideoPlayerScreen } from '../../features/videoPlayer/page/VideoPlayerScreen'
 
 const AuthStack = createStackNavigator();
 
@@ -16,7 +16,8 @@ const AuthorizationNavigation = (navigation) => (
         <AuthStack.Screen name={NavigationName.SIGNINSCREEN} options={NavOption.optionsSingIn} component={SignInScreen}/>
         <AuthStack.Screen name={NavigationName.SINGUP} options={NavOption.optionsSingUp} component={SignUpScreen}/>
         <AuthStack.Screen name={NavigationName.MENU} options={NavOption.optionsDrawer} component={TabNavigation}/>
-        <AuthStack.Screen name={NavigationName.SINGLEMOVIE} options={NavOption.optionsSingleMovie(navigation)} component={SingleMovie2} />
+        <AuthStack.Screen name={NavigationName.SINGLEMOVIE} options={NavOption.optionsSingleMovie(navigation)} component={SingleMovie} />
+        <AuthStack.Screen name={NavigationName.VIDEOPLAYER} options={NavOption.optionsSingIn} component={VideoPlayerScreen}/>
     </AuthStack.Navigator>
 )
 
