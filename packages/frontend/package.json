@@ -29,10 +29,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postinstall": "tsc --project notifications.tsconfig.json",
-    "prestart": "tsc --project notifications.tsconfig.json",
-    "postbuild": "tsc --project notifications.tsconfig.json"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
