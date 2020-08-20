@@ -1,19 +1,19 @@
-import React, {Component, useEffect} from 'react';
-import { AuthStackScreen } from './src/config/routing/AppNavigation';
-import messaging from '@react-native-firebase/messaging';
-import { Alert } from 'react-native';
+import React, {Component} from 'react';
 
-const App = () => {
+import DrawerNavigation  from './src/config/routing/DrawerNavigation';
+
+
+class App extends Component {
+  render() {
+    return <DrawerNavigation />
+  }
+}
+export default App 
+
+
   // useEffect(() => {
   //   const openApp = messaging().onMessage(async remoteMessage => {
   //     Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
   //   });
   //   return openApp;
   // }, []);
-  
-
-  return(
-    <AuthStackScreen />
-  )
-}
-export default App;
