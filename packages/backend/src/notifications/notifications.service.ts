@@ -77,7 +77,7 @@ export class NotificationsService {
   }
 
   async findNotificationToken(id: string) {
-    return await this.NotificationTokenRepository.findOne({ where: { id } });
+    return await this.NotificationTokenRepository.findOne({ where: { firebaseToken: id } });
   }
 }
 
