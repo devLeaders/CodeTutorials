@@ -21,11 +21,11 @@ export class UserEntity extends BaseEntity {
 
   @Column('varchar', { length: 255 }) password: string;
 
-  @Column() salt: string;
-
   @OneToMany(
     type => DevicesEntity,
     firebaseDevices => firebaseDevices.user,
   )
   firebaseDevices: DevicesEntity[];
+
+  @Column() salt: string;
 }

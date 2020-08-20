@@ -7,10 +7,10 @@ import { Response, Request } from 'express';
 export class NotificationsController {
   constructor(private notificationService: NotificationsService) {}
 
-  @Post('/firebase')
-  notifyFirebase(@Body() notificationDto: NotificationDto) {
-    return this.notificationService.notifyFirebase(notificationDto);
-  }
+  // @Post('/firebase')
+  // notifyFirebase(@Body() notificationDto: NotificationDto) {
+  //   return this.notificationService.notifyFirebase(notificationDto);
+  // }
 
   @Post('/Hms')
   notifyHms(@Body() notificationDto: NotificationDto){
