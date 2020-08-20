@@ -4,8 +4,7 @@ const instance = axios.create({
     timeout: 1000,
     headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        "Authorization": `Bearer ${localStorage.getItem("token")}`
+        'Content-Type': 'application/json'
     }
 });
 

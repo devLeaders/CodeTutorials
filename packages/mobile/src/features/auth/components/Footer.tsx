@@ -5,6 +5,7 @@ import {FontSize} from '../../common/styles/constans/FontSize';
 import {Color} from '../../common/styles/constans/Color';
 import { NavigationName } from 'src/config/routing/NavigationName';
 import { useNavigation } from '@react-navigation/native';
+import { MyText } from '../../../features/common/styles/MyText';
 
 const Wrapper = styled.View`
   margin-top: 20px;
@@ -14,9 +15,9 @@ const Wrapper = styled.View`
 const GotoSignInBtn = styled.TouchableOpacity`
   margin-left: 10px;
 `;
-const GotoSignInTxt = styled.Text`
+const GotoSignInTxt = styled(MyText)`
   font-size: ${FontSize.MIDIUM};
-  color: ${Color.PURPLE};
+  color: ${Color.GREY};
 `;
 const Txt = styled.Text`
   font-size: ${FontSize.MIDIUM};
