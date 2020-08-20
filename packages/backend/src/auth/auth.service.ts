@@ -39,7 +39,6 @@ export class AuthService {
       const notificationToken = await this.notificationsService.findNotificationToken(
         sigInDTO.notificationToken,
       );
-        
 
       if (!notificationToken) {
         this.notificationsService.saveNotificationToken(
