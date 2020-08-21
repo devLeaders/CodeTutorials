@@ -10,14 +10,15 @@ export const signInSubmit = async (
   try {
     // await localStorage.setItem("token", "123");
 
-    await history.push(Navigation.MOVIELIST);
     const dataResponse = await AuthConnectors.signIn({
       email: `${value.email}`,
       password: `${value.password}`,
     });
     const token = dataResponse.data.token;
-    localStorage.setItem("token", token);
+    console.log(dataResponse);
     AxiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    await localStorage.setItem("token", token);
+
     await history.push(Navigation.HOME);
   } catch (err) {
     action.setErrors({ email: ErrorMessages.ACCOUNT_NOT_FOUND });
