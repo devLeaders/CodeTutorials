@@ -19,7 +19,6 @@ export const movieReducer = (state = initialState, action: any) => {
       return { ...state, isFullscreen: !state.isFullscreen };
     }
     case Actions.TOGGLE_SMALLMODE: {
-      console.log(state.smallIsPaused)
       return { ...state, isMinimized: !state.isMinimized };
     }
     case Actions.MUTE_UNMUTE: {
