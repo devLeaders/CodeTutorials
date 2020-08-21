@@ -4,9 +4,9 @@ import { AxiosResponse, AxiosPromise } from 'axios';
 
 
 export function signUp(obj:IUserRequest):AxiosPromise<any>{
-    return AxiosInstance.post(`/signup`,obj);
+    return AxiosInstance.post(`auth/signup`,obj);
 }
 
 export function signIn(obj:ISingInRequest):AxiosPromise<ISingInResponse>{
-    return AxiosInstance.post(`/signin`,obj)
+    return AxiosInstance.post(`auth/signin`,obj)
 }

@@ -15,11 +15,11 @@ const AuthStack = createStackNavigator();
 const AuthorizationNavigation = (navigation) => {
 
     // useEffect(() => {
-    //     const openApp = () => messaging().onNotificationOpenedApp(async (remoteMessage:any)=> {
+    //     const openApp = () => messaging().onMessageSent(async (remoteMessage:any)=> {
     //         Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage)); 
     //         switch(remoteMessage.data.type ){
     //             case 'newMovie' : 
-    //                 console.log(remoteMessage.data.type)
+    //                 navigation.navigate(NavigationName.SEARCH)
     //             break;
     //             default :
     //                 console.log('brak')

@@ -13,9 +13,7 @@ import SignInInput from './SignInInput';
 import styled from 'styled-components/native';
 import {FontSize} from '../../../common/styles/constans/FontSize';
 import {Color} from '../../../common/styles/constans/Color';
-//import {AsyncStorage} from 'react-native';
-
-import { NavigationName } from '../../../../config/routing/NavigationName';
+import loginSubmit from '../../action/singInSubmit';
 
 
 const Btn = styled.TouchableOpacity`
@@ -64,27 +62,13 @@ export interface LogInProps {
   }
 
 class LogIn extends React.Component<LogInProps> {
-    loginSubmit = async (value: any, action: any) => {
-        console.log(value);
-        // const dataResponse = await Axios.post('/auth/signin', {
-        //     "email": `${value.email}`,
-        //     "password": `${value.password}`
-        //      })
-            // const token = dataResponse.data.token;
-            // AsyncStorage.setItem('token', token);
-
-            //Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            
-            //zabezpieczyc wywolanie po nieodpowiednim statusie, 
-            this.props.navigation.navigate(NavigationName.MENU);
-    }
-
+   
     render() {
         return (
             <SafeAreaView style={{ marginTop: 20}}>
                 <Formik
                     initialValues={{ email: "", password: ''}}
-                    onSubmit={this.loginSubmit}
+                    onSubmit={loginSubmit}
                     validationSchema={validationSchema}
                 >
                     {formikProps => (
