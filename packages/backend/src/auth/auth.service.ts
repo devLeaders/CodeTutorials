@@ -36,13 +36,13 @@ export class AuthService {
         expiresIn: process.env.EXPIRESIN_JWT,
       });
 
-      const notificationToken = await this.notificationsService.findNotificationToken(
-        sigInDTO.notificationToken,
+      const notificationToken = await this.notificationsService.findFirebaseToken(
+        sigInDTO.firebaseToken,
       );
 
       if (!notificationToken) {
-        this.notificationsService.saveNotificationToken(
-          sigInDTO.notificationToken,
+        this.notificationsService.saveFirebaseToken(
+          sigInDTO.firebaseToken,
           user
         );
       }

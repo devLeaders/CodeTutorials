@@ -11,5 +11,9 @@ export class SingInDTO implements  ISingInRequest {
 
     @ApiProperty()
     @IsOptional()
-    notificationToken: string;
+    firebaseToken: string;
+
+    @ApiProperty()
+    @IsOptional()
+    hmsToken: string;
 }

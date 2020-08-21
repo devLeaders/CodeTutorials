@@ -30,10 +30,6 @@ export class NotificationsService {
     private NotificationTokenRepository: Repository<DevicesEntity>,
   ) {}
 
-  notification_config = {
-    priority: 'high',
-    timeToLive: 60 * 60 * 24,
-  };
 
   async notifyAllFirebase(msg: IMessage, messageData: IMessageData) {
     const tokens = await this.getAllNotificationTokens();
@@ -52,6 +48,15 @@ export class NotificationsService {
 
     try{
       const res = await admin.messaging().sendMulticast(message);
+      
+      if(res.failureCount > 0){
+        const failedTokens = [];
+        res.responses.forEach((res: any, idx: any) => {
+          if(!res.success){
+            failedTokens.push(tokens[idx])
+          }
+        })
+      }
     }catch(err){
       console.log(err)
     }
@@ -60,7 +65,7 @@ export class NotificationsService {
 
   async notifyHms(NotificationDto) {}
 
-  async saveNotificationToken(id: string, user: UserEntity) {
+  async saveFirebaseToken(id: string, user: UserEntity) {
     const device = new DevicesEntity();
     device.firebaseToken = id;
     device.user = user;
@@ -76,31 +81,9 @@ export class NotificationsService {
     return firebaseTokens;
   }
 
-  async findNotificationToken(id: string) {
+  async findFirebaseToken(id: string) {
     return await this.NotificationTokenRepository.findOne({ where: { firebaseToken: id } });
   }
 }
 
 
-
-// async notifyFirebase(notificationDto) {
-//   const notification_config = {
-//     priority: 'high',
-//     timeToLive: 60 * 60 * 24,
-//   };
-
-//   const NotificationToken = notificationDto.NotificationToken;
-//   const message = notificationDto.message;
-
-//   try {
-//     const res = await admin
-      // .messaging()
-      // .sendToDevice(NotificationToken, message, notification_config);
-//     console.log(res);
-//     return {
-//       res,
-//     };
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
