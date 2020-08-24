@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Formik } from "formik";
+import { useHistory } from "react-router-dom";
 import { signInSubmit } from "../action/signInSubmit";
 import SignInInputs from "../components/SignInComponents/SignInInputs";
 import SignUpRedirect from "../components/SignInComponents/SignUpRedirect";
-import { useHistory } from "react-router-dom";
+
 const Wrapper = styled.main`
   display: flex;
   flex-direction: column;

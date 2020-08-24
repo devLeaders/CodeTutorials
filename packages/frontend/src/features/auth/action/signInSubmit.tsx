@@ -1,26 +1,27 @@
+import { History } from "history";
 import { ErrorMessages } from "../enums";
 import * as AuthConnectors from "@project/common/features/auth/connectors";
 import AxiosInstance from "@project/common/features/config/axios/configAxios";
 import { Navigation } from "../../../config/routing/NavigationPath";
+
 export const signInSubmit = async (
   value: { email: string; password: string },
   action: { setErrors: (fields: { [field: string]: string }) => void },
-  history: any
+  history: History
 ) => {
   try {
-    // await localStorage.setItem("token", "123");
-
+    const notificationToken = localStorage.getItem("notification-token");
     const dataResponse = await AuthConnectors.signIn({
       email: `${value.email}`,
       password: `${value.password}`,
+      notificationToken: notificationToken,
     });
     const token = dataResponse.data.token;
-    console.log(dataResponse);
     AxiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    await localStorage.setItem("token", token);
-
-    await history.push(Navigation.HOME);
+    localStorage.setItem("token", token);
+    history.push(Navigation.HOME);
   } catch (err) {
+    console.log(err.response.data);
     action.setErrors({ email: ErrorMessages.ACCOUNT_NOT_FOUND });
   }
 };

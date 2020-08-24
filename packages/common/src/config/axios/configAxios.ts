@@ -8,12 +8,14 @@ const instance = axios.create({
   },
 });
 instance.interceptors.response.use(
-  function (response) {
+  (response: AxiosResponse) => {
     return response;
   },
-  function (error) {
-    console.log(error);
-    if (error.response?.status === 401) {
+  (error: AxiosError) => {
+    if (
+      error.response?.status === 401 &&
+      window.location.pathname !== "/login"
+    ) {
       localStorage.removeItem("token");
       return window.location.replace("/login");
     }

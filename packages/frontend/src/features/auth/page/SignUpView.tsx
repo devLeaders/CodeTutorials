@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Formik } from "formik";
+import { useHistory } from "react-router-dom";
 import { validationSchema } from "../action/validationSchema";
 import { signUpSubmit } from "../action/signUpSubmit";
 import SignUpInputs from "../components/SignUpComponents/SignUpInputs";
@@ -24,13 +25,14 @@ const SignUpView: React.FC = (props: any) => {
     password: "",
     passwordConfirmation: "",
   };
+  const history = useHistory();
   return (
     <Wrapper>
       <Formik
         validateOnChange={false}
         validateOnBlur={false}
         initialValues={initialValues}
-        onSubmit={signUpSubmit}
+        onSubmit={(values, action) => signUpSubmit(values, action, history)}
         validationSchema={validationSchema}>
         {(props: { errors: string }) => <SignUpInputs {...props} />}
       </Formik>
