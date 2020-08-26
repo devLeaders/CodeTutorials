@@ -14,6 +14,7 @@ import styled from 'styled-components/native';
 import {FontSize} from '../../../common/styles/constans/FontSize';
 import {Color} from '../../../common/styles/constans/Color';
 import loginSubmit from '../../action/singInSubmit';
+import { NavigationName } from '../../../../config/routing/NavigationName';
 
 
 const Btn = styled.TouchableOpacity`
@@ -62,13 +63,16 @@ export interface LogInProps {
   }
 
 class LogIn extends React.Component<LogInProps> {
-   
+   onSubmit = (value) => {
+       loginSubmit(value,()=>{this.props.navigation.navigate(NavigationName.MENU)})
+
+   }
     render() {
         return (
             <SafeAreaView style={{ marginTop: 20}}>
                 <Formik
                     initialValues={{ email: "", password: ''}}
-                    onSubmit={loginSubmit}
+                    onSubmit={this.onSubmit}
                     validationSchema={validationSchema}
                 >
                     {formikProps => (

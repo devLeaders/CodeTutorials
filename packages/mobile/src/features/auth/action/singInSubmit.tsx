@@ -4,8 +4,8 @@ import instance from '@project/common/features/config/axios/configAxios';
 import { AsyncStorage } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const loginSubmit = async (value: any, action: any, ) => {
-  
+const loginSubmit = async (value: any, callback:()=>void) => {
+  try {
     const dataResponse = await AuthConnectors.signIn({
         email: `${value.email}`,
         password: `${value.password}`,
@@ -13,9 +13,9 @@ const loginSubmit = async (value: any, action: any, ) => {
         const token = dataResponse.data.token;
         AsyncStorage.setItem('token', token);
         instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    //    if(dataResponse.status == 201){
-    //        navigation.navigate(NavigationName.MENU)
-    //    }
-       
+        callback()
+  } catch (error) {
+    console.log(error);
+  }
 }
 export default loginSubmit;

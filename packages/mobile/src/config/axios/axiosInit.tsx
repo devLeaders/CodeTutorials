@@ -10,7 +10,6 @@ export async function axiosInit() {
       AxiosInstance.defaults.headers.Authorization =  `Bearer ${token}`;
     }
     AxiosInstance.interceptors.request.use((request)=> {
-      // console.log(request)
       return request;
     })
 };
