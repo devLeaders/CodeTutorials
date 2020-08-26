@@ -41,7 +41,7 @@ const SingleMovieView: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <Header hide={true} />
       <Main>
         <VideoPlayerComponent />
         <VideoTabs />
