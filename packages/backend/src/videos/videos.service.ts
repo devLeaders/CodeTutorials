@@ -96,7 +96,7 @@ export class VideosService {
 			for (let i = 0; i < files.length; i++) {
 				const file = files[i];
 				let video = new VideosEntity();
-				
+
 				const fileUrl = defaultVideosFolder + file;
 				const photoUrl = defaultPhotoFolder + file.replace(".mp4", ".jpeg");
 				const statFile = fs.statSync(fileUrl);
@@ -118,15 +118,15 @@ export class VideosService {
 				});
 
 				if (!videoEntity) {
-					this.videosRepository.save(video);
-					videos.push(video);
+					videos.push(await this.videosRepository.save(video));
 				}
 
-				return videos;
 			}
+			return videos;
 		} catch (error) {
 			throw new HttpException(error, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
 
 	}
 
