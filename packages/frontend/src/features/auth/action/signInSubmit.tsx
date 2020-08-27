@@ -21,7 +21,6 @@ export const signInSubmit = async (
     localStorage.setItem("token", token);
     history.push(Navigation.HOME);
   } catch (err) {
-    console.log(err.response.data);
     action.setErrors({ email: ErrorMessages.ACCOUNT_NOT_FOUND });
   }
 };
