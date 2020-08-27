@@ -95,6 +95,16 @@ export class VideosService {
 
 			for (let i = 0; i < files.length; i++) {
 				const file = files[i];
+
+				const videoEntity = await this.videosRepository.findOne({
+					where: [
+						{ urlVideo: file },
+					]
+				});
+
+				if (videoEntity)
+					continue;
+
 				let video = new VideosEntity();
 
 				const fileUrl = defaultVideosFolder + file;
@@ -111,22 +121,14 @@ export class VideosService {
 				video.country = "pl";
 				video.language = "pl";
 
-				const videoEntity = await this.videosRepository.findOne({
-					where: [
-						{ urlVideo: file },
-					]
-				});
-
-				if (!videoEntity) {
-					videos.push(await this.videosRepository.save(video));
-				}
+				videos.push(await this.videosRepository.save(video));
 
 			}
 			return videos;
 		} catch (error) {
 			throw new HttpException(error, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 
 	}
 
