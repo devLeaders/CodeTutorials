@@ -89,7 +89,7 @@ export class VideosInsert1581198194171 implements MigrationInterface {
 
     await queryRunner.query(`INSERT INTO public.videos
         (created, title, description, "dateCreation", country, "language", duration, "urlTrailer", "urlVideo", "urlPhoto")
-        VALUES(7, now(), 
+        VALUES(now(), 
         'Jak sprostać wymaganiom stawianym Java Developerm przez rynek pracy w 2020 roku?', 
         '', 
         '20-01-2020', 
