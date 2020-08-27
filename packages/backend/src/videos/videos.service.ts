@@ -1,21 +1,23 @@
-import {Injectable} from '@nestjs/common';
-import {Repository, getRepository} from 'typeorm';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { Repository, getRepository } from 'typeorm';
 import VideosEntity from './videos.entity';
-import {InjectRepository} from '@nestjs/typeorm';
-import {ShortVersionDTO, FilterVideoDTO} from './videos.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ShortVersionDTO, FilterVideoDTO } from './videos.dto';
 import CategoryEntity from './category.entity';
 import * as fs from 'fs';
 
 const shortVersion = Object.keys(new ShortVersionDTO()) as any;
 
+const defaultVideosFolder = "uploads/video/";
+const defaultPhotoFolder = "uploads/photo/";
+
 @Injectable()
 export class VideosService {
-	constructor(@InjectRepository(VideosEntity) private videosRepository:Repository<VideosEntity>,
-		@InjectRepository(CategoryEntity) private categoriesRepository:Repository<CategoryEntity>,
-	)
-	{}
+	constructor(@InjectRepository(VideosEntity) private videosRepository: Repository<VideosEntity>,
+		@InjectRepository(CategoryEntity) private categoriesRepository: Repository<CategoryEntity>,
+	) { }
 
-	async getAll(param:FilterVideoDTO) {
+	async getAll(param: FilterVideoDTO) {
 		const page = (param.page) ? param.page : 1;
 		let query = getRepository(VideosEntity)
 			.createQueryBuilder("videos")
@@ -24,10 +26,10 @@ export class VideosService {
 			.skip(20 * (page - 1))
 			.where(`videos.id IS NOT NULL`);
 		if (param.title) {
-			query = query.andWhere(`videos.title LIKE :title`, {title: param.title});
+			query = query.andWhere(`videos.title LIKE :title`, { title: param.title });
 		}
 		if (param.category) {
-			query = query.andWhere(`category.id IN (:...ids)`, {ids: param.category});
+			query = query.andWhere(`category.id IN (:...ids)`, { ids: param.category });
 		}
 
 		const videos = query.getMany();
@@ -41,7 +43,7 @@ export class VideosService {
 			.getMany();
 	}
 
-	async getStream(id:string, res:any, req:any) {
+	async getStream(id: string, res: any, req: any) {
 		const video = await this.getSingleVideo(id);
 		const path = 'uploads/video/p720-angular-cli-dla-programistow-java-angular-w-45-min.mp4';
 		const stat = fs.statSync(path);
@@ -53,7 +55,7 @@ export class VideosService {
 				const start = parseInt(parts[0], 10);
 				const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
 				const chunksize = end - start + 1;
-				const VideoReadStream = fs.createReadStream(path, {start, end});
+				const VideoReadStream = fs.createReadStream(path, { start, end });
 				const head = {
 					'Content-Range': `bytes ${start}-${end}/${fileSize}`,
 					'Accept-Ranges': 'bytes',
@@ -76,42 +78,66 @@ export class VideosService {
 		}
 	}
 
-	async getSingleVideo(id:string):Promise<VideosEntity> {
+	async getSingleVideo(id: string): Promise<VideosEntity> {
 		return await this.videosRepository.findOne(id);
 	}
 
-	async addNewVideoFromFiles():Promise<void> {
-		if (!fs.existsSync("uploads") || !fs.existsSync("uploads/video"))
-			return;
+	async addNewVideoFromFiles(): Promise<VideosEntity[]> {
+		try {
+			if (!fs.existsSync(defaultVideosFolder))
+				return;
 
-		const files = fs.readdirSync("uploads/video").filter(file => file.endsWith(".mp4"));
+			const files = fs.readdirSync(defaultVideosFolder).filter(file => file.endsWith(".mp4"));
+			if (!files.length)
+				return;
 
-		if (!files.length)
-			return;
+			const videos = [];
 
-		for (let i = 0; i < files.length; i++) {
-			const file = files[i];
-			let video = new VideosEntity();
-			const statFile = fs.statSync(file);
-			video.title = file.substring(0, file.lastIndexOf("."));
-			video.urlVideo = file;
-			video.urlTrailer = file;
-			video.urlPhoto = file.replace(".mp4", ".jpeg");
-			video.dateCreation = statFile.birthtime.toLocaleDateString().replace(".", "-").replace(".", "-");
-			video.duration = await VideosService.getDurationFromFiles(`uploads/video/${file}`);
+			for (let i = 0; i < files.length; i++) {
+				const file = files[i];
+				let video = new VideosEntity();
+				
+				const fileUrl = defaultVideosFolder + file;
+				const photoUrl = defaultPhotoFolder + file.replace(".mp4", ".jpeg");
+				const statFile = fs.statSync(fileUrl);
 
-			this.videosRepository.save(video);
+				video.title = file.substring(0, file.lastIndexOf("."));
+				video.urlVideo = file;
+				video.urlTrailer = "";
+				video.urlPhoto = fs.existsSync(photoUrl) ? photoUrl : "";
+				video.dateCreation = statFile.birthtime.toLocaleDateString().replace(".", "-").replace(".", "-");
+				video.duration = await VideosService.getDurationFromFiles(fileUrl);
+				video.description = "";
+				video.country = "pl";
+				video.language = "pl";
+
+				const videoEntity = await this.videosRepository.findOne({
+					where: [
+						{ urlVideo: file },
+					]
+				});
+
+				if (!videoEntity) {
+					this.videosRepository.save(video);
+					videos.push(video);
+				}
+
+				return videos;
+			}
+		} catch (error) {
+			throw new HttpException(error, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+
 	}
 
-	private static async getDurationFromFiles(path:string):Promise<number> {
+	private static async getDurationFromFiles(path: string): Promise<number> {
 		const fs = require("fs").promises;
 
 		const buff = Buffer.alloc(100);
 		const header = Buffer.from("mvhd");
 
 		const file = await fs.open(path, "r");
-		const {buffer} = await file.read(buff, 0, 100, 0);
+		const { buffer } = await file.read(buff, 0, 100, 0);
 
 		await file.close();
 
