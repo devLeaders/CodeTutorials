@@ -5,18 +5,22 @@ import { SingInDTO } from './singIn.dto';
 import { UsersService } from './users/users.service';
 import * as bcrypt from 'bcrypt';
 import { sign } from 'jsonwebtoken';
+
 import { SignInPayload } from './users/models/SignInPayload';
 import { ErrorMessage } from './users/enums/ErrorMessage';
 import { NotificationsService } from '../notifications/notifications.service';
-import {UsersRepository} from "./users/user.repository"
-import {MessageTypes} from "../notifications/notifications.service"
+import { UsersRepository } from './users/user.repository';
+import {
+  MessageTypes,
+  TokenTypes,
+} from '../notifications/notifications.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersService: UsersService,
     private notificationsService: NotificationsService,
-    @InjectRepository(UsersRepository) private usersRepository: UsersRepository
+    @InjectRepository(UsersRepository) private usersRepository: UsersRepository,
   ) {}
 
   async signIn(sigInDTO: SingInDTO) {
@@ -36,16 +40,15 @@ export class AuthService {
         expiresIn: process.env.EXPIRESIN_JWT,
       });
 
-      const notificationToken = await this.notificationsService.findFirebaseToken(
-        sigInDTO.firebaseToken,
+      const token = sigInDTO.firebaseToken ? sigInDTO.firebaseToken : sigInDTO.hmsToken
+      const tokenType = sigInDTO.firebaseToken ? TokenTypes.FIREBASE : TokenTypes.HMS
+
+      this.notificationsService.saveToken(
+        token,
+        user,
+        tokenType
       );
 
-      if (!notificationToken) {
-        this.notificationsService.saveFirebaseToken(
-          sigInDTO.firebaseToken,
-          user
-        );
-      }
 
       return {
         user: sterilizedUserData,

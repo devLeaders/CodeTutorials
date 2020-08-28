@@ -4,16 +4,21 @@ import { AppModule } from './app.module';
 require('dotenv').config();
 import { Logger, ValidationPipe } from '@nestjs/common';
 import * as admin from 'firebase-admin';
-import { ServiceAccount } from 'firebase-admin';
+
 import { ConfigService } from '@nestjs/config';
+import { ServiceAccount } from "firebase-admin";
+import {FirebaseConfig} from "./notifications/firebaseConfig"
+
 const helmet = require('helmet');
 
 declare const module: any;
 
 const port = process.env.APP_PORT;
 
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService: ConfigService = app.get(ConfigService);
   app.useGlobalPipes(new ValidationPipe());
   app.use(helmet());
   app.enableCors();
@@ -27,12 +32,12 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
 
-
-  const serviceAccount = require("./notifications/firebaseConfig.json")
+  const serviceAccount = configService.get<ServiceAccount>('firebaseConfig');
+  const firebaseDbUrl = configService.get<string>('FIREBASE_DATABASE_URL')
 
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: 'https://codetutorials-f9ede.firebaseio.com',
+    databaseURL: firebaseDbUrl,
   });
 
   await app.listen(port);

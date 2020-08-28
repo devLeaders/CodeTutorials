@@ -23,9 +23,9 @@ export class UserEntity extends BaseEntity {
 
   @OneToMany(
     type => DevicesEntity,
-    firebaseDevices => firebaseDevices.user,
+    devices => devices.user,
   )
-  firebaseDevices: DevicesEntity[];
+  devices: DevicesEntity[];
 
   @Column() salt: string;
 }

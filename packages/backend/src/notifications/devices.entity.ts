@@ -3,10 +3,13 @@ import {UserEntity} from "../auth/users/user.entity"
 
 @Entity('devices')
 export class DevicesEntity {
-  @PrimaryColumn()
-  firebaseToken: string;
+  @PrimaryColumn("simple-array")
+  firebaseTokens: string[];
 
-  @ManyToOne(type => UserEntity, user => user.firebaseDevices)
+  @Column("simple-array")
+  HmsTokens: string[]
+
+  @ManyToOne(type => UserEntity, user => user.devices)
   user: UserEntity
 }
 
