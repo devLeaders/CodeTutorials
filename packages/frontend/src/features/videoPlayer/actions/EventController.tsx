@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch, RootStateOrAny } from "react-redux";
+import { useState, useEffect, useCallback } from "react";
+import { useSelector, RootStateOrAny } from "react-redux";
 
 import { runVideoAction, changeVideoTime, handleVideoShortcuts, changeIsFullscreen, } from "./videoActionController";
 import {setTime, changeState } from "../../../config/redux/videoPlayer/actions";
@@ -42,9 +42,9 @@ export const useTimeBarAction = (TimeBarRef: any, small: string | undefined) => 
     }
 
     const handleMouseMoveAndClick = (e: any) => {
-        if (e.type == EType.MOUSE_CLICK) {
+        if (e.type === EType.MOUSE_CLICK) {
             changeVideoTime(e, TimeBarRef, small)
-        } else if (e.type == EType.MOUSE_MOVE && mouseDown) {
+        } else if (e.type === EType.MOUSE_MOVE && mouseDown) {
             changeVideoTime(e, TimeBarRef, EType.MOUSE_MOVE, small)
         }
     }
@@ -90,18 +90,18 @@ export const useVideoPlayerActions = (videoRef: any, small?: string) => {
         playPauseVideo(videoRef.current, paused);
     }
 
-    const handleFullscreenChange = () => {
-        changeIsFullscreen(small)
-    };
+    const handleFullscreenChange = useCallback(() => {
+        return changeIsFullscreen(small)
+    },[small]);
 
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = useCallback((e: KeyboardEvent) => {
         let reduxAction;
         const key = e.keyCode
-        if (key == 32 || key == 37 || key == 39) {
+        if (key === 32 || key === 37 || key === 39) {
             reduxAction = () => changeState(ButtonTypes.PLAY)
         }
         handleVideoShortcuts(e, reduxAction, videoState)
-    }
+    },[videoState])
 
     useEffect(() => {
         document.addEventListener("keydown", handleKeyDown);
@@ -110,7 +110,7 @@ export const useVideoPlayerActions = (videoRef: any, small?: string) => {
             document.removeEventListener("keydown", handleKeyDown)
             document.removeEventListener("fullscreenchange", handleFullscreenChange)
         }
-    }, [paused])
+    }, [paused, handleFullscreenChange, handleKeyDown])
 
     return {
         handleTimeProgress,

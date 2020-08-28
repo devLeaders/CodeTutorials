@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useCallback } from "react";
+import { useCallback } from "react";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux";
 import styled from "styled-components";
 
@@ -39,7 +39,7 @@ const VideoTabs: React.SFC<VideoTabs> = ({ aside }) => {
 
   const handleClick = useCallback((e: any) => {
     dispatch(setActiveTab({activeTab: e.target.id}))
-  }, []);
+  }, [dispatch]);
 
   return (
     <Wrapper aside={aside}>

@@ -45,7 +45,7 @@ const SingleMovieView: React.FC = () => {
       <Main>
         <VideoPlayerComponent />
         <VideoTabs />
-        {activeVideoTab == Tabs.DESCRIPTION && (
+        {activeVideoTab === Tabs.DESCRIPTION && (
           <VideoInfo>
             <VideoDescription />
             <Quiz />

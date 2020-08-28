@@ -1,4 +1,4 @@
-import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useCallback } from "react";
 
 import { setPopUpActive, dismissPopUp } from "../../../config/redux/popups/popUpsActions";
@@ -15,12 +15,12 @@ export const usePopUp = () => {
   const showPopUp = useCallback((e: CustomMouseEvent) => {
     const popUpData = { name: e.currentTarget.name };
     dispatch(setPopUpActive(popUpData));
-  }, []);
+  }, [dispatch]);
 
   const closePopUp = useCallback((e: CustomMouseEvent) => {
     const popUpData = { name: e.currentTarget.name};
     dispatch(dismissPopUp(popUpData))
-  },[])
+  },[dispatch])
 
   return {
     showPopUp,

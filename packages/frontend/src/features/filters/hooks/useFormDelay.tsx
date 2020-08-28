@@ -1,18 +1,16 @@
-import {useEffect} from "react"
-import {Formik} from "formik"
+import {useEffect, useRef} from "react"
 import _ from "lodash"
 
 export const useFormDelay = (formik: any, phrase: string) => {
-    let timer: number
-
+    const timer = useRef<number>(0)
     const handleTyping = (e: React.ChangeEvent) => {
-        clearTimeout(timer)
+        clearTimeout(timer.current)
         formik.handleChange(e); 
     }
 
     useEffect(() => {
-        phrase && (timer = _.delay(formik.submitForm, 1000))
-    },[phrase])
+        phrase && (timer.current = _.delay(formik.submitForm, 1000))
+    },[phrase, formik.submitForm])
 
     return{
         handleTyping
