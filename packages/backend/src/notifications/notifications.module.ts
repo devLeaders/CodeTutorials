@@ -1,10 +1,10 @@
 import { DevicesEntity } from './devices.entity';
-import { Module } from '@nestjs/common';
+import { Module, HttpModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import {NotificationsService} from "./notifications.service"
 
 @Module({
-    imports: [TypeOrmModule.forFeature([DevicesEntity])],
+    imports: [TypeOrmModule.forFeature([DevicesEntity]), HttpModule],
     controllers: [],
     providers: [NotificationsService]
 })
