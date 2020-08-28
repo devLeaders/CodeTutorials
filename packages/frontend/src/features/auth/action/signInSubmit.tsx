@@ -14,11 +14,11 @@ export const signInSubmit = async (
     const dataResponse = await AuthConnectors.signIn({
       email: `${value.email}`,
       password: `${value.password}`,
-      notificationToken: notificationToken,
+      firebaseToken: notificationToken,
     });
     const token = dataResponse.data.token;
     AxiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    localStorage.setItem("token", token);
+    sessionStorage.setItem("token", token);
     history.push(Navigation.HOME);
   } catch (err) {
     action.setErrors({ email: ErrorMessages.ACCOUNT_NOT_FOUND });

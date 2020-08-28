@@ -6,7 +6,7 @@ export interface IUserRequest {
 export interface ISingInRequest {
   email: string;
   password: string;
-  notificationToken: string | null;
+  firebaseToken: string | null;
 }
 
 export interface ISingInResponse {

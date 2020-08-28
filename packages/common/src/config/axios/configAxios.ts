@@ -1,5 +1,5 @@
 import axios, { AxiosResponse, AxiosError } from "axios";
-import { Routes } from "../models";
+import { Routes } from "../routes";
 const instance = axios.create({
   timeout: 1000,
   headers: {
@@ -16,7 +16,7 @@ instance.interceptors.response.use(
       error.response?.status === 401 &&
       window.location.pathname !== Routes.LOGIN
     ) {
-      localStorage.removeItem("token");
+      sessionStorage.removeItem("token");
       return window.location.replace(Routes.LOGIN);
     }
     return Promise.reject(error);

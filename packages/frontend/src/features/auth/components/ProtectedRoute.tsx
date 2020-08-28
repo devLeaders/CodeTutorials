@@ -9,7 +9,7 @@ interface ProtectedProps {
 }
 
 const ProtectedRoute = ({ component: Component, ...rest }: ProtectedProps) => {
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const handleTokenCheck = () => {
     if (token) return <Component />;
     else return <Redirect to={Navigation.LOGIN} />;
