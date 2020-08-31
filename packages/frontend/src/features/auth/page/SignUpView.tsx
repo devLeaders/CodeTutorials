@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Formik } from "formik";
-import { useHistory } from "react-router-dom";
 import { validationSchema } from "../action/validationSchema";
 import { signUpSubmit } from "../action/signUpSubmit";
 import SignUpInputs from "../components/SignUpComponents/SignUpInputs";
@@ -19,20 +18,19 @@ interface FormValuesInterface {
   passwordConfirmation: string;
 }
 
-const SignUpView: React.FC = (props: any) => {
+const SignUpView: React.FC<{}> = () => {
   const initialValues: FormValuesInterface = {
     email: "",
     password: "",
     passwordConfirmation: "",
   };
-  const history = useHistory();
   return (
     <Wrapper>
       <Formik
         validateOnChange={false}
         validateOnBlur={false}
         initialValues={initialValues}
-        onSubmit={(values, action) => signUpSubmit(values, action, history)}
+        onSubmit={signUpSubmit}
         validationSchema={validationSchema}>
         {(props: { errors: string }) => <SignUpInputs {...props} />}
       </Formik>

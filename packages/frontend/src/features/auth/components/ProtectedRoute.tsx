@@ -1,7 +1,6 @@
-import React, { Component, ReactType } from "react";
+import React, { Component, ReactType, useCallback } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { Navigation } from "../../../config/routing/NavigationPath";
-
 interface ProtectedProps {
   component: ReactType;
   path?: string;
@@ -9,11 +8,12 @@ interface ProtectedProps {
 }
 
 const ProtectedRoute = ({ component: Component, ...rest }: ProtectedProps) => {
-  const token = sessionStorage.getItem("token");
-  const handleTokenCheck = () => {
+  const handleTokenCheck = useCallback(() => {
+    const token = sessionStorage.getItem("token");
     if (token) return <Component />;
     else return <Redirect to={Navigation.LOGIN} />;
-  };
-  return <Route {...rest} render={() => handleTokenCheck()} />;
+  }, [rest]);
+
+  return <Route {...rest} render={handleTokenCheck} />;
 };
 export default ProtectedRoute;
