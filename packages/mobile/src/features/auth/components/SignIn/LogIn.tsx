@@ -4,9 +4,9 @@ import {
     ActivityIndicator,
     TouchableOpacity,
     Text,
-    AsyncStorage,
     View,
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { Formik } from 'formik';
 import validationSchema from '../../action/validationSchema';
 import SignInInput from './SignInInput';
@@ -65,7 +65,6 @@ export interface LogInProps {
 
 class LogIn extends React.Component<LogInProps> {
     loginSubmit = async (value: any, action: any) => {
-        console.log(value);
         // const dataResponse = await Axios.post('/auth/signin', {
         //     "email": `${value.email}`,
         //     "password": `${value.password}`
