@@ -18,7 +18,7 @@ interface FormValuesInterface {
   passwordConfirmation: string;
 }
 
-const SignUpView: React.FC = (props: any) => {
+const SignUpView: React.FC<{}> = () => {
   const initialValues: FormValuesInterface = {
     email: "",
     password: "",
