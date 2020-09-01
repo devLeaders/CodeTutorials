@@ -7,9 +7,7 @@ import Global from '../../common/models/Global';
 
 export const YouTubePlayer = (props:IPlayer) =>{
 
-    const height = (Platform.OS=='ios')?"100%":0;
-
-    console.log(Global.env.GOOGLE_KEY,props);
+    const height = (Platform.OS == 'ios')? "100%" : 0;
 
     return (
       <YouTube

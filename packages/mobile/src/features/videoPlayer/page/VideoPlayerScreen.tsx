@@ -37,7 +37,7 @@ export class VideoPlayerScreen extends React.Component<Props,any> {
   }
 
   onError = ()=>{
-      //throw new Error('Video load error');
+      console.log('Video load error');
   }
 
   render(){
