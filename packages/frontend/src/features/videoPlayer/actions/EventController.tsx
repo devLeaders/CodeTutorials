@@ -78,7 +78,6 @@ export const useVideoPlayerActions = (videoRef: any, small?: string) => {
     }
 
     const handleTimeProgress = () => {
-        //TODO:ogarnąć sytuacje w której ref jest pusty lub nie ma .current
         const video = videoRef.current;
         const time = (video.currentTime / video.duration) * 100
         setTime(time, small)
@@ -99,8 +98,9 @@ export const useVideoPlayerActions = (videoRef: any, small?: string) => {
         const key = e.keyCode
         if (key == 32 || key == 37 || key == 39) {
             reduxAction = () => changeState(ButtonTypes.PLAY)
+            handleVideoShortcuts(e, reduxAction, videoState)
         }
-        handleVideoShortcuts(e, reduxAction, videoState)
+     
     }
 
     useEffect(() => {

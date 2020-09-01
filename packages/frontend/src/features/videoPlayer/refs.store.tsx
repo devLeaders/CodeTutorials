@@ -1,10 +1,10 @@
-interface Refs {
-    ref: { current: any };
+interface IRefs {
+    current: HTMLMediaElement;
 };
 
 class RefsStore {
-    Refs: any = []
-    RefsSmall: any = []
+    Refs: IRefs[] = []
+    RefsSmall:IRefs[] = []
 }
 
 

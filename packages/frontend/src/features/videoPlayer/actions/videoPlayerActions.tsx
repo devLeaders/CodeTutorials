@@ -1,6 +1,6 @@
 import { changeState, setIsFullscreen, setTime } from "../../../config/redux/videoPlayer/actions"
 
-export const playPauseVideo = (video: HTMLVideoElement, isPaused: boolean) => {
+export const playPauseVideo = (video: HTMLMediaElement, isPaused: boolean) => {
     if (isPaused) {
         video.play();
     } else {
@@ -8,7 +8,7 @@ export const playPauseVideo = (video: HTMLVideoElement, isPaused: boolean) => {
     }
 };
 
-export const videoResize = (videoContainer: HTMLDivElement, isFullscreen: boolean) => {
+export const videoResize = (videoContainer: HTMLMediaElement, isFullscreen: boolean) => {
     if (!isFullscreen) {
         videoContainer.requestFullscreen();
     } else {
@@ -16,7 +16,7 @@ export const videoResize = (videoContainer: HTMLDivElement, isFullscreen: boolea
     }
 };
 
-export const rewindVideoTime = (video: HTMLVideoElement, timeskip: number) => {
+export const rewindVideoTime = (video: HTMLMediaElement, timeskip: number) => {
     video.currentTime += timeskip;
     setTime((video.currentTime / video.duration) * 100);
 }

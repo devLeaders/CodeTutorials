@@ -21,11 +21,11 @@ export const runVideoAction = (
   small?: string | undefined
 ) => {
   const video = small
-    ? refsStore.RefsSmall[0].current
-    : refsStore.Refs[0].current;
+    ? refsStore.RefsSmall[0]?.current
+    : refsStore.Refs[0]?.current;
   const videoContainer = small
-    ? refsStore.RefsSmall[1].current
-    : refsStore.Refs[1].current;
+    ? refsStore.RefsSmall[1]?.current
+    : refsStore.Refs[1]?.current;
   if (buttonType === ButtonTypes.PLAY) {
     playPauseVideo(video, videoState);
   } else if (buttonType === ButtonTypes.MUTE) {
@@ -37,10 +37,10 @@ export const runVideoAction = (
       playPauseVideo(video, videoState);
     }
 
-    if (!refsStore.RefsSmall[0].current.paused) {
+    if (!refsStore.RefsSmall[0]?.current.paused) {
       playPauseVideo(
-        refsStore.RefsSmall[0].current,
-        refsStore.RefsSmall[0].current.paused
+        refsStore.RefsSmall[0]?.current,
+        refsStore.RefsSmall[0]?.current.paused
       );
     }
   }
@@ -62,10 +62,9 @@ export const changeVideoTime = (
   type?: string,
   small?: string | undefined
 ) => {
-  //TODO: ogarnąć refsStore.Refs[0].current i RefsSmall[0].current bo nie macie tu penosci ze current nie jest undefined
   const video = small
-    ? refsStore.RefsSmall[0].current
-    : refsStore.Refs[0].current;
+    ? refsStore.RefsSmall[0]?.current
+    : refsStore.Refs[0]?.current;
   const TimeBarWidth = TimeBarRef.current.offsetWidth;
   //distance from timbar to left window edge
   const distanceFromLeft =
@@ -86,14 +85,14 @@ export const handleVideoShortcuts = (
   reduxAction: any,
   videoState: RootStateOrAny
 ) => {
-  const video = refsStore.Refs[0].current;
-  const timeToEnd = video.duration - video.currentTime;
+  const video = refsStore.Refs[0]?.current;
+  const timeToEnd = video?.duration - video?.currentTime;
   const key = e.keyCode;
   if (key == 32) {
     e.preventDefault();
     reduxAction();
     playPauseVideo(video, videoState.isPaused);
-  } else if (key == 37 || key == 39) {
+  } else if ((key == 37 || key == 39) && video) {
     const timeSkip = 5;
     if (key == 39 && timeToEnd > timeSkip) {
       e.preventDefault();
@@ -111,6 +110,6 @@ export const handleVideoShortcuts = (
 };
 
 export const getVideoDuration = (setVideoDuration: (num: number) => void) => {
-  const video = refsStore.Refs[0].current;
+  const video = refsStore.Refs[0]?.current;
   setVideoDuration(video.duration);
 };
