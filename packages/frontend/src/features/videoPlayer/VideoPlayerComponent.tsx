@@ -9,6 +9,7 @@ import { getMovieState } from "./actions/ReduxActions";
 import { SmallInterface } from "./SmallModeInterface";
 import { VideoPlayer } from "./VideoPlayer";
 import { Device } from "../common/styles/constans/Device";
+import { handleVideoContainerRef } from "./actions/handleVideoContainerRef";
 
 const VideoPlayerContainer = styled.div<{ minimized: boolean; small: string | undefined }>`
   display: ${(props) => (!props.small || (props.small && props.minimized) ? "block" : "none")};
@@ -48,12 +49,8 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
   const videoContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (videoContainerRef.current !== null) {
-      props.small
-        ? (refsStore.ContainerRefs[0] = videoContainerRef.current)
-        : (refsStore.ContainerRefs[1] = videoContainerRef.current);
-    }
-  }, [videoContainerRef]);
+    handleVideoContainerRef(videoContainerRef, props.small)
+  }, []);
 
   return (
     <VideoPlayerContainer small={props.small} ref={videoContainerRef} minimized={isMinimized}>

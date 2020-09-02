@@ -70,7 +70,6 @@ export const handleVideoShortcuts = (e: KeyboardEvent, reduxAction: any, videoSt
   if (key === 32) {
     e.preventDefault();
     reduxAction();
-    console.log(video, videoState.isPaused)
     playPauseVideo(video, videoState.isPaused);
   } else if ((key === 37 || key === 39)) {
     const timeSkip = 5;

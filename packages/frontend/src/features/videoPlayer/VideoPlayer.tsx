@@ -8,7 +8,7 @@ import { getMovieState } from "./actions/ReduxActions";
 import { useVideoPlayerActions } from "./actions/EventController";
 import { reset } from "../../config/redux/videoPlayer/actions";
 import { Navigation } from "../../config/routing/NavigationPath";
-import { refsStore } from "./refs.store";
+import { handleVideoRef } from "./actions/handleVideoRef";
 
 export const VideoPlayer = styled.video<{ isFullscreen: boolean }>`
   width: 100%;
@@ -39,10 +39,8 @@ const VP: React.SFC<VpProps> = ({ small }) => {
   });
 
   useEffect(() => {
-    if (videoRef.current !== null) {
-      small ? (refsStore.VideoRefs[0] = videoRef.current) : (refsStore.VideoRefs[1] = videoRef.current);
-    }
-  }, [videoRef]);
+    handleVideoRef(videoRef, small)
+  }, []);
 
   return (
     <VideoPlayer
@@ -50,9 +48,8 @@ const VP: React.SFC<VpProps> = ({ small }) => {
       ref={videoRef}
       onTimeUpdate={handleTimeProgress}
       onClick={handleVideoClick}
-      autoPlay={location.pathname === Navigation.HOME && true}>
-      {/* <source src='http://localhost:3300/videos/video' type='video/mp4'></source> */}
-      <source src='https://www.w3schools.com/html/mov_bbb.mp4' type='video/mp4'></source>
+      autoPlay={location.pathname === Navigation.HOME && true}> 
+      <source src='http://localhost:3300/videos/video' type='video/mp4'></source>
     </VideoPlayer>
   );
 };

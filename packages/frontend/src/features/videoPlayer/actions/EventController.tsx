@@ -6,6 +6,7 @@ import { setTime, changeState } from "../../../config/redux/videoPlayer/actions"
 import { playPauseVideo } from "../actions/videoPlayerActions";
 import { getMovieState } from "../actions/ReduxActions";
 import { ButtonTypes } from "../enums";
+import { refsStore } from "../refs.store";
 
 export enum EType {
   MOUSE_DOWN = "mousedown",
@@ -25,10 +26,10 @@ interface ITimeBar {
 //timeBar Actions
 export const useTimeBarAction = (TimeBarRef: ITimeBar, small: string | undefined) => {
   const [mouseDown, setMouseDown] = useState(false);
-
-  const handleMouseUpDown = useCallback((e: any) => {
-    console.log(e)
-    checkIsMouseDown(e.type);
+  const handleMouseUpDown = useCallback((e: any) => { 
+    if((TimeBarRef.current || refsStore.VideoRefs[1]) === e.target) {  
+      checkIsMouseDown(e.type);
+    }
   }, [setMouseDown]);
 
   const checkIsMouseDown = useCallback((eventType: string) => {
@@ -40,7 +41,7 @@ export const useTimeBarAction = (TimeBarRef: ITimeBar, small: string | undefined
   }, [setMouseDown]);
 
   const handleMouseMoveAndClick = useCallback((e: any) => {
-    if(TimeBarRef) {
+    if((TimeBarRef.current || refsStore.VideoRefs[1]) === e.target) {
       if (e.type == EType.MOUSE_CLICK) {
       changeVideoTime(e, TimeBarRef, small);
       } else if (e.type == EType.MOUSE_MOVE && mouseDown) {
@@ -72,7 +73,6 @@ export const useVideoPlayerActions = (videoRef: VideoRefType, small?: string) =>
   const paused = small ? videoState.smallIsPaused : videoState.isPaused;
 
   const handleTimeProgress = useCallback(() => {
-   
     const video = videoRef;
     const time = video ? (video.currentTime / video.duration) * 100 : 0;
     setTime(time, small);
