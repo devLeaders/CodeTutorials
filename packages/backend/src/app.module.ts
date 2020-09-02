@@ -8,6 +8,8 @@ import { configService } from './config/config.service';
 import { FilesModule } from './files/files.module';
 import { ConfigModule } from '@nestjs/config';
 import { NotificationsModule } from './notifications/notifications.module';
+import { ConnectorService } from './connector/connector.service';
+import { ConnectorModule } from './connector/connector.module';
 import firebaseConfig from "./notifications/firebaseConfig"
 
 @Module({
@@ -21,8 +23,9 @@ import firebaseConfig from "./notifications/firebaseConfig"
     FilesModule,
     AuthModule,
     NotificationsModule,
+    ConnectorModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ConnectorService],
 })
 export class AppModule {}

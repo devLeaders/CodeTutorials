@@ -1,3 +1,4 @@
+import { ConnectorService } from './../connector/connector.service';
 import { user } from './../../../mobile/src/features/common/types/types';
 import { UserEntity } from './../auth/users/user.entity';
 import { Repository, getRepository, getManager } from 'typeorm';
@@ -8,35 +9,13 @@ import { map } from 'rxjs/operators';
 
 import { ConfigService } from '@nestjs/config';
 import { DevicesEntity } from './devices.entity';
-
-export enum MessageTypes {
-  NEW_VIDEO = 'newVideo',
-  NEW_PLAYLIST = 'newPlaylist',
-}
-
-export enum TokenTypes {
-  HMS = 'HmsTokens',
-  FIREBASE = 'firebaseTokens',
-}
-
-type ITokenType = TokenTypes.FIREBASE | TokenTypes.HMS;
-
-type IMessageType = MessageTypes.NEW_VIDEO | MessageTypes.NEW_PLAYLIST;
-
-interface IMessage {
-  title: string;
-  body: string;
-}
-
-interface IMessageData {
-  messageType: IMessageType;
-  data?: any;
-}
-
-interface IHmsMessage {
-  titleMessage: string;
-  pushMessage: string;
-}
+import {
+  IMessageData,
+  IMessage,
+  IHmsMessage,
+  TokenTypes,
+  ITokenType,
+} from './message.model';
 
 @Injectable()
 export class NotificationsService {
@@ -44,7 +23,7 @@ export class NotificationsService {
     @InjectRepository(DevicesEntity)
     private devicesRepository: Repository<DevicesEntity>,
     private configService: ConfigService,
-    private httpService: HttpService,
+    private connectorService: ConnectorService
   ) {}
 
   async notifyAllFirebase(msg: IMessage, messageData: IMessageData) {
@@ -59,6 +38,8 @@ export class NotificationsService {
       },
       tokens,
     };
+
+
     try {
       const res = await admin.messaging().sendMulticast(message);
       if (res.failureCount > 0) {
@@ -75,15 +56,18 @@ export class NotificationsService {
   }
 
   async hmsNotifyAll(message: IHmsMessage) {
-    const token = await this.getHmsAccesToken();
-    const id = this.configService.get<string>('HMS_APP_ID');
-    const hmsDevicesTokens = await this.getAllNotificationTokens(TokenTypes.HMS);
+    const token = await this.connectorService.getHmsAccesToken();
+    const host = this.configService.get<string>('HMS_HOST');
+    const post = this.configService.get<string>('HMS_POST');
+    const hmsDevicesTokens = await this.getAllNotificationTokens(
+      TokenTypes.HMS,
+    );
 
     const config = {
       headers: {
         Authorization: `Bearer ${token.access_token}`,
-        host: 'oauth-login.cloud.huawei.com',
-        post: '/oauth2/v2/token HTTP/1.1',
+        host: host,
+        post: post,
         'content-type': 'application/json',
       },
     };
@@ -110,51 +94,29 @@ export class NotificationsService {
       },
     };
 
-    const res = await this.httpService
-      .post(
-        `https://push-api.cloud.huawei.com/v1/${id}/messages:send`,
-        body,
-        config,
-      )
-      .pipe(map(response => response.data))
-      .toPromise();
-
-    console.log(res);
-  }
-
-  async getHmsAccesToken() {
-    const appSecret = this.configService.get<string>('HMS_APP_SECRET');
-    const id = this.configService.get<string>('HMS_APP_ID');
-
-    try {
-      const token = await this.httpService
-        .post(
-          'https://oauth-login.cloud.huawei.com/oauth2/v2/token',
-          `grant_type=client_credentials&client_secret=${appSecret}&client_id=${id}`,
-        )
-        .pipe(map(response => response.data))
-        .toPromise();
-
-      return token;
-    } catch (err) {
-      console.log(err);
+    try{
+    const res = await this.connectorService.sendToAllHms(body, config)
+    }catch(err){
+      console.log(err)
     }
   }
 
-  async notifyHms(NotificationDto) {}
 
   async saveToken(id: string, user: UserEntity, tokenType: ITokenType) {
     const tokens = await this.findUserTokens(user);
 
     if (tokens) {
-      if(tokens[tokenType].includes(id)){
-        return
-      }else{
-        await this.devicesRepository.update({user}, {[tokenType]: [...tokens[tokenType], id]});
+      if (tokens[tokenType].includes(id)) {
+        return;
+      } else {
+        await this.devicesRepository.update(
+          { user },
+          { [tokenType]: [...tokens[tokenType], id] },
+        );
       }
     } else {
       const device = new DevicesEntity();
-      device.user = user
+      device.user = user;
       device[tokenType] = [id];
       tokenType === TokenTypes.FIREBASE
         ? (device.HmsTokens = [])
@@ -168,10 +130,10 @@ export class NotificationsService {
       select: [tokenType],
     });
 
-    const devices = []
+    const devices = [];
     entitiesArr.forEach((entity: DevicesEntity) => {
-      devices.push(...entity[tokenType])
-    })
+      devices.push(...entity[tokenType]);
+    });
 
     return devices;
   }
