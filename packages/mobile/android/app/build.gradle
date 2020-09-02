@@ -129,8 +129,8 @@ android {
 
     defaultConfig {
         applicationId "pl.devleaders"   //wczesniej com.mobile
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion 17 //rootProject.ext.minSdkVersion
+        targetSdkVersion 29 //rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
@@ -144,15 +144,15 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
+            storeFile file('devleaders-codetutorials.keystore')
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
         //HUAWEI
         release {
-            storeFile file('HmsDemo.jks')
-            keyAlias 'hmsdemo'
+            storeFile file('devleaders-codetutorials.keystore')
+            keyAlias 'pl.devleaders'
             keyPassword '123456'
             storePassword '123456'
             v1SigningEnabled true
