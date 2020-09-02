@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRef, } from "react";
 import styled from "styled-components";
 
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { getMovieState } from "./actions/ReduxActions"
 import { Device } from "../common/styles/constans/Device"
 import { useTimeBarAction } from "./actions/EventController"
@@ -41,10 +41,9 @@ interface TimeBarProps {
 
 const TimeBar: React.SFC<TimeBarProps> = (props) => {
   const { small } = props
-  const TimeBarRef: any = useRef()
+  const TimeBarRef = useRef<HTMLDivElement>(null)
   const videoTime = useSelector(state => getMovieState(state).videoTime)
   const smallVideoTime = useSelector(state => getMovieState(state).smallVideoTime)
-  const dispatch = useDispatch()
   const newTime = small ? smallVideoTime + "%" : videoTime + "%";
   const { handleMouseUpDown, handleMouseMoveAndClick } = useTimeBarAction(TimeBarRef, small)
 

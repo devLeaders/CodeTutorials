@@ -1,11 +1,6 @@
-interface IRefs {
-    current: HTMLMediaElement;
-};
-
 class RefsStore {
-    Refs: IRefs[] = []
-    RefsSmall:IRefs[] = []
+  VideoRefs: HTMLVideoElement[] = [];
+  ContainerRefs: HTMLDivElement[] = [];
 }
 
-
-export const refsStore = new RefsStore()
+export const refsStore = new RefsStore();
