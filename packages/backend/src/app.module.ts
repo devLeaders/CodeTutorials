@@ -1,5 +1,5 @@
 import { AuthModule } from './auth/auth.module';
-import { Module } from '@nestjs/common';
+import { Module, HttpModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -24,6 +24,7 @@ import firebaseConfig from "./notifications/firebaseConfig"
     AuthModule,
     NotificationsModule,
     ConnectorModule,
+    HttpModule
   ],
   controllers: [AppController],
   providers: [AppService, ConnectorService],

@@ -13,7 +13,7 @@ import { UsersRepository } from './users/user.repository';
 import {
   MessageTypes,
   TokenTypes,
-} from '../notifications/notifications.service';
+} from '../notifications/message.model';
 
 @Injectable()
 export class AuthService {
@@ -48,7 +48,6 @@ export class AuthService {
         user,
         tokenType
       );
-
 
       return {
         user: sterilizedUserData,

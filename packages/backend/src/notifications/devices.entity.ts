@@ -3,10 +3,8 @@ import {UserEntity} from "../auth/users/user.entity"
 
 @Entity('devices')
 export class DevicesEntity {
-  @PrimaryGeneratedColumn()
-  id: string
 
-  @Column("simple-array")
+  @PrimaryColumn("simple-array")
   firebaseTokens: string[];
 
   @Column("simple-array")

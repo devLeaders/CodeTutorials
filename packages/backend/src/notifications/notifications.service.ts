@@ -1,7 +1,7 @@
 import { ConnectorService } from './../connector/connector.service';
 import { user } from './../../../mobile/src/features/common/types/types';
 import { UserEntity } from './../auth/users/user.entity';
-import { Repository, getRepository, getManager } from 'typeorm';
+import { Repository, } from 'typeorm';
 import { Injectable, HttpService } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import admin from 'firebase-admin';
