@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useSelector } from "react-redux"
 
-import styled from "styled-components";
 import { checkButtonType } from "../actions/checkButtonType "
 import { getMovieState } from "../actions/ReduxActions"
 import NewVideoPlayerBtn from "./NewVideoPlayerBtn"

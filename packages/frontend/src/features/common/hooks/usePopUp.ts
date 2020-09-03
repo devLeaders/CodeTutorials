@@ -1,4 +1,4 @@
-import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useCallback } from "react";
 
 import { setPopUpActive, dismissPopUp } from "../../../config/redux/popups/popUpsActions";
