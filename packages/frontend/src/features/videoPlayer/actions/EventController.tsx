@@ -6,7 +6,7 @@ import {setTime, changeState } from "../../../config/redux/videoPlayer/actions";
 import { playPauseVideo } from "../actions/videoPlayerActions";
 import { refsStore } from "../refs.store";
 import { getMovieState } from "../actions/ReduxActions"
-import { ButtonTypes } from "../enums";
+import { ButtonTypes, Keys } from "../enums";
 
 
 
@@ -97,7 +97,7 @@ export const useVideoPlayerActions = (videoRef: any, small?: string) => {
     const handleKeyDown = useCallback((e: KeyboardEvent) => {
         let reduxAction;
         const key = e.keyCode
-        if (key === 32 || key === 37 || key === 39) {
+        if (key === Keys.SPACE || key === Keys.LEFT || key === Keys.RIGHT) {
             reduxAction = () => changeState(ButtonTypes.PLAY)
         }
         handleVideoShortcuts(e, reduxAction, videoState)
