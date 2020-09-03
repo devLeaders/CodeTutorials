@@ -24,8 +24,15 @@ interface ScreenHederMoviesP {
 
 export default class ScreenHederMovies extends React.Component <ScreenHederMoviesP, any>{
   static navigationOptions = {
-    headerShown: false,
-};
+      headerShown: false,
+  };
+
+  onPressPlay = ()=>{
+    this.props.navigation.navigate(NavigationName.VIDEOPLAYER,{
+      playerType:'YOUTUBE',
+      videoId:6
+    })
+  }
 
   render() {
     return (
@@ -40,8 +47,7 @@ export default class ScreenHederMovies extends React.Component <ScreenHederMovie
           />
           <BigHeaderButton 
                 text="Odtwórz"
-                navigation={this.props.navigation}
-                goto={NavigationName.HOME}
+                onPress={this.onPressPlay}
                 image="play"
           />
           <SmallHeaderButton 
