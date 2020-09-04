@@ -102,7 +102,6 @@ export class NotificationsService {
 
   async saveToken(user: UserEntity, firebaseToken?: string, hmsToken?: string) {
     const tokens = await this.findUserTokens(user);
-    console.log(tokens)
 
     if (tokens) {
       if (
