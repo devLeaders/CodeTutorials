@@ -31,7 +31,7 @@ const T3 = styled.TouchableOpacity({
 const ButtonOpacity = styled.TouchableOpacity`
 `;
 
-export interface AnotherSingInMethodsProps {
+interface AnotherSingInMethodsProps {
   src1: string;
   src2: string;
   src3: string;

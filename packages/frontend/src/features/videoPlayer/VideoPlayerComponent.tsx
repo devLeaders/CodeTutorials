@@ -12,7 +12,7 @@ import { Device } from "../common/styles/constans/Device"
 
 
 const VideoPlayerContainer = styled.div<{ minimized: boolean, small: string | undefined }>`
-  display: ${props => !props.small || props.small && props.minimized ? "block" : "none"};
+  display: ${props => !props.small || (props.small && props.minimized) ? "block" : "none"};
   position: ${props => props.minimized && props.small ? "fixed" : "relative"};
   right: ${props => props.minimized && props.small ? "0" : "0"};
   bottom: ${props => props.minimized && props.small ? "0" : "0"};

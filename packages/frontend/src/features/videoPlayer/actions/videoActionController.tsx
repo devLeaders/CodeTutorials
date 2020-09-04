@@ -1,5 +1,5 @@
 import { refsStore } from "../refs.store";
-import { ButtonTypes } from "../enums";
+import { ButtonTypes, Keys } from "../enums";
 import {
   playPauseVideo,
   videoResize,
@@ -9,8 +9,6 @@ import {
   changeState,
   setIsFullscreen,
   setTime,
-  playPauseSmall,
-  playPause,
 } from "../../../config/redux/videoPlayer/actions";
 import { MouseEvent } from "react";
 import { RootStateOrAny } from "react-redux";
@@ -45,7 +43,7 @@ export const runVideoAction = (
     }
   }
 
-  if (buttonType != ButtonTypes.FULLSCREEN) {
+  if (buttonType !== ButtonTypes.FULLSCREEN) {
     changeState(buttonType, small);
   }
 };
@@ -89,23 +87,23 @@ export const handleVideoShortcuts = (
   const video = refsStore.Refs[0].current;
   const timeToEnd = video.duration - video.currentTime;
   const key = e.keyCode;
-  if (key == 32) {
+  if (key === Keys.SPACE) {
     e.preventDefault();
     reduxAction();
     playPauseVideo(video, videoState.isPaused);
-  } else if (key == 37 || key == 39) {
+  } else if (key === Keys.LEFT || key === Keys.RIGHT) {
     const timeSkip = 5;
-    if (key == 39 && timeToEnd > timeSkip) {
+    if (key === Keys.RIGHT && timeToEnd > timeSkip) {
       e.preventDefault();
       if (videoState.isPaused) {
         reduxAction();
         playPauseVideo(video, videoState);
       }
       rewindVideoTime(video, timeSkip);
-    } else if (key == 37) {
+    } else if (key === Keys.LEFT) {
       rewindVideoTime(video, -timeSkip);
     }
-  } else if (key == 27) {
+  } else if (key === Keys.ESC) {
     // reduxAction()
   }
 };

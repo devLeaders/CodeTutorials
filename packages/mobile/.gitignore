@@ -65,3 +65,5 @@ buck-out/
 
 package-lock.json
 android/keystore.properties
+env.json
+envs/

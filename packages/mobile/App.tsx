@@ -1,9 +1,18 @@
 import React, {Component} from 'react';
-import { AuthStackScreen } from './src/config/routing/AppNavigation';
+
+import DrawerNavigation  from './src/config/routing/DrawerNavigation';
+import Orientation from 'react-native-orientation';
 
 
-export default class App extends Component {
+class App extends Component {
+
+  constructor(props){
+    super(props)
+    Orientation.lockToPortrait();
+  }
+
   render() {
-    return <AuthStackScreen />
+    return <DrawerNavigation />
   }
 }
+export default App 

@@ -1,5 +1,4 @@
 import * as React from "react";
-import {useSelector, RootStateOrAny} from "react-redux"
 import styled from "styled-components";
 
 import { FontSize } from "../../common/styles/constans/FontSize";

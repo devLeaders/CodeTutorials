@@ -41,11 +41,11 @@ const SingleMovieView: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <Header hide={true} />
       <Main>
         <VideoPlayerComponent />
         <VideoTabs />
-        {activeVideoTab == Tabs.DESCRIPTION && (
+        {activeVideoTab === Tabs.DESCRIPTION && (
           <VideoInfo>
             <VideoDescription />
             <Quiz />

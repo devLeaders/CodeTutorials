@@ -7,6 +7,7 @@ export enum Color {
     LIGHTGREY = '#F0F2FA',
     LIGHTGREYX = '#00000029',
     LIGHTGREYXX = '#D9DAE6',
+    GREY = '#474444',
     WHITE = '#ffffff',
     WHITEX = '#00000005',
     PURPLE = 'purple',
