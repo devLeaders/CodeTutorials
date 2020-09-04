@@ -5,11 +5,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ShortVersionDTO, FilterVideoDTO } from './videos.dto';
 import CategoryEntity from './category.entity';
 import * as fs from 'fs';
+import { Cron, CronExpression } from '@nestjs/schedule';
+import { configService } from '../config/config.service';
 
 const shortVersion = Object.keys(new ShortVersionDTO()) as any;
-
-const defaultVideosFolder = "uploads/video/";
-const defaultPhotoFolder = "uploads/photo/";
 
 @Injectable()
 export class VideosService {
@@ -82,12 +81,16 @@ export class VideosService {
 		return await this.videosRepository.findOne(id);
 	}
 
+	@Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
 	async addNewVideoFromFiles(): Promise<VideosEntity[]> {
 		try {
-			if (!fs.existsSync(defaultVideosFolder))
+			const {defaultVideosFolder, defaultPhotosFolder} = configService;
+
+
+			if (!fs.existsSync(defaultVideosFolder()))
 				return;
 
-			const files = fs.readdirSync(defaultVideosFolder).filter(file => file.endsWith(".mp4"));
+			const files = fs.readdirSync(defaultVideosFolder()).filter(file => file.endsWith(".mp4"));
 			if (!files.length)
 				return;
 
@@ -107,8 +110,8 @@ export class VideosService {
 
 				let video = new VideosEntity();
 
-				const fileUrl = defaultVideosFolder + file;
-				const photoUrl = defaultPhotoFolder + file.replace(".mp4", ".jpeg");
+				const fileUrl = defaultVideosFolder() + file;
+				const photoUrl = defaultPhotosFolder() + file.replace(".mp4", ".jpeg");
 				const statFile = fs.statSync(fileUrl);
 
 				video.title = file.substring(0, file.lastIndexOf("."));
