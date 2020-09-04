@@ -326,11 +326,11 @@ PODS:
   - RNCMaskedView (0.1.7):
     - React
   - RNFBApp (8.3.0):
-    - Firebase/CoreOnly (~> 6.28.1)
+    - Firebase/CoreOnly (= 6.28.1)
     - React
   - RNFBMessaging (7.6.1):
-    - Firebase/Analytics (~> 6.28.1)
-    - Firebase/Messaging (~> 6.28.1)
+    - Firebase/Analytics (= 6.28.1)
+    - Firebase/Messaging (= 6.28.1)
     - React
     - RNFBApp
   - RNGestureHandler (1.6.1):
@@ -347,6 +347,7 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
+  - Firebase/Analytics
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
@@ -507,14 +508,14 @@ SPEC CHECKSUMS:
   React-RCTVibration: 4356114dbcba4ce66991096e51a66e61eda51256
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
   RNCMaskedView: 76c40a1d41c3e2535df09246a2b5487f04de0814
-  RNFBApp: d55b3a69d199cff25ecf4f3bf41a86c47aa37d57
-  RNFBMessaging: 3bb7dcf398789ce359a9f6b97b83472a3090f65a
+  RNFBApp: 22d9fd4dce89099fab736d1c36c6d4cc12a2905e
+  RNFBMessaging: 0f1eaae3d82f6d96015f5cf3e2b278edd50ac631
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNReanimated: 955cf4068714003d2f1a6e2bae3fb1118f359aff
   RNScreens: b5c0e1b2b04512919e78bd3898e144a157ce2363
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
 
-PODFILE CHECKSUM: 5704fdc1874d00baf3cd4c5ccea6fde996385ca9
+PODFILE CHECKSUM: 9a7b8dedb39861354d6603744a266e1d6067265f
 
 COCOAPODS: 1.8.4

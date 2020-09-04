@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext,useEffect} from 'react';
 import { View, ScrollView, AsyncStorage, Image, SafeAreaView} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
@@ -19,23 +19,41 @@ import {getVideos} from '@project/common/features/videos/connector';
 import MainScreenHeader from '../components/MainScreen/MainScreenHeader';
 import { NavigationName } from '../../../config/routing/NavigationName';
 import { NavProps } from '../../../config/routing/ParamList';
+import { NotyficationContext } from '../../../../NotificationsStore';
 
 interface MovieListP {
-  navigation: NavProps<NavigationName.MOVIELIST>
+  navigation: any
 }
 
-export class  MoviesList extends React.Component<MovieListP>{
+export const MoviesList = (props:MovieListP) =>{
 
-  async componentDidMount() {
-    const test = await getVideos();
-  }
-  
-  render(){
-    const { navigation } = this.props;
+  const {state, dispatch} = useContext(NotyficationContext)
+ 
+
+  useEffect(()=>{
+    (async function(){
+      const test = await getVideos();
+    })()
+  })
+
+  useEffect(()=>{
+
+    console.log("dupa",state);
+    if(state.type) {
+      switch (state.type) {
+        case 'newMovie' : 
+          props.navigation.navigate(NavigationName.SINGLEMOVIE)
+          break;
+      }
+    }
+
+  },[state])
+ 
+    const { navigation } = props;
     return (
       <SafeAreaView>
         <ScrollView>
-            <MainScreenHeader navigation={this.props.navigation}/>
+            <MainScreenHeader navigation={props.navigation}/>
           <View>
             <SlaiderLarge />
           </View>
@@ -56,7 +74,6 @@ export class  MoviesList extends React.Component<MovieListP>{
         </ScrollView>
       </SafeAreaView>
     );
-  }
 }
 
 export default MoviesList;

@@ -65,7 +65,6 @@ export interface LogInProps {
 class LogIn extends React.Component<LogInProps> {
    onSubmit = (value) => {
        loginSubmit(value,()=>{this.props.navigation.navigate(NavigationName.MENU)})
-
    }
     render() {
         return (

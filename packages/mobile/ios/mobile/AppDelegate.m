@@ -11,11 +11,26 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
+
+#import <UserNotifications/UNUserNotificationCenter.h>
+#import <Firebase.h>
+#import "RNFBMessagingModule.h"
+
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+
 {
+  if ([FIRApp defaultApp] == nil) {
+    [FIRApp configure];
+  }
+  
+  
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+  
+//  NSDictionary *appProperties = [RNFBMessagingModule addCustomPropsToUserProps:nil withLaunchOptions:launchOptions];
+  
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"mobile"
                                             initialProperties:nil];

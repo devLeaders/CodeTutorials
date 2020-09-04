@@ -1,8 +1,6 @@
-import { NavigationName } from '../../../config/routing/NavigationName';
 import * as AuthConnectors from '@project/common/features/auth/connectors'
 import instance from '@project/common/features/config/axios/configAxios';
 import { AsyncStorage } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 const loginSubmit = async (value: any, callback:()=>void) => {
   try {
