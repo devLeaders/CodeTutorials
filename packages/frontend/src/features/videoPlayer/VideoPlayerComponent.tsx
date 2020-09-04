@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 
-import { refsStore } from "./refs.store";
 import Player from "./VideoPlayer";
 import Interface from "./interface";
 import { getMovieState } from "./actions/ReduxActions";
@@ -49,7 +48,7 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
   const videoContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    handleVideoContainerRef(videoContainerRef, props.small)
+    handleVideoContainerRef(videoContainerRef, props.small);
   }, []);
 
   return (

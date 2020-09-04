@@ -4,6 +4,8 @@ import {ScrollView} from 'react-native';
 import SmallHeaderButton from './SmallHeaderButton';
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import BigHeaderButton from './BigHeaderButton';
+import { NavigationHelpers } from '@react-navigation/native';
+import { PlayerType } from '../../../../features/videoPlayer/models/PlayerType';
 
 
 const ButtonsWraper = styled.View`
@@ -20,13 +22,21 @@ const HeaderImage = styled.Image`
 `;
 
 interface MainScreenHeaderProps {
-  navigation: any,
+  navigation: NavigationHelpers<any>,
 }
 
 export default class MainScreenHeader extends React.Component <MainScreenHeaderProps, any>{
   static navigationOptions = {
-    headerShown: false,
-};
+      headerShown: false,
+  };
+
+  onPressPlay = ()=>{
+    this.props.navigation.navigate(NavigationName.VIDEOPLAYER,{
+      playerType: PlayerType.YOUTUBE,
+      videoUrl: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
+      youtubeId:"KVZ-P-ZI6W4"
+    })
+  }
 
   render() {
     return (
@@ -41,9 +51,8 @@ export default class MainScreenHeader extends React.Component <MainScreenHeaderP
           />
           <BigHeaderButton 
                 text="Odtwórz"
-                navigation={this.props.navigation}
-                goto={NavigationName.HOME}
                 image="play"
+                onPress={this.onPressPlay}
           />
           <SmallHeaderButton 
                 text="Informacje"

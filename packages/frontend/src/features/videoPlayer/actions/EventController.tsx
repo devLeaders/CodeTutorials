@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
-import { useSelector, useDispatch, RootStateOrAny } from "react-redux";
+import { useSelector, RootStateOrAny } from "react-redux";
 
 import { runVideoAction, changeVideoTime, handleVideoShortcuts, changeIsFullscreen } from "./videoActionController";
 import { setTime, changeState } from "../../../config/redux/videoPlayer/actions";
 import { playPauseVideo } from "../actions/videoPlayerActions";
 import { getMovieState } from "../actions/ReduxActions";
-import { ButtonTypes } from "../enums";
+import { ButtonTypes, Keys } from "../enums";
 import { refsStore } from "../refs.store";
 
 export enum EType {
@@ -20,38 +20,47 @@ export const useClickHandler = (btnType: string, videoState: boolean, small?: st
   return () => runVideoAction(btnType, videoState, small);
 };
 interface ITimeBar {
-  current: HTMLDivElement | null
+  current: HTMLDivElement | null;
 }
 
 //timeBar Actions
 export const useTimeBarAction = (TimeBarRef: ITimeBar, small: string | undefined) => {
   const [mouseDown, setMouseDown] = useState(false);
-  const handleMouseUpDown = useCallback((e: any) => { 
-    if((TimeBarRef.current || refsStore.VideoRefs[1]) === e.target) {  
-      checkIsMouseDown(e.type);
-    }
-  }, [setMouseDown]);
-
-  const checkIsMouseDown = useCallback((eventType: string) => {
-    if (eventType === EType.MOUSE_DOWN) {
-      setMouseDown(true);
-    } else if (eventType === EType.MOUSE_UP) {
-      setMouseDown(false);
-    }
-  }, [setMouseDown]);
-
-  const handleMouseMoveAndClick = useCallback((e: any) => {
-    if((TimeBarRef.current || refsStore.VideoRefs[1]) === e.target) {
-      if (e.type == EType.MOUSE_CLICK) {
-      changeVideoTime(e, TimeBarRef, small);
-      } else if (e.type == EType.MOUSE_MOVE && mouseDown) {
-      changeVideoTime(e, TimeBarRef, EType.MOUSE_MOVE, small);
+  const handleMouseUpDown = useCallback(
+    (e: any) => {
+      if ((TimeBarRef.current || refsStore.VideoRefs[1]) === e.target) {
+        checkIsMouseDown(e.type);
       }
-    }
-  }, [mouseDown]);
+    },
+    [setMouseDown]
+  );
+
+  const checkIsMouseDown = useCallback(
+    (eventType: string) => {
+      if (eventType === EType.MOUSE_DOWN) {
+        setMouseDown(true);
+      } else if (eventType === EType.MOUSE_UP) {
+        setMouseDown(false);
+      }
+    },
+    [setMouseDown]
+  );
+
+  const handleMouseMoveAndClick = useCallback(
+    (e: any) => {
+      if ((TimeBarRef.current || refsStore.VideoRefs[1]) === e.target) {
+        if (e.type == EType.MOUSE_CLICK) {
+          changeVideoTime(e, TimeBarRef, small);
+        } else if (e.type == EType.MOUSE_MOVE && mouseDown) {
+          changeVideoTime(e, TimeBarRef, EType.MOUSE_MOVE, small);
+        }
+      }
+    },
+    [mouseDown]
+  );
 
   useEffect(() => {
-    window.addEventListener("mousemove",handleMouseMoveAndClick);
+    window.addEventListener("mousemove", handleMouseMoveAndClick);
     window.addEventListener("mouseup", handleMouseUpDown);
     return () => {
       window.removeEventListener("mousemove", handleMouseMoveAndClick);
@@ -76,7 +85,6 @@ export const useVideoPlayerActions = (videoRef: VideoRefType, small?: string) =>
     const video = videoRef;
     const time = video ? (video.currentTime / video.duration) * 100 : 0;
     setTime(time, small);
- 
   }, [videoRef]);
 
   const handleVideoClick = useCallback(() => {
@@ -90,16 +98,19 @@ export const useVideoPlayerActions = (videoRef: VideoRefType, small?: string) =>
     changeIsFullscreen(small);
   }, []);
 
-  const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (videoRef) {
-      let reduxAction;
-      const key = e.keyCode;
-      if (key === 32 || key === 37 || key === 39) {
-        reduxAction = () => changeState(ButtonTypes.PLAY);
-        handleVideoShortcuts(e, reduxAction, videoState);
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (videoRef) {
+        let reduxAction;
+        const key = e.keyCode;
+        if (key === Keys.SPACE || key === Keys.LEFT || key === Keys.RIGHT) {
+          reduxAction = () => changeState(ButtonTypes.PLAY);
+          handleVideoShortcuts(e, reduxAction, videoState);
+        }
       }
-    }
-  }, [videoRef, videoState, handleVideoShortcuts]);
+    },
+    [videoRef, videoState, handleVideoShortcuts]
+  );
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);

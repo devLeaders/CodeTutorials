@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import { useHistory } from "react-router-dom";
 

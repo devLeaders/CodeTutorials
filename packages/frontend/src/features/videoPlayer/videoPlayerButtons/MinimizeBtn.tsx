@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useSelector, RootStateOrAny, useDispatch } from "react-redux"
-import styled from "styled-components";
+import { useSelector } from "react-redux"
 
 import { checkButtonType } from "../actions/checkButtonType "
 import { getMovieState } from "../actions/ReduxActions"

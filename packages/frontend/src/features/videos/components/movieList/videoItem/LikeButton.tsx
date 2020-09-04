@@ -26,10 +26,9 @@ interface LikeButtonProps {
 }
 
 const LikeButton = (props:LikeButtonProps)=> {
-    const image = props.type == "like" ? 
-    <img src={"img/like.svg"} /> : 
-    <img src={"img/dislike.svg"} />;
-
+    const image = props.type === "like" ? 
+    <img src={"img/like.svg"} alt={`${props.type} button`}/> : 
+    <img src={"img/dislike.svg"} alt={`${props.type} button`}/>;
     return (
       <Wrapper>
           {image}

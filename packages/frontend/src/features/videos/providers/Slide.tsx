@@ -21,11 +21,20 @@ export interface RenderProps {
   margin: number;
 }
 
+export interface CustomMouseEvent {
+  target: {
+    name?: string
+  } 
+}
+
+
 class Slide extends React.Component<SlideProps, SlideState> {
   state = {
     videoPosition: 0,
     margin: 0,
   };
+
+  private isAnimating: boolean = false;
 
   private handleResize = () => {
     const { gsapMovies, videoWrapperRef } = this.props;
@@ -36,7 +45,7 @@ class Slide extends React.Component<SlideProps, SlideState> {
     this.setState({ margin });
     TweenLite.to(gsapMovies, 0, {
       x: 0,
-      ease: Power3.easeOut,
+      ease: Power3.easeInOut,
     });
   };
 
@@ -45,16 +54,24 @@ class Slide extends React.Component<SlideProps, SlideState> {
     move: number,
     time: number
   ) => {
-    TweenLite.to(elements, time, {
-      x: "+=" + move,
-      ease: Power3.easeOut,
-    });
-    this.setState((prevState: SlideState) => {
-      return { videoPosition: prevState.videoPosition + move };
-    });
+    if (!this.isAnimating) {
+      TweenLite.to(elements, time, {
+        x: "+=" + move,
+        ease: Power3.easeOut,
+        onStart: () => {
+          this.isAnimating = true;
+        },
+        onComplete: () => {
+          this.isAnimating = false;
+        },
+      });
+      this.setState((prevState: SlideState) => {
+        return { videoPosition: prevState.videoPosition + move };
+      });
+    }
   };
 
-  protected handleMove = (e: any) => {
+  protected handleMove = (e: CustomMouseEvent) => {
     const { gsapMovies, videoWrapperRef } = this.props;
     const { margin, videoPosition } = this.state;
     const containerWidth = videoWrapperRef.current.offsetWidth;
@@ -66,26 +83,11 @@ class Slide extends React.Component<SlideProps, SlideState> {
       gsapMovies.length,
       margin
     );
-    let x = e.target.name === Directions.RIGHT ? move : -move;
+    let x = e.target?.name === Directions.RIGHT ? -move : move;
+    
 
-    if (videoPosition >= 0 && e.target.name === Directions.RIGHT) {
-      x = end;
-    } else if (videoPosition <= end && e.target.name === Directions.LEFT) {
-      x = -end;
-    } else if (
-      videoPosition === -lastMove &&
-      e.target.name === Directions.RIGHT &&
-      additionalVideosNum !== 0
-    ) {
-      x = lastMove;
-    } else if (
-      videoPosition === end + lastMove &&
-      e.target.name === Directions.LEFT &&
-      additionalVideosNum !== 0
-    ) {
-      x = -lastMove;
-    }
-    let time = Math.abs(x) === Math.abs(end) ? 0.8 : 0.6;
+    x = calcMove(e.target?.name, videoPosition, lastMove, end, additionalVideosNum !== 0, x)
+    let time = Math.abs(x) === Math.abs(end) ? 1 : 0.6;
 
     this.animate(gsapMovies, x, time);
   };
@@ -115,3 +117,35 @@ class Slide extends React.Component<SlideProps, SlideState> {
 }
 
 export default Slide;
+
+
+const calcMove = (
+  direction: string | undefined,
+  videoPosition: number,
+  lastMove: number,
+  end: number,
+  hasAddidionalvideos: boolean,
+  x: number
+) => {
+  if (videoPosition >= -100 && direction === Directions.LEFT) {
+    x = end;
+  } else if (videoPosition <= end + 100 && direction === Directions.RIGHT) {
+    x = -end;
+  } else if (
+    videoPosition >= -lastMove - 100 &&
+    videoPosition <= -lastMove + 100 &&
+    direction === Directions.LEFT &&
+    hasAddidionalvideos
+  ) {
+    x = lastMove;
+  } else if (
+    videoPosition >= end + lastMove - 100 &&
+    videoPosition <= end + lastMove + 100 &&
+    direction === Directions.RIGHT &&
+    hasAddidionalvideos
+  ) {
+    x = -lastMove;
+  }
+
+  return x;
+};

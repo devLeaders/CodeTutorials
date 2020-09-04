@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { View, ScrollView, AsyncStorage, Image, SafeAreaView} from 'react-native';
+import { View, ScrollView, Image, SafeAreaView} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
 import {  
@@ -19,9 +20,10 @@ import {getVideos} from '@project/common/features/videos/connector';
 import MainScreenHeader from '../components/MainScreen/MainScreenHeader';
 import { NavigationName } from '../../../config/routing/NavigationName';
 import { NavProps } from '../../../config/routing/ParamList';
+import { NavigationHelpers } from '@react-navigation/native';
 
 interface MovieListP {
-  navigation: NavProps<NavigationName.MOVIELIST>
+  navigation: NavigationHelpers<any>
 }
 
 export class  MoviesList extends React.Component<MovieListP>{
