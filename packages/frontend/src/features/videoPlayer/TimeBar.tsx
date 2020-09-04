@@ -41,7 +41,7 @@ interface TimeBarProps {
 
 const TimeBar: React.SFC<TimeBarProps> = (props) => {
   const { small } = props
-  const TimeBarRef: any = useRef()
+  const TimeBarRef = useRef<HTMLDivElement>(null)
   const videoTime = useSelector(state => getMovieState(state).videoTime)
   const smallVideoTime = useSelector(state => getMovieState(state).smallVideoTime)
   const newTime = small ? smallVideoTime + "%" : videoTime + "%";
