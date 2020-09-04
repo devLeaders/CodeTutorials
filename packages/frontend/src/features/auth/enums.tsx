@@ -18,5 +18,5 @@ export enum ErrorMessages {
   SAME_PASSWORD = "Hasła muszą być takie same",
   DUPLICATE_EMAIL = "Email jest już w użytku",
   SERVER_CRUSHED = "Problem z serwerem",
-  ACCOUNT_NOT_FOUND = "Konto nie istnieje",
+  ACCOUNT_NOT_FOUND = "Nieprawidłowe dane logowania",
 }

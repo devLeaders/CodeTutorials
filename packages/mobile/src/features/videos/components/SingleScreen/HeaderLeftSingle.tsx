@@ -1,20 +1,16 @@
 import * as React from 'react';
 import {BackButton, BackArrowImage} from './SingleMovieStyle2';
 import { NavigationName } from '../../../../config/routing/NavigationName';
+import { useNavigation } from '@react-navigation/native';
 
-interface Navi {
-  navigation: any;
-}
+const HeaderLeftSingle = () => {
+  const navigation = useNavigation();
+  const navToHome = () => navigation.goBack();
 
-export class HeaderLeftSingle extends React.Component<Navi> {
-
-  public navToHome = () => this.props.navigation.navigate(NavigationName.MOVIELIST)
-
-  render() {
-    return (
-      <BackButton onPress={this.navToHome}>
+  return (
+      <BackButton onPress={navToHome}>
         <BackArrowImage source={{uri: 'back_arrow'}} />
       </BackButton>
     );
-  }
 }
+export default HeaderLeftSingle
