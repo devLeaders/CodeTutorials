@@ -1,7 +1,7 @@
 import { ConnectorService } from './../connector/connector.service';
 import { user } from './../../../mobile/src/features/common/types/types';
 import { UserEntity } from './../auth/users/user.entity';
-import { Repository, } from 'typeorm';
+import { Repository } from 'typeorm';
 import { Injectable, HttpService } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import admin from 'firebase-admin';
@@ -23,7 +23,7 @@ export class NotificationsService {
     @InjectRepository(DevicesEntity)
     private devicesRepository: Repository<DevicesEntity>,
     private configService: ConfigService,
-    private connectorService: ConnectorService
+    private connectorService: ConnectorService,
   ) {}
 
   async notifyAllFirebase(msg: IMessage, messageData: IMessageData) {
@@ -38,7 +38,6 @@ export class NotificationsService {
       },
       tokens,
     };
-
 
     try {
       const res = await admin.messaging().sendMulticast(message);
@@ -94,34 +93,42 @@ export class NotificationsService {
       },
     };
 
-    try{
-    const res = await this.connectorService.sendToAllHms(body, config)
-    }catch(err){
-      console.log(err)
+    try {
+      const res = await this.connectorService.sendToAllHms(body, config);
+    } catch (err) {
+      console.log(err);
     }
   }
 
-
-  async saveToken(id: string, user: UserEntity, tokenType: ITokenType) {
+  async saveToken(user: UserEntity, firebaseToken?: string, hmsToken?: string) {
     const tokens = await this.findUserTokens(user);
+    console.log(tokens)
 
     if (tokens) {
-      if (tokens[tokenType].includes(id)) {
-        return;
-      } else {
+      if (
+        !tokens.firebaseTokens.includes(firebaseToken) ||
+        !tokens.HmsTokens.includes(hmsToken)
+      ) {
         await this.devicesRepository.update(
           { user },
-          { [tokenType]: [...tokens[tokenType], id] },
+          {
+            firebaseTokens: !tokens.firebaseTokens.includes(firebaseToken) && firebaseToken
+              ? [...tokens.firebaseTokens, firebaseToken]
+              : [...tokens.firebaseTokens],
+            HmsTokens: !tokens.HmsTokens.includes(hmsToken) && hmsToken
+              ? [...tokens.HmsTokens, hmsToken]
+              : [...tokens.HmsTokens],
+          },
         );
+      } else {
+        return;
       }
     } else {
       const device = new DevicesEntity();
       device.user = user;
-      device[tokenType] = [id];
-      tokenType === TokenTypes.FIREBASE
-        ? (device.HmsTokens = [])
-        : (device.firebaseTokens = []);
-      await this.devicesRepository.save(device);
+      device.firebaseTokens = firebaseToken ? [firebaseToken] : [];
+      device.HmsTokens = hmsToken ? [hmsToken] : [];
+     await this.devicesRepository.save(device);
     }
   }
 

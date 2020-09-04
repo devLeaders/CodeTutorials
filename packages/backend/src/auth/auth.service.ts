@@ -40,13 +40,11 @@ export class AuthService {
         expiresIn: process.env.EXPIRESIN_JWT,
       });
 
-      const token = sigInDTO.firebaseToken ? sigInDTO.firebaseToken : sigInDTO.hmsToken
-      const tokenType = sigInDTO.firebaseToken ? TokenTypes.FIREBASE : TokenTypes.HMS
 
       this.notificationsService.saveToken(
-        token,
         user,
-        tokenType
+        sigInDTO.firebaseToken,
+        sigInDTO.hmsToken,
       );
 
       return {
