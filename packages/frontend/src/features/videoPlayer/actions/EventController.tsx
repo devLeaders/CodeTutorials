@@ -49,14 +49,14 @@ export const useTimeBarAction = (TimeBarRef: ITimeBar, small: string | undefined
   const handleMouseMoveAndClick = useCallback(
     (e: any) => {
       if ((TimeBarRef.current || refsStore.VideoRefs[1]) === e.target) {
-        if (e.type == EType.MOUSE_CLICK) {
+        if (e.type === EType.MOUSE_CLICK) {
           changeVideoTime(e, TimeBarRef, small);
-        } else if (e.type == EType.MOUSE_MOVE && mouseDown) {
+        } else if (e.type === EType.MOUSE_MOVE && mouseDown) {
           changeVideoTime(e, TimeBarRef, EType.MOUSE_MOVE, small);
         }
       }
     },
-    [mouseDown]
+    [mouseDown, small, TimeBarRef]
   );
 
   useEffect(() => {
@@ -85,18 +85,18 @@ export const useVideoPlayerActions = (videoRef: VideoRefType, small?: string) =>
     const video = videoRef;
     const time = video ? (video.currentTime / video.duration) * 100 : 0;
     setTime(time, small);
-  }, [videoRef]);
+  }, [videoRef, small]);
 
   const handleVideoClick = useCallback(() => {
     if (videoRef) {
       changeState(ButtonTypes.PLAY, small);
       playPauseVideo(videoRef, paused);
     }
-  }, [videoRef, paused]);
+  }, [videoRef, paused, small]);
 
   const handleFullscreenChange = useCallback(() => {
     changeIsFullscreen(small);
-  }, []);
+  }, [small]);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {

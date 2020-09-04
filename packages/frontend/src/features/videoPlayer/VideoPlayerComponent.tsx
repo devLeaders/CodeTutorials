@@ -49,7 +49,7 @@ const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
 
   useEffect(() => {
     handleVideoContainerRef(videoContainerRef, props.small);
-  }, []);
+  }, [props.small]);
 
   return (
     <VideoPlayerContainer small={props.small} ref={videoContainerRef} minimized={isMinimized}>
