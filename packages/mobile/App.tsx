@@ -1,7 +1,7 @@
 import React, {Component, useReducer} from 'react';
 
 import DrawerNavigation  from './src/config/routing/DrawerNavigation';
-import { NotificationStore } from './NotificationsStore';
+import { NotificationStore } from './src/features/notifications/NotificationsStore';
 
 class App extends Component {
   

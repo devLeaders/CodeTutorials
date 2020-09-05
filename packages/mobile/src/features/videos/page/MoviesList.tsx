@@ -18,8 +18,8 @@ import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
 import {getVideos} from '@project/common/features/videos/connector';
 import MainScreenHeader from '../components/MainScreen/MainScreenHeader';
 import { NavigationName } from '../../../config/routing/NavigationName';
-import { NavProps } from '../../../config/routing/ParamList';
-import { NotyficationContext } from '../../../../NotificationsStore';
+import { NotyficationContext } from '../../notifications/NotificationsStore';
+import { NotificatonType } from '../../../features/notifications/NotificationEnum';
 
 interface MovieListP {
   navigation: any
@@ -29,7 +29,6 @@ export const MoviesList = (props:MovieListP) =>{
 
   const {state, dispatch} = useContext(NotyficationContext)
  
-
   useEffect(()=>{
     (async function(){
       const test = await getVideos();
@@ -37,20 +36,20 @@ export const MoviesList = (props:MovieListP) =>{
   })
 
   useEffect(()=>{
-
-    console.log("dupa",state);
     if(state.type) {
       switch (state.type) {
-        case 'newMovie' : 
-          props.navigation.navigate(NavigationName.SINGLEMOVIE)
+        case NotificatonType.NEW_VIDEO :
+          props.navigation.navigate(NavigationName.SINGLEMOVIE,
+            {movieId: state.data.id})
+          break;
+        case NotificatonType.NEW_PLAYLIST :
+          props.navigation.navigate(NavigationName.MOVIELIST)
           break;
       }
     }
-
   },[state])
- 
-    const { navigation } = props;
-    return (
+
+  return (
       <SafeAreaView>
         <ScrollView>
             <MainScreenHeader navigation={props.navigation}/>

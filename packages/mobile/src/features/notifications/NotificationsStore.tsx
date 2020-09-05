@@ -1,23 +1,33 @@
 import { useReducer } from "react";
 import React from "react";
+import { DataNotifi } from "./NotificationType";
+import { ContextType } from "./NotificationEnum";
 
-export const NotyficationContext = React.createContext({
+interface NotyficationContextType {
+  state : {
+    type : string,
+    data : DataNotifi,
+  },
+  dispatch: (action: object) => void
+}
+
+export const NotyficationContext = React.createContext<NotyficationContextType> ({
     state:{
-        type:{},
-        data:{}
+        type: '',
+        data:{
+            id:''
+        }
     },
     dispatch:(action)=>{}
 });
 
 const reducer = (state, action) => {
-    console.log('state', state)
-    console.log('action', action)
   switch (action.type) {
-    case 'ADD_MSG' :
+    case ContextType.ADD_MSG :
       return {
         ...state,
         type : action.payload.notificationType,
-        date : action.payload.data
+        data : action.payload.data
       }
   }
   return state
