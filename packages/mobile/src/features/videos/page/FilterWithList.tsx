@@ -19,6 +19,7 @@ const ListOfMovies = styled.ScrollView({
 interface FilterWithListProps {
   navigation: any,
   serachitem: string,
+  searchedMovie: string,
   onSubmitSearch(): void;
 }
 
@@ -30,22 +31,9 @@ export default class FilterWithList extends React.Component <FilterWithListProps
       movieList : false,
       searchedMovie: "Docker podstawy",
     };
-
-    this.showList = this.showList.bind(this);
   }
 
-  showList() {
-    if (this.state.movieList) {
-      this.setState({movieList:false});
-    }else {
-      this.setState({movieList: true});      
-    }
-  }
-
-  static navigationOptions = {
-    headerShown: false,
-};
-
+  showList = () => {this.setState({movieList: !this.state.movieList})};
 
 render() {
   return ( 
@@ -55,12 +43,10 @@ render() {
         serachitem={this.state.searchedMovie}
         onSubmitSearch={() => this.props.navigation.navigate(NavigationName.HOME)}
         />
-
       <ListOfMovies 
-        showsVerticalScrollIndicator={false}
-      >
+        showsVerticalScrollIndicator={false}>
         <Text>Results</Text>
-        <SlaiderNormal></SlaiderNormal>
+        <SlaiderNormal/>
       </ListOfMovies>
     </Wrapper>
   )};

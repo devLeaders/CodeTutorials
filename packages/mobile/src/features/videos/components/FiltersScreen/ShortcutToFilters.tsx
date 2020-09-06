@@ -50,9 +50,8 @@ const SearchbarWrapper = styled.View({
 });
 
 const InputText = styled.TextInput({
-  width: 138,
+  flex: 1,
   fontSize: FontSize.SMALLXXS,
-  lineHeight: 15,
   marginLeft: 13,
   fontWeight: FontWeight.REGULAR,
   fontFamily: FontFamily.GLOBAL_MONT,
@@ -107,7 +106,6 @@ const FilersButtonWrapper = styled.View`
     flex-direction: row;
 `;
 
-
 interface ShortcutToFiltersProps {
   navigation: any,
   serachitem: string,
@@ -122,16 +120,9 @@ export default class ShortcutToFilters extends React.Component <ShortcutToFilter
       eyeButton : false,
     };
 
-    this.showEye = this.showEye.bind(this);
   }
 
-  showEye() {
-    if (this.state.eyeButton) {
-      this.setState({eyeButton:false});
-    }else {
-      this.setState({eyeButton: true});      
-    }
-  }
+  showEye = () => this.setState({eyeButton: !this.state.eyeButton});
 
   static navigationOptions = {
     headerShown: false,
