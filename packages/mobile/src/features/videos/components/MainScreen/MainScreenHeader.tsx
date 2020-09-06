@@ -37,6 +37,7 @@ export default class MainScreenHeader extends React.Component <MainScreenHeaderP
       youtubeId:"KVZ-P-ZI6W4"
     })
   }
+  
 
   render() {
     return (
@@ -46,7 +47,7 @@ export default class MainScreenHeader extends React.Component <MainScreenHeaderP
           <SmallHeaderButton 
                 text="PlayLista"
                 navigation={this.props.navigation}
-                goto={NavigationName.HOME}
+                goto={NavigationName.MENU}
                 image="plus"
           />
           <BigHeaderButton 
@@ -57,7 +58,7 @@ export default class MainScreenHeader extends React.Component <MainScreenHeaderP
           <SmallHeaderButton 
                 text="Informacje"
                 navigation={this.props.navigation}
-                goto={NavigationName.HOME}
+                goto={NavigationName.MENU}
                 image="info"
           />
         </ButtonsWraper>

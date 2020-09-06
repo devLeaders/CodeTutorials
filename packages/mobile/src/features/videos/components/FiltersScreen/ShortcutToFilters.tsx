@@ -12,16 +12,8 @@ import { TextInput } from 'react-native';
 const Wrapper = styled.ScrollView({
   flexGrow: 1,
   backgroundColor: Color.WHITE,
-  shadowColor: Color.LIGHTGREYX,
-    shadowOffset: {
-        width: 1,
-        height: 1,
-    },
-    shadowOpacity: "1",
-    shadowRadius: 2,
-    elevation: "5",
-    flex: 1,
-    flexDirection: 'column',
+  flex: 1,
+  flexDirection: 'column',
 });
 
 const TitleEyeAndXWrapper = styled.View`
@@ -56,16 +48,14 @@ const SearchbarWrapper = styled.View({
   elevation: "3",
 });
 
-
-const InputText = styled.TextInput`
-  font-family: ${FontFamily.GLOBAL_MONT};
-  width: 138px;
-  font-size: ${FontSize.SMALLXXS};
-  margin-left: 13px;
-  font-weight: ${FontWeight.REGULAR};
-  color: ${Color.BLACK};
-`;
-
+const InputText = styled.TextInput({
+  flex: 1,
+  fontSize: FontSize.SMALLXXS,
+  marginLeft: 13,
+  fontWeight: FontWeight.REGULAR,
+  fontFamily: FontFamily.GLOBAL_MONT,
+  color: Color.BLACK,
+});
 
 const SearchButton = styled.TouchableOpacity({
   backgroundColor: Color.WHITE,
@@ -115,7 +105,6 @@ const FilersButtonWrapper = styled.View`
     flex-direction: row;
 `;
 
-
 interface ShortcutToFiltersProps {
   navigation: any,
   serachitem: string,
@@ -130,16 +119,9 @@ export default class ShortcutToFilters extends React.Component <ShortcutToFilter
       eyeButton : false,
     };
 
-    this.showEye = this.showEye.bind(this);
   }
 
-  showEye() {
-    if (this.state.eyeButton) {
-      this.setState({eyeButton:false});
-    }else {
-      this.setState({eyeButton: true});      
-    }
-  }
+  showEye = () => this.setState({eyeButton: !this.state.eyeButton});
 
   static navigationOptions = {
     headerShown: false,

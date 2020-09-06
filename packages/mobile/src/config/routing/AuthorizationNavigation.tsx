@@ -1,13 +1,12 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationName } from './NavigationName';
-
 import SignInScreen from '../../features/auth/page/SignInScrren';
 import SignUpScreen from '../../features/auth/page/SingUpScrenn';
 import { NavOption } from '../../features/common/components/NavOption';
 import TabNavigation from './BottomNavigation/TabNavigation';
 import SingleMovie from '../../features/videos/page/SingleMovie';
-import { VideoPlayerScreen } from '../../features/videoPlayer/page/VideoPlayerScreen'
+import { VideoPlayerScreen } from '../../features/videoPlayer/page/VideoPlayerScreen';
 
 const AuthStack = createStackNavigator();
 
@@ -21,4 +20,5 @@ const AuthorizationNavigation = (navigation) => (
     </AuthStack.Navigator>
 )
 
-export default AuthorizationNavigation
+export default AuthorizationNavigation;
+
