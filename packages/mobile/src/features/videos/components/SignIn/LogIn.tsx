@@ -4,15 +4,15 @@ import {
     ActivityIndicator,
     TouchableOpacity,
     Text,
-    AsyncStorage,
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { Formik } from 'formik';
 import validationSchema from '../SignIn/validationSchema';
 import SignInInput from './SignInInput';
 import styled from 'styled-components/native';
 import {FontSize} from '../../../common/styles/constans/FontSize';
 import {Color} from '../../../common/styles/constans/Color';
-import Axios from '../../../../config/axios/AxiosConfig';
+import {signIn} from '@project/common/features/auth/connectors';
 //import {AsyncStorage} from 'react-native';
 
 import { NavigationName } from '../../../../config/routing/NavigationName';
@@ -68,20 +68,18 @@ class LogIn extends React.Component<LogInProps> {
     loginSubmit = async (value: any, action: any) => {
         console.log(value);
 
-        const dataResponse = await Axios.post('/auth/signin', {
-            "email": `${value.email}`,
-            "password": `${value.password}`
-             })
-             console.log(dataResponse);
+        const dataResponse = await signIn({
+                                email:value.email,
+                                password:value.password
+                            });
 
-            const token = dataResponse.data.token;
-            console.log(token);
-            AsyncStorage.setItem('token', token);
+        const token = dataResponse.data.token;
+        AsyncStorage.setItem('token', token);
 
-            //Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        //Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             
-            //zabezpieczyc wywolanie po nieodpowiednim statusie, 
-            this.props.navigation.navigate(NavigationName.MOVIELIST);
+        //zabezpieczyc wywolanie po nieodpowiednim statusie, 
+         this.props.navigation.navigate(NavigationName.MOVIELIST);
     }
 
     render() {

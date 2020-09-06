@@ -11,6 +11,7 @@ const Button = styled.button`
   margin: 0;
   top: 50%;
   transform: translateY(-50%);
+  transition: 0.1s ease;
   right: 1px;
   z-index: 2;
   opacity: 0.2;

@@ -41,7 +41,7 @@ render() {
       <ShortcutToFilters 
         navigation={this.props.navigation}
         serachitem={this.state.searchedMovie}
-        onSubmitSearch={() => this.props.navigation.navigate(NavigationName.HOME)}
+        onSubmitSearch={() => this.props.navigation.navigate(NavigationName.MENU)}
         />
       <ListOfMovies 
         showsVerticalScrollIndicator={false}>

@@ -7,8 +7,7 @@ import { Color } from '../../../../features/common/styles/constans/Color';
 import BlackFilterButtonInShorcut from './BlackFilterButtonInShortcut';
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import XButton from './XButton';
-import {MyText} from '../../../common/styles/MyText';
-;
+import { TextInput } from 'react-native';
 
 const Wrapper = styled.ScrollView({
   flexGrow: 1,

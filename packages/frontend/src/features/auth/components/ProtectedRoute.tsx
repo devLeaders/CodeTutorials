@@ -1,29 +1,19 @@
-import React, { Component } from "react";
+import React, { Component, ReactType, useCallback } from "react";
 import { Route, Redirect } from "react-router-dom";
-import { loginSubmit } from "../action/authAction"
-import {Navigation} from '../../../config/routing/NavigationPath'
+import { Navigation } from "../../../config/routing/NavigationPath";
+interface ProtectedProps {
+  component: ReactType;
+  path?: string;
+  exact?: boolean;
+}
 
-export const ProtectedRoute = ({ component: Component, ...rest }:any) => {
-    const checkToken = localStorage.getItem('token')
-    return (
-      <Route
-        {...rest}
-        render={props => {
-          if (checkToken) {
-            return <Component {...props} />;
-          } else {
-            return (
-              <Redirect
-                to={{
-                    pathname: Navigation.LOGIN,
-                    state: {
-                    from: props.location
-                  }
-                }}
-              />
-            );
-          }
-        }}
-      />
-    );
-  };
+const ProtectedRoute = ({ component: Component, ...rest }: ProtectedProps) => {
+  const handleTokenCheck = useCallback(() => {
+    const token = sessionStorage.getItem("token");
+    if (token) return <Component />;
+    else return <Redirect to={Navigation.LOGIN} />;
+  }, [rest]);
+
+  return <Route {...rest} render={handleTokenCheck} />;
+};
+export default ProtectedRoute;

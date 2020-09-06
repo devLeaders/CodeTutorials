@@ -4,48 +4,47 @@ import {
     ActivityIndicator,
     TouchableOpacity,
     Text,
-    AsyncStorage,
+    View,
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { Formik } from 'formik';
 import validationSchema from '../../action/validationSchema';
 import SignInInput from './SignInInput';
 import styled from 'styled-components/native';
 import {FontSize} from '../../../common/styles/constans/FontSize';
 import {Color} from '../../../common/styles/constans/Color';
-import Axios from '../../../../config/axios/AxiosConfig';
 //import {AsyncStorage} from 'react-native';
 
 import { NavigationName } from '../../../../config/routing/NavigationName';
 
 
 const Btn = styled.TouchableOpacity`
-  align-self: center;
-  flex-direction: row;
+
   justify-content: center;
   align-items: center;
   height: 60px;
-  background-color: #9F8DF0;;
+  background-color: ${Color.DARKGREY};
   border-radius: 40px;
-  width: 80%;
   margin-top: 15px;
+  width:250px
 `;
 
 const SignInTxt = styled.Text`
   font-size: 18px;
   color: white;
+  margin-right: 10px
 `;
 
 const Img = styled.Image`
-  position: absolute;
-  right: 5%;
   height: 30px;
   width: 34px;
+  right: 0;
 `;
 
 const ForgotText = styled.Text({
     marginBottom: 10, 
     marginTop: 10,
-    color: Color.LIGHT_PURPLE,
+    color: Color.DARKGREY,
     fontSize: FontSize.MIDPLUS,
     marginRight: 30,
   });
@@ -53,6 +52,12 @@ const ForgotText = styled.Text({
 const ForgotOpacity = styled.TouchableOpacity({
     alignItems: 'flex-end',
   });
+
+const WrapTextImg = styled.View({
+    flexDirection:'row',
+    justifyContent:'center', 
+    alignItems:'center'
+})
   
 export interface LogInProps {
     navigation: any;
@@ -60,7 +65,6 @@ export interface LogInProps {
 
 class LogIn extends React.Component<LogInProps> {
     loginSubmit = async (value: any, action: any) => {
-        console.log(value);
         // const dataResponse = await Axios.post('/auth/signin', {
         //     "email": `${value.email}`,
         //     "password": `${value.password}`
@@ -103,17 +107,21 @@ class LogIn extends React.Component<LogInProps> {
                             />
 
                             <ForgotOpacity>
-                                 <ForgotText>Forgot Password?</ForgotText>
+                                 <ForgotText>Zapomniałeś hasła?</ForgotText>
                             </ForgotOpacity>
 
                             {formikProps.isSubmitting ? (
                             <ActivityIndicator />
                             ) : (
-                                
-                            <Btn onPress={formikProps.handleSubmit}>
-                                <SignInTxt>Zaloguj się</SignInTxt>
-                                <Img source={{uri: 'arrow'}} />
-                            </Btn>
+                               
+                            <View style={{alignItems:'center'}}>
+                                <Btn onPress={formikProps.handleSubmit}>
+                                    <WrapTextImg >
+                                        <SignInTxt>Zaloguj się</SignInTxt>
+                                        <Img source={{uri: 'arrow'}} />
+                                    </WrapTextImg>
+                                </Btn>
+                            </View>
                             
                             )}
                             

@@ -12,8 +12,10 @@ const BtnsSection = styled.section`
   align-items: center;
   height: 100%;
   padding-left: 15px;
+  width: 170px;
   padding-right: 15px;
   border-right: 2px solid ${Colors.BLACK_OPACITY};
+  border-left: 2px solid ${Colors.BLACK_OPACITY};
   @media ${Device.TABLET} {
     width: 220px;
   }

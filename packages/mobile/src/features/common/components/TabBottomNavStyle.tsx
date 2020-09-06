@@ -6,7 +6,8 @@ import { FontWeight } from '../styles/constans/FontWeight';
 
 export const HamburgerIc = styled.Image({
     width:24,
-    height:20
+    height:20,
+    marginBottom: 5
 })
 
 export const TeamIc = styled.Image({
@@ -55,5 +56,5 @@ export const AlertText = styled(MyText)({
 
 export const SearchWIc = styled.Image({
     width:24, 
-    height:24
+    height:24,
 })
