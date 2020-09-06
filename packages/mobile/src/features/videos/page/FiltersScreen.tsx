@@ -10,8 +10,7 @@ import { NavigationName } from '../../../config/routing/NavigationName';
 import XButton from '../components/FiltersScreen/XButton';
 import {MyText} from '../../common/styles/MyText';
 import { View, TouchableOpacity, Text, ScrollView, SafeAreaView} from 'react-native';
-
-;
+import { NavigationHelpers } from '@react-navigation/native';
 
 const Wrapper = styled.ScrollView({
   flexGrow: 1,
@@ -115,7 +114,6 @@ const EyeButton = styled.TouchableOpacity({
 const ImageEye = styled.Image`
     height: 20px;
     width: 20px;
-     
 `;
 
 const TextEye = styled(MyText)`
@@ -143,7 +141,7 @@ const FilersButtonWrapper = styled.View`
 `;
 
 interface FiltersScreenProps {
-  navigation: any,
+  navigation: NavigationHelpers<any>,
   serachitem: string,
   onSubmitSearch(): void;
 }
@@ -167,11 +165,13 @@ export default class FiltersScreen extends React.Component <FiltersScreenProps, 
     }
   }
 
-
   static navigationOptions = {
     headerShown: false,
 };
 
+  onPressSearch = () => {
+    this.props.navigation.navigate(NavigationName.FILTERWITHLIST);
+  }
 
   render() {
     return ( 
@@ -192,7 +192,7 @@ export default class FiltersScreen extends React.Component <FiltersScreenProps, 
                 onChangeText={this.props.onSubmitSearch}                   
                 onEndEditing={this.props.onSubmitSearch}                         
             />
-            <SearchButton>
+            <SearchButton onPress={this.onPressSearch}>
               <ImageSerach source={{uri:'magnifier'}}/>
             </SearchButton>      
         </SearchbarWrapper>

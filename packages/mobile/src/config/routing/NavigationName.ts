@@ -6,6 +6,8 @@ export enum NavigationName {
     VIDEOPLAYER = 'VideoPlayer',
     LOGIN ='LogIn',
     SINGUP = 'SignUpScreen',
+    FILTERWITHLIST = 'FilterWithList',
+
     MENU = 'Menu',
     TEAMS = 'Teams',
     TASKS = 'Tasks',

@@ -7,7 +7,15 @@ import SignUpScreen from '../../features/auth/page/SingUpScrenn';
 import { NavOption } from '../../features/common/components/NavOption';
 import TabNavigation from './BottomNavigation/TabNavigation';
 import SingleMovie from '../../features/videos/page/SingleMovie';
-import { VideoPlayerScreen } from '../../features/videoPlayer/page/VideoPlayerScreen'
+import { VideoPlayerScreen } from '../../features/videoPlayer/page/VideoPlayerScreen';
+
+import HomeScreen from '../../features/videos/page/HomeScreen';
+import MainScreenHeader from '../../features/videos/components/MainScreen/MainScreenHeader';
+import SquareToRenderTemp from '../../features/videos/components/MainScreen/SquareToRenderTemp';
+import MoviesList from '../../features/videos/page/MoviesList';
+import FiltersScreen from '../../features/videos/page/FiltersScreen';
+import ShortcutToFilters from '../../features/videos/components/FiltersScreen/ShortcutToFilters';
+import FilterWithList from '../../features/videos/page/FilterWithList';
 
 const AuthStack = createStackNavigator();
 
@@ -21,4 +29,5 @@ const AuthorizationNavigation = (navigation) => (
     </AuthStack.Navigator>
 )
 
-export default AuthorizationNavigation
+export default AuthorizationNavigation;
+
