@@ -6,6 +6,11 @@ import { fontWeight } from "../../../styles/constans/fontWeight";
 import { Device } from "../../../styles/constans/Device";
 import { Colors } from "../../../styles/constans/Colors";
 
+enum TextTypes  {
+  EMAIL = "email",
+  NAME = "name"
+}
+
 const Wrapper = styled.div`
   width: 100%;
   position: relative;
@@ -85,10 +90,7 @@ interface UserDataProps {
   userPhoto: string;
 }
 
-enum TextTypes  {
-  EMAIL = "email",
-  NAME = "name"
-}
+
 
 const UserData: React.SFC<UserDataProps> = (props) => {
   const { name, email, userType, userPhoto } = props;

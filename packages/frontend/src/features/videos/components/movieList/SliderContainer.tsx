@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 
-import { Colors } from "../../../common/styles/constans/Colors";
 import { Device } from "../../../common/styles/constans/Device";
 import { FontSize } from "../../../common/styles/constans/FontSize";
 import { fontWeight} from "../../../common/styles/constans/fontWeight";

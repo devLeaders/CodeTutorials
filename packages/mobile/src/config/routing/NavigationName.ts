@@ -3,6 +3,7 @@ export enum NavigationName {
     MOVIELIST = 'MovieList',
     SINGLEMOVIE = 'SingleMovie',
     SIGNINSCREEN = 'SigInScreen',
+    VIDEOPLAYER = 'VideoPlayer',
     LOGIN ='LogIn',
     SINGUP = 'SignUpScreen',
     MENU = 'Menu',

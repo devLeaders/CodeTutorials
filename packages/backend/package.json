@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^6.7.2",
+    "@nestjs/config": "^0.5.0",
     "@nestjs/core": "^6.7.2",
     "@nestjs/microservices": "^6.11.5",
     "@nestjs/passport": "^7.1.0",
@@ -39,6 +40,7 @@
     "csurf": "^1.11.0",
     "dotenv": "^8.2.0",
     "fastify-swagger": "^2.5.0",
+    "firebase-admin": "^9.0.0",
     "helmet": "^3.21.3",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
