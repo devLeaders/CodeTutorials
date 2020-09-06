@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { DevicesEntity } from '../../notifications/devices.entity';
 
+
 @Entity('Users')
 @Unique(['email'])
 export class UserEntity extends BaseEntity {
