@@ -1,4 +1,4 @@
 
 export type DataNotifi = {
-    id? : string
+    id? : string,
 }

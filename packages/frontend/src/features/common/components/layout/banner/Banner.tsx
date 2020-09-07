@@ -1,9 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-
 import { Device } from "../../../styles/constans/Device";
-import { Colors } from "../../../styles/constans/Colors";
 import { fontWeight } from "../../../styles/constans/fontWeight";
 import { FontSize } from "../../../styles/constans/FontSize";
 import {Navigation} from "../../../../../config/routing/NavigationPath";

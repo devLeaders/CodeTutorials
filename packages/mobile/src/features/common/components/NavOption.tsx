@@ -4,8 +4,6 @@ import { HeaderLeft } from '../../videos/components/Movies/HeaderLeft';
 import { HeaderRight } from '../../videos/components/Movies/HeaderRight';
 import HeaderLeftSingle from '../../../features/videos/components/SingleScreen/HeaderLeftSingle';
 import { View } from 'react-native';
-import { NavProps } from '../../../config/routing/ParamList';
-import { NavigationName } from '../../../config/routing/NavigationName';
 
 export class NavOption extends React.Component {
     static optionsMovieList = () => {
@@ -37,7 +35,7 @@ export class NavOption extends React.Component {
             },
             headerTransparent: true,
             headerTitle: () => <View />,
-            headerLeft: () => <HeaderLeftSingle navigation={navigation}/>,
+            headerLeft: () => <HeaderLeftSingle/>,
         };
       };
     static optionsTabNavigator = () => {
@@ -95,6 +93,11 @@ export class NavOption extends React.Component {
             headerStyle: {
                 backgroundColor: '#00000000',
             }
+        }
+    }
+    static optionsFilterWithList = () => {
+        return{
+        headerShown : false
         }
     }   
 

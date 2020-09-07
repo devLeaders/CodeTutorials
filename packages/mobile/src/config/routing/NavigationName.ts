@@ -3,8 +3,11 @@ export enum NavigationName {
     MOVIELIST = 'MovieList',
     SINGLEMOVIE = 'SingleMovie',
     SIGNINSCREEN = 'SigInScreen',
+    VIDEOPLAYER = 'VideoPlayer',
     LOGIN ='LogIn',
     SINGUP = 'SignUpScreen',
+    FILTERWITHLIST = 'FilterWithList',
+
     MENU = 'Menu',
     TEAMS = 'Teams',
     TASKS = 'Tasks',

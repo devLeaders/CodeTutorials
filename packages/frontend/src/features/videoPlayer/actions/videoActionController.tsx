@@ -1,31 +1,13 @@
 import { refsStore } from "../refs.store";
-import { ButtonTypes } from "../enums";
-import {
-  playPauseVideo,
-  videoResize,
-  rewindVideoTime,
-} from "./videoPlayerActions";
-import {
-  changeState,
-  setIsFullscreen,
-  setTime,
-  playPauseSmall,
-  playPause,
-} from "../../../config/redux/videoPlayer/actions";
+import { ButtonTypes, Keys } from "../enums";
+import { playPauseVideo, videoResize, rewindVideoTime } from "./videoPlayerActions";
+import { changeState, setIsFullscreen, setTime } from "../../../config/redux/videoPlayer/actions";
 import { MouseEvent } from "react";
 import { RootStateOrAny } from "react-redux";
 
-export const runVideoAction = (
-  buttonType: string,
-  videoState: boolean,
-  small?: string | undefined
-) => {
-  const video = small
-    ? refsStore.RefsSmall[0].current
-    : refsStore.Refs[0].current;
-  const videoContainer = small
-    ? refsStore.RefsSmall[1].current
-    : refsStore.Refs[1].current;
+export const runVideoAction = (buttonType: string, videoState: boolean, small?: string | undefined) => {
+  const video = small ? refsStore.VideoRefs[0] : refsStore.VideoRefs[1];
+  const videoContainer = small ? refsStore.ContainerRefs[0] : refsStore.ContainerRefs[1];
   if (buttonType === ButtonTypes.PLAY) {
     playPauseVideo(video, videoState);
   } else if (buttonType === ButtonTypes.MUTE) {
@@ -37,15 +19,12 @@ export const runVideoAction = (
       playPauseVideo(video, videoState);
     }
 
-    if (!refsStore.RefsSmall[0].current.paused) {
-      playPauseVideo(
-        refsStore.RefsSmall[0].current,
-        refsStore.RefsSmall[0].current.paused
-      );
+    if (!refsStore.VideoRefs[0].paused) {
+      playPauseVideo(refsStore.VideoRefs[0], refsStore?.VideoRefs[0].paused);
     }
   }
 
-  if (buttonType != ButtonTypes.FULLSCREEN) {
+  if (buttonType !== ButtonTypes.FULLSCREEN) {
     changeState(buttonType, small);
   }
 };
@@ -55,62 +34,53 @@ export const changeIsFullscreen = (small?: string) => {
     setIsFullscreen();
   }
 };
+interface IVideoTime {
+  current: HTMLDivElement | null;
+}
 
-export const changeVideoTime = (
-  e: MouseEvent,
-  TimeBarRef: any,
-  type?: string,
-  small?: string | undefined
-) => {
-  //TODO: ogarnąć refsStore.Refs[0].current i RefsSmall[0].current bo nie macie tu penosci ze current nie jest undefined
-  const video = small
-    ? refsStore.RefsSmall[0].current
-    : refsStore.Refs[0].current;
-  const TimeBarWidth = TimeBarRef.current.offsetWidth;
-  //distance from timbar to left window edge
-  const distanceFromLeft =
-    type && TimeBarRef.current.getBoundingClientRect().left;
-
-  const mousePosition = type ? e.clientX : e.nativeEvent.offsetX;
-  const newVideoTime = type
-    ? ((mousePosition - distanceFromLeft) / TimeBarWidth) * video.duration
-    : (mousePosition / TimeBarWidth) * video.duration;
-  video.currentTime = newVideoTime;
-  // setVideoTime(Math.floor((video.currentTime / video.duration) * 100));
-  const time = Math.floor((video.currentTime / video.duration) * 100);
-  setTime(time, small);
+export const changeVideoTime = (e: MouseEvent, TimeBarRef: IVideoTime, type?: string, small?: string | undefined) => {
+  const video = small ? refsStore.VideoRefs[0] : refsStore.VideoRefs[1];
+  if (TimeBarRef.current) {
+    const TimeBarWidth = TimeBarRef.current.offsetWidth;
+    //distance from timbar to left window edge
+    const distanceFromLeft = TimeBarRef.current.getBoundingClientRect().left; //&&type
+    const mousePosition = type ? e.clientX : e.nativeEvent.offsetX;
+    let newVideoTime = type
+      ? ((mousePosition - distanceFromLeft) / TimeBarWidth) * video.duration
+      : (mousePosition / TimeBarWidth) * video.duration;
+    video.currentTime = newVideoTime;
+    // setVideoTime(Math.floor((video.currentTime / video.duration) * 100));
+    const time = Math.floor((video.currentTime / video.duration) * 100);
+    setTime(time, small);
+  }
 };
 
-export const handleVideoShortcuts = (
-  e: KeyboardEvent,
-  reduxAction: any,
-  videoState: RootStateOrAny
-) => {
-  const video = refsStore.Refs[0].current;
-  const timeToEnd = video.duration - video.currentTime;
+export const handleVideoShortcuts = (e: KeyboardEvent, reduxAction: any, videoState: RootStateOrAny) => {
+  const video = refsStore.VideoRefs[1];
+  const timeToEnd = video?.duration - video?.currentTime;
   const key = e.keyCode;
-  if (key == 32) {
+  if (key === Keys.SPACE) {
     e.preventDefault();
     reduxAction();
     playPauseVideo(video, videoState.isPaused);
-  } else if (key == 37 || key == 39) {
+  } else if (key === Keys.LEFT || key === Keys.RIGHT) {
     const timeSkip = 5;
-    if (key == 39 && timeToEnd > timeSkip) {
+    if (key === Keys.RIGHT && timeToEnd > timeSkip) {
       e.preventDefault();
       if (videoState.isPaused) {
         reduxAction();
         playPauseVideo(video, videoState);
       }
       rewindVideoTime(video, timeSkip);
-    } else if (key == 37) {
+    } else if (key === Keys.LEFT) {
       rewindVideoTime(video, -timeSkip);
     }
-  } else if (key == 27) {
+  } else if (key === Keys.ESC) {
     // reduxAction()
   }
 };
 
 export const getVideoDuration = (setVideoDuration: (num: number) => void) => {
-  const video = refsStore.Refs[0].current;
+  const video = refsStore.VideoRefs[1];
   setVideoDuration(video.duration);
 };

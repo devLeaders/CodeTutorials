@@ -1,9 +1,9 @@
 import React, { useReducer } from "react"
-import { reducer } from "./context/ReducerContext"
+import { notificationReducer } from "./context/NotificationReducer"
 import { initialState, NotyficationContext } from "./NotificationsStore"
 
 export const NotificationStoreProvider = (props) => {
-    const [state, dispatch ] = useReducer(reducer, initialState)
+    const [state, dispatch ] = useReducer(notificationReducer, initialState)
     
     return (
           <NotyficationContext.Provider value={{state,dispatch}}>

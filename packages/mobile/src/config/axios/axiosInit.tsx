@@ -1,14 +1,13 @@
 import axios from "axios";
-import {AsyncStorage} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import AxiosInstance from '@project/common/features/config/axios/configAxios';
+import Global from "../../features/common/models/Global";
 
 export async function axiosInit() {
-    AxiosInstance.defaults.baseURL =  "http://192.168.0.129:3300";
-    const token = await AsyncStorage.getItem("token");
-    if(token){
-      AxiosInstance.defaults.headers.Authorization =  `Bearer ${token}`;
-    }
+    AxiosInstance.defaults.baseURL =  Global.env.API_URL;
+    AxiosInstance.defaults.headers.Authorization =  `Bearer ${await AsyncStorage.getItem("token")}`;
+
     AxiosInstance.interceptors.request.use((request)=> {
       return request;
     })

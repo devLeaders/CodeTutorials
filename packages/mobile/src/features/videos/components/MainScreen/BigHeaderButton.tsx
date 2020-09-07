@@ -43,22 +43,17 @@ const ButtonFilter = styled.TouchableOpacity({
 `;
 
 interface BigHeaderButtonProps {
-    navigation: any,
     text: string,
     image: string,
-    goto: any,
-  }
+    onPress:()=>void
+}
 
 export default class BigHeaderButton extends React.Component<BigHeaderButtonProps> {
-    navi = (navigation) => {
-    this.props.navigation.navigate(this.props.goto)
-
-    }
     render(){
         return(
             <TouchableOpacity>
                 <ButtonFilter
-                    onPress={this.navi} > 
+                    onPress={this.props.onPress} > 
                 <ImageButton source={{uri: this.props.image}}/>       
                 <TextButton>{this.props.text}</TextButton>
                 </ButtonFilter>

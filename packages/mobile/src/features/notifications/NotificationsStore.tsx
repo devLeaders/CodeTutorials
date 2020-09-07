@@ -2,21 +2,20 @@ import React from "react";
 import { DataNotifi } from "./NotificationType";
 
 interface NotyficationContextType {
-  state : {
-    type : string,
-    data : DataNotifi,
-  },
-  dispatch: (action: object) => void
+  type : string,
+  data : DataNotifi,
+  token : string
 }
 
-export const initialState = {
+export const initialState : NotyficationContextType = {
   type: '',
   data:{
       id:''
-  }
+  },
+  token : ''
 }
 
-export const NotyficationContext = React.createContext<NotyficationContextType> ({
+export const NotyficationContext = React.createContext ({
     state: initialState,
     dispatch:(action)=>{}
 });

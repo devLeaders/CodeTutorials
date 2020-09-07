@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
     SafeAreaView,
     ActivityIndicator,
     TouchableOpacity,
     Text,
-    AsyncStorage,
     View,
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { Formik } from 'formik';
 import validationSchema from '../../action/validationSchema';
 import SignInInput from './SignInInput';
@@ -15,6 +15,7 @@ import {FontSize} from '../../../common/styles/constans/FontSize';
 import {Color} from '../../../common/styles/constans/Color';
 import loginSubmit from '../../action/singInSubmit';
 import { NavigationName } from '../../../../config/routing/NavigationName';
+import { NotyficationContext } from '../../../../features/notifications/NotificationsStore';
 
 
 const Btn = styled.TouchableOpacity`
@@ -62,16 +63,17 @@ export interface LogInProps {
     navigation: any;
   }
 
-class LogIn extends React.Component<LogInProps> {
-   onSubmit = (value) => {
-       loginSubmit(value,()=>{this.props.navigation.navigate(NavigationName.MENU)})
-   }
-    render() {
-        return (
+const LogIn = (props:LogInProps) => {
+    const { state } = useContext(NotyficationContext)
+
+  const onSubmit = useCallback((value) => {
+       loginSubmit(value, state.token, ()=>{props.navigation.navigate(NavigationName.MENU)})
+   }, [])
+    return (
             <SafeAreaView style={{ marginTop: 20}}>
                 <Formik
                     initialValues={{ email: "", password: ''}}
-                    onSubmit={this.onSubmit}
+                    onSubmit={onSubmit}
                     validationSchema={validationSchema}
                 >
                     {formikProps => (
@@ -119,6 +121,5 @@ class LogIn extends React.Component<LogInProps> {
             </SafeAreaView>
         )
     }
-}
 
 export default LogIn;

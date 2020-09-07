@@ -1,5 +1,6 @@
 import React, {useContext,useEffect} from 'react';
-import { View, ScrollView, AsyncStorage, Image, SafeAreaView} from 'react-native';
+import { View, ScrollView, Image, SafeAreaView} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
 import {  
@@ -12,9 +13,12 @@ import {
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
 import MainScreenHeader from '../components/MainScreen/MainScreenHeader';
 import { useCaseNotification } from '../components/Movies/CaseNotificationForMovies';
+import { NavigationName } from '../../../config/routing/NavigationName';
+import { NavProps } from '../../../config/routing/ParamList';
+import { NavigationHelpers } from '@react-navigation/native';
 
 interface MovieListP {
-  navigation: any
+  navigation: NavigationHelpers<any>
 }
 
 export const MoviesList = (props:MovieListP) =>{

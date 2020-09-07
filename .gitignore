@@ -14,3 +14,6 @@ web-report/
 # macOS
 .DS_Store
 lerna-debug.log
+
+.idea
+.vscode
