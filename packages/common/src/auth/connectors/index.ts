@@ -9,3 +9,6 @@ export function signUp(obj: IUserRequest): AxiosPromise<any> {
 export function signIn(obj: ISingInRequest): AxiosPromise<ISingInResponse> {
   return AxiosInstance.post(`/auth/signin`, obj);
 }
+export function signInGoogle(obj: any): AxiosPromise<any> {
+  return AxiosInstance.post(`auth/google`, obj);
+}

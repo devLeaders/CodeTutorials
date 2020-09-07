@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-
+import { signInGoogle } from "../../action/signInGoogle";
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-const Icon = styled.div<{ imageIcon: string }>`
+const Icon = styled.button<{ imageIcon: string }>`
   width: 50px;
   height: 50px;
   background: ${({ imageIcon }) => `url(${imageIcon})`};
@@ -14,6 +14,7 @@ const Icon = styled.div<{ imageIcon: string }>`
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 50%;
+  border: 0;
   box-shadow: 0px 3px 17px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease 0s;
   cursor: pointer;
@@ -27,7 +28,7 @@ const Icon = styled.div<{ imageIcon: string }>`
 const SocialMedia: React.FC = (props) => {
   return (
     <Wrapper>
-      <Icon imageIcon='img/facebook.svg' />
+      <Icon imageIcon='img/google.svg' onClick={signInGoogle} />
       <Icon imageIcon='img/twitter.svg' />
       <Icon imageIcon='img/instagram.svg' />
     </Wrapper>
