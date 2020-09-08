@@ -10,6 +10,7 @@ import { ConfigModule } from '@nestjs/config';
 import { NotificationsModule } from './notifications/notifications.module';
 import { ConnectorService } from './connector/connector.service';
 import { ConnectorModule } from './connector/connector.module';
+import { FirebaseAuthModule } from './firebase-auth/firebase-auth.module';
 import firebaseConfig from "./notifications/firebaseConfig"
 
 @Module({
@@ -24,7 +25,8 @@ import firebaseConfig from "./notifications/firebaseConfig"
     AuthModule,
     NotificationsModule,
     ConnectorModule,
-    HttpModule
+    HttpModule,
+    FirebaseAuthModule
   ],
   controllers: [AppController],
   providers: [AppService, ConnectorService],
