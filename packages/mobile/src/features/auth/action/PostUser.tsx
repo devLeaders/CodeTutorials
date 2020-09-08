@@ -1,6 +1,6 @@
 import {signUp} from '@project/common/features/auth/connectors'
 
-const postUser = async (user: {email: string; password: string}) => {
+const postUser = async (user: {email: any; password: any}) => {
   return signUp(user);
 };
 

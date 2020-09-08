@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "29847575452",
+    "firebase_url": "https://codetutorials-f9ede.firebaseio.com",
+    "project_id": "codetutorials-f9ede",
+    "storage_bucket": "codetutorials-f9ede.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29847575452:android:3bc45962ebcdaab86c4659",
+        "android_client_info": {
+          "package_name": "pl.devleaders.codetutorials"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "29847575452-acafiql6q80g3v0a7b3iiiofif1hrs2b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCI1akB0bdenOGQS_xNn5uHvRM_PkrGkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "29847575452-acafiql6q80g3v0a7b3iiiofif1hrs2b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

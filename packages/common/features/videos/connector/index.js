@@ -39,6 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getVideos = exports.getCategories = void 0;
 var query_string_1 = __importDefault(require("query-string"));
 var configAxios_1 = __importDefault(require("../../config/axios/configAxios"));
 exports.getCategories = function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {

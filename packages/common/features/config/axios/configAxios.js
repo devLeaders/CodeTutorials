@@ -7,8 +7,8 @@ var axios_1 = __importDefault(require("axios"));
 var instance = axios_1.default.create({
     timeout: 1000,
     headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    }
+        Accept: "application/json",
+        "Content-Type": "application/json",
+    },
 });
 exports.default = instance;

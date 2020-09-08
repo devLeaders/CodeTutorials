@@ -3,8 +3,8 @@ import {
     Text,
     TextInput,
 } from 'react-native';
-//import {EmailView, EmailText} from './SignInStyle';
 import styled from 'styled-components/native';
+import { Color } from '../../../../features/common/styles/constans/Color';
 
 const Wrapper = styled.View``;
 
@@ -33,6 +33,7 @@ const Img = styled.Image`
 const TxtInput = styled.TextInput`
   padding: 15px 0;
   width: 90%;
+  color: ${Color.BLACK}
 `;
 
 // dodac interfejs 
