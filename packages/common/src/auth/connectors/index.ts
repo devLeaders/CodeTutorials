@@ -1,14 +1,14 @@
-import { ISingInRequest, IUserRequest, ISingInResponse } from "../models";
+import { ISignInRequest, IUserRequest, ISignInResponse, ISignInGoogleRequest } from "../models";
 import AxiosInstance from "../../config/axios/configAxios";
-import { AxiosResponse, AxiosPromise } from "axios";
+import { AxiosPromise } from "axios";
 
 export function signUp(obj: IUserRequest): AxiosPromise<any> {
   return AxiosInstance.post(`/auth/signup`, obj);
 }
 
-export function signIn(obj: ISingInRequest): AxiosPromise<ISingInResponse> {
+export function signIn(obj: ISignInRequest): AxiosPromise<ISignInResponse> {
   return AxiosInstance.post(`/auth/signin`, obj);
 }
-export function signInGoogle(obj: any): AxiosPromise<any> {
-  return AxiosInstance.post(`auth/google`, obj);
+export function signInGoogle(obj: ISignInGoogleRequest): AxiosPromise<ISignInResponse> {
+  return AxiosInstance.post(`/firebase-auth/google`, obj);
 }
