@@ -7,6 +7,7 @@ export enum NavigationName {
     LOGIN ='LogIn',
     SINGUP = 'SignUpScreen',
     FILTERWITHLIST = 'FilterWithList',
+    QRSCANER = 'Qr code scaner',
 
     MENU = 'Menu',
     TEAMS = 'Teams',
