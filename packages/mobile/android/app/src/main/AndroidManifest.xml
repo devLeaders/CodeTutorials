@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.mobile">
+  package="com.mobile"> 
+  <!--wczesniej com.mobile-->
 
     <uses-permission android:name="android.permission.INTERNET" />
     <application
