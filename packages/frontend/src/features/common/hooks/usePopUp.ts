@@ -5,25 +5,31 @@ import { setPopUpActive, dismissPopUp } from "../../../config/redux/popups/popUp
 
 interface CustomMouseEvent {
   currentTarget: {
-    name: string
-  }
+    name: string;
+  };
 }
 
 export const usePopUp = () => {
   const dispatch = useDispatch();
 
-  const showPopUp = useCallback((e: CustomMouseEvent) => {
-    const popUpData = { name: e.currentTarget.name };
-    dispatch(setPopUpActive(popUpData));
-  }, []);
+  const showPopUp = useCallback(
+    (e: CustomMouseEvent) => {
+      const popUpData = { name: e.currentTarget.name };
+      dispatch(setPopUpActive(popUpData));
+    },
+    [dispatch]
+  );
 
-  const closePopUp = useCallback((e: CustomMouseEvent) => {
-    const popUpData = { name: e.currentTarget.name};
-    dispatch(dismissPopUp(popUpData))
-  },[])
+  const closePopUp = useCallback(
+    (e: CustomMouseEvent) => {
+      const popUpData = { name: e.currentTarget.name };
+      dispatch(dismissPopUp(popUpData));
+    },
+    [dispatch]
+  );
 
   return {
     showPopUp,
-    closePopUp
+    closePopUp,
   };
 };

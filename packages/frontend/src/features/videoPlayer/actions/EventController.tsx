@@ -26,14 +26,11 @@ interface ITimeBar {
 //timeBar Actions
 export const useTimeBarAction = (TimeBarRef: ITimeBar, small: string | undefined) => {
   const [mouseDown, setMouseDown] = useState(false);
-  const handleMouseUpDown = useCallback(
-    (e: any) => {
-      if ((TimeBarRef.current || refsStore.VideoRefs[1]) === e.target) {
-        checkIsMouseDown(e.type);
-      }
-    },
-    [setMouseDown]
-  );
+  const handleMouseUpDown = (e: any) => {
+    if ((TimeBarRef.current || refsStore.VideoRefs[1]) === e.target) {
+      checkIsMouseDown(e.type);
+    }
+  };
 
   const checkIsMouseDown = useCallback(
     (eventType: string) => {
@@ -98,19 +95,16 @@ export const useVideoPlayerActions = (videoRef: VideoRefType, small?: string) =>
     changeIsFullscreen(small);
   }, [small]);
 
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (videoRef) {
-        let reduxAction;
-        const key = e.keyCode;
-        if (key === Keys.SPACE || key === Keys.LEFT || key === Keys.RIGHT) {
-          reduxAction = () => changeState(ButtonTypes.PLAY);
-          handleVideoShortcuts(e, reduxAction, videoState);
-        }
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (videoRef) {
+      let reduxAction;
+      const key = e.keyCode;
+      if (key === Keys.SPACE || key === Keys.LEFT || key === Keys.RIGHT) {
+        reduxAction = () => changeState(ButtonTypes.PLAY);
+        handleVideoShortcuts(e, reduxAction, videoState);
       }
-    },
-    [videoRef, videoState, handleVideoShortcuts]
-  );
+    }
+  };
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);

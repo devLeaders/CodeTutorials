@@ -49,7 +49,8 @@ const VP: React.SFC<VpProps> = ({ small }) => {
       onTimeUpdate={handleTimeProgress}
       onClick={handleVideoClick}
       autoPlay={location.pathname === Navigation.HOME && true}>
-      <source src='http://localhost:3300/videos/video' type='video/mp4'></source>
+      {/* <source src='http://localhost:3300/videos/video' type='video/mp4'></source> */}
+      <source src='https://www.w3schools.com/html/mov_bbb.mp4' type='video/mp4'></source>
     </VideoPlayer>
   );
 };
