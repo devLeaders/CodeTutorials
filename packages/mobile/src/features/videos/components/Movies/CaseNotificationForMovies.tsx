@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { NotyficationContext } from "../../../../features/notifications/NotificationsStore";
-import { getVideos } from "@project/common/features/videos/connector";
 import { NotificatonType } from "../../../../features/notifications/NotificationEnum";
 import { NavigationName } from "../../../../config/routing/NavigationName";
 

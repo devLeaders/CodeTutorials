@@ -13,12 +13,10 @@ import {
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
 import MainScreenHeader from '../components/MainScreen/MainScreenHeader';
 import { useCaseNotification } from '../components/Movies/CaseNotificationForMovies';
-import { NavigationName } from '../../../config/routing/NavigationName';
-import { NavProps } from '../../../config/routing/ParamList';
 import { NavigationHelpers } from '@react-navigation/native';
 
 interface MovieListP {
-  navigation: NavigationHelpers<any>
+  navigation: any
 }
 
 export const MoviesList = (props:MovieListP) =>{

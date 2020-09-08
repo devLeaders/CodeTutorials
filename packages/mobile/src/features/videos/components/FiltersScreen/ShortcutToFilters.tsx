@@ -30,8 +30,6 @@ const TitleAndEyeWrapper = styled.View`
 
 const SearchbarWrapper = styled.View({
   height: 30,
-  //zmieniłem wysokośc bo zle wygladalo dodałem 3 px. // 
-  //nie łapało alignitems: center; 
   width: 183,
   flexDirection: 'row',
   justifyContent: 'space-between',
@@ -48,14 +46,14 @@ const SearchbarWrapper = styled.View({
   elevation: "3",
 });
 
-const InputText = styled.TextInput({
+const InputText = styled.TextInput`
   flex: 1,
-  fontSize: FontSize.SMALLXXS,
-  marginLeft: 13,
-  fontWeight: FontWeight.REGULAR,
-  fontFamily: FontFamily.GLOBAL_MONT,
-  color: Color.BLACK,
-});
+  font-size: ${FontSize.SMALLXXS},
+  margin-left: 13px,
+  font-weight: ${FontWeight.REGULAR},
+  font-family: ${FontFamily.GLOBAL_MONT},
+  color: ${Color.BLACK},
+`;
 
 const SearchButton = styled.TouchableOpacity({
   backgroundColor: Color.WHITE,
