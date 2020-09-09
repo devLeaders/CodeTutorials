@@ -6,12 +6,14 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  Linking
+  Linking,
+  View
 } from 'react-native';
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 import { NavigationName } from './NavigationName';
+import ButtonDrawer from './DrawerNav/ButtonDrawer';
 
 interface ScanScreenP {
     navigation: any
@@ -31,29 +33,31 @@ export class ScanScreen extends Component <ScanScreenP,ScanScreenS> {
 
     onRead = (e) => {
         this.setState({qr: e.data})
-        // Linking.openURL(e.data).catch(err =>
-        //   console.error('An error occured', err)
-        // );
+        const id = this.state.qr.split('/')[this.state.qr.split('/').length - 1]
+        this.props.navigation.navigate(NavigationName.SINGLEMOVIE,
+          {itemId: id})
     }
 
   render() {
+    
     return (
         <QRCodeScanner
         onRead={this.onRead}
         flashMode={RNCamera.Constants.FlashMode.auto}
         topContent={
           <Text style={styles.centerText}>
-            Scann your QR code
-            {console.log(this.state.qr)}
+            Zeskanuj QR code z ksiąki Przemysława Bykowskiego
           </Text> 
         }
         bottomContent={
-            <>
-            <Text>{this.state.qr}</Text>
-          <TouchableOpacity onPress={()=>{this.props.navigation.navigate(NavigationName.MENU)}} style={styles.buttonTouchable}>
-            <Text style={styles.buttonText}>Powrót</Text>
-          </TouchableOpacity>
-          </>
+          <View style={{width:150}}>
+            <ButtonDrawer 
+              goto={NavigationName.MENU}
+              text='Powrót'
+              icon='ic_drawer'
+              navigation ={this.props.navigation}
+            />
+          </View>
         }
       />
     );

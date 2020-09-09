@@ -7,7 +7,7 @@ export enum NavigationName {
     LOGIN ='LogIn',
     SINGUP = 'SignUpScreen',
     FILTERWITHLIST = 'FilterWithList',
-    QRSCANER = 'Qr code scaner',
+    QRSCANER = 'ScanScreen',
 
     MENU = 'Menu',
     TEAMS = 'Teams',
@@ -21,5 +21,7 @@ export enum NavigationName {
     MAINSCREENHEADER = 'MainScreenHeader',
     SQUAREOFMOVIE = 'SquareToRenderTemp',
     SHORTCUTTOFILTERS = 'ShortcutToFilters',
+
+    COMOPENTSNAVIGATOR = 'Component Navigator'
 }
 
