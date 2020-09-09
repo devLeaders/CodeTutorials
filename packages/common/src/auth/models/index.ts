@@ -3,16 +3,16 @@ export interface IUserRequest {
   password: string;
 }
 
-export interface ISignInRequest {
+export interface ISingInRequest {
   email: string;
   password: string;
   firebaseToken: string | null;
 }
 
-export interface ISignInResponse {
+export interface ISingInResponse {
   token: string;
 }
 
 export interface ISignInGoogleRequest {
-  idToken?: string;
+  uid?: string;
 }

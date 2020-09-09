@@ -4,7 +4,7 @@ import { Navigation } from "../routing/NavigationPath";
 import { ServerStatus } from "./models";
 export function axiosInit() {
   AxiosInstance.defaults.baseURL = process.env?.REACT_APP_API_URL;
-  AxiosInstance.defaults.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+  AxiosInstance.defaults.headers.Authorization = `Bearer ${sessionStorage.getItem("token")}`;
   AxiosInstance.interceptors.response.use(
     (response: AxiosResponse) => {
       return response;
