@@ -21,7 +21,5 @@ export enum NavigationName {
     MAINSCREENHEADER = 'MainScreenHeader',
     SQUAREOFMOVIE = 'SquareToRenderTemp',
     SHORTCUTTOFILTERS = 'ShortcutToFilters',
-
-    COMOPENTSNAVIGATOR = 'Component Navigator'
 }
 

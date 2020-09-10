@@ -14,7 +14,7 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 import { NavigationName } from './NavigationName';
 import ButtonDrawer from './DrawerNav/ButtonDrawer';
-
+import queryString from 'query-string';
 interface ScanScreenP {
     navigation: any
 }
@@ -29,21 +29,47 @@ export class ScanScreen extends Component <ScanScreenP,ScanScreenS> {
           qr : ''
         }
         this.onRead = this.onRead.bind(this)
+    
+        const url = 'https://bykowski.pl/books/v3/materials/82';
+    }
+
+    protected getYoutubeId = (url:string) =>{
+      const checkValue = url.includes('youtube.com')
+      if(checkValue){
+        const test = url.lastIndexOf('?')
+        const cos = url.substring(test,url.length)
+        const parsed = queryString.parse(cos);
+        console.log(parsed.v)
+        return parsed.v
+      } else{
+        return null;
+      }
     }
 
     onRead = (e) => {
-        this.setState({qr: e.data})
-        const id = this.state.qr.split('/')[this.state.qr.split('/').length - 1]
-        this.props.navigation.navigate(NavigationName.SINGLEMOVIE,
-          {itemId: id})
+        fetch(e.data).then((res)=>{
+            console.log(res.url);
+            const youtubeId = this.getYoutubeId(res.url)
+
+            if(youtubeId){
+              this.props.navigation.navigate(NavigationName.VIDEOPLAYER,{
+                playerType:'YOUTUBE',
+                videoId:youtubeId
+              })
+            } else {
+              Linking.openURL(e.data).catch(()=>{
+                console.log("cos");
+              })
+            }
+        })
+        // this.props.navigation.navigate(NavigationName.SINGLEMOVIE,
+        //   {itemId: id})
     }
 
   render() {
-    
     return (
         <QRCodeScanner
         onRead={this.onRead}
-        flashMode={RNCamera.Constants.FlashMode.auto}
         topContent={
           <Text style={styles.centerText}>
             Zeskanuj QR code z ksiąki Przemysława Bykowskiego
