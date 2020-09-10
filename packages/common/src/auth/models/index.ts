@@ -14,5 +14,5 @@ export interface ISingInResponse {
 }
 
 export interface ISignInGoogleRequest {
-  uid?: string;
+  idToken?: string;
 }
