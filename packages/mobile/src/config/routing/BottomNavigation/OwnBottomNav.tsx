@@ -8,9 +8,9 @@ import AlertIcon from './AlertIcon';
 
 const myMap = new Map([
   [NavigationName.MENU, <HamburgerIc source={{uri:'ic_burger'}}/>],
-  [NavigationName.TEAMS, <TeamIc source={{uri:'ic_team'}}/>],
+  [NavigationName.QRSCANER, <TeamIc source={{uri:'ic_team'}}/>],
   [NavigationName.TASKS, <TasksIc source={{uri:'ic_tasks'}}/>],
-  [NavigationName.MOVIELIST, <PlayListIc source={{uri:'ic_playlist'}}/>],
+  [NavigationName.PLAYLIST, <PlayListIc source={{uri:'ic_playlist'}}/>],
   [NavigationName.ALERT,  <AlertIcon  />],
   [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'ic_searchw'}}/>],
 ]);

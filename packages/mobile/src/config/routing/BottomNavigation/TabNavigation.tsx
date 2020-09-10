@@ -9,11 +9,14 @@ import { Alert } from '../../../features/videos/page/Alert';
 import { NavOption } from '../../../features/common/components/NavOption'
 import FiltersScreen from '../../../features/videos/page/FiltersScreen';
 import OwnBottomNav from './OwnBottomNav';
+import { ScanScreen } from '../QrScaner';
 
 
 const Tab = createBottomTabNavigator();
-
-class TabNavigation extends Component {
+interface TabNavigationProps {
+  navigation : any
+}
+class TabNavigation extends Component <TabNavigationProps> {
 
   render() {
     return (
@@ -27,9 +30,8 @@ class TabNavigation extends Component {
           tabBar={OwnBottomNav}
         > 
           <Tab.Screen name={NavigationName.MENU} options={NavOption.optionsMenu} component={MoviesList} />
-          <Tab.Screen name={NavigationName.TEAMS} options={NavOption.optionsTeams} component={TeamsScreen} />
-          <Tab.Screen name={NavigationName.TASKS} options={NavOption.optionsTasks} component={Tasks} />
-          <Tab.Screen name={NavigationName.MOVIELIST} options={NavOption.optionsMovieList} component={MoviesList} />
+          <Tab.Screen name={NavigationName.PLAYLIST} options={NavOption.optionsMenu} component={MoviesList}/>
+          <Tab.Screen name={NavigationName.QRSCANER} options={NavOption.optionsQrcode} component={ScanScreen}/>
           <Tab.Screen name={NavigationName.ALERT} options={NavOption.optionsAlert} component={Alert} />
           <Tab.Screen name={NavigationName.FILTERSSCREEN} options={NavOption.optionsSearch}  component={FiltersScreen} />
         </Tab.Navigator>

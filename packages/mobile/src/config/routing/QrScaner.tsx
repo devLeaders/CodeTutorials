@@ -3,35 +3,36 @@ import React, { Component } from 'react';
 
 import {
   AppRegistry,
-  StyleSheet,
   Text,
-  TouchableOpacity,
   Linking,
-  View
+  SafeAreaView,
+  ScrollView
 } from 'react-native';
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
-import { RNCamera } from 'react-native-camera';
 import { NavigationName } from './NavigationName';
 import ButtonDrawer from './DrawerNav/ButtonDrawer';
 import queryString from 'query-string';
+import styled from 'styled-components/native'
+import { MyText } from '../../features/common/styles/MyText';
+import { FontSize } from '../../features/common/styles/constans/FontSize';
+import { FontWeight } from '../../features/common/styles/constans/FontWeight';
+import { Color } from '../../features/common/styles/constans/Color';
+
+export const Title = styled(MyText)({
+  fontSize: FontSize.MIDPLUS,
+  fontWeight: parseInt(FontWeight.BOLD, 10),
+  textAlign: "center",
+  color: Color.GREY,
+  flex: 1,
+  paddingTop: 20,
+  paddingBottom: 80
+})
 interface ScanScreenP {
     navigation: any
 }
-interface ScanScreenS {
-    qr : string
-}
 
-export class ScanScreen extends Component <ScanScreenP,ScanScreenS> {
-    constructor(props:any){
-        super(props);
-        this.state = {
-          qr : ''
-        }
-        this.onRead = this.onRead.bind(this)
-    
-        const url = 'https://bykowski.pl/books/v3/materials/82';
-    }
+export class ScanScreen extends Component <ScanScreenP> {
 
     protected getYoutubeId = (url:string) =>{
       const checkValue = url.includes('youtube.com')
@@ -50,64 +51,35 @@ export class ScanScreen extends Component <ScanScreenP,ScanScreenS> {
         fetch(e.data).then((res)=>{
             console.log(res.url);
             const youtubeId = this.getYoutubeId(res.url)
-
             if(youtubeId){
               this.props.navigation.navigate(NavigationName.VIDEOPLAYER,{
                 playerType:'YOUTUBE',
                 videoId:youtubeId
               })
             } else {
-              Linking.openURL(e.data).catch(()=>{
-                console.log("cos");
+              Linking.openURL(e.data).catch((error)=>{
+                console.log(error);
               })
             }
         })
-        // this.props.navigation.navigate(NavigationName.SINGLEMOVIE,
-        //   {itemId: id})
     }
 
   render() {
     return (
-        <QRCodeScanner
-        onRead={this.onRead}
-        topContent={
-          <Text style={styles.centerText}>
-            Zeskanuj QR code z ksiąki Przemysława Bykowskiego
-          </Text> 
-        }
-        bottomContent={
-          <View style={{width:150}}>
-            <ButtonDrawer 
-              goto={NavigationName.MENU}
-              text='Powrót'
-              icon='ic_drawer'
-              navigation ={this.props.navigation}
-            />
-          </View>
-        }
-      />
+      <SafeAreaView>
+        <ScrollView>
+          <QRCodeScanner
+            onRead={this.onRead}
+            topContent={
+              <Title>
+                Zeskanuj QR code z ksiąki Przemysława Bykowskiego
+              </Title> 
+          }
+          />
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  centerText: {
-    flex: 1,
-    fontSize: 18,
-    padding: 32,
-    color: '#777'
-  },
-  textBold: {
-    fontWeight: '500',
-    color: '#000'
-  },
-  buttonText: {
-    fontSize: 21,
-    color: 'rgb(0,122,255)'
-  },
-  buttonTouchable: {
-    padding: 16
-  }
-});
 
 AppRegistry.registerComponent('default', () => ScanScreen);

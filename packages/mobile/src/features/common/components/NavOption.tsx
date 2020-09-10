@@ -85,6 +85,17 @@ export class NavOption extends React.Component {
         headerShown : false
         }
     }
+    static optionsQrcode= () => {
+        return {
+            title: 'Qr Scaner',
+            headerStyle: {
+                backgroundColor: '#f0f2fa',
+               },
+            headerTitle: () => <HeaderTitle/>,
+            headerLeft: () => <HeaderLeft/>,
+            headerRight: () => <HeaderRight/>,
+      };
+    }
     static optionsDrawer = () => {
         return{
             headerTransparent: true,

@@ -50,12 +50,6 @@ const DrawerContent = (props) => {
                             icon='ic_drawer'
                             navigation ={props.navigation}
                         />
-                          <ButtonDrawer 
-                            goto={NavigationName.QRSCANER}
-                            text='QR scaner'
-                            icon='ic_drawer'
-                            navigation ={props.navigation}
-                        />
                 </WrapWidth>
                 </DrawerWraper>
             </DrawerContentScrollView>

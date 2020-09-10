@@ -17,7 +17,6 @@ const AuthorizationNavigation = (navigation) => (
         <AuthStack.Screen name={NavigationName.MENU} options={NavOption.optionsDrawer} component={TabNavigation}/>
         <AuthStack.Screen name={NavigationName.SINGLEMOVIE} options={NavOption.optionsSingleMovie(navigation)} component={SingleMovie} />
         <AuthStack.Screen name={NavigationName.VIDEOPLAYER} options={NavOption.optionsSingIn} component={VideoPlayerScreen}/>
-        <AuthStack.Screen name={NavigationName.QRSCANER} options={NavOption.optionsSingIn} component={ScanScreen}/>
     </AuthStack.Navigator>
 )
 
