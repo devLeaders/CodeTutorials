@@ -20,14 +20,18 @@ export class FirebaseAuthService {
 
     if (email) {
       const user = await this.UsersService.findByEmail(email);
-      let payload = {email, id: user.id}
+      let payload = {}
 
       if (!user) {
         const password = uuidv4()
         await this.usersRepository.signUp({ email, password });
         const newUser = await this.UsersService.findByEmail(email);
+        console.log(newUser, password)
         payload = {email, id: newUser.id}
+      }else{
+        payload = {email, id: user.id}
       }
+
 
       let token = await this.createCustomToken(payload);
 
