@@ -9,7 +9,6 @@ export async function axiosInit() {
     AxiosInstance.defaults.headers.Authorization =  `Bearer ${await AsyncStorage.getItem("token")}`;
 
     AxiosInstance.interceptors.request.use((request)=> {
-      console.log(request)
       return request;
     })
 };

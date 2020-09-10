@@ -1,11 +1,6 @@
-interface Refs {
-    ref: { current: any };
-};
-
 class RefsStore {
-    Refs: any = []
-    RefsSmall: any = []
+  VideoRefs: HTMLVideoElement[] = [];
+  ContainerRefs: HTMLDivElement[] = [];
 }
 
-
-export const refsStore = new RefsStore()
+export const refsStore = new RefsStore();

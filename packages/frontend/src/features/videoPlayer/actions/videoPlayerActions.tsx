@@ -1,24 +1,22 @@
-import { setTime } from "../../../config/redux/videoPlayer/actions"
+import { setTime } from "../../../config/redux/videoPlayer/actions";
 
 export const playPauseVideo = (video: HTMLVideoElement, isPaused: boolean) => {
-    if (isPaused) {
-        video.play();
-    } else {
-        video.pause();
-    }
+  if (isPaused) {
+    video.play();
+  } else {
+    video?.pause();
+  }
 };
 
 export const videoResize = (videoContainer: HTMLDivElement, isFullscreen: boolean) => {
-    if (!isFullscreen) {
-        videoContainer.requestFullscreen();
-    } else {
-        document.exitFullscreen();
-    }
+  if (!isFullscreen) {
+    videoContainer.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
 };
 
 export const rewindVideoTime = (video: HTMLVideoElement, timeskip: number) => {
-    video.currentTime += timeskip;
-    setTime((video.currentTime / video.duration) * 100);
-}
-
-
+  video.currentTime += timeskip;
+  setTime((video.currentTime / video.duration) * 100);
+};

@@ -10,7 +10,7 @@ const myMap = new Map([
   [NavigationName.MENU, <HamburgerIc source={{uri:'ic_burger'}}/>],
   [NavigationName.TEAMS, <TeamIc source={{uri:'ic_team'}}/>],
   [NavigationName.TASKS, <TasksIc source={{uri:'ic_tasks'}}/>],
-  [NavigationName.PLAYLIST, <PlayListIc source={{uri:'ic_playlist'}}/>],
+  [NavigationName.MOVIELIST, <PlayListIc source={{uri:'ic_playlist'}}/>],
   [NavigationName.ALERT,  <AlertIcon  />],
   [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'ic_searchw'}}/>],
 ]);

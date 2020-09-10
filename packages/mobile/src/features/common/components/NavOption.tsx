@@ -94,6 +94,11 @@ export class NavOption extends React.Component {
                 backgroundColor: '#00000000',
             }
         }
+    }
+    static optionsFilterWithList = () => {
+        return{
+        headerShown : false
+        }
     }   
 
 }

@@ -6,7 +6,7 @@ import NavBar from "../navBar/NavBar";
 import { Device } from "../../../styles/constans/Device";
 import { Colors } from "../../../styles/constans/Colors";
 import { useVisibleHeader } from "../../../hooks/useVisibleHeader";
-const Wrapper = styled.header<{ opacity?: boolean; visible?: boolean }>`
+const Wrapper = styled.header<{ transparency?: boolean; visible?: boolean }>`
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -16,26 +16,23 @@ const Wrapper = styled.header<{ opacity?: boolean; visible?: boolean }>`
   z-index: 10;
   background-color: ${Colors.WHITE};
   @media ${Device.LAPTOP} {
-    background-color: ${({ opacity }) =>
-      opacity ? `${Colors.WHITE}` : `${Colors.WHITE}CF`};
+    background-color: ${({ transparency }) => (transparency ? `${Colors.WHITE}` : `${Colors.WHITE}CF`)};
     width: calc(100% - 446px);
     display: ${({ visible }) => (visible ? "flex" : "none")};
   }
 `;
 
 interface HeaderProps {
-  opacity?: boolean;
+  transparency?: boolean;
   hide?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ opacity, hide }) => {
-  const isMoviePaused = useSelector(
-    (state: { movie: { isPaused: boolean } }) => state.movie.isPaused
-  );
+const Header: React.FC<HeaderProps> = ({ transparency, hide }) => {
+  const isMoviePaused = useSelector((state: { movie: { isPaused: boolean } }) => state.movie.isPaused);
   const visible = useVisibleHeader(isMoviePaused, hide);
   return (
     <>
-      <Wrapper opacity={opacity} visible={visible}>
+      <Wrapper transparency={transparency} visible={visible}>
         <Banner />
         <NavBar header={true} />
       </Wrapper>

@@ -1,7 +1,5 @@
-
-
 export interface IFilterVideoRequest {
     page?: number;
-    title?: string;   
-    category?: string; 
+    title?: string;
+    category?: string;
 }
