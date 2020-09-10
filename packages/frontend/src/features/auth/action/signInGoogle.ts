@@ -6,8 +6,7 @@ import { Navigation } from "../../../config/routing/NavigationPath";
 export const signInGoogle = async () => {
   try {
     const result = (await auth.signInWithPopup(provider)) as firebase.auth.UserCredential;
-    const credential = result.credential as firebase.auth.OAuthCredential;
-    const idToken = credential.idToken;
+    const idToken = await auth.currentUser?.getIdToken(true);
     const dataResponse = await AuthConnectors.signInGoogle({
       idToken,
     });
