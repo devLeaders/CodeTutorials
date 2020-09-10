@@ -4,6 +4,8 @@ import {
     GoogleSigninButton,
     statusCodes,
   } from '@react-native-community/google-signin';
+  import auth from '@react-native-firebase/auth';
+
 import {useState, useEffect} from 'react';;
 import { View } from 'react-native';
 
@@ -14,7 +16,8 @@ import { View } from 'react-native';
 
   useEffect(() => {
     GoogleSignin.configure({
-        scopes: ['https://www.googleapis.com/auth/drive.readonly'], // what API you want to access on behalf of the user, default is email and profile
+        scopes: ['profile'], // what API you want to access on behalf of the user, default is email and profile
+        //scopes: ['https://www.googleapis.com/auth/drive.readonly'], // what API you want to access on behalf of the user, default is email and profile
         webClientId: '29847575452-acafiql6q80g3v0a7b3iiiofif1hrs2b.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
         offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
         //hostedDomain: '', // specifies a hosted domain restriction
@@ -25,31 +28,30 @@ import { View } from 'react-native';
       });
     }, []);
 
-    // useEffect(() => {
-    //   GoogleSignin.configure({
-    //     scopes: ['email'], // what API you want to access on behalf of the user, default is email and profile
-    //     webClientId:
-    //       '418977770929-g9ou7r9eva1u78a3anassxxxxxxx.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
-    //     offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
-    //   });
-    // }, []);
+   
 
     const signIn = async () => {
         try {
           await GoogleSignin.hasPlayServices();
           const userInfo = await GoogleSignin.signIn();
          //this.setState({ userInfo });
+         setloggedIn(true);
          console.log({ userInfo })
+         
         } catch (error) {
-          console.log({ error })
+          console.log({error})
           if (error.code === statusCodes.SIGN_IN_CANCELLED) {
             // user cancelled the login flow
+            console.log('statusCodes.SIGN_IN_CANCELLED')
           } else if (error.code === statusCodes.IN_PROGRESS) {
             // operation (e.g. sign in) is in progress already
+            console.log('statusCodes.IN_PROGRESS')
           } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+            console.log('statusCodes.PLAY_SERVICES_NOT_AVAILABLE')
             // play services not available or outdated
           } else {
             // some other error happened
+            console.log('some other error happened')
           }
         }
       };

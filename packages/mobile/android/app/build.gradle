@@ -184,6 +184,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0" // googleSigIn
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation(project(":react-native-community_google-signin"))
    // implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
    // implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
 
