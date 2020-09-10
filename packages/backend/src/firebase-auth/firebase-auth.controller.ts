@@ -7,7 +7,7 @@ export class FirebaseAuthController {
     constructor(private firebaseAuthService: FirebaseAuthService){}
     @Post('/google')
     async verifyUserId(@Body('idToken') idToken: string): Promise<any>{
-        return await this.firebaseAuthService.verifyUserByToken(idToken)
+        return await this.firebaseAuthService.login(idToken)
     }
 
 }

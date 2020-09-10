@@ -4,7 +4,7 @@ import { FirebaseAuthController } from './firebase-auth.controller';
 import { FirebaseAuthService } from './firebase-auth.service';
 
 @Module({
-  imports: [],
+  imports: [AuthModule],
   controllers: [FirebaseAuthController],
   providers: [FirebaseAuthService]
 })
