@@ -30,7 +30,7 @@ class TabNavigation extends Component <TabNavigationProps> {
           tabBar={OwnBottomNav}
         > 
           <Tab.Screen name={NavigationName.MENU} options={NavOption.optionsMenu} component={MoviesList} />
-          <Tab.Screen name={NavigationName.PLAYLIST} options={NavOption.optionsMenu} component={MoviesList}/>
+          <Tab.Screen name={NavigationName.PLAYLIST} options={NavOption.optionsMovieList} component={MoviesList}/>
           <Tab.Screen name={NavigationName.QRSCANER} options={NavOption.optionsQrcode} component={ScanScreen}/>
           <Tab.Screen name={NavigationName.ALERT} options={NavOption.optionsAlert} component={Alert} />
           <Tab.Screen name={NavigationName.FILTERSSCREEN} options={NavOption.optionsSearch}  component={FiltersScreen} />

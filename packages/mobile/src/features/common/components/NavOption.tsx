@@ -64,7 +64,8 @@ export class NavOption extends React.Component {
             title: 'Zadania',
       };
     }
-    static optionsAlert = () => {
+    static optionsAlert = (props:any) => {
+        console.log(props)
         return {
             title: 'Alerty',
       };
@@ -91,9 +92,6 @@ export class NavOption extends React.Component {
             headerStyle: {
                 backgroundColor: '#f0f2fa',
                },
-            headerTitle: () => <HeaderTitle/>,
-            headerLeft: () => <HeaderLeft/>,
-            headerRight: () => <HeaderRight/>,
       };
     }
     static optionsDrawer = () => {

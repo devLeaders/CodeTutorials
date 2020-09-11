@@ -7,7 +7,7 @@ import { NavOption } from '../../features/common/components/NavOption';
 import TabNavigation from './BottomNavigation/TabNavigation';
 import SingleMovie from '../../features/videos/page/SingleMovie';
 import { VideoPlayerScreen } from '../../features/videoPlayer/page/VideoPlayerScreen';
-import { ScanScreen }  from "./QrScaner";
+
 const AuthStack = createStackNavigator();
 
 const AuthorizationNavigation = (navigation) => (
