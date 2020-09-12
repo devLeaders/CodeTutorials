@@ -1,9 +1,5 @@
-
 import React, { Component } from 'react';
-
 import {
-  Text,
-  Linking,
   SafeAreaView,
   ScrollView
 } from 'react-native';
@@ -13,14 +9,17 @@ import { MyText } from '../../../common/styles/MyText';
 import { FontSize } from '../../../common/styles/constans/FontSize';
 import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { Color } from '../../../common/styles/constans/Color';
-import { onRead } from './ActionQr';
+import { useProcessQr } from './QrHooks'
 
-export const ScanScreen = () =>  {
+export const ScanScreen = () => {
+
+    const processQr = useProcessQr()
+
     return (
       <SafeAreaView>
         <ScrollView>
           <QRCodeScanner
-            onRead={onRead}
+            onRead={processQr}
             topContent={
               <Title>
                 Zeskanuj QR code z ksiąki Przemysława Bykowskiego
