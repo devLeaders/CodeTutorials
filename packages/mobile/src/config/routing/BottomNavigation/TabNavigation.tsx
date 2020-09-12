@@ -9,7 +9,7 @@ import { Alert } from '../../../features/videos/page/Alert';
 import { NavOption } from '../../../features/common/components/NavOption'
 import FiltersScreen from '../../../features/videos/page/FiltersScreen';
 import OwnBottomNav from './OwnBottomNav';
-import { ScanScreen } from '../QrScaner';
+import { ScanScreen } from '../../../features/videos/components/QrScaner/QrScaner';
 
 
 const Tab = createBottomTabNavigator();

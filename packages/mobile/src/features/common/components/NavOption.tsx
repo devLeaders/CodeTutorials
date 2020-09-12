@@ -4,6 +4,7 @@ import { HeaderLeft } from '../../videos/components/Movies/HeaderLeft';
 import { HeaderRight } from '../../videos/components/Movies/HeaderRight';
 import HeaderLeftSingle from '../../../features/videos/components/SingleScreen/HeaderLeftSingle';
 import { View } from 'react-native';
+import { NavigationName } from '../../../config/routing/NavigationName';
 
 export class NavOption extends React.Component {
     static optionsMovieList = () => {

@@ -33,8 +33,8 @@ public class MainApplication extends Application implements ReactApplication {
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
           // new MainReactPackage(),
-            new RNPermissionsPackage();
-            new RNCameraPackage();
+          new RNPermissionsPackage();
+          new RNCameraPackage();
           new ReactNativeFirebaseAppPackage();
           new ReactNativeFirebaseMessagingPackage();
           return packages;
