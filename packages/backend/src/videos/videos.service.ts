@@ -131,13 +131,13 @@ export class VideosService {
 
 				videos.push(await this.videosRepository.save(video));
 
-				const newVideo = await this.videosRepository.findOne({title: title})
+			
 				const {firebaseMessage, firebaseMessageData} = await this.notificationsService.createFirebaseMessage(
-					newVideo.title,
-					newVideo.description,
-					newVideo.id
+					videoEntity.title,
+					videoEntity.description,
+					videoEntity.id
 				)
-				const hmsMessage = await this.notificationsService.createHmsMessage(newVideo.title, newVideo.description)
+				const hmsMessage = await this.notificationsService.createHmsMessage(videoEntity.title, videoEntity.description)
 				this.notificationsService.notifyAllFirebase(firebaseMessage,firebaseMessageData)
 				this.notificationsService.hmsNotifyAll(hmsMessage)
 			}
