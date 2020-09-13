@@ -8,7 +8,7 @@ import AlertIcon from './AlertIcon';
 
 const myMap = new Map([
   [NavigationName.MENU, <HamburgerIc source={{uri:'ic_burger'}}/>],
-  [NavigationName.QRSCANER, <TeamIc source={{uri:'ic_qr'}}/>],
+  [NavigationName.QRSCANER, <TeamIc  source={{uri:'ic_qr'}}/>],
   [NavigationName.TASKS, <TasksIc source={{uri:'ic_tasks'}}/>],
   [NavigationName.PLAYLIST, <PlayListIc source={{uri:'ic_playlist'}}/>],
   [NavigationName.ALERT,  <AlertIcon  />],

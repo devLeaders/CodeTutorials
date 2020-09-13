@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   SafeAreaView,
-  ScrollView
+  ScrollView,
+  Text
 } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import styled from 'styled-components/native'
@@ -11,9 +12,10 @@ import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { Color } from '../../../common/styles/constans/Color';
 import { useProcessQr } from './QrHooks'
 
+
 export const ScanScreen = () => {
 
-    const processQr = useProcessQr()
+    const { processQr, error } = useProcessQr()
 
     return (
       <SafeAreaView>
@@ -26,6 +28,11 @@ export const ScanScreen = () => {
               </Title> 
             }
           />
+          {error && 
+            <ErrorBox>
+              <Eror>{error}</Eror>
+            </ErrorBox>
+          }
         </ScrollView>
       </SafeAreaView>
     );
@@ -34,7 +41,7 @@ export const ScanScreen = () => {
 export default ScanScreen;
 
 
-export const Title = styled(MyText)({
+const Title = styled(MyText)({
   fontSize: FontSize.MIDPLUS,
   fontWeight: parseInt(FontWeight.BOLD, 10),
   textAlign: "center",
@@ -42,4 +49,17 @@ export const Title = styled(MyText)({
   flex: 1,
   paddingTop: 20,
   paddingBottom: 80
+})
+
+const ErrorBox = styled.View({
+  backgroundColor: Color.RED,
+  width: '100%',
+  justifyContent: 'center',
+})
+
+const Eror = styled(MyText)({
+  fontSize: FontSize.MIDPLUS,
+  fontWeight: parseInt(FontWeight.BOLD, 10),
+  textAlign: "center",
+  color: Color.WHITE,
 })

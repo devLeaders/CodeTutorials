@@ -6,10 +6,31 @@ import HeaderLeftSingle from '../../../features/videos/components/SingleScreen/H
 import { View } from 'react-native';
 import { NavigationName } from '../../../config/routing/NavigationName';
 
+export const mapName = new Map([
+    [NavigationName.MENU, 'Menu'],
+    [NavigationName.QRSCANER, 'Qr Scaner'],
+    [NavigationName.TASKS, 'Zadania'],
+    [NavigationName.PLAYLIST, 'Play Lista'],
+    [NavigationName.ALERT, 'Alerty'],
+    [NavigationName.FILTERSSCREEN, 'Szukaj'],
+])
 export class NavOption extends React.Component {
-    static optionsMovieList = () => {
+
+    static optionsTitle = (navigationObj) => {
         return {
-            title: 'Play Lista',
+            title: mapName.get(navigationObj?.route?.name),
+      };
+    }
+
+    static optionsNoHeder = () => {
+        return {
+          headerShown: false
+        };
+    };
+
+    static optionsMovieList = (navigationObj) => {
+        return {
+            title: mapName.get(navigationObj?.route?.name),
             headerStyle: {
              backgroundColor: '#f0f2fa',
             },
@@ -18,18 +39,8 @@ export class NavOption extends React.Component {
             headerRight: () => <HeaderRight/>,
         };
       };
-      static optionsMainScreen = () => {
-        return {
-            headerStyle: {
-              backgroundColor: '#00000000',
-              paddingTop: 50,
-            },
-            headerTransparent: true,
-            headerTitle: () => <View />,
-      
-          };
-    };
-    static optionsSingleMovie = (navigation) => {
+ 
+    static optionsSingleMovie = () => {
         return {
             headerStyle: {
                 backgroundColor: '#00000000',
@@ -39,62 +50,7 @@ export class NavOption extends React.Component {
             headerLeft: () => <HeaderLeftSingle/>,
         };
       };
-    static optionsTabNavigator = () => {
-        return {
-          headerShown: false
-        };
-    };
-    static optionsMenu = () => {
-        return {
-            title: 'Menu',
-            headerStyle: {
-                backgroundColor: '#f0f2fa',
-               },
-            headerTitle: () => <HeaderTitle/>,
-            headerLeft: () => <HeaderLeft/>,
-            headerRight: () => <HeaderRight/>,
-      };
-    }
-    static optionsTeams = () => {
-        return {
-            title: 'Zespoły',
-      };
-    }
-    static optionsTasks = () => {
-        return {
-            title: 'Zadania',
-      };
-    }
-    static optionsAlert = (props:any) => {
-        console.log(props)
-        return {
-            title: 'Alerty',
-      };
-    }
-    static optionsSearch = () => {
-        return {
-            headerShown: true,
-            title: 'Szukaj',
-      };
-    }
-    static optionsSingIn = () => {
-        return{
-        headerShown : false
-        }
-    }
-    static optionsSingUp = () => {
-        return{
-        headerShown : false
-        }
-    }
-    static optionsQrcode= () => {
-        return {
-            title: 'Qr Scaner',
-            headerStyle: {
-                backgroundColor: '#f0f2fa',
-               },
-      };
-    }
+
     static optionsDrawer = () => {
         return{
             headerTransparent: true,
@@ -104,11 +60,6 @@ export class NavOption extends React.Component {
                 backgroundColor: '#00000000',
             }
         }
-    }
-    static optionsFilterWithList = () => {
-        return{
-        headerShown : false
-        }
-    }   
+    } 
 
 }
