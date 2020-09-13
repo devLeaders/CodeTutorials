@@ -12,7 +12,7 @@ const myMap = new Map([
   [NavigationName.TASKS, <TasksIc source={{uri:'ic_tasks'}}/>],
   [NavigationName.PLAYLIST, <PlayListIc source={{uri:'ic_playlist'}}/>],
   [NavigationName.ALERT,  <AlertIcon  />],
-  [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'ic_searchw'}}/>],
+  [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'ic_magnifier'}}/>],
 ]);
 
 function OwnBottomNav(props) {
