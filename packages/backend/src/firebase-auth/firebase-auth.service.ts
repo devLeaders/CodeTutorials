@@ -1,5 +1,6 @@
 import { UsersRepository } from './../auth/users/user.repository';
 import { UsersService } from './../auth/users/users.service';
+import { GoogleUserDto } from './dto/google-user.dto';
 import { Exceptions } from './exceptions.enum';
 import { v4 as uuidv4 } from 'uuid';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
