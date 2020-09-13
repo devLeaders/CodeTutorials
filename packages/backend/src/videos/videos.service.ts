@@ -1,3 +1,4 @@
+import { NotificationsService } from './../notifications/notifications.service';
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { Repository, getRepository } from 'typeorm';
 import VideosEntity from './videos.entity';
@@ -12,7 +13,9 @@ const shortVersion = Object.keys(new ShortVersionDTO()) as any;
 
 @Injectable()
 export class VideosService {
-	constructor(@InjectRepository(VideosEntity) private videosRepository: Repository<VideosEntity>,
+	constructor(
+		private notificationsService :NotificationsService,
+		@InjectRepository(VideosEntity) private videosRepository: Repository<VideosEntity>,
 		@InjectRepository(CategoryEntity) private categoriesRepository: Repository<CategoryEntity>,
 	) { }
 
@@ -113,8 +116,9 @@ export class VideosService {
 				const fileUrl = defaultVideosFolder() + file;
 				const photoUrl = defaultPhotosFolder() + file.replace(".mp4", ".jpeg");
 				const statFile = fs.statSync(fileUrl);
+				const title = file.substring(0, file.lastIndexOf("."))
 
-				video.title = file.substring(0, file.lastIndexOf("."));
+				video.title = title;
 				video.urlVideo = file;
 				video.urlTrailer = "";
 				video.urlPhoto = fs.existsSync(photoUrl) ? photoUrl : "";
@@ -124,8 +128,18 @@ export class VideosService {
 				video.country = "pl";
 				video.language = "pl";
 
+
 				videos.push(await this.videosRepository.save(video));
 
+			
+				const {firebaseMessage, firebaseMessageData} = await this.notificationsService.createFirebaseMessage(
+					videoEntity.title,
+					videoEntity.description,
+					videoEntity.id
+				)
+				const hmsMessage = await this.notificationsService.createHmsMessage(videoEntity.title, videoEntity.description)
+				this.notificationsService.notifyAllFirebase(firebaseMessage,firebaseMessageData)
+				this.notificationsService.hmsNotifyAll(hmsMessage)
 			}
 			return videos;
 		} catch (error) {
@@ -134,6 +148,9 @@ export class VideosService {
 
 
 	}
+
+
+	
 
 	private static async getDurationFromFiles(path: string): Promise<number> {
 		const fs = require("fs").promises;
