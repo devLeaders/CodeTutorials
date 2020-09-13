@@ -12,7 +12,8 @@ export const HamburgerIc = styled.Image({
 
 export const TeamIc = styled.Image({
     width:26, 
-    height:26
+    height:26,
+    backgroundColor:"#fff"
 })
 
 export const TasksIc = styled.Image({
