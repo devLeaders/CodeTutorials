@@ -26,7 +26,6 @@ export class FirebaseAuthService {
         const password = uuidv4()
         await this.usersRepository.signUp({ email, password });
         const newUser = await this.UsersService.findByEmail(email);
-        console.log(newUser, password)
         payload = {email, id: newUser.id}
       }else{
         payload = {email, id: user.id}

@@ -6,7 +6,7 @@ import { Controller, Post, Body } from '@nestjs/common';
 export class FirebaseAuthController {
     constructor(private firebaseAuthService: FirebaseAuthService){}
     @Post('/google')
-    async verifyUserId(@Body('idToken') idToken: string): Promise<any>{
+    async verifyUserId(@Body('idToken') idToken: string): Promise<{token: string}>{
         return await this.firebaseAuthService.login(idToken)
     }
 
