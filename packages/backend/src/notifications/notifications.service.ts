@@ -1,11 +1,9 @@
 import { ConnectorService } from './../connector/connector.service';
-import { user } from './../../../mobile/src/features/common/types/types';
 import { UserEntity } from './../auth/users/user.entity';
 import { Repository } from 'typeorm';
-import { Injectable, HttpService } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import admin from 'firebase-admin';
-import { map } from 'rxjs/operators';
 
 import { ConfigService } from '@nestjs/config';
 import { DevicesEntity } from './devices.entity';
@@ -15,6 +13,7 @@ import {
   IHmsMessage,
   TokenTypes,
   ITokenType,
+  MessageTypes,
 } from './message.model';
 
 @Injectable()
@@ -111,12 +110,14 @@ export class NotificationsService {
         await this.devicesRepository.update(
           { user },
           {
-            firebaseTokens: !tokens.firebaseTokens.includes(firebaseToken) && firebaseToken
-              ? [...tokens.firebaseTokens, firebaseToken]
-              : [...tokens.firebaseTokens],
-            HmsTokens: !tokens.HmsTokens.includes(hmsToken) && hmsToken
-              ? [...tokens.HmsTokens, hmsToken]
-              : [...tokens.HmsTokens],
+            firebaseTokens:
+              !tokens.firebaseTokens.includes(firebaseToken) && firebaseToken
+                ? [...tokens.firebaseTokens, firebaseToken]
+                : [...tokens.firebaseTokens],
+            HmsTokens:
+              !tokens.HmsTokens.includes(hmsToken) && hmsToken
+                ? [...tokens.HmsTokens, hmsToken]
+                : [...tokens.HmsTokens],
           },
         );
       } else {
@@ -127,8 +128,35 @@ export class NotificationsService {
       device.user = user;
       device.firebaseTokens = firebaseToken ? [firebaseToken] : [];
       device.HmsTokens = hmsToken ? [hmsToken] : [];
-     await this.devicesRepository.save(device);
+      await this.devicesRepository.save(device);
     }
+  }
+
+  async createFirebaseMessage(
+    title: string,
+    description: string,
+    id: number,
+  ) {
+    const firebaseMessage = {
+      title,
+      body: description,
+    };
+
+    const firebaseMessageData = {
+      messageType: MessageTypes.NEW_VIDEO,
+      id,
+    };
+
+    return{firebaseMessage, firebaseMessageData}
+  }
+
+  async createHmsMessage(title: string, description: string) {
+   const hmsMessage = { 
+    titleMessage: title,
+    pushMessage: description
+   }
+
+   return hmsMessage
   }
 
   async getAllNotificationTokens(tokenType: ITokenType) {
