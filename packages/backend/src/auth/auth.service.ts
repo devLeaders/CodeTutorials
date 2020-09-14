@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { SingInDTO } from './singIn.dto';
 import { UsersService } from './users/users.service';
 import * as bcrypt from 'bcrypt';
-import { sign } from 'jsonwebtoken';
+import { sign, verify } from 'jsonwebtoken';
 
 import { SignInPayload } from './users/models/SignInPayload';
 import { ErrorMessage } from './users/enums/ErrorMessage';
@@ -61,5 +61,29 @@ export class AuthService {
 
   async validateUser(payload: SignInPayload) {
     return await this.usersService.findByPayload(payload);
+  }
+
+  async resetPassword(email: string) {
+    const user = await this.usersService.findByEmail(email);
+    
+    if (!user)
+      throw new HttpException(
+        ErrorMessage.USER_NOT_FOUND,
+        HttpStatus.NOT_FOUND,
+      );
+
+    const payload = { id: user.id, email: user.email };
+
+    const jwtToken = sign(payload, process.env.SECRET_KEY, {
+      expiresIn: process.env.EXPIRES_RESET,
+    });
+
+  }
+
+  async changePassword(token: string) {
+    const jwtToken = verify(token, process.env.SECRET_KEY);
+
+    
+
   }
 }

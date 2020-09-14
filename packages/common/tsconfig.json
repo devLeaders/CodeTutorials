@@ -10,7 +10,7 @@
       "experimentalDecorators":true
     },
     "include": [
-      "./src"
+      "./features"
     ],
     "exclude": [
       "node_modules",
