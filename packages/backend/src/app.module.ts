@@ -6,15 +6,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { VideosModule } from './videos/videos.module';
 import { configService } from './config/config.service';
 import { FilesModule } from './files/files.module';
+import { ScheduleModule } from '@nestjs/schedule';
+// import { VideoStreamModule } from './video-stream/video-stream.module';
 import { ConfigModule } from '@nestjs/config';
 import { NotificationsModule } from './notifications/notifications.module';
 import { ConnectorService } from './connector/connector.service';
 import { ConnectorModule } from './connector/connector.module';
+import { FirebaseAuthModule } from './firebase-auth/firebase-auth.module';
 import firebaseConfig from "./notifications/firebaseConfig"
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(configService.getTypeOrmConfig()),
+    ScheduleModule.forRoot(),
     ConfigModule.forRoot({
       isGlobal: true,
       load: [firebaseConfig]
@@ -24,7 +28,8 @@ import firebaseConfig from "./notifications/firebaseConfig"
     AuthModule,
     NotificationsModule,
     ConnectorModule,
-    HttpModule
+    HttpModule,
+    FirebaseAuthModule
   ],
   controllers: [AppController],
   providers: [AppService, ConnectorService],
