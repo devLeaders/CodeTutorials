@@ -12,7 +12,3 @@ export interface ISingInRequest {
 export interface ISingInResponse {
   token: string;
 }
-
-export interface ISignInGoogleRequest {
-  idToken?: string;
-}
