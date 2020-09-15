@@ -7,7 +7,6 @@ export const signInGoogle = async (setError: (arg: boolean) => void) => {
   try {
     const result = (await auth.signInWithPopup(provider)) as firebase.auth.UserCredential;
     const idToken = await auth.currentUser?.getIdToken(true);
-    console.log(idToken);
     const dataResponse = await AuthConnectors.signInGoogle({
       idToken,
     });

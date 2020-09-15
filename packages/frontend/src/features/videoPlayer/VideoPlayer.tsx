@@ -22,13 +22,15 @@ interface VpProps {
   home?: boolean;
 }
 
-const VP: React.SFC<VpProps> = ({ small }) => {
+const VP: React.FC<VpProps> = ({ small }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const isFullscreen: boolean = useSelector((state) => getMovieState(state).isFullscreen);
   const { handleTimeProgress, handleVideoClick } = useVideoPlayerActions(videoRef?.current, small);
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
+  const isSmall = small === 'small'
+
   useEffect(() => {
     const unlisten = history.listen(() => {
       dispatch(reset());
@@ -48,7 +50,7 @@ const VP: React.SFC<VpProps> = ({ small }) => {
       ref={videoRef}
       onTimeUpdate={handleTimeProgress}
       onClick={handleVideoClick}
-      autoPlay={location.pathname === Navigation.HOME && true}>
+      autoPlay={(location.pathname === Navigation.HOME) && !isSmall}>
       <source src='http://localhost:3300/videos/video' type='video/mp4'></source>
     </VideoPlayer>
   );
