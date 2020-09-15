@@ -54,14 +54,6 @@ class ConfigService {
     };
   }
 
-  public defaultVideosFolder() {
-    return this.getValue('DEFAULT_VIDEOS_FOLDER', false);
-  }
-
-  public defaultPhotosFolder() {
-    return this.getValue('DEFAULT_PHOTOS_FOLDER', false);
-  }
-
 }
 
 
