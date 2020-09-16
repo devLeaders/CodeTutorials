@@ -4,7 +4,7 @@ export const playPauseVideo = (video: HTMLVideoElement, isPaused: boolean) => {
   if (isPaused) {
     video.play();
   } else {
-    video?.pause();
+    video.pause();
   }
 };
 

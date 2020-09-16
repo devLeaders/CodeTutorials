@@ -32,28 +32,23 @@ export const useTimeBarAction = (TimeBarRef: ITimeBar, small: string | undefined
     }
   };
 
-  const checkIsMouseDown = useCallback(
-    (eventType: string) => {
+  const checkIsMouseDown = useCallback((eventType: string) => {
       if (eventType === EType.MOUSE_DOWN) {
         setMouseDown(true);
       } else if (eventType === EType.MOUSE_UP) {
         setMouseDown(false);
       }
-    },
-    [setMouseDown]
-  );
+    }, [setMouseDown])
 
   const handleMouseMoveAndClick = useCallback(
     (e: any) => {
-      if ((TimeBarRef.current || refsStore.VideoRefs[1]) === e.target) {
         if (e.type === EType.MOUSE_CLICK) {
           changeVideoTime(e, TimeBarRef, small);
         } else if (e.type === EType.MOUSE_MOVE && mouseDown) {
           changeVideoTime(e, TimeBarRef, EType.MOUSE_MOVE, small);
         }
-      }
     },
-    [mouseDown, small, TimeBarRef]
+    [mouseDown, TimeBarRef, small]
   );
 
   useEffect(() => {
