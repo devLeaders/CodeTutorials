@@ -9,6 +9,7 @@ import {
 
 import {useState, useEffect} from 'react';;
 import { View } from 'react-native';
+import {signIn, signUp} from '../../../../../../../common/src/auth/connectors/index';
 
  const GoogleAuth = () => {
 
@@ -31,13 +32,16 @@ import { View } from 'react-native';
 
 
 
-    const signIn = async () => {
+    const signInMobile = async () => {
         try {
+          const { idToken } = await GoogleSignin.signIn(); //????????
           await GoogleSignin.hasPlayServices();
           const userInfo = await GoogleSignin.signIn();
          //this.setState({ userInfo });
          setloggedIn(true);
          console.log({ userInfo })
+         signIn(idToken); ///??????????
+
 
         } catch (error) {
           console.log({error})
@@ -57,7 +61,7 @@ import { View } from 'react-native';
         }
       };
 
-    const signOut = async () => {
+    const signOutMobile = async () => {
         try {
           await GoogleSignin.revokeAccess();
           await GoogleSignin.signOut();
@@ -75,7 +79,7 @@ import { View } from 'react-native';
               style={{ width: 192, height: 48 }}
               size={GoogleSigninButton.Size.Wide}
               color={GoogleSigninButton.Color.Dark}
-              onPress={signIn}/>
+              onPress={signInMobile}/>
           </View>
         </>
       );
