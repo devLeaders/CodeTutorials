@@ -108,7 +108,7 @@ export const useVideoPlayerActions = (videoRef: VideoRefType, small?: string) =>
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
-  }, [paused]);
+  }, [paused, handleFullscreenChange]);
 
   return {
     handleTimeProgress,

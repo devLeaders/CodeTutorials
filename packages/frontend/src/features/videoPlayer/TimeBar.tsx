@@ -23,23 +23,25 @@ const Wrapper = styled.div<{ small: string | undefined }>`
     height: 4px;
   }
 `;
-const TimePlayedBar = styled.div<{ videoTime: any }>`
-  height: 2px;
-  width: ${props => (props.videoTime ? props.videoTime : 0)};
-  background-color: purple;
-  @media ${Device.TABLET}{
-    height: 3px;
-  }
-  @media ${Device.LAPTOP}{
-    height: 4px;
-  }
+const TimePlayedBar = styled.div.attrs<{videoTime:string}>((props) => ({
+  style: {
+      width: props.videoTime ? props.videoTime : 0},
+  }))<{videoTime:string}>`
+    height: 2px;
+    background-color: purple;
+    @media ${Device.TABLET}{
+      height: 3px;
+    }
+    @media ${Device.LAPTOP}{
+      height: 4px;
+    }  
 `;
 
 interface TimeBarProps {
   small?: string;
 }
 
-const TimeBar: React.SFC<TimeBarProps> = (props) => {
+const TimeBar: React.FC<TimeBarProps> = (props) => {
   const { small } = props
   const TimeBarRef = useRef<HTMLDivElement>(null)
   const videoTime = useSelector(state => getMovieState(state).videoTime)
