@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "29847575452-j0ca1q39vfuvv930aodb2qjn56ce5mkm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pl.devleaders.codetutorials",
+            "certificate_hash": "934ce9125b73f4a44c293e28e19a719748d8fbb0"
+          }
+        },
+        {
           "client_id": "29847575452-acafiql6q80g3v0a7b3iiiofif1hrs2b.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -30,6 +38,13 @@
             {
               "client_id": "29847575452-acafiql6q80g3v0a7b3iiiofif1hrs2b.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "29847575452-m566spa5ginhterq080abb56act8cs0j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "pl.devleaders.codetutorials"
+              }
             }
           ]
         }

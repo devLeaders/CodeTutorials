@@ -8,7 +8,7 @@ export interface ISingInRequest {
   password: string;
   firebaseToken: string | null;
 }
-
+ 
 export interface ISingInResponse {
   token: string;
 }

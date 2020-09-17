@@ -21,7 +21,7 @@ const ComponentsNavigation = () => (
       <ComponentStack.Screen name={NavigationName.MAINSCREENHEADER} component={MainScreenHeader} />
       <ComponentStack.Screen name={NavigationName.SQUAREOFMOVIE} component={SquareToRenderTemp} />
       <ComponentStack.Screen name={NavigationName.SHORTCUTTOFILTERS} component={ShortcutToFilters} />
-      <ComponentStack.Screen name={NavigationName.FILTERWITHLIST} options={NavOption.optionsFilterWithList} component={FilterWithList}/>
+      
  </ComponentStack.Navigator>
 )
 

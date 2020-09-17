@@ -67,3 +67,5 @@ package-lock.json
 android/keystore.properties
 env.json
 envs/
+.env
+.idea

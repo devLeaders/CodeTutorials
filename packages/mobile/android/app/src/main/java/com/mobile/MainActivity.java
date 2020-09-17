@@ -1,4 +1,7 @@
 package com.mobile;
+//czy packge nie musi byc identyczny z tym w firebase? pl.devleaders
+//pl.devleaders.codetutorials ??? + zmiana w serive-google?
+
 
 // import android.os.Bundle;
 
