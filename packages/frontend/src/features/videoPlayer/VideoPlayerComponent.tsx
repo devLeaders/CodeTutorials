@@ -43,7 +43,7 @@ interface VideoPlayerComponentProps {
   home?: boolean;
 }
 
-const VideoPlayerComponent: React.SFC<VideoPlayerComponentProps> = (props) => {
+const VideoPlayerComponent: React.FC<VideoPlayerComponentProps> = (props) => {
   const isMinimized: boolean = useSelector((state) => getMovieState(state).isMinimized);
   const videoContainerRef = useRef<HTMLDivElement>(null);
 

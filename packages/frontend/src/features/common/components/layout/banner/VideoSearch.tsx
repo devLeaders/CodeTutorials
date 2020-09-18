@@ -46,9 +46,9 @@ const Input = styled.input`
     }
 `;
 const VideoSearch: React.FC<{}> = () => {
-  const { title, submit } = useFormikData();
+  const { submit } = useFormikData();
   const formik = useFormik({
-    initialValues: { videoTitle: title ? title : "" },
+    initialValues: { videoTitle:  "" },
     onSubmit: values => submit(values.videoTitle)
   });
   const { handleTyping } = useFormDelay(formik, formik.values.videoTitle);
