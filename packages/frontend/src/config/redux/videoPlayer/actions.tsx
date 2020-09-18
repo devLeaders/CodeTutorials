@@ -67,7 +67,7 @@ export function playPauseSmall(): MoviePlayPauseSmallType {
 export const changeState = (buttonType: string, small?: string) => {
   let reduxAction: any;
   if (buttonType === ButtonTypes.PLAY) {
-    if (small) {
+    if (Store.getState().movie.isMinimized) {
       reduxAction = playPauseSmall
     } else {
       reduxAction = playPause

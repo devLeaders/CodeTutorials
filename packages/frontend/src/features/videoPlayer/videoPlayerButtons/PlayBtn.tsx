@@ -13,13 +13,12 @@ interface PlayBtnProps {
     small?: string;
 }
 
-const PlayBtn: React.SFC<PlayBtnProps> = (props) => {
+const PlayBtn: React.FC<PlayBtnProps> = (props) => {
     const { small } = props;
-    const isPaused = useSelector(state => getMovieState(state).isPaused)
-    const smallIsPaused = useSelector(state => getMovieState(state).smallIsPaused)
-    const paused = small ? smallIsPaused : isPaused;
-    const isActive = checkButtonType(ButtonTypes.PLAY, paused)
-    const runPlay = useClickHandler(ButtonTypes.PLAY, paused, small)
+    const movie = useSelector(state => getMovieState(state));
+    const isPaused: boolean = movie.isMinimized ? movie.smallIsPaused : movie.isPaused;
+    const isActive = checkButtonType(ButtonTypes.PLAY, isPaused)
+    const runPlay = useClickHandler(ButtonTypes.PLAY, isPaused, small)
 
 
 

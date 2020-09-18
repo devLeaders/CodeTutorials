@@ -1,9 +1,9 @@
+import { MouseEvent } from "react";
+import { RootStateOrAny } from "react-redux";
 import { refsStore } from "../refs.store";
 import { ButtonTypes, Keys } from "../enums";
 import { playPauseVideo, videoResize, rewindVideoTime } from "./videoPlayerActions";
 import { changeState, setIsFullscreen, setTime } from "../../../config/redux/videoPlayer/actions";
-import { MouseEvent } from "react";
-import { RootStateOrAny } from "react-redux";
 
 export const runVideoAction = (buttonType: string, videoState: boolean, small?: string | undefined) => {
   const video = small ? refsStore.VideoRefs[0] : refsStore.VideoRefs[1];
@@ -38,7 +38,7 @@ interface IVideoTime {
   current: HTMLDivElement | null;
 }
 
-export const changeVideoTime = (e: MouseEvent, TimeBarRef: IVideoTime, type?: string, small?: string | undefined) => {
+export const changeVideoTime = (e: MouseEvent, TimeBarRef: IVideoTime, small?: string, type?: string, ) => {
   const video = small ? refsStore.VideoRefs[0] : refsStore.VideoRefs[1];
   if (TimeBarRef.current) {
     const TimeBarWidth = TimeBarRef.current.offsetWidth;
@@ -51,25 +51,27 @@ export const changeVideoTime = (e: MouseEvent, TimeBarRef: IVideoTime, type?: st
     video.currentTime = newVideoTime;
     // setVideoTime(Math.floor((video.currentTime / video.duration) * 100));
     const time = Math.floor((video.currentTime / video.duration) * 100);
+  
     setTime(time, small);
   }
 };
 
 export const handleVideoShortcuts = (e: KeyboardEvent, reduxAction: any, videoState: RootStateOrAny) => {
-  const video = refsStore.VideoRefs[1];
+  const video = videoState.isMinimized ? refsStore.VideoRefs[0] : refsStore.VideoRefs[1];
+  const isPaused = videoState.isMinimized ? videoState.smallIsPaused : videoState.isPaused
   const timeToEnd = video?.duration - video?.currentTime;
   const key = e.keyCode;
   if (key === Keys.SPACE) {
     e.preventDefault();
     reduxAction();
-    playPauseVideo(video, videoState.isPaused);
+    playPauseVideo(video, isPaused);
   } else if (key === Keys.LEFT || key === Keys.RIGHT) {
     const timeSkip = 5;
     if (key === Keys.RIGHT && timeToEnd > timeSkip) {
       e.preventDefault();
-      if (videoState.isPaused) {
+      if (isPaused) {
         reduxAction();
-        playPauseVideo(video, videoState);
+        playPauseVideo(video, isPaused);
       }
       rewindVideoTime(video, timeSkip);
     } else if (key === Keys.LEFT) {

@@ -24,32 +24,33 @@ interface ITimeBar {
 }
 
 //timeBar Actions
-export const useTimeBarAction = (TimeBarRef: ITimeBar, small: string | undefined) => {
+export const useTimeBarAction = (TimeBarRef: ITimeBar, TimeBarContainer:ITimeBar, small?: string) => {
   const [mouseDown, setMouseDown] = useState(false);
-  const handleMouseUpDown = (e: any) => {
-    if ((TimeBarRef.current || refsStore.VideoRefs[1]) === e.target) {
-      checkIsMouseDown(e.type);
-    }
-  };
 
   const checkIsMouseDown = useCallback((eventType: string) => {
-      if (eventType === EType.MOUSE_DOWN) {
-        setMouseDown(true);
-      } else if (eventType === EType.MOUSE_UP) {
-        setMouseDown(false);
-      }
-    }, [setMouseDown])
+    if (eventType === EType.MOUSE_DOWN) {
+      setMouseDown(true);
+    } else if (eventType === EType.MOUSE_UP) {
+      setMouseDown(false);
+    }
+  }, [setMouseDown])
 
+  const handleMouseUpDown = useCallback((e: any) => {
+    if ((TimeBarRef.current || TimeBarContainer.current || refsStore.VideoRefs[0] || refsStore.VideoRefs[1]) === e.target) {
+      checkIsMouseDown(e.type);
+    }
+  }, [TimeBarContainer, TimeBarRef, checkIsMouseDown])
+  
   const handleMouseMoveAndClick = useCallback(
     (e: any) => {
+      if(e.target === TimeBarRef.current || e.target === TimeBarContainer.current) {
         if (e.type === EType.MOUSE_CLICK) {
-          changeVideoTime(e, TimeBarRef, small);
-        } else if (e.type === EType.MOUSE_MOVE && mouseDown) {
-          changeVideoTime(e, TimeBarRef, EType.MOUSE_MOVE, small);
+            changeVideoTime(e, TimeBarContainer, small);
+          } else if (e.type === EType.MOUSE_MOVE && mouseDown) {
+            changeVideoTime(e, TimeBarContainer, small, EType.MOUSE_MOVE);
+          }
         }
-    },
-    [mouseDown, TimeBarRef, small]
-  );
+  }, [mouseDown, TimeBarRef, TimeBarContainer, small]);
 
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMoveAndClick);
@@ -90,7 +91,7 @@ export const useVideoPlayerActions = (videoRef: VideoRefType, small?: string) =>
     changeIsFullscreen(small);
   }, [small]);
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (videoRef) {
       let reduxAction;
       const key = e.keyCode;
@@ -99,7 +100,7 @@ export const useVideoPlayerActions = (videoRef: VideoRefType, small?: string) =>
         handleVideoShortcuts(e, reduxAction, videoState);
       }
     }
-  };
+  }, [videoRef, videoState, handleVideoShortcuts])
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);

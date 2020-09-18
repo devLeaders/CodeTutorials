@@ -43,22 +43,23 @@ interface TimeBarProps {
 
 const TimeBar: React.FC<TimeBarProps> = (props) => {
   const { small } = props
+  const TimeBarContainer = useRef<HTMLDivElement>(null)
   const TimeBarRef = useRef<HTMLDivElement>(null)
   const videoTime = useSelector(state => getMovieState(state).videoTime)
   const smallVideoTime = useSelector(state => getMovieState(state).smallVideoTime)
   const newTime = small ? smallVideoTime + "%" : videoTime + "%";
-  const { handleMouseUpDown, handleMouseMoveAndClick } = useTimeBarAction(TimeBarRef, small)
+  const { handleMouseUpDown, handleMouseMoveAndClick } = useTimeBarAction(TimeBarRef, TimeBarContainer, small)
 
 
   return (
     <Wrapper
       small={small}
-      ref={TimeBarRef}
+      ref={TimeBarContainer}
       onClick={handleMouseMoveAndClick}
       onMouseMove={handleMouseMoveAndClick}
       onMouseDown={handleMouseUpDown}
     >
-      <TimePlayedBar videoTime={newTime} />
+      <TimePlayedBar videoTime={newTime} ref={TimeBarRef}/>
     </Wrapper>
   )
 }

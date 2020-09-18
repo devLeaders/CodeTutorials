@@ -37,16 +37,16 @@ interface InterfaceProps {
 
 const Interface: React.SFC<InterfaceProps> = (props) => {
     const { small } = props
-    const isPaused = useSelector(state => getMovieState(state).isPaused)
+    const movie = useSelector(state => getMovieState(state))
     const location = useLocation()
 
 
     return (
         <div>
             {small && <SmallModeInterface small={small} />}
-            {!small && <InterfaceWrapper
+            {!movie.isMinimized && <InterfaceWrapper
                 className="interfaceWrapper"
-                paused={isPaused}
+                paused={movie.isPaused}
                 small={small}
                 location={location.pathname}>
 
