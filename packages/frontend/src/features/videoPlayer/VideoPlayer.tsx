@@ -29,8 +29,8 @@ const VP: React.FC<VpProps> = ({ small }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
-  const isSmall = small === 'small'
-
+  const size = small === 'small'
+  const autoPlay = (location.pathname === Navigation.HOME) && !size
   useEffect(() => {
     const unlisten = history.listen(() => {
       dispatch(reset());
@@ -50,7 +50,7 @@ const VP: React.FC<VpProps> = ({ small }) => {
       ref={videoRef}
       onTimeUpdate={handleTimeProgress}
       onClick={handleVideoClick}
-      autoPlay={(location.pathname === Navigation.HOME) && !isSmall}>
+      autoPlay={autoPlay}>
       <source src='http://localhost:3300/videos/video' type='video/mp4'></source>
     </VideoPlayer>
   );
