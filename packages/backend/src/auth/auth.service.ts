@@ -10,18 +10,21 @@ import { SignInPayload } from './users/models/SignInPayload';
 import { ErrorMessage } from './users/enums/ErrorMessage';
 import { NotificationsService } from '../notifications/notifications.service';
 import { UsersRepository } from './users/user.repository';
-import {
-  MessageTypes,
-  TokenTypes,
-} from '../notifications/message.model';
+import nodemailer from 'nodemailer';
+import { ConfigService } from '@nestjs/config';
+import { ChangePasswordDTO } from './changePassword.dto';
+import { TokenService } from './token/token.service';
+import { TokenDTO } from './token.dto';
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersService: UsersService,
     private notificationsService: NotificationsService,
+    private configService: ConfigService,
+    private tokenService: TokenService,
     @InjectRepository(UsersRepository) private usersRepository: UsersRepository,
-  ) {}
+  ) { }
 
   async signIn(sigInDTO: SingInDTO) {
     const user = await this.usersService.findByEmail(sigInDTO.email);
@@ -64,26 +67,86 @@ export class AuthService {
   }
 
   async resetPassword(email: string) {
-    const user = await this.usersService.findByEmail(email);
-    
-    if (!user)
-      throw new HttpException(
-        ErrorMessage.USER_NOT_FOUND,
-        HttpStatus.NOT_FOUND,
-      );
+    try {
 
-    const payload = { id: user.id, email: user.email };
+      const user = await this.usersService.findByEmail(email);
 
-    const jwtToken = sign(payload, process.env.SECRET_KEY, {
-      expiresIn: process.env.EXPIRES_RESET,
-    });
+      if (!user)
+        throw new HttpException(
+          ErrorMessage.USER_NOT_FOUND,
+          HttpStatus.NOT_FOUND,
+        );
 
+      const payload = { id: user.id, email: user.email };
+
+      const jwtToken = sign(payload, process.env.SECRET_KEY, {
+        expiresIn: process.env.EXPIRES_RESET,
+      });
+
+      let transporter = nodemailer.createTransport({
+        host: this.configService.get<string>("MAIL_HOST"),
+        port: Number(this.configService.get<number>("MAIL_PORT")),
+        secure: (this.configService.get<string>("MAIL_SECURE") == "true"),
+        auth: {
+          user: this.configService.get<string>("MAIL_LOGIN"),
+          pass: this.configService.get<string>("MAIL_PASSWORD"),
+        },
+      });
+
+      await transporter.sendMail({
+        from: this.configService.get<string>("MAIL_SENDER"),
+        to: email,
+        subject: "Reset Password",
+        html: `<h1>
+      Reset Hasła
+      </h1>
+      <span>
+      Cześć, niedawno otrzymaliśmy od Ciebie prośbę o zresetowanie hasła do tego konta My Netflix. </br>
+      Aby zaktualizować hasło, kliknij poniższy link.</br><br>
+      <a href="http://localhost:3001/reset-password/${jwtToken}">Reset hasła</a>
+      </span>`
+      });
+
+      return { message: "Email send.", jwtToken }
+
+    } catch (error) {
+      return { message: error.message ? error.message : "Error", error }
+    }
   }
 
-  async changePassword(token: string) {
-    const jwtToken = verify(token, process.env.SECRET_KEY);
+  async changePassword(changePasswordDTO: ChangePasswordDTO) {
+    try {
+      const jwtToken = verify(changePasswordDTO.token, process.env.SECRET_KEY);
 
-    
+      const userEmail = jwtToken["email"];
+      const user: UserEntity = await this.usersService.findByEmail(userEmail);
+
+      const tokenExpiresEpoch = jwtToken["exp"];
+
+      if (changePasswordDTO.password != changePasswordDTO.repeatPassword) {
+        return { message: "Password and repeat password must be the same." }
+      }
+
+      if (await this.tokenService.tokenUsedUp(jwtToken.toString())) {
+        return { message: "Token used up." };
+      }
+
+      await this.usersRepository.update(user, { password: changePasswordDTO.password });
+
+      const tokenDto = new TokenDTO();
+      tokenDto.token = jwtToken.toString();
+      const dateExpired = new Date(0);
+      dateExpired.setUTCSeconds(tokenExpiresEpoch);
+      tokenDto.dateExpired = dateExpired;
+
+      await this.tokenService.addToken(tokenDto);
+
+      return { message: "Password changed." };
+
+    } catch (error) {
+      return { message: error.message ? error.message : "Error", error }
+    }
+
 
   }
 }

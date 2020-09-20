@@ -8,11 +8,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './users/user.entity';
 import { UsersService } from './users/users.service';
 import { JwtStrategy } from './jwt.strategy';
+import { TokenService } from './token/token.service';
+import TokensEntity from './token/token.entity';
+import { TokensModule } from './token/token.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([UserEntity, DevicesEntity]), HttpModule, NotificationsModule],
+  imports: [TypeOrmModule.forFeature([UserEntity, DevicesEntity]), HttpModule, NotificationsModule, TokensModule],
   controllers: [AuthController],
-  providers: [AuthService, UsersRepositoryProvider, UsersService,JwtStrategy],
+  providers: [AuthService, UsersRepositoryProvider, UsersService, JwtStrategy, TokenService, ],
   exports: [UsersRepositoryProvider, UsersService]
 })
-export class AuthModule {}
+export class AuthModule { }

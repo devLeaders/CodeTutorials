@@ -14,6 +14,7 @@ import { ConnectorService } from './connector/connector.service';
 import { ConnectorModule } from './connector/connector.module';
 import { FirebaseAuthModule } from './firebase-auth/firebase-auth.module';
 import firebaseConfig from "./notifications/firebaseConfig"
+import { TokensModule } from './auth/token/token.module';
 
 @Module({
   imports: [
@@ -29,7 +30,8 @@ import firebaseConfig from "./notifications/firebaseConfig"
     NotificationsModule,
     ConnectorModule,
     HttpModule,
-    FirebaseAuthModule
+    FirebaseAuthModule,
+    TokensModule
   ],
   controllers: [AppController],
   providers: [AppService, ConnectorService],

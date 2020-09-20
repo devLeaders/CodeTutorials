@@ -10,3 +10,23 @@ export interface ISingInRequest {
 export interface ISingInResponse {
     token: string;
 }
+export interface IResetPasswordRequest {
+    email: string;
+}
+
+export interface IChangePasswordRequest {
+    token: string;
+    password: string;
+    repeatPassword: string;
+}
+
+export interface IChangePasswordRequest {
+    token: string;
+    password: string;
+    repeatPassword: string;
+}
+
+export interface ITokenRequest {
+    token: string;
+    dateExpired: Date;
+}

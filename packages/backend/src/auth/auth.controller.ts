@@ -4,6 +4,8 @@ import { UsersService } from './users/users.service';
 import {AuthService} from './auth.service';
 import { SingInDTO } from './singIn.dto';
 import {ApiTags, ApiParam} from '@nestjs/swagger'
+import { ResetPasswordDTO } from './resetPassword.dto';
+import { ChangePasswordDTO } from './changePassword.dto';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -23,13 +25,12 @@ export class AuthController{
     }
 
     @Post('/reset-password')
-    resetPassword(@Body() email: string){
-      return this.authService.resetPassword(email);
+    resetPassword(@Body() resetPasswordDTO: ResetPasswordDTO){
+      return this.authService.resetPassword(resetPasswordDTO.email);
     }
 
-    @ApiParam({ name: 'token', type:'string' })
-    @Get('/change-password/:token')
-    changePassword(@Query() token: string){
-      return this.authService.changePassword(email);
+    @Post('/change-password')
+    changePassword(@Body() changePasswordDTO: ChangePasswordDTO){
+      return this.authService.changePassword(changePasswordDTO);
     }
 }
