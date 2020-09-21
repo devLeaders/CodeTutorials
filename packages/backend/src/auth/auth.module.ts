@@ -13,9 +13,9 @@ import TokensEntity from './token/token.entity';
 import { TokensModule } from './token/token.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([UserEntity, DevicesEntity]), HttpModule, NotificationsModule, TokensModule],
+  imports: [TypeOrmModule.forFeature([UserEntity, DevicesEntity, TokensEntity]), HttpModule, NotificationsModule, TokensModule],
   controllers: [AuthController],
-  providers: [AuthService, UsersRepositoryProvider, UsersService, JwtStrategy, TokenService, ],
+  providers: [AuthService, UsersRepositoryProvider, UsersService, JwtStrategy, TokenService],
   exports: [UsersRepositoryProvider, UsersService]
 })
 export class AuthModule { }

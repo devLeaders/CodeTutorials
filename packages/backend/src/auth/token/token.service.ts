@@ -17,13 +17,13 @@ export class TokenService {
         token.dateExpired = tokenRequest.dateExpired;
         await this.tokensRepository.save(token);
     }
-    async tokenUsedUp(token: string):Promise<Boolean> {
-        return !!await this.tokensRepository.findOne({token});
+    async tokenUsedUp(token: string): Promise<Boolean> {
+        return !!await this.tokensRepository.findOne({ token });
     }
 
     @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
-	async clearExpiresTokens(): Promise<void> {
-        const tokens = await this.tokensRepository.find({dateExpired : MoreThan(new Date())});
+    async clearExpiresTokens(): Promise<void> {
+        const tokens = await this.tokensRepository.find({ dateExpired: MoreThan(new Date()) });
         await this.tokensRepository.remove(tokens);
     }
 

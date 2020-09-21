@@ -127,14 +127,14 @@ export class AuthService {
         return { message: "Password and repeat password must be the same." }
       }
 
-      if (await this.tokenService.tokenUsedUp(jwtToken.toString())) {
+      if (await this.tokenService.tokenUsedUp(changePasswordDTO.token)) {
         return { message: "Token used up." };
       }
 
       await this.usersRepository.update(user, { password: changePasswordDTO.password });
 
       const tokenDto = new TokenDTO();
-      tokenDto.token = jwtToken.toString();
+      tokenDto.token = changePasswordDTO.token;
       const dateExpired = new Date(0);
       dateExpired.setUTCSeconds(tokenExpiresEpoch);
       tokenDto.dateExpired = dateExpired;
