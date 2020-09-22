@@ -2,15 +2,15 @@ import {IJWTTokenRequest} from '@project/common/features/auth/models';
 import {ApiProperty} from '@nestjs/swagger';
 export class JWTTokenDTO implements IJWTTokenRequest {
 
-	@ApiProperty()
+    @ApiProperty()
     id: string;
 
-	@ApiProperty()
+    @ApiProperty()
     email: string;
 
     @ApiProperty()
     iat:number;
 
-	@ApiProperty()
+    @ApiProperty()
     exp:number;
 }
