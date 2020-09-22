@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
-import 'firebase/messaging'
+import "firebase/messaging";
+import "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -12,4 +13,8 @@ const firebaseConfig = {
   measurementId: "G-8J72TLB6RZ",
 };
 const fb = firebase.initializeApp(firebaseConfig);
+
+export const auth = fb.auth();
+export const provider = new firebase.auth.GoogleAuthProvider();
+
 export default fb;

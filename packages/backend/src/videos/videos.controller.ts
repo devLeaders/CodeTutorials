@@ -4,6 +4,7 @@ import { FilterVideoDTO } from './videos.dto';
 import { FilterVideosDtoMaping } from './videos.validation.pipe'
 import { AuthGuard } from '@nestjs/passport';
 import {ApiTags,ApiParam} from '@nestjs/swagger'
+import { Cron, CronExpression } from '@nestjs/schedule';
 
 
 @ApiTags('videos')
@@ -26,6 +27,11 @@ export class VideosController{
     @ApiParam({ name: 'id', type:'string' })
     @Get('/:params')
     getStream(@Query() id: string ,@Res() res, @Req() req) {
-    this.videosService.getStream(id, res, req);
-  }
+        this.videosService.getStream(id, res, req);
+    }
+
+    @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
+    addNewVideoFromFiles() {
+        this.videosService.addNewVideoFromFiles();
+    }
 }

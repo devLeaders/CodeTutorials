@@ -13,4 +13,5 @@ export enum Color {
     PURPLE = 'purple',
     BLACK = 'black',
     LIGHT_PURPLE = "#a08ef4",
+    RED = '#ff0000'
 }

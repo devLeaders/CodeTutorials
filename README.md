@@ -32,8 +32,9 @@ or
 | HMS push kit                	|        	|             	|             	|        	|
 |Custom Video player            | ![][c]    |               |               |           |
 |Youtube Video player           |           |    ![][c]     |  ![][c]       |   ![][c]  |
-|Custom carousel                | ![][c]    | ![][c]        |  ![][c]       |   ![][c]  |
-| Sign In with Google         	|        	|             	|             	|        	|
+|Custom carousel                | ![][c]    |    ![][c]     |  ![][c]       |   ![][c]  |
+|Open video from QR Code        |           |    ![][c]     |  ![][c]      	|   ![][c] 	|
+| Sign In with Google         	| ![][c]   	|             	|             	|        	|
 | Sign In with Apple          	|        	|             	|             	|        	|
 | Fireabase Analitics         	|        	|             	|             	|        	|
 | HMS Analitics               	|        	|             	|             	|        	|
@@ -42,7 +43,7 @@ or
 |Protected Video Stream         |           |               |             	|        	|
 |Multilingual                   |           |               |             	|        	|
 |PayU payment                   |           |               |             	|        	|
-|Open video from QR Code        |           |               |             	|        	|
+
 
 
 ## Authors

@@ -1,3 +1,4 @@
+import { NotificationsService } from './../notifications/notifications.service';
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { Repository, getRepository } from 'typeorm';
 import VideosEntity from './videos.entity';
@@ -7,12 +8,16 @@ import CategoryEntity from './category.entity';
 import * as fs from 'fs';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { configService } from '../config/config.service';
+import { ConfigService } from '@nestjs/config';
 
 const shortVersion = Object.keys(new ShortVersionDTO()) as any;
 
 @Injectable()
 export class VideosService {
-	constructor(@InjectRepository(VideosEntity) private videosRepository: Repository<VideosEntity>,
+	constructor(
+		private notificationsService :NotificationsService,
+		private configService: ConfigService,
+		@InjectRepository(VideosEntity) private videosRepository: Repository<VideosEntity>,
 		@InjectRepository(CategoryEntity) private categoriesRepository: Repository<CategoryEntity>,
 	) { }
 
@@ -84,13 +89,13 @@ export class VideosService {
 	@Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
 	async addNewVideoFromFiles(): Promise<VideosEntity[]> {
 		try {
-			const {defaultVideosFolder, defaultPhotosFolder} = configService;
+			const defaultVideosFolder = this.configService.get<string>('DEFAULT_VIDEOS_FOLDER');
+			const defaultPhotosFolder = this.configService.get<string>('DEFAULT_PHOTOS_FOLDER');
 
-
-			if (!fs.existsSync(defaultVideosFolder()))
+			if (!fs.existsSync(defaultVideosFolder))
 				return;
 
-			const files = fs.readdirSync(defaultVideosFolder()).filter(file => file.endsWith(".mp4"));
+			const files = fs.readdirSync(defaultVideosFolder).filter(file => file.endsWith(".mp4"));
 			if (!files.length)
 				return;
 
@@ -110,11 +115,12 @@ export class VideosService {
 
 				let video = new VideosEntity();
 
-				const fileUrl = defaultVideosFolder() + file;
-				const photoUrl = defaultPhotosFolder() + file.replace(".mp4", ".jpeg");
+				const fileUrl = defaultVideosFolder + file;
+				const photoUrl = defaultPhotosFolder + file.replace(".mp4", ".jpeg");
 				const statFile = fs.statSync(fileUrl);
+				const title = file.substring(0, file.lastIndexOf("."))
 
-				video.title = file.substring(0, file.lastIndexOf("."));
+				video.title = title;
 				video.urlVideo = file;
 				video.urlTrailer = "";
 				video.urlPhoto = fs.existsSync(photoUrl) ? photoUrl : "";
@@ -124,8 +130,18 @@ export class VideosService {
 				video.country = "pl";
 				video.language = "pl";
 
+
 				videos.push(await this.videosRepository.save(video));
 
+				const newVideo = await this.videosRepository.findOne({title: title})
+				const {firebaseMessage, firebaseMessageData} = await this.notificationsService.createFirebaseMessage(
+					newVideo.title,
+					newVideo.description,
+					newVideo.id
+				)
+				const hmsMessage = await this.notificationsService.createHmsMessage(newVideo.title, newVideo.description)
+				this.notificationsService.notifyAllFirebase(firebaseMessage,firebaseMessageData)
+				this.notificationsService.hmsNotifyAll(hmsMessage)
 			}
 			return videos;
 		} catch (error) {
@@ -134,6 +150,9 @@ export class VideosService {
 
 
 	}
+
+
+	
 
 	private static async getDurationFromFiles(path: string): Promise<number> {
 		const fs = require("fs").promises;

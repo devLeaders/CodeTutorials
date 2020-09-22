@@ -1,5 +1,4 @@
 import React, {Component, useReducer} from 'react';
-
 import DrawerNavigation  from './src/config/routing/DrawerNavigation';
 import { NotificationStoreProvider } from './src/features/notifications/NotificationStoreProvider';
 import Orientation from 'react-native-orientation';
