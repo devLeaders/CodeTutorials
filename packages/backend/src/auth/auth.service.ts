@@ -6,9 +6,8 @@ import {sign, verify} from "jsonwebtoken";
 import nodemailer from "nodemailer";
 import {NotificationsService} from "../notifications/notifications.service";
 import {ChangePasswordDTO} from "./changePassword.dto";
-import {JWTTokenDTO} from "./jwttoken.dto";
 import {SingInDTO} from "./singIn.dto";
-import {TokenDTO} from "./token.dto";
+import {Token} from "./token";
 import {TokenService} from "./token/token.service";
 import {ErrorMessage} from "./users/enums/ErrorMessage";
 
@@ -16,6 +15,9 @@ import {SignInPayload} from "./users/models/SignInPayload";
 import {UserEntity} from "./users/user.entity";
 import {UsersRepository} from "./users/user.repository";
 import {UsersService} from "./users/users.service";
+import { IJWTToken } from '@project/common/features/auth/models';
+import {ResponseMessage} from '@project/common/features/enums';
+import hbs from "nodemailer-express-handlebars";
 
 @Injectable()
 export class AuthService {
@@ -85,6 +87,16 @@ export class AuthService {
         expiresIn: process.env.EXPIRES_RESET,
       });
 
+      const options = {
+        viewEngine: {
+          partialsDir: __dirname + "/views/partials",
+          layoutsDir: __dirname + "/views/layouts",
+          extname: ".hbs"
+        },
+        extName: ".hbs",
+        viewPath: __dirname + "/views"
+      };
+
       const transporter = nodemailer.createTransport({
         host: this.configService.get<string>('MAIL_HOST'),
         port: Number(this.configService.get<number>('MAIL_PORT')),
@@ -95,21 +107,17 @@ export class AuthService {
         },
       });
 
+      transporter.use("compile", hbs(options));
+
       await transporter.sendMail({
         from: this.configService.get<string>('MAIL_SENDER'),
-        to: email,
+        to: "bartekziimny90@gmail.com",
         subject: 'Reset Password',
-        html: `<h1>
-      Reset Hasła
-      </h1>
-      <span>
-      Cześć, niedawno otrzymaliśmy od Ciebie prośbę o zresetowanie hasła do tego konta My Netflix. </br>
-      Aby zaktualizować hasło, kliknij poniższy link.</br><br>
-      <a href="http://localhost:3001/reset-password/${jwtToken}">Reset hasła</a>
-      </span>`,
+        template: "resetPassword",
+        context: {jwtToken : jwtToken}
       });
 
-      return { message: 'Email send.', jwtToken };
+      return { message: ResponseMessage.EMAIL_SEND, jwtToken };
 
     } catch (error) {
       return { message: error.message ? error.message : 'Error', error };
@@ -118,24 +126,20 @@ export class AuthService {
 
   async changePassword(changePasswordDTO: ChangePasswordDTO) {
     try {
-      const jwtToken: JWTTokenDTO = verify(changePasswordDTO.token, process.env.SECRET_KEY) as JWTTokenDTO;
+      const jwtToken: IJWTToken = verify(changePasswordDTO.token, process.env.SECRET_KEY) as IJWTToken;
 
       const userEmail = jwtToken.email;
       const user: UserEntity = await this.usersService.findByEmail(userEmail);
 
       const tokenExpiresEpoch = jwtToken.exp;
 
-      if (changePasswordDTO.password !== changePasswordDTO.repeatPassword) {
-        return {message: 'Password and repeat password must be the same.'};
-      }
-
       if (await this.tokenService.tokenUsedUp(changePasswordDTO.token)) {
-        return {message: 'Token used up.'};
+        return {message: ResponseMessage.TOKEN_USED_UP};
       }
 
       await this.usersRepository.update(user, {password: changePasswordDTO.password});
 
-      const tokenDto = new TokenDTO();
+      const tokenDto = new Token();
       tokenDto.token = changePasswordDTO.token;
       const dateExpired = new Date(0);
       dateExpired.setUTCSeconds(tokenExpiresEpoch);
@@ -143,7 +147,7 @@ export class AuthService {
 
       await this.tokenService.addToken(tokenDto);
 
-      return {message: 'Password changed.'};
+      return {message: ResponseMessage.PASSWORD_CHANGED};
 
     } catch (error) {
       return {message: error.message ? error.message : 'Error', error};

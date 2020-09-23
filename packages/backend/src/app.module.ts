@@ -6,7 +6,6 @@ import {TypeOrmModule} from "@nestjs/typeorm";
 import {AppController} from "./app.controller";
 import {AppService} from "./app.service";
 import {AuthModule} from "./auth/auth.module";
-import {TokensModule} from "./auth/token/token.module";
 import {configService} from "./config/config.service";
 import {ConnectorModule} from "./connector/connector.module";
 import {ConnectorService} from "./connector/connector.service";
@@ -31,7 +30,6 @@ import {VideosModule} from "./videos/videos.module";
     ConnectorModule,
     HttpModule,
     FirebaseAuthModule,
-    TokensModule,
   ],
   controllers: [AppController],
   providers: [AppService, ConnectorService],

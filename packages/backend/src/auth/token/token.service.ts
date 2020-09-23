@@ -2,7 +2,7 @@ import {Injectable} from "@nestjs/common";
 import {Cron, CronExpression} from "@nestjs/schedule";
 import {InjectRepository} from "@nestjs/typeorm";
 import {MoreThan, Repository} from "typeorm";
-import {TokenDTO} from "../token.dto";
+import {Token} from "../token";
 import TokensEntity from "./token.entity";
 
 @Injectable()
@@ -10,7 +10,7 @@ export class TokenService {
 	constructor(@InjectRepository(TokensEntity) private tokensRepository: Repository<TokensEntity>
 	) { }
 
-	async addToken(tokenRequest: TokenDTO) {
+	async addToken(tokenRequest: Token) {
 		const token = new TokensEntity();
 		token.token = tokenRequest.token;
 		token.dateExpired = tokenRequest.dateExpired;
