@@ -24,6 +24,11 @@ export class VideosController{
         return this.videosService.getAllCategoryList();
     }
 
+    @Get('only-category')
+    getOnlyCategoryList(){
+        return this.videosService.getOnlyCategoryList();
+    }
+
     @ApiParam({ name: 'id', type:'string' })
     @Get('/:params')
     getStream(@Query() id: string ,@Res() res, @Req() req) {

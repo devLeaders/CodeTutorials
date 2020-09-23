@@ -47,6 +47,13 @@ export class VideosService {
 			.getMany();
 	}
 
+	async getOnlyCategoryList() {
+		return await getRepository(CategoryEntity)
+			.createQueryBuilder("category")
+			.getMany();
+	}
+
+
 	async getStream(id: string, res: any, req: any) {
 		const video = await this.getSingleVideo(id);
 		const path = 'uploads/video/p720-angular-cli-dla-programistow-java-angular-w-45-min.mp4';
