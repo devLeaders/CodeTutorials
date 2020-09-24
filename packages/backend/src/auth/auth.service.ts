@@ -111,7 +111,7 @@ export class AuthService {
 
       await transporter.sendMail({
         from: this.configService.get<string>('MAIL_SENDER'),
-        to: "bartekziimny90@gmail.com",
+        to: email,
         subject: 'Reset Password',
         template: "resetPassword",
         context: {jwtToken : jwtToken}
