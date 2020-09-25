@@ -1,6 +1,6 @@
 import * as AuthConnectors from '@project/common/features/auth/connectors'
 import instance from '@project/common/features/config/axios/configAxios';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { ErrorSingin } from '../components/SignIn/ErrorEnum';
 
 const loginSubmit = async (

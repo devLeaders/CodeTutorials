@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import {
     SafeAreaView,
     ActivityIndicator,
@@ -6,7 +6,6 @@ import {
     Text,
     View,
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
 import { Formik } from 'formik';
 import validationSchema from '../../action/validationSchema';
 import SignInInput from './SignInInput';
@@ -21,7 +20,6 @@ import { FontWeight } from '../../../../features/common/styles/constans/FontWeig
 
 
 const Btn = styled.TouchableOpacity`
-
   justify-content: center;
   align-items: center;
   height: 60px;
@@ -95,6 +93,7 @@ const LogIn = (props:LogInProps) => {
            
         })
     }, [])
+  
 
     return (
             <SafeAreaView style={{ marginTop: 20}}>

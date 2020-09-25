@@ -13,7 +13,7 @@ import {
     LogoutWrap,
     WrapInfo,} from './DrawerStyle';
 import { NavigationName } from '../NavigationName';
-import { Text, Image, View } from 'react-native';
+import { Text, Image, View, AsyncStorage } from 'react-native';
 
 
 interface ProfileBoxP {
@@ -24,7 +24,19 @@ interface ProfileBoxP {
     navigation: any
 }
 
+
  const ProfileBox = (props:ProfileBoxP)=>{
+
+   const removeToken = async() => {
+        try {
+            await AsyncStorage.removeItem('token');
+            return props.navigation.navigate(NavigationName.SIGNINSCREEN);
+        }
+        catch(exception) {
+            return false;
+        }
+    }
+
     return(
         <ProfileWrap >
             <ProfileImage source={{uri: props.icon}}/> 
@@ -36,7 +48,7 @@ interface ProfileBoxP {
                 </WrapInfo>
                 <LogoutWrap>
                     <LogOut
-                        onPress={() => props.navigation.navigate(NavigationName.SIGNINSCREEN)}>
+                        onPress={() => removeToken()}>
                         <ProfileLogout>Wyloguj</ProfileLogout>
                         <LogOutIc source={{uri:'ic_logout'}}/>
                     </LogOut>
