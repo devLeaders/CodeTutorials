@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { 
     ProfileImage,
     ProfileName,
@@ -14,6 +14,8 @@ import {
     WrapInfo,} from './DrawerStyle';
 import { NavigationName } from '../NavigationName';
 import { Text, Image, View, AsyncStorage } from 'react-native';
+import { CommonActions } from '@react-navigation/native';
+import AxioiInstance from '@project/common/features/config/axios/configAxios';
 
 
 interface ProfileBoxP {
@@ -30,7 +32,16 @@ interface ProfileBoxP {
    const removeToken = async() => {
         try {
             await AsyncStorage.removeItem('token');
-            return props.navigation.navigate(NavigationName.SIGNINSCREEN);
+            AxioiInstance.defaults.headers.common['Authorization'] = ``;
+            props.navigation.dispatch(DrawerActions.closeDrawer());
+            props.navigation.dispatch(
+                CommonActions.reset({
+                  index: 0,
+                  routes: [
+                    { name: NavigationName.SIGNINSCREEN },
+                  ],
+                })
+              );
         }
         catch(exception) {
             return false;
