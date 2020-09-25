@@ -19,7 +19,6 @@ interface LoadingP {
 
 const  Loading = (props: LoadingP) => {
 
-    const [loader , setLoader] = useState(true)
     useEffect(()=>{
         (async function () {
             const token = await AsyncStorage.getItem('token') 
@@ -33,8 +32,16 @@ const  Loading = (props: LoadingP) => {
                       ],
                     })
                   );
+            } else {
+                props.navigation.dispatch(
+                    CommonActions.reset({
+                      index: 0,
+                      routes: [
+                        { name: NavigationName.SIGNINSCREEN},
+                      ],
+                    })
+                );
             }
-            setLoader(false)
         })();
     },[])
     
