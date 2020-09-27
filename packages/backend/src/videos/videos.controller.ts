@@ -3,9 +3,9 @@ import { VideosService } from './videos.service';
 import { FilterVideoDTO } from './videos.dto';
 import { FilterVideosDtoMaping } from './videos.validation.pipe'
 import { AuthGuard } from '@nestjs/passport';
-import {ApiTags,ApiParam} from '@nestjs/swagger'
+import { ApiParam, ApiProperty, ApiTags } from '@nestjs/swagger'
 import { Cron, CronExpression } from '@nestjs/schedule';
-
+import { VideoCategoryEnum } from '../videos/videos.enum';
 
 @ApiTags('videos')
 @Controller('videos')
@@ -19,9 +19,10 @@ export class VideosController{
         return this.videosService.getAll(param);
     }
 
-    @Get(['category/:only','category'])
-    getAllCategoryList(@Param('only') only:string){
-        return this.videosService.getAllCategoryList(only === "only");
+    @ApiParam({ name: "only", type: "VideoCategoryEnum", required: false })
+    @Get(['category/:only', 'category'])
+    getAllCategoryList(@Param('only') only: VideoCategoryEnum) {
+        return this.videosService.getAllCategoryList(!(only === VideoCategoryEnum.OnlyCategory));
     }
 
     @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)

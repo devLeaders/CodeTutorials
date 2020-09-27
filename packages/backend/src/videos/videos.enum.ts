@@ -9,3 +9,8 @@ export enum TypeMoviesEnum {
     Database = "Filmy o bazach dancyh",
     Live = "Live"
 }
+
+export enum VideoCategoryEnum {
+    OnlyCategory = "only",
+    CategoriesWithVideo = ""
+}
