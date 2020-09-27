@@ -1,5 +1,6 @@
 import {HttpModule, Module} from "@nestjs/common";
 import {TypeOrmModule} from "@nestjs/typeorm";
+import { MailingService } from "./mailing/mailing.service";
 import {DevicesEntity} from "../notifications/devices.entity";
 import {NotificationsModule} from "./../notifications/notifications.module";
 import {AuthController} from "./auth.controller";
@@ -14,7 +15,7 @@ import {UsersService} from "./users/users.service";
 @Module({
   imports: [TypeOrmModule.forFeature([UserEntity, DevicesEntity, TokensEntity]), HttpModule, NotificationsModule],
   controllers: [AuthController],
-  providers: [AuthService, UsersRepositoryProvider, UsersService, JwtStrategy, TokenService],
+  providers: [AuthService, UsersRepositoryProvider, UsersService, JwtStrategy, TokenService, MailingService],
   exports: [UsersRepositoryProvider, UsersService]
 })
 export class AuthModule {}

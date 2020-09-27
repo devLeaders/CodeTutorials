@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsersRepository } from '../users/user.repository';
 import { UserDTO } from './user.dto';
 import { UserEntity } from './user.entity';
 import { SignInPayload } from './models/SignInPayload';
+import { ErrorMessage } from '../users/enums/ErrorMessage';
 
 @Injectable()
 export class UsersService {
@@ -16,6 +17,18 @@ export class UsersService {
 
     async findByEmail(email:string) {
         return await this.usersRepository.findOne({where:{ email}})
+    }
+
+    async authorizedUser(email: string) {
+        const user = await this.usersRepository.findOne({ where: { email } });
+        if (!user) {
+            throw new HttpException(
+                ErrorMessage.UNAUTHORIZED,
+                HttpStatus.UNAUTHORIZED,
+            );
+        }
+
+        return user;
     }
 
     sanitizeUser(user: UserEntity) {

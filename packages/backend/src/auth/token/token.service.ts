@@ -2,7 +2,6 @@ import {Injectable} from "@nestjs/common";
 import {Cron, CronExpression} from "@nestjs/schedule";
 import {InjectRepository} from "@nestjs/typeorm";
 import {MoreThan, Repository} from "typeorm";
-import {Token} from "../token";
 import TokensEntity from "./token.entity";
 
 @Injectable()
@@ -10,11 +9,15 @@ export class TokenService {
 	constructor(@InjectRepository(TokensEntity) private tokensRepository: Repository<TokensEntity>
 	) { }
 
-	async addToken(tokenRequest: Token) {
-		const token = new TokensEntity();
-		token.token = tokenRequest.token;
-		token.dateExpired = tokenRequest.dateExpired;
-		await this.tokensRepository.save(token);
+	async addToken(token: string, tokenExpiresEpoch: number) {
+		const dateExpired = new Date(0);
+		dateExpired.setUTCSeconds(tokenExpiresEpoch);
+	
+		const tokenEntity = new TokensEntity();
+		tokenEntity.token = token;
+		tokenEntity.dateExpired = dateExpired;
+
+		await this.tokensRepository.save(tokenEntity);
 	}
 	async tokenUsedUp(token: string): Promise<Boolean> {
 		return !!await this.tokensRepository.findOne({ token });
