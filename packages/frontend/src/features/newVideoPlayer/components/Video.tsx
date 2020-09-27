@@ -1,11 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React, { ReactNode } from "react";
 
-const Video: React.FC = () => {
-  return (
-    <video>
-      <source src='http://localhost:3300/videos/video' type='video/mp4'></source>
-    </video>
-  );
+interface IVideo {}
+
+const Video: React.PropsWithChildren<IVideo> = (children: ReactNode) => {
+  return children;
 };
 export default Video;

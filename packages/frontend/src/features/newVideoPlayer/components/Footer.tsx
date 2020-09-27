@@ -1,11 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React, { ReactNode } from "react";
 
-const Footer: React.FC = () => {
-  return (
-    <>
-      <h1>Index</h1>
-    </>
-  );
+interface IFooter {}
+
+const FooterContainer: React.PropsWithChildren<IFooter> = (children: ReactNode) => {
+  return children;
 };
-export default Footer;
+export default FooterContainer;

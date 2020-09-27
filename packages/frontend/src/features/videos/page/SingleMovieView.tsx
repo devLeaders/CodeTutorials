@@ -11,6 +11,7 @@ import VideoTabs from "../../common/components/layout/videoTabs/VideoTabs";
 import Header from "../../common/components/layout/header/Header";
 import { Sizes } from "../../common/styles/constans/Sizes";
 import { Tabs } from "../../../config/redux/videoTabs/videoTabsReducer";
+import BigVideoPlayer from "../../newVideoPlayer/components/BigVideoPlayer";
 
 const VideoInfo = styled.div`
   display: flex;
@@ -35,15 +36,14 @@ const Main = styled.div`
 `;
 
 const SingleMovieView: React.FC = () => {
-  const activeVideoTab = useSelector(
-    (state: RootStateOrAny) => state.videoTabs.activeTab
-  );
+  const activeVideoTab = useSelector((state: RootStateOrAny) => state.videoTabs.activeTab);
 
   return (
     <>
       <Header hide={true} />
       <Main>
-        <VideoPlayerComponent />
+        {/* <VideoPlayerComponent /> */}
+        <BigVideoPlayer />
         <VideoTabs />
         {activeVideoTab === Tabs.DESCRIPTION && (
           <VideoInfo>
