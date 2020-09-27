@@ -1,7 +1,6 @@
 import {Body, Controller, Post, UseGuards} from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import {ApiTags} from "@nestjs/swagger";
-import { Authorization } from "../auth/jwt.resetPassword.guard";
 import {AuthService} from "./auth.service";
 import {ChangePasswordDTO} from "./changePassword.dto";
 import {ResetPasswordDTO} from "./resetPassword.dto";
