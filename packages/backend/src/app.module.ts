@@ -21,7 +21,7 @@ import {VideosModule} from "./videos/videos.module";
     ScheduleModule.forRoot(),
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [firebaseConfig],
+      load: [firebaseConfig]
     }),
     VideosModule,
     FilesModule,
@@ -29,7 +29,7 @@ import {VideosModule} from "./videos/videos.module";
     NotificationsModule,
     ConnectorModule,
     HttpModule,
-    FirebaseAuthModule,
+    FirebaseAuthModule
   ],
   controllers: [AppController],
   providers: [AppService, ConnectorService],

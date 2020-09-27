@@ -69,7 +69,7 @@ export class AuthService {
     return await this.usersService.findByPayload(payload);
   }
 
-  async resetPassword(email: string) {
+  async sendEmailForResetPassword(email: string) {
     try {
 
       const user = await this.usersService.findByEmail(email);
