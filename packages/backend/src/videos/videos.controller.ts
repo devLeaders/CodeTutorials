@@ -1,4 +1,4 @@
-import { Controller, Get,Res, Req, UseGuards, Query, UsePipes } from '@nestjs/common';
+import { Controller, Get,Res, Req, UseGuards, Query, UsePipes, Param } from '@nestjs/common';
 import { VideosService } from './videos.service';
 import { FilterVideoDTO } from './videos.dto';
 import { FilterVideosDtoMaping } from './videos.validation.pipe'
@@ -19,20 +19,9 @@ export class VideosController{
         return this.videosService.getAll(param);
     }
 
-    @Get('category')
-    getAllCategoryList(){
-        return this.videosService.getAllCategoryList();
-    }
-
-    @Get('only-category')
-    getOnlyCategoryList(){
-        return this.videosService.getOnlyCategoryList();
-    }
-
-    @ApiParam({ name: 'id', type:'string' })
-    @Get('/:params')
-    getStream(@Query() id: string ,@Res() res, @Req() req) {
-        this.videosService.getStream(id, res, req);
+    @Get(['category/:only','category'])
+    getAllCategoryList(@Param('only') only:string){
+        return this.videosService.getAllCategoryList(only === "only");
     }
 
     @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)

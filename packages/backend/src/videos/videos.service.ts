@@ -40,19 +40,15 @@ export class VideosService {
 		return videos;
 	}
 
-	async getAllCategoryList() {
-		return await getRepository(CategoryEntity)
-			.createQueryBuilder("category")
-			.leftJoinAndSelect("category.videos", "videos")
-			.getMany();
-	}
+	async getAllCategoryList(only: boolean = false) {
+		const categories = await getRepository(CategoryEntity)
+			.createQueryBuilder("category");
 
-	async getOnlyCategoryList() {
-		return await getRepository(CategoryEntity)
-			.createQueryBuilder("category")
-			.getMany();
+		if (only)
+			categories.leftJoinAndSelect("category.videos", "videos")
+		
+		return categories.getMany();
 	}
-
 
 	async getStream(id: string, res: any, req: any) {
 		const video = await this.getSingleVideo(id);
