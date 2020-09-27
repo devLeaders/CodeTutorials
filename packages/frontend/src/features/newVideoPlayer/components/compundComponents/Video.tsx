@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { useVideoPlayerContext } from "../hooks/useVideoPlayerContext";
+import { useVideoPlayerContext } from "../../hooks/useVideoPlayerContext";
 
 interface IVideo {
   children: ReactNode;
@@ -20,11 +20,11 @@ const Video: React.FC<IVideo> = ({ children }) => {
   const childrenWithProps = React.Children.map(children, (child) => {
     const props: IDumbVideo = { togglePlay, state };
     if (React.isValidElement(child)) {
-      return React.cloneElement(child, props);
-    }
-    return child;
+      return  React.cloneElement(child, props)
+    }  
   });
 
+ 
   return <>{childrenWithProps}</>;
 };
 export default Video;

@@ -1,20 +1,22 @@
 import React, { ReactNode } from "react";
-import styled from "styled-components";
 
-interface IDumbVideo {
+import {VideoPlayer} from "../../styles/video.styles"
+
+interface IVideoProps {
   togglePlay(): void;
   state: {
     isPaused: boolean;
   };
+  children: ReactNode
 }
 
-const Video: React.FC = (props) => {
-  // const { togglePlay } = props;
 
+
+const Video: React.FC<any> = ({state, togglePlay, children}) => {
   return (
-    <video>
-      <source src='http://localhost:3300/videos/video' type='video/mp4'></source>
-    </video>
+    <VideoPlayer onClick={togglePlay}>
+      <source src='https://www.w3schools.com/html/mov_bbb.mp4' type='video/mp4'></source>
+    </VideoPlayer>
   );
 };
 

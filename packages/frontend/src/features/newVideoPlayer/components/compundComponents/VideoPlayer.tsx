@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
-import { useVideoPlayerActions } from "../hooks/useVideoPlayerActions";
+import { useVideoPlayerActions } from "../../hooks/useVideoPlayerActions";
 
-import { IVideoPlayer, IVideoPlayerComposition } from "../models/video.type";
-import { VideoPlayerContext } from "../utils/videoPlayer.context";
-import PlayBtn from "./buttons/PlayBtn";
+import { IVideoPlayer, IVideoPlayerComposition } from "../../models/video.type";
+import { VideoPlayerContext } from "../../utils/videoPlayer.context";
+import PlayBtn from "../buttons/PlayBtn";
 import Video from "./Video";
 
 const VideoPlayer: React.FC<IVideoPlayer> & IVideoPlayerComposition = ({ children }) => {
