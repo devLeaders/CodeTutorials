@@ -1,8 +1,30 @@
 import React, { ReactNode } from "react";
+import { useVideoPlayerContext } from "../hooks/useVideoPlayerContext";
 
-interface IVideo {}
+interface IVideo {
+  children: ReactNode;
+}
+interface IDumbVideo {
+  togglePlay(): void;
+  state: {
+    isPaused: boolean;
+  };
+}
 
-const Video: React.PropsWithChildren<IVideo> = (children: ReactNode) => {
-  return children;
+const Video: React.FC<IVideo> = ({ children }) => {
+  const {
+    actions: { togglePlay },
+    state,
+  } = useVideoPlayerContext();
+
+  const childrenWithProps = React.Children.map(children, (child) => {
+    const props: IDumbVideo = { togglePlay, state };
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, props);
+    }
+    return child;
+  });
+
+  return <>{childrenWithProps}</>;
 };
 export default Video;
