@@ -1,9 +1,19 @@
-import React, { ReactNode } from "react";
-import styled from "styled-components";
+import React, { useRef, useEffect } from "react";
 
-interface IVideo {}
+import {refsStore} from "../utils/refs.store"
+import VideoPlayer from "./VideoPlayer";
 
-const VideoContainer: React.PropsWithChildren<IVideo> = (children: ReactNode) => {
-  return children;
+const VideoContainer: any = () => {
+  const videoContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    refsStore.bigVideoPlayerRef = videoContainerRef?.current
+  },[videoContainerRef])
+
+  return (
+    <div ref={videoContainerRef}>
+      <VideoPlayer></VideoPlayer>
+    </div>
+  );
 };
 export default VideoContainer;

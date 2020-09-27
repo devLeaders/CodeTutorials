@@ -1,17 +1,23 @@
-import React, { ReactNode } from "react";
-import styled from "styled-components";
-import VideoContainer from "./VideoContainer";
+import React, { useMemo } from "react";
+import { useVideoPlayerActions } from "../hooks/useVideoPlayerActions";
 
-interface IVideoContainer {
-  VideoContainer: React.PropsWithChildren<{}>;
-}
-interface IVideoPlayer {
-  children: ReactNode;
-}
+import { IVideoPlayer, IVideoPlayerComposition } from "../models/video.type";
+import { VideoPlayerContext } from "../utils/videoPlayer.context";
+import PlayBtn from "./buttons/PlayBtn";
 
-const VideoPlayer: React.FC<IVideoPlayer> & IVideoContainer = ({ children }) => {
-  VideoPlayer.VideoContainer = VideoContainer;
-  return children;
+const VideoPlayer: React.FC<IVideoPlayer> & IVideoPlayerComposition = ({
+  children,
+}) => {
+  const {actions, state} = useVideoPlayerActions();
+
+  const value = useMemo(() => ({actions, state}), [state]);
+  return (
+    <VideoPlayerContext.Provider value={value}>
+      {children}
+    </VideoPlayerContext.Provider>
+  );
 };
+
+VideoPlayer.PlayBtn = PlayBtn;
 
 export default VideoPlayer;
