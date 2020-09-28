@@ -6,7 +6,9 @@ import { NavigationName } from '../../../../config/routing/NavigationName';
 import BigHeaderButton from './BigHeaderButton';
 import { NavigationHelpers } from '@react-navigation/native';
 import { PlayerType } from '../../../../features/videoPlayer/models/PlayerType';
-
+import * as AuthConnectors from '@project/common/features/videos/connector'
+import { IVideosRespons } from '@project/common/src/videos/models'
+import  { ImageUtil } from '../Movies/ImageUtils'
 
 const ButtonsWraper = styled.View`
   display: flex;
@@ -25,10 +27,28 @@ interface MainScreenHeaderProps {
   navigation: NavigationHelpers<any>,
 }
 
-export default class MainScreenHeader extends React.Component <MainScreenHeaderProps, any>{
+interface MainScreenHeaderState {
+  listVideos: Array<IVideosRespons>
+}
+
+export default class MainScreenHeader extends React.Component <MainScreenHeaderProps, MainScreenHeaderState>{
   static navigationOptions = {
       headerShown: false,
   };
+
+  constructor(props:any){
+    super(props);
+    this.state = {
+      listVideos : []
+    }
+  }
+
+  async componentDidMount(){
+    const listVideos = await AuthConnectors.getVideos({limit:1});
+    this.setState ({
+      listVideos:listVideos.data
+    })
+  }
 
   onPressPlay = ()=>{
     this.props.navigation.navigate(NavigationName.VIDEOPLAYER,{
@@ -37,12 +57,11 @@ export default class MainScreenHeader extends React.Component <MainScreenHeaderP
       youtubeId:"KVZ-P-ZI6W4"
     })
   }
-  
-
+   
   render() {
     return (
       <ScrollView>
-        <HeaderImage source={{uri:'mainheader'}}/>
+        <HeaderImage source={ {uri: ImageUtil.getImageFromServer(this.state.listVideos[0]?.urlPhoto)} }/>
         <ButtonsWraper>
           <SmallHeaderButton 
                 text="PlayLista"

@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { Animated, Dimensions } from 'react-native';
-import {  MoviesListExpandedType } from './MoviesType';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import { useNavigation } from '@react-navigation/native';
 import BigSquareOfMovie from './BigSquareOfMovie'
+import { IVideosRespons } from '@project/common/src/videos/models'
+import  { ImageUtil } from './ImageUtils'
 
 interface AnimationSlaiderType {
     x: Animated.Value,
-    item: MoviesListExpandedType,
+    item: IVideosRespons,
     index: number,
 }
 
@@ -43,7 +44,7 @@ export const AnimationSlaider = ({item, index, x}:AnimationSlaiderType) => {
             text = {item.title}
             navigation = {navigation}
             goto = {NavigationName.SINGLEMOVIE}
-            image = {item.uri}
+            image = {ImageUtil.getImageFromServer(item.urlPhoto)}
           />
       </Animated.View>
       </TouchableOpacity>

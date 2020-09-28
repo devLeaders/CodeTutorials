@@ -4,6 +4,7 @@ import { FilterVideoDTO } from './videos.dto';
 import { FilterVideosDtoMaping } from './videos.validation.pipe'
 import { AuthGuard } from '@nestjs/passport';
 import {ApiTags,ApiParam} from '@nestjs/swagger'
+import { IVideosRespons } from '@project/common/src/videos/models'
 
 
 @ApiTags('videos')
@@ -14,7 +15,7 @@ export class VideosController{
     @Get()
     @UseGuards(AuthGuard('jwt'))
     @UsePipes(new FilterVideosDtoMaping())
-    showAllVideos(@Query() param:FilterVideoDTO){
+    showAllVideos(@Query() param:FilterVideoDTO):Promise<Array<IVideosRespons>>{
         return this.videosService.getAll(param);
     }
 

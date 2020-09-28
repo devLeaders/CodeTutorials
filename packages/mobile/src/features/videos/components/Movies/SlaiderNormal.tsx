@@ -2,18 +2,18 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
-import { MoviesListExpandedType } from './MoviesType';
 import {  
     ViewSeparator,
     ViewCentred,
 } from './MovieListStyle';
-import { GetVideosListExpandedV } from '../../action/conector';
 import SmallSquareOfMovie from '../MainScreen/SmallSquareOfMovie';
 import { NavigationName } from '../../../../config/routing/NavigationName';
-
+import * as AuthConnectors from '@project/common/features/videos/connector'
+import { IVideosRespons } from '@project/common/src/videos/models'
+import  { ImageUtil } from './ImageUtils'
 
 type SlaiderNormalS = {
-    listVideos: Array<MoviesListExpandedType>
+    listVideos: Array<IVideosRespons>
   }
 export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
   constructor(props:any){
@@ -24,19 +24,20 @@ export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
   }
 
   public separator = () => (<ViewSeparator/>)
-  public imgeSlaider = (item:MoviesListExpandedType) => (
+  public imgeSlaider = (item:IVideosRespons) => (
     <SmallSquareOfMovie 
     text= {item.title}
     navigation= {this.props.navigation}
     goto= {NavigationName.SINGLEMOVIE}
-    image= {item.uri}
+    image= {ImageUtil.getImageFromServer(item.urlPhoto)}
     />
   )
+    
 
-  componentDidMount(){
-    const listVideos =  GetVideosListExpandedV();
+  async componentDidMount(){
+    const listVideos = await AuthConnectors.getVideos({limit:4});
     this.setState ({
-      listVideos
+      listVideos:listVideos.data
     })
   }
 
@@ -54,10 +55,11 @@ export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
               horizontal={false}
               data={this.state.listVideos} 
               renderItem={this.renderIt} 
-              keyExtractor={ item => item.id }
+              keyExtractor={ item => item.id.toString() }
               numColumns={2}
             /> 
           </ViewCentred>
         )
     }
 }
+

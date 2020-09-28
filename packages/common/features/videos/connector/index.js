@@ -47,6 +47,6 @@ exports.getCategories = function () { return __awaiter(void 0, void 0, void 0, f
 }); }); };
 exports.getVideos = function (obj) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        return [2 /*return*/, configAxios_1.default.get("/vidoes?" + query_string_1.default.stringify(obj))];
+        return [2 /*return*/, configAxios_1.default.get("/videos?" + query_string_1.default.stringify(obj))];
     });
 }); };

@@ -7,6 +7,6 @@ export class FilesController {
 
     @Get(':imgname')
     seeFile(@Param('imgname') imageName:string, @Res() res){
-        res.sendFile(imageName,{root:'uploads'})
+        res.sendFile(imageName,{root:'uploads/photo'})
     }
 }
