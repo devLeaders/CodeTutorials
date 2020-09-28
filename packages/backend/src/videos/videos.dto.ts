@@ -1,4 +1,4 @@
-import { IsString, IsNumberString, IsOptional, Min } from 'class-validator';
+import { IsString, IsNumberString, IsOptional, Min, IsNumber } from 'class-validator';
 import {IFilterVideoRequest} from '@project/common/features/videos/models'
 import {ApiProperty} from '@nestjs/swagger'
 
@@ -27,6 +27,12 @@ export class FilterVideoDTO implements IFilterVideoRequest{
     @IsString()
     title: string;
     
-    @ApiProperty()
-    category: string; 
+    @ApiProperty({required:false})
+    @IsOptional()
+    category: number;
+    
+    @ApiProperty({required:false})
+    @IsNumberString()
+    @IsOptional()
+    limit: number;
 }

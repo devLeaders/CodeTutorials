@@ -8,6 +8,7 @@ import {
 import { AnimationSlaider } from './AnimationSlaider';
 import { GetVideosListExpandedV } from '../../action/conector';
 
+
  type SlaiderLargeS = {
   listVideos: Array<MoviesListExpandedType>
  }
