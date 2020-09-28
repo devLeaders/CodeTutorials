@@ -9,6 +9,7 @@ import { NavigationName } from '../../../config/routing/NavigationName';
 import { MyText } from '../../../features/common/styles/MyText';
 import { ScrollView, View } from 'react-native';
 import Header from '../../../features/common/components/Header';
+import GoogleAuth from '../components/SignIn/GoogleAuth/GoogleAuth'
 
 const Wrapper = styled.View({
     justifyContent: 'center',
@@ -55,6 +56,7 @@ class SignInScreen extends React.Component<any> {
                         <SignUpText>Nie masz konta?</SignUpText>
                     </SignUpOpacity>
                     <OrText>———LUB———</OrText>
+                    <GoogleAuth />
                     <AnotherSingInMethods 
                         src1='facebook'
                         src2='google'
