@@ -11,8 +11,8 @@ const myMap = new Map([
   [NavigationName.QRSCANER, <TeamIc  source={{uri:'ic_qr'}}/>],
   [NavigationName.TASKS, <TasksIc source={{uri:'ic_tasks'}}/>],
   [NavigationName.PLAYLIST, <PlayListIc source={{uri:'ic_playlist'}}/>],
-  [NavigationName.ALERT,  <AlertIcon  />],
-  [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'ic_magnifier'}}/>],
+  [NavigationName.ALERT,  <AlertIcon />],
+  [NavigationName.FILTERSSCREEN, <SearchWIc source={{uri:'magnifier'}}/>],
 ]);
 
 function OwnBottomNav(props) {
@@ -50,6 +50,7 @@ function OwnBottomNav(props) {
         };
         return (
             <TouchableOpacity
+              key={route.key}
               accessibilityRole="button"
               accessibilityStates={isFocused ? ['selected'] : []}
               accessibilityLabel={options.tabBarAccessibilityLabel}

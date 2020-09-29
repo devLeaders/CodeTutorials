@@ -53,21 +53,17 @@ const ButtonSquare = styled.TouchableOpacity({
 `;
 
 interface SmallSquareOfMovieProps {
-    navigation: any,
     text: string,
     image: string,
-    goto: any,
+    onPress: ()=>void,
   }
 
 export default class SmallSquareOfMovie extends React.Component<SmallSquareOfMovieProps> {
-    navi = (navigation) => {
-        this.props.navigation.navigate(this.props.goto)
-        }
 
     render(){
         return(
-            <Wrapper onPress={this.navi}> 
-                <ButtonSquare onPress={this.navi}>  
+            <Wrapper onPress={this.props.onPress}> 
+                <ButtonSquare >  
                 <ImageButton source={{uri: this.props.image}}/>
                 </ButtonSquare>
                 <TextWrapper>

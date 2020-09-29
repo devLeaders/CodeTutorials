@@ -7,6 +7,6 @@ import { IVideosRespons } from '../models'
 export const getCategories = async () => AxiosInstance.get("/videos/category")
 
 
-export const getVideos = async (obj?:IFilterVideoRequest):Promise<AxiosResponse<IVideosRespons>> => {
+export const getVideos = async (obj?:IFilterVideoRequest):Promise<AxiosResponse<Array<IVideosRespons>>> => {
     return AxiosInstance.get(`/videos?${queryString.stringify(obj)}`)
 }

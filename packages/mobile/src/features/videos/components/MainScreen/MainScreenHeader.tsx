@@ -61,12 +61,11 @@ export default class MainScreenHeader extends React.Component <MainScreenHeaderP
   render() {
     return (
       <ScrollView>
-        <HeaderImage source={ {uri: ImageUtil.getImageFromServer(this.state.listVideos[0]?.urlPhoto)} }/>
+        <HeaderImage source={ {uri: ImageUtil.getImageFromServer(this.state.listVideos[0]?.urlPhoto).toString()} }/>
         <ButtonsWraper>
           <SmallHeaderButton 
                 text="PlayLista"
-                navigation={this.props.navigation}
-                goto={NavigationName.MENU}
+                onPress= {()=> this.props.navigation.navigate(NavigationName.MENU)}
                 image="plus"
           />
           <BigHeaderButton 
@@ -76,8 +75,7 @@ export default class MainScreenHeader extends React.Component <MainScreenHeaderP
           />
           <SmallHeaderButton 
                 text="Informacje"
-                navigation={this.props.navigation}
-                goto={NavigationName.MENU}
+                onPress= {()=>this.props.navigation.navigate(NavigationName.MENU)}
                 image="info"
           />
         </ButtonsWraper>

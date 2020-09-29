@@ -42,10 +42,9 @@ const ButtonFilter = styled.TouchableOpacity({
 `;
 
 interface SmallHeaderButtonProps {
-    navigation: any,
+    onPress:()=>void,
     text: string,
     image: string,
-    goto:NavigationName
   }
 
 
@@ -53,8 +52,7 @@ export default class SmallHeaderButton extends React.Component<SmallHeaderButton
     render(){
         return(
             <TouchableOpacity>
-                <ButtonFilter
-                    onPress={() => this.props.navigation.navigate(this.props.goto)}>
+                <ButtonFilter onPress={this.props.onPress}>
                 <ImageButton source={{uri: this.props.image}}/>       
                 <TextButton>{this.props.text}</TextButton>
                 </ButtonFilter>

@@ -1,21 +1,24 @@
 import * as React from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
 import {  
     ViewSeparator,
     ViewCentred,
 } from './MovieListStyle';
-import SmallSquareOfMovie from '../MainScreen/SmallSquareOfMovie';
-import { NavigationName } from '../../../../config/routing/NavigationName';
 import * as AuthConnectors from '@project/common/features/videos/connector'
 import { IVideosRespons } from '@project/common/src/videos/models'
-import  { ImageUtil } from './ImageUtils'
+import { ImgeForNormalSlaider } from './ImageForNormalSlaider'
 
 type SlaiderNormalS = {
     listVideos: Array<IVideosRespons>
   }
-export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
+
+type SlaiderNormalP = {
+    navigation: any
+}
+
+export class SlaiderNormal extends React.Component<SlaiderNormalP,SlaiderNormalS>{
   constructor(props:any){
     super(props);
     this.state = {
@@ -24,16 +27,7 @@ export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
   }
 
   public separator = () => (<ViewSeparator/>)
-  public imgeSlaider = (item:IVideosRespons) => (
-    <SmallSquareOfMovie 
-    text= {item.title}
-    navigation= {this.props.navigation}
-    goto= {NavigationName.SINGLEMOVIE}
-    image= {ImageUtil.getImageFromServer(item.urlPhoto)}
-    />
-  )
-    
-
+  
   async componentDidMount(){
     const listVideos = await AuthConnectors.getVideos({limit:4});
     this.setState ({
@@ -41,7 +35,7 @@ export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
     })
   }
 
-  private renderIt = ({item}) => this.imgeSlaider(item)
+  private renderIt = ({item}) => <ImgeForNormalSlaider item={item}/>
 
   render(){
         return(

@@ -50,7 +50,7 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
                 horizontal={true}
                 data={this.state.listVideos} 
                 renderItem={this.renderIt}
-                keyExtractor={ item => item.id }
+                keyExtractor={ item => item.id.toString() }
                 bounces={ false }
                 onScroll={ this.onScroll }
               /> 

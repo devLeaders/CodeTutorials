@@ -55,22 +55,18 @@ const ImageButton = styled(Animated.Image)({
 `;
 
 interface BigSquareOfMovieProps {
-    navigation: any,
     text: string,
     image: string,
-    goto: any,
-    style?: any
+    style?: any,
+    onPress:()=>void
   }
 
 export default class BigSquareOfMovie extends React.Component<BigSquareOfMovieProps> {
-    navi = (navigation) => {
-        this.props.navigation.navigate(this.props.goto)
-        }
 
     render(){
         return(
-            <Wrapper style={{width:ImageWidth}} onPress={this.navi}> 
-                <TouchableOpacity onPress={this.navi}>  
+            <Wrapper style={{width:ImageWidth}} onPress={this.props.onPress}> 
+                <TouchableOpacity>  
                 <ImageButton style={this.props.style} source={{uri: this.props.image}}/>
                 </TouchableOpacity>
                 <TextWrapper>

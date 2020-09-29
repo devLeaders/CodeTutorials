@@ -42,8 +42,7 @@ export const AnimationSlaider = ({item, index, x}:AnimationSlaiderType) => {
        <Animated.View style={{ opacity, transform: [{ scale }]}}>
           <BigSquareOfMovie 
             text = {item.title}
-            navigation = {navigation}
-            goto = {NavigationName.SINGLEMOVIE}
+            onPress= {navToSingleMovie}
             image = {ImageUtil.getImageFromServer(item.urlPhoto)}
           />
       </Animated.View>

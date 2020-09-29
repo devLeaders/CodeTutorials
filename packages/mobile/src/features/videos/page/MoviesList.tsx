@@ -39,7 +39,7 @@ export const MoviesList = (props:MovieListP) =>{
                 </ButtonContainer>
               </GroupForSubtitle>
               <View>
-                <SlaiderNormal/>
+                <SlaiderNormal navigation={props.navigation}/>
               </View>
           </View>
         </ScrollView>

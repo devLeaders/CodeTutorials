@@ -8,16 +8,15 @@ import MainDescription from '../components/SingleScreen/MainDescription';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Color } from '../../../features/common/styles/constans/Color';
-import { NavigationName } from '../../../config/routing/NavigationName';
 import { NavigationHelpers } from '@react-navigation/native';
+
 
 
 interface SingleMovieProps {
   navigation: NavigationHelpers<any>,
 }
-
 export default class SingleMovie extends React.Component <SingleMovieProps>{
-  
+
   render() {
     const { navigation } = this.props;
     return (
