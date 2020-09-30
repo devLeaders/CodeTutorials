@@ -5,6 +5,7 @@ import { FontSize } from '../../../common/styles/constans/FontSize';
 import { Color } from '../../../common/styles/constans/Color';
 import { MyText } from '../../../common/styles/MyText';
 import { Image, TouchableOpacity, Animated, Dimensions } from 'react-native';
+import { getShadowStyle } from '../../../../features/common/styles/constans/ShadowStyle';
 
 const Wrapper = styled.TouchableOpacity({
     marginTop: 10,
@@ -17,14 +18,7 @@ const Wrapper = styled.TouchableOpacity({
     borderBottomRightRadius: 5,
     borderBottomLeftRadius: 5,
     backgroundColor: Color.WHITE,
-    shadowColor: Color.WHITEX,
-    shadowOffset: {
-        width: 1,
-        height: 2,
-    },
-    shadowOpacity: "1",
-    shadowRadius: 1,
-    elevation: "2"
+    ...getShadowStyle(2, Color.WHITEX,1),
 });
 
 const { width } = Dimensions.get("window");

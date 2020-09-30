@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {ScrollView} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import SmallHeaderButton from './SmallHeaderButton';
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import BigHeaderButton from './BigHeaderButton';
@@ -43,11 +43,19 @@ export default class MainScreenHeader extends React.Component <MainScreenHeaderP
     }
   }
 
-  async componentDidMount(){
-    const listVideos = await AuthConnectors.getVideos({limit:1});
-    this.setState ({
-      listVideos:listVideos.data
-    })
+  public getData = async ()=>{
+    try{
+      const listVideos = await AuthConnectors.getVideos({limit:1});
+      this.setState ({
+        listVideos:listVideos.data
+      })
+    } catch(error){
+      console.log(error)
+    }
+  }
+
+   componentDidMount(){
+    this.getData()
   }
 
   onPressPlay = ()=>{
@@ -61,6 +69,8 @@ export default class MainScreenHeader extends React.Component <MainScreenHeaderP
   render() {
     return (
       <ScrollView>
+      {(this.state.listVideos.length != 0)? 
+      <>
         <HeaderImage source={ {uri: ImageUtil.getImageFromServer(this.state.listVideos[0]?.urlPhoto).toString()} }/>
         <ButtonsWraper>
           <SmallHeaderButton 
@@ -79,6 +89,9 @@ export default class MainScreenHeader extends React.Component <MainScreenHeaderP
                 image="info"
           />
         </ButtonsWraper>
+      </>
+      :
+        <Text>Brak</Text>}
       </ScrollView>
       
     );

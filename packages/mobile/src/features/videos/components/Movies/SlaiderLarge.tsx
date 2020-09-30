@@ -29,11 +29,15 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
     );
   }
 
-  async componentDidMount(){
+  public getVideosList =async() =>{
     const listVideos = await AuthConnectors.getVideos({limit:8});;
     this.setState ({
       listVideos: listVideos.data
     })
+  }
+
+  componentDidMount(){
+    this.getVideosList()
   }
 
   public Separator = () => (<ViewSeparator/>)

@@ -23,7 +23,7 @@ const  Loading = (props: LoadingP) => {
         (async function () {
             const token = await AsyncStorage.getItem('token') 
             if(token){
-                AxioiInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                AxioiInstance.defaults.headers.Authorization = `Bearer ${token}`;
                 props.navigation.dispatch(
                     CommonActions.reset({
                       index: 0,

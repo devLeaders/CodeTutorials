@@ -9,6 +9,7 @@ import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Color } from '../../../features/common/styles/constans/Color';
 import { NavigationHelpers } from '@react-navigation/native';
+import HeaderLeftSingle from '../components/SingleScreen/HeaderLeftSingle';
 
 
 
@@ -16,6 +17,14 @@ interface SingleMovieProps {
   navigation: NavigationHelpers<any>,
 }
 export default class SingleMovie extends React.Component <SingleMovieProps>{
+  static navigationOptions = {
+        headerStyle: {
+            backgroundColor: '#00000000',
+        },
+        headerTransparent: true,
+        headerTitle: () => <View />,
+        headerLeft: () => <HeaderLeftSingle/>,
+  };
 
   render() {
     const { navigation } = this.props;
@@ -31,7 +40,7 @@ export default class SingleMovie extends React.Component <SingleMovieProps>{
               />
             <Title>Podobne</Title>
               <View style={{justifyContent:'center',alignItems:'center', marginLeft:20}}>
-                <SlaiderLarge navigation={navigation}/>
+                <SlaiderLarge  />
               </View>
         </Background>
      </SafeAreaView>

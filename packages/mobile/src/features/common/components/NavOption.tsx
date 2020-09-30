@@ -40,16 +40,16 @@ export class NavOption extends React.Component {
         };
       };
  
-    static optionsSingleMovie = () => {
-        return {
-            headerStyle: {
-                backgroundColor: '#00000000',
-            },
-            headerTransparent: true,
-            headerTitle: () => <View />,
-            headerLeft: () => <HeaderLeftSingle/>,
-        };
-      };
+    // static optionsSingleMovie = () => {
+    //     return {
+    //         headerStyle: {
+    //             backgroundColor: '#00000000',
+    //         },
+    //         headerTransparent: true,
+    //         headerTitle: () => <View />,
+    //         headerLeft: () => <HeaderLeftSingle/>,
+    //     };
+    //   };
 
     static optionsDrawer = () => {
         return{

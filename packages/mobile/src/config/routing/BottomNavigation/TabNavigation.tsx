@@ -8,6 +8,7 @@ import { NavOption } from '../../../features/common/components/NavOption'
 import FiltersScreen from '../../../features/videos/page/FiltersScreen';
 import OwnBottomNav from './OwnBottomNav';
 import { ScanScreen } from '../../../features/videos/components/QrScaner/QrScaner';
+import SingleMovie from '../../../features/videos/page/SingleMovie';
 
 
 const Tab = createBottomTabNavigator();
@@ -32,6 +33,7 @@ class TabNavigation extends Component <TabNavigationProps> {
           <Tab.Screen name={NavigationName.QRSCANER} options={NavOption.optionsTitle} component={ScanScreen}/>
           <Tab.Screen name={NavigationName.ALERT} options={NavOption.optionsTitle} component={Alert} />
           <Tab.Screen name={NavigationName.FILTERSSCREEN} options={NavOption.optionsTitle}  component={FiltersScreen} />
+          <Tab.Screen name={NavigationName.SINGLEMOVIE} component={SingleMovie} />
         </Tab.Navigator>
     );
   }

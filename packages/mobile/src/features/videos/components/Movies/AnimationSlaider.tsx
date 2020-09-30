@@ -33,8 +33,7 @@ export const AnimationSlaider = ({item, index, x}:AnimationSlaiderType) => {
 
     const navigation = useNavigation();
     const navToSingleMovie = () => {
-        navigation.navigate(NavigationName.SINGLEMOVIE,
-        {itemId: item.id})
+        navigation.navigate(NavigationName.SINGLEMOVIE, {itemId: item.id})
     }
     
     return(

@@ -5,7 +5,7 @@ import { Color } from '../../../features/common/styles/constans/Color';
 import { MyText } from '../../../features/common/styles/MyText';
 import { FontSize } from '../../../features/common/styles/constans/FontSize';
 import { FontWeight } from '../../../features/common/styles/constans/FontWeight';
-
+import { getShadowStyle } from '../../../features/common/styles/constans/ShadowStyle'
 export const Wrapper = styled.TouchableOpacity({
     flex: 1,
 });
@@ -19,14 +19,7 @@ export const ButtonDraw = styled.TouchableOpacity({
     borderRadius: 10,
     borderColor: Color.LIGHTGREYX,
     backgroundColor: Color.WHITE,
-    shadowColor: Color.LIGHTGREYX,
-    shadowOffset: {
-        width: 0,
-        height: 2,
-    },
-    shadowOpacity: "1",
-    shadowRadius: 8,
-    elevation: "3",
+    ...getShadowStyle(3, Color.LIGHTGREYX,1),
   });
 
   export const TextButton = styled(MyText)({
@@ -94,14 +87,7 @@ export const ButtonDraw = styled.TouchableOpacity({
     borderRadius: 10,
     borderColor: Color.LIGHTGREYX,
     backgroundColor: Color.WHITE,
-    shadowColor: Color.LIGHTGREYX,
-    shadowOffset: {
-        width: 0,
-        height: 2,
-    },
-    shadowOpacity: "1",
-    shadowRadius: 8,
-    elevation: "3",
+   ...getShadowStyle(3, Color.LIGHTGREYX,1),
   });
 
   export const ProfileLogout = styled(MyText)({

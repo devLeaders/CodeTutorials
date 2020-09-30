@@ -13,10 +13,10 @@ import {
     LogoutWrap,
     WrapInfo,} from './DrawerStyle';
 import { NavigationName } from '../NavigationName';
-import { Text, Image, View, AsyncStorage } from 'react-native';
+import { Text, Image, View } from 'react-native';
 import { CommonActions } from '@react-navigation/native';
 import AxioiInstance from '@project/common/features/config/axios/configAxios';
-
+import AsyncStorage from '@react-native-community/async-storage';
 
 interface ProfileBoxP {
     name: string,
@@ -61,7 +61,7 @@ interface ProfileBoxP {
                     <LogOut
                         onPress={() => removeToken()}>
                         <ProfileLogout>Wyloguj</ProfileLogout>
-                        <LogOutIc source={{uri:'ic_logout'}}/>
+                        <LogOutIc source={{uri:'ic_logout'}}/> 
                     </LogOut>
                 </LogoutWrap> 
         </ProfileWrapButton>

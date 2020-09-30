@@ -11,20 +11,14 @@ import XButton from '../components/FiltersScreen/XButton';
 import {MyText} from '../../common/styles/MyText';
 import { View, TouchableOpacity, Text, ScrollView, SafeAreaView} from 'react-native';
 import { NavigationHelpers } from '@react-navigation/native';
+import { getShadowStyle } from '../../../features/common/styles/constans/ShadowStyle';
 
 const Wrapper = styled.ScrollView({
   flexGrow: 1,
   backgroundColor: Color.WHITE,
-  shadowColor: Color.LIGHTGREYX,
-    shadowOffset: {
-        width: 1,
-        height: 1,
-    },
-    shadowOpacity: "1",
-    shadowRadius: 2,
-    elevation: "5",
-    flex: 1,
-    flexDirection: 'column',
+  ...getShadowStyle(5, Color.LIGHTGREYX,1),
+  flex: 1,
+  flexDirection: 'column',
 });
 
 const TitleAndXWrapper = styled.View`
@@ -53,14 +47,7 @@ const SearchbarWrapper = styled.View({
   marginRight: 22,
   borderRadius: 20,
   backgroundColor: Color.WHITE,
-  shadowColor: Color.LIGHTGREYX,
-  shadowOffset: {
-      width: 0,
-      height: 2,
-  },
-  shadowOpacity: "1",
-  shadowRadius: 8,
-  elevation: "3",
+  ...getShadowStyle(3, Color.LIGHTGREYX,1),
 });
 
 const InputText = styled.TextInput`
@@ -101,14 +88,7 @@ const EyeButton = styled.TouchableOpacity({
   borderRadius: 10,
   borderColor: Color.LIGHTGREYX,
   backgroundColor: Color.WHITE,
-  shadowColor: Color.LIGHTGREYX,
-  shadowOffset: {
-      width: 0,
-      height: 2,
-  },
-  shadowOpacity: "1",
-  shadowRadius: 8,
-  elevation: "3",
+  ...getShadowStyle(3, Color.LIGHTGREYX,1),
 });
 
 const ImageEye = styled.Image`

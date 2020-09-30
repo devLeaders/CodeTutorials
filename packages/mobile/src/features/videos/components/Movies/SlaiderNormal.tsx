@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { TouchableOpacity, View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { TouchableOpacity, View, FlatList } from 'react-native';
 import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
 import {  
     ViewSeparator,
@@ -27,12 +26,15 @@ export class SlaiderNormal extends React.Component<SlaiderNormalP,SlaiderNormalS
   }
 
   public separator = () => (<ViewSeparator/>)
-  
-  async componentDidMount(){
+  public getListVideos = async() =>{
     const listVideos = await AuthConnectors.getVideos({limit:4});
     this.setState ({
       listVideos:listVideos.data
     })
+  }
+
+  componentDidMount(){
+   this.getListVideos()
   }
 
   private renderIt = ({item}) => <ImgeForNormalSlaider item={item}/>

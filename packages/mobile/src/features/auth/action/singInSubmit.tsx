@@ -1,5 +1,5 @@
 import * as AuthConnectors from '@project/common/features/auth/connectors'
-import instance from '@project/common/features/config/axios/configAxios';
+import AxioiInstance from '@project/common/features/config/axios/configAxios';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ErrorSingin } from '../components/SignIn/ErrorEnum';
 
@@ -17,7 +17,7 @@ const loginSubmit = async (
     });
     const token = dataResponse.data.token;
     AsyncStorage.setItem('token', token);
-    instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    AxioiInstance.defaults.headers.Authorization = `Bearer ${token}`;
     callback()
   } catch (error) {
     callback(getErrorMsg(error?.response));
