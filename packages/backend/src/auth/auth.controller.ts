@@ -1,6 +1,8 @@
-import {Body, Controller, Post, UseGuards} from "@nestjs/common";
+import {Body, Controller, Post, Req, Request, UseGuards} from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import {ApiTags} from "@nestjs/swagger";
+import { TokenService } from "../auth/token/token.service";
+import { ResetPasswordGuard } from "../auth/users/resetPassword.guard";
 import {AuthService} from "./auth.service";
 import {ChangePasswordDTO} from "./changePassword.dto";
 import {ResetPasswordDTO} from "./resetPassword.dto";
@@ -27,9 +29,9 @@ export class AuthController {
     sendEmailForResetPassword(@Body() resetPasswordDTO: ResetPasswordDTO) {
         return this.authService.sendEmailForResetPassword(resetPasswordDTO.email);
     }
-
+    @UseGuards(ResetPasswordGuard)
     @Post('/change-password')
-    changePassword(@Body() changePasswordDTO: ChangePasswordDTO) {
-        return this.authService.changePassword(changePasswordDTO);
+    changePassword(@Body() changePasswordDTO: ChangePasswordDTO, @Req() request: Request) {
+      return this.authService.changePassword(changePasswordDTO, request.headers["token"]);
     }
 }

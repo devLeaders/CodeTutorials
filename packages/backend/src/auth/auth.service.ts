@@ -73,19 +73,13 @@ export class AuthService {
     }
   }
 
-  async changePassword(changePasswordDTO: ChangePasswordDTO) {
+  async changePassword(changePasswordDTO: ChangePasswordDTO, token: string) {
     try {
-      const jwtToken: IJWTToken = verify(changePasswordDTO.token, process.env.SECRET_KEY) as IJWTToken;
+      const jwtToken: IJWTToken = verify(token, process.env.SECRET_KEY) as IJWTToken;
 
       const user: UserEntity = await this.usersService.authorizedUser(jwtToken.email);
 
-      if (await this.tokenService.tokenUsedUp(changePasswordDTO.token)) {
-        return { message: ResponseMessage.TOKEN_USED_UP };
-      }
-
       await this.usersRepository.update(user, { password: changePasswordDTO.password });
-
-      await this.tokenService.addToken(changePasswordDTO.token, jwtToken.exp);
 
       return { message: ResponseMessage.PASSWORD_CHANGED };
 
