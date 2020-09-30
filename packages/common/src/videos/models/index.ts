@@ -5,3 +5,7 @@ export interface IFilterVideoRequest {
     title?: string;   
     category?: string; 
 }
+
+export interface ICategoryOptionsRequest {
+    categoryOptions?: "only" | "";
+}

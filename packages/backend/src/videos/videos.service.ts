@@ -44,7 +44,7 @@ export class VideosService {
 		const categories = await getRepository(CategoryEntity)
 			.createQueryBuilder("category");
 
-		if (only)
+		if (!only)
 			categories.leftJoinAndSelect("category.videos", "videos")
 		
 		return categories.getMany();
