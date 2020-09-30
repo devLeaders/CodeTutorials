@@ -1,11 +1,4 @@
 import { createContext } from "react";
-
-interface IInitailContext {
-  actions: any;
-  state: IState;
-}
-interface IState {
-  isPaused: boolean;
-}
+import { IInitailContext } from "../models/context.types";
 
 export const VideoPlayerContext = createContext({} as IInitailContext);

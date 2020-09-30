@@ -1,8 +1,10 @@
-import React, { ReactNode } from "react";
+import React from "react";
+import { useVideoPlayerContext } from "../../hooks/useVideoPlayerContext";
+import Button from "../DumbComponents/Button";
 
-interface IPlayBtn {}
-
-const PlayBtn: React.PropsWithChildren<IPlayBtn> = (children: ReactNode) => {
-  return <>{children}</>;
+const PlayBtn: React.FC<{}> = () => {
+  const { actions, state } = useVideoPlayerContext();
+  const imgIcon = state.isPaused ? "/img/videoPlayer/play.svg" : "/img/videoPlayer/pause.svg";
+  return <Button action={actions.handleTogglePlay} icon={imgIcon} />;
 };
 export default PlayBtn;
