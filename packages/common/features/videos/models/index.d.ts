@@ -17,4 +17,5 @@ export interface IVideosRespons {
     urlVideo: string;
     urlPhoto: string;
     category: Array<any>;
+    idYoutube: string;
 }

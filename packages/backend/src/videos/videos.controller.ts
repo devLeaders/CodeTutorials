@@ -1,4 +1,4 @@
-import { Controller, Get,Res, Req, UseGuards, Query, UsePipes } from '@nestjs/common';
+import { Controller, Get,Res, Req, UseGuards, Query, UsePipes, Param } from '@nestjs/common';
 import { VideosService } from './videos.service';
 import { FilterVideoDTO } from './videos.dto';
 import { FilterVideosDtoMaping } from './videos.validation.pipe'
@@ -26,7 +26,12 @@ export class VideosController{
 
     @ApiParam({ name: 'id', type:'string' })
     @Get('/:params')
-    getStream(@Query() id: string ,@Res() res, @Req() req) {
-    this.videosService.getStream(id, res, req);
-  }
+        getStream(@Query() id: string ,@Res() res, @Req() req) {
+        this.videosService.getStream(id, res, req);
+    }
+
+    @Get('video/:id')
+    findOne(@Param() id: string) {
+            return this.videosService.getSingleVideo(id);
+    }
 }

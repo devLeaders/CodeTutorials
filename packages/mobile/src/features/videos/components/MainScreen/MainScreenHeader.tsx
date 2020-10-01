@@ -25,53 +25,26 @@ const HeaderImage = styled.Image`
 
 interface MainScreenHeaderProps {
   navigation: NavigationHelpers<any>,
+  id: number,
+  idYoutube: string,
+  urlPhoto: string
 }
-
-interface MainScreenHeaderState {
-  listVideos: Array<IVideosRespons>
-}
-
-export default class MainScreenHeader extends React.Component <MainScreenHeaderProps, MainScreenHeaderState>{
-  static navigationOptions = {
-      headerShown: false,
-  };
-
-  constructor(props:any){
-    super(props);
-    this.state = {
-      listVideos : []
-    }
-  }
-
-  public getData = async ()=>{
-    try{
-      const listVideos = await AuthConnectors.getVideos({limit:1});
-      this.setState ({
-        listVideos:listVideos.data
-      })
-    } catch(error){
-      console.log(error)
-    }
-  }
-
-   componentDidMount(){
-    this.getData()
-  }
+export default class MainScreenHeader extends React.Component <MainScreenHeaderProps>{
 
   onPressPlay = ()=>{
     this.props.navigation.navigate(NavigationName.VIDEOPLAYER,{
       playerType: PlayerType.YOUTUBE,
-      videoUrl: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
-      youtubeId:"KVZ-P-ZI6W4"
+      videoUrl: '',
+      youtubeId: this.props.idYoutube
     })
   }
-   
+  
   render() {
     return (
       <ScrollView>
-      {(this.state.listVideos.length != 0)? 
+      {(this.props.id != null)? 
       <>
-        <HeaderImage source={ {uri: ImageUtil.getImageFromServer(this.state.listVideos[0]?.urlPhoto).toString()} }/>
+        <HeaderImage source={ {uri: ImageUtil.getImageFromServer(this.props.urlPhoto).toString()} }/>
         <ButtonsWraper>
           <SmallHeaderButton 
                 text="PlayLista"

@@ -81,7 +81,12 @@ export class VideosService {
 	}
 
 	async getSingleVideo(id: string): Promise<VideosEntity> {
-		return await this.videosRepository.findOne(id);
+		try{
+			return this.videosRepository.findOne(id);
+		} catch(e){
+			console.log(e);
+		}
+		
 	}
 
 	@Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
