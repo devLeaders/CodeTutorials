@@ -6,24 +6,24 @@ import {
   } from '@react-native-community/google-signin';
  // import auth from '@react-native-firebase/auth';
  import * as AuthConnectors from "@project/common/features/firebase-auth/connectors";
-
 import {useState, useEffect} from 'react';
 import { View } from 'react-native';
 import { NavigationName } from '../../../../../../src/config/routing/NavigationName';
 import instance from '@project/common/features/config/axios/configAxios';
 import { AsyncStorage } from 'react-native';
+import env from '../../../../../../env.json';
 
 
  const GoogleAuth = () => {
 
   const [loggedIn, setloggedIn] = useState(false);
-  const [userInfo, setuserInfo] = useState([]);
+  const [userInfo, setuserInfo] = useState({});
 
   useEffect(() => {
     GoogleSignin.configure({
         scopes: ['profile'], // what API you want to access on behalf of the user, default is email and profile
         //scopes: ['https://www.googleapis.com/auth/drive.readonly'], // what API you want to access on behalf of the user, default is email and profile
-        webClientId: '29847575452-acafiql6q80g3v0a7b3iiiofif1hrs2b.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
+        webClientId: env.FIREBASE_WEBCLIENTID, // client ID of type WEB for your server (needed to verify user ID and offline access)
         offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
         //hostedDomain: '', // specifies a hosted domain restriction
         //loginHint: '', // [iOS] The user's ID, or email address, to be prefilled in the authentication UI if possible. [See docs here](https://developers.google.com/identity/sign-in/ios/api/interface_g_i_d_sign_in.html#a0a68c7504c31ab0b728432565f6e33fd)
@@ -35,15 +35,17 @@ import { AsyncStorage } from 'react-native';
 
 
     const signIn = async () => {
+
         try {
+          console.log('dupa1')
             await GoogleSignin.hasPlayServices();
-            const {idToken} = await GoogleSignin.signIn();
-            //const userInfo = await GoogleSignin.signIn();
-           ///this.setState({ userInfo });
+            const userData = await GoogleSignin.signIn();
+            console.log(userData, 'dupa2')
+           setuserInfo(userData);
            setloggedIn(true);
-           console.log({ userInfo })
+          
            const dataResponse = await AuthConnectors.signInGoogle({
-            idToken,
+            userData?.idToken,
           });
           const token = dataResponse.data.token;
           AsyncStorage.setItem('token', token);
