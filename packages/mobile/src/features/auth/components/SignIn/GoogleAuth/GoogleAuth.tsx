@@ -5,9 +5,14 @@ import {
     statusCodes,
   } from '@react-native-community/google-signin';
  // import auth from '@react-native-firebase/auth';
+ import * as AuthConnectors from "@project/common/features/firebase-auth/connectors";
 
-import {useState, useEffect} from 'react';;
+import {useState, useEffect} from 'react';
 import { View } from 'react-native';
+import { NavigationName } from '../../../../../../src/config/routing/NavigationName';
+import instance from '@project/common/features/config/axios/configAxios';
+import { AsyncStorage } from 'react-native';
+
 
  const GoogleAuth = () => {
 
@@ -29,15 +34,26 @@ import { View } from 'react-native';
     }, []);
 
 
-
     const signIn = async () => {
         try {
-          await GoogleSignin.hasPlayServices();
-          const {idToken} = await GoogleSignin.signIn();
-          //const userInfo = await GoogleSignin.signIn();
-         //this.setState({ userInfo });
-         setloggedIn(true);
-         console.log({ idToken })
+            await GoogleSignin.hasPlayServices();
+            const {idToken} = await GoogleSignin.signIn();
+            //const userInfo = await GoogleSignin.signIn();
+           ///this.setState({ userInfo });
+           setloggedIn(true);
+           console.log({ userInfo })
+           const dataResponse = await AuthConnectors.signInGoogle({
+            idToken,
+          });
+          const token = dataResponse.data.token;
+          AsyncStorage.setItem('token', token);
+          instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+          if (token) {
+             console.log('jest token')
+            }else {
+             console.log('brak tokenu');
+            }
+          //()=>{props.navigation.navigate(NavigationName.MENU)} 
 
         } catch (error) {
           console.log({error})
