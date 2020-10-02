@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import {
     DrawerContentScrollView,
@@ -9,9 +9,31 @@ import ButtonDrawer from './ButtonDrawer';
 import { Color } from '../../../features/common/styles/constans/Color';
 import { DrawerWraper, TitleProfile, WrapWidth } from './DrawerStyle';
 import ProfileBox from './ProfileBox';
+import AsyncStorage from '@react-native-community/async-storage';
+
 
 const DrawerContent = (props) => {
+    const [token, setToken ] = useState<any>('')
+    useEffect(()=>{
+        let isCancelled = false;
+        (async ()=>{
+          try{
+            const token = await AsyncStorage.getItem('token')
+            if(!isCancelled){
+                setToken(token)
+            }
+          } catch (e) {
+              console.log(e)
+          }
+        })();
+        return () => {
+            isCancelled = true;
+        }
+    },[])
+
     return(
+        <>
+        {(token?.length != 0)?
         <View style={{flex:1,  backgroundColor: Color.WHITE}}>
             <DrawerContentScrollView {...props}>
                 <DrawerWraper>
@@ -54,6 +76,8 @@ const DrawerContent = (props) => {
                 </DrawerWraper>
             </DrawerContentScrollView>
         </View>
+        : <View></View>}
+        </>
     );
 }
 export default DrawerContent;

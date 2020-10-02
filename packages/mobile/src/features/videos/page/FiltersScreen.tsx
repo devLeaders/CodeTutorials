@@ -173,7 +173,7 @@ export default class FiltersScreen extends React.Component <FiltersScreenProps, 
                 onEndEditing={this.props.onSubmitSearch}                         
             />
             <SearchButton onPress={this.onPressSearch}>
-              <ImageSerach source={{uri:'magnifier'}}/>
+              <ImageSerach source={{uri:'ic_magnifier'}}/>
             </SearchButton>      
         </SearchbarWrapper>
         

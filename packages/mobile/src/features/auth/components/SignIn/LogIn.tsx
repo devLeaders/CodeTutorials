@@ -111,6 +111,9 @@ const LogIn = (props:LogInProps) => {
                                 src='email'
                                 placeholder="E-mail"
                                 autofocus
+                                autocomplite
+                                keyboardType={"email-address"}
+                                textContentType={"emailAddress"}
                             />
 
                             <SignInInput
