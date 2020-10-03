@@ -1,35 +1,39 @@
-import {useState, useCallback} from "react"
-import {refsStore} from "../utils/refs.store"
+import { S_IFREG } from "constants";
+import { useState, useCallback, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { minimizeVideo } from "../../../config/redux/newVideoPlayer/actions";
 
-export const useVideoPlayer = () => {
-    const [isPaused, setIsPaused] = useState(true)
-    const [isMuted, setIsMuted] = useState(false)
-    
-    const togglePlay = useCallback(() => {
-        const {play, pause} = refsStore.bigVideoPlayerRef.current
-        isPaused ? play() : pause()
-        setIsPaused(!isPaused)
-    },[isPaused])
+import { refsStore } from "../utils/refs.store";
 
-    const toggleMute = useCallback(() => {
-        let {toggleMuted} = refsStore.bigVideoPlayerRef.current
-        toggleMuted(!isMuted)
-        setIsMuted(!isMuted)
-    },[isMuted])
+export const useVideoPlayer = (name:string) => {
+  const dispatch = useDispatch();
 
+  const togglePlay = useCallback(() => {
+    const { play, pause } = refsStore[name];
+    // isPaused ? play() : pause();
 
-    const actions = {
-        togglePlay,
-        toggleMute
-    }
+  }, []);
 
-    const state = {
-        isPaused,
-        isMuted
-    }
+  const toggleMute = useCallback(() => {
+    // const { toggleMuted } = refsStore.bigVideoPlayerRef.current;
+    // toggleMuted(!isMuted);
 
-    return {
-        actions,
-        state
-    }
-}
+  }, []);
+
+  const toggleFullscreen = useCallback(() => {
+    // const {toggleFullscreen} = refsStore.bigVideoPlayerRef.current;
+    // isFullscreen ?  document.exitFullscreen() :toggleFullscreen();
+
+  }, []);
+
+  const toggleMinimize = () => {
+    dispatch(minimizeVideo());
+  };
+
+  return {
+    togglePlay,
+    toggleMute,
+    toggleFullscreen,
+    toggleMinimize
+  };
+};

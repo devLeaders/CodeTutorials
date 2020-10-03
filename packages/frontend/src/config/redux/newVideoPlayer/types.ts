@@ -2,6 +2,9 @@ export interface movieState {
   isFullscreen: boolean;
   isMinimized: boolean;
   videoTime: number;
+  isMuted: boolean;
+  smallIsPaused:boolean;
+  bigIsPaused:boolean;
 }
 
 export enum Actions {

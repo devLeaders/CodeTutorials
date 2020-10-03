@@ -17,7 +17,7 @@ export const useVideoPlayerActions = () => {
   const handleVideoStatus = useCallback(
     (isPaused: boolean) => {
       togglePlay(isPaused, isMinimized);
-      return setIsPaused(!isPaused);
+      setIsPaused(!isPaused);
     },
     [isMinimized, isPaused]
   );
@@ -28,17 +28,17 @@ export const useVideoPlayerActions = () => {
 
   const toggleMute = useCallback(() => {
     handleToggleMute(isMuted, isMinimized);
-    return setIsMuted(!isMuted);
+    setIsMuted(!isMuted);
   }, [isMuted]);
 
   const toggleFullscreen = useCallback(() => {
     handleVideoFullscreen(isFullscreen, isMinimized);
-    return dispatch(handleFullscreen());
+    dispatch(handleFullscreen());
   }, [isFullscreen]);
 
   const toggleMinimize = useCallback(() => {
     handleVideoStatus(false);
-    return dispatch(minimizeVideo());
+    dispatch(minimizeVideo());
   }, [dispatch]);
 
   const handleTimeProgress = useCallback(() => {

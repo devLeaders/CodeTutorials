@@ -3,7 +3,10 @@ import { movieState, MovieStateType, Actions } from "./types";
 const initialState: movieState = {
   isMinimized: false,
   isFullscreen: false,
+  isMuted:false,
   videoTime: 0,
+  smallIsPaused:false,
+  bigIsPaused:false,
 };
 
 export const newMovieReducer = (state = initialState, action: MovieStateType) => {

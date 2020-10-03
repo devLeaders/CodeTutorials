@@ -4,23 +4,24 @@ import { refsStore } from "../utils/refs.store";
 import VideoPlayer from "./compundComponents/VideoPlayer";
 import styled from "styled-components";
 import { IMovieState } from "../models/video.type";
+import { VideoPlayerName } from "../utils/VideoPlayerEnum";
 
 const SmallVideoPlayer: React.FC = () => {
   const { isMinimized } = useSelector((state: IMovieState) => state.newMovie);
   const videoContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (videoContainerRef.current !== null) {
-      refsStore.smallVideoPlayerRef = videoContainerRef.current;
-    }
-    return () => {
-      refsStore.smallVideoPlayerRef = undefined;
-    };
+    // if (videoContainerRef.current !== null) {
+    //   refsStore.smallVideoPlayerRef = videoContainerRef.current;
+    // }
+    // return () => {
+    //   refsStore.smallVideoPlayerRef = undefined;
+    // };
   }, []);
 
   return isMinimized ? (
     <Wrapper ref={videoContainerRef}>
-      <VideoPlayer>
+      <VideoPlayer name={VideoPlayerName.SMALL}>
         <VideoPlayer.FullscreenBtn />
         <VideoPlayer.MuteBtn />
         <VideoPlayer.PlayBtn />

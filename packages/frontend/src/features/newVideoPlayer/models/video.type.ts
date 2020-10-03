@@ -8,7 +8,9 @@ export interface IVideoPlayerComposition {
   Timebar: PropsWithChildren<any>;
   MinimizeBtn: PropsWithChildren<any>;
 }
-export interface IVideoPlayer {}
+export interface IVideoPlayer {
+  name:string
+}
 
 export interface IMovieState {
   newMovie: {

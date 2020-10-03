@@ -6,18 +6,21 @@ import { refsStore } from "../../utils/refs.store";
 import VideoStream from "../DumbComponents/VideoStream";
 
 const Video = React.forwardRef((props: any, ref: any) => {
-  const { actions:{togglePlay}, state: {isMuted} } = useVideoPlayerContext();
+  const { actions:{togglePlay}} = useVideoPlayerContext();
   const videoRef = useRef<any>(null);
 
-  useEffect(() => {
-    
-  },[])
+
   
-  React.useImperativeHandle(ref, () => ({
+  React.useImperativeHandle(ref.ref, () => ({
     play: () => {videoRef.current.play()},
     pause: () => {videoRef.current.pause()},
-    toggleMuted: (isMuted: boolean) => videoRef.current.muted = isMuted
-  }),[isMuted]);
+    toggleMuted: (isMuted: boolean) => {videoRef.current.muted = isMuted},
+    paused: videoRef.current.paused,
+    muted: videoRef.current.muted,
+    toggleFullscreen: () => {
+      ref.containerRef.current.requestFullscreen();
+    },
+  }));
 
 
   return (
