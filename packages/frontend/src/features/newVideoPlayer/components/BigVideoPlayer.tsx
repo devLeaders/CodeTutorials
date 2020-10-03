@@ -3,26 +3,24 @@ import { refsStore } from "../utils/refs.store";
 import VideoPlayer from "./compundComponents/VideoPlayer";
 
 const BigVideoPlayer: React.FC = () => {
-  const videoContainerRef = useRef<HTMLDivElement | null>(null);
+  const ref = useRef<any>();
 
   useEffect(() => {
-    if (videoContainerRef.current !== null) {
-      refsStore.bigVideoPlayerRef = videoContainerRef.current;
-    }
+      refsStore.bigVideoPlayerRef = ref;
     return () => {
       refsStore.bigVideoPlayerRef = undefined;
     };
   }, []);
 
   return (
-    <div ref={videoContainerRef}>
+    <div>
       <VideoPlayer>
-        <VideoPlayer.FullscreenBtn />
+        <VideoPlayer.Video ref={ref}/>
+        {/* <VideoPlayer.FullscreenBtn /> */}
         <VideoPlayer.MuteBtn />
         <VideoPlayer.PlayBtn />
-        <VideoPlayer.MinimizeBtn />
-        <VideoPlayer.Video />
-        <VideoPlayer.Timebar />
+        {/* <VideoPlayer.MinimizeBtn />
+        <VideoPlayer.Timebar /> */}
       </VideoPlayer>
     </div>
   );

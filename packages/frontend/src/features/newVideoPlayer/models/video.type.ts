@@ -29,6 +29,5 @@ export interface ITimeBar {
   videoProgress: string;
 }
 export interface IVideoProps {
-  handleTogglePlay(): void;
-  handleTimeProgress(): void;
+  togglePlay(): void;
 }

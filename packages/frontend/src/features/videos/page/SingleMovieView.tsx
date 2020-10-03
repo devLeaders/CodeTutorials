@@ -12,6 +12,7 @@ import Header from "../../common/components/layout/header/Header";
 import { Sizes } from "../../common/styles/constans/Sizes";
 import { Tabs } from "../../../config/redux/videoTabs/videoTabsReducer";
 import BigVideoPlayer from "../../newVideoPlayer/components/BigVideoPlayer";
+import {MyPlayer} from "../../newVideoPlayer/components/compundComponents/Temp";
 
 const VideoInfo = styled.div`
   display: flex;
@@ -44,6 +45,7 @@ const SingleMovieView: React.FC = () => {
       <Main>
         {/* <VideoPlayerComponent /> */}
         <BigVideoPlayer />
+        {/* <MyPlayer/> */}
         <VideoTabs />
         {activeVideoTab === Tabs.DESCRIPTION && (
           <VideoInfo>

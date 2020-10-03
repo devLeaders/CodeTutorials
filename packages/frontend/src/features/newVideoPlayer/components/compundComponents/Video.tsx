@@ -1,25 +1,38 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useImperativeHandle } from "react";
 import { useVideoPlayerContext } from "../../hooks/useVideoPlayerContext";
 import { IVideo } from "../../models/video.type";
+import { VideoPlayer } from "../../styles/video.styles";
 import { refsStore } from "../../utils/refs.store";
 import VideoStream from "../DumbComponents/VideoStream";
 
-const Video: React.FC<IVideo> = () => {
-  const {
-    actions: { handleTogglePlay, handleTimeProgress },
-    state,
-  } = useVideoPlayerContext();
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+const Video = React.forwardRef((props: any, ref: any) => {
+  const { actions:{togglePlay}, state: {isMuted} } = useVideoPlayerContext();
+  const videoRef = useRef<any>(null);
 
   useEffect(() => {
-    if (videoRef.current !== null) {
-      state.isMinimized ? (refsStore.smallVideoRef = videoRef.current) : (refsStore.bigVideoRef = videoRef.current);
-    }
-    return () => {
-      state.isMinimized ? (refsStore.smallVideoRef = undefined) : (refsStore.bigVideoRef = undefined);
-    };
-  }, []);
+    
+  },[])
+  
+  React.useImperativeHandle(ref, () => ({
+    play: () => {videoRef.current.play()},
+    pause: () => {videoRef.current.pause()},
+    toggleMuted: (isMuted: boolean) => videoRef.current.muted = isMuted
+  }),[isMuted]);
 
-  return <VideoStream ref={videoRef} handleTogglePlay={handleTogglePlay} handleTimeProgress={handleTimeProgress} />;
-};
+
+  return (
+    <VideoPlayer
+      onClick={togglePlay}
+      ref={(el) => {
+        videoRef.current = el;
+      }}
+    >
+      <source
+        src="https://www.w3schools.com/html/mov_bbb.mp4"
+        type="video/mp4"
+      />
+    </VideoPlayer>
+  );
+});
+
 export default Video;

@@ -8,9 +8,10 @@ import PlayBtn from "../buttons/PlayBtn";
 import Video from "./Video";
 import Timebar from "./TimeBar";
 import MinimizeBtn from "../buttons/MinimizeBtn";
+import { useVideoPlayer } from "../../hooks/useVideoPlayer";
 
 const VideoPlayer: React.FC<IVideoPlayer> & IVideoPlayerComposition = ({ children }) => {
-  const { actions, state } = useVideoPlayerActions();
+  const {actions, state} = useVideoPlayer();
 
   const value = useMemo(() => ({ actions, state }), [state]);
   return <VideoPlayerContext.Provider value={value}>{children}</VideoPlayerContext.Provider>;

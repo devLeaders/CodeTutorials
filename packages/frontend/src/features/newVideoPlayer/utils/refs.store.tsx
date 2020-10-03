@@ -1,7 +1,7 @@
 class RefsStore {
   smallVideoPlayerRef: HTMLDivElement | undefined;
   smallVideoRef: HTMLVideoElement | undefined;
-  bigVideoPlayerRef: HTMLDivElement | undefined;
+  bigVideoPlayerRef: any;
   bigVideoRef: HTMLVideoElement | undefined;
 }
 export const refsStore = new RefsStore();
