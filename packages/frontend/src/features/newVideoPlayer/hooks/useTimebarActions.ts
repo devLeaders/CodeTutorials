@@ -11,18 +11,18 @@ export const useTimeBarActions = (
   const { isMinimized, videoTime } = useSelector((state: IMovieState) => state.newMovie);
   const dispatch = useDispatch();
 
-  const handleUpdateTime = useCallback(
-    (e: any) => {
-      const newVideoTime = updateTime(isMinimized, e, timebarRefInner, timebarRefContainer, videoTime);
-      return dispatch(setVideoTime(newVideoTime));
-    },
-    [videoTime, isMinimized, setVideoTime]
-  );
+  // const handleUpdateTime = useCallback(
+  //   (e: any) => {
+  //     const newVideoTime = updateTime(isMinimized, e, timebarRefInner, timebarRefContainer, videoTime);
+  //     return dispatch(setVideoTime(newVideoTime));
+  //   },
+  //   [videoTime, isMinimized, setVideoTime]
+  // );
 
-  useEffect(() => {
-    window.addEventListener("mouseup", handleUpdateTime);
-    return () => {
-      window.removeEventListener("mouseup", handleUpdateTime);
-    };
-  });
+  // useEffect(() => {
+  //   window.addEventListener("mouseup", handleUpdateTime);
+  //   return () => {
+  //     window.removeEventListener("mouseup", handleUpdateTime);
+  //   };
+  // });
 };

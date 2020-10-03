@@ -1,3 +1,4 @@
+import { stat } from "fs";
 import { movieState, MovieStateType, Actions } from "./types";
 
 const initialState: movieState = {
@@ -5,8 +6,8 @@ const initialState: movieState = {
   isFullscreen: false,
   isMuted:false,
   videoTime: 0,
-  smallIsPaused:false,
-  bigIsPaused:false,
+  smallIsPaused:true,
+  bigIsPaused:true,
 };
 
 export const newMovieReducer = (state = initialState, action: MovieStateType) => {
@@ -22,6 +23,9 @@ export const newMovieReducer = (state = initialState, action: MovieStateType) =>
     }
     case Actions.RESET_VIDEO_STATE: {
       return initialState;
+    }
+    case Actions.SET_BIG_IS_PAUSED: {
+      return {...state, bigIsPaused: !state.bigIsPaused}
     }
     default: {
       return state;

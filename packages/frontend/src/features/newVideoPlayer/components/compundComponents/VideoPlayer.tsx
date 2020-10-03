@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import { useVideoPlayerActions } from "../../hooks/useVideoPlayerActions";
 import { IVideoPlayer, IVideoPlayerComposition } from "../../models/video.type";
 import { VideoPlayerContext } from "../../utils/videoPlayer.context";
 import FullscreenBtn from "../buttons/FullscreenBtn";
@@ -8,14 +7,16 @@ import PlayBtn from "../buttons/PlayBtn";
 import Video from "./Video";
 import Timebar from "./TimeBar";
 import MinimizeBtn from "../buttons/MinimizeBtn";
-import { useVideoPlayer } from "../../hooks/useVideoPlayer";
 import { useVideoEffects } from "../../hooks/useVideoEffects";
+import { useVideoActions } from "../../hooks/useVideoActions";
 
 const VideoPlayer: React.FC<IVideoPlayer> & IVideoPlayerComposition = ({ children, name }) => {
-  const actions = useVideoPlayer(name);
+  const {actions, state} = useVideoActions(name)
   useVideoEffects(name);
 
-  const value = useMemo(() => ({ actions }), []);
+  console.log(actions)
+
+  const value = useMemo(() => ({ actions }), [state]);
   return <VideoPlayerContext.Provider value={value}>{children}</VideoPlayerContext.Provider>;
 };
 

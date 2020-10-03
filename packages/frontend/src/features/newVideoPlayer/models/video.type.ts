@@ -1,3 +1,4 @@
+import { VideoPlayerName } from "./../utils/VideoPlayerEnum";
 import { PropsWithChildren, ReactNode } from "react";
 
 export interface IVideoPlayerComposition {
@@ -9,14 +10,17 @@ export interface IVideoPlayerComposition {
   MinimizeBtn: PropsWithChildren<any>;
 }
 export interface IVideoPlayer {
-  name:string
+  name: VideoPlayerName;
 }
 
 export interface IMovieState {
   newMovie: {
-    isFullscreen: boolean;
     isMinimized: boolean;
+    isFullscreen: boolean;
+    isMuted: boolean;
     videoTime: number;
+    smallIsPaused: boolean;
+    bigIsPaused: boolean;
   };
 }
 export interface IVideo {

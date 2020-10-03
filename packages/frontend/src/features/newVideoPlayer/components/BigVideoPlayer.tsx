@@ -8,7 +8,6 @@ const BigVideoPlayer: React.FC = () => {
   const ref = useRef<any>();
 
   useEffect(() => {
-    console.log('ref')
     refsStore[VideoPlayerName.BIG] = ref;
     return () => {
       // refsStore.bigVideoPlayerRef = undefined;

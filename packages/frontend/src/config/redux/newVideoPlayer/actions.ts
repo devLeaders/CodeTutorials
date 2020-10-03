@@ -21,3 +21,9 @@ export const minimizeVideo = (): MovieStateType => {
     type: Actions.MINIMIZE,
   };
 };
+
+export const setBigIsPaused = (): MovieStateType => {
+  return {
+    type: Actions.SET_BIG_IS_PAUSED,
+  }
+}

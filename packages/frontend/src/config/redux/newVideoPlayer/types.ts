@@ -12,6 +12,7 @@ export enum Actions {
   MINIMIZE = "MINIMIZE",
   SET_VIDEO_TIME = "SET_VIDEO_TIME",
   RESET_VIDEO_STATE = "RESET_VIDEO_STATE",
+  SET_BIG_IS_PAUSED = "setBigIsPaused"
 }
 
 interface MovieFulscreen {
@@ -27,4 +28,9 @@ interface MovieSetTime {
 interface MovieResetState {
   type: Actions.RESET_VIDEO_STATE;
 }
-export type MovieStateType = MovieFulscreen | MovieMinimize | MovieSetTime | MovieResetState;
+
+interface IPaused {
+  type: Actions.SET_BIG_IS_PAUSED
+}
+
+export type MovieStateType = MovieFulscreen | MovieMinimize | MovieSetTime | MovieResetState | IPaused;
