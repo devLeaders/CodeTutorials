@@ -1,34 +1,40 @@
-import React, { useEffect, useRef, useImperativeHandle } from "react";
+import React, { useRef, useImperativeHandle,forwardRef, useEffect } from "react";
 import { useVideoPlayerContext } from "../../hooks/useVideoPlayerContext";
-import { IVideo } from "../../models/video.type";
 import { VideoPlayer } from "../../styles/video.styles";
-import { refsStore } from "../../utils/refs.store";
-import VideoStream from "../DumbComponents/VideoStream";
 
-const Video = React.forwardRef((props: any, ref: any) => {
-  const { actions:{togglePlay}} = useVideoPlayerContext();
-  const videoRef = useRef<any>(null);
+const Video = forwardRef((props: unknown, ref: any) => {
+  const { actions:{ playPause, handleTimeProgressions, handleKeyActions, handleMouseOver }, state: {isMinimized} } = useVideoPlayerContext();
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
+
+  useImperativeHandle(ref.videoData, () => ({
+    play: () => {videoRef.current?.play()},
+    pause: () => {videoRef.current?.pause()},
+    toggleMuted: (isMuted: boolean) => {videoRef.current!.muted = isMuted},
+    toggleFullscreen: () => {ref.containerRef.current.requestFullscreen()},
+    setCurrentTime: (time: number) => {videoRef.current!.currentTime = time},
+    paused: videoRef.current?.paused,
+    muted: videoRef.current?.muted,
+    currentTime: videoRef.current?.currentTime,
+    videoDuration: videoRef.current?.duration,
+  }));
 
   
-  React.useImperativeHandle(ref.ref, () => ({
-    play: () => {videoRef.current.play()},
-    pause: () => {videoRef.current.pause()},
-    toggleMuted: (isMuted: boolean) => {videoRef.current.muted = isMuted},
-    paused: videoRef.current.paused,
-    muted: videoRef.current.muted,
-    toggleFullscreen: () => {
-      ref.containerRef.current.requestFullscreen();
-    },
-  }));
+  useEffect(() => {
+    document.addEventListener('mouseover', (e) => handleMouseOver(e, videoRef));
+    document.addEventListener('keydown', handleKeyActions);
+    return () => {
+      document.removeEventListener('mouseover',(e) => handleMouseOver(e, videoRef));
+      document.removeEventListener('keydown', handleKeyActions);
+    };
+  }, [handleMouseOver, isMinimized]);
 
 
   return (
     <VideoPlayer
-      onClick={togglePlay}
-      ref={(el) => {
-        videoRef.current = el;
-      }}
+      onClick={playPause}
+      ref={(el) => {videoRef.current = el}}
+      onTimeUpdate={handleTimeProgressions}
     >
       <source
         src="https://www.w3schools.com/html/mov_bbb.mp4"

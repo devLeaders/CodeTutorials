@@ -9,14 +9,14 @@ import Timebar from "./TimeBar";
 import MinimizeBtn from "../buttons/MinimizeBtn";
 import { useVideoEffects } from "../../hooks/useVideoEffects";
 import { useVideoActions } from "../../hooks/useVideoActions";
+import CurrentTime from "./CurrentTime";
+import VideoDuration from "./VideoDuration";
 
 const VideoPlayer: React.FC<IVideoPlayer> & IVideoPlayerComposition = ({ children, name }) => {
-  const {actions, state} = useVideoActions(name)
+  const { actions, state } = useVideoActions(name)
   useVideoEffects(name);
-
-  console.log(actions)
-
-  const value = useMemo(() => ({ actions }), [state]);
+  
+  const value = useMemo(() => ({ actions, state, name }), [state]);
   return <VideoPlayerContext.Provider value={value}>{children}</VideoPlayerContext.Provider>;
 };
 
@@ -26,5 +26,7 @@ VideoPlayer.MuteBtn = MuteBtn;
 VideoPlayer.FullscreenBtn = FullscreenBtn;
 VideoPlayer.Timebar = Timebar;
 VideoPlayer.MinimizeBtn = MinimizeBtn;
+VideoPlayer.CurrentTime = CurrentTime;
+VideoPlayer.VideoDuration = VideoDuration;
 
 export default VideoPlayer;

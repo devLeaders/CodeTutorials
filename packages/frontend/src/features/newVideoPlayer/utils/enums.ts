@@ -3,6 +3,7 @@ export enum Keys {
   PLAY_PAUSE = " ",
   SKIP_FORWARD = "ArrowRight",
   REWIND = "ArrowLeft",
+  EXIT = 'Escape',
 }
 
 

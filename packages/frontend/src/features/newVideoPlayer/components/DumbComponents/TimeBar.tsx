@@ -8,7 +8,8 @@ const Timebar = React.forwardRef<HTMLDivElement, ITimeBar>(({ videoProgress }, r
 
 const TimePlayedBar = styled.div<{ videoProgress: string }>`
   width: ${({ videoProgress }) => (videoProgress ? videoProgress : 0)};
-  height: 4px;
+  height: 2px;
   background-color: purple;
+  
 `;
 export default Timebar;

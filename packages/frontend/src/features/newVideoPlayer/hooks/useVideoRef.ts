@@ -1,12 +1,8 @@
-import { useState, useCallback, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { minimizeVideo } from "../../../config/redux/newVideoPlayer/actions";
-
+import { useCallback } from "react";
 import { refsStore } from "../utils/refs.store";
-import { VideoPlayerName } from "../utils/VideoPlayerEnum";
+import { TimeToSkip, VideoPlayerName } from "../utils/VideoPlayerEnum";
 
 export const useVideoRef = (name: VideoPlayerName) => {
-  const dispatch = useDispatch();
 
   const togglePlay = useCallback((isPaused: boolean) => {
     const { play, pause } = refsStore[name].current;
@@ -19,18 +15,36 @@ export const useVideoRef = (name: VideoPlayerName) => {
   }, []);
 
   const toggleFullscreen = useCallback((isFullscreen: boolean) => {
-    const {toggleFullscreen} = refsStore[name].current;
-    isFullscreen ?  document.exitFullscreen() :toggleFullscreen();
+    const { toggleFullscreen } = refsStore[name].current;
+    isFullscreen ?  document.exitFullscreen() : toggleFullscreen();
   }, []);
 
-  const toggleMinimize = () => {
-    dispatch(minimizeVideo());
-  };
+  const setVideoTime = useCallback((newTime:number) => {
+    const { setCurrentTime } = refsStore[name].current;
+    setCurrentTime(newTime);
+  }, []);
+
+  const rewindVideo = useCallback(() => {
+    const { setCurrentTime, currentTime } = refsStore[name].current;
+    const newTime = currentTime - TimeToSkip.TIME;
+    setCurrentTime(newTime);
+  }, []);
+
+  const forwardVieo = useCallback(() => {
+    const { setCurrentTime, currentTime, videoDuration } = refsStore[name].current;
+    const timeToEnd = videoDuration - currentTime;
+    if( timeToEnd > TimeToSkip.TIME) {
+      const newTime = currentTime + TimeToSkip.TIME;
+      setCurrentTime(newTime);
+    }
+  }, []);
 
   return {
     togglePlay,
     toggleMute,
     toggleFullscreen,
-    toggleMinimize
+    setVideoTime,
+    rewindVideo,
+    forwardVieo
   };
 };

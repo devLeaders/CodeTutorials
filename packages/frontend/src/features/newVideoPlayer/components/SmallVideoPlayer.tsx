@@ -1,32 +1,30 @@
 import React, { useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { refsStore } from "../utils/refs.store";
 import VideoPlayer from "./compundComponents/VideoPlayer";
 import styled from "styled-components";
-import { IMovieState } from "../models/video.type";
 import { VideoPlayerName } from "../utils/VideoPlayerEnum";
+import { useMovieState } from "../hooks/useMovieState";
 
 const SmallVideoPlayer: React.FC = () => {
-  const { isMinimized } = useSelector((state: IMovieState) => state.newMovie);
-  const videoContainerRef = useRef<HTMLDivElement | null>(null);
+  const { isMinimized } = useMovieState();;
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const videoData = useRef<any>();
 
   useEffect(() => {
-    // if (videoContainerRef.current !== null) {
-    //   refsStore.smallVideoPlayerRef = videoContainerRef.current;
-    // }
-    // return () => {
-    //   refsStore.smallVideoPlayerRef = undefined;
-    // };
-  }, []);
+    refsStore[VideoPlayerName.SMALL] = videoData;
+    return () => {
+      refsStore[VideoPlayerName.SMALL] = undefined;
+    };
+  }, [isMinimized]);
 
   return isMinimized ? (
-    <Wrapper ref={videoContainerRef}>
+    <Wrapper ref={containerRef}>
       <VideoPlayer name={VideoPlayerName.SMALL}>
+        <VideoPlayer.Video ref={{ videoData, containerRef }}/>
         <VideoPlayer.FullscreenBtn />
         <VideoPlayer.MuteBtn />
         <VideoPlayer.PlayBtn />
         <VideoPlayer.MinimizeBtn />
-        <VideoPlayer.Video />
         <VideoPlayer.Timebar />
       </VideoPlayer>
     </Wrapper>

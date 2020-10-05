@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
-export const Btn = styled.button<{ icon: string }>`
-  width: 40px;
-  height: 40px;
-  background-image: ${({ icon }) => `url(${icon})`};
-  background-repeat: no-repeat;
+export const Btn = styled.button`
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
   border: 0;
-  background-position: center;
+  outline: 0;
   cursor: pointer;
-  outline: none;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 `;
+export const BtnImg = styled.img`
+  width: 100%;
+  height: 100%;
+`

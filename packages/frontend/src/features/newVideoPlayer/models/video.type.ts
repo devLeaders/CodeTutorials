@@ -8,6 +8,8 @@ export interface IVideoPlayerComposition {
   MuteBtn: PropsWithChildren<any>;
   Timebar: PropsWithChildren<any>;
   MinimizeBtn: PropsWithChildren<any>;
+  CurrentTime: PropsWithChildren<any>;
+  VideoDuration: PropsWithChildren<any>;
 }
 export interface IVideoPlayer {
   name: VideoPlayerName;
@@ -21,6 +23,7 @@ export interface IMovieState {
     videoTime: number;
     smallIsPaused: boolean;
     bigIsPaused: boolean;
+    videoDuration: number;
   };
 }
 export interface IVideo {
@@ -36,4 +39,7 @@ export interface ITimeBar {
 }
 export interface IVideoProps {
   togglePlay(): void;
+}
+export interface ITime {
+  text:string
 }

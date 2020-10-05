@@ -31,8 +31,9 @@ interface HeaderProps {
   hide?: boolean;
 }
 
+
 const Header: React.FC<HeaderProps> = ({ transparency, hide }) => {
-  const isMoviePaused = useSelector((state: { movie: { isPaused: boolean } }) => state.movie.isPaused);
+  const isMoviePaused = useSelector((state: { newMovie: { bigIsPaused: boolean } }) => state.newMovie.bigIsPaused);
   const visible = useVisibleHeader(isMoviePaused, hide);
   return (
     <>
