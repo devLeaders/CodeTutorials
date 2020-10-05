@@ -1,24 +1,37 @@
-import { UserDTO } from './users/user.dto';
-import { Controller, Post, Body} from '@nestjs/common';
-import { UsersService } from './users/users.service';
-import {AuthService} from './auth.service';
-import { SingInDTO } from './singIn.dto';
-import {ApiTags} from '@nestjs/swagger'
+import {Body, Controller, Post, Req, Request, UseGuards} from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
+import {ApiTags} from "@nestjs/swagger";
+import { TokenService } from "../auth/token/token.service";
+import { ResetPasswordGuard } from "../auth/users/resetPassword.guard";
+import {AuthService} from "./auth.service";
+import {ChangePasswordDTO} from "./changePassword.dto";
+import {ResetPasswordDTO} from "./resetPassword.dto";
+import {SingInDTO} from "./singIn.dto";
+import {UserDTO} from "./users/user.dto";
+import {UsersService} from "./users/users.service";
 
 @ApiTags('auth')
 @Controller('auth')
-export class AuthController{
+export class AuthController {
     constructor(private userService: UsersService, private authService: AuthService) {}
 
-
     @Post('/signup')
-    signUp(@Body() userDTO: UserDTO){
+    signUp(@Body() userDTO: UserDTO) {
       return this.userService.signUp(userDTO);
     }
 
-
     @Post('/signin')
-    signIn(@Body() sigInDTO: SingInDTO){
+    signIn(@Body() sigInDTO: SingInDTO) {
       return this.authService.signIn(sigInDTO);
+    }
+
+    @Post('/reset-password')
+    sendEmailForResetPassword(@Body() resetPasswordDTO: ResetPasswordDTO) {
+        return this.authService.sendEmailForResetPassword(resetPasswordDTO.email);
+    }
+    @UseGuards(ResetPasswordGuard)
+    @Post('/change-password')
+    changePassword(@Body() changePasswordDTO: ChangePasswordDTO, @Req() request: Request) {
+      return this.authService.changePassword(changePasswordDTO, request.headers["token"]);
     }
 }

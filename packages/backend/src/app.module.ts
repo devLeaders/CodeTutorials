@@ -1,19 +1,19 @@
-import { AuthModule } from './auth/auth.module';
-import { Module, HttpModule } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { VideosModule } from './videos/videos.module';
-import { configService } from './config/config.service';
-import { FilesModule } from './files/files.module';
-import { ScheduleModule } from '@nestjs/schedule';
+import {HttpModule, Module} from "@nestjs/common";
 // import { VideoStreamModule } from './video-stream/video-stream.module';
-import { ConfigModule } from '@nestjs/config';
-import { NotificationsModule } from './notifications/notifications.module';
-import { ConnectorService } from './connector/connector.service';
-import { ConnectorModule } from './connector/connector.module';
-import { FirebaseAuthModule } from './firebase-auth/firebase-auth.module';
-import firebaseConfig from "./notifications/firebaseConfig"
+import {ConfigModule} from "@nestjs/config";
+import {ScheduleModule} from "@nestjs/schedule";
+import {TypeOrmModule} from "@nestjs/typeorm";
+import {AppController} from "./app.controller";
+import {AppService} from "./app.service";
+import {AuthModule} from "./auth/auth.module";
+import {configService} from "./config/config.service";
+import {ConnectorModule} from "./connector/connector.module";
+import {ConnectorService} from "./connector/connector.service";
+import {FilesModule} from "./files/files.module";
+import {FirebaseAuthModule} from "./firebase-auth/firebase-auth.module";
+import firebaseConfig from "./notifications/firebaseConfig";
+import {NotificationsModule} from "./notifications/notifications.module";
+import {VideosModule} from "./videos/videos.module";
 
 @Module({
   imports: [
