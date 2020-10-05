@@ -1,6 +1,7 @@
-import { IsString, IsNumberString, IsOptional, Min } from 'class-validator';
+import { IsString, IsNumberString, IsOptional, Min, IsNumber } from 'class-validator';
 import {IFilterVideoRequest} from '@project/common/features/videos/models'
 import {ApiProperty} from '@nestjs/swagger'
+import { SortOptions, ColumnVideo } from '@project/common/features/enums';
 
 export interface VideoDTO {
     id: string,
@@ -28,5 +29,21 @@ export class FilterVideoDTO implements IFilterVideoRequest{
     title: string;
     
     @ApiProperty()
-    category: string; 
+    category: string;
+
+    @ApiProperty({required:false})
+    @IsOptional()
+    @IsNumber()
+    @Min(1)
+    count: number;
+
+    @ApiProperty({name:"sort", enum:["ASC", "DESC"], required:false})
+    @IsOptional()
+    @IsString()
+    sort: SortOptions;
+
+    @ApiProperty({name:"columnSort", enum:[ "id", "created", "title", "dateCreation"], required:false})
+    @IsOptional()
+    @IsString()
+    columnSort: ColumnVideo; 
 }

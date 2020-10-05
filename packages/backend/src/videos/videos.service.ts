@@ -26,14 +26,18 @@ export class VideosService {
 		let query = getRepository(VideosEntity)
 			.createQueryBuilder("videos")
 			.leftJoinAndSelect("videos.category", "category")
-			.take(20)
+			.take(param.count ? param.count : 20)
 			.skip(20 * (page - 1))
 			.where(`videos.id IS NOT NULL`);
+
 		if (param.title) {
 			query = query.andWhere(`videos.title LIKE :title`, { title: param.title });
 		}
 		if (param.category) {
 			query = query.andWhere(`category.id IN (:...ids)`, { ids: param.category });
+		}
+		if (param.columnSort && param.sort) {
+			query = query.orderBy(param.columnSort, param.sort);
 		}
 
 		const videos = query.getMany();
