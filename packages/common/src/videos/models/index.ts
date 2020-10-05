@@ -1,3 +1,4 @@
+import { ResponseVersionCategory } from "../../Enums";
 
 
 export interface IFilterVideoRequest {
@@ -6,6 +7,6 @@ export interface IFilterVideoRequest {
     category?: string; 
 }
 
-export interface ICategoryOptionsRequest {
-    categoryOptions?: "only" | "";
+export interface IResponseVersionCategoryRequest {
+    responseVersionCategory: ResponseVersionCategory;
 }
