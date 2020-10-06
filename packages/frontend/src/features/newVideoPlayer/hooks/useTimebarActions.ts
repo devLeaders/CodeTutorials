@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setVideoTime } from "../../../config/redux/newVideoPlayer/actions";
 import { refsStore } from "../utils/refs.store";
 import { VideoPlayerName } from "../utils/VideoPlayerEnum";
 import { useMovieState } from "./useMovieState";
@@ -26,7 +25,6 @@ export const useTimeBarActions = (
     const { videoDuration, setCurrentTime } = refsStore[name].current;
     if ((e.target === timebarRefInner.current || e.target === timebarRefContainer.current) &&
     timebarRefInner.current && timebarRefContainer.current && videoDuration ) {
-
       const mousePosition = e.offsetX;
       const timeBarWidth = timebarRefContainer.current.offsetWidth;
       const time = (mousePosition / timeBarWidth) * videoDuration;

@@ -4,7 +4,8 @@ import { Device } from '../../common/styles/constans/Device';
 
 export const Wrapper = styled.div`
   position:relative;
-`
+`;
+
 export const Interface = styled.div<{isPlaying:boolean}>`
   background-color:${({isPlaying}) => isPlaying ? `${Colors.nBlack}` : `transparent`};
   opacity: 0.9;
@@ -26,12 +27,18 @@ export const Interface = styled.div<{isPlaying:boolean}>`
     height: 82px;
   
   };
-`
+`;
+
 export const ButtonsWrapper = styled.div<{isPlaying:boolean}>`
   display:flex;
   justify-content: space-between;
   height: 18px;
   padding: 0px 15px;
+  opacity: ${({isPlaying}) => isPlaying ? '0.9' : '0'};
+  transition: 0.3s ease-in-out;
+    :hover {
+       opacity: 0.9;
+    };
   @media ${Device.MOBILE_L}{
     height: 35px;
     padding: 0px 20px;
@@ -43,12 +50,9 @@ export const ButtonsWrapper = styled.div<{isPlaying:boolean}>`
     height: 80px;
     padding: 0px 35px;
   };
-  opacity: ${({isPlaying}) => isPlaying ? '0.9' : '0'};
-    transition: 0.3s ease-in-out;
-    :hover {
-       opacity: 0.9;
-    };
+ 
 `;
+
 export const LeftPanel = styled.div`
  height: 100%;
  width: 40px;
@@ -64,7 +68,8 @@ export const LeftPanel = styled.div`
   @media ${Device.LAPTOP} {
     width: 120px;
   };
-`
+`;
+
 export const RightPanel = styled.div`
   width: 75px;
   height: 100%;
@@ -80,7 +85,8 @@ export const RightPanel = styled.div`
   @media ${Device.LAPTOP} {
     width: 220px;
   };
-`
+`;
+
 export const BtnWrapper = styled.div`
   width: 12px;
   height: 12px;

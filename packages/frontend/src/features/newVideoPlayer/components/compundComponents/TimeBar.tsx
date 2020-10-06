@@ -12,7 +12,7 @@ const Timebar: React.FC = () => {
   const timebarRefInner = useRef<HTMLDivElement | null>(null);
   const timebarRefContainer = useRef<HTMLDivElement | null>(null);
   const { videoProgress } = useTimeBarActions(timebarRefInner, timebarRefContainer, name);
-  const bigPlayer = name === VideoPlayerName.BIG 
+  const bigPlayer = name === VideoPlayerName.BIG;
   return (
     <Wrapper ref={timebarRefContainer}>
       <TimeBarInner ref={timebarRefInner} videoProgress={videoProgress} />

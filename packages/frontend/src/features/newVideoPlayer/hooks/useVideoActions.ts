@@ -86,7 +86,7 @@ export const useVideoActions = (name: VideoPlayerName) => {
       handleKeyActions,
       handleMouseOver
   }
-
+ 
   return {
     actions,
     state,
