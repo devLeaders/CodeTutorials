@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setBigIsPaused, setSmallIsPaused, setMuteUnmute, handleFullscreen, minimizeVideo, setVideoTime } from "./../../../config/redux/newVideoPlayer/actions";
 import { VideoPlayerName } from "./../utils/VideoPlayerEnum";
@@ -21,10 +21,10 @@ export const useVideoActions = (name: VideoPlayerName) => {
     dispatch(reduxAction);
   };
 
-  const muteUnmute = () => {
+  const muteUnmute = useCallback(() => {
     toggleMute(isMuted);
     dispatch(setMuteUnmute());
-  };
+  }, [])
 
   const setFullscreen = () => {
     toggleFullscreen(isFullscreen);
@@ -62,7 +62,7 @@ export const useVideoActions = (name: VideoPlayerName) => {
           };
           case Keys.PLAY_PAUSE: { 
             e.preventDefault();
-            return playPause();
+            return playPause(); 
           };
           case Keys.SKIP_FORWARD: { 
             return forwardVieo();
@@ -71,7 +71,9 @@ export const useVideoActions = (name: VideoPlayerName) => {
             return rewindVideo();
           };
           case Keys.EXIT: { 
-            return dispatch(handleFullscreen());
+            if(isFullscreen) {
+              return dispatch(handleFullscreen())
+            }
           };
         };
       };

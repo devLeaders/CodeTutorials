@@ -4,15 +4,14 @@ import { Colors } from "../../../common/styles/constans/Colors";
 import { Device } from "../../../common/styles/constans/Device";
 import { useTimeBarActions } from "../../hooks/useTimebarActions";
 import { useVideoPlayerContext } from "../../hooks/useVideoPlayerContext";
-import { VideoPlayerName } from "../../utils/VideoPlayerEnum";
 import TimeBarInner from "../DumbComponents/TimeBar";
 
 const Timebar: React.FC = () => {
-  const { name, state: {bigIsPaused} } = useVideoPlayerContext();
+  const { name } = useVideoPlayerContext();
   const timebarRefInner = useRef<HTMLDivElement | null>(null);
   const timebarRefContainer = useRef<HTMLDivElement | null>(null);
   const { videoProgress } = useTimeBarActions(timebarRefInner, timebarRefContainer, name);
-  const bigPlayer = name === VideoPlayerName.BIG;
+
   return (
     <Wrapper ref={timebarRefContainer}>
       <TimeBarInner ref={timebarRefInner} videoProgress={videoProgress} />
@@ -25,6 +24,7 @@ const Wrapper = styled.div`
   bottom: 18px;
   background-color: ${Colors.nBlack};
   cursor: pointer;
+  z-index:2;
   @media ${Device.TABLET}{
     height: 3px;
   };

@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import { refsStore } from "../utils/refs.store";
 import VideoPlayer from "./compundComponents/VideoPlayer";
-import styled from "styled-components";
 import { VideoPlayerName } from "../utils/VideoPlayerEnum";
 import { useMovieState } from "../hooks/useMovieState";
+import { Wrapper, Background, PlayBtnWrapper, TimebarWrapper, BtnWrapper } from "../styles/snallPlayer.styles";
 
 const SmallVideoPlayer: React.FC = () => {
-  const { isMinimized } = useMovieState();;
+  const { isMinimized, smallIsPaused } = useMovieState();;
   const containerRef = useRef<HTMLDivElement | null>(null);
   const videoData = useRef<any>();
 
@@ -21,20 +21,23 @@ const SmallVideoPlayer: React.FC = () => {
     <Wrapper ref={containerRef}>
       <VideoPlayer name={VideoPlayerName.SMALL}>
         <VideoPlayer.Video ref={{ videoData, containerRef }}/>
-        <VideoPlayer.FullscreenBtn />
-        <VideoPlayer.MuteBtn />
-        <VideoPlayer.PlayBtn />
-        <VideoPlayer.MinimizeBtn />
+    
+      <Background isPaused={smallIsPaused}>
+        <PlayBtnWrapper isPaused={smallIsPaused}>
+          <VideoPlayer.PlayBtn />
+        </PlayBtnWrapper>
+        <BtnWrapper isPaused={smallIsPaused}> 
+        <VideoPlayer.MinimizeBtn /> 
+       </BtnWrapper>
+      </Background>     
+
+      <TimebarWrapper>
         <VideoPlayer.Timebar />
+      </TimebarWrapper>
       </VideoPlayer>
     </Wrapper>
   ) : null;
 };
-const Wrapper = styled.div`
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  bottom: 0;
-  right: 0;
-`;
+
+
 export default SmallVideoPlayer;

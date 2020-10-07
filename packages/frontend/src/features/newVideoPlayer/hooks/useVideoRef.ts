@@ -15,8 +15,8 @@ export const useVideoRef = (name: VideoPlayerName) => {
   }, []);
 
   const toggleFullscreen = useCallback((isFullscreen: boolean) => {
-    const { toggleFullscreen } = refsStore[name].current;
-    isFullscreen ?  document.exitFullscreen() : toggleFullscreen();
+    const { reqFullscreen } = refsStore[name].current;
+    isFullscreen ?  document.exitFullscreen() : reqFullscreen();
   }, []);
 
   const setVideoTime = useCallback((newTime:number) => {

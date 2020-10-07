@@ -5,7 +5,6 @@ import { useSelector, RootStateOrAny } from "react-redux";
 import { Device } from "../../common/styles/constans/Device";
 import VideoDescription from "../components/singleVideoComponents/VideoDescription";
 import Quiz from "../components/singleVideoComponents/Quiz";
-import VideoPlayerComponent from "../../videoPlayer/VideoPlayerComponent";
 import Aside from "../../common/components/layout/Aside";
 import VideoTabs from "../../common/components/layout/videoTabs/VideoTabs";
 import Header from "../../common/components/layout/header/Header";
@@ -43,9 +42,7 @@ const SingleMovieView: React.FC = () => {
     <>
       <Header hide={true} />
       <Main>
-        {/* <VideoPlayerComponent /> */}
         <BigVideoPlayer />
-        {/* <MyPlayer/> */}
         <VideoTabs />
         {activeVideoTab === Tabs.DESCRIPTION && (
           <VideoInfo>

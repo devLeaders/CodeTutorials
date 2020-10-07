@@ -11,7 +11,7 @@ const Video = forwardRef((props: unknown, ref: any) => {
     play: () => {videoRef.current?.play()},
     pause: () => {videoRef.current?.pause()},
     toggleMuted: (isMuted: boolean) => {videoRef.current!.muted = isMuted},
-    toggleFullscreen: () => {ref.containerRef.current.requestFullscreen()},
+    reqFullscreen: () => {ref.containerRef.current.requestFullscreen()},
     setCurrentTime: (time: number) => {videoRef.current!.currentTime = time},
     paused: videoRef.current?.paused,
     muted: videoRef.current?.muted,
