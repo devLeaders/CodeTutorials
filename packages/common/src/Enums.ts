@@ -5,6 +5,5 @@ export enum ResponseMessage {
 }
 
 export enum ResponseVersionCategory {
-    OnlyCategory = "only",
-    CategoriesWithVideo = ""
+    OnlyCategory = "only"
 }

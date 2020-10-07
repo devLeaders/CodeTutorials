@@ -34,7 +34,7 @@ export class FilterVideoDTO implements IFilterVideoRequest{
 
 export class ResponseVersionCategoryDTO implements IResponseVersionCategoryRequest{
 
-    @ApiProperty({name:"responseVersionCategory", enum:["only", ""], required:false})
+    @ApiProperty({name:"responseVersionCategory", enum:["only"], required:false})
     @IsOptional()
     responseVersionCategory: ResponseVersionCategory;
     
