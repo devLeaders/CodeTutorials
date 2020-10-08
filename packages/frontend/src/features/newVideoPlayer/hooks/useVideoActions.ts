@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setBigIsPaused, setSmallIsPaused, setMuteUnmute, handleFullscreen, minimizeVideo, setVideoTime } from "./../../../config/redux/newVideoPlayer/actions";
 import { VideoPlayerName } from "./../utils/VideoPlayerEnum";
@@ -12,7 +12,7 @@ export const useVideoActions = (name: VideoPlayerName) => {
   const state = useMovieState();
   const [mouseOver, setIsMousedOver] = useState<boolean>(false)
   const { togglePlay, toggleMute, toggleFullscreen, forwardVieo, rewindVideo } = useVideoRef(name);
-  const { bigIsPaused, smallIsPaused, isMuted, isFullscreen } = state;
+  const { bigIsPaused, smallIsPaused, isMuted, isFullscreen, isMinimized, videoTime } = state;
 
   const playPause = () => {
     const paused = name === VideoPlayerName.BIG ? bigIsPaused : smallIsPaused;
@@ -20,10 +20,11 @@ export const useVideoActions = (name: VideoPlayerName) => {
     togglePlay(paused);
     dispatch(reduxAction);
   };
-
+ 
   const muteUnmute = useCallback(() => {
     toggleMute(isMuted);
     dispatch(setMuteUnmute());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const setFullscreen = () => {
@@ -31,7 +32,7 @@ export const useVideoActions = (name: VideoPlayerName) => {
     dispatch(handleFullscreen());
   };
 
-  const handleMinimize = () => {
+  const handleMinimize = useCallback(() => {
     const paused = name === VideoPlayerName.BIG ? bigIsPaused : smallIsPaused;
     const reduxAction = name === VideoPlayerName.BIG ? setSmallIsPaused(): setBigIsPaused() ;
     if(!paused) {
@@ -39,12 +40,14 @@ export const useVideoActions = (name: VideoPlayerName) => {
       dispatch(reduxAction);
     };
     dispatch(minimizeVideo());
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const handleTimeProgressions = () => {
+  const handleTimeProgressions = useCallback(() => {
     const { currentTime } = refsStore[name].current;
     dispatch(setVideoTime(currentTime));
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleMouseOver = (e:MouseEvent, ref:{ current: HTMLVideoElement }) => {
     const target = e.target;
@@ -57,27 +60,31 @@ export const useVideoActions = (name: VideoPlayerName) => {
     const key = e.key;
       if(refsStore[name] && mouseOver) {
         switch (key) {
-          case Keys.MUTE: { 
+          case Keys.MUTE: 
             return muteUnmute();
-          };
-          case Keys.PLAY_PAUSE: { 
+          case Keys.PLAY_PAUSE:  
             e.preventDefault();
             return playPause(); 
-          };
-          case Keys.SKIP_FORWARD: { 
+          case Keys.SKIP_FORWARD:
             return forwardVieo();
-          };
-          case Keys.REWIND: { 
+          case Keys.REWIND: 
             return rewindVideo();
-          };
-          case Keys.EXIT: { 
+          case Keys.EXIT:
             if(isFullscreen) {
               return dispatch(handleFullscreen())
-            }
-          };
+            };
         };
       };
   };
+  
+  useEffect(() => {
+    if(refsStore[name]?.current) {
+        const { setCurrentTime } = refsStore[name].current;
+        setCurrentTime(videoTime);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps    
+  }, [isMinimized]);
+ 
 
   const actions = {
       playPause,

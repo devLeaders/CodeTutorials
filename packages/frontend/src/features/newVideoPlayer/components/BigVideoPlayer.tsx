@@ -1,4 +1,6 @@
 import React, { useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { Navigation } from "../../../config/routing/NavigationPath";
 import { useMovieState } from "../hooks/useMovieState";
 import { BtnWrapper, ButtonsWrapper, Interface, LeftPanel, RightPanel, Wrapper } from "../styles/bigPlayer.styles";
 import { refsStore } from "../utils/refs.store";
@@ -9,12 +11,13 @@ const BigVideoPlayer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const videoData = useRef<any>();
   const { bigIsPaused } = useMovieState();
+  const location = useLocation();
+  const isMainScreen = location.pathname === Navigation.HOME;
 
   useEffect(() => {
-    refsStore[VideoPlayerName.BIG] = videoData;
-    return () => {
-      refsStore[VideoPlayerName.BIG] = undefined;
-    };
+    if(videoData) {
+      refsStore[VideoPlayerName.BIG] = videoData;
+    }
   }, []);
 
   return (
@@ -22,7 +25,9 @@ const BigVideoPlayer: React.FC = () => {
       <VideoPlayer name={VideoPlayerName.BIG}>
         <VideoPlayer.Video ref={{ videoData, containerRef }} />
 
-       <Interface isPlaying={bigIsPaused}>
+      {!isMainScreen ? 
+
+      <Interface isPlaying={bigIsPaused}>
 
         <ButtonsWrapper isPlaying={bigIsPaused}>
           <LeftPanel>
@@ -49,6 +54,8 @@ const BigVideoPlayer: React.FC = () => {
         <VideoPlayer.Timebar />
 
       </Interface> 
+      
+        : null }
       </VideoPlayer>
     </Wrapper>
   );

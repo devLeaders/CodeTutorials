@@ -1,16 +1,8 @@
-import { debounce } from "lodash";
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useCallback, useEffect, useState, MouseEvent } from "react";
+import { Etype } from "../utils/enums";
 import { refsStore } from "../utils/refs.store";
 import { VideoPlayerName } from "../utils/VideoPlayerEnum";
-import { useMovieState } from "./useMovieState";
 
-enum Etype {
-  MOUSE_MOVE = 'mousemove',
-  MOUSE_CLICK = 'mouseclick',
-  MOUSE_DOWN = 'mousedown',
-  MOUSE_UP = 'mouseup',
-}
 export const useTimeBarActions = (
   timebarRefInner: React.MutableRefObject<HTMLDivElement | null>,
   timebarRefContainer: React.MutableRefObject<HTMLDivElement | null>,
@@ -20,39 +12,36 @@ export const useTimeBarActions = (
   const [mouseDown, setMouseDown] = useState(false);
 
   const handleTimeProgress = useCallback(() => {
-    const { videoDuration, currentTime } = refsStore[name].current;
-    const time = (currentTime / videoDuration ) * 100 + "%"
-    setVideoProgress(time)
+    const video = refsStore[name]?.current;
+    const time = (video?.currentTime / video?.videoDuration ) * 100 + "%"
+    setVideoProgress(time);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-}, []);
-
-  const handleMouseUpDown = (e: any) => {
+  const handleMouseUpDown = useCallback((e: any) => {
       if (timebarRefInner.current === e.target || timebarRefContainer.current === e.target) {
         if (e.type === Etype.MOUSE_UP) {
           setMouseDown(false);
-        } else {
+        } else if(e.type === Etype.MOUSE_DOWN) {
           setMouseDown(true);
-        }
-      }
-  }
-
-  const handleMouseMoveAndClick = (e: any) => {
-      if (timebarRefInner.current === e.target || timebarRefContainer.current === e.target) {
-        console.log(e.type)
-        if (e.type === Etype.MOUSE_CLICK) {
-          handleUpdateTime(e);
-        } else if (e.type === Etype.MOUSE_MOVE && mouseDown) {
-          console.log(e.type, mouseDown)
-          handleUpdateTime(e, Etype.MOUSE_MOVE);
         };
       };
-    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const handleUpdateTime = (e: MouseEvent, type?:string ) => {
+  const handleMouseMoveAndClick = useCallback((e: MouseEvent<HTMLDivElement>) => {
+      if (e.type === Etype.MOUSE_CLICK) {
+        handleUpdateTime(e);
+      } else if (e.type === Etype.MOUSE_MOVE && mouseDown) {
+        handleUpdateTime(e, Etype.MOUSE_MOVE);
+      };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mouseDown]);
+
+  const handleUpdateTime = useCallback((e: MouseEvent<HTMLDivElement>, type?:string ) => {
     const { videoDuration, setCurrentTime } = refsStore[name].current;
-    if ((e.target === timebarRefInner.current || e.target === timebarRefContainer.current) &&
-    timebarRefInner.current && timebarRefContainer.current && videoDuration ) {
-      const mousePosition = e.offsetX;
+    if ( timebarRefInner.current && timebarRefContainer.current && videoDuration ) {
+      const mousePosition = type ? e.clientX : e.nativeEvent.offsetX;
       const timeBarWidth = timebarRefContainer.current.offsetWidth;
       const distanceFromLeft = timebarRefContainer.current.getBoundingClientRect().left
       const time = type
@@ -60,20 +49,20 @@ export const useTimeBarActions = (
       : (mousePosition / timeBarWidth) * videoDuration;
       setCurrentTime(time);
     };
-  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
-    window.addEventListener("mousemove", debounce(handleMouseMoveAndClick, 250));
-    window.addEventListener("mouseup", debounce(handleMouseUpDown, 250));
+    window.addEventListener("mouseup", handleMouseUpDown);
     return () => {
-      window.removeEventListener("mousemove", debounce(handleMouseMoveAndClick, 250));
-      window.removeEventListener("mouseup", debounce(handleMouseUpDown, 250));
+      window.removeEventListener("mouseup", handleMouseUpDown);
     };
-  });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if(refsStore[name]) handleTimeProgress();
   });
 
-  return { videoProgress }
+  return { videoProgress, handleMouseMoveAndClick, handleMouseUpDown }
 };

@@ -1,4 +1,3 @@
-import { KeyboardEvent } from "react";
 import { VideoPlayerName } from "../utils/VideoPlayerEnum";
 
 export interface IInitailContext {

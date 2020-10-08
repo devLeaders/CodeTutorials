@@ -12,10 +12,7 @@ const SmallVideoPlayer: React.FC = () => {
 
   useEffect(() => {
     refsStore[VideoPlayerName.SMALL] = videoData;
-    return () => {
-      refsStore[VideoPlayerName.SMALL] = undefined;
-    };
-  }, [isMinimized]);
+  }, []);
 
   return isMinimized ? (
     <Wrapper ref={containerRef}>

@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-
 import { Device } from "../../common/styles/constans/Device";
 import Header from "../../common/components/layout/header/Header";
 import Aside from "../../common/components/layout/Aside";
-import VideoPlayerComponent from "../../videoPlayer/VideoPlayerComponent";
 import SliderContainer from "../components/movieList/SliderContainer";
 import {Sizes} from "../../common/styles/constans/Sizes"
+import BigVideoPlayer from "../../newVideoPlayer/components/BigVideoPlayer";
 
 
 const Main = styled.div`
@@ -39,12 +38,12 @@ const titles = [
 ];
 
 
-const Movies: React.SFC = () => {
+const Movies: React.FC = () => {
   return (
     <>
       <Header/>
       <Main>
-        <VideoPlayerComponent/>
+        <BigVideoPlayer />
         <SlidersSection>
           {titles.map((title: string) => (
             <SliderContainer key={title} title={title} />

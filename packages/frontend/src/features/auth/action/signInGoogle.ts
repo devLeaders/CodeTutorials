@@ -20,5 +20,5 @@ export const signInGoogle = async (setError: (arg: boolean) => void) => {
     setTimeout(() => {
       setError(false);
     }, 5000);
-  }
+  };
 };
