@@ -18,7 +18,11 @@ const Wrapper = styled.header<{ transparency?: boolean; visible?: boolean }>`
   @media ${Device.LAPTOP} {
     background-color: ${({ transparency }) => (transparency ? `${Colors.WHITE}` : `${Colors.WHITE}CF`)};
     width: calc(100% - 446px);
-    display: ${({ visible }) => (visible ? "flex" : "none")};
+    opacity: ${({ visible }) => (visible ? 1 : 0)};
+    transition: .2s ease-in-out;
+    :hover {
+      opacity: 1;
+    }
   }
 `;
 
