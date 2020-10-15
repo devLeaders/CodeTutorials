@@ -38,17 +38,18 @@ export default class MainScreenHeader extends React.Component <MainScreenHeaderP
       youtubeId: this.props.idYoutube
     })
   }
+  onPressNavTo = () => {
+     this.props.navigation.navigate(NavigationName.MENU)
+  }
   
   render() {
     return (
       <ScrollView>
-      {(this.props.id != null)? 
-      <>
         <HeaderImage source={ {uri: ImageUtil.getImageFromServer(this.props.urlPhoto).toString()} }/>
         <ButtonsWraper>
           <SmallHeaderButton 
                 text="PlayLista"
-                onPress= {()=> this.props.navigation.navigate(NavigationName.MENU)}
+                onPress={this.onPressNavTo}
                 image="plus"
           />
           <BigHeaderButton 
@@ -58,13 +59,10 @@ export default class MainScreenHeader extends React.Component <MainScreenHeaderP
           />
           <SmallHeaderButton 
                 text="Informacje"
-                onPress= {()=>this.props.navigation.navigate(NavigationName.MENU)}
+                onPress= {this.onPressNavTo}
                 image="info"
           />
         </ButtonsWraper>
-      </>
-      :
-        <Text>Brak</Text>}
       </ScrollView>
       
     );

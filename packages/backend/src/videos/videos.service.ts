@@ -85,8 +85,8 @@ export class VideosService {
 	async getSingleVideo(id: string): Promise<VideosEntity> {
 		try{
 			return this.videosRepository.findOne(id);
-		} catch(e){
-			console.log(e);
+		} catch(err){
+			return err
 		}
 		
 	}

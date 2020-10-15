@@ -1,5 +1,5 @@
 import React from 'react';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { DrawerActions } from '@react-navigation/native';
 import { 
     ProfileImage,
     ProfileName,
@@ -17,6 +17,7 @@ import { Text, Image, View } from 'react-native';
 import { CommonActions } from '@react-navigation/native';
 import AxioiInstance from '@project/common/features/config/axios/configAxios';
 import AsyncStorage from '@react-native-community/async-storage';
+import { useRemoveToken } from '../../../variables/RemoveTokenHooks';
 
 interface ProfileBoxP {
     name: string,
@@ -29,24 +30,7 @@ interface ProfileBoxP {
 
  const ProfileBox = (props:ProfileBoxP)=>{
 
-   const removeToken = async() => {
-        try {
-            await AsyncStorage.removeItem('token');
-            AxioiInstance.defaults.headers.common['Authorization'] = ``;
-            props.navigation.dispatch(DrawerActions.closeDrawer());
-            props.navigation.dispatch(
-                CommonActions.reset({
-                  index: 0,
-                  routes: [
-                    { name: NavigationName.SIGNINSCREEN },
-                  ],
-                })
-              );
-        }
-        catch(exception) {
-            return false;
-        }
-    }
+    const { removeToken, error } = useRemoveToken(props.navigation)
 
     return(
         <ProfileWrap >
@@ -59,7 +43,7 @@ interface ProfileBoxP {
                 </WrapInfo>
                 <LogoutWrap>
                     <LogOut
-                        onPress={() => removeToken()}>
+                        onPress={removeToken}>
                         <ProfileLogout>Wyloguj</ProfileLogout>
                         <LogOutIc source={{uri:'ic_logout'}}/> 
                     </LogOut>

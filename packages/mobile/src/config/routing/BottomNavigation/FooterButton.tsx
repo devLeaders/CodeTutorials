@@ -1,5 +1,5 @@
 import { DrawerActions, useLinkProps, useNavigation } from "@react-navigation/native";
-import React, {PropsWithChildren } from "react";
+import React, {PropsWithChildren , useCallback} from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { Color } from "../../../features/common/styles/constans/Color";
 import { NavigationName } from "../NavigationName";
@@ -21,13 +21,14 @@ export const FooterButton = ({index, route, descriptors, children}:PropsWithChil
 
     const navigation = useNavigation();
     const isFocused = index === index;
-    const onPress = () => {
+    const onPress = useCallback(() => {
         if(route.name == NavigationName.MENU){
             navigation.dispatch(DrawerActions.openDrawer())
         } else{
             navigation.navigate(route.name);
         }
-    };
+    },[]);
+    
     return (
         <TouchableOpacity
           key={route.key}

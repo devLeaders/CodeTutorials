@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, ScrollView, Image, SafeAreaView, FlatList, TouchableOpacity} from 'react-native';
+import React, {useEffect} from 'react';
+import { View, SafeAreaView, FlatList, TouchableOpacity, ActivityIndicator} from 'react-native';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
 import {  
   SubTitleLeft,
@@ -11,42 +11,26 @@ import {
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
 import MainScreenHeader from '../components/MainScreen/MainScreenHeader';
 import { useCaseNotification } from '../components/Movies/CaseNotificationForMovies';
-import * as AuthConnectors from '@project/common/features/videos/connector'
-import { IVideosRespons } from '@project/common/features/videos/models';
+import { useVideos } from '../../../variables/VideosHooks';
 interface MovieListP {
   navigation: any
 }
 
 export const MoviesList = (props:MovieListP) =>{
-  const [listVideos, setListVideos] = useState<Array<IVideosRespons>>([])
 
   useCaseNotification(props.navigation)
-
-
+  const { getVideos, videos} = useVideos()
+  const firstEl = videos[0]
   useEffect(()=>{
-    let isCancelled = false;
-    (async ()=>{
-      try{
-        const response = await AuthConnectors.getVideos();
-        if(!isCancelled){
-          setListVideos(response.data)
-        }
-      } catch (e) {
-          console.log(e)
-      }
-    })();
-    return () => {
-      isCancelled = true;
-    }
+    getVideos()
   },[])
-
-  const firstEl = listVideos[0]
 
   return (
       <SafeAreaView>
+        {(videos.length != 0)?
           <FlatList 
               ListHeaderComponent= {
-                <MainScreenHeader id={firstEl?.id} idYoutube={firstEl?.idYoutube} urlPhoto={firstEl?.urlPhoto}  navigation={props.navigation}/>
+                <MainScreenHeader id={firstEl.id} idYoutube={firstEl.idYoutube} urlPhoto={firstEl.urlPhoto}  navigation={props.navigation}/>
               }
               data={[0]} 
               renderItem={()=>{
@@ -73,7 +57,8 @@ export const MoviesList = (props:MovieListP) =>{
                       </View>
                 </View>
               }
-            /> 
+            /> :
+        <ActivityIndicator size="large" color="#0000ff" />}
       </SafeAreaView>
     );
 }

@@ -10,30 +10,15 @@ import { Color } from '../../../features/common/styles/constans/Color';
 import { DrawerWraper, TitleProfile, WrapWidth } from './DrawerStyle';
 import ProfileBox from './ProfileBox';
 import AsyncStorage from '@react-native-community/async-storage';
+import { useToken } from '../../../variables/TokenHooks';
 
 
 const DrawerContent = (props) => {
-    const [token, setToken ] = useState<any>('')
-    useEffect(()=>{
-        let isCancelled = false;
-        (async ()=>{
-          try{
-            const token = await AsyncStorage.getItem('token')
-            if(!isCancelled){
-                setToken(token)
-            }
-          } catch (e) {
-              console.log(e)
-          }
-        })();
-        return () => {
-            isCancelled = true;
-        }
-    },[])
+    const { getToken, error } = useToken()
 
     return(
         <>
-        {(token?.length != 0)?
+        {(getToken)?
         <View style={{flex:1,  backgroundColor: Color.WHITE}}>
             <DrawerContentScrollView {...props}>
                 <DrawerWraper>

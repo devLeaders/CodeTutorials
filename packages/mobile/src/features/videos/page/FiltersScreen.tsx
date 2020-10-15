@@ -13,113 +13,6 @@ import { View, TouchableOpacity, Text, ScrollView, SafeAreaView} from 'react-nat
 import { NavigationHelpers } from '@react-navigation/native';
 import { getShadowStyle } from '../../../features/common/styles/constans/ShadowStyle';
 
-const Wrapper = styled.ScrollView({
-  flexGrow: 1,
-  backgroundColor: Color.WHITE,
-  ...getShadowStyle(5, Color.LIGHTGREYX,1),
-  flex: 1,
-  flexDirection: 'column',
-});
-
-const TitleAndXWrapper = styled.View`
-    margin-top: 14px;
-    margin-right: 16px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-`;
-
-const Title = styled(MyText)`
-    margin-left: 15px;
-    font-weight: ${FontWeight.BOLD};
-    font-size: ${FontSize.BIG};
-    color: ${Color.BLACK};
-    line-height: 28px;
-`;
-
-const SearchbarWrapper = styled.View({
-  marginTop: 26,
-  height: 50,
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginLeft: 16,
-  marginRight: 22,
-  borderRadius: 20,
-  backgroundColor: Color.WHITE,
-  ...getShadowStyle(3, Color.LIGHTGREYX,1),
-});
-
-const InputText = styled.TextInput`
-  width: 200px;
-  font-size: ${FontSize.MIDIUM};
-  line-height: 19px;
-  margin-left: 24px;
-  font-weight: ${FontWeight.REGULAR};
-  font-family: ${FontFamily.GLOBAL_MONT};
-  color: ${Color.BLACK};
-`;
-
-const SearchButton = styled.TouchableOpacity({
-  backgroundColor: Color.WHITE,
-  marginRight: 18,
-});
-
-const ImageSerach = styled.Image`
-    height: 24px;
-    width: 24px; 
-`;
-
-const EyeAndTextwrapper = styled.View`
-    margin-top: 27px;
-    margin-right: 16px;
-    margin-left: 21px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-`;
-
-const EyeButton = styled.TouchableOpacity({
-  height: 50,
-  width: 50,
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: 10,
-  borderColor: Color.LIGHTGREYX,
-  backgroundColor: Color.WHITE,
-  ...getShadowStyle(3, Color.LIGHTGREYX,1),
-});
-
-const ImageEye = styled.Image`
-    height: 20px;
-    width: 20px;
-`;
-
-const TextEye = styled(MyText)`
-    font-size: ${FontSize.GRANDEMIDIUM};
-    line-height: 27px;
-    margin-left: 14px;
-    font-weight: ${FontWeight.SEMIBOLD};
-    color: ${Color.BLACK};
-`;
-
-const TextCategory = styled(MyText)`
-    margin-top: 35px;
-    margin-left: 21px;
-    font-size: ${FontSize.GRANDEMIDIUM};
-    font-weight: ${FontWeight.SEMIBOLD};
-    color: ${Color.BLACK};
-    line-height: 27px;
-    margin-bottom: 20px;  
-`;
-
-const FilersButtonWrapper = styled.View`
-    margin-left: 21px;
-    margin-right: 10px;
-    flex-direction: row;
-`;
-
 interface FiltersScreenProps {
   navigation: NavigationHelpers<any>,
   serachitem: string,
@@ -238,4 +131,109 @@ export default class FiltersScreen extends React.Component <FiltersScreenProps, 
   }
 }
 
+const Wrapper = styled.ScrollView({
+  flexGrow: 1,
+  backgroundColor: Color.WHITE,
+  ...getShadowStyle(5, Color.LIGHTGREYX,1),
+  flex: 1,
+  flexDirection: 'column',
+});
 
+const TitleAndXWrapper = styled.View`
+    margin-top: 14px;
+    margin-right: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
+const Title = styled(MyText)`
+    margin-left: 15px;
+    font-weight: ${FontWeight.BOLD};
+    font-size: ${FontSize.BIG};
+    color: ${Color.BLACK};
+    line-height: 28px;
+`;
+
+const SearchbarWrapper = styled.View({
+  marginTop: 26,
+  height: 50,
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginLeft: 16,
+  marginRight: 22,
+  borderRadius: 20,
+  backgroundColor: Color.WHITE,
+  ...getShadowStyle(3, Color.LIGHTGREYX,1),
+});
+
+const InputText = styled.TextInput`
+  width: 200px;
+  font-size: ${FontSize.MIDIUM};
+  line-height: 19px;
+  margin-left: 24px;
+  font-weight: ${FontWeight.REGULAR};
+  font-family: ${FontFamily.GLOBAL_MONT};
+  color: ${Color.BLACK};
+`;
+
+const SearchButton = styled.TouchableOpacity({
+  backgroundColor: Color.WHITE,
+  marginRight: 18,
+});
+
+const ImageSerach = styled.Image`
+    height: 24px;
+    width: 24px; 
+`;
+
+const EyeAndTextwrapper = styled.View`
+    margin-top: 27px;
+    margin-right: 16px;
+    margin-left: 21px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
+
+const EyeButton = styled.TouchableOpacity({
+  height: 50,
+  width: 50,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderRadius: 10,
+  borderColor: Color.LIGHTGREYX,
+  backgroundColor: Color.WHITE,
+  ...getShadowStyle(3, Color.LIGHTGREYX,1),
+});
+
+const ImageEye = styled.Image`
+    height: 20px;
+    width: 20px;
+`;
+
+const TextEye = styled(MyText)`
+    font-size: ${FontSize.GRANDEMIDIUM};
+    line-height: 27px;
+    margin-left: 14px;
+    font-weight: ${FontWeight.SEMIBOLD};
+    color: ${Color.BLACK};
+`;
+
+const TextCategory = styled(MyText)`
+    margin-top: 35px;
+    margin-left: 21px;
+    font-size: ${FontSize.GRANDEMIDIUM};
+    font-weight: ${FontWeight.SEMIBOLD};
+    color: ${Color.BLACK};
+    line-height: 27px;
+    margin-bottom: 20px;  
+`;
+
+const FilersButtonWrapper = styled.View`
+    margin-left: 21px;
+    margin-right: 10px;
+    flex-direction: row;
+`;
