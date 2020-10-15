@@ -5,5 +5,6 @@ export enum ResponseMessage {
 }
 
 export enum ResponseVersionCategory {
-    OnlyCategory = "only"
+    OnlyCategory = "only",
+    Full = ""
 }

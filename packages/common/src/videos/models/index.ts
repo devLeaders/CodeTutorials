@@ -7,6 +7,6 @@ export interface IFilterVideoRequest {
     category?: string; 
 }
 
-export interface IResponseVersionCategoryRequest {
-    responseVersionCategory: ResponseVersionCategory;
+export interface ICategoryRequest {
+    responseVersion: ResponseVersionCategory;
 }

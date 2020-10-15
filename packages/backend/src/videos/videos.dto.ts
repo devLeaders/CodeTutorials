@@ -1,5 +1,5 @@
 import { IsString, IsNumberString, IsOptional, Min } from 'class-validator';
-import {IFilterVideoRequest, IResponseVersionCategoryRequest} from '@project/common/features/videos/models'
+import {IFilterVideoRequest, ICategoryRequest} from '@project/common/features/videos/models'
 import {ApiProperty} from '@nestjs/swagger'
 import {ResponseVersionCategory} from "@project/common/features/enums";
 
@@ -32,10 +32,10 @@ export class FilterVideoDTO implements IFilterVideoRequest{
     category: string; 
 }
 
-export class ResponseVersionCategoryDTO implements IResponseVersionCategoryRequest{
+export class CategoryListDTO implements ICategoryRequest{
 
-    @ApiProperty({name:"responseVersionCategory", enum:["only"], required:false})
+    @ApiProperty({name:"responseVersion", enum:["only", ""], required:false})
     @IsOptional()
-    responseVersionCategory: ResponseVersionCategory;
+    responseVersion: ResponseVersionCategory;
     
 }
