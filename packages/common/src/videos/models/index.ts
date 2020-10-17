@@ -1,9 +1,4 @@
-export interface IFilterVideoRequest {
-    page?: number;
-    title?: string;   
-    category?: number; 
-    limit?: number
-}
+import { ResponseVersionCategory } from "../../Enums";
 
 export interface IVideosRespons {
     id: number,
@@ -19,4 +14,16 @@ export interface IVideosRespons {
     urlPhoto: string,
     category: Array<any>,
     idYoutube: string
+}
+
+
+export interface IFilterVideoRequest {
+    page?: number;
+    title?: string;   
+    category?: string; 
+    limit?: number
+}
+
+export interface ICategoryRequest {
+    responseVersion: ResponseVersionCategory;
 }
