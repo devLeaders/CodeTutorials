@@ -23,7 +23,7 @@ export const TasksIc = styled.Image({
 
 export const PlayListIc = styled.Image({
     width:26, 
-    height:26
+    height:26,
 })
 
 export const AlertV = styled.View({

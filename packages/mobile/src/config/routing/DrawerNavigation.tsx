@@ -9,9 +9,9 @@ const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => (
     <NavigationContainer>
-        <Drawer.Navigator drawerContent={DrawerContent}> 
+        <Drawer.Navigator drawerContent={(props)=><DrawerContent {...props}/>}> 
             <Drawer.Screen name={NavigationName.MENU}  component={AuthorizationNavigation} />
-      </Drawer.Navigator>
+        </Drawer.Navigator>
     </NavigationContainer>
     
 )

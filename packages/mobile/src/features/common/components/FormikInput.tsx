@@ -6,6 +6,7 @@ import Error from './Error';
 import {ErrorMessage} from 'formik';
 import {InputTypes} from '../types/InputTypes';
 import {returnKyeType} from '../types/types';
+import { Color } from '../styles/constans/Color';
 
 const InputWrapper = styled.View`
   border-bottom-color: grey;
@@ -18,6 +19,7 @@ const InputWrapper = styled.View`
 const TxtInput = styled.TextInput`
   padding: 15px 0;
   width: 90%;
+  color: ${Color.BLACK}
 `;
 const Img = styled.Image`
   width: 25px;
@@ -50,6 +52,7 @@ const FormikInput: React.SFC<FormikInputProps> = props => {
           secureTextEntry={type === InputTypes.PASSWORD}
           value={value}
           returnKeyType={returnKeyType}
+          placeholderTextColor={Color.LIGHTGREYXX}
         />
       </InputWrapper>
       {inputError && <Error inputError={inputError} />}

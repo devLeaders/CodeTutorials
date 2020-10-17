@@ -1,7 +1,5 @@
-import React, {useContext,useEffect} from 'react';
-import { View, ScrollView, Image, SafeAreaView} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import React, {useEffect} from 'react';
+import { View, SafeAreaView, FlatList, TouchableOpacity, ActivityIndicator} from 'react-native';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
 import {  
   SubTitleLeft,
@@ -13,8 +11,7 @@ import {
 import { SlaiderNormal } from '../components/Movies/SlaiderNormal';
 import MainScreenHeader from '../components/MainScreen/MainScreenHeader';
 import { useCaseNotification } from '../components/Movies/CaseNotificationForMovies';
-import { NavigationHelpers } from '@react-navigation/native';
-
+import { useVideos } from '../../../variables/VideosHooks';
 interface MovieListP {
   navigation: any
 }
@@ -22,29 +19,46 @@ interface MovieListP {
 export const MoviesList = (props:MovieListP) =>{
 
   useCaseNotification(props.navigation)
+  const { getVideos, videos} = useVideos()
+  const firstEl = videos[0]
+  useEffect(()=>{
+    getVideos()
+  },[])
 
   return (
       <SafeAreaView>
-        <ScrollView>
-            <MainScreenHeader navigation={props.navigation}/>
-          <View>
-            <SlaiderLarge />
-          </View>
-          <View>
-              <GroupForSubtitle>
-                <TouchableOpacity>
-                  <SubTitleLeft>DevOps</SubTitleLeft>
-                </TouchableOpacity>
-                <ButtonContainer>
-                  <SubTitleRight>Zobacz wszystkie</SubTitleRight>
-                  <SmallArrow source={{uri:'ic_arrowright'}}/>
-                </ButtonContainer>
-              </GroupForSubtitle>
-              <View>
-                <SlaiderNormal/>
-              </View>
-          </View>
-        </ScrollView>
+        {(videos.length != 0)?
+          <FlatList 
+              ListHeaderComponent= {
+                <MainScreenHeader id={firstEl.id} idYoutube={firstEl.idYoutube} urlPhoto={firstEl.urlPhoto}  navigation={props.navigation}/>
+              }
+              data={[0]} 
+              renderItem={()=>{
+                return (
+                  <View>
+                      <SlaiderLarge />
+                  </View>
+                )
+              }} 
+              keyExtractor={ (item,index) => index.toString() }
+              ListFooterComponent= {
+                <View>
+                      <GroupForSubtitle>
+                        <TouchableOpacity>
+                          <SubTitleLeft>DevOps</SubTitleLeft>
+                        </TouchableOpacity>
+                        <ButtonContainer>
+                          <SubTitleRight>Zobacz wszystkie</SubTitleRight>
+                          <SmallArrow source={{uri:'ic_arrowright'}}/>
+                        </ButtonContainer>
+                      </GroupForSubtitle>
+                      <View>
+                        <SlaiderNormal navigation={props.navigation}/>
+                      </View>
+                </View>
+              }
+            /> :
+        <ActivityIndicator size="large" color="#0000ff" />}
       </SafeAreaView>
     );
 }

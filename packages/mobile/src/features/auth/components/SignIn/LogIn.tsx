@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import {
     SafeAreaView,
     ActivityIndicator,
@@ -6,7 +6,6 @@ import {
     Text,
     View,
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
 import { Formik } from 'formik';
 import validationSchema from '../../action/validationSchema';
 import SignInInput from './SignInInput';
@@ -16,10 +15,11 @@ import {Color} from '../../../common/styles/constans/Color';
 import loginSubmit from '../../action/singInSubmit';
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import { NotyficationContext } from '../../../../features/notifications/NotificationsStore';
+import { MyText } from '../../../../features/common/styles/MyText';
+import { FontWeight } from '../../../../features/common/styles/constans/FontWeight';
 
 
 const Btn = styled.TouchableOpacity`
-
   justify-content: center;
   align-items: center;
   height: 60px;
@@ -58,6 +58,19 @@ const WrapTextImg = styled.View({
     justifyContent:'center', 
     alignItems:'center'
 })
+
+const ErrorView = styled.View({
+    backgroundColor: Color.RED,
+    alignItems: 'center',
+    marginTop: 10,
+    
+})
+
+const ErrorMsg = styled(MyText)({
+    color: Color.WHITE,
+    fontSize: FontSize.MIDIUM,
+    fontWeight: parseInt(FontWeight.BOLD, 10),
+})
   
 export interface LogInProps {
     navigation: any;
@@ -65,10 +78,23 @@ export interface LogInProps {
 
 const LogIn = (props:LogInProps) => {
     const { state } = useContext(NotyficationContext)
+    const [loading, setLoading] = useState(false);
+    const [ serverError, setServerError ] = useState('')
 
-  const onSubmit = useCallback((value) => {
-       loginSubmit(value, state.token, ()=>{props.navigation.navigate(NavigationName.MENU)})
-   }, [])
+    const onSubmit = useCallback((value) => {
+       setLoading(true)
+       loginSubmit(value, state.token, (error)=>{
+            setLoading(false)
+            if(error){
+                setServerError(error)
+            }else {
+                props.navigation.navigate(NavigationName.MENU)
+            }
+           
+        })
+    }, [])
+  
+
     return (
             <SafeAreaView style={{ marginTop: 20}}>
                 <Formik
@@ -85,6 +111,9 @@ const LogIn = (props:LogInProps) => {
                                 src='email'
                                 placeholder="E-mail"
                                 autofocus
+                                autocomplite
+                                keyboardType={"email-address"}
+                                textContentType={"emailAddress"}
                             />
 
                             <SignInInput
@@ -95,29 +124,33 @@ const LogIn = (props:LogInProps) => {
                                 secureTextEntry
                                 src='password'
                             />
-
+                            {(serverError.length != 0) && 
+                                <ErrorView> 
+                                    <ErrorMsg>{serverError}</ErrorMsg>
+                                </ErrorView>
+                            }
                             <ForgotOpacity>
                                  <ForgotText>Zapomniałeś hasła?</ForgotText>
                             </ForgotOpacity>
-
-                            {formikProps.isSubmitting ? (
-                            <ActivityIndicator />
+                          
+                            {loading ? (
+                                <ActivityIndicator />
                             ) : (
-                               
                             <View style={{alignItems:'center'}}>
                                 <Btn onPress={formikProps.handleSubmit}>
-                                    <WrapTextImg >
+                                    <WrapTextImg>
                                         <SignInTxt>Zaloguj się</SignInTxt>
                                         <Img source={{uri: 'arrow'}} />
                                     </WrapTextImg>
                                 </Btn>
                             </View>
-                            
                             )}
-                            
+
+                       
                         </React.Fragment>
                     )}
                 </Formik>
+              
             </SafeAreaView>
         )
     }

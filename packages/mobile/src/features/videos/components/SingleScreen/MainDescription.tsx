@@ -12,6 +12,7 @@ import { FontFamily } from '../../../../features/common/styles/constans/FontFami
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import { FontWeight } from '../../../../features/common/styles/constans/FontWeight';
 import { MyText } from '../../../../features/common/styles/MyText';
+import { getShadowStyle } from '../../../../features/common/styles/constans/ShadowStyle';
 
 const Wrapper = styled.View`
     background-color: ${Color.LIGHTGREY};
@@ -54,14 +55,7 @@ const DescriptionButton = styled.TouchableOpacity({
     justifyContent: 'center',
     borderRadius: 10,
     backgroundColor: Color.WHITE,
-    shadowColor: Color.LIGHTGREYX,
-    shadowOffset: {
-        width: 0,
-        height: 2,
-    },
-    shadowOpacity: "0.25",
-    shadowRadius: 3.84,
-    elevation: "5",
+    ...getShadowStyle(5, Color.LIGHTGREYX,0.25),
 });
 
 const ButtonText = styled(MyText)({

@@ -1,20 +1,19 @@
 import * as React from 'react';
-import { View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { TouchableOpacity, View, FlatList } from 'react-native';
 import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
-import { MoviesListExpandedType } from './MoviesType';
 import {  
     ViewSeparator,
     ViewCentred,
 } from './MovieListStyle';
-import { GetVideosListExpandedV } from '../../action/conector';
-import SmallSquareOfMovie from '../MainScreen/SmallSquareOfMovie';
-import { NavigationName } from '../../../../config/routing/NavigationName';
-
+import * as AuthConnectors from '@project/common/features/videos/connector'
+import { IVideosRespons } from '@project/common/features/videos/models'
+import { ImgeForNormalSlaider } from './ImageForNormalSlaider'
 
 type SlaiderNormalS = {
-    listVideos: Array<MoviesListExpandedType>
+    listVideos: Array<IVideosRespons>
   }
+
+
 export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
   constructor(props:any){
     super(props);
@@ -24,23 +23,18 @@ export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
   }
 
   public separator = () => (<ViewSeparator/>)
-  public imgeSlaider = (item:MoviesListExpandedType) => (
-    <SmallSquareOfMovie 
-    text= {item.title}
-    navigation= {this.props.navigation}
-    goto= {NavigationName.SINGLEMOVIE}
-    image= {item.uri}
-    />
-  )
-
-  componentDidMount(){
-    const listVideos =  GetVideosListExpandedV();
+  public getListVideos = async() =>{
+    const listVideos = await AuthConnectors.getVideos({limit:4});
     this.setState ({
-      listVideos
+      listVideos:listVideos.data
     })
   }
 
-  private renderIt = ({item}) => this.imgeSlaider(item)
+  componentDidMount(){
+   this.getListVideos()
+  }
+
+  private renderIt = ({item}) => <ImgeForNormalSlaider item={item}/>
 
   render(){
         return(
@@ -54,10 +48,11 @@ export class SlaiderNormal extends React.Component<any,SlaiderNormalS>{
               horizontal={false}
               data={this.state.listVideos} 
               renderItem={this.renderIt} 
-              keyExtractor={ item => item.id }
+              keyExtractor={ item => item.id.toString() }
               numColumns={2}
             /> 
           </ViewCentred>
         )
     }
 }
+

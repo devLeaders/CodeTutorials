@@ -5,6 +5,7 @@ import { Color } from '../../../common/styles/constans/Color'
 import { DifrentSlaider } from '../../../common/styles/constans/DifrentEnum';
 import { MyText } from '../../../common/styles/MyText';
 import { Animated, Dimensions } from 'react-native';
+import { getShadowStyle } from '../../../../features/common/styles/constans/ShadowStyle';
 
 export const Hamburger = styled.Image({
     width: 16,
@@ -55,13 +56,7 @@ export const ButtonFilter = styled.TouchableOpacity({
     backgroundColor: Color.WHITE,
     justifyContent: "center",
     shadowColor: "#4f1035ec",
-    shadowOffset: {
-        width: 0,
-        height: 2,
-    },
-    shadowOpacity: "0.25",
-    shadowRadius: 3.84,
-    elevation: "5",
+    ...getShadowStyle(5, Color.DARKPURPLE,0.25),
 })
 
 export const TextButtonActive = styled(MyText)({

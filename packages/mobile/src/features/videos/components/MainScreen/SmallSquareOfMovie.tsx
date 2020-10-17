@@ -4,6 +4,7 @@ import { FontWeight } from '../../../common/styles/constans/FontWeight';
 import { FontSize } from '../../../common/styles/constans/FontSize';
 import { Color } from '../../../common/styles/constans/Color';
 import { MyText } from '../../../common/styles/MyText';
+import { getShadowStyle } from '../../../../features/common/styles/constans/ShadowStyle';
 
 const Wrapper = styled.TouchableOpacity({
     marginTop: 10,
@@ -16,14 +17,7 @@ const Wrapper = styled.TouchableOpacity({
     borderBottomRightRadius: 5,
     borderBottomLeftRadius: 5,
     backgroundColor: Color.WHITE,
-    shadowColor: Color.WHITEX,
-    shadowOffset: {
-        width: 1,
-        height: 2,
-    },
-    shadowOpacity: "1",
-    shadowRadius: 1,
-    elevation: "2"
+    ...getShadowStyle(3, Color.LIGHTGREYX,1),
 });
 
 const ImageButton = styled.Image`
@@ -53,22 +47,18 @@ const ButtonSquare = styled.TouchableOpacity({
 `;
 
 interface SmallSquareOfMovieProps {
-    navigation: any,
     text: string,
     image: string,
-    goto: any,
+    onPress: ()=>void,
   }
 
 export default class SmallSquareOfMovie extends React.Component<SmallSquareOfMovieProps> {
-    navi = (navigation) => {
-        this.props.navigation.navigate(this.props.goto)
-        }
 
     render(){
         return(
-            <Wrapper onPress={this.navi}> 
-                <ButtonSquare onPress={this.navi}>  
-                <ImageButton source={{uri: this.props.image}}/>
+            <Wrapper onPress={this.props.onPress}> 
+                <ButtonSquare onPress={this.props.onPress} >  
+                    <ImageButton source={{uri: this.props.image}}/>
                 </ButtonSquare>
                 <TextWrapper>
                 <TextButton>{this.props.text}</TextButton>

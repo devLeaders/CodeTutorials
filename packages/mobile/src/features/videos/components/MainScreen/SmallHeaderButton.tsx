@@ -7,6 +7,7 @@ import { FontSize } from '../../../common/styles/constans/FontSize';
 import { Color } from '../../../common/styles/constans/Color';
 import { MyText } from '../../../common/styles/MyText';
 import { NavigationName } from '../../../../config/routing/NavigationName';
+import { getShadowStyle } from '../../../../features/common/styles/constans/ShadowStyle';
 
 const ButtonFilter = styled.TouchableOpacity({
     height: 26,
@@ -16,14 +17,7 @@ const ButtonFilter = styled.TouchableOpacity({
     borderRadius: 10,
     borderColor: Color.LIGHTGREYXX,
     backgroundColor: Color.WHITE,
-    shadowColor: Color.LIGHTGREYX,
-    shadowOffset: {
-        width: 0,
-        height: 2,
-    },
-    shadowOpacity: "1",
-    shadowRadius: 8,
-    elevation: "3",
+    ...getShadowStyle(3, Color.LIGHTGREYX,1),
   });
 
   const TextButton = styled(MyText)`
@@ -42,10 +36,9 @@ const ButtonFilter = styled.TouchableOpacity({
 `;
 
 interface SmallHeaderButtonProps {
-    navigation: any,
+    onPress:()=>void,
     text: string,
     image: string,
-    goto:NavigationName
   }
 
 
@@ -53,8 +46,7 @@ export default class SmallHeaderButton extends React.Component<SmallHeaderButton
     render(){
         return(
             <TouchableOpacity>
-                <ButtonFilter
-                    onPress={() => this.props.navigation.navigate(this.props.goto)}>
+                <ButtonFilter onPress={this.props.onPress}>
                 <ImageButton source={{uri: this.props.image}}/>       
                 <TextButton>{this.props.text}</TextButton>
                 </ButtonFilter>

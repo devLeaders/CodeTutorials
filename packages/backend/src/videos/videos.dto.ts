@@ -28,7 +28,13 @@ export class FilterVideoDTO implements IFilterVideoRequest{
     @IsString()
     title: string;
     
-    @ApiProperty()
+    @ApiProperty({required:false})
+    @IsNumberString()
+    @IsOptional()
+    limit: number;
+    
+    @ApiProperty({required:false})
+    @IsOptional()
     category: string; 
 }
 
