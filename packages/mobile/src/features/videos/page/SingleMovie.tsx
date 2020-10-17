@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import {ActivityIndicator, Text, View } from 'react-native';
+import React from 'react';
+import {ActivityIndicator, View } from 'react-native';
 import {
   Background, Title,
 } from '../components/SingleScreen/SingleMovieStyle2';
@@ -8,10 +8,7 @@ import MainDescription from '../components/SingleScreen/MainDescription';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Color } from '../../../features/common/styles/constans/Color';
-import { NavigationHelpers, useFocusEffect } from '@react-navigation/native';
-import HeaderLeftSingle from '../components/SingleScreen/HeaderLeftSingle';
-import { IVideosRespons } from '@project/common/features/videos/models';
-import * as AuthConnectors from '@project/common/features/videos/connector'
+import { NavigationHelpers } from '@react-navigation/native';
 import { useVideo } from '../../../variables/VideoHook';
 
 interface SingleMovieProps {

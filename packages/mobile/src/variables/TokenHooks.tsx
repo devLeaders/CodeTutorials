@@ -4,9 +4,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 export const useToken = () => {
 
     const [token, setToken ] = useState<any>('')
-    const [error, setError ] = useState<null|string>(null)
 
-    const getToken = useCallback(async(e) => {
+    const getToken = useCallback(async() => {
         let isCancelled = false;
         try{
             const token = await AsyncStorage.getItem('token')
@@ -22,6 +21,5 @@ export const useToken = () => {
     },[]);
     return {
         getToken,
-        error
     };
 }

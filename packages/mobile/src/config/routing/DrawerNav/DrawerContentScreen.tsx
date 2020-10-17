@@ -14,8 +14,7 @@ import { useToken } from '../../../variables/TokenHooks';
 
 
 const DrawerContent = (props) => {
-    const { getToken, error } = useToken()
-
+    const { getToken } = useToken()
     return(
         <>
         {(getToken)?
@@ -34,7 +33,7 @@ const DrawerContent = (props) => {
                     </WrapWidth>
                     <WrapWidth>
                         <ButtonDrawer 
-                            goto={NavigationName.TASKS}
+                            goto={NavigationName.ALERT}
                             text='Edytuj profil'
                             icon='ic_drawer'
                             navigation ={props.navigation}
@@ -46,7 +45,7 @@ const DrawerContent = (props) => {
                             navigation ={props.navigation}
                         />
                         <ButtonDrawer 
-                            goto={NavigationName.TEAMS}
+                            goto={NavigationName.SEARCH}
                             text='Obejrzane Filmy'
                             icon='ic_drawer'
                             navigation ={props.navigation}

@@ -10,6 +10,6 @@ export const getShadowStyle = ( elevation: number, shadowColor:string , shadowOp
 			};
 		else
 			return {
-				elevation: elevation,
+				elevation: elevation.toString(),
 			};
 }
