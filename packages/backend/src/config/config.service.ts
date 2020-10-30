@@ -39,15 +39,14 @@ class ConfigService {
       username: this.getValue('DB_USERNAME'),
       password: this.getValue('DB_PASSWORD'),
       database: this.getValue('DB_NAME'),
-
-      entities: ['**/*.entity{.ts,.js}'],
-
+      autoLoadEntities: true,
+      synchronize: true,
       migrationsTableName: 'migration',
 
-      migrations: ['src/migration/*.ts'],
+      migrations: this.isProduction()?['dist/migration/*.js']:['src/migration/*.ts'],
 
       cli: {
-        migrationsDir: 'src/migration',
+        migrationsDir: this.isProduction()?'dist/migration':'src/migration',
       },
 
       ssl: this.isProduction(),

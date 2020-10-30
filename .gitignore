@@ -17,3 +17,4 @@ lerna-debug.log
 
 .idea
 .vscode
+.devcontainer

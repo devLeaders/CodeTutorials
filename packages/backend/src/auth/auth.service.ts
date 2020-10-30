@@ -12,7 +12,7 @@ import {UserEntity} from "./users/user.entity";
 import {UsersRepository} from "./users/user.repository";
 import {UsersService} from "./users/users.service";
 import {IJWTToken} from "@project/common/features/auth/models";
-import {ResponseMessage} from "@project/common/features/enums";
+import {ResponseMessage} from "@project/common/features/Enums"
 import {MailingService} from "./mailing/mailing.service";
 
 @Injectable()

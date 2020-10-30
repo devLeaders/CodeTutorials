@@ -2,7 +2,6 @@ import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
 import { TokenService } from "../token/token.service";
 import { verify } from "jsonwebtoken";
 import { IJWTToken } from "@project/common/features/auth/models";
-import {ResponseMessage} from "@project/common/features/enums";
 
 @Injectable()
 export class ResetPasswordGuard implements CanActivate {

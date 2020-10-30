@@ -1,0 +1,28 @@
+version: '3'
+services:
+    database:
+      image: postgres
+      container_name: postgres
+      environment:
+        - POSTGRES_USER=xyz
+        - POSTGRES_PASSWORD=xyz
+        - POSTGRES_DB=xyz
+      ports:
+        - "5432:5432"
+      networks:
+        - postgres        
+    backend:
+      container_name: codetutorial
+      image: damiankolenda/devleaders
+      restart: always
+      ports:
+        - "3300:3300"
+      depends_on:
+        - database
+      extra_hosts:
+        - "baza:1.1.1.1"
+      networks:
+        - postgres
+networks:
+  postgres:
+    driver: bridge

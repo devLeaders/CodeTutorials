@@ -7,15 +7,11 @@
     "experimentalDecorators": true,
     "target": "es2017",
     "sourceMap": true,
-    // "outDir": "./dist",
+    "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
-    "outDir": "./lib"
+    "resolveJsonModule": true,               // json imports
+    "esModuleInterop": true,        
   },
-  "exclude": ["node_modules", "dist"],
-  "extends": "../../tsconfig.json",
-  "include": [
-      "./src"
-    ]
-   
+  "exclude": ["node_modules", "dist"]
 }
