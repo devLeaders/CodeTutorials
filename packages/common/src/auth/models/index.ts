@@ -2,6 +2,10 @@ export interface IUserRequest {
   email: string;
   password: string;
 }
+export interface IUserDataRequest {
+  email: string;
+  id: string | number;
+}
 
 export interface ISingInRequest {
   email: string;

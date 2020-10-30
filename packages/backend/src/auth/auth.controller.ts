@@ -1,4 +1,4 @@
-import {Body, Controller, Post, Req, Request, UseGuards} from "@nestjs/common";
+import {Body, Controller, Get, Param, Post, Query, Req, Request, UseGuards} from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import {ApiTags} from "@nestjs/swagger";
 import { TokenService } from "../auth/token/token.service";
@@ -7,7 +7,7 @@ import {AuthService} from "./auth.service";
 import {ChangePasswordDTO} from "./changePassword.dto";
 import {ResetPasswordDTO} from "./resetPassword.dto";
 import {SingInDTO} from "./singIn.dto";
-import {UserDTO} from "./users/user.dto";
+import {UserData, UserDTO} from "./users/user.dto";
 import {UsersService} from "./users/users.service";
 
 @ApiTags('auth')
@@ -34,4 +34,11 @@ export class AuthController {
     changePassword(@Body() changePasswordDTO: ChangePasswordDTO, @Req() request: Request) {
       return this.authService.changePassword(changePasswordDTO, request.headers["token"]);
     }
+
+    @Get('/user/:id')
+    @UseGuards(AuthGuard('jwt'))
+    getUserData(@Param() user:UserData) {
+      return this.authService.findUserByID(user);
+    }
+    
 }

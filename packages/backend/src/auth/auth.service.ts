@@ -1,4 +1,4 @@
-import {HttpException, HttpStatus, Injectable} from "@nestjs/common";
+import {HttpException, HttpStatus, Injectable, UnauthorizedException} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import * as bcrypt from "bcrypt";
 import {sign, verify} from "jsonwebtoken";
@@ -14,6 +14,7 @@ import {UsersService} from "./users/users.service";
 import {IJWTToken} from "@project/common/features/auth/models";
 import {ResponseMessage} from "@project/common/features/enums";
 import {MailingService} from "./mailing/mailing.service";
+import { UserData } from "./users/user.dto";
 
 @Injectable()
 export class AuthService {
@@ -95,4 +96,11 @@ export class AuthService {
       expiresIn: process.env.EXPIRES_RESET,
     });
   }
+
+  findUserByID(user: UserData): string {
+    const userData = { id: user.id, email: user.email };
+    console.log(userData)
+    return userData.email;
+  }
+  
 }
