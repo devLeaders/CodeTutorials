@@ -16,18 +16,6 @@ const Img = styled.Image`
     border-color: red;
 `;
 
-const T3 = styled.TouchableOpacity({
-  width: 50,
-  height: 50,
-  borderRadius: 50,
-  backgroundColor: 'grey',
-  overflow: 'hidden',
-  shadowColor: 'green',
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: '1px',
-  shadowRadius: 50,
-});
-
 const ButtonOpacity = styled.TouchableOpacity`
 `;
 

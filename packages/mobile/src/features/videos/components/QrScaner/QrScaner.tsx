@@ -21,6 +21,7 @@ export const ScanScreen = () => {
       <SafeAreaView>
         <ScrollView>
           <QRCodeScanner
+            reactivate={true}
             onRead={processQr}
             topContent={
               <Title>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View } from 'react-native';
+import {ActivityIndicator, View } from 'react-native';
 import {
   Background, Title,
 } from '../components/SingleScreen/SingleMovieStyle2';
@@ -8,35 +8,41 @@ import MainDescription from '../components/SingleScreen/MainDescription';
 import { SlaiderLarge } from '../components/Movies/SlaiderLarge';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Color } from '../../../features/common/styles/constans/Color';
-import { NavigationName } from '../../../config/routing/NavigationName';
 import { NavigationHelpers } from '@react-navigation/native';
-
+import { useVideo } from '../../../variables/VideoHook';
 
 interface SingleMovieProps {
   navigation: NavigationHelpers<any>,
+  route: any
 }
 
-export default class SingleMovie extends React.Component <SingleMovieProps>{
-  
-  render() {
-    const { navigation } = this.props;
+const SingleMovie = (props:SingleMovieProps) => {  
+  const id = props.route.params.itemId
+  const { getVideo, video} = useVideo(id)
+  const { navigation } = props;
+
     return (
+      <>
+      {(video != undefined)?
       <SafeAreaView style={{backgroundColor:Color.DARKGREY}}>
         <Background>
-            <MainScreenHeader navigation={navigation}/>  
+            <MainScreenHeader id={video.id} idYoutube={video.idYoutube} urlPhoto={video.urlPhoto}  navigation={navigation}/>  
             <MainDescription 
-                title="Docker od podstaw"
+                title={video?.title}
                 autor="Przemysław Bykowski"
-                description="Interdum et malesuada fames ac ante ipsum primis in faucibus. In sed tristique ante, vitae eleifend erat. Curabitur euismod eros nec tincidunt molestie. Donec maximus, nunc ut dapibus aliquet, lacus nisl rhoncus nisi, ac cursus urna nibh id enim. Morbi a rutrum dolor. Aliquam quis massa est. Pellentesque eget urna in justo ornare pellentesque."
+                description={video?.description}
                 navigation={navigation}
               />
             <Title>Podobne</Title>
               <View style={{justifyContent:'center',alignItems:'center', marginLeft:20}}>
-                <SlaiderLarge navigation={navigation}/>
+                <SlaiderLarge  />
               </View>
         </Background>
      </SafeAreaView>
-
+     : 
+     <ActivityIndicator size="large" color="#0000ff" />}
+      </>
     );
   }
-}
+
+  export default SingleMovie;

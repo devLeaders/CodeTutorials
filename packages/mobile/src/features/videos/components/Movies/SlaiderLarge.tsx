@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Animated, Dimensions } from 'react-native';
-import { MoviesListExpandedType } from './MoviesType';
 import {  
   ViewSeparator,
   ImageWidth
 } from './MovieListStyle';
 import { AnimationSlaider } from './AnimationSlaider';
-import { GetVideosListExpandedV } from '../../action/conector';
+import * as AuthConnectors from '@project/common/features/videos/connector'
+import { IVideosRespons } from '@project/common/src/videos/models'
 
  type SlaiderLargeS = {
-  listVideos: Array<MoviesListExpandedType>
+  listVideos: Array<IVideosRespons>
  }
 
 export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
@@ -29,11 +29,15 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
     );
   }
 
-  componentDidMount(){
-    const listVideos =  GetVideosListExpandedV();
+  public getVideosList =async() =>{
+    const listVideos = await AuthConnectors.getVideos({limit:8});;
     this.setState ({
-      listVideos
+      listVideos: listVideos.data
     })
+  }
+
+  componentDidMount(){
+    this.getVideosList()
   }
 
   public Separator = () => (<ViewSeparator/>)
@@ -50,7 +54,7 @@ export class SlaiderLarge extends React.Component<any,SlaiderLargeS>{
                 horizontal={true}
                 data={this.state.listVideos} 
                 renderItem={this.renderIt}
-                keyExtractor={ item => item.id }
+                keyExtractor={ item => item.id.toString() }
                 bounces={ false }
                 onScroll={ this.onScroll }
               /> 

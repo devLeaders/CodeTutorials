@@ -48,7 +48,7 @@ const SignInInput = ({ label, formikProps, formikKey, src, ...rest }) => {
         borderBottomColor: 'transparent',
         padding: 10,
         marginBottom: 3,
-        fontSize: 20,
+        fontSize: 20
     };
 
     if (formikProps.touched[formikKey] && formikProps.errors[formikKey]) {
@@ -63,6 +63,7 @@ return (
             style={inputStyles}
             onChangeText={formikProps.handleChange(formikKey)}
             onBlur={formikProps.handleBlur(formikKey)}
+            placeholderTextColor={Color.LIGHTGREYXX}
             {...rest}
         />
         <Text style={{ color: 'orange' }}>

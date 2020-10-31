@@ -26,8 +26,8 @@ export class VideosService {
 		let query = getRepository(VideosEntity)
 			.createQueryBuilder("videos")
 			.leftJoinAndSelect("videos.category", "category")
-			.take(20)
-			.skip(20 * (page - 1))
+			.take((param.limit == null)? 20 : param.limit)
+			.skip((param.limit == null)? 20* (page - 1) : param.limit * (page - 1))
 			.where(`videos.id IS NOT NULL`);
 		if (param.title) {
 			query = query.andWhere(`videos.title LIKE :title`, { title: param.title });
@@ -40,11 +40,14 @@ export class VideosService {
 		return videos;
 	}
 
-	async getAllCategoryList() {
-		return await getRepository(CategoryEntity)
-			.createQueryBuilder("category")
-			.leftJoinAndSelect("category.videos", "videos")
-			.getMany();
+	async getAllCategoryList(only: boolean = false) {
+		const categories = await getRepository(CategoryEntity)
+			.createQueryBuilder("category");
+
+		if (!only)
+			categories.leftJoinAndSelect("category.videos", "videos")
+		
+		return categories.getMany();
 	}
 
 	async getStream(id: string, res: any, req: any) {
@@ -83,7 +86,12 @@ export class VideosService {
 	}
 
 	async getSingleVideo(id: string): Promise<VideosEntity> {
-		return await this.videosRepository.findOne(id);
+		try{
+			return this.videosRepository.findOne(id);
+		} catch(err){
+			return err
+		}
+		
 	}
 
 	@Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)

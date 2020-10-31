@@ -6,8 +6,6 @@ import Global from "../../features/common/models/Global";
 
 export async function axiosInit() {
     AxiosInstance.defaults.baseURL =  Global.env.API_URL;
-    AxiosInstance.defaults.headers.Authorization =  `Bearer ${await AsyncStorage.getItem("token")}`;
-
     AxiosInstance.interceptors.request.use((request)=> {
       return request;
     })

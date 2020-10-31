@@ -6,6 +6,7 @@ import { FontSize } from '../../../common/styles/constans/FontSize';
 import { Color } from '../../../common/styles/constans/Color';
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import { MyText } from '../../../common/styles/MyText';
+import { getShadowStyle } from '../../../../features/common/styles/constans/ShadowStyle';
 
 const Wrapper = styled.TouchableOpacity`
     flex: 1;
@@ -22,14 +23,7 @@ const ButtonFilter = styled.TouchableOpacity({
     borderRadius: 10,
     borderColor: Color.LIGHTGREYX,
     backgroundColor: Color.BLACK,
-    shadowColor: Color.LIGHTGREYX,
-    shadowOffset: {
-        width: 0,
-        height: 2,
-    },
-    shadowOpacity: "1",
-    shadowRadius: 8,
-    elevation: "3",
+    ...getShadowStyle(3, Color.LIGHTGREYX,1),
   });
 
   const TextButton = styled(MyText)({

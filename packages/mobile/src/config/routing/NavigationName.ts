@@ -1,4 +1,5 @@
 export enum NavigationName {
+    LOADING = 'Loading',
     HOME = 'Home',
     MOVIELIST = 'MovieList',
     SINGLEMOVIE = 'SingleMovie',

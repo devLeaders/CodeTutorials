@@ -25,6 +25,8 @@ import CategoryEntity from './category.entity';
 
         @Column('text') urlPhoto: string;
 
+        @Column('text') idYoutube: string;
+
         @ManyToMany(type => CategoryEntity, category => category.videos,{
             cascade: ["insert"]
         })

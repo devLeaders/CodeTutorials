@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { DrawerActions } from '@react-navigation/native';
 import { 
     ProfileImage,
     ProfileName,
@@ -14,7 +14,10 @@ import {
     WrapInfo,} from './DrawerStyle';
 import { NavigationName } from '../NavigationName';
 import { Text, Image, View } from 'react-native';
-
+import { CommonActions } from '@react-navigation/native';
+import AxioiInstance from '@project/common/features/config/axios/configAxios';
+import AsyncStorage from '@react-native-community/async-storage';
+import { useRemoveToken } from '../../../variables/RemoveTokenHooks';
 
 interface ProfileBoxP {
     name: string,
@@ -24,7 +27,11 @@ interface ProfileBoxP {
     navigation: any
 }
 
+
  const ProfileBox = (props:ProfileBoxP)=>{
+
+    const { removeToken, error } = useRemoveToken(props.navigation)
+
     return(
         <ProfileWrap >
             <ProfileImage source={{uri: props.icon}}/> 
@@ -36,9 +43,9 @@ interface ProfileBoxP {
                 </WrapInfo>
                 <LogoutWrap>
                     <LogOut
-                        onPress={() => props.navigation.navigate(NavigationName.SIGNINSCREEN)}>
+                        onPress={removeToken}>
                         <ProfileLogout>Wyloguj</ProfileLogout>
-                        <LogOutIc source={{uri:'ic_logout'}}/>
+                        <LogOutIc source={{uri:'ic_logout'}}/> 
                     </LogOut>
                 </LogoutWrap> 
         </ProfileWrapButton>

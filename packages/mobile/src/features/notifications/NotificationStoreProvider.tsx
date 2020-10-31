@@ -4,7 +4,6 @@ import { initialState, NotyficationContext } from "./NotificationsStore"
 
 export const NotificationStoreProvider = (props) => {
     const [state, dispatch ] = useReducer(notificationReducer, initialState)
-    
     return (
           <NotyficationContext.Provider value={{state,dispatch}}>
             {props.children}
