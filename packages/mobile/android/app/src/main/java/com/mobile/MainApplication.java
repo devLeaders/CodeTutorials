@@ -15,6 +15,7 @@ import com.facebook.react.ReactActivity;
 import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
 import io.invertase.firebase.messaging.ReactNativeFirebaseMessagingPackage;
 import org.reactnative.camera.RNCameraPackage;
+import com.huawei.hms.rn.push.HmsPushPackage;
 
 
 public class MainApplication extends Application implements ReactApplication {
@@ -37,6 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
           new RNCameraPackage();
           new ReactNativeFirebaseAppPackage();
           new ReactNativeFirebaseMessagingPackage();
+          new HmsPushPackage();
           return packages;
         }
 
