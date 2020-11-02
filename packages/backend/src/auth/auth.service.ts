@@ -90,7 +90,7 @@ export class AuthService {
   }
 
   generateToken(user: UserEntity): string {
-    const payload = { id: user.id, email: user.email };
+    const payload = { id: user.id, email: user.email, name:user.name };
 
     return sign(payload, process.env.SECRET_KEY, {
       expiresIn: process.env.EXPIRES_RESET,

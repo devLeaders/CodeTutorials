@@ -14,9 +14,7 @@ import {UsersService} from "./users/users.service";
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
-    constructor(private userService: UsersService, private authService: AuthService) {
-      // private readonly service: SettingService,
-    }
+    constructor(private userService: UsersService, private authService: AuthService) {}
 
     @Post('/signup')
     signUp(@Body() userDTO: UserDTO) {

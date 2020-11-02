@@ -20,6 +20,8 @@ export class UserEntity extends BaseEntity {
 
   @Column('varchar', { length: 255 }) email: string;
 
+  @Column('varchar', { length: 255 }) name: string;
+
   @Column('varchar', { length: 255 }) password: string;
 
   @OneToMany(
