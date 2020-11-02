@@ -1,5 +1,5 @@
 import { IsEmail, MinLength  } from 'class-validator';
-import {IUserRequest, IUserDataRequest} from '@project/common/features/auth/models'
+import {IUserRequest, IUserDataRespons} from '@project/common/features/auth/models'
 import {ApiProperty} from '@nestjs/swagger'
 
 export class UserDTO implements IUserRequest {  
@@ -14,11 +14,11 @@ export class UserDTO implements IUserRequest {
       
 }
 
-export class UserData implements IUserDataRequest {
+export class UserData implements IUserDataRespons {
     @ApiProperty()
     @IsEmail() 
     email: string;
 
     @ApiProperty()
-    id: string | number; 
+    name: string ; 
 }

@@ -1,19 +1,22 @@
-import {Body, Controller, Get, Param, Post, Query, Req, Request, UseGuards} from "@nestjs/common";
+import {Body, Controller, Get, Param, Post, Query, Req, Request, UseGuards, Headers,} from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import {ApiTags} from "@nestjs/swagger";
-import { TokenService } from "../auth/token/token.service";
+import { IUserDataRespons } from "@project/common/features/auth/models";
 import { ResetPasswordGuard } from "../auth/users/resetPassword.guard";
 import {AuthService} from "./auth.service";
 import {ChangePasswordDTO} from "./changePassword.dto";
 import {ResetPasswordDTO} from "./resetPassword.dto";
 import {SingInDTO} from "./singIn.dto";
+import { AuthUser } from "./user.decorator";
 import {UserData, UserDTO} from "./users/user.dto";
 import {UsersService} from "./users/users.service";
 
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
-    constructor(private userService: UsersService, private authService: AuthService) {}
+    constructor(private userService: UsersService, private authService: AuthService) {
+      // private readonly service: SettingService,
+    }
 
     @Post('/signup')
     signUp(@Body() userDTO: UserDTO) {
@@ -35,10 +38,13 @@ export class AuthController {
       return this.authService.changePassword(changePasswordDTO, request.headers["token"]);
     }
 
-    @Get('/user/:id')
+    @Get('/user')
     @UseGuards(AuthGuard('jwt'))
-    getUserData(@Param() user:UserData) {
-      return this.authService.findUserByID(user);
+    async getUserData( @AuthUser() auth: any): Promise<IUserDataRespons> {
+     return {
+       email: auth.email,
+       name: auth.name
+     };
     }
-    
+
 }

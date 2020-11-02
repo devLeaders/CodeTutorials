@@ -96,11 +96,5 @@ export class AuthService {
       expiresIn: process.env.EXPIRES_RESET,
     });
   }
-
-  findUserByID(user: UserData): string {
-    const userData = { id: user.id, email: user.email };
-    console.log(userData)
-    return userData.email;
-  }
   
 }

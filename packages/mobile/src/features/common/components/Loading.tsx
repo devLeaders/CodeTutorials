@@ -22,7 +22,6 @@ const  Loading = (props: LoadingP) => {
     useEffect(()=>{
         (async function () {
             const token = await AsyncStorage.getItem('token') 
-            console.log(token)
             if(token){
                 AxioiInstance.defaults.headers.Authorization = `Bearer ${token}`;
                 props.navigation.dispatch(

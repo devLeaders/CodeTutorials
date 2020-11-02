@@ -2,9 +2,9 @@ export interface IUserRequest {
   email: string;
   password: string;
 }
-export interface IUserDataRequest {
+export interface IUserDataRespons {
   email: string;
-  id: string | number;
+  name: string;
 }
 
 export interface ISingInRequest {
