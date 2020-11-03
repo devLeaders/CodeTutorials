@@ -27,12 +27,20 @@ const InputSection: React.SFC<InputSectionProps> = () => {
   return (
     <Wrapper>
       <Formik
-        initialValues={{email: '', password: '', passwordConfirmation: ''}}
+        initialValues={{email: '', password: '', passwordConfirmation: '', name:''}}
         onSubmit={handleSubmit}
         validateOnChange={false}
         validationSchema={validationSchemaReg}>
         {({handleChange, handleSubmit, values, isSubmitting, errors}) => (
           <FormWrapper>
+              <FormikInput
+              type={InputTypes.NAME}
+              src="user"
+              change={handleChange('name')}
+              value={values.name}
+              holder="imie"
+              inputError={errors.name}
+            />
             <FormikInput
               type={InputTypes.EMAIL}
               src="email"
