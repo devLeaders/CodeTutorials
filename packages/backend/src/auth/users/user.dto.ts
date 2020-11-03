@@ -11,6 +11,9 @@ export class UserDTO implements IUserRequest {
     @ApiProperty()
     @MinLength(8)   
     password: string; 
+
+    @ApiProperty()
+    name: string
       
 }
 

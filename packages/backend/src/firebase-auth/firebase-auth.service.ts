@@ -24,11 +24,11 @@ export class FirebaseAuthService {
 
       if (!user) {
         const password = uuidv4()
-        await this.usersRepository.signUp({ email, password });
+        await this.usersRepository.signUp({ email, password, name });
         const newUser = await this.UsersService.findByEmail(email);
-        payload = {email, id: newUser.id}
+        payload = {email, id: newUser.id, name}
       }else{
-        payload = {email, id: user.id}
+        payload = {email, id: user.id, name}
       }
 
 

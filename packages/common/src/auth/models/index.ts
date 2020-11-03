@@ -1,6 +1,7 @@
 export interface IUserRequest {
   email: string;
   password: string;
+  name: string
 }
 export interface IUserDataRespons {
   email: string;
