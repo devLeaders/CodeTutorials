@@ -37,7 +37,8 @@ const AnotherSingInMethods: React.FC<AnotherSingInMethodsProps> = props => {
 
   function configureGoogleSign() {
     GoogleSignin.configure({
-      offlineAccess: false
+      webClientId: Global.env.WEB_CLIENT_ID,
+      // offlineAccess: false
     });  
   
   }
