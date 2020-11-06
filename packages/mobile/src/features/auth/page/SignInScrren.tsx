@@ -59,6 +59,7 @@ class SignInScreen extends React.Component<any> {
                         src1='facebook'
                         src2='google'
                         src3='twitter'
+                        navigation ={this.props.navigation}
                     /> 
                 </Wrapper>
             </ScrollView>
