@@ -1,5 +1,4 @@
 apply plugin: "com.android.application"
-apply plugin: 'com.google.gms.google-services'
 
 
 import com.android.build.OutputFile
@@ -190,8 +189,10 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-
+     
     implementation "com.google.android.gms:play-services-base:17.2.1"
+    implementation(project(":react-native-google-signin"))
+
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
@@ -212,3 +213,6 @@ task copyDownloadableDepsToLibs(type: Copy) {
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project);
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+apply plugin: 'com.google.gms.google-services'
+

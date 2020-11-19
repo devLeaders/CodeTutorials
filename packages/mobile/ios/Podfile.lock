@@ -16,9 +16,6 @@ PODS:
     - ReactCommon/turbomodule/core (= 0.62.2)
   - Firebase/Analytics (6.28.1):
     - Firebase/Core
-  - Firebase/Auth (6.28.1):
-    - Firebase/CoreOnly
-    - FirebaseAuth (~> 6.7.0)
   - Firebase/Core (6.28.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.6.2)
@@ -36,11 +33,6 @@ PODS:
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 1.30905.0)
-  - FirebaseAuth (6.7.1):
-    - FirebaseCore (~> 6.8)
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
-    - GoogleUtilities/Environment (~> 6.7)
-    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (6.9.1):
     - FirebaseCoreDiagnostics (~> 1.3)
     - GoogleUtilities/Environment (~> 6.7)
@@ -375,10 +367,6 @@ PODS:
   - RNFBApp (8.3.0):
     - Firebase/CoreOnly (= 6.28.1)
     - React
-  - RNFBAuth (9.3.2):
-    - Firebase/Auth (= 6.28.1)
-    - React-Core
-    - RNFBApp
   - RNFBMessaging (7.6.1):
     - Firebase/Analytics (= 6.28.1)
     - Firebase/Messaging (= 6.28.1)
@@ -438,7 +426,6 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
-  - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
@@ -454,7 +441,6 @@ SPEC REPOS:
     - boost-for-react-native
     - Firebase
     - FirebaseAnalytics
-    - FirebaseAuth
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseInstallations
@@ -538,8 +524,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/masked-view"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
-  RNFBAuth:
-    :path: "../node_modules/@react-native-firebase/auth"
   RNFBMessaging:
     :path: "../node_modules/@react-native-firebase/messaging"
   RNGestureHandler:
@@ -565,7 +549,6 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: 5465d51ccfeecb7faa12f9ae0024f2044ce4044e
   Firebase: ed042590caa0029392257529a8003c25ee82bc18
   FirebaseAnalytics: 5fa308e1b13f838d0f6dc74719ac2a72e8c5afc4
-  FirebaseAuth: a818d73466d51db897d3bf3c0f3baa3dae7fd4c0
   FirebaseCore: 687b8e6a0a4337b898a6326d68254c2f80c143af
   FirebaseCoreDiagnostics: 7535fe695737f8c5b350584292a70b7f8ff0357b
   FirebaseInstallations: 3c520c951305cbf9ca54eb891ff9e6d1fd384881
@@ -610,7 +593,6 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
   RNCMaskedView: 76c40a1d41c3e2535df09246a2b5487f04de0814
   RNFBApp: 22d9fd4dce89099fab736d1c36c6d4cc12a2905e
-  RNFBAuth: 50335aaa11531e4e975088bb8fa3a0fb062d63ff
   RNFBMessaging: 0f1eaae3d82f6d96015f5cf3e2b278edd50ac631
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
