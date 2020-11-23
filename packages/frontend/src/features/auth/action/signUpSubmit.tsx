@@ -4,13 +4,14 @@ import { Navigation } from "../../../config/routing/NavigationPath";
 import { ServerStatus } from "../../../config/axios/models";
 
 export const signUpSubmit = async (
-  value: { email: string; password: string },
+  value: { email: string; password: string, name:string },
   action: { setErrors: (fields: { [field: string]: string }) => void }
 ) => {
   try {
     await AuthConnectors.signUp({
       email: `${value.email}`,
       password: `${value.password}`,
+      name: `${value.name}`
     });
     window.location.replace(Navigation.LOGIN);
   } catch (err) {
