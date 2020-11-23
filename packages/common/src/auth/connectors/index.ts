@@ -1,5 +1,5 @@
 import { AxiosPromise } from "axios";
-import { ISingInRequest, IUserRequest, ISingInResponse } from "../models";
+import { ISingInRequest, IUserRequest, ISingInResponse, IUserDataRespons } from "../models";
 import AxiosInstance from "../../config/axios/configAxios";
 
 export function signUp(obj: IUserRequest): AxiosPromise<any> {
@@ -8,4 +8,8 @@ export function signUp(obj: IUserRequest): AxiosPromise<any> {
 
 export function signIn(obj: ISingInRequest): AxiosPromise<ISingInResponse> {
   return AxiosInstance.post(`/auth/signin`, obj);
+}
+
+export function userData(obj:any): AxiosPromise<IUserDataRespons> {
+  return AxiosInstance.get(`/auth/user`, obj);
 }

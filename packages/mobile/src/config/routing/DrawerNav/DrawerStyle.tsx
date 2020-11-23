@@ -49,13 +49,26 @@ export const ButtonDraw = styled.TouchableOpacity({
     marginBottom: 15
   })
 
-  export const ProfileImage = styled.Image({
-    resizeMode: 'cover',
+  export const ProfileImage = styled.View({
     borderRadius: 100,
-    width: 99,
-    height: 99,
+    width: 105,
+    height: 105,
     marginRight: 20,
     flex:0.5,
+    backgroundColor: Color.WHITE,
+    borderColor: Color.BLACK,
+    border: 'solid 1px',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  })
+
+  export const ProfileLeter = styled(MyText)({
+    color: Color.BLACK,
+    fontSize:  FontSize.LARGE,
+    fontWeight: parseInt(FontWeight.BOLD, 10),
+    textAlign: 'center',
+   
+    
   })
 
   export const ProfileName = styled(MyText)({

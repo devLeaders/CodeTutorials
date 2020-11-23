@@ -1,20 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, } from 'react-native';
 import {
     DrawerContentScrollView,
-    DrawerItem
 } from '@react-navigation/drawer';
-import { NavigationName } from '../NavigationName';
-import ButtonDrawer from './ButtonDrawer';
 import { Color } from '../../../features/common/styles/constans/Color';
 import { DrawerWraper, TitleProfile, WrapWidth } from './DrawerStyle';
 import ProfileBox from './ProfileBox';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useToken } from '../../../variables/TokenHooks';
-
+import * as AuthConnectors from '@project/common/features/auth/connectors'
+import { IUserDataRespons } from '@project/common/features/auth/models';
 
 const DrawerContent = (props) => {
     const { getToken } = useToken()
+    const [ user, setUser] = useState<IUserDataRespons>()
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const token = await AsyncStorage.getItem('token') 
+        const result = await AuthConnectors.userData({
+            Authorization: `Bearer ${token}`
+        });
+        setUser(result.data);
+      };
+      fetchData();
+    }, []);
+
     return(
         <>
         {(getToken)?
@@ -24,15 +35,14 @@ const DrawerContent = (props) => {
                     <WrapWidth>
                         <TitleProfile>Profil</TitleProfile>
                         <ProfileBox 
-                            name={'Sebastian'}
-                            icon={'ic_profile'}
-                            mail={'seba@gmail.com'}
-                            userType={'Mentor'}
+                            name={user?.name}
+                            mail={user?.email}
+                            // userType={'Mentor'}
                             navigation= {props.navigation}
                         />
                     </WrapWidth>
-                    <WrapWidth>
-                        <ButtonDrawer 
+                    {/* <WrapWidth> */}
+                        {/* <ButtonDrawer 
                             goto={NavigationName.ALERT}
                             text='Edytuj profil'
                             icon='ic_drawer'
@@ -55,8 +65,8 @@ const DrawerContent = (props) => {
                             text='Admin Panel'
                             icon='ic_drawer'
                             navigation ={props.navigation}
-                        />
-                </WrapWidth>
+                        /> */}
+                {/* </WrapWidth> */}
                 </DrawerWraper>
             </DrawerContentScrollView>
         </View>

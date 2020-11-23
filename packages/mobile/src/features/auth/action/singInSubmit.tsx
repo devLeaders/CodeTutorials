@@ -17,7 +17,6 @@ const loginSubmit = async (
     });
     const token = dataResponse.data.token;
     AsyncStorage.setItem('token', token);
-    
     AxioiInstance.defaults.headers.Authorization = `Bearer ${token}`;
     callback()
   } catch (error) {
