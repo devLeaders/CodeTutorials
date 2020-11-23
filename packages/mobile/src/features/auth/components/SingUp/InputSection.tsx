@@ -27,18 +27,26 @@ const InputSection: React.SFC<InputSectionProps> = () => {
   return (
     <Wrapper>
       <Formik
-        initialValues={{email: '', password: '', passwordConfirmation: ''}}
+        initialValues={{email: '', password: '', passwordConfirmation: '', name:''}}
         onSubmit={handleSubmit}
         validateOnChange={false}
         validationSchema={validationSchemaReg}>
         {({handleChange, handleSubmit, values, isSubmitting, errors}) => (
           <FormWrapper>
+              <FormikInput
+              type={InputTypes.NAME}
+              src="user"
+              change={handleChange('name')}
+              value={values.name}
+              holder="Imię"
+              inputError={errors.name}
+            />
             <FormikInput
               type={InputTypes.EMAIL}
               src="email"
               change={handleChange('email')}
               value={values.email}
-              holder="email"
+              holder="E-mail"
               inputError={errors.email}
             />
             <FormikInput
@@ -46,7 +54,7 @@ const InputSection: React.SFC<InputSectionProps> = () => {
               src="password"
               change={handleChange('password')}
               value={values.password}
-              holder="wprowadź hasło"
+              holder="Wprowadź hasło"
               inputError={errors.password}
             />
             <FormikInput
@@ -54,7 +62,7 @@ const InputSection: React.SFC<InputSectionProps> = () => {
               src="password"
               change={handleChange('passwordConfirmation')}
               value={values.passwordConfirmation}
-              holder="powtórz hasło"
+              holder="Powtórz hasło"
               inputError={errors.passwordConfirmation}
               onSubmitEditing={handleSubmit}
               returnKeyType="send"

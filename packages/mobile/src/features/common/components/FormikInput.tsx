@@ -10,7 +10,7 @@ import { Color } from '../styles/constans/Color';
 
 const InputWrapper = styled.View`
   border-bottom-color: grey;
-  border-bottom-width: 2;
+  border-bottom-width: 2px;
   margin-bottom: 10px;
   flex-direction: row;
   justify-content: space-between;
