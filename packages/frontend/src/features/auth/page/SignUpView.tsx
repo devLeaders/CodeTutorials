@@ -16,6 +16,7 @@ interface FormValuesInterface {
   email: string;
   password: string;
   passwordConfirmation: string;
+  name: string
 }
 
 const SignUpView: React.FC<{}> = () => {
@@ -23,6 +24,7 @@ const SignUpView: React.FC<{}> = () => {
     email: "",
     password: "",
     passwordConfirmation: "",
+    name: ""
   };
   return (
     <Wrapper>
