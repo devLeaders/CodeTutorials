@@ -1,11 +1,10 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components/native';
 import { singInByGoogle,  } from '../../action/singInByGoogle';
-import { GoogleSignin } from '@react-native-community/google-signin';
 import Global from "../../../common/models/Global";
 import { NavigationName } from '../../../../config/routing/NavigationName';
 import { NotyficationContext } from '../../../../features/notifications/NotificationsStore';
-
+import {GoogleSignin} from '@react-native-community/google-signin';
 
 const Wrapper = styled.View`
 `;
@@ -38,7 +37,7 @@ const AnotherSingInMethods: React.FC<AnotherSingInMethodsProps> = props => {
   function configureGoogleSign() {
     GoogleSignin.configure({
       webClientId: Global.env.WEB_CLIENT_ID,
-      offlineAccess: true,   
+      offlineAccess: true,
     });  
   
   }

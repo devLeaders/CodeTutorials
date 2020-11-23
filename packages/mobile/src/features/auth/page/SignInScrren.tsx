@@ -9,7 +9,7 @@ import { NavigationName } from '../../../config/routing/NavigationName';
 import { MyText } from '../../../features/common/styles/MyText';
 import { ScrollView, View } from 'react-native';
 import Header from '../../../features/common/components/Header';
-
+import Test from '../components/SignIn/Test'
 const Wrapper = styled.View({
     justifyContent: 'center',
     alignItems: 'center',
@@ -55,12 +55,13 @@ class SignInScreen extends React.Component<any> {
                         <SignUpText>Nie masz konta?</SignUpText>
                     </SignUpOpacity>
                     <OrText>———LUB———</OrText>
-                    <AnotherSingInMethods 
+                    {/* <AnotherSingInMethods 
                         src1='facebook'
                         src2='google'
                         src3='twitter'
                         navigation ={this.props.navigation}
-                    /> 
+                    />  */}
+                    <Test/>
                 </Wrapper>
             </ScrollView>
         )

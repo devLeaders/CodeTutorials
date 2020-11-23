@@ -2,32 +2,28 @@ import * as AuthConnectors from "@project/common/features/firebase-auth/connecto
 import AxioiInstance from '@project/common/features/config/axios/configAxios';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ErrorSingin } from '../components/SignIn/ErrorEnum';
-import { GoogleSignin } from '@react-native-community/google-signin';
+import {GoogleSignin, GoogleSigninButton, statusCodes} from '@react-native-community/google-signin';
 
 
 export const singInByGoogle = async (
     callback:(error?:string)=>void,
 ) => {
   try {
-        await GoogleSignin.hasPlayServices();
-        const {idToken} = await GoogleSignin.signIn();
-        const test = await GoogleSignin.getTokens()
-        const dataResponse = await AuthConnectors.signInGoogle({
-            idToken:idToken,
-        }as  string | any);
-
-        console.log(idToken)
-        console.log('dupa')
-        console.log(test)
+        console.log('singin')
+        // console.log(dataResponse)
         // const token = dataResponse.data.token;
         // AsyncStorage.setItem('token', token);
         // AxioiInstance.defaults.headers.Authorization = `Bearer ${token}`;
-        // console.log('dupa',token)
-         // Create a Google credential with the token
-      
+        await GoogleSignin.hasPlayServices();
+        const idToken = await GoogleSignin.signIn();
+        console.log(idToken)
+        //  const dataResponse = await AuthConnectors.signInGoogle({
+        //     idToken:idToken,
+        // }as  string | any);
+        
       callback()
     } catch (error) {
-        console.log('dupa2')
+        console.log('singin-error')
         console.log(error)
         callback(getErrorMsg(error?.dataResponse));
     }
