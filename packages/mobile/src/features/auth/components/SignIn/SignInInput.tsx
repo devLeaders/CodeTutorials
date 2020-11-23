@@ -36,7 +36,6 @@ const TxtInput = styled.TextInput`
   color: ${Color.BLACK}
 `;
 
-// dodac interfejs 
 
 const SignInInput = ({ label, formikProps, formikKey, src, ...rest }) => {
 

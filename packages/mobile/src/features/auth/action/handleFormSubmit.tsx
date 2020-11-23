@@ -24,6 +24,7 @@ const handleFormSubmit = async (
   const user = {
     email: values.email,
     password: values.password,
+    name: values.name
   };
   actions.resetForm();
   try {
