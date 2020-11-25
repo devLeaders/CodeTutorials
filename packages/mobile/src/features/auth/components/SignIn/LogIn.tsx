@@ -114,6 +114,7 @@ const LogIn = (props:LogInProps) => {
                                 autocomplite
                                 keyboardType={"email-address"}
                                 textContentType={"emailAddress"}
+                                autoCapitalize = 'none'
                             />
 
                             <SignInInput
@@ -122,6 +123,7 @@ const LogIn = (props:LogInProps) => {
                                 formikKey="password"
                                 placeholder="Password"
                                 secureTextEntry
+                                autoCapitalize = 'none'
                                 src='password'
                             />
                             {(serverError.length != 0) && 
