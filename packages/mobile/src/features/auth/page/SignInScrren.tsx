@@ -54,12 +54,12 @@ class SignInScreen extends React.Component<any> {
                     <SignUpOpacity onPress={this.navToSingUp}>
                         <SignUpText>Nie masz konta?</SignUpText>
                     </SignUpOpacity>
-                    <OrText>———LUB———</OrText>
-                    <AnotherSingInMethods 
+                    {/* <OrText>———LUB———</OrText> */}
+                    {/* <AnotherSingInMethods 
                         src1='facebook'
                         src2='google'
                         src3='twitter'
-                    /> 
+                    />  */}
                 </Wrapper>
             </ScrollView>
         )

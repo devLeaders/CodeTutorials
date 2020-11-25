@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export const useToken = () => {
