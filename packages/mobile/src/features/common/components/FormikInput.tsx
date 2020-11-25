@@ -53,6 +53,7 @@ const FormikInput: React.SFC<FormikInputProps> = props => {
           value={value}
           returnKeyType={returnKeyType}
           placeholderTextColor={Color.LIGHTGREYXX}
+          autoCapitalize = 'none'
         />
       </InputWrapper>
       {inputError && <Error inputError={inputError} />}
