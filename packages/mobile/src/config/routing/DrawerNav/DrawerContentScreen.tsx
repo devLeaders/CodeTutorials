@@ -17,11 +17,18 @@ const DrawerContent = (props) => {
     const [ user, setUser] = useState<IUserDataRespons>()
 
       const fetchData = async () => {
+        try {
         const token = await AsyncStorage.getItem('token') 
         const result = await AuthConnectors.userData({
             Authorization: `Bearer ${token}`
         });
         setUser(result.data);
+        }catch (err) {
+            const error = err.response.data;
+            if (error.message === 401 ) {
+               error
+            }
+        }
       };
     
     const checkIsDataUser = ()=> {
@@ -33,6 +40,7 @@ const DrawerContent = (props) => {
     useEffect(()=>{
         checkIsDataUser()
     },[user])
+   
 
     return(
         <>

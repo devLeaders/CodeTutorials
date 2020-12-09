@@ -46,6 +46,10 @@ export default class FiltersScreen extends React.Component <FiltersScreenProps, 
     this.props.navigation.navigate(NavigationName.FILTERWITHLIST);
   }
 
+  navToHome = () => {
+    this.props.navigation.navigate(NavigationName.HOME)
+}
+
   render() {
     return ( 
       <Wrapper>
@@ -80,49 +84,42 @@ export default class FiltersScreen extends React.Component <FiltersScreenProps, 
         <FilersButtonWrapper>
             <WhiteFilterButton 
               text="UX/UI Design"
-              navigation={this.props.navigation}
-              goto={NavigationName.HOME}
-              />
+              onPress={this.navToHome}
+            />
             <WhiteFilterButton 
               text="Graphic Design"
-              navigation={this.props.navigation}
-              goto={NavigationName.HOME}/>
+              onPress={this.navToHome}
+            />
         </FilersButtonWrapper>
         <FilersButtonWrapper>
-            <BlackFilterButton 
+            <WhiteFilterButton 
               text="Computer Science Engineer"
-              navigation={this.props.navigation}
-              goto={NavigationName.HOME}
-              />
+              onPress={this.navToHome}
+            />
         </FilersButtonWrapper>
         <FilersButtonWrapper>
             <WhiteFilterButton 
               text="UX/UI Design"
-              navigation={this.props.navigation}
-              goto={NavigationName.HOME}
-              />
+              onPress={this.navToHome}
+            />
             <WhiteFilterButton 
               text="Graphic Design"
-              navigation={this.props.navigation}
-              goto={NavigationName.HOME}
-              />
+              onPress={this.navToHome}
+            />
         </FilersButtonWrapper>
         <FilersButtonWrapper>
             <WhiteFilterButton 
               text="Dance"
-              navigation={this.props.navigation}
-              goto={NavigationName.HOME}
-              />
+              onPress={this.navToHome}
+            />
             <WhiteFilterButton 
               text="DJ"
-              navigation={this.props.navigation}
-              goto={NavigationName.HOME}
-              />
+              onPress={this.navToHome}
+            />
             <WhiteFilterButton 
               text="Guitarist"
-              navigation={this.props.navigation}
-              goto={NavigationName.HOME}
-              />
+              onPress={this.navToHome}
+            />
         </FilersButtonWrapper>
         </SafeAreaView>
       </Wrapper>

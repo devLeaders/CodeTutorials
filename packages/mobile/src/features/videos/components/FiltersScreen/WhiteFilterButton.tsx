@@ -25,6 +25,9 @@ const ButtonFilter = styled.TouchableOpacity({
     borderColor: Color.LIGHTGREYX,
     backgroundColor: Color.WHITE,
     ...getShadowStyle(3, Color.LIGHTGREYX,1),
+  }, (props) => {
+ 
+    return {};
   });
 
   const TextButton = styled(MyText)({
@@ -37,9 +40,8 @@ const ButtonFilter = styled.TouchableOpacity({
   
 
 interface WhiteFilterButtonProps {
-    navigation: any,
     text: string,
-    goto: any
+    onPress:()=>void
   }
   
   //wybór white button | blackbutton
@@ -49,7 +51,7 @@ export default class WhiteFilterButton extends React.Component<WhiteFilterButton
         return(
             <Wrapper>
                 <ButtonFilter
-                    onPress={() => this.props.navigation.navigate(this.props.goto)}>
+                    onPress={this.props.onPress}>
                 <TextButton>{this.props.text}</TextButton>
                 </ButtonFilter>
             </Wrapper>

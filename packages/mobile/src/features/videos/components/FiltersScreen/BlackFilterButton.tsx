@@ -36,9 +36,8 @@ const ButtonFilter = styled.TouchableOpacity({
   
 
 interface BlackFilterButtonProps {
-    navigation: any,
+    onPress:()=>void,
     text: string,
-    goto: any,
   }
   
   //wybór white button | blackbutton
@@ -48,7 +47,7 @@ export default class BlackFilterButton extends React.Component<BlackFilterButton
         return(
             <Wrapper>
                 <ButtonFilter
-                    onPress={() => this.props.navigation.navigate(this.props.goto)}>
+                    onPress={this.props.onPress}>
                 <TextButton>{this.props.text}</TextButton>
                 </ButtonFilter>
             </Wrapper>
